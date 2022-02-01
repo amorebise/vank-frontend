@@ -13,10 +13,12 @@
             />
           </div>
           <div class="write_up_section mt-3">
-            <h5 class="">
-              Make Smarter Moves, <br />
-              <span>Save in Crypto</span>
-            </h5>
+            <div class="">
+              <h5 class="">
+                Make Smarter Moves, <br />
+                <span>Save in Crypto</span>
+              </h5>
+            </div>
           </div>
         </div>
         <div>
@@ -24,7 +26,11 @@
             <h5>Links</h5>
             <ul>
               <li><nuxt-link to="/" class="links">Home</nuxt-link></li>
-              <li><nuxt-link to="/" class="links">How it Works</nuxt-link></li>
+              <li>
+                <nuxt-link to="/#how_it_works" class="links"
+                  >How it Works</nuxt-link
+                >
+              </li>
               <li><nuxt-link to="/faq" class="links">FAQ</nuxt-link></li>
               <li><nuxt-link to="/" class="links">Blog</nuxt-link></li>
             </ul>
@@ -68,7 +74,7 @@
           <p>Copyright @ 2022 All right reserved</p>
         </div>
         <div class="icons">
-          <a href="https://facebook.com/vankwallet" target="_blank"
+          <a href="https://facebook.com/vankwallet" class="mx-1" target="_blank"
             ><nuxt-img
               format="webp"
               quality="90"
@@ -77,7 +83,7 @@
               src="/fb.png"
           /></a>
 
-          <a href="https://twitter.com/vankwallet" target="_blank"
+          <a href="https://twitter.com/vankwallet" class="mx-1" target="_blank"
             ><nuxt-img
               format="webp"
               quality="90"
@@ -85,7 +91,7 @@
               sizes="xs:45vw sm:30vw md:20vw lg:12vw"
               src="/twitter.png"
           /></a>
-          <a href=""
+          <a href="" class="mx-1"
             ><nuxt-img
               format="webp"
               quality="90"
@@ -93,7 +99,7 @@
               sizes="xs:45vw sm:30vw md:20vw lg:12vw"
               src="/instagram.png"
           /></a>
-          <a href="">
+          <a href="" class="mx-1">
             <nuxt-img
               format="webp"
               quality="90"
@@ -120,6 +126,7 @@ export default {};
   padding: 0;
   list-style: none;
   text-decoration: none !important;
+  font-family: "Space Grotesk", sans-serif;
 }
 .footer_wrap {
   background-color: #0f1843;
@@ -133,17 +140,16 @@ export default {};
   color: #00e8fe;
 }
 .write_up_section h5 {
-  margin-left: 180px;
-  font-size: 18px;
-  font-weight: 600;
+  width: 60%;
+  margin-left: auto;
+  font-size: 20px;
+  font-weight: 400;
 }
-.link_wrapper {
-  font-family: Space Grotesk;
-}
+
 .link_wrapper h5,
 .news_letter_wrapper h5 {
   color: #00e8fe;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 27px;
 }
 .news_letter_wrapper p {
@@ -154,6 +160,7 @@ export default {};
 .links {
   color: #fff;
   font-size: 20px;
+  line-height: 55px;
 }
 ul li {
   line-height: 35px;
@@ -194,8 +201,8 @@ hr {
   }
   .write_up_section h5 {
     margin-left: 0;
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 11px;
+    font-weight: 400;
   }
   .link_wrapper h5,
   .news_letter_wrapper h5 {
@@ -203,21 +210,19 @@ hr {
     font-size: 15px;
     margin-top: 15px;
   }
-  .write_up_section h5 {
-    font-size: 15px;
-  }
+
   .news_letter_wrapper p {
     font-size: 13px;
   }
   .links {
     font-size: 13px;
+    line-height: 10px;
   }
   .subscribe_section {
     background-color: #fff;
     padding: 10px;
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
   }
   .subscribe_section input {
     width: 100%;
@@ -242,6 +247,9 @@ hr {
   hr {
     margin-top: 20px;
   }
+  .icons a {
+    margin: 0 !important;
+  }
 }
 
 @media (min-width: 320px) and (max-width: 375px) {
@@ -258,8 +266,5 @@ hr {
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-  /* .subscribe_section {
-    display: flex;
-  } */
 }
 </style>

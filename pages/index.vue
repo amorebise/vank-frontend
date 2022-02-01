@@ -30,7 +30,7 @@
         </div>
       </div>
     </div>
-    <div class="how_it_works">
+    <div class="how_it_works" id="how_it_works">
       <div class="text-center">
         <h1>How VANK Works</h1>
         <h3>
@@ -101,16 +101,15 @@
           you save with <span class="vank_cap">VANK</span>
         </h5>
       </div>
-      <div class="row mt-5 align-items-center">
+      <cards />
+      <!-- <div class="row mt-5 align-items-center">
         <div class="col-md-3">
           <div class="card_shadow mx-1 py-3" data-aos="fade-up">
             <div class="convenience_wrap">
               <v-img
                 class="cards_img"
-                lazy-src="/convenience.png"
-                max-height="100%"
-                max-width="90%"
-                src="convenience.png"
+                lazy-src="/conveniencee.png"
+                src="conveniencee.png"
               />
             </div>
             <div class="write_up_section px-1">
@@ -127,10 +126,8 @@
             <div class="experience_wrap">
               <v-img
                 class="cards_img"
-                lazy-src="/experience.png"
-                max-height="100%"
-                max-width="90%"
-                src="experience.png"
+                lazy-src="/company.jpg"
+                src="company.jpg"
               />
             </div>
             <div class="write_up_section px-1">
@@ -145,13 +142,7 @@
         <div class="col-md-3">
           <div class="card_shadow mx-1 py-3" data-aos="fade-up">
             <div class="token_v_wrap">
-              <v-img
-                class="cards_img"
-                lazy-src="/token.jpg"
-                max-height="100%"
-                max-width="90%"
-                src="token_v.png"
-              />
+              <v-img class="cards_img" lazy-src="/token.jpg" src="token.jpg" />
             </div>
             <div class="write_up_section px-1">
               <h5>Token Variety</h5>
@@ -167,10 +158,8 @@
             <div class="managed_risk_wrap">
               <v-img
                 class="cards_img"
-                lazy-src="/managed_risk.png"
-                max-height="100%"
-                max-width="90%"
-                src="managed_risk.png"
+                lazy-src="/manage_risk.jpg"
+                src="manage_risk.jpg"
               />
             </div>
             <div class="write_up_section px-1">
@@ -182,7 +171,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="join_vank_section">
       <!-- <nuxt-img
@@ -260,6 +249,10 @@ export default {
 .reg_link:hover {
   background-color: #00e9feb2;
 }
+.typed_text {
+  height: 100px;
+  padding: 10px;
+}
 .typed_text h1 {
   color: #00e8fe;
 }
@@ -273,16 +266,19 @@ export default {
 }
 .card_shadow {
   height: 100%;
+  width: 90%;
+  box-shadow: 2px 15px 35px rgba(0, 0, 0, 0.25);
 }
 /* .convenience_wrap {
   background-image: url("/convenience.png");
   background-size: contain;
   height: 150px;
 } */
+.convenience_wrap img {
+  height: 100px !important;
+}
 .experience_wrap {
-  background-image: url("/experience.png");
-  background-size: contain;
-  /* height: 150px; */
+  height: 100%;
 }
 .token_v_wrap {
   background-image: url("/token_v.png");
@@ -315,14 +311,12 @@ export default {
   font-size: 23px;
   font-weight: 600;
 }
-/* .cards_img {
-  object-fit: fill !important;
-} */
-/* .crypto_bucket_section {
-  background-image: url("/crypto_bucket.png");
-  background-size: cover;
-  min-height: 50vh;
-} */
+.cards_img {
+  height: 200px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
 .register_button {
   background-color: #00e8fe;
   padding: 10px 20px;
@@ -364,6 +358,9 @@ export default {
   .typed_text span {
     font-size: 25px;
     margin-top: 15px;
+  }
+  .card_section {
+    margin-top: 0;
   }
   .card_section img {
     width: 100%;

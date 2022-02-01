@@ -22,7 +22,7 @@
                     <input
                       type="text"
                       class="form-control"
-                      v-model="form_data.first_name"
+                      v-model="signUp_data.first_name"
                       placeholder="Enter your First Name"
                     />
                     <span class="account_color"
@@ -46,7 +46,7 @@
                     <input
                       type="text"
                       class="form-control"
-                      v-model="form_data.middle_name"
+                      v-model="signUp_data.middle_name"
                       placeholder="Enter your Middle Name"
                     />
 
@@ -67,7 +67,7 @@
                     <input
                       type="text"
                       class="form-control"
-                      v-model="form_data.last_name"
+                      v-model="signUp_data.last_name"
                       placeholder="Enter your Last Name"
                     />
 
@@ -88,7 +88,7 @@
                     <input
                       type="text"
                       class="form-control"
-                      v-model="form_data.email"
+                      v-model="signUp_data.email"
                       placeholder="Enter your Email Address"
                     />
                     <span class="errors">{{ errors[0] }}</span>
@@ -108,7 +108,7 @@
                     <input
                       type="text"
                       class="form-control"
-                      v-model="form_data.phone_number"
+                      v-model="signUp_data.phone_number"
                       placeholder="Enter your Phone Number"
                     />
                     <span class="errors">{{ errors[0] }}</span>
@@ -128,7 +128,7 @@
                     <input
                       type="text"
                       class="form-control"
-                      v-model="form_data.adrress"
+                      v-model="signUp_data.adrress"
                       placeholder="Enter your Adrress, Street and city"
                     />
                     <span class="errors">{{ errors[0] }}</span>
@@ -148,7 +148,7 @@
                     <input
                       type="text"
                       class="form-control"
-                      v-model="form_data.password"
+                      v-model="signUp_data.password"
                       placeholder="Create Password"
                     />
                     <span class="errors">{{ errors[0] }}</span>
@@ -168,7 +168,7 @@
                     <input
                       type="text"
                       class="form-control"
-                      v-model="form_data.confirm_password"
+                      v-model="signUp_data.confirm_password"
                       placeholder="Re-enter Password again"
                     />
                     <span class="errors">{{ errors[0] }}</span>
@@ -190,7 +190,7 @@
                     <select
                       class="form-control option-class select"
                       id="exampleFormControlSelect1"
-                      v-model="form_data.country"
+                      v-model="signUp_data.country"
                       required
                     >
                       <option>Please Select a Country</option>
@@ -223,7 +223,7 @@
                     <select
                       class="form-control option-class select"
                       id="exampleFormControlSelect1"
-                      v-model="form_data.state"
+                      v-model="signUp_data.state"
                       required
                     >
                       <option>Please Select a Country</option>
@@ -252,7 +252,7 @@
                     <div class="pl-2 t_c_wrap d-flex align-items-center">
                       <b-form-checkbox
                         id="checkbox-1"
-                        v-model="form_data.accept_terms"
+                        v-model="signUp_data.accept_terms"
                         name="checkbox-1"
                         value="accepted"
                       >
@@ -296,7 +296,7 @@ import Login_header from "~/components/login_header.vue";
 export default {
   data() {
     return {
-      form_data: {
+      signUp_data: {
         first_name: "",
         middle_name: "",
         last_name: "",
@@ -316,8 +316,31 @@ export default {
     };
   },
   methods: {
+    // async signUp() {
+    //   try {
+    //     const response = await this.$axios.post(
+    //       this.baseUrl + "creator/apply",
+    //       this.signUp_data
+    //     );
+    //     this.$message({
+    //       message: "Your application has been sent",
+    //       type: "success",
+    //       duration: 8000,
+    //     });
+    //     console.log(response);
+    //   } catch (error) {
+    //     console.log(error.response.data);
+    //     this.$message({
+    //       message: error.response.data.errors.email,
+    //       type: "warning",
+    //     });
+    //   } finally {
+    //     this.form_data = {};
+    //   }
+    // },
     onSubmit() {
-      console.log(this.form_data);
+      // this.signUp(),
+      console.log(this.signUp_data);
       this.$toast.success("Success!");
       this.form_data = {};
     },

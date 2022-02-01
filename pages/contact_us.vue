@@ -31,8 +31,6 @@
                   <label for="" class="email_form_label">Email Address</label>
                 </div>
                 <div class="form-group py-2">
-                  <!-- <label for="exampleFormControlTextarea1">Bio*</label> -->
-
                   <textarea
                     class="form-control"
                     id="exampleFormControlTextarea1"
