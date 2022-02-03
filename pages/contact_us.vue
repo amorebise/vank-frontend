@@ -18,7 +18,7 @@
                     placeholder="Name"
                     required
                   />
-                  <!-- <label for="" class="form_label">Name</label> -->
+                  <label for="" class="form_label">Name</label>
                 </div>
 
                 <div class="email_form_div">
@@ -28,7 +28,7 @@
                     class="email_form_input"
                     placeholder="Email Address"
                   />
-                  <!-- <label for="" class="email_form_label">Email Address</label> -->
+                  <label for="" class="email_form_label">Email Address</label>
                 </div>
 
                 <div class="form-group py-2">
@@ -143,13 +143,6 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap");
-:root {
-  --first_color: #1d83c5;
-  --input_color: grey;
-  --border_color: rgba(128, 128, 128, 0.56);
-  --normal_font_size: 1rem;
-  --small_font_size: 0.75rem;
-}
 
 * {
   margin: 0;
@@ -174,8 +167,8 @@ export default {
   left: 0;
   width: 80%;
   height: 100%;
-  font-size: var("--normal_font_size");
-  border: 1px solid var("--border_color");
+  font-size: 1rem;
+  border: 1px solid rgba(128, 128, 128, 0.56);
   border-radius: 0.3rem;
   outline: none;
   padding: 1rem;
@@ -188,7 +181,7 @@ export default {
   top: 0.75rem;
   padding: 0 0.25rem;
   background-color: #fff;
-  font-size: var("--normal_font_size");
+  font-size: 1rem;
   transition: 0.3s;
 }
 .email_form_label {
@@ -197,30 +190,30 @@ export default {
   top: 0.75rem;
   padding: 0 0.25rem;
   background-color: #fff;
-  font-size: var("--normal_font_size");
+  font-size: 1rem;
   transition: 0.3s;
 }
-/* .form_input:focus + .form_label {
+.form_input:focus + .form_label {
   top: -0.5rem;
   left: 0.8rem;
-  color: var("--first_color");
-  font-size: var("--small_font_size");
+  color: #333f47;
+  font-size: 0.75rem;
   font-weight: 500;
   z-index: 10;
-} */
-/* .email_form_input:focus + .email_form_label {
+}
+.email_form_input:focus + .email_form_label {
   top: -0.5rem;
   left: 0.8rem;
-  color: var("--first_color");
-  font-size: var("--small_font_size");
+  color: #333f47;
+  font-size: 0.75rem;
   font-weight: 500;
   z-index: 10;
-} */
+}
 
 .form_input:not(:placeholder-shown).form_input:not(:focus) + .form_label {
   top: -0.5rem;
   left: 0.8rem;
-  font-size: var("--normal_font_size");
+  font-size: 1rem;
   font-weight: 500;
   z-index: 10;
 }
@@ -228,17 +221,9 @@ export default {
   + .email_form_label {
   top: -0.5rem;
   left: 0.8rem;
-  font-size: var("--normal_font_size");
+  font-size: 1rem;
   font-weight: 500;
   z-index: 10;
-}
-
-.form_input:focus {
-  border: 1px solid #1d83c5;
-}
-.email_form_input:focus,
-textarea {
-  border: 1px solid #1d83c5 !important;
 }
 
 .contact_us_wrap {
@@ -247,7 +232,7 @@ textarea {
 }
 .contact_us_wrap h1 {
   color: #101a46;
-  font-size: 60px;
+  font-size: 56px;
   font-weight: bold;
   word-spacing: 10px;
 }
@@ -262,7 +247,7 @@ textarea {
 }
 textarea {
   width: 80%;
-  border: 1px solid var("--border_color") !important;
+  border: 1px solid rgba(128, 128, 128, 0.56) !important;
   box-shadow: none !important;
 }
 .v-btn {
@@ -271,7 +256,7 @@ textarea {
   text-transform: none;
   padding: 25px 30px !important;
   width: 30%;
-  font-size: 20px;
+  font-size: 18px;
   width: 80%;
 }
 

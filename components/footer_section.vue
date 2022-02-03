@@ -140,9 +140,9 @@ export default {};
   color: #00e8fe;
 }
 .write_up_section h5 {
-  width: 60%;
+  width: 70%;
   margin-left: auto;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
 }
 
@@ -150,24 +150,24 @@ export default {};
 .news_letter_wrapper h5 {
   color: #00e8fe;
   font-weight: 400;
-  font-size: 27px;
+  font-size: 24px;
 }
 .news_letter_wrapper p {
   color: #646b87;
   margin-top: 7px;
-  font-size: 20px;
+  font-size: 18px;
 }
 .links {
   color: #fff;
-  font-size: 20px;
-  line-height: 55px;
+  font-size: 18px;
+  line-height: 40px;
 }
 ul li {
   line-height: 35px;
 }
 .subscribe_section {
   background-color: #fff;
-  padding: 10px 20px;
+  padding: 7px 20px;
   margin-top: 15px;
   border-radius: 5px;
 }
@@ -177,7 +177,7 @@ ul li {
   padding-left: 5px;
 }
 .subscribe_section input::placeholder {
-  font-size: 20px;
+  font-size: 18px;
 }
 .subscribe_section button {
   padding: 10px 20px;
@@ -195,6 +195,10 @@ hr {
   background-color: #f2f5f6;
   margin-top: 100px;
 }
+.privacy_terms_section {
+  font-size: 15px;
+}
+
 @media (max-width: 768px) {
   .footer_wrap {
     padding: 10px;

@@ -25,24 +25,24 @@
 export default {
   data() {
     return {
-      show: false,
+      // show: false,
     };
   },
 
-  mounted() {
-    document.addEventListener("DOMContentLoaded", function () {
-      window.addEventListener("scroll", function () {
-        if (window.scrollY > 50) {
-          document.getElementById("new-nav").classList.add("fixed-top");
-          document.body.style.paddingTop = 10 + "px";
-        } else {
-          document.getElementById("new-nav").classList.remove("fixed-top");
-          // remove padding top from body
-          document.body.style.paddingTop = "0";
-        }
-      });
-    });
-  },
+  // mounted() {
+  //   document.addEventListener("DOMContentLoaded", function () {
+  //     window.addEventListener("scroll", function () {
+  //       if (window.scrollY > 50) {
+  //         document.getElementById("new-nav").classList.add("fixed-top");
+  //         document.body.style.paddingTop = 10 + "px";
+  //       } else {
+  //         document.getElementById("new-nav").classList.remove("fixed-top");
+  //         // remove padding top from body
+  //         document.body.style.paddingTop = "0";
+  //       }
+  //     });
+  //   });
+  // },
 };
 </script>
 
@@ -63,7 +63,7 @@ export default {
 .navbar-brand {
   color: #000 !important;
 
-  font-size: 20px;
+  font-size: 18px;
 }
 .navbar-brand:hover {
   color: #18a0fb !important;
@@ -73,7 +73,7 @@ export default {
   background-color: #fff !important;
   padding: 0rem 0rem;
   transition-delay: 0.2s;
-  box-shadow: 10px 10px 10px #30303007;
+  box-shadow: 0 5px 10px #30303007;
 }
 .sign_up_button {
   padding: 5px 10px;

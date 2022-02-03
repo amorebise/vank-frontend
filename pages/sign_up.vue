@@ -4,7 +4,9 @@
     <div class="registeration_content">
       <div class="header_section text-center">
         <h1>Create your Account</h1>
-        <h5>Let’s get you started on VANK, kindly fill in your details</h5>
+        <h5 class="py-2">
+          Let’s get you started on VANK, kindly fill in your details
+        </h5>
       </div>
       <div class="form_section mt-5">
         <ValidationObserver v-slot="{ handleSubmit }">
@@ -386,6 +388,9 @@ export default {
   font-weight: bold;
   font-family: "Titillium Web", sans-serif;
 }
+.registeration_content h5 {
+  font-size: 16px;
+}
 
 .form_section .form-control {
   cursor: pointer;
@@ -404,6 +409,9 @@ export default {
 .form_section select {
   -webkit-appearance: revert;
 }
+.form_section .form-control::placeholder {
+  font-size: 14px;
+}
 .register_button {
   background-color: #1d83c5 !important;
   color: #fff;
@@ -415,7 +423,7 @@ export default {
   text-transform: none;
   padding: 25px 30px !important;
   width: 30%;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .errors {
@@ -423,13 +431,13 @@ export default {
   font-size: 10px;
 }
 .custom-control-label::after {
-  cursor: pointer;
+  cursor: pointer !important;
 }
-.t_c_wrap {
-  cursor: pointer;
+.t_c_wrap span {
+  cursor: pointer !important;
 }
 .custom-control-label::after {
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 @media (max-width: 768px) {

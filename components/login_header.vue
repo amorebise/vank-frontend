@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg sticky-top">
+    <nav class="navbar navbar-expand-lg">
       <nuxt-link to="/" class="navbar-brand glee-note"
         ><nuxt-img
           format="webp"
@@ -35,7 +35,6 @@ export default {};
   padding: 30px 100px !important;
   font-family: Space Grotesk;
   background-color: #fff;
-  box-shadow: 10px 10px 15px #30303007;
 }
 .navbar img {
   height: 100%;
@@ -43,7 +42,7 @@ export default {};
 .navbar-brand {
   color: #000 !important;
 
-  font-size: 20px;
+  font-size: 18px;
 }
 .navbar-brand:hover {
   color: #18a0fb !important;
@@ -55,11 +54,7 @@ export default {};
   display: none;
   font-size: 30px;
 }
-.fixed-top {
-  background-color: #fff !important;
-  padding: 0rem 0rem;
-  transition-delay: 0.2s;
-}
+
 .sign_up_button {
   padding: 5px 10px;
   background-color: #00e8fe;

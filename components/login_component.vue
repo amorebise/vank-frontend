@@ -132,7 +132,7 @@ export default {
   text-transform: none;
   padding: 25px 30px !important;
   width: 30%;
-  font-size: 20px;
+  font-size: 18px;
   width: 100%;
 }
 
@@ -182,6 +182,7 @@ export default {
 .sign_up_link {
   cursor: pointer;
   color: #1d83c5;
+  font-size: 13px;
 }
 
 @media (max-width: 768px) {

@@ -66,24 +66,24 @@ export default {
     navigate() {
       document.getElementById("navbarNavDropdown").classList.toggle("show");
     },
-    stickyNav: function () {
-      document.addEventListener("DOMContentLoaded", function () {
-        window.addEventListener("scroll", function () {
-          if (window.scrollY > 50) {
-            document.getElementById("new-nav").classList.add("fixed-top");
-            document.body.style.paddingTop = 10 + "px";
-          } else {
-            document.getElementById("new-nav").classList.remove("fixed-top");
-            // remove padding top from body
-            document.body.style.paddingTop = "0";
-          }
-        });
-      });
-    },
+    // stickyNav: function () {
+    //   document.addEventListener("DOMContentLoaded", function () {
+    //     window.addEventListener("scroll", function () {
+    //       if (window.scrollY > 50) {
+    //         document.getElementById("new-nav").classList.add("fixed-top");
+    //         document.body.style.paddingTop = 10 + "px";
+    //       } else {
+    //         document.getElementById("new-nav").classList.remove("fixed-top");
+    //         // remove padding top from body
+    //         document.body.style.paddingTop = "0";
+    //       }
+    //     });
+    //   });
+    // },
   },
-  mounted() {
-    this.stickyNav();
-  },
+  // mounted() {
+  //   this.stickyNav();
+  // },
 };
 </script>
 
@@ -108,7 +108,7 @@ export default {
 .navbar-brand {
   color: #000 !important;
   font-weight: 550;
-  font-size: 20px;
+  font-size: 18px;
 }
 .navbar-brand:hover {
   color: #18a0fb !important;
@@ -120,11 +120,11 @@ export default {
   display: none;
   font-size: 30px;
 }
-.fixed-top {
+/* .fixed-top {
   background-color: #fff !important;
   padding: 0rem 0rem;
   transition-delay: 0.2s;
-}
+} */
 .sign_up_button {
   padding: 5px 10px;
   background-color: #00e8fe;

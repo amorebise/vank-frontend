@@ -18,7 +18,7 @@
         <p>How cool is that?</p>
       </div>
       <div class="register_wrap text-center mt-4 py-4">
-        <nuxt-link to="/sign_up" class="register_link">Sign Up Now</nuxt-link>
+        <nuxt-link to="/sign_up" class="register_link">Join VANK</nuxt-link>
       </div>
     </div>
     <div class="crypto_img_wrap">
@@ -80,6 +80,7 @@ export default {};
   padding: 10px;
   color: #000;
   border-radius: 3px;
+  font-weight: 600;
 }
 .register_link:hover {
   background-color: #00e9feb6;

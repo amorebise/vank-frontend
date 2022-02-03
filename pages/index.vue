@@ -8,7 +8,7 @@
         <span class="type"></span>
       </div>
       <div class="registration_wrap text-center mt-4">
-        <nuxt-link to="/sign_up" class="reg_link">Sign Up Now</nuxt-link>
+        <nuxt-link to="/sign_up" class="reg_link">Sign up for free</nuxt-link>
       </div>
       <div class="card_section">
         <div class="row">
@@ -197,7 +197,7 @@ export default {
   padding: 10px 20px;
   color: #000;
   border-radius: 5px;
-  font-size: 20px;
+  font-size: 18px;
 }
 .reg_link:hover {
   background-color: #00e9feb2;
@@ -256,7 +256,7 @@ export default {
 .how_it_works h1 {
   color: #1d83c5;
   font-weight: 600;
-  font-size: 60px;
+  font-size: 56px;
 }
 .how_it_works p,
 .how_it_works h3 {
@@ -289,7 +289,7 @@ export default {
 .why_choose_us h1 {
   color: #1d83c5;
   font-weight: 700;
-  font-size: 50px;
+  font-size: 56px;
 }
 .why_choose_us h5 {
   font-weight: 600;

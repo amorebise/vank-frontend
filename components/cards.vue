@@ -14,8 +14,8 @@
           <div class="px-1">
             <h5 class="font-weight-bold mt-2">Convenience</h5>
             <p class="py-1">
-              Easy subscription and access to your <br />
-              wallet balance without stress.
+              Easy subscription and access to your wallet balance without
+              stress.
             </p>
           </div>
         </div>
@@ -33,8 +33,8 @@
           <div class="px-1">
             <h5 class="font-weight-bold mt-2">Experience</h5>
             <p class="py-1">
-              Over 10 years experience in Crypto, <br />
-              providing the best service at a good price.
+              Over 10 years experience in Crypto, providing the best service at
+              a good price.
             </p>
           </div>
         </div>
@@ -51,10 +51,7 @@
           ></v-img>
           <div class="px-1">
             <h5 class="font-weight-bold mt-2">Token Variety</h5>
-            <p class="py-1">
-              Get carefully selected tokens in your <br />
-              wallet.
-            </p>
+            <p class="py-1">Get carefully selected tokens in your wallet.</p>
           </div>
         </div>
       </div>
@@ -72,8 +69,8 @@
           <div class="px-1">
             <h5 class="font-weight-bold mt-2">Managed Risk</h5>
             <p class="py-1">
-              A front seat into prized crypto Private <br />
-              Sales with managed risk exposure.
+              A front seat into prized crypto Private Sales with managed risk
+              exposure.
             </p>
           </div>
         </div>
@@ -95,15 +92,17 @@ export default {};
   position: relative;
   transition: 1s;
   border-radius: 20px;
-  width: 95%;
+  width: 98%;
 }
 .box:hover {
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
 }
-
+.box p {
+  font-size: 13px;
+}
 .artiste_img {
   width: 100%;
-  height: 250px;
+  height: 200px;
 
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;

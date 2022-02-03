@@ -5,7 +5,7 @@
       <div class="faq_content bg-white py-5 px-5">
         <div class="text-center">
           <h1>Frequently Asked Questions</h1>
-          <h3>Most commonly asked questions about VANK</h3>
+          <h3 class="py-2">Most commonly asked questions about VANK</h3>
         </div>
 
         <v-expansion-panels>
@@ -117,7 +117,7 @@
 export default {};
 </script>
 
-<style scoped>
+<style>
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk&family=Titillium+Web&display=swap");
 * {
   margin: 0;
@@ -131,7 +131,7 @@ export default {};
 }
 .faq_content {
   margin: 0 auto;
-  width: 70%;
+  width: 100%;
   border-top: 1px solid #30303030;
 }
 .faq_content h1 {
@@ -154,9 +154,10 @@ export default {};
   padding: 30px 20px;
 }
 .v-expansion-panel-content__wrap {
-  background-color: #f2f5f6;
+  background-color: #f2f5f7 !important;
 
   border-bottom: 1px solid #30303030;
+  padding: 30px 20px;
 }
 .v-expansion-panel::before {
   box-shadow: none;

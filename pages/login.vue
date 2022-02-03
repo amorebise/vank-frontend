@@ -29,7 +29,7 @@ export default {
 }
 .login_content {
   margin: 40px auto;
-  width: 50%;
+  width: 70%;
 }
 .login_content h1 {
   color: #0f1842;
