@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'vank-frontend',
+    title: 'vank-wallet',
     htmlAttrs: {
       lang: 'en'
     },
@@ -88,6 +88,7 @@ export default {
   buildModules: [
     '@nuxt/image',
     '@nuxtjs/vuetify',
+    '@nuxtjs/dotenv'
 
   ],
 
@@ -125,7 +126,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: "http://localhost:8000/api",
+    baseURL: "http://vankwallet.com/",
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': 'Content-Type',
@@ -133,27 +134,27 @@ export default {
       'Access-Control-Allow-Credentials': 'true'
     }
   },
-  // auth: {
-  //   strategies: {
-  //     local: {
-  //       token: {
-  //         property: 'token',
-  //         global: true,
-  //         // required: true,
-  //         type: 'Bearer'
-  //       },
-  //       user: {
-  //         property: 'user',
-  //         // autoFetch: true
-  //       },
-  //       endpoints: {
-  //         login: { url: '/auth/login/', method: 'post' },
-  //         logout: { url: '/auth/logout', method: 'post' },
-  //         user: { url: '/auth/user/', method: 'get' }
-  //       }
-  //     }
-  //   }
-  // },
+  auth: {
+    strategies: {
+      local: {
+        token: {
+          property: 'token',
+          global: true,
+          // required: true,
+          type: 'Bearer'
+        },
+        user: {
+          property: 'user',
+          // autoFetch: true
+        },
+        endpoints: {
+          login: { url: '/auth/login/', method: 'post' },
+          logout: { url: '/auth/logout', method: 'post' },
+          user: { url: '/auth/user/', method: 'get' }
+        }
+      }
+    }
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

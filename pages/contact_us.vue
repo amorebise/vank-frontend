@@ -18,7 +18,7 @@
                     placeholder="Name"
                     required
                   />
-                  <label for="" class="form_label">Name</label>
+                  <!-- <label for="" class="form_label">Name</label> -->
                 </div>
 
                 <div class="email_form_div">
@@ -28,8 +28,9 @@
                     class="email_form_input"
                     placeholder="Email Address"
                   />
-                  <label for="" class="email_form_label">Email Address</label>
+                  <!-- <label for="" class="email_form_label">Email Address</label> -->
                 </div>
+
                 <div class="form-group py-2">
                   <textarea
                     class="form-control"
@@ -55,7 +56,7 @@
                     format="webp"
                     quality="90"
                     fit="cover"
-                    sizes="xs:45vw sm:30vw md:20vw lg:12vw"
+                    sizes="xs:45vw sm:30vw md:20vw lg:15vw"
                     src="/location.png"
                   />
                 </div>
@@ -66,38 +67,65 @@
                   </p>
                 </div>
               </div>
+
               <div class="d-flex align-items-center py-3">
                 <div class="address_img">
                   <nuxt-img
                     format="webp"
                     quality="90"
                     fit="cover"
-                    sizes="xs:45vw sm:30vw md:20vw lg:12vw"
-                    src="/phone.png"
-                  />
-                </div>
-                <div class="address_content ml-3">
-                  <p>+234 081-1236-4568</p>
-                </div>
-              </div>
-              <div class="d-flex align-items-center py-3">
-                <div class="address_img">
-                  <nuxt-img
-                    format="webp"
-                    quality="90"
-                    fit="cover"
-                    sizes="xs:45vw sm:30vw md:20vw lg:12vw"
+                    sizes="xs:45vw sm:30vw md:20vw lg:15vw"
                     src="/env.png"
                   />
                 </div>
-                <div class="address_content ml-3">
+                <div class="email_content ml-3">
                   <p>hello@info.vank.com</p>
                 </div>
               </div>
             </div>
-            <new-pop />
 
-            <div class="link_section"></div>
+            <div class="link_section mt-3">
+              <a
+                href="https://facebook.com/vankwallet"
+                class="mx-2"
+                target="_blank"
+                ><nuxt-img
+                  format="webp"
+                  quality="90"
+                  fit="cover"
+                  sizes="xs:45vw sm:30vw md:20vw lg:12vw"
+                  src="/facebuk.png"
+              /></a>
+
+              <a
+                href="https://twitter.com/vankwallet"
+                class="mx-2"
+                target="_blank"
+                ><nuxt-img
+                  format="webp"
+                  quality="90"
+                  fit="cover"
+                  sizes="xs:45vw sm:30vw md:20vw lg:12vw"
+                  src="/twitterr.png"
+              /></a>
+              <a href="" class="mx-2"
+                ><nuxt-img
+                  format="webp"
+                  quality="90"
+                  fit="cover"
+                  sizes="xs:45vw sm:30vw md:20vw lg:12vw"
+                  src="/instagramm.png"
+              /></a>
+              <a href="" class="mx-2">
+                <nuxt-img
+                  format="webp"
+                  quality="90"
+                  fit="cover"
+                  sizes="xs:45vw sm:30vw md:20vw lg:12vw"
+                  src="/tiktuk.png"
+                />
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -127,8 +155,12 @@ export default {
   margin: 0;
   padding: 0;
   font-family: "Space Grotesk", sans-serif;
-  /* font-size: var(--normal_font_size); */
 }
+.address_content p,
+.email_content p {
+  font-size: 15px;
+}
+
 .form_div,
 .email_form_div {
   position: relative;
@@ -168,22 +200,22 @@ export default {
   font-size: var("--normal_font_size");
   transition: 0.3s;
 }
-.form_input:focus + .form_label {
+/* .form_input:focus + .form_label {
   top: -0.5rem;
   left: 0.8rem;
   color: var("--first_color");
   font-size: var("--small_font_size");
   font-weight: 500;
   z-index: 10;
-}
-.email_form_input:focus + .email_form_label {
+} */
+/* .email_form_input:focus + .email_form_label {
   top: -0.5rem;
   left: 0.8rem;
   color: var("--first_color");
   font-size: var("--small_font_size");
   font-weight: 500;
   z-index: 10;
-}
+} */
 
 .form_input:not(:placeholder-shown).form_input:not(:focus) + .form_label {
   top: -0.5rem;
@@ -244,10 +276,22 @@ textarea {
 }
 
 @media (max-width: 768px) {
+  .contact_us_wrap {
+    margin: 0;
+    padding: 10px;
+    width: 100%;
+  }
   .form_input,
   textarea,
   .v-btn {
     width: 100%;
+  }
+  .form_input,
+  .email_form_input {
+    width: 100%;
+  }
+  .contact_us_wrap h1 {
+    font-size: 30px;
   }
 }
 </style>

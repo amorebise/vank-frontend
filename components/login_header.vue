@@ -17,27 +17,12 @@
           </nuxt-link>
         </li>
       </ul>
-
-      <!-- <div class="times">
-          <span @click="navigate()"> &times; </span>
-        </div> -->
     </nav>
   </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      // show: false,
-    };
-  },
-  methods: {
-    // navigate() {
-    //   document.getElementById("navbarNavDropdown").classList.toggle("show");
-    // },
-  },
-};
+export default {};
 </script>
 
 <style scoped>
@@ -91,46 +76,9 @@ export default {
 }
 @media (max-width: 992px) {
   .navbar {
-    padding: 0 5px !important;
+    padding: 10px !important;
   }
 
-  .navbar-nav {
-    margin: 30px auto !important;
-  }
-
-  .mobile-menu {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    border: none;
-    width: 100vw;
-    height: 100vh;
-    text-align: center;
-    background-color: #0f1843;
-    z-index: 10;
-    transition: left 0.7s;
-    align-items: center;
-    padding-top: 50px;
-    color: #fff !important;
-  }
-  .mobile-menu .navbar-brand {
-    color: #fff !important;
-    font-size: 20px;
-  }
-
-  .show {
-    left: 0;
-  }
-
-  .times {
-    display: block;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-  }
-  .times span {
-    font-size: 35px;
-  }
   .sign_up_wrap {
     margin-top: 10px;
   }

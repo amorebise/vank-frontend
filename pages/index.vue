@@ -18,12 +18,12 @@
             </div>
           </div>
           <div class="col-md-4">
-            <div class="etherium_card mt-3 mx-2" data-aos="flip-up">
+            <div class="etherium_card mt-3 mx-2" data-aos="fade-up">
               <v-img lazy-src="/ether.png" src="/ether.png" alt="image" />
             </div>
           </div>
           <div class="col-md-4">
-            <div class="bitcash_card mt-3 mx-2" data-aos="fade-down">
+            <div class="bitcash_card mt-3 mx-2" data-aos="fade-up">
               <v-img lazy-src="/bitcash.png" src="/bitcash.png" alt="image" />
             </div>
           </div>
@@ -42,11 +42,7 @@
       <div class="row mt-5 align-items-center">
         <div class="col-md-6">
           <div class="crypto_bucket_section mx-5">
-            <v-img
-              src="/crypto_bucket.png"
-              lazy-src="/crypto_bucket.png"
-              alt="image"
-            />
+            <v-img src="/bitbucket.png" lazy-src="/bitbucket.png" alt="image" />
           </div>
         </div>
         <div class="col-md-6" data-aos="fade-up">
@@ -102,86 +98,14 @@
         </h5>
       </div>
       <cards />
-      <!-- <div class="row mt-5 align-items-center">
-        <div class="col-md-3">
-          <div class="card_shadow mx-1 py-3" data-aos="fade-up">
-            <div class="convenience_wrap">
-              <v-img
-                class="cards_img"
-                lazy-src="/conveniencee.png"
-                src="conveniencee.png"
-              />
-            </div>
-            <div class="write_up_section px-1">
-              <h5>Convenience</h5>
-              <p>
-                Easy subscription and access to your <br />
-                wallet balance without stress.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="card_shadow mx-1 py-3" data-aos="fade-right">
-            <div class="experience_wrap">
-              <v-img
-                class="cards_img"
-                lazy-src="/company.jpg"
-                src="company.jpg"
-              />
-            </div>
-            <div class="write_up_section px-1">
-              <h5>Experience</h5>
-              <p>
-                Over 10 years experience in Crypto, <br />
-                providing the best service at a good price.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="card_shadow mx-1 py-3" data-aos="fade-up">
-            <div class="token_v_wrap">
-              <v-img class="cards_img" lazy-src="/token.jpg" src="token.jpg" />
-            </div>
-            <div class="write_up_section px-1">
-              <h5>Token Variety</h5>
-              <p>
-                Get carefully selected tokens in your <br />
-                wallet.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="card_shadow mx-1 py-3" data-aos="fade-right">
-            <div class="managed_risk_wrap">
-              <v-img
-                class="cards_img"
-                lazy-src="/manage_risk.jpg"
-                src="manage_risk.jpg"
-              />
-            </div>
-            <div class="write_up_section px-1">
-              <h5>Managed Risk</h5>
-              <p>
-                A front seat into prized crypto Private <br />
-                Sales with managed risk exposure.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div> -->
     </div>
     <div class="join_vank_section">
-      <!-- <nuxt-img
+      <nuxt-img
         format="webp"
         quality="90"
-        fit="fill"
-        width="1500"
-        height="600"
-        src="/join_vank.png"
-      /> -->
+        sizes="xs:100vw sm:100vw md:100vw lg:100vw"
+        src="/vank_home.png"
+      />
     </div>
     <footer-section />
   </div>
@@ -193,9 +117,35 @@ export default {
   components: { header_nav },
   name: "IndexPage",
   data() {
-    return {};
+    return {
+      btc: "",
+      eth: "",
+      bnb: "",
+      cryptoUrl: "https://api.coingecko.com/api/v3/coins/",
+    };
   },
   methods: {
+    async get_btc_price() {
+      const response = await this.$axios.get(
+        this.cryptoUrl + "markets?vs_currency=usd&ids=bitcoin"
+      );
+      this.btc = response;
+      console.log(this.btc.data);
+    },
+    async get_eth_price() {
+      const response = await this.$axios.get(
+        this.cryptoUrl + "markets?vs_currency=usd&ids=ethereum"
+      );
+      this.eth = response;
+      console.log(this.eth.data);
+    },
+    async get_bnb_price() {
+      const response = await this.$axios.get(
+        this.cryptoUrl + "markets?vs_currency=usd&ids=binancecoin"
+      );
+      this.bnb = response;
+      console.log(this.bnb.data);
+    },
     typed_text() {
       var typed = new Typed(".type", {
         strings: ["Crypto", "USDollars", "Digital Assets"],
@@ -208,6 +158,9 @@ export default {
   },
   mounted() {
     this.typed_text();
+    this.get_btc_price();
+    this.get_eth_price();
+    this.get_bnb_price();
   },
 };
 </script>
@@ -225,7 +178,7 @@ export default {
 }
 .hero_section {
   padding: 100px;
-  background-image: url("/vank_hero1.jpg");
+  background-image: url("/vank_hero.jpg");
   background-size: cover;
   min-height: 100vh;
   color: #fff;
@@ -343,12 +296,12 @@ export default {
   margin-top: 20px;
 }
 
-.join_vank_section {
+/* .join_vank_section {
   background-image: url("/vank_home.png");
   min-height: 100vh;
   background-size: cover;
   margin-top: 100px;
-}
+} */
 
 @media (max-width: 767px) {
   .hero_section {
@@ -402,14 +355,11 @@ export default {
     max-width: 100% !important;
   }
   .join_vank_section img {
-    width: 100%;
-    height: 220px;
-    object-fit: fill;
+    /* width: 100%; */
+    /* height: 220px; */
+    /* object-fit: fill; */
   }
-  .join_vank_section {
-    background-image: url("/vank_home.png");
-    background-size: contain;
-  }
+
   .why_choose_us {
     padding: 10px;
   }
@@ -418,6 +368,7 @@ export default {
   }
   .why_choose_us h5 {
     margin-top: 15px;
+    font-size: 15px;
   }
 }
 

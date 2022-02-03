@@ -46,7 +46,7 @@
                     <input
                       type="text"
                       class="form-control"
-                      v-model="signUp_data.middle_name"
+                      v-model="signUp_data.mid_name"
                       placeholder="Enter your Middle Name"
                     />
 
@@ -128,7 +128,7 @@
                     <input
                       type="text"
                       class="form-control"
-                      v-model="signUp_data.adrress"
+                      v-model="signUp_data.address"
                       placeholder="Enter your Adrress, Street and city"
                     />
                     <span class="errors">{{ errors[0] }}</span>
@@ -168,7 +168,7 @@
                     <input
                       type="text"
                       class="form-control"
-                      v-model="signUp_data.confirm_password"
+                      v-model="signUp_data.password_confirmation"
                       placeholder="Re-enter Password again"
                     />
                     <span class="errors">{{ errors[0] }}</span>
@@ -252,7 +252,7 @@
                     <div class="pl-2 t_c_wrap d-flex align-items-center">
                       <b-form-checkbox
                         id="checkbox-1"
-                        v-model="signUp_data.accept_terms"
+                        v-model="signUp_data.agreement"
                         name="checkbox-1"
                         value="accepted"
                       >
@@ -298,17 +298,18 @@ export default {
     return {
       signUp_data: {
         first_name: "",
-        middle_name: "",
+        mid_name: "",
         last_name: "",
         email: "",
         password: "",
-        confirm_password: "",
+        password_confirmation: "",
         phone_number: "",
         country: "",
         address: "",
         state: "",
-        accept_terms: null,
+        agreement: null,
       },
+      baseUrl: "https://api.vankwallet.com/api/auth/",
       countries: {},
       countryUrl: "https://restcountries.com/v2/all",
       states: {},
@@ -316,33 +317,24 @@ export default {
     };
   },
   methods: {
-    // async signUp() {
-    //   try {
-    //     const response = await this.$axios.post(
-    //       this.baseUrl + "creator/apply",
-    //       this.signUp_data
-    //     );
-    //     this.$message({
-    //       message: "Your application has been sent",
-    //       type: "success",
-    //       duration: 8000,
-    //     });
-    //     console.log(response);
-    //   } catch (error) {
-    //     console.log(error.response.data);
-    //     this.$message({
-    //       message: error.response.data.errors.email,
-    //       type: "warning",
-    //     });
-    //   } finally {
-    //     this.form_data = {};
-    //   }
-    // },
+    async signUp() {
+      try {
+        const response = await this.$axios.post(
+          this.baseUrl + "register",
+          this.signUp_data
+        );
+        this.$message({
+          message: "Your application has been sent",
+          type: "success",
+          duration: 8000,
+        });
+        console.log(response);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
     onSubmit() {
-      // this.signUp(),
-      console.log(this.signUp_data);
-      this.$toast.success("Success!");
-      this.form_data = {};
+      this.signUp();
     },
     async getCountry() {
       try {

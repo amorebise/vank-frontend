@@ -5,7 +5,6 @@
 
       <div id="myPopup" class="popup hide">
         <div class="popup-header">
-          My popup
           <span class="close toggle" data-target="myPopup">close</span>
         </div>
         <div class="popup-body">

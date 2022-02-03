@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="celebrity-card-section row pt-3 mt-5">
-      <div class="col-md-3 px-1 mb-3">
-        <div class="box mx-1" data-aos="fade-up">
+      <div class="col-md-3 mb-3">
+        <div class="box" data-aos="fade-up">
           <div class="div">
             <v-img
               class="artiste_img"
@@ -22,8 +22,8 @@
       </div>
 
       <!-- Second Card -->
-      <div class="col-md-3 px-1 mb-3">
-        <div class="box mx-1" data-aos="fade-right">
+      <div class="col-md-3 mb-3">
+        <div class="box" data-aos="fade-right">
           <v-img
             class="artiste_img"
             lazy-src="/company.jpg"
@@ -41,7 +41,7 @@
       </div>
 
       <!-- Third Card -->
-      <div class="col-md-3 px-1 mb-3">
+      <div class="col-md-3 mb-3">
         <div class="box" data-aos="fade-up">
           <v-img
             class="artiste_img"
@@ -60,7 +60,7 @@
       </div>
 
       <!-- Fourth Card -->
-      <div class="col-md-3 px-1 mb-3">
+      <div class="col-md-3 mb-3">
         <div class="box" data-aos="fade-right">
           <v-img
             class="artiste_img"
@@ -87,6 +87,10 @@ export default {};
 </script>
 
 <style scoped>
+* {
+  margin: 0;
+  padding: 0;
+}
 .box {
   position: relative;
   transition: 1s;
@@ -94,8 +98,6 @@ export default {};
   width: 95%;
 }
 .box:hover {
-  transform: scale(1.05);
-  z-index: 1;
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
 }
 
@@ -115,6 +117,9 @@ export default {};
 @media (max-width: 768px) {
   .box {
     width: 100%;
+  }
+  .artiste_img {
+    height: 100%;
   }
 }
 </style>

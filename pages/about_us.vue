@@ -18,12 +18,17 @@
         <p>How cool is that?</p>
       </div>
       <div class="register_wrap text-center mt-4 py-4">
-        <nuxt-link to="/registeration_page" class="register_link"
-          >Sign Up Now</nuxt-link
-        >
+        <nuxt-link to="/sign_up" class="register_link">Sign Up Now</nuxt-link>
       </div>
     </div>
-    <div class="crypto_img_wrap"></div>
+    <div class="crypto_img_wrap">
+      <nuxt-img
+        format="webp"
+        quality="90"
+        sizes="xs:100vw sm:100vw md:100vw lg:100vw"
+        src="/vank_about.png"
+      />
+    </div>
     <footer-section />
   </div>
 </template>
@@ -65,14 +70,14 @@ export default {};
   word-spacing: 2px;
   letter-spacing: 2px;
 }
-.crypto_img_wrap {
+/* .crypto_img_wrap {
   background-image: url("/vank_about.png");
   min-height: 100vh;
   background-size: cover;
-}
+} */
 .register_link {
   background-color: #00e8fe;
-  padding: 7px 10px;
+  padding: 10px;
   color: #000;
   border-radius: 3px;
 }

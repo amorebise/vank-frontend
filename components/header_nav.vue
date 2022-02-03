@@ -116,7 +116,7 @@ export default {
 
 .times {
   display: none;
-  color: #ffecd2;
+  color: #fff;
   display: none;
   font-size: 30px;
 }
@@ -137,11 +137,11 @@ export default {
   transition: all, 0.5s;
 }
 .icon_color {
-  color: #0f1843;
+  color: #0f1843 !important;
 }
 @media (max-width: 992px) {
   .navbar {
-    padding: 10px !important;
+    padding: 15px !important;
   }
 
   .navbar-nav {
@@ -161,6 +161,7 @@ export default {
     transition: left 0.7s;
     align-items: center;
     padding-top: 50px;
+    padding-right: 30px;
     color: #fff !important;
   }
   .mobile-menu .navbar-brand {
@@ -183,6 +184,9 @@ export default {
   }
   .sign_up_wrap {
     margin-top: 10px;
+  }
+  .mobile-menu .sign_up_button {
+    color: #000 !important;
   }
 }
 </style>
