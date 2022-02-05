@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="container">
-      <span class="toggle" data-target="myPopup">VANK Agreement</span>
+      <span class="toggle text-primary" data-target="myPopup"
+        >VANK Agreement</span
+      >
 
       <div id="myPopup" class="popup hide">
         <div class="popup-header">
@@ -280,6 +282,9 @@ export default {
   padding: 0;
   overflow: auto;
 }
+.text-primary {
+  cursor: pointer !important;
+}
 ::-webkit-scrollbar {
   display: none;
 }
@@ -363,7 +368,10 @@ export default {
 
 @media screen and (max-width: 1000px) {
   .popup {
-    width: 80%;
+    width: 100%;
+    top: -1rem;
+    left: 100%;
+    height: 200px;
   }
 }
 
@@ -373,7 +381,7 @@ export default {
 }
 
 .popup-body {
-  padding: 25px 0;
+  padding: 10px 0;
 }
 
 .button {

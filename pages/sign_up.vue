@@ -251,7 +251,7 @@
                         value="accepted"
                       >
                         I have read, understood and accepted the
-                        <span class="text-primary ml-1"><popup /></span>
+                        <popup />
                       </b-form-checkbox>
                     </div>
                     <span class="errors">{{ errors[0] }}</span>
