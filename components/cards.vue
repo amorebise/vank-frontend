@@ -11,7 +11,7 @@
               alt="image"
             />
           </div>
-          <div class="px-1">
+          <div class="px-1 text_section">
             <h5 class="font-weight-bold mt-2">Convenience</h5>
             <p class="py-1">
               Easy subscription and access to your wallet balance without
@@ -30,7 +30,7 @@
             src="company.jpg"
             alt="image"
           ></v-img>
-          <div class="px-1">
+          <div class="px-1 text_section">
             <h5 class="font-weight-bold mt-2">Experience</h5>
             <p class="py-1">
               Over 10 years experience in Crypto, providing the best service at
@@ -45,11 +45,11 @@
         <div class="box" data-aos="fade-up">
           <v-img
             class="artiste_img"
-            lazy-src="/conveniencee.png"
-            src="conveniencee.png"
+            lazy-src="/token.jpg"
+            src="token.jpg"
             alt="image"
           ></v-img>
-          <div class="px-1">
+          <div class="px-1 text_section">
             <h5 class="font-weight-bold mt-2">Token Variety</h5>
             <p class="py-1">Get carefully selected tokens in your wallet.</p>
           </div>
@@ -66,7 +66,7 @@
             alt="image"
           ></v-img>
 
-          <div class="px-1">
+          <div class="px-1 text_section">
             <h5 class="font-weight-bold mt-2">Managed Risk</h5>
             <p class="py-1">
               A front seat into prized crypto Private Sales with managed risk
@@ -112,7 +112,10 @@ export default {};
   bottom: -17px;
   width: 100%;
 }
-
+.text_section {
+  min-height: 18vh;
+  padding-top: 20px;
+}
 @media (max-width: 768px) {
   .box {
     width: 100%;
@@ -121,4 +124,10 @@ export default {};
     height: 100%;
   }
 }
+
+/* @media (min-width: 769px) and (max-width: 1024px) {
+  .artiste_img {
+    height: 150px;
+  }
+} */
 </style>

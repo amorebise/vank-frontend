@@ -79,7 +79,7 @@
                   />
                 </div>
                 <div class="email_content ml-3">
-                  <p>hello@info.vank.com</p>
+                  <p>hello@vankwallet.com</p>
                 </div>
               </div>
             </div>
@@ -227,7 +227,7 @@ export default {
 }
 
 .contact_us_wrap {
-  margin: 40px auto;
+  margin: 150px auto;
   width: 70%;
 }
 .contact_us_wrap h1 {

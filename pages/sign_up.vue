@@ -39,21 +39,13 @@
               <!-- Middle Name -->
               <div class="col-md-6">
                 <div class="form-group mx-2 mt-2">
-                  <ValidationProvider
-                    name="middle name"
-                    rules="required|alpha_spaces"
-                    v-slot="{ errors }"
-                  >
-                    <label for="" class="py-2">Middle Name</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      v-model="signUp_data.mid_name"
-                      placeholder="Enter your Middle Name"
-                    />
-
-                    <span class="errors">{{ errors[0] }}</span>
-                  </ValidationProvider>
+                  <label for="" class="py-2">Middle Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    v-model="signUp_data.mid_name"
+                    placeholder="Enter your Middle Name(optional)"
+                  />
                 </div>
               </div>
 
@@ -268,7 +260,11 @@
               </div>
             </div>
             <div class="text-center register_wrap mt-4">
-              <v-btn class="register_button" value="" type="submit"
+              <v-btn
+                class="register_button"
+                value=""
+                :loading="loading"
+                type="submit"
                 >Sign up for free</v-btn
               >
 
@@ -292,6 +288,8 @@
 </template>
 
 <script>
+import Toast from "vue-toastification";
+import "vue-toastification/dist/index.css";
 import footer_section from "~/components/footer_section.vue";
 import { ValidationObserver, ValidationProvider } from "vee-validate";
 import Login_header from "~/components/login_header.vue";
@@ -311,6 +309,7 @@ export default {
         state: "",
         agreement: null,
       },
+      loading: false,
       baseUrl: "https://api.vankwallet.com/api/auth/",
       countries: {},
       countryUrl: "https://restcountries.com/v2/all",
@@ -321,18 +320,20 @@ export default {
   methods: {
     async signUp() {
       try {
+        this.loading = true;
         const response = await this.$axios.post(
           this.baseUrl + "register",
           this.signUp_data
         );
-        this.$message({
-          message: "Your application has been sent",
-          type: "success",
-          duration: 8000,
+        this.$toast.success("Your Registration has been Successful", {
+          timeout: 5000,
         });
         console.log(response);
+        this.loading = false;
+        this.$router.push("/");
       } catch (error) {
         console.log(error.response);
+        this.loading = false;
       }
     },
     onSubmit() {
@@ -362,6 +363,7 @@ export default {
     this.get_states();
   },
   components: {
+    Toast,
     footer_section,
     ValidationObserver: ValidationObserver,
     ValidationProvider: ValidationProvider,
@@ -395,7 +397,7 @@ export default {
 .form_section .form-control {
   cursor: pointer;
   box-shadow: none;
-  color: #c5cbcc;
+  color: grey;
   min-height: 7vh;
   padding: 10px;
 }
@@ -433,8 +435,12 @@ export default {
 .custom-control-label::after {
   cursor: pointer !important;
 }
+.t_c_wrap {
+  font-size: 12px;
+}
 .t_c_wrap span {
   cursor: pointer !important;
+  font-size: 12px;
 }
 .custom-control-label::after {
   cursor: pointer !important;

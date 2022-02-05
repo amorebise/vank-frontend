@@ -1,7 +1,7 @@
 <template>
   <div>
     <header-nav />
-    <div class="about_us_wrap">
+    <div class="about_us_wrap mt-5">
       <div class="write_up_wrap text-center">
         <h1>ABOUT US</h1>
         <h5>We Are VANK</h5>

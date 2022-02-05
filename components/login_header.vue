@@ -76,6 +76,8 @@ export default {};
 
   .sign_up_wrap {
     margin-top: 10px;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 }
 </style>

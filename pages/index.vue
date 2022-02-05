@@ -1,7 +1,7 @@
 <template>
   <div class="home_wrap">
     <header-nav />
-    <div class="hero_section">
+    <div class="hero_section mt-5">
       <h1>Make Smarter Moves,</h1>
       <div class="d-flex typed_text align-items-center justify-content-center">
         <h1>Save in #</h1>
@@ -14,17 +14,127 @@
         <div class="row">
           <div class="col-md-4">
             <div class="bitcoin_card mt-3 mx-2" data-aos="fade-up">
-              <v-img lazy-src="/bitcoin.png" src="/bitcoin.png" alt="image" />
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btc_wrap">
+                  <nuxt-img
+                    format="webp"
+                    sizes="xs:35vw sm:30vw md:20vw lg:13vw"
+                    quality="90"
+                    fit="cover"
+                    src="/btc.png"
+                  />
+                  <!-- <v-img lazy-src="/btc.png" src="/btc.png" alt="image" /> -->
+                </div>
+                <h5>BTC</h5>
+                <div class="grey_bg">
+                  <p>BITCOIN</p>
+                </div>
+                <div class="wallet_icon">
+                  <font-awesome-icon
+                    class="purple_text"
+                    :icon="['fas', 'arrow-up']"
+                  />
+                </div>
+              </div>
+              <hr />
+              <div
+                class="d-flex justify-content-between align-items-center mt-3"
+              >
+                <div class="prices" v-for="btc in btcs" :key="btc.id">
+                  <p>${{ btc.current_price }}</p>
+                  <p>{{ btc.price_change_percentage_24h }}%</p>
+                </div>
+                <div class="chart">
+                  <v-img
+                    class="charts"
+                    lazy-src="/green_chart.png"
+                    src="/green_chart.png"
+                    alt="image"
+                  />
+                </div>
+              </div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="etherium_card mt-3 mx-2" data-aos="fade-up">
-              <v-img lazy-src="/ether.png" src="/ether.png" alt="image" />
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btc_wrap">
+                  <nuxt-img
+                    format="webp"
+                    sizes="xs:35vw sm:30vw md:20vw lg:13vw"
+                    quality="90"
+                    fit="cover"
+                    src="/eth.png"
+                  />
+                  <!-- <v-img lazy-src="/eth.png" src="/eth.png" alt="image" /> -->
+                </div>
+                <h5>ETC</h5>
+                <div class="grey_bg">
+                  <p>ETHEREUM</p>
+                </div>
+                <div class="wallet_icon">
+                  <font-awesome-icon
+                    class="purple_text"
+                    :icon="['fas', 'arrow-up']"
+                  />
+                </div>
+              </div>
+              <hr />
+              <div class="d-flex justify-content-between mt-3">
+                <div class="prices" v-for="eth in ether" :key="eth.id">
+                  <p>${{ eth.current_price }}</p>
+                  <p>{{ eth.price_change_percentage_24h }}%</p>
+                </div>
+                <div class="chart">
+                  <v-img
+                    class="charts"
+                    lazy-src="/red_chart.png"
+                    src="/green_chart.png"
+                    alt="image"
+                  />
+                </div>
+              </div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="bitcash_card mt-3 mx-2" data-aos="fade-up">
-              <v-img lazy-src="/bitcash.png" src="/bitcash.png" alt="image" />
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btc_wrap">
+                  <nuxt-img
+                    format="webp"
+                    sizes="xs:35vw sm:30vw md:20vw lg:13vw"
+                    quality="90"
+                    fit="cover"
+                    src="/bnb.png"
+                  />
+                  <!-- <v-img lazy-src="/bnb.png" src="/bnb.png" alt="image" /> -->
+                </div>
+                <h5>BNB</h5>
+                <div class="grey_bg">
+                  <p>BINANCE</p>
+                </div>
+                <div class="wallet_icon">
+                  <font-awesome-icon
+                    class="purple_text"
+                    :icon="['fas', 'arrow-up']"
+                  />
+                </div>
+              </div>
+              <hr />
+              <div class="d-flex justify-content-between mt-3">
+                <div class="prices" v-for="bn in bnb" :key="bn.id">
+                  <p>${{ bn.current_price }}</p>
+                  <p>{{ bn.price_change_percentage_24h }}%</p>
+                </div>
+                <div class="chart">
+                  <v-img
+                    class="charts"
+                    lazy-src="/green_chart.png"
+                    src="/green_chart.png"
+                    alt="image"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -55,7 +165,7 @@
               />
             </div>
             <div class="write_up_wrap ml-3">
-              <p>Sign up and choose a monthly savings plan.</p>
+              <p>Sign up and choose a monthly savings plan</p>
             </div>
           </div>
           <div class="how_it_works_child d-flex align-items-center">
@@ -63,7 +173,7 @@
               <v-img lazy-src="/hands.png" src="/hands.png" alt="image" />
             </div>
             <div class="write_up_wrap ml-3">
-              <p>We turn your savings into your preferred assets.</p>
+              <p>We turn your savings into your preferred assets</p>
             </div>
           </div>
           <div class="how_it_works_child d-flex align-items-center">
@@ -76,8 +186,8 @@
             </div>
             <div class="write_up_wrap ml-3">
               <p>
-                With us you get superior returns then leaving all <br />
-                your money in the bank
+                With us you get superior returns than leaving all your money in
+                the bank
               </p>
             </div>
           </div>
@@ -118,9 +228,10 @@ export default {
   name: "IndexPage",
   data() {
     return {
-      btc: "",
-      eth: "",
-      bnb: "",
+      btcs: {},
+      // btc_percent: {},
+      ether: {},
+      bnb: {},
       cryptoUrl: "https://api.coingecko.com/api/v3/coins/",
     };
   },
@@ -129,22 +240,24 @@ export default {
       const response = await this.$axios.get(
         this.cryptoUrl + "markets?vs_currency=usd&ids=bitcoin"
       );
-      this.btc = response;
-      console.log(this.btc.data);
+      this.btcs = response.data;
+      console.log(this.btcs);
+      // this.btc_percent = this.btcs.name;
+      // console.log(this.btc_percent);
     },
     async get_eth_price() {
       const response = await this.$axios.get(
         this.cryptoUrl + "markets?vs_currency=usd&ids=ethereum"
       );
-      this.eth = response;
-      console.log(this.eth.data);
+      this.ether = response.data;
+      console.log(this.ether);
     },
     async get_bnb_price() {
       const response = await this.$axios.get(
         this.cryptoUrl + "markets?vs_currency=usd&ids=binancecoin"
       );
-      this.bnb = response;
-      console.log(this.bnb.data);
+      this.bnb = response.data;
+      console.log(this.bnb);
     },
     typed_text() {
       var typed = new Typed(".type", {
@@ -185,7 +298,7 @@ export default {
 }
 .hero_section h1 {
   text-align: center;
-  font-size: 60px;
+  font-size: 56px;
   font-weight: 700;
   font-family: "Titillium Web", sans-serif;
 }
@@ -206,6 +319,9 @@ export default {
   height: 100px;
   padding: 10px;
 }
+.typed_text span {
+  margin-top: 10px;
+}
 .typed_text h1 {
   color: #00e8fe;
 }
@@ -222,11 +338,45 @@ export default {
   width: 90%;
   box-shadow: 2px 15px 35px rgba(0, 0, 0, 0.25);
 }
-/* .convenience_wrap {
-  background-image: url("/convenience.png");
-  background-size: contain;
-  height: 150px;
-} */
+.bitcoin_card,
+.etherium_card,
+.bitcash_card {
+  border: 3px solid #00e8fe;
+  height: 90%;
+  border-radius: 15px;
+  padding: 20px 50px;
+}
+hr {
+  background-color: #c5cbcc70 !important;
+  margin-top: 20px;
+}
+.grey_bg {
+  height: 5%;
+  padding: 0 5px;
+  background-color: #c5cbcc;
+  font-size: 14px;
+  border-radius: 5px;
+  color: #000;
+}
+.wallet_icon {
+  background-color: #2a304c;
+  font-size: 50px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(30deg);
+}
+.purple_text {
+  font-size: 25px;
+  align-self: center;
+}
+.btc_arrow {
+  width: 50px !important;
+  height: 2rem !important;
+}
 .convenience_wrap img {
   height: 100px !important;
 }
@@ -244,11 +394,14 @@ export default {
   /* height: 150px; */
 }
 .card_section {
-  margin-top: 200px;
+  margin-top: 100px;
 }
 .card_section img {
   width: 100%;
 }
+/* .charts {
+  height: 100%;
+} */
 .how_it_works {
   padding: 40px 100px;
   background-color: #fff;
@@ -296,13 +449,6 @@ export default {
   margin-top: 20px;
 }
 
-/* .join_vank_section {
-  background-image: url("/vank_home.png");
-  min-height: 100vh;
-  background-size: cover;
-  margin-top: 100px;
-} */
-
 @media (max-width: 767px) {
   .hero_section {
     padding: 10px;
@@ -323,6 +469,12 @@ export default {
   }
   .register_button {
     font-size: 15px;
+  }
+  .bitcoin_card,
+  .etherium_card,
+  .bitcash_card {
+    border-radius: 15px;
+    padding: 20px;
   }
   .crypto_bucket_section {
     margin: 0 !important;
@@ -354,11 +506,11 @@ export default {
   .cards_img {
     max-width: 100% !important;
   }
-  .join_vank_section img {
-    /* width: 100%; */
-    /* height: 220px; */
-    /* object-fit: fill; */
-  }
+  /* .join_vank_section img {
+    width: 100%;
+    height: 220px;
+    object-fit: fill;
+  } */
 
   .why_choose_us {
     padding: 10px;
@@ -375,6 +527,11 @@ export default {
 @media (min-width: 768px) and (max-width: 1024px) {
   .card_shadow {
     height: 300px;
+  }
+  .bitcoin_card,
+  .etherium_card,
+  .bitcash_card {
+    padding: 20px;
   }
 }
 </style>

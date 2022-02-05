@@ -1,6 +1,6 @@
 <template>
-  <div id="new-nav">
-    <nav class="navbar navbar-expand-lg">
+  <div>
+    <nav class="navbar navbar-expand-lg fixed-top">
       <nuxt-link to="/" class="navbar-brand vank_logo_link"
         ><nuxt-img
           format="webp"
@@ -33,7 +33,7 @@
             >
           </li>
           <li class="nav-item mx-3" @click="navigate()">
-            <nuxt-link to="/faq" class="navbar-brand pt-2">FAQ</nuxt-link>
+            <nuxt-link to="/faqs" class="navbar-brand pt-2">FAQs</nuxt-link>
           </li>
           <li class="nav-item mx-3" @click="navigate()">
             <nuxt-link to="/contact_us" class="navbar-brand pt-2"
@@ -66,24 +66,7 @@ export default {
     navigate() {
       document.getElementById("navbarNavDropdown").classList.toggle("show");
     },
-    // stickyNav: function () {
-    //   document.addEventListener("DOMContentLoaded", function () {
-    //     window.addEventListener("scroll", function () {
-    //       if (window.scrollY > 50) {
-    //         document.getElementById("new-nav").classList.add("fixed-top");
-    //         document.body.style.paddingTop = 10 + "px";
-    //       } else {
-    //         document.getElementById("new-nav").classList.remove("fixed-top");
-    //         // remove padding top from body
-    //         document.body.style.paddingTop = "0";
-    //       }
-    //     });
-    //   });
-    // },
   },
-  // mounted() {
-  //   this.stickyNav();
-  // },
 };
 </script>
 
@@ -120,11 +103,7 @@ export default {
   display: none;
   font-size: 30px;
 }
-/* .fixed-top {
-  background-color: #fff !important;
-  padding: 0rem 0rem;
-  transition-delay: 0.2s;
-} */
+
 .sign_up_button {
   padding: 5px 10px;
   background-color: #00e8fe;

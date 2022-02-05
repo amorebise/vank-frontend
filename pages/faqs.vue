@@ -1,7 +1,7 @@
 <template>
   <div>
     <header-nav />
-    <div class="faq_wrapper">
+    <div class="faq_wrapper mt-5">
       <div class="faq_content bg-white py-5 px-5">
         <div class="text-center">
           <h1>Frequently Asked Questions</h1>
@@ -25,7 +25,7 @@
               Q2: What is the maximum amount I can save per month?
             </v-expansion-panel-header>
             <v-expansion-panel-content>
-              Maximum amount you can save per month is N2,000,000
+              The maximum amount you can save per month is N2,000,000
             </v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>
@@ -55,7 +55,18 @@
         <v-expansion-panels>
           <v-expansion-panel>
             <v-expansion-panel-header>
-              Q5: What is a VANK Basket?
+              Q5: What is vUSDT?
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              vUSDT is the USDT used on the VANK platform
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
+        <!-- End of Fifth Question -->
+        <v-expansion-panels>
+          <v-expansion-panel>
+            <v-expansion-panel-header>
+              Q6: What is a VANK Basket?
             </v-expansion-panel-header>
             <v-expansion-panel-content>
               When you choose the VANK Basket plan, we will spread your savings
@@ -65,11 +76,11 @@
             </v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>
-        <!-- End of Fifth Question -->
+        <!-- End of Sixth Question -->
         <v-expansion-panels>
           <v-expansion-panel>
             <v-expansion-panel-header>
-              Q6: How much money can I make?
+              Q7: How much money can I make?
             </v-expansion-panel-header>
             <v-expansion-panel-content>
               How much money you can make using our model depends on how long
@@ -78,11 +89,11 @@
             </v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>
-        <!-- End of Sixth Question -->
+        <!-- End of Seventh Question -->
         <v-expansion-panels>
           <v-expansion-panel>
             <v-expansion-panel-header>
-              Q7: VANK says it runs a risk-controlled model. What does that
+              Q8: VANK says it runs a risk-controlled model. What does that
               mean?
             </v-expansion-panel-header>
             <v-expansion-panel-content>
@@ -93,11 +104,12 @@
             </v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>
-        <!-- End of Seventh Question -->
+        <!-- End of Eighth Question -->
+        <!-- Ninth Question -->
         <v-expansion-panels>
           <v-expansion-panel>
             <v-expansion-panel-header>
-              Q8: What if I want to sell the crypto in my VANK Wallet?
+              Q9: What if I want to sell the crypto in my VANK Wallet?
             </v-expansion-panel-header>
             <v-expansion-panel-content>
               We can buy from you right in your VANK Wallet or you can withdraw
@@ -152,6 +164,14 @@ export default {};
   border-radius: 0px !important;
   box-shadow: none;
   padding: 30px 20px;
+}
+.v-expansion-panel-header {
+  justify-content: space-between !important;
+  border-bottom: 1px solid #b6858530 !important;
+  border-right: none !important;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+  padding: 30px 20px !important;
 }
 .v-expansion-panel-content__wrap {
   background-color: #f2f5f7 !important;
