@@ -31,7 +31,7 @@
                   >How it Works</nuxt-link
                 >
               </li>
-              <li><nuxt-link to="/faq" class="links">FAQ</nuxt-link></li>
+              <li><nuxt-link to="/faq" class="links">FAQs</nuxt-link></li>
               <li><nuxt-link to="/" class="links">Blog</nuxt-link></li>
             </ul>
           </div>

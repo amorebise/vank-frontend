@@ -310,7 +310,7 @@ export default {
         agreement: null,
       },
       loading: false,
-      baseUrl: "https://api.vankwallet.com/api/auth/",
+      // baseUrl: "https://api.vankwallet.com/api/auth/",
       countries: {},
       countryUrl: "https://restcountries.com/v2/all",
       states: {},
@@ -321,10 +321,7 @@ export default {
     async signUp() {
       try {
         this.loading = true;
-        const response = await this.$axios.post(
-          this.baseUrl + "register",
-          this.signUp_data
-        );
+        const response = await this.$axios.post("/register", this.signUp_data);
         this.$toast.success("Your Registration has been Successful", {
           timeout: 5000,
         });

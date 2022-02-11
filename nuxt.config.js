@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'vank-wallet',
+    title: 'vank wallet',
     htmlAttrs: {
       lang: 'en'
     },
@@ -15,7 +15,7 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/light_vank.png' },
+      { rel: 'icon', type: 'image/x-icon', href: '/dark_vank.png' },
       // { rel: "stylesheet", href: "https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" },
       // { rel: "stylesheet", href: "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" },
       // { rel: "stylesheet", href="https://fonts.googleapis.com" },
@@ -103,6 +103,7 @@ export default {
     'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
 
     "vue-toastification/nuxt",
 
@@ -131,7 +132,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: "http://vankwallet.com/",
+    baseURL: "https://api.vankwallet.com/api/auth",
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': 'Content-Type',
@@ -149,13 +150,13 @@ export default {
           type: 'Bearer'
         },
         user: {
-          property: 'user',
+          property: 'users',
           // autoFetch: true
         },
         endpoints: {
-          login: { url: '/auth/login/', method: 'post' },
-          logout: { url: '/auth/logout', method: 'post' },
-          user: { url: '/auth/user/', method: 'get' }
+          login: { url: '/login', method: 'post' },
+          logout: { url: '/logout', method: 'post' },
+          user: { url: '/users', method: 'get' }
         }
       }
     }

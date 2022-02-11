@@ -70,11 +70,6 @@ export default {};
   word-spacing: 2px;
   letter-spacing: 2px;
 }
-/* .crypto_img_wrap {
-  background-image: url("/vank_about.png");
-  min-height: 100vh;
-  background-size: cover;
-} */
 .register_link {
   background-color: #00e8fe;
   padding: 10px;
@@ -88,7 +83,7 @@ export default {};
 
 @media (max-width: 768px) {
   .about_us_wrap {
-    padding: 10px;
+    padding: 50px 10px;
   }
   .write_up_wrap h1 {
     font-size: 30px;

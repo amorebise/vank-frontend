@@ -4,12 +4,12 @@
       <div class="login_section">
         <form class="mt-3" method="post" @submit.prevent="submit()">
           <div class="form-group py-3">
-            <label class="py-2" for="">Email/Phone Number</label>
+            <label class="py-2" for="">Email</label>
             <input
               type="text"
               class="form-control"
               v-model="login.email"
-              placeholder="Enter your Full Names"
+              placeholder="Enter your Email Address"
             />
           </div>
           <div class="form-group py-3">
@@ -51,7 +51,11 @@
           </div>
 
           <div class="text-center">
-            <v-btn class="login_button" value="Login" type="submit"
+            <v-btn
+              class="login_button"
+              :loading="loading"
+              value="Login"
+              type="submit"
               >Log In</v-btn
             >
             <div class="login_wrap mt-3">
@@ -77,26 +81,38 @@ export default {
   data() {
     return {
       login: {
-        username: "",
+        email: "",
         password: "",
       },
-      // loading: false,
+      loading: false,
     };
   },
-  // methods: {
-  //   async userLogin() {
-  //     try {
-  //       let response = await this.$auth.loginWith('local', { data: this.login })
-  //       console.log(response)
-  //     } catch (err) {
-  //       console.log(err)
-  //     }
-  //   }
-  // },
+
   methods: {
-    // userLogin(){
-    //   this.$router.push('/userrList');
-    // }
+    async userLogin() {
+      try {
+        this.loading = true;
+        let response = await this.$auth.loginWith("local", {
+          data: this.login,
+        });
+        console.log(response);
+        this.$auth.setUserToken(response.data.access_token);
+        this.$router.push("/");
+        this.$toast.success("Welcome", {
+          timeout: 5000,
+        });
+      } catch (err) {
+        this.loading = false;
+        this.$toast.warning(
+          "There was a problem logging into your account. Please try again.",
+          {
+            timeout: 5000,
+          }
+        );
+        console.log(err);
+      }
+    },
+
     displayPassword() {
       let password = document.getElementById("password");
       let show_password = document.getElementById("show_password");
@@ -112,7 +128,7 @@ export default {
       }
     },
     submit() {
-      consol.log(this.login);
+      this.userLogin();
     },
   },
 };
@@ -147,7 +163,7 @@ export default {
 }
 
 .form-control {
-  color: #c5cbcc;
+  color: grey;
   min-height: 7vh;
   padding: 10px;
 }
@@ -169,6 +185,7 @@ export default {
 .password_wrap input {
   width: 100%;
   outline: none;
+  color: grey;
 }
 
 .form-control:focus {
@@ -183,6 +200,9 @@ export default {
   cursor: pointer;
   color: #1d83c5;
   font-size: 13px;
+}
+.login_wrap {
+  font-size: 14px;
 }
 
 @media (max-width: 768px) {
