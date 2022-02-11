@@ -4,7 +4,7 @@
       <nuxt-link to="/" class="navbar-brand glee-note"
         ><nuxt-img
           format="webp"
-          sizes="xs:35vw sm:30vw md:20vw lg:13vw"
+          sizes="xs:35vw sm:30vw md:20vw lg:10vw"
           quality="90"
           fit="cover"
           src="/vank_logo.png"

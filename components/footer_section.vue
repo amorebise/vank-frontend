@@ -142,7 +142,7 @@ export default {};
 .write_up_section h5 {
   width: 70%;
   margin-left: auto;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
 }
 
@@ -155,11 +155,11 @@ export default {};
 .news_letter_wrapper p {
   color: #646b87;
   margin-top: 7px;
-  font-size: 18px;
+  font-size: 16px;
 }
 .links {
   color: #fff;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 40px;
 }
 ul li {
@@ -167,7 +167,7 @@ ul li {
 }
 .subscribe_section {
   background-color: #fff;
-  padding: 7px 20px;
+  padding: 5px 15px;
   margin-top: 15px;
   border-radius: 5px;
 }
@@ -177,14 +177,14 @@ ul li {
   padding-left: 5px;
 }
 .subscribe_section input::placeholder {
-  font-size: 18px;
+  font-size: 16px;
 }
 .subscribe_section button {
   padding: 10px 20px;
   background-color: #00e8fe !important;
   color: #000;
   border-radius: 5px;
-  font-size: 20px;
+  font-size: 18px;
   outline: none;
   border: none;
 }

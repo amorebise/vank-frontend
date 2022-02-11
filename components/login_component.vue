@@ -150,6 +150,7 @@ export default {
   width: 30%;
   font-size: 18px;
   width: 100%;
+  box-shadow: none;
 }
 
 .eye_icon {

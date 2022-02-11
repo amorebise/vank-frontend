@@ -41,15 +41,15 @@
               >
                 <div class="prices">
                   <p>${{ btc_price }}</p>
-                  <p id="btc_percent">{{ bit_percent_change }}%</p>
                 </div>
                 <div class="chart">
-                  <v-img
+                  <p id="btc_percent">{{ bit_percent_change }}%</p>
+                  <!-- <v-img
                     class="charts"
                     lazy-src="/green_chart.png"
                     src="/green_chart.png"
                     alt="image"
-                  />
+                  /> -->
                 </div>
               </div>
             </div>
@@ -81,15 +81,15 @@
               <div class="d-flex justify-content-between mt-3">
                 <div class="prices">
                   <p>${{ eth_price }}</p>
-                  <p id="eth_percent">{{ eth_percent_change }}%</p>
                 </div>
                 <div class="chart">
-                  <v-img
+                  <p id="eth_percent">{{ eth_percent_change }}%</p>
+                  <!-- <v-img
                     class="charts"
                     lazy-src="/red_chart.png"
                     src="/green_chart.png"
                     alt="image"
-                  />
+                  /> -->
                 </div>
               </div>
             </div>
@@ -121,15 +121,15 @@
               <div class="d-flex justify-content-between mt-3">
                 <div class="prices">
                   <p>${{ bnb_price }}</p>
-                  <p id="bnb_percent">{{ bnb_percent_change }}%</p>
                 </div>
                 <div class="chart">
-                  <v-img
+                  <p id="bnb_percent">{{ bnb_percent_change }}%</p>
+                  <!-- <v-img
                     class="charts"
                     lazy-src="/green_chart.png"
                     src="/green_chart.png"
                     alt="image"
-                  />
+                  /> -->
                 </div>
               </div>
             </div>
@@ -149,11 +149,7 @@
       <div class="row mt-5 align-items-center">
         <div class="col-md-6">
           <div class="crypto_bucket_section mx-5">
-            <v-img
-              src="/how_it_worksj.jpg"
-              lazy-src="/how_it_worksj.jpg"
-              alt="image"
-            />
+            <v-img src="/bitbucket.png" lazy-src="/bitbucket.png" alt="image" />
           </div>
         </div>
         <div class="col-md-6" data-aos="fade-up">
