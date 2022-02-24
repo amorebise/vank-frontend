@@ -10,6 +10,7 @@
               quality="90"
               fit="cover"
               src="/vank_logo2.png"
+              alt="image"
             />
           </div>
           <div class="write_up_section mt-3">
@@ -129,7 +130,9 @@ export default {};
   font-family: "Space Grotesk", sans-serif;
 }
 .footer_wrap {
-  background-color: #0f1843;
+  background-image: url("/footer.jpeg");
+  background-size: cover;
+  background-position: center;
   padding: 100px;
 }
 .write_up_section {

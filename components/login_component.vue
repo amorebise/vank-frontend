@@ -97,7 +97,7 @@ export default {
         });
         console.log(response);
         this.$auth.setUserToken(response.data.access_token);
-        this.$router.push("/");
+        this.$router.push("/user_dashboard/dashboard");
         this.$toast.success("Welcome", {
           timeout: 5000,
         });

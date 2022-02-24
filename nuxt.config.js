@@ -132,7 +132,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: "https://api.vankwallet.com/api/auth",
+    baseURL: "https://api.vankwallet.com/api",
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': 'Content-Type',
@@ -150,13 +150,13 @@ export default {
           type: 'Bearer'
         },
         user: {
-          property: 'users',
+          property: 'getAsset',
           // autoFetch: true
         },
         endpoints: {
           login: { url: '/login', method: 'post' },
           logout: { url: '/logout', method: 'post' },
-          user: { url: '/users', method: 'get' }
+          user: { url: '/getAsset', method: 'get' }
         }
       }
     }

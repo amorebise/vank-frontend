@@ -2,71 +2,77 @@
   <div>
     <user-nav name="VANK" />
     <div class="buy_more_wrap">
-      <h5>Buy More</h5>
+      <h5>Buy Now</h5>
       <div class="buy_plan_wrap mt-5">
-        <p>What do you want to buy?</p>
-        <div class="d-flex justify-content-center mt-3">
-          <form action="" @submit.prevent="submit()">
-            <div class="form-check form-check-inline mx-2">
-              <input
-                v-model="buy_option_info.usdt"
-                class="form-check-input"
-                type="checkbox"
-                id="inlineCheckbox1"
-                value="usdt"
-              />
-              <label class="form-check-label" for="inlineCheckbox1">USDT</label>
-            </div>
-            <div class="form-check form-check-inline mx-2">
-              <input
-                v-model="buy_option_info.btc"
-                class="form-check-input"
-                type="checkbox"
-                id="inlineCheckbox2"
-                value="btc"
-              />
-              <label class="form-check-label" for="inlineCheckbox2">BTC</label>
-            </div>
-            <div class="form-check form-check-inline mx-2">
-              <input
-                v-model="buy_option_info.vank_basket_plan"
-                class="form-check-input"
-                type="checkbox"
-                id="inlineCheckbox3"
-                value="vank_basket_plan"
-              />
-              <label class="form-check-label" for="inlineCheckbox3"
-                >VANK Basket Plan</label
-              >
-            </div>
-            <div class="form-group mt-3">
-              <label class="" for=""
-                >Amount
-                <nuxt-img
-                  format="webp"
-                  sizes="xs:35vw sm:30vw md:20vw lg:12vw"
-                  quality="90"
-                  fit="cover"
-                  src="/naira_coin.png"
-              /></label>
-              <input
-                required
-                type="number"
-                class="form-control"
-                v-model="buy_option_info.amount"
-                placeholder="Enter Amount"
-              />
-            </div>
-            <div class="mt-3">
-              <v-btn
-                class="login_button w-100"
-                :loading="loading"
-                value="Buy Now"
-                type="submit"
-                >Buy Now</v-btn
-              >
-            </div>
-          </form>
+        <div class="">
+          <p>What do you want to buy?</p>
+          <div class="mt-3">
+            <form action="" @submit.prevent="request_asset()">
+              <div class="form-group mt-4">
+                <div class="form-check form-check-inline mx-1">
+                  <input
+                    v-model="buy_option_info.usdt"
+                    class="form-check-input"
+                    type="checkbox"
+                    id="inlineCheckbox2"
+                    value="usdt"
+                  />
+                </div>
+                <label class="" for="">USDT </label>
+                <input
+                  type="number"
+                  class="form-control"
+                  v-model="buy_option_info.usdt_amount"
+                  placeholder="Enter Amount in Naira"
+                />
+              </div>
+              <div class="form-group mt-4">
+                <div class="form-check form-check-inline mx-1">
+                  <input
+                    v-model="buy_option_info.btc"
+                    class="form-check-input"
+                    type="checkbox"
+                    id="inlineCheckbox2"
+                    value="btc"
+                  />
+                </div>
+                <label class="" for="">BTC </label>
+                <input
+                  type="number"
+                  class="form-control"
+                  v-model="buy_option_info.btc_amount"
+                  placeholder="Enter Amount in Naira"
+                />
+              </div>
+              <div class="form-group mt-4">
+                <div class="form-check form-check-inline mx-1">
+                  <input
+                    v-model="buy_option_info.vank_basket"
+                    class="form-check-input"
+                    type="checkbox"
+                    id="inlineCheckbox2"
+                    value="btc"
+                  />
+                </div>
+                <label class="" for="">VANK Basket Plan </label>
+                <input
+                  type="number"
+                  class="form-control"
+                  v-model="buy_option_info.vank_basket_amount"
+                  placeholder="Enter Amount in Naira"
+                />
+              </div>
+              <div class="mt-4">
+                <v-btn
+                  class="login_button w-100"
+                  :loading="loading"
+                  value="Buy Now"
+                  type="submit"
+                  >Buy Now</v-btn
+                >
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
@@ -80,18 +86,34 @@ export default {
     return {
       loading: false,
       buy_option_info: {
-        usdt: null,
-        btc: null,
-        vank_basket_plan: null,
-        amount: "",
+        btc: "",
+        usdt: "",
+        vank_basket: "",
+        usdt_amount: "",
+        btc_amount: "",
+        vank_basket_amount: "",
       },
     };
   },
   methods: {
-    async submit() {
-      this.loading = true;
-      console.log(this.buy_option_info);
-      this.$router.push("/user_dashboard/dashboard");
+    async request_asset() {
+      try {
+        this.loading = true;
+        const response = await this.$axios.post(
+          "/subscribe",
+          this.buy_option_info
+        );
+        this.$toast.success("Your Request Has Been Sent", {
+          timeout: 5000,
+        });
+        console.log(response);
+        this.loading = false;
+        this.$router.push("/user_dashboard/dashboard");
+        this.buy_option_info = {};
+      } catch (error) {
+        console.log(error.response);
+        this.loading = false;
+      }
     },
   },
 };
@@ -120,12 +142,17 @@ export default {
   letter-spacing: 1px;
 }
 .buy_plan_wrap {
-  width: 100%;
+  width: 35%;
   margin: 60px auto;
 }
+.buy_plan_wrap label {
+  font-size: 14px;
+}
+
 .buy_more_wrap .form-control {
   box-shadow: none;
   padding: 10px;
+  height: 50px;
 }
 .buy_more_wrap .form-control:focus {
   border-color: rgba(128, 128, 128, 0.39);
@@ -140,6 +167,8 @@ export default {
 .buy_more_wrap .v-btn {
   background-color: #00e8fe !important;
   text-transform: none;
+  box-shadow: none;
+  height: 45px !important;
 }
 
 @media (max-width: 768px) {
@@ -159,6 +188,9 @@ export default {
   }
   .buy_more_wrap .form-check-inline {
     font-size: 13px;
+  }
+  .buy_plan_wrap {
+    width: 100%;
   }
 }
 </style>

@@ -19,6 +19,7 @@
                 quality="90"
                 fit="cover"
                 src="/vank_logo.png"
+                alt="image"
             /></nuxt-link>
           </li>
         </div>

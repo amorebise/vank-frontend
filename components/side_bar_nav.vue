@@ -9,6 +9,7 @@
             quality="90"
             fit="cover"
             src="/vank_logo.png"
+            alt="image"
         /></nuxt-link>
       </div>
       <div class="list-group list-group-flush my-3" id="menu_items">
@@ -33,7 +34,7 @@
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="ml-3">
-            <nuxt-img class="img_wrap" format="webp" src="/bag.png" />
+            <nuxt-img class="img_wrap" format="webp" src="/Bag.png" />
             <span class="ml-2">Basket</span>
           </div>
         </nuxt-link>
@@ -43,7 +44,7 @@
           class="list-group list-group-item active bg-transparent"
         >
           <div class="ml-3">
-            <nuxt-img class="img_wrap" format="webp" src="/activity.png" />
+            <nuxt-img class="img_wrap" format="webp" src="/Activity.png" />
             <span class="ml-2">Transactions</span>
           </div>
         </nuxt-link>

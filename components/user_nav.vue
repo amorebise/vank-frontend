@@ -5,7 +5,15 @@
         <div class="">
           <li class="dashboard_text_li d-flex align-items-center">
             <div><creator-sidebar /></div>
-            <h1 class="dashboard_text blue_text mt-3">{{ name }}</h1>
+            <nuxt-link to="/" class="navbar-brand vank_logo_link"
+              ><nuxt-img
+                format="webp"
+                sizes="xs:35vw sm:30vw md:20vw lg:10vw"
+                quality="90"
+                fit="cover"
+                src="/vank_logo.png"
+                alt="image"
+            /></nuxt-link>
           </li>
         </div>
         <v-spacer></v-spacer>
@@ -37,13 +45,16 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk&family=Titillium+Web&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   font-family: "Space Grotesk", sans-serif;
+}
+.nav_content .navbar {
+  /* padding: 0 100px; */
 }
 .log_out_button {
   border: 1px solid #00e8fe;
@@ -56,6 +67,9 @@ export default {
     margin-top: 0 !important;
   }
   .navbar {
+    padding: 0;
+  }
+  .nav_content .navbar {
     padding: 0;
   }
 }

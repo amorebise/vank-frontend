@@ -47,7 +47,11 @@ export default {};
 }
 .about_us_wrap {
   padding: 100px;
-  background-color: #101944;
+  background-image: url("/about.jpeg");
+  background-color: rgba(15, 24, 67, 0.78);
+  background-blend-mode: overlay;
+  background-size: cover;
+  background-position: center;
   color: #fff;
 }
 .write_up_wrap h1 {

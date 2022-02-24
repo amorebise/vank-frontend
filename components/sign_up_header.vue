@@ -8,6 +8,7 @@
           quality="90"
           fit="cover"
           src="/vank_logo.png"
+          alt="image"
       /></nuxt-link>
 
       <ul class="navbar-nav ml-auto pl-5 mb-2 mb-lg-0">

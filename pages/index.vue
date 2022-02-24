@@ -22,6 +22,7 @@
                     quality="90"
                     fit="cover"
                     src="/btc.png"
+                    alt="image"
                   />
                 </div>
                 <h5>BTC</h5>
@@ -44,12 +45,6 @@
                 </div>
                 <div class="chart">
                   <p id="btc_percent">{{ bit_percent_change }}%</p>
-                  <!-- <v-img
-                    class="charts"
-                    lazy-src="/green_chart.png"
-                    src="/green_chart.png"
-                    alt="image"
-                  /> -->
                 </div>
               </div>
             </div>
@@ -64,6 +59,7 @@
                     quality="90"
                     fit="cover"
                     src="/eth.png"
+                    alt="image"
                   />
                 </div>
                 <h5>ETH</h5>
@@ -84,12 +80,6 @@
                 </div>
                 <div class="chart">
                   <p id="eth_percent">{{ eth_percent_change }}%</p>
-                  <!-- <v-img
-                    class="charts"
-                    lazy-src="/red_chart.png"
-                    src="/green_chart.png"
-                    alt="image"
-                  /> -->
                 </div>
               </div>
             </div>
@@ -104,6 +94,7 @@
                     quality="90"
                     fit="cover"
                     src="/bnb.png"
+                    alt="image"
                   />
                 </div>
                 <h5>BNB</h5>
@@ -124,12 +115,6 @@
                 </div>
                 <div class="chart">
                   <p id="bnb_percent">{{ bnb_percent_change }}%</p>
-                  <!-- <v-img
-                    class="charts"
-                    lazy-src="/green_chart.png"
-                    src="/green_chart.png"
-                    alt="image"
-                  /> -->
                 </div>
               </div>
             </div>
@@ -149,7 +134,7 @@
       <div class="row mt-5 align-items-center">
         <div class="col-md-6">
           <div class="crypto_bucket_section mx-5">
-            <v-img src="/bitbucket.png" lazy-src="/bitbucket.png" alt="image" />
+            <v-img src="/vank_how.png" lazy-src="/vank_how.png" alt="image" />
           </div>
         </div>
         <div class="col-md-6" data-aos="fade-up">
@@ -281,18 +266,35 @@ export default {
         document.getElementById("eth_percent").style.color = "green";
       }
     },
-    async get_bnb() {
-      const res = await this.$axios.get(this.cryptoUrl + "bnb/metrics");
+    // async get_bnb() {
+    //   const res = await this.$axios.get(this.cryptoUrl + "bnb/metrics");
 
-      this.bnb_cap = res.data;
-      console.log(this.bnb_cap.data);
-      this.bnb = this.bnb_cap.data.market_data;
-      console.log(this.bnb);
-      this.bnb_price = this.bnb.price_usd.toFixed(2);
-      console.log(this.bnb_price);
-      this.new_bnb = this.bnb.percent_change_usd_last_24_hours;
-      console.log(this.new_bnb.toFixed(2));
-      this.bnb_percent_change = this.new_bnb.toFixed(2);
+    //   this.bnb_cap = res.data;
+    //   console.log(this.bnb_cap.data);
+    //   this.bnb = this.bnb_cap.data.market_data;
+    //   console.log(this.bnb);
+    //   this.bnb_price = this.bnb.price_usd.toFixed(2);
+    //   console.log(this.bnb_price);
+    //   this.new_bnb = this.bnb.percent_change_usd_last_24_hours;
+    //   console.log(this.new_bnb.toFixed(2));
+    //   this.bnb_percent_change = this.new_bnb.toFixed(2);
+    //   if (this.bnb_percent_change < 1) {
+    //     document.getElementById("bnb_percent").style.color = "red";
+    //   } else {
+    //     document.getElementById("bnb_percent").style.color = "green";
+    //   }
+    // },
+    async show_bnb() {
+      const response = await this.$axios.get(
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=binancecoin"
+      );
+      this.bnb = response.data;
+      this.bnb_cap = this.bnb[0];
+      console.log(this.bnb_cap);
+      this.bnb_price = this.bnb_cap.current_price;
+      this.bnb_percent_change =
+        this.bnb_cap.price_change_percentage_24h.toFixed(2);
+      console.log(this.bnb_percent_change);
       if (this.bnb_percent_change < 1) {
         document.getElementById("bnb_percent").style.color = "red";
       } else {
@@ -312,9 +314,9 @@ export default {
   },
   mounted() {
     this.typed_text();
-
+    this.show_bnb();
     this.get_eth();
-    this.get_bnb();
+    // this.get_bnb();
     this.get_btc();
   },
 };
