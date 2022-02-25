@@ -17,7 +17,7 @@
                 <div class="form-group mx-2 mt-2">
                   <ValidationProvider
                     name="first name"
-                    rules="required|alpha_spaces"
+                    rules="required"
                     v-slot="{ errors }"
                   >
                     <label for="" class="py-2">First Name</label>
@@ -54,7 +54,7 @@
                 <div class="form-group mx-2 mt-2">
                   <ValidationProvider
                     name="last name"
-                    rules="required|alpha_spaces"
+                    rules="required"
                     v-slot="{ errors }"
                   >
                     <label for="" class="py-2">Last Name</label>
@@ -310,7 +310,7 @@ export default {
         agreement: null,
       },
       loading: false,
-      baseUrl: "https://api.vankwallet.com/api/auth/",
+      // baseUrl: "https://api.vankwallet.com/api/auth/",
       countries: {},
       countryUrl: "https://restcountries.com/v2/all",
       states: {},
@@ -321,16 +321,17 @@ export default {
     async signUp() {
       try {
         this.loading = true;
-        const response = await this.$axios.post(
-          this.baseUrl + "register",
-          this.signUp_data
+        const response = await this.$axios.post("/register", this.signUp_data);
+        this.$toast.success(
+          "Registration Successful, Check Your Mail For Verification",
+          {
+            timeout: 5000,
+          }
         );
-        this.$toast.success("Your Registration has been Successful", {
-          timeout: 5000,
-        });
         console.log(response);
         this.loading = false;
         this.$router.push("/");
+        this.signUp_data = {};
       } catch (error) {
         console.log(error.response);
         this.loading = false;

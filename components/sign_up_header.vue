@@ -4,10 +4,11 @@
       <nuxt-link to="/" class="navbar-brand glee-note"
         ><nuxt-img
           format="webp"
-          sizes="xs:35vw sm:30vw md:20vw lg:13vw"
+          sizes="xs:35vw sm:30vw md:20vw lg:10vw"
           quality="90"
           fit="cover"
           src="/vank_logo.png"
+          alt="image"
       /></nuxt-link>
 
       <ul class="navbar-nav ml-auto pl-5 mb-2 mb-lg-0">
@@ -47,9 +48,12 @@ export default {
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk&family=Titillium+Web&display=swap");
+
 * {
   margin: 0;
   padding: 0;
+  font-family: "Space Grotesk", sans-serif;
   text-decoration: none !important;
 }
 .navbar {

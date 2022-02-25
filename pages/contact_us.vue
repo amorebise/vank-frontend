@@ -258,6 +258,7 @@ textarea {
   width: 30%;
   font-size: 18px;
   width: 80%;
+  box-shadow: none;
 }
 
 @media (max-width: 768px) {

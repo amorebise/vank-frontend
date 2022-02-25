@@ -6,8 +6,8 @@
           <div class="div">
             <v-img
               class="artiste_img"
-              lazy-src="/experiencee.jpg"
-              src="experiencee.jpg"
+              lazy-src="/cofi.png"
+              src="/cofi.png"
               alt="image"
             />
           </div>
@@ -27,7 +27,7 @@
           <v-img
             class="artiste_img"
             lazy-src="/company.jpg"
-            src="company.jpg"
+            src="/company.jpg"
             alt="image"
           ></v-img>
           <div class="px-1 text_section">
@@ -45,8 +45,8 @@
         <div class="box" data-aos="fade-up">
           <v-img
             class="artiste_img"
-            lazy-src="/token.jpg"
-            src="token.jpg"
+            lazy-src="/tokv.png"
+            src="/tokv.png"
             alt="image"
           ></v-img>
           <div class="px-1 text_section">
@@ -103,7 +103,6 @@ export default {};
 .artiste_img {
   width: 100%;
   height: 200px;
-
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
 }

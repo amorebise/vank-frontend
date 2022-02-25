@@ -22,8 +22,8 @@
                     quality="90"
                     fit="cover"
                     src="/btc.png"
+                    alt="image"
                   />
-                  <!-- <v-img lazy-src="/btc.png" src="/btc.png" alt="image" /> -->
                 </div>
                 <h5>BTC</h5>
                 <div class="grey_bg">
@@ -40,17 +40,11 @@
               <div
                 class="d-flex justify-content-between align-items-center mt-3"
               >
-                <div class="prices" v-for="btc in btcs" :key="btc.id">
-                  <p>${{ btc.current_price }}</p>
-                  <p>{{ btc.price_change_percentage_24h }}%</p>
+                <div class="prices">
+                  <p>${{ btc_price }}</p>
                 </div>
                 <div class="chart">
-                  <v-img
-                    class="charts"
-                    lazy-src="/green_chart.png"
-                    src="/green_chart.png"
-                    alt="image"
-                  />
+                  <p id="btc_percent">{{ bit_percent_change }}%</p>
                 </div>
               </div>
             </div>
@@ -65,10 +59,10 @@
                     quality="90"
                     fit="cover"
                     src="/eth.png"
+                    alt="image"
                   />
-                  <!-- <v-img lazy-src="/eth.png" src="/eth.png" alt="image" /> -->
                 </div>
-                <h5>ETC</h5>
+                <h5>ETH</h5>
                 <div class="grey_bg">
                   <p>ETHEREUM</p>
                 </div>
@@ -81,17 +75,11 @@
               </div>
               <hr />
               <div class="d-flex justify-content-between mt-3">
-                <div class="prices" v-for="eth in ether" :key="eth.id">
-                  <p>${{ eth.current_price }}</p>
-                  <p>{{ eth.price_change_percentage_24h }}%</p>
+                <div class="prices">
+                  <p>${{ eth_price }}</p>
                 </div>
                 <div class="chart">
-                  <v-img
-                    class="charts"
-                    lazy-src="/red_chart.png"
-                    src="/green_chart.png"
-                    alt="image"
-                  />
+                  <p id="eth_percent">{{ eth_percent_change }}%</p>
                 </div>
               </div>
             </div>
@@ -106,8 +94,8 @@
                     quality="90"
                     fit="cover"
                     src="/bnb.png"
+                    alt="image"
                   />
-                  <!-- <v-img lazy-src="/bnb.png" src="/bnb.png" alt="image" /> -->
                 </div>
                 <h5>BNB</h5>
                 <div class="grey_bg">
@@ -122,17 +110,11 @@
               </div>
               <hr />
               <div class="d-flex justify-content-between mt-3">
-                <div class="prices" v-for="bn in bnb" :key="bn.id">
-                  <p>${{ bn.current_price }}</p>
-                  <p>{{ bn.price_change_percentage_24h }}%</p>
+                <div class="prices">
+                  <p>${{ bnb_price }}</p>
                 </div>
                 <div class="chart">
-                  <v-img
-                    class="charts"
-                    lazy-src="/green_chart.png"
-                    src="/green_chart.png"
-                    alt="image"
-                  />
+                  <p id="bnb_percent">{{ bnb_percent_change }}%</p>
                 </div>
               </div>
             </div>
@@ -152,7 +134,7 @@
       <div class="row mt-5 align-items-center">
         <div class="col-md-6">
           <div class="crypto_bucket_section mx-5">
-            <v-img src="/bitbucket.png" lazy-src="/bitbucket.png" alt="image" />
+            <v-img src="/vank_how.png" lazy-src="/vank_how.png" alt="image" />
           </div>
         </div>
         <div class="col-md-6" data-aos="fade-up">
@@ -228,37 +210,98 @@ export default {
   name: "IndexPage",
   data() {
     return {
-      btcs: {},
-      // btc_percent: {},
-      ether: {},
+      btc_cap: {},
+      btc_price: "",
+      eth_cap: {},
+      eth_price: "",
+      bnb_cap: {},
+      bnb_price: "",
+      bit_percent_change: "",
+      eth_percent_change: "",
+      bnb_percent_change: "",
       bnb: {},
-      cryptoUrl: "https://api.coingecko.com/api/v3/coins/",
+      btc: {},
+      eth: {},
+      new_btc: {},
+      new_eth: {},
+      new_bnb: {},
+
+      cryptoUrl: "https://data.messari.io/api/v1/assets/",
     };
   },
   methods: {
-    async get_btc_price() {
-      const response = await this.$axios.get(
-        this.cryptoUrl + "markets?vs_currency=usd&ids=bitcoin"
-      );
-      this.btcs = response.data;
-      console.log(this.btcs);
-      // this.btc_percent = this.btcs.name;
-      // console.log(this.btc_percent);
+    async get_btc() {
+      const res = await this.$axios.get(this.cryptoUrl + "btc/metrics");
+
+      this.btc_cap = res.data;
+      console.log(this.btc_cap.data);
+      this.btc = this.btc_cap.data.market_data;
+      console.log(this.btc);
+      this.btc_price = this.btc.price_usd.toFixed(2);
+      console.log(this.btc_price);
+      this.new_btc = this.btc.percent_change_usd_last_24_hours;
+      console.log(this.new_btc.toFixed(2));
+      this.bit_percent_change = this.new_btc.toFixed(2);
+      if (this.bit_percent_change < 1) {
+        document.getElementById("btc_percent").style.color = "red";
+      } else {
+        document.getElementById("btc_percent").style.color = "green";
+      }
     },
-    async get_eth_price() {
-      const response = await this.$axios.get(
-        this.cryptoUrl + "markets?vs_currency=usd&ids=ethereum"
-      );
-      this.ether = response.data;
-      console.log(this.ether);
+    async get_eth() {
+      const res = await this.$axios.get(this.cryptoUrl + "eth/metrics");
+
+      this.eth_cap = res.data;
+      console.log(this.eth_cap.data);
+      this.eth = this.eth_cap.data.market_data;
+      console.log(this.btc);
+      this.eth_price = this.eth.price_usd.toFixed(2);
+      console.log(this.btc_price);
+      this.new_eth = this.eth.percent_change_usd_last_24_hours;
+      console.log(this.new_eth.toFixed(2));
+      this.eth_percent_change = this.new_eth.toFixed(2);
+      if (this.eth_percent_change < 1) {
+        document.getElementById("eth_percent").style.color = "red";
+      } else {
+        document.getElementById("eth_percent").style.color = "green";
+      }
     },
-    async get_bnb_price() {
+    // async get_bnb() {
+    //   const res = await this.$axios.get(this.cryptoUrl + "bnb/metrics");
+
+    //   this.bnb_cap = res.data;
+    //   console.log(this.bnb_cap.data);
+    //   this.bnb = this.bnb_cap.data.market_data;
+    //   console.log(this.bnb);
+    //   this.bnb_price = this.bnb.price_usd.toFixed(2);
+    //   console.log(this.bnb_price);
+    //   this.new_bnb = this.bnb.percent_change_usd_last_24_hours;
+    //   console.log(this.new_bnb.toFixed(2));
+    //   this.bnb_percent_change = this.new_bnb.toFixed(2);
+    //   if (this.bnb_percent_change < 1) {
+    //     document.getElementById("bnb_percent").style.color = "red";
+    //   } else {
+    //     document.getElementById("bnb_percent").style.color = "green";
+    //   }
+    // },
+    async show_bnb() {
       const response = await this.$axios.get(
-        this.cryptoUrl + "markets?vs_currency=usd&ids=binancecoin"
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=binancecoin"
       );
       this.bnb = response.data;
-      console.log(this.bnb);
+      this.bnb_cap = this.bnb[0];
+      console.log(this.bnb_cap);
+      this.bnb_price = this.bnb_cap.current_price;
+      this.bnb_percent_change =
+        this.bnb_cap.price_change_percentage_24h.toFixed(2);
+      console.log(this.bnb_percent_change);
+      if (this.bnb_percent_change < 1) {
+        document.getElementById("bnb_percent").style.color = "red";
+      } else {
+        document.getElementById("bnb_percent").style.color = "green";
+      }
     },
+
     typed_text() {
       var typed = new Typed(".type", {
         strings: ["Crypto", "USDollars", "Digital Assets"],
@@ -271,9 +314,10 @@ export default {
   },
   mounted() {
     this.typed_text();
-    this.get_btc_price();
-    this.get_eth_price();
-    this.get_bnb_price();
+    this.show_bnb();
+    this.get_eth();
+    // this.get_bnb();
+    this.get_btc();
   },
 };
 </script>
@@ -451,7 +495,7 @@ hr {
 
 @media (max-width: 767px) {
   .hero_section {
-    padding: 10px;
+    padding: 30px 10px;
   }
   .hero_section h1,
   .typed_text span {
