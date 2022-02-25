@@ -34,7 +34,7 @@
               <td>1,120USD</td>
               <td class="text-success">+21%</td>
             </tr>
-            <tr class="py-2">
+            <tr class="py-2 bg-success">
               <td>3</td>
               <td>CORN</td>
               <td>500NGN</td>
@@ -111,6 +111,9 @@ export default {
   > tr:not(:last-child)
   > th:not(.v-data-table__mobile-row) {
   border-bottom: none;
+}
+tr {
+  margin-top: 100px !important;
 }
 /* .basket_data .v-data-table > .v-data-table__wrapper > table > tbody > tr > td,
 .v-data-table > .v-data-table__wrapper > table > tbody > tr > th,

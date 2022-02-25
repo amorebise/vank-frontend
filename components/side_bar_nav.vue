@@ -124,7 +124,11 @@ export default {
   cursor: pointer;
 }
 .list-group-item:hover {
-  background-color: transparent !important;
+  background: linear-gradient(
+    91.52deg,
+    #1d83c5 0%,
+    rgba(106, 188, 241, 0) 196.77%
+  );
   color: #455b6d !important;
   background-color: #ffffff !important;
   transition: all, 0.5s;

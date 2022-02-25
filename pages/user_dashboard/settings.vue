@@ -2,6 +2,15 @@
   <div class="pay_bills_wrap w-100">
     <div class="settings">
       <user-nav name="Settings" />
+      <div class="settings_wrap">
+        <template>
+          <v-tabs>
+            <v-tab>Change Password</v-tab>
+            <v-tab>Item Two</v-tab>
+            <v-tab>Item Three</v-tab>
+          </v-tabs>
+        </template>
+      </div>
     </div>
   </div>
 </template>
@@ -13,7 +22,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk&family=Titillium+Web&display=swap");
 * {
   margin: 0;
@@ -26,6 +35,37 @@ export default {
   background-color: #fff;
   min-height: 100vh;
   padding: 0 50px;
+}
+.settings_wrap {
+  margin-top: 50px;
+}
+/* .settings_wrap .v-slide-group__content {
+  background-color: #f4ede4;
+}
+.settings_wrap .theme--light.v-tabs > .v-tabs-bar,
+.settings_wrap .v-card > *:last-child:not(.v-btn):not(.v-chip):not(.v-avatar) {
+  background-color: #f4ede4;
+} */
+.settings_wrap .v-slide-group {
+  flex-wrap: wrap;
+}
+.settings_wrap .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active),
+.settings_wrap
+  .theme--light.v-tabs
+  > .v-tabs-bar
+  .v-tab:not(.v-tab--active)
+  > .v-icon,
+.settings_wrap
+  .theme--light.v-tabs
+  > .v-tabs-bar
+  .v-tab:not(.v-tab--active)
+  > .v-btn,
+.settings_wrap .theme--light.v-tabs > .v-tabs-bar .v-tab--disabled {
+  color: #55174f;
+  font-variant: normal;
+}
+.settings_wrap .v-tab {
+  text-transform: unset;
 }
 
 @media (max-width: 768px) {

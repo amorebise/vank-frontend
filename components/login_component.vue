@@ -113,6 +113,12 @@ export default {
       }
     },
 
+    // async created() {
+    //   if (this.$store.getters.isLoggedIn) {
+    //     this.$router.push("/");
+    //   }
+    // },
+
     displayPassword() {
       let password = document.getElementById("password");
       let show_password = document.getElementById("show_password");

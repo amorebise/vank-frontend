@@ -58,13 +58,18 @@
           <h5>Your Assets</h5>
         </div>
         <div class="buttons_wrap d-flex align-items-center">
+          <div class="buy_button_wrap mx-3">
+            <nuxt-link to="/subscription_page" class="buy_button"
+              >Buy Now</nuxt-link
+            >
+          </div>
           <div class="withdraw_button_wrap mx-3">
             <nuxt-link to="/withdrawal_page" class="withdrawal_button"
               >Withdraw</nuxt-link
             >
           </div>
           <div class="buy_button_wrap mx-3">
-            <nuxt-link to="/buy_more" class="buy_button">Buy Now</nuxt-link>
+            <nuxt-link to="/buy_more" class="buy_button">Buy More</nuxt-link>
           </div>
         </div>
       </div>

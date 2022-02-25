@@ -5,7 +5,10 @@
         <div class="">
           <li class="dashboard_text_li d-flex align-items-center">
             <div><creator-sidebar /></div>
-            <nuxt-link to="/" class="navbar-brand vank_logo_link"
+            <div class="mt-3">
+              <h1>{{ name }}</h1>
+            </div>
+            <!-- <nuxt-link to="/" class="navbar-brand vank_logo_link"
               ><nuxt-img
                 format="webp"
                 sizes="xs:35vw sm:30vw md:20vw lg:10vw"
@@ -13,7 +16,7 @@
                 fit="cover"
                 src="/vank_logo.png"
                 alt="image"
-            /></nuxt-link>
+            /></nuxt-link> -->
           </li>
         </div>
         <v-spacer></v-spacer>
@@ -53,8 +56,13 @@ export default {
   padding: 0;
   font-family: "Space Grotesk", sans-serif;
 }
-.nav_content .navbar {
-  /* padding: 0 100px; */
+/* .nav_content .navbar {
+  padding: 0 100px;
+} */
+
+.dashboard_text_li h1 {
+  color: #1d83c5;
+  font-weight: 600;
 }
 .log_out_button {
   border: 1px solid #00e8fe;
@@ -65,6 +73,12 @@ export default {
   .dashboard_text {
     font-size: 20px;
     margin-top: 0 !important;
+  }
+  .dashboard_text_li .mt-3 {
+    margin-top: 10px !important;
+  }
+  .dashboard_text_li h1 {
+    font-size: 20px;
   }
   .navbar {
     padding: 0;

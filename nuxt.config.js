@@ -144,7 +144,7 @@ export default {
     strategies: {
       local: {
         token: {
-          property: 'token',
+          property: 'access_token',
           global: true,
           // required: true,
           type: 'Bearer'

@@ -88,6 +88,7 @@
 
 <script>
 export default {
+  // middleware: "auth",
   data() {
     return {
       loading: false,
@@ -116,7 +117,7 @@ export default {
   font-family: "Space Grotesk", sans-serif;
 }
 .subscription_wrap {
-  background-color: #0f1843;
+  background-color: #fff;
   margin-top: 100px;
 }
 .subscription_wrap .subscription_content {

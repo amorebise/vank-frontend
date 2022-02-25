@@ -1,14 +1,7 @@
 <template>
   <div>
     <div class="nav_content w-100">
-      <nav
-        class="
-          navbar navbar-expand-lg navbar-light
-          bg-transparent
-          fixed-top
-          py-4
-        "
-      >
+      <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4">
         <div class="">
           <li class="dashboard_text_li d-flex align-items-center">
             <!-- <div><creator-sidebar /></div> -->
@@ -62,7 +55,6 @@ export default {
 }
 .navbar {
   padding: 10px 100px;
-  box-shadow: 5px 5px 5px #30303013;
   background-color: #fff !important;
 }
 .log_out_button {

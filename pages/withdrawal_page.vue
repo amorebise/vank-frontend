@@ -3,7 +3,22 @@
     <user-nav-component />
 
     <div class="withdraw_wrap">
-      <h5>Withdraw</h5>
+      <div class="d-flex">
+        <div class="arrow_wrap"></div>
+        <div class="withdraw_wrap">
+          <h5>
+            <nuxt-link to="/user_dashboard/dashboard"
+              ><font-awesome-icon
+                class="fa-1x text-white bg-primary"
+                :icon="['fas', 'arrow-left']"
+              />
+            </nuxt-link>
+
+            <span>Withdraw</span>
+          </h5>
+        </div>
+      </div>
+
       <div class="select_wrap">
         <div class="mt-3">
           <form action="" @submit.prevent="onSubmit()">
@@ -80,6 +95,7 @@
 
 <script>
 export default {
+  // middleware: "auth",
   data() {
     return {
       loading: false,
@@ -104,8 +120,8 @@ export default {
 
 <style>
 .withdraw_wrap {
-  padding: 100px 100px;
-  margin-top: 100px;
+  padding: 20px 100px;
+  /* margin-top: 100px; */
 }
 .withdraw_wrap h5 {
   color: #1d83c5;
@@ -156,6 +172,7 @@ export default {
 @media (max-width: 768px) {
   .withdraw_wrap {
     padding: 10px;
+    margin-top: 20px;
   }
   .select_wrap {
     width: 100%;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <user-nav name="VANK" />
+    <user-nav-component />
     <div class="buy_more_wrap">
       <h5>Buy Now</h5>
       <div class="buy_plan_wrap mt-5">
@@ -82,6 +82,7 @@
 
 <script>
 export default {
+  middleware: "auth",
   data() {
     return {
       loading: false,
