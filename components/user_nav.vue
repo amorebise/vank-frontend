@@ -7,6 +7,7 @@
             <div><creator-sidebar /></div>
             <div class="mt-3">
               <h1>{{ name }}</h1>
+              <!-- <h6>Welcome {{ user.name }}</h6> -->
             </div>
             <!-- <nuxt-link to="/" class="navbar-brand vank_logo_link"
               ><nuxt-img
@@ -37,6 +38,18 @@
 export default {
   props: ["name"],
   methods: {
+    // get_user() {
+    //   this.$axios
+    //     .get("/getAsset", {
+    //       headers: {
+    //         Authorization: `token ${localStorage.getItem("auth.jwt")}`,
+    //       },
+    //     })
+    //     .then((response) => {
+    //       this.user = response.data;
+    //       console.log(this.user);
+    //     });
+    // },
     async logout() {
       await this.$auth.logout();
       this.$router.push("/");
@@ -44,6 +57,9 @@ export default {
         timeout: 5000,
       });
     },
+  },
+  mounted() {
+    // this.get_user();
   },
 };
 </script>

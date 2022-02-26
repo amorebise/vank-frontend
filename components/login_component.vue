@@ -95,16 +95,17 @@ export default {
         let response = await this.$auth.loginWith("local", {
           data: this.login,
         });
-        console.log(response);
-        this.$auth.setUserToken(response.data.access_token);
+        console.log(response.data);
+
+        console.log(response.data.token);
+        this.$auth.setUserToken(response.data.token);
+        console.log(this.$auth.loggedIn);
         this.$router.push("/user_dashboard/dashboard");
-        this.$toast.success("Welcome", {
-          timeout: 5000,
-        });
       } catch (err) {
         this.loading = false;
+        console.log(err);
         this.$toast.warning(
-          "There was a problem logging into your account. Please try again.",
+          "There was a problem logging into your account. Password or email may be incorrect.",
           {
             timeout: 5000,
           }

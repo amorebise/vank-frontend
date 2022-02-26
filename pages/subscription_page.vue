@@ -2,6 +2,18 @@
   <div>
     <header-nav />
     <div class="subscription_wrap">
+      <div class="withdraw_wrap">
+        <h5>
+          <nuxt-link to="/user_dashboard/dashboard"
+            ><font-awesome-icon
+              class="fa-1x text-white bg-primary"
+              :icon="['fas', 'arrow-left']"
+            />
+          </nuxt-link>
+
+          <span>Buy Now</span>
+        </h5>
+      </div>
       <div class="subscription_content">
         <div class="d-flex justify-content-center">
           <div>
@@ -16,7 +28,7 @@
             <div class="plan_wrap">
               <div class="d-flex justify-content-center">
                 <form action="" @submit.prevent="onSubmit()">
-                  <div class="form-check">
+                  <div class="form-check py-2">
                     <input
                       class="form-check-input"
                       type="checkbox"
@@ -30,7 +42,7 @@
                     <br />
                     <span>US Dollar Equivalent</span>
                   </div>
-                  <div class="form-check">
+                  <div class="form-check py-2">
                     <input
                       class="form-check-input"
                       type="checkbox"
@@ -44,7 +56,7 @@
                     <br />
                     <span>Bitcoin to your Wallet</span>
                   </div>
-                  <div class="form-check">
+                  <div class="form-check py-2">
                     <input
                       class="form-check-input"
                       type="checkbox"
@@ -69,7 +81,6 @@
 
                     <v-btn
                       class="buy_later_button"
-                      :loading="loading"
                       value="Withdraw"
                       type="submit"
                       >Buy Later</v-btn
@@ -119,6 +130,7 @@ export default {
 .subscription_wrap {
   background-color: #fff;
   margin-top: 100px;
+  padding: 80px 100px;
 }
 .subscription_wrap .subscription_content {
   margin: 0 auto;
@@ -168,6 +180,9 @@ export default {
 }
 
 @media (max-width: 768px) {
+  .subscription_wrap {
+    padding: 10px;
+  }
   .subscription_wrap .subscription_content {
     width: 90%;
     padding: 10px;
@@ -177,6 +192,19 @@ export default {
   }
   .subscription_wrap .subscription_content p {
     font-size: 10px;
+  }
+  .subscription_wrap .subscription_content .plan_wrap .v-btn {
+    background-color: #00e8fe;
+    font-size: 12px;
+    padding: 0 2px !important;
+    box-shadow: none !important;
+    text-transform: none;
+    /* margin-top: 1px; */
+  }
+  .subscription_wrap .subscription_content .plan_wrap .buy_later_button {
+    border: 1px solid #00e8fe;
+    color: #00e8fe;
+    background-color: #fff;
   }
 }
 </style>

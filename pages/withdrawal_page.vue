@@ -109,10 +109,20 @@ export default {
   },
 
   methods: {
-    onSubmit() {
-      this.loading = true;
-      console.log(this.withdrawal_request);
-      this.$router.push("/verification_page");
+    async onSubmit() {
+      try {
+        this.loading = true;
+        const response = await this.$axios.post(
+          "/withdraw",
+          this.withdrawal_request
+        );
+        console.log(response);
+        this.$router.push("/verification_page");
+      } catch (error) {
+        console.log(error.response);
+      } finally {
+        this.withdrawal_request = {};
+      }
     },
   },
 };

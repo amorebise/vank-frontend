@@ -7,6 +7,7 @@
           <div class="glass_card_wrap mx-2 mb-2">
             <div class="write_up_section p-4">
               <h5>Wallet Balance</h5>
+              <!-- {{ user.first_name }} -->
               <div class="d-flex align-items-center pt-3">
                 <div class="">
                   <nuxt-img
@@ -16,7 +17,10 @@
                     src="/light_naira.png"
                   />
                 </div>
-                <div><p>1,000,000</p></div>
+                <div>
+                  <p>{{ newUser.amount }}</p>
+                </div>
+                <!-- {{ newUser.name }} -->
               </div>
               <div class="profit_wrap mt-4">
                 <span>Monthly PnL</span>
@@ -58,17 +62,17 @@
           <h5>Your Assets</h5>
         </div>
         <div class="buttons_wrap d-flex align-items-center">
-          <div class="buy_button_wrap mx-3">
+          <div class="buy_button_wrap mx-2">
             <nuxt-link to="/subscription_page" class="buy_button"
               >Buy Now</nuxt-link
             >
           </div>
-          <div class="withdraw_button_wrap mx-3">
+          <div class="withdraw_button_wrap mx-2">
             <nuxt-link to="/withdrawal_page" class="withdrawal_button"
               >Withdraw</nuxt-link
             >
           </div>
-          <div class="buy_button_wrap mx-3">
+          <div class="buy_button_wrap mx-2">
             <nuxt-link to="/buy_more" class="buy_button">Buy More</nuxt-link>
           </div>
         </div>
@@ -76,7 +80,7 @@
       <div class="row general_coin_wrap mt-5 mx-2 py-3">
         <div class="col-md-4 m_top">
           <div>
-            <h5 class="text_after">USDT</h5>
+            <h5 class="text_after">{{ newUser.coin2 }}</h5>
             <div class="asset_wrap">
               <div class="d-flex align-items-center">
                 <div class="coin_wrap">
@@ -90,7 +94,8 @@
                   />
                 </div>
                 <div class="coin_name_wrap mx-2">
-                  <h6>TETHER</h6>
+                  <h6>{{ newUser.coin2 }}</h6>
+                  <!-- {{ user.name }} -->
                 </div>
               </div>
               <div class="d-flex align-items-center pt-3">
@@ -102,7 +107,9 @@
                     src="/blue_naira.png"
                   />
                 </div>
-                <div><p>1,000,000</p></div>
+                <div>
+                  <p>{{ newUser.coin1_amount_bought }}</p>
+                </div>
               </div>
               <span>Total Investment</span>
             </div>
@@ -110,7 +117,7 @@
         </div>
         <div class="col-md-4 m_top">
           <div>
-            <h5 class="text_after">BTC</h5>
+            <h5 class="text_after">{{ newUser.coin1 }}</h5>
             <div class="asset_wrap">
               <div class="d-flex align-items-center">
                 <div class="coin_wrap">
@@ -124,7 +131,7 @@
                   />
                 </div>
                 <div class="coin_name_wrap mx-2">
-                  <h6>BITCOIN</h6>
+                  <h6>{{ newUser.coin1 }}</h6>
                 </div>
               </div>
               <div class="d-flex align-items-center pt-3">
@@ -136,7 +143,9 @@
                     src="/blue_naira.png"
                   />
                 </div>
-                <div><p>1,500,000</p></div>
+                <div>
+                  <p>{{ newUser.coin1_amount_bought }}</p>
+                </div>
               </div>
               <span>Total Investment</span>
             </div>
@@ -157,7 +166,7 @@
                 />
               </div>
               <div class="coin_name_wrap mx-2">
-                <h6>PHYGITAL</h6>
+                <h6>{{ newUser.asset }}</h6>
               </div>
             </div>
             <div class="d-flex align-items-center pt-3">
@@ -169,7 +178,9 @@
                   src="/blue_naira.png"
                 />
               </div>
-              <div><p>500,300</p></div>
+              <div>
+                <p>{{ newUser.asset_amount_bought }}</p>
+              </div>
             </div>
             <span>Total Investment</span>
           </div>
@@ -181,14 +192,17 @@
 
 <script>
 export default {
+  // middleware: "auth",
+
   data() {
     return {
       user: {},
+      newUser: {},
     };
   },
 
   methods: {
-    get_user() {
+    getUser() {
       this.$axios
         .get("/getAsset", {
           headers: {
@@ -196,13 +210,19 @@ export default {
           },
         })
         .then((response) => {
-          this.user = response.data;
-          console.log(this.user.data);
+          this.user = response.data.data;
+          console.log(this.user[0]);
+          this.newUser = this.user[0];
         });
     },
+    // created() {
+    //   const user = this.$store.getters.getUser;
+    //   console.log(user);
+    //   this.username = user.name;
+    // },
   },
-  mounted() {
-    this.get_user();
+  created() {
+    this.getUser();
   },
 };
 </script>
@@ -433,22 +453,22 @@ export default {
     padding: 10px !important;
   }
   .assets_wrap h5 {
-    font-size: 15px;
+    font-size: 10px;
   }
   .buttons_wrap .mx-3 {
     margin: 3px !important;
   }
   .buttons_wrap .withdrawal_button {
-    font-size: 14px;
-    padding: 9px 9px !important;
+    font-size: 10px;
+    padding: 4px 5px !important;
     font-weight: 600;
     color: #333f47;
     border-radius: 5px;
     letter-spacing: 1px;
   }
   .buttons_wrap .buy_button {
-    font-size: 14px;
-    padding: 9px 9px !important;
+    font-size: 10px;
+    padding: 4px 5px !important;
   }
   .general_coin_wrap {
     margin-top: 10px !important;

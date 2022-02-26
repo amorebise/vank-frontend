@@ -4,12 +4,34 @@
       <user-nav name="Settings" />
       <div class="settings_wrap">
         <template>
-          <v-tabs>
+          <v-tabs v-model="tab" align-with-title>
             <v-tab>Change Password</v-tab>
             <v-tab>Item Two</v-tab>
             <v-tab>Item Three</v-tab>
           </v-tabs>
         </template>
+        <v-tabs-items v-model="tab" class="tab_bg">
+          <v-tab-item>
+            <v-card flat>
+              <v-card-text class="">
+                <p>HI</p>
+              </v-card-text>
+            </v-card>
+          </v-tab-item>
+
+          <v-tab-item>
+            <v-card flat>
+              <v-card-text class="">
+                <p>HI</p>
+              </v-card-text>
+            </v-card>
+          </v-tab-item>
+          <v-tab-item>
+            <v-card flat>
+              <v-card-text class=""> Hi </v-card-text>
+            </v-card>
+          </v-tab-item>
+        </v-tabs-items>
       </div>
     </div>
   </div>
@@ -19,6 +41,11 @@
 import creator_sidebar from "~/components/creator_sidebar.vue";
 export default {
   components: { creator_sidebar },
+  data() {
+    return {
+      tab: null,
+    };
+  },
 };
 </script>
 

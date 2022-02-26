@@ -144,13 +144,14 @@ export default {
     strategies: {
       local: {
         token: {
-          property: 'access_token',
+          propertyName: 'data.token',
           global: true,
           // required: true,
           type: 'Bearer'
         },
+        localStorage: true,
         user: {
-          property: 'getAsset',
+          property: false,
           // autoFetch: true
         },
         endpoints: {

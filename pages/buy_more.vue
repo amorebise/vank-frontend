@@ -2,7 +2,18 @@
   <div>
     <user-nav-component />
     <div class="buy_more_wrap">
-      <h5>Buy Now</h5>
+      <div class="withdraw_wrap">
+        <h5>
+          <nuxt-link to="/user_dashboard/dashboard"
+            ><font-awesome-icon
+              class="fa-1x text-white bg-primary"
+              :icon="['fas', 'arrow-left']"
+            />
+          </nuxt-link>
+
+          <span>Buy More</span>
+        </h5>
+      </div>
       <div class="buy_plan_wrap mt-5">
         <div class="">
           <p>What do you want to buy?</p>
@@ -82,7 +93,7 @@
 
 <script>
 export default {
-  middleware: "auth",
+  // middleware: "auth",
   data() {
     return {
       loading: false,
