@@ -27,34 +27,34 @@
 <script>
 export default {
   props: ["name"],
-  // data() {
-  //   return {
-  //     user: {},
-  //     newUser: {},
-  //   };
-  // },
-  // methods: {
-  //   getUser() {
-  //     this.$axios
-  //       .get("/getAsset", {
-  //         headers: {
-  //           Authorization: `token ${localStorage.getItem("auth.jwt")}`,
-  //         },
-  //       })
-  //       .then((response) => {
-  //         this.user = response.data.data;
-  //         // console.log(this.user[0]);
-  //         this.newUser = this.user[0];
-  //       });
-  //   },
-  //   async logout() {
-  //     await this.$auth.logout();
-  //     this.$router.push("/");
-  //     this.$toast.success("You've Successfully Logged Out", {
-  //       timeout: 5000,
-  //     });
-  //   },
-  // },
+  data() {
+    return {
+      // user: {},
+      // newUser: {},
+    };
+  },
+  methods: {
+    // getUser() {
+    //   this.$axios
+    //     .get("/getAsset", {
+    //       headers: {
+    //         Authorization: `token ${localStorage.getItem("auth.jwt")}`,
+    //       },
+    //     })
+    //     .then((response) => {
+    //       this.user = response.data.data;
+    //       // console.log(this.user[0]);
+    //       this.newUser = this.user[0];
+    //     });
+    // },
+    async logout() {
+      await this.$auth.logout();
+      this.$router.push("/");
+      this.$toast.success("You've Successfully Logged Out", {
+        timeout: 5000,
+      });
+    },
+  },
   // mounted() {
   //   this.getUser();
   // },
