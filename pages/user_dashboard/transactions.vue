@@ -33,7 +33,11 @@
                           <td>107,144.40NGN</td>
                           <td>571.30NGN</td>
                           <td>1.87.54USDT</td>
-                          <td class="bg-succes">Completed</td>
+                          <td>
+                            <div class="success mt-2 text-center">
+                              <p class="text-success py-2">Completed</p>
+                            </div>
+                          </td>
                         </tr>
                         <tr class="py-2">
                           <td>2</td>
@@ -41,7 +45,11 @@
                           <td>920,000.00NGN</td>
                           <td>574.10NGN</td>
                           <td>1.602.50USDT</td>
-                          <td class="bg-warning">Pending</td>
+                          <td>
+                            <div class="warning mt-2 text-center">
+                              <p class="text-warning py-2">Pending</p>
+                            </div>
+                          </td>
                         </tr>
                         <tr class="py-2">
                           <td>3</td>
@@ -49,7 +57,11 @@
                           <td>200,000.00NGN</td>
                           <td>572.00NGN</td>
                           <td>349.65USDT</td>
-                          <td class="bg-succes">Completed</td>
+                          <td>
+                            <div class="success mt-2 text-center">
+                              <p class="text-success py-2">Completed</p>
+                            </div>
+                          </td>
                         </tr>
                       </tbody>
                     </template>
@@ -67,46 +79,27 @@
                     <template v-slot:default>
                       <thead>
                         <tr class="">
-                          <th class="text-left th_color">SN</th>
+                          <th class="text-left th_color">Date</th>
                           <th class="text-left th_color">Token</th>
-                          <th class="text-left th_color">Current Price</th>
-                          <th class="text-left th_color">
-                            Average Purchase Price
-                          </th>
-                          <th class="text-left th_color">Quantity</th>
-                          <th class="text-left th_color">Current Value</th>
-                          <th class="text-left th_color">
-                            Historic Profit/Loss
-                          </th>
+                          <th class="text-left th_color">Average Price</th>
+                          <th class="text-left th_color">Amount</th>
+                          <th class="text-left th_color">Total</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr class="mt-2">
-                          <td>1</td>
-                          <td>HIGH</td>
-                          <td>6.25USD</td>
-                          <td>8.92</td>
+                          <td>03/02/2022</td>
+                          <td>XRP</td>
+                          <td>0.80USD</td>
                           <td>100</td>
-                          <td>625USD</td>
-                          <td class="text-danger">-9%</td>
+                          <td>80USD</td>
                         </tr>
                         <tr class="py-2">
-                          <td>2</td>
-                          <td>DOT</td>
-                          <td>22.41USD</td>
-                          <td>18.40</td>
-                          <td>50</td>
-                          <td>1,120USD</td>
-                          <td class="text-success">+21%</td>
-                        </tr>
-                        <tr class="py-2">
-                          <td>3</td>
+                          <td>04/02/2022</td>
                           <td>CORN</td>
                           <td>500NGN</td>
-                          <td>350</td>
-                          <td>2000</td>
-                          <td>1,000,000NGN</td>
-                          <td class="text-success">+42%</td>
+                          <td>10</td>
+                          <td>5,000NGN</td>
                         </tr>
                       </tbody>
                     </template>
@@ -214,6 +207,22 @@ export default {
 } */
 tr {
   margin-top: 100px !important;
+}
+.warning {
+  background: rgba(231, 171, 54, 0.1);
+  border-radius: 4px;
+  font-weight: 600;
+}
+.warning p {
+  padding-top: 10px;
+}
+.success {
+  background: rgba(30, 151, 57, 0.1);
+  border-radius: 4px;
+  font-weight: 600;
+}
+.success p {
+  padding-top: 10px;
 }
 @media (max-width: 768px) {
   .transactions {

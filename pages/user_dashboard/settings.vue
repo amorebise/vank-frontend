@@ -14,7 +14,17 @@
           <v-tab-item>
             <v-card flat>
               <v-card-text class="">
-                <p>HI</p>
+                <p>
+                  HI,
+                  <nuxt-img
+                    format="webp"
+                    quality="90"
+                    fit="cover"
+                    sizes="xs:35vw sm:30vw md:20vw lg:8vw"
+                    src="/emoji.png"
+                  />
+                  nothing to see here for now
+                </p>
               </v-card-text>
             </v-card>
           </v-tab-item>
@@ -22,13 +32,35 @@
           <v-tab-item>
             <v-card flat>
               <v-card-text class="">
-                <p>HI</p>
+                <p>
+                  HI,
+                  <nuxt-img
+                    format="webp"
+                    quality="90"
+                    fit="cover"
+                    sizes="xs:35vw sm:30vw md:20vw lg:8vw"
+                    src="/emoji.png"
+                  />
+                  nothing to see here for now
+                </p>
               </v-card-text>
             </v-card>
           </v-tab-item>
           <v-tab-item>
             <v-card flat>
-              <v-card-text class=""> Hi </v-card-text>
+              <v-card-text class="">
+                <p>
+                  HI,
+                  <nuxt-img
+                    format="webp"
+                    quality="90"
+                    fit="cover"
+                    sizes="xs:35vw sm:30vw md:20vw lg:8vw"
+                    src="/emoji.png"
+                  />
+                  nothing to see here for now
+                </p>
+              </v-card-text>
             </v-card>
           </v-tab-item>
         </v-tabs-items>
