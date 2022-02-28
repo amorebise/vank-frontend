@@ -100,17 +100,20 @@ export default {
         console.log(response.data.token);
         this.$auth.setUserToken(response.data.token);
         console.log(this.$auth.loggedIn);
+        this.$toast.success("Login Successful", {
+          timeout: 5000,
+        });
         this.$router.push("/user_dashboard/dashboard");
       } catch (err) {
         this.loading = false;
-        console.log(err);
+        console.log(err.response);
         this.$toast.warning(
           "There was a problem logging into your account. Password or email may be incorrect.",
           {
             timeout: 5000,
           }
         );
-        console.log(err);
+        console.log(err.response);
       }
     },
 

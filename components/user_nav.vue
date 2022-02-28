@@ -7,17 +7,7 @@
             <div><creator-sidebar /></div>
             <div class="mt-3">
               <h1>{{ name }}</h1>
-              <!-- <h6>Welcome {{ user.name }}</h6> -->
             </div>
-            <!-- <nuxt-link to="/" class="navbar-brand vank_logo_link"
-              ><nuxt-img
-                format="webp"
-                sizes="xs:35vw sm:30vw md:20vw lg:10vw"
-                quality="90"
-                fit="cover"
-                src="/vank_logo.png"
-                alt="image"
-            /></nuxt-link> -->
           </li>
         </div>
         <v-spacer></v-spacer>
@@ -37,30 +27,37 @@
 <script>
 export default {
   props: ["name"],
-  methods: {
-    // get_user() {
-    //   this.$axios
-    //     .get("/getAsset", {
-    //       headers: {
-    //         Authorization: `token ${localStorage.getItem("auth.jwt")}`,
-    //       },
-    //     })
-    //     .then((response) => {
-    //       this.user = response.data;
-    //       console.log(this.user);
-    //     });
-    // },
-    async logout() {
-      await this.$auth.logout();
-      this.$router.push("/");
-      this.$toast.success("You've Successfully Logged Out", {
-        timeout: 5000,
-      });
-    },
-  },
-  mounted() {
-    // this.get_user();
-  },
+  // data() {
+  //   return {
+  //     user: {},
+  //     newUser: {},
+  //   };
+  // },
+  // methods: {
+  //   getUser() {
+  //     this.$axios
+  //       .get("/getAsset", {
+  //         headers: {
+  //           Authorization: `token ${localStorage.getItem("auth.jwt")}`,
+  //         },
+  //       })
+  //       .then((response) => {
+  //         this.user = response.data.data;
+  //         // console.log(this.user[0]);
+  //         this.newUser = this.user[0];
+  //       });
+  //   },
+  //   async logout() {
+  //     await this.$auth.logout();
+  //     this.$router.push("/");
+  //     this.$toast.success("You've Successfully Logged Out", {
+  //       timeout: 5000,
+  //     });
+  //   },
+  // },
+  // mounted() {
+  //   this.getUser();
+  // },
 };
 </script>
 

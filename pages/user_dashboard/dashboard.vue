@@ -2,12 +2,22 @@
   <div class="dashboard w-100">
     <div class="dashboard_content">
       <user-nav name="Dashboard" />
+      <div v-if="newUser" class="d-flex align-items-center px-3 mb-2">
+        <h5 class="user_font">
+          Welcome, <span class="user_name">{{ newUser.name }}</span>
+        </h5>
+        <nuxt-img format="webp" quality="90" fit="cover" src="/emoji.png" />
+      </div>
+      <div v-else class="d-flex align-items-center px-3 mb-2">
+        <h5>Welcome</h5>
+        <nuxt-img format="webp" quality="90" fit="cover" src="/emoji.png" />
+      </div>
       <div class="row">
         <div class="col-md-6">
           <div class="glass_card_wrap mx-2 mb-2">
             <div class="write_up_section p-4">
               <h5>Wallet Balance</h5>
-              <!-- {{ user.first_name }} -->
+
               <div class="d-flex align-items-center pt-3">
                 <div class="">
                   <nuxt-img
@@ -17,9 +27,10 @@
                     src="/light_naira.png"
                   />
                 </div>
-                <div>
+                <div v-if="newUser">
                   <p>{{ newUser.amount }}</p>
                 </div>
+                <div v-else><p>0</p></div>
                 <!-- {{ newUser.name }} -->
               </div>
               <div class="profit_wrap mt-4">
@@ -80,7 +91,9 @@
       <div class="row general_coin_wrap mt-5 mx-2 py-3">
         <div class="col-md-4 m_top">
           <div>
-            <h5 class="text_after">{{ newUser.coin2 }}</h5>
+            <div>
+              <h5 class="text_after">USDT</h5>
+            </div>
             <div class="asset_wrap">
               <div class="d-flex align-items-center">
                 <div class="coin_wrap">
@@ -94,8 +107,9 @@
                   />
                 </div>
                 <div class="coin_name_wrap mx-2">
-                  <h6>{{ newUser.coin2 }}</h6>
-                  <!-- {{ user.name }} -->
+                  <div>
+                    <h6>USDT</h6>
+                  </div>
                 </div>
               </div>
               <div class="d-flex align-items-center pt-3">
@@ -107,8 +121,11 @@
                     src="/blue_naira.png"
                   />
                 </div>
-                <div>
-                  <p>{{ newUser.coin1_amount_bought }}</p>
+                <div v-if="newUser">
+                  <p>{{ newUser.usdt_amount_bought }}</p>
+                </div>
+                <div v-else>
+                  <p>0</p>
                 </div>
               </div>
               <span>Total Investment</span>
@@ -117,7 +134,9 @@
         </div>
         <div class="col-md-4 m_top">
           <div>
-            <h5 class="text_after">{{ newUser.coin1 }}</h5>
+            <div>
+              <h5 class="text_after">BTC</h5>
+            </div>
             <div class="asset_wrap">
               <div class="d-flex align-items-center">
                 <div class="coin_wrap">
@@ -131,7 +150,9 @@
                   />
                 </div>
                 <div class="coin_name_wrap mx-2">
-                  <h6>{{ newUser.coin1 }}</h6>
+                  <div>
+                    <h6>BITCOIN</h6>
+                  </div>
                 </div>
               </div>
               <div class="d-flex align-items-center pt-3">
@@ -144,7 +165,12 @@
                   />
                 </div>
                 <div>
-                  <p>{{ newUser.coin1_amount_bought }}</p>
+                  <div v-if="newUser">
+                    <p>{{ newUser.coin1_amount_bought }}</p>
+                  </div>
+                  <div v-else>
+                    <p>0</p>
+                  </div>
                 </div>
               </div>
               <span>Total Investment</span>
@@ -156,17 +182,23 @@
           <div class="asset_wrap">
             <div class="d-flex align-items-center">
               <div class="coin_wrap">
-                <nuxt-img
-                  format="webp"
-                  sizes="xs:35vw sm:30vw md:20vw lg:15vw"
-                  quality="90"
-                  fit="cover"
-                  src="/phygi.png"
-                  alt="image"
-                />
+                <div class="img">
+                  <nuxt-img
+                    format="webp"
+                    quality="90"
+                    fit="cover"
+                    src="/phygi.png"
+                    alt="image"
+                  />
+                </div>
               </div>
               <div class="coin_name_wrap mx-2">
-                <h6>{{ newUser.asset }}</h6>
+                <div v-if="newUser">
+                  <h6>{{ newUser.asset }}</h6>
+                </div>
+                <div v-else>
+                  <h6>PHYGITAL</h6>
+                </div>
               </div>
             </div>
             <div class="d-flex align-items-center pt-3">
@@ -179,7 +211,12 @@
                 />
               </div>
               <div>
-                <p>{{ newUser.asset_amount_bought }}</p>
+                <div v-if="newUser">
+                  <p>{{ newUser.asset_amount_bought }}</p>
+                </div>
+                <div v-else>
+                  <p>0</p>
+                </div>
               </div>
             </div>
             <span>Total Investment</span>
@@ -192,7 +229,7 @@
 
 <script>
 export default {
-  // middleware: "auth",
+  middleware: "auth",
 
   data() {
     return {
@@ -202,24 +239,37 @@ export default {
   },
 
   methods: {
-    getUser() {
-      this.$axios
-        .get("/getAsset", {
+    async getUser() {
+      let auth = this.$auth.$storage._state;
+      let token = null;
+
+      for (const key in auth) {
+        console.log(key);
+
+        if (key == "_token.local") {
+          token = auth[key];
+        } else {
+          console.log("No");
+        }
+      }
+
+      console.log(token);
+
+      // console.log(this.$auth.$storage._state._token);
+      try {
+        let res = await this.$axios.get("/getAsset", {
           headers: {
-            Authorization: `token ${localStorage.getItem("auth.jwt")}`,
+            Authorization: `bearer ${token}`,
           },
-        })
-        .then((response) => {
-          this.user = response.data.data;
-          console.log(this.user[0]);
-          this.newUser = this.user[0];
         });
+
+        this.newUser = res.data.data[0];
+
+        console.log(res);
+      } catch (error) {
+        console.log(error.response);
+      }
     },
-    // created() {
-    //   const user = this.$store.getters.getUser;
-    //   console.log(user);
-    //   this.username = user.name;
-    // },
   },
   created() {
     this.getUser();
@@ -240,6 +290,12 @@ export default {
   background-color: #fff;
   min-height: 100vh;
   padding: 0 50px;
+}
+.user_font {
+  font-weight: 550;
+}
+.user_name {
+  color: #1d83c5;
 }
 .glass_card_wrap {
   background-image: url("/glassy.png");
@@ -366,11 +422,11 @@ export default {
 }
 .asset_wrap {
   border: 1px solid #1797ec;
-  min-height: 20vh;
+  height: 135px;
   margin-top: 20px;
   border-radius: 10px;
   padding: 10px;
-  width: 70%;
+  width: 95%;
   font-weight: 600;
 }
 .asset_wrap p {
@@ -387,6 +443,12 @@ export default {
   margin-top: 2px;
   font-weight: 600;
 }
+.coin_wrap img {
+  width: 35px;
+}
+.coin_wrap .img img {
+  width: 40px;
+}
 
 @media (max-width: 768px) {
   .dashboard_content {
@@ -395,6 +457,7 @@ export default {
   }
   .asset_wrap {
     width: 100%;
+    height: 100%;
   }
   .m_top {
     margin-top: 20px;
