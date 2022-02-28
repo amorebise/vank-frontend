@@ -322,11 +322,6 @@ export default {
       try {
         this.loading = true;
         const response = await this.$axios.post("/register", this.signUp_data);
-        const res = await this.$auth.loginWith(
-          "local",
-          this.signUp_data.email,
-          this.signUp_data.password
-        );
         this.$toast.success(
           "Registration Successful, Check Your Mail For Verification",
           {
@@ -335,9 +330,7 @@ export default {
         );
 
         console.log(response);
-        console.log(res);
         this.loading = false;
-
         this.$router.push("/");
         // this.signUp_data = {};
       } catch (error) {
