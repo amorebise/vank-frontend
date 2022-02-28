@@ -19,11 +19,7 @@
         >
           <div class="child_items">
             <div class="ml-3">
-              <nuxt-img
-                format="webp"
-                sizes="xs:35vw sm:30vw md:20vw lg:11vw"
-                src="/home.png"
-              />
+              <ion-icon name="home-outline"></ion-icon>
 
               <span class="ml-2">Dashboard</span>
             </div>
@@ -34,17 +30,17 @@
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="ml-3">
-            <nuxt-img class="img_wrap" format="webp" src="/Bag.png" />
+            <ion-icon name="bag-outline"></ion-icon>
             <span class="ml-2">Basket</span>
           </div>
         </nuxt-link>
-
+        <i class="fas fa-analytics"></i>
         <nuxt-link
           to="/user_dashboard/transactions"
           class="list-group list-group-item active bg-transparent"
         >
           <div class="ml-3">
-            <nuxt-img class="img_wrap" format="webp" src="/Activity.png" />
+            <ion-icon name="bar-chart-outline"></ion-icon>
             <span class="ml-2">Transactions</span>
           </div>
         </nuxt-link>
@@ -53,11 +49,7 @@
           class="list-group list-group-item active bg-transparent"
         >
           <div class="ml-3">
-            <nuxt-img
-              format="webp"
-              sizes="xs:35vw sm:30vw md:20vw lg:12vw"
-              src="/settings.png"
-            />
+            <ion-icon name="settings-outline"></ion-icon>
             <span class="ml-2">Settings</span>
           </div>
         </nuxt-link>
@@ -67,10 +59,15 @@
 </template>
 
 <script>
+import { mdiAccount } from "@mdi/js";
+
 export default {
   data() {
     return {
       show: false,
+      icons: {
+        mdiAccount,
+      },
     };
   },
 };
@@ -124,11 +121,12 @@ export default {
   cursor: pointer;
 }
 .list-group-item:hover {
-  background: linear-gradient(
+  /* background: linear-gradient(
     91.52deg,
     #1d83c5 0%,
     rgba(106, 188, 241, 0) 196.77%
-  );
+  ); */
+  background-color: #fff;
   color: #455b6d !important;
   background-color: #ffffff !important;
   transition: all, 0.5s;

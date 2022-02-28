@@ -69,7 +69,7 @@
                 <input
                   type="number"
                   class="form-control"
-                  v-model="buy_option_info.vank_basket_amount"
+                  v-model="buy_option_info.amount"
                   placeholder="Enter Amount in Naira"
                 />
               </div>
@@ -93,7 +93,7 @@
 
 <script>
 export default {
-  // middleware: "auth",
+  middleware: "auth",
   data() {
     return {
       loading: false,
@@ -103,7 +103,7 @@ export default {
         vank_basket: "",
         usdt_amount: "",
         btc_amount: "",
-        vank_basket_amount: "",
+        amount: "",
       },
     };
   },

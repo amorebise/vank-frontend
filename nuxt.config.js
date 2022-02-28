@@ -16,8 +16,8 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/dark_vank.png' },
-      // { rel: "stylesheet", href: "https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" },
-      // { rel: "stylesheet", href: "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" },
+      { rel: "stylesheet", href: "https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" },
       // { rel: "stylesheet", href="https://fonts.googleapis.com" },
       // { rel: "stylesheet", href="https://fonts.gstatic.com" },
       // { href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap", rel: "stylesheet" },
@@ -54,6 +54,15 @@ export default {
         src: "https://cdn.jsdelivr.net/npm/typed.js@2.0.12",
         type: "text/javascript"
       },
+      {
+        src: "https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js",
+        type: "module"
+      },
+      {
+        src: "https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js",
+        type: "nomodule"
+      },
+
 
 
       // {

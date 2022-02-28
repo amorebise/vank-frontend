@@ -33,7 +33,7 @@
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="child_items ml-5">
-            <font-awesome-icon :icon="['fas', 'home']" />
+            <ion-icon name="home-outline"></ion-icon>
             <span class="ml-2">Dashboard</span>
           </div>
         </nuxt-link>
@@ -42,7 +42,7 @@
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="ml-5">
-            <font-awesome-icon :icon="['fas', 'comment-alt']" />
+            <ion-icon name="bag-outline"></ion-icon>
             <span class="ml-2">Basket</span>
           </div>
         </nuxt-link>
@@ -52,7 +52,7 @@
           class="list-group list-group-item active bg-transparent"
         >
           <div class="ml-5">
-            <font-awesome-icon :icon="['fas', 'user']" />
+            <ion-icon name="bar-chart-outline"></ion-icon>
             <span class="ml-2">Transactions</span>
           </div>
         </nuxt-link>
@@ -61,7 +61,7 @@
           class="list-group list-group-item active bg-transparent"
         >
           <div class="ml-5">
-            <font-awesome-icon :icon="['fas', 'plus']" />
+            <ion-icon name="settings-outline"></ion-icon>
             <span class="ml-2">Settings</span>
           </div>
         </nuxt-link>
