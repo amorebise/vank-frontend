@@ -234,13 +234,9 @@ export default {
       const res = await this.$axios.get(this.cryptoUrl + "btc/metrics");
 
       this.btc_cap = res.data;
-      // console.log(this.btc_cap.data);
       this.btc = this.btc_cap.data.market_data;
-      // console.log(this.btc);
       this.btc_price = this.btc.price_usd.toFixed(2);
-      // console.log(this.btc_price);
       this.new_btc = this.btc.percent_change_usd_last_24_hours;
-      // console.log(this.new_btc.toFixed(2));
       this.bit_percent_change = this.new_btc.toFixed(2);
       if (this.bit_percent_change < 1) {
         document.getElementById("btc_percent").style.color = "red";
@@ -252,13 +248,9 @@ export default {
       const res = await this.$axios.get(this.cryptoUrl + "eth/metrics");
 
       this.eth_cap = res.data;
-      // console.log(this.eth_cap.data);
       this.eth = this.eth_cap.data.market_data;
-      // console.log(this.btc);
       this.eth_price = this.eth.price_usd.toFixed(2);
-      // console.log(this.btc_price);
       this.new_eth = this.eth.percent_change_usd_last_24_hours;
-      // console.log(this.new_eth.toFixed(2));
       this.eth_percent_change = this.new_eth.toFixed(2);
       if (this.eth_percent_change < 1) {
         document.getElementById("eth_percent").style.color = "red";
@@ -266,35 +258,15 @@ export default {
         document.getElementById("eth_percent").style.color = "green";
       }
     },
-    // async get_bnb() {
-    //   const res = await this.$axios.get(this.cryptoUrl + "bnb/metrics");
-
-    //   this.bnb_cap = res.data;
-    //   console.log(this.bnb_cap.data);
-    //   this.bnb = this.bnb_cap.data.market_data;
-    //   console.log(this.bnb);
-    //   this.bnb_price = this.bnb.price_usd.toFixed(2);
-    //   console.log(this.bnb_price);
-    //   this.new_bnb = this.bnb.percent_change_usd_last_24_hours;
-    //   console.log(this.new_bnb.toFixed(2));
-    //   this.bnb_percent_change = this.new_bnb.toFixed(2);
-    //   if (this.bnb_percent_change < 1) {
-    //     document.getElementById("bnb_percent").style.color = "red";
-    //   } else {
-    //     document.getElementById("bnb_percent").style.color = "green";
-    //   }
-    // },
     async show_bnb() {
       const response = await this.$axios.get(
         "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=binancecoin"
       );
       this.bnb = response.data;
       this.bnb_cap = this.bnb[0];
-      // console.log(this.bnb_cap);
       this.bnb_price = this.bnb_cap.current_price;
       this.bnb_percent_change =
         this.bnb_cap.price_change_percentage_24h.toFixed(2);
-      // console.log(this.bnb_percent_change);
       if (this.bnb_percent_change < 1) {
         document.getElementById("bnb_percent").style.color = "red";
       } else {

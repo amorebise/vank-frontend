@@ -73,18 +73,15 @@
           <h5>Your Assets</h5>
         </div>
         <div class="buttons_wrap d-flex align-items-center">
-          <div class="buy_button_wrap mx-2">
-            <nuxt-link to="/subscription_page" class="buy_button"
-              >Buy Now</nuxt-link
-            >
-          </div>
           <div class="withdraw_button_wrap mx-2">
             <nuxt-link to="/withdrawal_page" class="withdrawal_button"
               >Withdraw</nuxt-link
             >
           </div>
           <div class="buy_button_wrap mx-2">
-            <nuxt-link to="/buy_more" class="buy_button">Buy More</nuxt-link>
+            <nuxt-link to="/subscription_page" class="buy_button"
+              >Buy Asset</nuxt-link
+            >
           </div>
         </div>
       </div>
@@ -92,9 +89,9 @@
         <div class="col-md-4 m_top">
           <div>
             <div>
-              <h5 class="text_after">USDT</h5>
+              <h6 class="text_after font-weight-bold font-weight-bold">USDT</h6>
             </div>
-            <div class="asset_wrap">
+            <div class="asset_wrap first_card_wrap">
               <div class="d-flex align-items-center">
                 <div class="coin_wrap">
                   <nuxt-img
@@ -113,12 +110,12 @@
                 </div>
               </div>
               <div class="d-flex align-items-center pt-3">
-                <div class="">
+                <div class="naira_wrap">
                   <nuxt-img
                     format="webp"
                     quality="90"
                     fit="cover"
-                    src="/blue_naira.png"
+                    src="/nicon.png"
                   />
                 </div>
                 <div v-if="newUser">
@@ -128,16 +125,16 @@
                   <p>0</p>
                 </div>
               </div>
-              <span>Total Investment</span>
+              <span class="text-light">Total Investment</span>
             </div>
           </div>
         </div>
         <div class="col-md-4 m_top">
           <div>
             <div>
-              <h5 class="text_after">BTC</h5>
+              <h6 class="text_after font-weight-bold font-weight-bold">BTC</h6>
             </div>
-            <div class="asset_wrap">
+            <div class="asset_wrap second_card_wrap">
               <div class="d-flex align-items-center">
                 <div class="coin_wrap">
                   <nuxt-img
@@ -156,12 +153,12 @@
                 </div>
               </div>
               <div class="d-flex align-items-center pt-3">
-                <div class="">
+                <div class="naira_wrap">
                   <nuxt-img
                     format="webp"
                     quality="90"
                     fit="cover"
-                    src="/blue_naira.png"
+                    src="/nicon.png"
                   />
                 </div>
                 <div>
@@ -173,13 +170,13 @@
                   </div>
                 </div>
               </div>
-              <span>Total Investment</span>
+              <span class="text-light">Total Investment</span>
             </div>
           </div>
         </div>
         <div class="col-md-4 m_top">
-          <h5 class="text_after">PHYGITAL</h5>
-          <div class="asset_wrap">
+          <h6 class="text_after font-weight-bold">PHYGITAL</h6>
+          <div class="asset_wrap third_card_wrap">
             <div class="d-flex align-items-center">
               <div class="coin_wrap">
                 <div class="img">
@@ -202,12 +199,12 @@
               </div>
             </div>
             <div class="d-flex align-items-center pt-3">
-              <div class="">
+              <div class="naira_wrap">
                 <nuxt-img
                   format="webp"
                   quality="90"
                   fit="cover"
-                  src="/blue_naira.png"
+                  src="/nicon.png"
                 />
               </div>
               <div>
@@ -219,7 +216,7 @@
                 </div>
               </div>
             </div>
-            <span>Total Investment</span>
+            <span class="text-light">Total Investment</span>
           </div>
         </div>
       </div>
@@ -229,7 +226,7 @@
 
 <script>
 export default {
-  middleware: "auth",
+  // middleware: "auth",
 
   data() {
     return {
@@ -350,8 +347,10 @@ export default {
   font-size: 12px;
 }
 .main_card_wrap .write_up_section .v-btn {
-  background-color: #00e8fe !important;
+  background-color: inherit !important;
   font-size: 18px;
+  color: #00e8fe;
+  border: 1px solid #00e8fe;
   padding: 25px 10px !important;
   box-shadow: none !important;
   text-transform: none;
@@ -373,11 +372,12 @@ export default {
   letter-spacing: 1px;
 }
 .buttons_wrap .buy_button {
-  background-color: #c5cbcc !important;
+  background-color: inherit !important;
+  border: 1px solid #00e8fe;
   font-size: 16px;
   padding: 13px 20px !important;
   font-weight: 600;
-  color: #333f47;
+  color: #00e8fe;
   border-radius: 5px;
   letter-spacing: 1px;
 }
@@ -388,7 +388,7 @@ export default {
   top: 1.5rem;
   width: 1rem;
   height: 2px;
-  background-color: #00e8fe;
+  background-color: #1d83c5;
 }
 .text_after::after {
   -webkit-animation-name: slideInLeft;
@@ -421,20 +421,38 @@ export default {
   }
 }
 .asset_wrap {
-  border: 1px solid #1797ec;
   height: 135px;
   margin-top: 20px;
-  border-radius: 10px;
   padding: 10px;
   width: 95%;
   font-weight: 600;
 }
+.first_card_wrap {
+  background-image: url("/mocard1.png");
+  background-size: 100%;
+  background-position-x: 90%;
+  background-position-y: 95%;
+  border-radius: 7px;
+}
+.second_card_wrap {
+  background-image: url("/mocard2.png");
+  background-size: 100%;
+  border-radius: 7px;
+}
+.third_card_wrap {
+  background-image: url("/mocard3.png");
+  background-size: 100%;
+  border-radius: 7px;
+}
+.naira_wrap img {
+  width: 25px;
+}
 .asset_wrap p {
   font-size: 25px;
-  color: #1d83c5;
+  color: #00e8fe;
 }
 .asset_wrap .coin_name_wrap {
-  background-color: #c5cbcc;
+  background-color: #f8f7ff;
   border-radius: 5px;
 }
 .asset_wrap .coin_name_wrap h6 {
@@ -444,10 +462,10 @@ export default {
   font-weight: 600;
 }
 .coin_wrap img {
-  width: 35px;
+  width: 25px;
 }
 .coin_wrap .img img {
-  width: 40px;
+  width: 35px;
 }
 
 @media (max-width: 768px) {
@@ -538,6 +556,12 @@ export default {
   }
   .general_coin_wrap h5 {
     font-size: 15px;
+  }
+  .first_card_wrap {
+    background-image: url("/mocard1.png");
+    background-size: 100%;
+
+    border-radius: 10px;
   }
 }
 </style>

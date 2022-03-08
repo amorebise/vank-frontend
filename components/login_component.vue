@@ -100,7 +100,7 @@ export default {
         console.log(response.data.token);
         this.$auth.setUserToken(response.data.token);
         console.log(this.$auth.loggedIn);
-        this.$toast.success("Login Successful", {
+        this.$toast.success("You Are Logged In", {
           timeout: 5000,
         });
         this.$router.push("/user_dashboard/dashboard");
@@ -116,12 +116,6 @@ export default {
         console.log(err.response);
       }
     },
-
-    // async created() {
-    //   if (this.$store.getters.isLoggedIn) {
-    //     this.$router.push("/");
-    //   }
-    // },
 
     displayPassword() {
       let password = document.getElementById("password");

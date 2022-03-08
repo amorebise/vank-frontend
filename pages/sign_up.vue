@@ -27,10 +27,6 @@
                       v-model="signUp_data.first_name"
                       placeholder="Enter your First Name"
                     />
-                    <span class="account_color"
-                      >Name on Bank Account must match with Names
-                      provided.</span
-                    >
                     <span class="errors">{{ errors[0] }}</span>
                   </ValidationProvider>
                 </div>
@@ -140,7 +136,7 @@
                   >
                     <label for="" class="py-2">Password</label>
                     <input
-                      type="text"
+                      type="password"
                       class="form-control"
                       v-model="signUp_data.password"
                       placeholder="Create Password"
@@ -160,7 +156,7 @@
                   >
                     <label for="" class="py-2">Confirm Password</label>
                     <input
-                      type="text"
+                      type="password"
                       class="form-control"
                       v-model="signUp_data.password_confirmation"
                       placeholder="Re-enter Password again"
@@ -345,7 +341,6 @@ export default {
       try {
         const response = await this.$axios.get(this.countryUrl);
         this.countries = response.data;
-        console.log(this.countries);
       } catch (error) {
         console.log(error.response);
       }
@@ -354,7 +349,6 @@ export default {
       try {
         const response = await this.$axios.get(this.stateUrl);
         this.states = response.data.data;
-        console.log(this.states);
       } catch (error) {
         console.log(error.response);
       }

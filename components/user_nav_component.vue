@@ -37,7 +37,7 @@ export default {
     async logout() {
       await this.$auth.logout();
       this.$router.push("/");
-      this.$toast.success("You've Successfully Logged Out", {
+      this.$toast.success("You Are Logged Out", {
         timeout: 5000,
       });
     },
