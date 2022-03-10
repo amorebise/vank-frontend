@@ -3,12 +3,15 @@
     <user-nav-component />
     <div class="verification_page">
       <h5>
-        <nuxt-link class="withdraw_link" to="/withdrawal_page">
-          Withdraw /</nuxt-link
-        >
+        <font-awesome-icon
+          @click="back()"
+          class="fa-1x text-white bg-primary"
+          :icon="['fas', 'arrow-left']"
+        />
+        Withdraw /
         <span>Verification</span>
       </h5>
-      <div class="verify_wrap d-flex justify-content-center">
+      <div class="verify_wrap">
         <div class="send_code_wrap mt-5">
           <form action="" @submit.prevent="onSubmit()">
             <div class="form-group py-2">
@@ -75,6 +78,9 @@ export default {
       console.log(this.withdrawal_info);
       this.$router.push("/success");
     },
+    back() {
+      this.$router.go(-1);
+    },
   },
 };
 </script>
@@ -87,15 +93,17 @@ export default {
   font-family: "Space Grotesk", sans-serif;
 }
 .verification_page {
-  padding: 60px 100px;
+  padding: 0 100px 100px 100px;
   margin-top: 100px;
 }
 .verification_page span {
-  color: #18a0fb;
+  font-weight: 600;
+}
+.fa-1x {
   cursor: pointer;
 }
 .verify_wrap {
-  width: 40%;
+  width: 35%;
   margin: 0 auto;
 }
 .verify_wrap .input_wrap {
@@ -115,7 +123,8 @@ export default {
   color: #303030;
 }
 .send_code_wrap .v-btn {
-  background-color: #00e8fe;
+  background-color: inherit;
+  color: #00e8fe;
   font-size: 15px;
   padding: 5px;
   box-shadow: none !important;
@@ -125,14 +134,30 @@ export default {
 .withdraw_button {
   height: 50px !important;
   font-size: 15px !important;
+  background-color: #00e8fe !important;
+  color: #303030 !important;
+  box-shadow: none !important;
+  text-transform: none;
+  margin-top: 1px;
 }
 
 @media (max-width: 768px) {
   .verification_page {
     padding: 10px;
+    margin-top: 50px;
   }
   .verify_wrap {
     width: 100%;
+  }
+  .verification_page h5 {
+    font-size: 15px;
+  }
+  .verification_page .form-control,
+  .verification_page .form-group {
+    font-size: 14px;
+  }
+  .send_code_wrap .v-btn {
+    font-size: 13px;
   }
 }
 </style>

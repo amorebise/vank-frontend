@@ -21,7 +21,7 @@
 
       <div class="select_wrap">
         <div class="mt-3">
-          <form action="" @submit.prevent="onSubmit()">
+          <form action="" @submit.prevent="withdraw_asset()">
             <div class="form-group">
               <label for="exampleFormControlSelect1">Select Asset</label>
               <select
@@ -29,9 +29,9 @@
                 v-model="withdrawal_request.asset"
                 id="exampleFormControlSelect1"
               >
-                <option value="btc">BTC</option>
-                <option value="sol">SOL</option>
-                <option value="eth">ETH</option>
+                <option value="first_asset">BTC</option>
+                <option value="second_asset">SOL</option>
+                <option value="third_asset">ETH</option>
               </select>
             </div>
             <div class="form-group mt-3">
@@ -68,7 +68,7 @@
                 type="checkbox"
                 id="inlineCheckbox3"
                 value="vank_basket_plan"
-                v-model="withdrawal_request.agreement"
+                v-model="withdrawal_request.confirm_wallet"
                 required
               />
               <label class="form-check-label" for="inlineCheckbox3"
@@ -103,13 +103,13 @@ export default {
         asset: "",
         receiving_wallet: "",
         amount: "",
-        agreement: "",
+        confirm_wallet: null,
       },
     };
   },
 
   methods: {
-    async onSubmit() {
+    async withdraw_asset() {
       try {
         this.loading = true;
         const response = await this.$axios.post(
@@ -119,6 +119,7 @@ export default {
         console.log(response);
         this.$router.push("/verification_page");
       } catch (error) {
+        this.loading = false;
         console.log(error.response);
       } finally {
         this.withdrawal_request = {};
@@ -131,7 +132,6 @@ export default {
 <style>
 .withdraw_wrap {
   padding: 20px 100px;
-  /* margin-top: 100px; */
 }
 .withdraw_wrap h5 {
   color: #1d83c5;

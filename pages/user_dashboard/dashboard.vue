@@ -6,11 +6,15 @@
         <h5 class="user_font">
           Welcome, <span class="user_name">{{ newUser.name }}</span>
         </h5>
-        <nuxt-img format="webp" quality="90" fit="cover" src="/emoji.png" />
+        <div class="ml-1">
+          <nuxt-img format="webp" quality="90" fit="cover" src="/emoji.png" />
+        </div>
       </div>
       <div v-else class="d-flex align-items-center px-3 mb-2">
         <h5>Welcome</h5>
-        <nuxt-img format="webp" quality="90" fit="cover" src="/emoji.png" />
+        <div class="ml-1">
+          <nuxt-img format="webp" quality="90" fit="cover" src="/emoji.png" />
+        </div>
       </div>
       <div class="row">
         <div class="col-md-6">
@@ -521,35 +525,28 @@ export default {
   .glass_card_wrap .precent_wrap p {
     font-size: 14px;
   }
+
   .main_card_wrap .write_up_section .v-btn {
-    background-color: #00e8fe !important;
     font-size: 15px;
-    padding: 15px 10px !important;
-    box-shadow: none !important;
-    text-transform: none;
-    font-weight: 600;
+    padding: 5px 10px !important;
   }
   .main_asset_wrap {
     margin-top: 10px;
     padding: 10px !important;
   }
   .assets_wrap h5 {
-    font-size: 10px;
+    font-size: 12px;
   }
   .buttons_wrap .mx-3 {
     margin: 3px !important;
   }
   .buttons_wrap .withdrawal_button {
     font-size: 10px;
-    padding: 4px 5px !important;
-    font-weight: 600;
-    color: #333f47;
-    border-radius: 5px;
-    letter-spacing: 1px;
+    padding: 7px 20px !important;
   }
   .buttons_wrap .buy_button {
     font-size: 10px;
-    padding: 4px 5px !important;
+    padding: 7px 20px !important;
   }
   .general_coin_wrap {
     margin-top: 10px !important;

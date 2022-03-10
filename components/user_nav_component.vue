@@ -19,7 +19,7 @@
         <v-spacer></v-spacer>
         <div class="d-flex align-items-center">
           <div class="mx-2">
-            <font-awesome-icon class="fa-2x" :icon="['fas', 'user-circle']" />
+            <font-awesome-icon class="fa-1x" :icon="['fas', 'bell']" />
           </div>
           <div class="mx-2">
             <button @click="logout()" class="log_out_button">Logout</button>
