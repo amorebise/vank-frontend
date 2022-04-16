@@ -24,7 +24,12 @@
                   placeholder="enter code"
                   required
                 />
-                <v-btn class="send_code_button" type="submit">Send Code</v-btn>
+                <v-btn
+                  @click="sendEmail()"
+                  class="send_code_button"
+                  type="submit"
+                  >Send Code</v-btn
+                >
               </div>
             </div>
 
@@ -39,7 +44,9 @@
                   v-model="withdrawal_info.phone_code"
                   required
                 />
-                <v-btn class="send_code_button" type="submit">Send Code</v-btn>
+                <v-btn @click="sendSms()" class="send_code_button"
+                  >Send Code</v-btn
+                >
               </div>
               <span>You must send code to both email and phone number</span>
             </div>
@@ -48,7 +55,6 @@
                 class="withdraw_button w-100"
                 :loading="loading"
                 value="Withdraw"
-                type="submit"
                 >Withdraw</v-btn
               >
             </div>
@@ -62,7 +68,7 @@
 
 <script>
 export default {
-  middleware: "auth",
+  // middleware: "auth",
   data() {
     return {
       loading: false,
@@ -73,6 +79,34 @@ export default {
     };
   },
   methods: {
+    async sendSms() {
+      try {
+        const response = await this.$axios.post(
+          "/sendSmsCode",
+          this.withdrawal_info.phone_code
+        );
+        console.log(response);
+        this.$toast.success("Email Has been Sent", {
+          timeout: 5000,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async sendEmail() {
+      try {
+        const response = await this.$axios.post(
+          "/sendEmailCode",
+          this.withdrawal_info.email_code
+        );
+        console.log(response);
+        this.$toast.success("Email Has been Sent", {
+          timeout: 5000,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    },
     onSubmit() {
       this.loading = true;
       console.log(this.withdrawal_info);

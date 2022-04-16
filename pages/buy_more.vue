@@ -108,25 +108,25 @@ export default {
     };
   },
   methods: {
-    async request_asset() {
-      try {
-        this.loading = true;
-        const response = await this.$axios.post(
-          "/subscribe",
-          this.buy_option_info
-        );
-        this.$toast.success("Your Request Has Been Sent", {
-          timeout: 5000,
-        });
-        console.log(response);
-        this.loading = false;
-        this.$router.push("/user_dashboard/dashboard");
-        this.buy_option_info = {};
-      } catch (error) {
-        console.log(error.response);
-        this.loading = false;
-      }
-    },
+    // async request_asset() {
+    //   try {
+    //     this.loading = true;
+    //     const response = await this.$axios.post(
+    //       "/subscribe",
+    //       this.buy_option_info
+    //     );
+    //     this.$toast.success("Your Request Has Been Sent", {
+    //       timeout: 5000,
+    //     });
+    //     console.log(response);
+    //     this.loading = false;
+    //     this.$router.push("/user_dashboard/dashboard");
+    //     this.buy_option_info = {};
+    //   } catch (error) {
+    //     console.log(error.response);
+    //     this.loading = false;
+    //   }
+    // },
   },
 };
 </script>

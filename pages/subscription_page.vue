@@ -120,6 +120,7 @@ export default {
         vank_basket: "",
         amount: "",
       },
+      mm: {},
     };
   },
   methods: {
@@ -127,12 +128,15 @@ export default {
       try {
         this.loading = true;
         const response = await this.$axios.post(
-          "/subscribe",
+          "/requestSubscription",
           this.subscription_plan
         );
         console.log(response);
+        this.mm = response.data;
+        localStorage.setItem("marketMakerKey", JSON.stringify(this.mm));
+        console.log(this.mm);
         this.loading = false;
-        this.$router.push("/pending_subscription");
+        this.$router.push("/list_market_makers");
         this.subscription_plan = {};
       } catch (error) {
         console.log(error.response);

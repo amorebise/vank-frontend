@@ -2,6 +2,7 @@
   <div class="pay_bills_wrap w-100">
     <div class="settings">
       <user-nav name="Settings" />
+
       <div class="settings_wrap">
         <div class="update__password__wrap py-2">
           <div class="edit__wrap text-right">

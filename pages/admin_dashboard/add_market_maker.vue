@@ -2,11 +2,11 @@
   <div class="registeration_wrap">
     <sign-up-header />
     <div class="registeration_content">
+      <div class="back__button">
+        <span @click="back()" class="back__link">back to dashboard</span>
+      </div>
       <div class="header_section text-center">
-        <h1>Create your Account</h1>
-        <h5 class="py-2">
-          Let’s get you started on VANK, kindly fill in your details
-        </h5>
+        <h1>Add Market Maker</h1>
       </div>
       <div class="form_section mt-5">
         <ValidationObserver v-slot="{ handleSubmit }">
@@ -24,24 +24,11 @@
                     <input
                       type="text"
                       class="form-control"
-                      v-model="signUp_data.first_name"
+                      v-model="market_maker_data.first_name"
                       placeholder="Enter your First Name"
                     />
                     <span class="errors">{{ errors[0] }}</span>
                   </ValidationProvider>
-                </div>
-              </div>
-
-              <!-- Middle Name -->
-              <div class="col-md-6">
-                <div class="form-group mx-2 mt-2">
-                  <label for="" class="py-2">Middle Name</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    v-model="signUp_data.mid_name"
-                    placeholder="Enter your Middle Name(optional)"
-                  />
                 </div>
               </div>
 
@@ -57,7 +44,7 @@
                     <input
                       type="text"
                       class="form-control"
-                      v-model="signUp_data.last_name"
+                      v-model="market_maker_data.last_name"
                       placeholder="Enter your Last Name"
                     />
 
@@ -76,9 +63,9 @@
                   >
                     <label for="" class="py-2">Email Address</label>
                     <input
-                      type="email"
+                      type="text"
                       class="form-control"
-                      v-model="signUp_data.email"
+                      v-model="market_maker_data.email"
                       placeholder="Enter your Email Address"
                     />
                     <span class="errors">{{ errors[0] }}</span>
@@ -98,7 +85,7 @@
                     <input
                       type="text"
                       class="form-control"
-                      v-model="signUp_data.phone_number"
+                      v-model="market_maker_data.phone_number"
                       placeholder="Enter your Phone Number"
                     />
                     <span class="errors">{{ errors[0] }}</span>
@@ -107,7 +94,7 @@
               </div>
 
               <!-- Address -->
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group mx-2 mt-2">
                   <ValidationProvider
                     name="address"
@@ -118,48 +105,8 @@
                     <input
                       type="text"
                       class="form-control"
-                      v-model="signUp_data.address"
+                      v-model="market_maker_data.address"
                       placeholder="Enter your Adrress, Street and city"
-                    />
-                    <span class="errors">{{ errors[0] }}</span>
-                  </ValidationProvider>
-                </div>
-              </div>
-
-              <!-- Password -->
-              <div class="col-md-6">
-                <div class="form-group mx-2 mt-2">
-                  <ValidationProvider
-                    name="password"
-                    rules="required|max:12|min:6"
-                    v-slot="{ errors }"
-                  >
-                    <label for="" class="py-2">Password</label>
-                    <input
-                      type="password"
-                      class="form-control"
-                      v-model="signUp_data.password"
-                      placeholder="Create Password"
-                    />
-                    <span class="errors">{{ errors[0] }}</span>
-                  </ValidationProvider>
-                </div>
-              </div>
-
-              <!-- Confirm Password -->
-              <div class="col-md-6">
-                <div class="form-group mx-2 mt-2">
-                  <ValidationProvider
-                    name="confirm password"
-                    rules="required|max:12|min:8"
-                    v-slot="{ errors }"
-                  >
-                    <label for="" class="py-2">Confirm Password</label>
-                    <input
-                      type="password"
-                      class="form-control"
-                      v-model="signUp_data.password_confirmation"
-                      placeholder="Re-enter Password again"
                     />
                     <span class="errors">{{ errors[0] }}</span>
                   </ValidationProvider>
@@ -180,7 +127,7 @@
                     <select
                       class="form-control option-class select"
                       id="exampleFormControlSelect1"
-                      v-model="signUp_data.country"
+                      v-model="market_maker_data.country"
                       required
                     >
                       <option>Please Select a Country</option>
@@ -213,7 +160,7 @@
                     <select
                       class="form-control option-class select"
                       id="exampleFormControlSelect1"
-                      v-model="signUp_data.state"
+                      v-model="market_maker_data.state"
                       required
                     >
                       <option>Please Select a Country</option>
@@ -231,29 +178,6 @@
                   </ValidationProvider>
                 </div>
               </div>
-
-              <div class="col-md-6">
-                <div class="form-group mx-4 mt-2">
-                  <ValidationProvider
-                    name="accept_terms"
-                    rules="required"
-                    v-slot="{ errors }"
-                  >
-                    <div class="pl-2 t_c_wrap d-flex align-items-center">
-                      <b-form-checkbox
-                        id="checkbox-1"
-                        v-model="signUp_data.agreement"
-                        name="checkbox-1"
-                        value="accepted"
-                      >
-                        I have read, understood and accepted the
-                        <popup />
-                      </b-form-checkbox>
-                    </div>
-                    <span class="errors">{{ errors[0] }}</span>
-                  </ValidationProvider>
-                </div>
-              </div>
             </div>
             <div class="text-center register_wrap mt-4">
               <v-btn
@@ -261,19 +185,8 @@
                 value=""
                 :loading="loading"
                 type="submit"
-                >Sign up for free</v-btn
+                >Add Market Maker</v-btn
               >
-
-              <div class="login_wrap">
-                <p>
-                  Already have an account?
-                  <nuxt-link
-                    to="/login"
-                    class="text-primary text-decoration-none"
-                    >Log in</nuxt-link
-                  >
-                </p>
-              </div>
             </div>
           </form>
         </ValidationObserver>
@@ -292,18 +205,16 @@ import Login_header from "~/components/login_header.vue";
 export default {
   data() {
     return {
-      signUp_data: {
+      market_maker_data: {
         first_name: "",
         mid_name: "",
         last_name: "",
         email: "",
-        password: "",
-        password_confirmation: "",
+
         phone_number: "",
         country: "",
-        address: "",
+
         state: "",
-        agreement: null,
       },
       loading: false,
       // baseUrl: "https://api.vankwallet.com/api/auth/",
@@ -317,22 +228,29 @@ export default {
     async signUp() {
       try {
         this.loading = true;
-        const response = await this.$axios.post("/register", this.signUp_data);
+        const response = await this.$axios.post(
+          "/admin/createMarketMaker",
+          this.market_maker_data
+        );
         this.$toast.success(
-          "Registration Successful, Check Your Mail For Verification",
+          "Registration Successful, Market Maker Has Been Added",
           {
             timeout: 5000,
           }
         );
-
         console.log(response);
         this.loading = false;
-        this.$router.push("/");
+        this.$router.push("/admin_dashboard/dashboard");
         // this.signUp_data = {};
       } catch (error) {
         console.log(error.response);
         this.loading = false;
+      } finally {
+        this.market_maker_data = {};
       }
+    },
+    back() {
+      this.$router.go(-1);
     },
     onSubmit() {
       this.signUp();
@@ -376,13 +294,16 @@ export default {
   font-family: "Space Grotesk", sans-serif;
   text-decoration: none !important;
 }
+.registeration_wrap {
+  margin-left: 230px;
+}
 .registeration_content {
   margin: 40px auto;
   width: 70%;
 }
 .registeration_content h1 {
   color: #0f1842;
-  font-size: 76px;
+  font-size: 50px;
   font-weight: bold;
   font-family: "Titillium Web", sans-serif;
 }
@@ -396,9 +317,13 @@ export default {
   color: grey;
   min-height: 7vh;
   padding: 10px;
+  font-size: 12px;
 }
 .form_section .form-control:focus {
   border-color: #c5cbcc;
+}
+.form_section label {
+  font-size: 15px;
 }
 .account_color {
   color: #1d83c5;
@@ -421,7 +346,8 @@ export default {
   text-transform: none;
   padding: 25px 30px !important;
   width: 30%;
-  font-size: 18px;
+  font-size: 15px;
+  box-shadow: none;
 }
 
 .errors {
@@ -441,8 +367,17 @@ export default {
 .custom-control-label::after {
   cursor: pointer !important;
 }
+.back__link {
+  font-size: 12px;
+  color: blue;
+  cursor: pointer;
+  font-style: italic;
+}
 
 @media (max-width: 768px) {
+  .register_wrap {
+    margin: 0 !important;
+  }
   .registeration_content {
     /* margin: 10px; */
     width: 100%;

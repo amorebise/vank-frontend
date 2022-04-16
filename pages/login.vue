@@ -29,11 +29,11 @@ export default {
 }
 .login_content {
   margin: 40px auto;
-  width: 61%;
+  width: 50%;
 }
 .login_content h1 {
   color: #0f1842;
-  font-size: 76px;
+  font-size: 50px;
   font-weight: bold;
   word-spacing: 5px;
   letter-spacing: 5px;

@@ -554,11 +554,12 @@ export default {
   .general_coin_wrap h5 {
     font-size: 15px;
   }
-  .first_card_wrap {
-    background-image: url("/mocard1.png");
-    background-size: 100%;
-
-    border-radius: 10px;
+  .first_card_wrap,
+  .second_card_wrap,
+  .third_card_wrap {
+    height: 150px;
+    background-size: cover;
+    background-position: center;
   }
 }
 </style>

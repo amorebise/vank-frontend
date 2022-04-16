@@ -6,7 +6,7 @@
           <div class="form-group py-3">
             <label class="py-2" for="">Email</label>
             <input
-              type="text"
+              type="email"
               class="form-control"
               v-model="login.email"
               placeholder="Enter your Email Address"
@@ -58,7 +58,7 @@
               type="submit"
               >Log In</v-btn
             >
-            <div class="login_wrap mt-3">
+            <div class="login_wrap mt-1">
               <p>
                 Don’t have an account?
                 <nuxt-link
@@ -95,25 +95,45 @@ export default {
         let response = await this.$auth.loginWith("local", {
           data: this.login,
         });
-        console.log(response.data);
-
-        console.log(response.data.token);
-        this.$auth.setUserToken(response.data.token);
-        console.log(this.$auth.loggedIn);
-        this.$toast.success("You Are Logged In", {
-          timeout: 5000,
-        });
-        this.$router.push("/user_dashboard/dashboard");
-      } catch (err) {
+        console.log(response.data.user);
+        if (response.data.user.role == "Admin") {
+          this.$auth.setUserToken(response.data.token);
+          this.$router.push("/admin_dashboard/dashboard");
+          console.log(this.$auth.loggedIn);
+          console.log(response.data.token);
+          this.$toast.success("You Are Logged In", {
+            timeout: 5000,
+          });
+        } else if (response.data.user.role == "Subscriber") {
+          this.$auth.setUserToken(response.data.token);
+          this.$router.push("/user_dashboard/dashboard");
+          console.log(this.$auth.loggedIn);
+          console.log(response.data.token);
+          this.$toast.success("You Are Logged In", {
+            timeout: 5000,
+          });
+        } else if (response.data.user.role == "MarketMaker") {
+          this.$auth.setUserToken(response.data.token);
+          this.$router.push("/market_maker/dashboard");
+          console.log(this.$auth.loggedIn);
+          console.log(response.data.token);
+          this.$toast.success("You Are Logged In", {
+            timeout: 5000,
+          });
+        } else {
+          this.$toast.success("Incorrect password or email", {
+            timeout: 5000,
+          });
+        }
+      } catch (error) {
         this.loading = false;
-        console.log(err.response);
+        console.log(error);
         this.$toast.warning(
           "There was a problem logging into your account. Password or email may be incorrect.",
           {
             timeout: 5000,
           }
         );
-        console.log(err.response);
       }
     },
 
@@ -150,7 +170,7 @@ export default {
   background-color: #00e8fe !important;
   color: #000 !important;
   text-transform: none;
-  padding: 25px 30px !important;
+  padding: 15px 30px !important;
   width: 30%;
   font-size: 18px;
   width: 100%;
