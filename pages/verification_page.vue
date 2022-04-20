@@ -68,7 +68,7 @@
 
 <script>
 export default {
-  // middleware: "auth",
+  middleware: "auth",
   data() {
     return {
       loading: false,
@@ -79,6 +79,54 @@ export default {
     };
   },
   methods: {
+    async getUser() {
+      let auth = this.$auth.$storage._state;
+      let token = null;
+
+      for (const key in auth) {
+        console.log(key);
+
+        if (key == "_token.local") {
+          token = auth[key];
+        } else {
+          console.log("No");
+        }
+      }
+
+      console.log(token);
+
+      // console.log(this.$auth.$storage._state._token);
+      try {
+        let res = await this.$axios.get("/getAsset", {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        });
+
+        this.newUser = res.data[0];
+
+        console.log(this.newUser);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+    async withdraw_asset() {
+      try {
+        let user_id = this.newUser.id;
+        this.loading = true;
+        const response = await this.$axios.post(
+          `/withdraw/${user_id}`,
+          this.withdrawal_request
+        );
+        console.log(response);
+        this.$router.push("/success");
+      } catch (error) {
+        this.loading = false;
+        console.log(error.response);
+      } finally {
+        this.withdrawal_request = {};
+      }
+    },
     async sendSms() {
       try {
         const response = await this.$axios.post(
@@ -107,11 +155,12 @@ export default {
         console.log(error);
       }
     },
-    onSubmit() {
-      this.loading = true;
-      console.log(this.withdrawal_info);
-      this.$router.push("/success");
-    },
+    // onSubmit() {
+    //   this.loading = true;
+
+    //   console.log(this.withdrawal_info);
+    //
+    // },
     back() {
       this.$router.go(-1);
     },

@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard w-100">
     <div class="dashboard_content">
-      <user-nav name="Dashboard" />
+      <mm-nav name="Dashboard" />
       <div class="admin__wrap">
         <div class="mm__profile__wrap px-3">
           <h5>Welcome, {{ market_maker.first_name }}</h5>
@@ -13,7 +13,7 @@
         <div class="wallet__balance__wrap">
           <div class="balance__cards row align-items-center">
             <div class="col-md-6 d-flex justify-content-center">
-              <div class="admin__balance__wrap px-3 py-2">
+              <div class="admin__balance__wrap mb-2 px-3 py-2">
                 <div class="header__section d-flex align-items-center py-4">
                   <h5>USDT Balance</h5>
                 </div>
@@ -38,7 +38,7 @@
               </div>
             </div>
             <div class="col-md-6 d-flex justify-content-center">
-              <div class="admin__wallet__wrap px-3 py-2">
+              <div class="admin__wallet__wrap mb-2 px-3 py-2">
                 <div class="header__section d-flex align-items-center py-3">
                   <h5>Payments</h5>
                 </div>
@@ -75,7 +75,7 @@
                 >Update Profile</nuxt-link
               >
             </div>
-            <div class="fund__wallet__route mx-3">
+            <div class="fund__wallet__routes mx-3">
               <button
                 class="link__button"
                 @click="fund_wallet_modal = !fund_wallet_modal"
@@ -162,6 +162,106 @@
                               <template v-slot:default>
                                 <thead>
                                   <tr class="">
+                                    <th class="text-center th_color">Name</th>
+                                    <th class="text-center th_color">Date</th>
+                                    <th class="text-center th_color">
+                                      Fiat amount
+                                    </th>
+                                    <th class="text-center th_color">
+                                      Crypto amount
+                                    </th>
+
+                                    <th class="text-center th_color">
+                                      Status(User)
+                                    </th>
+                                    <th class="text-center th_color">
+                                      Status(Market Maker)
+                                    </th>
+                                    <th class="text-center th_color">
+                                      Status(Admin)
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr
+                                    class="mt-2"
+                                    v-for="sub in subscriber"
+                                    :key="sub.id"
+                                  >
+                                    <td>{{ sub.name }}</td>
+                                    <td>{{ sub.subscription_date }}</td>
+                                    <td>{{ sub.amount }}NGN</td>
+                                    <td>{{ sub.usdt }}</td>
+                                    <td>
+                                      <div
+                                        v-if="
+                                          sub.user_confirmation ==
+                                          'Payment made'
+                                        "
+                                        class="pending mt-2 text-center"
+                                      >
+                                        <p class="text-success py-2">
+                                          {{ sub.user_confirmation }}
+                                        </p>
+                                      </div>
+                                      <div v-else class="mt-2 text-center">
+                                        <p class="text-warning py-2">
+                                          {{ sub.user_confirmation }}
+                                        </p>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div
+                                        v-if="
+                                          sub.mm_confirmation ==
+                                          'Payment Confirmed'
+                                        "
+                                        class="pending mt-2 text-center"
+                                      >
+                                        <p class="text-success py-2">
+                                          {{ sub.mm_confirmation }}
+                                        </p>
+                                      </div>
+                                      <div v-else class="mt-2 text-center">
+                                        <p class="text-warning py-2">
+                                          {{ sub.mm_confirmation }}
+                                        </p>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div
+                                        v-if="
+                                          sub.admin_confirmation == 'Approved'
+                                        "
+                                        class="pending mt-2 text-center"
+                                      >
+                                        <p class="text-success py-2">
+                                          {{ sub.admin_confirmation }}
+                                        </p>
+                                      </div>
+                                      <div v-else class="mt-2 text-center">
+                                        <p class="text-warning py-2">
+                                          {{ sub.admin_confirmation }}
+                                        </p>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </template>
+                            </v-simple-table>
+                          </div>
+                        </v-card-text>
+                      </v-card>
+                    </v-tab-item>
+
+                    <v-tab-item>
+                      <v-card flat>
+                        <v-card-text class="">
+                          <div class="admin__transactions_data">
+                            <v-simple-table fixed-header height="400px">
+                              <template v-slot:default>
+                                <thead>
+                                  <tr class="">
                                     <th class="text-left th_color">Name</th>
                                     <th class="text-left th_color">Date</th>
                                     <th class="text-left th_color">
@@ -180,23 +280,20 @@
                                     v-for="sub in subscriber"
                                     :key="sub.id"
                                   >
-                                    <td>{{ sub.name }}</td>
-                                    <td>{{ sub.subscription_date }}</td>
-                                    <td>{{ sub.amount }}NGN</td>
-                                    <td>{{ sub.usdt }}</td>
-                                    <td>
-                                      <div
-                                        v-if="sub.mm_confirmation == 'Confirm'"
-                                        class="pending mt-2 text-center"
-                                      >
-                                        <p class="text-success py-2">
-                                          {{ sub.mm_confirmation }}
-                                        </p>
-                                      </div>
-                                      <div
-                                        v-else
-                                        class="warning mt-2 text-center"
-                                      >
+                                    <td v-if="sub.mm_confirmation == 'Pending'">
+                                      {{ sub.name }}
+                                    </td>
+                                    <td v-if="sub.mm_confirmation == 'Pending'">
+                                      {{ sub.subscription_date }}
+                                    </td>
+                                    <td v-if="sub.mm_confirmation == 'Pending'">
+                                      {{ sub.amount }}NGN
+                                    </td>
+                                    <td v-if="sub.mm_confirmation == 'Pending'">
+                                      {{ sub.usdt }}
+                                    </td>
+                                    <td v-if="sub.mm_confirmation == 'Pending'">
+                                      <div class="pending mt-2 text-center">
                                         <p class="text-warning py-2">
                                           {{ sub.mm_confirmation }}
                                         </p>
@@ -232,83 +329,50 @@
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  <tr class="mt-2">
-                                    <td>1</td>
-                                    <td>2022-02-10 10:30:11</td>
-                                    <td>107,144.40NGN</td>
-                                    <td>571.30NGN</td>
-                                    <td>
-                                      <div class="success mt-2 text-center">
-                                        <p class="text-success py-2">
-                                          Completed
-                                        </p>
-                                      </div>
-                                    </td>
-                                  </tr>
-                                  <tr class="py-2">
-                                    <td>2</td>
-                                    <td>2022-02-10 10:30:11</td>
-                                    <td>920,000.00NGN</td>
-                                    <td>574.10NGN</td>
-                                    <td>
-                                      <div class="warning mt-2 text-center">
-                                        <p class="text-warning py-2">Pending</p>
-                                      </div>
-                                    </td>
-                                  </tr>
-                                  <tr class="py-2">
-                                    <td>3</td>
-                                    <td>2022-02-10 10:30:11</td>
-                                    <td>200,000.00NGN</td>
-                                    <td>572.00NGN</td>
-                                    <td>
-                                      <div class="success mt-2 text-center">
-                                        <p class="text-success py-2">
-                                          Completed
-                                        </p>
-                                      </div>
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </template>
-                            </v-simple-table>
-                          </div>
-                        </v-card-text>
-                      </v-card>
-                    </v-tab-item>
-
-                    <v-tab-item>
-                      <v-card flat>
-                        <v-card-text class="">
-                          <div class="admin__transactions_data">
-                            <v-simple-table fixed-header height="400px">
-                              <template v-slot:default>
-                                <thead>
-                                  <tr class="">
-                                    <th class="text-left th_color">Name</th>
-                                    <th class="text-left th_color">Date</th>
-                                    <th class="text-left th_color">
-                                      Fiat amount
-                                    </th>
-                                    <th class="text-left th_color">
-                                      Crypto amount
-                                    </th>
-
-                                    <th class="text-left th_color">Status</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
                                   <tr
                                     class="mt-2"
                                     v-for="sub in subscriber"
                                     :key="sub.id"
                                   >
-                                    <td>{{ sub.name }}</td>
-                                    <td>{{ sub.subscription_date }}</td>
-                                    <td>{{ sub.amount }}</td>
-                                    <td>{{ sub.btc }}</td>
-                                    <td>
-                                      <div class="success mt-2 text-center">
+                                    <td
+                                      v-if="
+                                        sub.mm_confirmation ==
+                                        'Payment Confirmed'
+                                      "
+                                    >
+                                      {{ sub.name }}
+                                    </td>
+                                    <td
+                                      v-if="
+                                        sub.mm_confirmation ==
+                                        'Payment Confirmed'
+                                      "
+                                    >
+                                      {{ sub.subscription_date }}
+                                    </td>
+                                    <td
+                                      v-if="
+                                        sub.mm_confirmation ==
+                                        'Payment Confirmed'
+                                      "
+                                    >
+                                      {{ sub.amount }}
+                                    </td>
+                                    <td
+                                      v-if="
+                                        sub.mm_confirmation ==
+                                        'Payment Confirmed'
+                                      "
+                                    >
+                                      {{ sub.btc }}
+                                    </td>
+                                    <td
+                                      v-if="
+                                        sub.mm_confirmation ==
+                                        'Payment Confirmed'
+                                      "
+                                    >
+                                      <div class="mt-2">
                                         <p
                                           id="confirmation"
                                           class="text-success py-2"
@@ -639,13 +703,11 @@ input::-webkit-inner-spin-button {
 .txn__header h5 {
   font-size: 15px;
 }
-.search__input .form-control {
+.txn__data .search__input .form-control {
   background-image: url("/search.png");
   background-position-x: 5px;
   background-position-y: 7px;
-
   box-shadow: none;
-  height: 35px !important;
   width: 35%;
   border-radius: 5px;
   padding: 5px 35px;
@@ -897,6 +959,48 @@ tr {
     background-size: 100%;
 
     border-radius: 10px;
+  }
+  .admin__wrap {
+    margin: 5px;
+  }
+  .buttons__wrap .link__buttons {
+    padding: 6px 5px !important;
+    font-size: 11px;
+  }
+  .buttons__wrap .link__button {
+    font-size: 11px;
+    padding: 5px !important;
+  }
+  .fund__wallet__routes {
+    margin: 5px !important;
+  }
+  .theme--light.v-data-table
+    > .v-data-table__wrapper
+    > table
+    > tbody
+    > tr:not(:last-child)
+    > td:not(.v-data-table__mobile-row),
+  .theme--light.v-data-table
+    > .v-data-table__wrapper
+    > table
+    > tbody
+    > tr:not(:last-child)
+    > th:not(.v-data-table__mobile-row) {
+    font-size: 12px;
+  }
+  .txn__data .search__input .form-control {
+    width: 70%;
+    border-radius: 5px;
+  }
+  .admin__balance__wrap,
+  .admin__wallet__wrap {
+    width: 100%;
+  }
+  .wallet__balance__wrap {
+    padding: 7px;
+  }
+  .mm__profile__wrap p {
+    font-size: 10px;
   }
 }
 </style>

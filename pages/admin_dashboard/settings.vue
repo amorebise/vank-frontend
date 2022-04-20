@@ -1,7 +1,7 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="settings">
-      <user-nav name="Settings" />
+      <admin-nav name="Settings" />
       <div class="settings_wrap">
         <div class="update__password__wrap py-2">
           <div class="edit__wrap text-right">
@@ -14,9 +14,6 @@
           <div class="password__modal slideInDown">
             <form action="" method="post" @submit.prevent="edit_profile()">
               <div class="form-group">
-                <p class="text-right" @click="profile_modal = !profile_modal">
-                  x
-                </p>
                 <label class="" for="">Email</label>
                 <input
                   required
@@ -37,19 +34,28 @@
                 />
               </div>
 
-              <v-btn
-                class="login_button"
-                :loading="loading"
-                value="Update"
-                type="submit"
-                >Update</v-btn
-              >
+              <div class="d-flex justify-content-center">
+                <div class="mx-2">
+                  <v-btn
+                    class="cancel_button"
+                    @click="profile_modal = !profile_modal"
+                    >Cancel</v-btn
+                  >
+                </div>
+                <div class="mx-2">
+                  <v-btn
+                    class="login_button"
+                    :loading="loading"
+                    value="Update"
+                    type="submit"
+                    >Update</v-btn
+                  >
+                </div>
+              </div>
             </form>
           </div>
         </div>
-        <div
-          class="update__password__wrap d-md-flex justify-content-between py-2"
-        >
+        <div class="update__password__wrap d-flex justify-content-between py-2">
           <div class="text-wrap">
             <h5>Change Password</h5>
             <p>Set a new password</p>
@@ -66,9 +72,6 @@
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="password__header">
                     <h6>Edit New Password</h6>
-                  </div>
-                  <div>
-                    <p class="" @click="show_modal = !show_modal">x</p>
                   </div>
                 </div>
 
@@ -101,20 +104,27 @@
                   placeholder="Confirm Password"
                 />
               </div>
-              <v-btn
-                class="login_button"
-                :loading="loading"
-                value="Update"
-                type="submit"
-                >Update</v-btn
-              >
+              <div class="d-flex justify-content-center">
+                <div class="mx-2">
+                  <v-btn class="cancel_button" @click="show_modal = !show_modal"
+                    >Cancel</v-btn
+                  >
+                </div>
+                <div class="mx-2">
+                  <v-btn
+                    class="login_button"
+                    :loading="loading"
+                    value="Update"
+                    type="submit"
+                    >Update</v-btn
+                  >
+                </div>
+              </div>
             </form>
           </div>
         </div>
 
-        <div
-          class="update__password__wrap d-md-flex justify-content-between py-2"
-        >
+        <div class="update__password__wrap d-flex justify-content-between py-2">
           <div class="text-wrap">
             <h5>Next of Kin</h5>
             <p>Add your next of kin</p>
@@ -123,9 +133,7 @@
             <button>Edit</button>
           </div>
         </div>
-        <div
-          class="update__password__wrap d-md-flex justify-content-between py-2"
-        >
+        <div class="update__password__wrap d-flex justify-content-between py-2">
           <div class="text-wrap">
             <h5>Payments</h5>
             <p>Payments</p>
@@ -134,7 +142,7 @@
             <button>Edit</button>
           </div>
         </div>
-        <div class="update__password__wrap d-md-flex justify-content-between">
+        <div class="update__password__wrap d-flex justify-content-between">
           <div class="text-wrap">
             <h5>Verification</h5>
             <p>KYC Documents</p>
@@ -236,8 +244,7 @@ export default {
   padding: 5px 10px;
   color: #000;
 }
-/* .update__password__wrap {
-} */
+
 /* .settings_wrap .v-slide-group__content {
   background-color: #f4ede4;
 }
@@ -279,6 +286,7 @@ export default {
   color: grey;
   min-height: 7vh;
   padding: 10px;
+  font-size: 13px;
 }
 .change__password__form label {
   font-size: 13px;
@@ -287,11 +295,10 @@ export default {
   font-weight: 700;
 }
 .password__modal {
-  width: 35%;
+  width: 20%;
   margin: 100px auto;
   background-color: #fff;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 30px 10px;
 }
 .change__password__form p {
   cursor: pointer;
@@ -300,12 +307,21 @@ export default {
 }
 .change__password__form .v-btn {
   background-color: #00e8fe !important;
-  font-size: 18px;
+  font-size: 14px;
   color: #000;
   padding: 5px 10px !important;
   box-shadow: none !important;
   text-transform: none;
   width: 100%;
+}
+.change__password__form .cancel_button {
+  border: 1px solid #00e8fe;
+  color: #00e8fe;
+  background-color: #fff !important;
+  font-size: 14px;
+  padding: 5px 10px !important;
+  box-shadow: none !important;
+  text-transform: none;
 }
 .slideInDown {
   -webkit-animation-name: slideInDown;
@@ -352,6 +368,12 @@ export default {
   .password__modal {
     width: 100%;
     margin: 40px auto;
+  }
+  .update__password__wrap h5,
+  .update__password__wrap p,
+  .edit__wrap button,
+  .kyc_link {
+    font-size: 13px;
   }
 }
 </style>

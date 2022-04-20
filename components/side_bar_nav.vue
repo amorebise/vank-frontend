@@ -18,7 +18,7 @@
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="child_items">
-            <div class="ml-3">
+            <div class="ml-3 d-flex align-items-center">
               <ion-icon name="home-outline"></ion-icon>
 
               <span class="ml-2">Dashboard</span>
@@ -29,7 +29,7 @@
           to="/user_dashboard/basket"
           class="list-group list-group-item active bg-transparent active"
         >
-          <div class="ml-3">
+          <div class="ml-3 d-flex align-items-center">
             <ion-icon name="bag-outline"></ion-icon>
             <span class="ml-2">Basket</span>
           </div>
@@ -39,7 +39,7 @@
           to="/user_dashboard/transactions"
           class="list-group list-group-item active bg-transparent"
         >
-          <div class="ml-3">
+          <div class="ml-3 d-flex align-items-center">
             <ion-icon name="bar-chart-outline"></ion-icon>
             <span class="ml-2">Transactions</span>
           </div>
@@ -48,7 +48,7 @@
           to="/user_dashboard/settings"
           class="list-group list-group-item active bg-transparent"
         >
-          <div class="ml-3">
+          <div class="ml-3 d-flex align-items-center">
             <ion-icon name="settings-outline"></ion-icon>
             <span class="ml-2">Settings</span>
           </div>

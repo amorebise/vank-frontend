@@ -1,22 +1,22 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="users">
-      <admin-nav name="Users" />
+      <admin-nav name="Requests" />
       <div class="users_wrap">
         <div class="search__bar__wrap">
           <div class="form-group py-3">
             <input
               type="text"
               class="form-control"
-              placeholder="Search Users"
+              placeholder="Search buyer"
             />
           </div>
         </div>
         <template>
           <v-tabs v-model="tab" align-with-title>
-            <v-tab>All Users</v-tab>
-            <v-tab>Subscribers</v-tab>
-            <v-tab>Market Makers</v-tab>
+            <v-tab>Withdrawal Requests</v-tab>
+            <!-- <v-tab>Subscribers</v-tab>
+            <v-tab>Market Makers</v-tab> -->
           </v-tabs>
         </template>
         <v-tabs-items v-model="tab" class="tab_bg">
@@ -28,24 +28,36 @@
                     <template v-slot:default>
                       <thead>
                         <tr class="">
-                          <th class="text-left th_color">First Name</th>
-                          <th class="text-left th_color">Last Name</th>
+                          <th class="text-left th_color">Name</th>
                           <th class="text-left th_color">Email Address</th>
                           <th class="text-left th_color">Phone Number</th>
-                          <th class="text-left th_color">House Address</th>
-                          <th class="text-left th_color">Country</th>
-                          <th class="text-left th_color">State</th>
+                          <th class="text-left th_color">Asset</th>
+                          <th class="text-left th_color">Amount</th>
+                          <th class="text-left th_color">Status</th>
+                          <th class="text-left th_color">Action</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr class="mt-2" v-for="user in users" :key="user.id">
-                          <td>{{ user.first_name }}</td>
-                          <td>{{ user.last_name }}</td>
-                          <td>{{ user.email }}</td>
-                          <td>{{ user.phone_number }}</td>
-                          <td>{{ user.address }}</td>
-                          <td>{{ user.country }}</td>
-                          <td>{{ user.state }}</td>
+                        <tr
+                          class="mt-2"
+                          v-for="withdrawal in withdrawals"
+                          :key="withdrawal.id"
+                        >
+                          <td>{{ withdrawal.name }}</td>
+                          <td>{{ withdrawal.email }}</td>
+                          <td>{{ withdrawal.phone_number }}</td>
+                          <td>{{ withdrawal.asset }}</td>
+                          <td>{{ withdrawal.amount }}</td>
+                          <td>{{ withdrawal.admin_confirmation }}</td>
+                          <td>
+                            <v-btn
+                              @click="approveWithdrawalsRequest(withdrawal)"
+                              :loading="loading"
+                              class="confirm__button px-3 py-1"
+                            >
+                              Confirm
+                            </v-btn>
+                          </td>
                         </tr>
                       </tbody>
                     </template>
@@ -55,7 +67,7 @@
             </v-card>
           </v-tab-item>
 
-          <v-tab-item>
+          <!-- <v-tab-item>
             <v-card flat>
               <v-card-text class="">
                 <div class="transactions_data">
@@ -67,9 +79,9 @@
                           <th class="text-left th_color">Last Name</th>
                           <th class="text-left th_color">Email Address</th>
                           <th class="text-left th_color">Phone Number</th>
-                          <th class="text-left th_color">House Address</th>
-                          <th class="text-left th_color">Country</th>
-                          <th class="text-left th_color">State</th>
+                          <th class="text-left th_color">Asset</th>
+                          <th class="text-left th_color">Amount</th>
+                          <th class="text-left th_color">Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -84,7 +96,11 @@
                           <td>{{ subscriber.phone_number }}</td>
                           <td>{{ subscriber.address }}</td>
                           <td>{{ subscriber.country }}</td>
-                          <td>{{ subscriber.state }}</td>
+                          <td>
+                            <button class="confirm__button px-3 py-1">
+                              Confirm
+                            </button>
+                          </td>
                         </tr>
                       </tbody>
                     </template>
@@ -105,9 +121,9 @@
                           <th class="text-left th_color">Last Name</th>
                           <th class="text-left th_color">Email Address</th>
                           <th class="text-left th_color">Phone Number</th>
-                          <th class="text-left th_color">House Address</th>
-                          <th class="text-left th_color">Country</th>
-                          <th class="text-left th_color">State</th>
+                          <th class="text-left th_color">Asset</th>
+                          <th class="text-left th_color">Amount</th>
+                          <th class="text-left th_color">Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -122,7 +138,11 @@
                           <td>{{ market_maker.phone_number }}</td>
                           <td>{{ market_maker.address }}</td>
                           <td>{{ market_maker.country }}</td>
-                          <td>{{ market_maker.state }}</td>
+                          <td>
+                            <button class="confirm__button px-3 py-1">
+                              Confirm
+                            </button>
+                          </td>
                         </tr>
                       </tbody>
                     </template>
@@ -130,7 +150,7 @@
                 </div>
               </v-card-text>
             </v-card>
-          </v-tab-item>
+          </v-tab-item> -->
         </v-tabs-items>
       </div>
     </div>
@@ -144,9 +164,8 @@ export default {
   data() {
     return {
       tab: null,
-      users: {},
-      subscribers: {},
-      market_makers: {},
+      loading: false,
+      withdrawals: {},
     };
   },
   methods: {
@@ -177,11 +196,36 @@ export default {
         console.log(error);
       }
     },
+    async getWithdrawalRequests() {
+      try {
+        const response = await this.$axios.get("/admin/getWithrawalRequest");
+        this.withdrawals = response.data;
+        console.log(this.withdrawals);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async approveWithdrawalsRequest(withdrawal) {
+      try {
+        this.loading = true;
+        let user_id = withdrawal.id;
+        const response = await this.$axios.post(
+          `/admin/approveWithdrawalRequest/${user_id}`
+        );
+        this.$toast.success("Approved", { timeout: 5000 });
+        this.loading = false;
+        console.log(response);
+      } catch (error) {
+        this.loading = false;
+        console.log(error);
+      }
+    },
   },
   mounted() {
     this.getUsers();
     this.getMarketMakers();
     this.getAllSubscribers();
+    this.getWithdrawalRequests();
   },
 };
 </script>
@@ -231,11 +275,44 @@ export default {
 .users_wrap .v-tab {
   text-transform: unset;
 }
+.search__bar__wrap .form-control {
+  background-image: url("/search.png");
+  background-position-x: 5px;
+  background-position-y: 7px;
+  box-shadow: none;
+  height: 35px;
+  width: 30%;
+  border-radius: 5px;
+  padding: 5px 35px;
+  font-size: 14px;
+  color: #3030305f;
+}
+.users_wrap .search__bar__wrap .form-control:focus {
+  border-color: #30303037;
+}
+.users_wrap .search__bar__wrap ::placeholder {
+  padding-left: 5px;
+  color: #3030305f;
+}
+.confirm__button {
+  font-size: 13px !important;
+  background-color: #00e8fe !important;
+  border-radius: 5px;
+  box-shadow: none;
+  text-transform: none;
+  padding: 0 20px !important;
+}
 
 @media (max-width: 768px) {
   .users {
     margin-left: 0 !important;
     padding: 0;
+  }
+  .users_wrap {
+    padding: 10px;
+  }
+  .search__bar__wrap .form-control {
+    width: 70%;
   }
 }
 </style>

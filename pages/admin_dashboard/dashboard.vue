@@ -1,12 +1,12 @@
 <template>
   <div class="dashboard w-100">
     <div class="dashboard_content">
-      <user-nav name="Dashboard" />
+      <admin-nav name="Dashboard" />
       <div class="admin__wrap">
         <div class="wallet__balance__wrap">
           <div class="admin__card__wrap row align-items-center">
             <div class="col-md-6 d-flex justify-content-center">
-              <div class="admin__balance__wrap px-3 py-2">
+              <div class="admin__balance__wrap mb-2 px-3 py-2">
                 <div class="header__section d-flex align-items-center py-3">
                   <nuxt-img
                     format="webp"
@@ -35,7 +35,7 @@
               </div>
             </div>
             <div class="col-md-6 d-flex justify-content-center">
-              <div class="admin__wallet__wrap px-3 py-2">
+              <div class="admin__wallet__wrap mb-2 px-3 py-2">
                 <div class="header__section d-flex align-items-center py-3">
                   <nuxt-img
                     format="webp"
@@ -45,7 +45,7 @@
                     src="/light_vank.png"
                     alt="image"
                   />
-                  <h5>VANK Wallet Balance</h5>
+                  <h5>VANK Subscribers</h5>
                 </div>
                 <div
                   class="wallet__amount__card d-flex align-items-center mt-2"
@@ -57,24 +57,26 @@
                     src="/people_icon.png"
                     alt="image"
                   />
-                  <p>335,000,000</p>
+                  <p>200,000</p>
                 </div>
-                <span>Total Investment</span>
+                <span>Subscribers</span>
               </div>
             </div>
           </div>
-          <div class="buttons__wrap d-flex justify-content-center mt-4">
-            <div class="buy__assets__route">
-              <nuxt-link to="/admin_dashboard/fund_wallet" class="link__buttons"
+          <div class="buttons__wrap d-flex justify-content-center mt-4 mb-2">
+            <div class="buy__assets__route mx-1">
+              <nuxt-link
+                to="/admin_dashboard/create_asset"
+                class="link__buttons"
                 >Buy Assets</nuxt-link
               >
             </div>
-            <div class="fund__wallet__route mx-3">
+            <!-- <div class="fund__wallet__route mx-3">
               <nuxt-link to="/admin_dashboard/fund_wallet" class="link__buttons"
                 >Fund Wallet</nuxt-link
               >
-            </div>
-            <div class="add__market__maker__route">
+            </div> -->
+            <div class="add__market__maker__route mx-1">
               <nuxt-link
                 to="/admin_dashboard/add_market_maker"
                 class="link__buttons"
@@ -117,28 +119,28 @@
                                 <template v-slot:default>
                                   <thead>
                                     <tr class="">
-                                      <th class="text-left th_color">Name</th>
-                                      <th class="text-left th_color">Date</th>
-                                      <th class="text-left th_color">
+                                      <th class="text-center th_color">Name</th>
+                                      <th class="text-center th_color">Date</th>
+                                      <th class="text-center th_color">
                                         Fiat amount
                                       </th>
-                                      <th class="text-left th_color">
+                                      <th class="text-center th_color">
                                         Crypto amount
                                       </th>
-                                      <th class="text-left th_color">
+                                      <th class="text-center th_color">
                                         Status(User)
                                       </th>
-                                      <th class="text-left th_color">
+                                      <th class="text-center th_color">
                                         Status(MM)
                                       </th>
-                                      <th class="text-left th_color">
+                                      <th class="text-center th_color">
                                         Status(Admin)
                                       </th>
                                     </tr>
                                   </thead>
                                   <tbody>
                                     <tr
-                                      class="mt-2"
+                                      class="mt-2 text-center"
                                       v-for="sub in subscriptions"
                                       :key="sub.id"
                                     >
@@ -158,10 +160,7 @@
                                             {{ sub.user_confirmation }}
                                           </p>
                                         </div>
-                                        <div
-                                          v-else
-                                          class="warning mt-2 text-center"
-                                        >
+                                        <div v-else class="mt-2 text-center">
                                           <p class="text-warning py-2">
                                             {{ sub.user_confirmation }}
                                           </p>
@@ -180,10 +179,7 @@
                                             {{ sub.mm_confirmation }}
                                           </p>
                                         </div>
-                                        <div
-                                          v-else
-                                          class="warning mt-2 text-center"
-                                        >
+                                        <div v-else class="mt-2 text-center">
                                           <p class="text-warning py-2">
                                             {{ sub.mm_confirmation }}
                                           </p>
@@ -201,10 +197,7 @@
                                             {{ sub.admin_confirmation }}
                                           </p>
                                         </div>
-                                        <div
-                                          v-else
-                                          class="warning mt-2 text-center"
-                                        >
+                                        <div v-else class="mt-2 text-center">
                                           <p class="text-warning py-2">
                                             {{ sub.admin_confirmation }}
                                           </p>
@@ -227,81 +220,63 @@
                                 <template v-slot:default>
                                   <thead>
                                     <tr class="">
-                                      <th class="text-left th_color">Name</th>
-                                      <th class="text-left th_color">Date</th>
-                                      <th class="text-left th_color">
+                                      <th class="text-center th_color">Name</th>
+                                      <th class="text-center th_color">Date</th>
+                                      <th class="text-center th_color">
                                         Fiat amount
                                       </th>
-                                      <th class="text-left th_color">
+                                      <th class="text-center th_color">
                                         Crypto amount
                                       </th>
 
-                                      <th class="text-left th_color">
-                                        Status(User)
-                                      </th>
-                                      <th class="text-left th_color">
-                                        Status(MM)
-                                      </th>
-                                      <th class="text-left th_color">
-                                        Status(Admin)
+                                      <th class="text-center th_color">
+                                        Status
                                       </th>
                                     </tr>
                                   </thead>
                                   <tbody>
                                     <tr
-                                      class="mt-2"
+                                      class="mt-2 text-center"
                                       v-for="sub in subscriptions"
                                       :key="sub.id"
                                     >
-                                      <td>{{ sub.name }}</td>
-                                      <td>{{ sub.subscription_date }}</td>
-                                      <td>{{ sub.amount }}NGN</td>
-                                      <td>{{ sub.usdt }}</td>
-                                      <td>
-                                        <div
-                                          v-if="
-                                            sub.user_confirmation == 'Pending'
-                                          "
-                                          class="pending mt-2 text-center"
-                                        >
-                                          <p class="text-warning py-2">
-                                            {{ sub.user_confirmation }}
-                                          </p>
-                                        </div>
-                                        <div v-else>
-                                          <p>null</p>
-                                        </div>
+                                      <td
+                                        v-if="
+                                          sub.admin_confirmation == 'Pending'
+                                        "
+                                      >
+                                        {{ sub.name }}
                                       </td>
-
-                                      <td>
-                                        <div
-                                          v-if="
-                                            sub.mm_confirmation == 'Pending'
-                                          "
-                                          class="pending mt-2 text-center"
-                                        >
-                                          <p class="text-warning py-2">
-                                            {{ sub.mm_confirmation }}
-                                          </p>
-                                        </div>
-                                        <div v-else>
-                                          <p>null</p>
-                                        </div>
+                                      <td
+                                        v-if="
+                                          sub.admin_confirmation == 'Pending'
+                                        "
+                                      >
+                                        {{ sub.subscription_date }}
                                       </td>
-
-                                      <td>
-                                        <div
-                                          v-if="
-                                            sub.admin_confirmation == 'Pending'
-                                          "
-                                          class="pending mt-2 text-center"
-                                        >
+                                      <td
+                                        v-if="
+                                          sub.admin_confirmation == 'Pending'
+                                        "
+                                      >
+                                        {{ sub.amount }}NGN
+                                      </td>
+                                      <td
+                                        v-if="
+                                          sub.admin_confirmation == 'Pending'
+                                        "
+                                      >
+                                        {{ sub.usdt }}
+                                      </td>
+                                      <td
+                                        v-if="
+                                          sub.admin_confirmation == 'Pending'
+                                        "
+                                      >
+                                        <div class="pending mt-2 text-center">
                                           <p class="text-warning py-2">
                                             {{ sub.admin_confirmation }}
                                           </p>
-                                        </div>
-                                        <div v-else>
-                                          <p>null</p>
                                         </div>
                                       </td>
                                     </tr>
@@ -321,35 +296,65 @@
                                 <template v-slot:default>
                                   <thead>
                                     <tr class="">
-                                      <th class="text-left th_color">Name</th>
-                                      <th class="text-left th_color">Date</th>
-                                      <th class="text-left th_color">
+                                      <th class="text-center th_color">Name</th>
+                                      <th class="text-center th_color">Date</th>
+                                      <th class="text-center th_color">
                                         Fiat amount
                                       </th>
-                                      <th class="text-left th_color">
+                                      <th class="text-center th_color">
                                         Crypto amount
                                       </th>
 
-                                      <th class="text-left th_color">Status</th>
+                                      <th class="text-center th_color">
+                                        Status
+                                      </th>
                                     </tr>
                                   </thead>
                                   <tbody>
                                     <tr
-                                      class="mt-2"
+                                      class="mt-2 text-center"
                                       v-for="sub in subscriptions"
                                       :key="sub.id"
                                     >
-                                      <td>{{ sub.name }}</td>
-                                      <td>{{ sub.subscription_date }}</td>
-                                      <td>{{ sub.amount }}</td>
-                                      <td>{{ sub.btc }}</td>
-                                      <td>
-                                        <div class="success mt-2 text-center">
+                                      <td
+                                        v-if="
+                                          sub.admin_confirmation == 'Approved'
+                                        "
+                                      >
+                                        {{ sub.name }}
+                                      </td>
+                                      <td
+                                        v-if="
+                                          sub.admin_confirmation == 'Approved'
+                                        "
+                                      >
+                                        {{ sub.subscription_date }}
+                                      </td>
+                                      <td
+                                        v-if="
+                                          sub.admin_confirmation == 'Approved'
+                                        "
+                                      >
+                                        {{ sub.amount }}
+                                      </td>
+                                      <td
+                                        v-if="
+                                          sub.admin_confirmation == 'Approved'
+                                        "
+                                      >
+                                        {{ sub.btc }}
+                                      </td>
+                                      <td
+                                        v-if="
+                                          sub.admin_confirmation == 'Approved'
+                                        "
+                                      >
+                                        <div class="mt-2 text-center">
                                           <p
                                             id="confirmation"
                                             class="text-success py-2"
                                           >
-                                            {{ sub.mm_confirmation }}
+                                            {{ sub.admin_confirmation }}
                                           </p>
                                         </div>
                                       </td>
@@ -646,7 +651,6 @@ export default {
   background-image: url("/search.png");
   background-position-x: 5px;
   background-position-y: 7px;
-
   box-shadow: none;
   height: 35px !important;
   width: 35%;
@@ -661,6 +665,9 @@ export default {
   .dashboard_content {
     margin: 0 !important;
     padding: 0;
+  }
+  .admin__wrap {
+    margin: 5px;
   }
   .asset_wrap {
     width: 100%;
@@ -744,6 +751,23 @@ export default {
     background-size: 100%;
 
     border-radius: 10px;
+  }
+  .txn__data .search__bar__wrap .form-control {
+    height: 35px !important;
+    width: 70%;
+    border-radius: 5px;
+    padding: 5px 35px;
+  }
+  .wallet__balance__wrap {
+    padding: 7px;
+  }
+  .buttons__wrap .link__buttons {
+    font-size: 13px;
+    padding: 5px 7px !important;
+  }
+  .admin__balance__wrap,
+  .admin__wallet__wrap {
+    width: 100%;
   }
 }
 </style>

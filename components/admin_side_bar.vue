@@ -18,7 +18,7 @@
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="child_items">
-            <div class="ml-3">
+            <div class="ml-3 d-flex align-items-center">
               <ion-icon name="home-outline"></ion-icon>
 
               <span class="ml-2">Dashboard</span>
@@ -29,17 +29,26 @@
           to="/admin_dashboard/users"
           class="list-group list-group-item active bg-transparent active"
         >
-          <div class="ml-3 user__icon">
+          <div class="ml-3 user__icon d-flex align-items-center">
             <ion-icon name="people-outline"></ion-icon>
             <span class="ml-2">Users</span>
+          </div>
+        </nuxt-link>
+        <nuxt-link
+          to="/admin_dashboard/withdrawals"
+          class="list-group list-group-item active bg-transparent active"
+        >
+          <div class="ml-3 user__icon d-flex align-items-center">
+            <ion-icon name="card-outline"></ion-icon>
+            <span class="ml-2">Withdrawals</span>
           </div>
         </nuxt-link>
         <nuxt-link
           to="/admin_dashboard/settings"
           class="list-group list-group-item active bg-transparent active"
         >
-          <div class="ml-3 user__icon">
-            <ion-icon name="bag-outline"></ion-icon>
+          <div class="ml-3 user__icon d-flex align-items-center">
+            <ion-icon name="settings-outline"></ion-icon>
             <span class="ml-2">Settings</span>
           </div>
         </nuxt-link>

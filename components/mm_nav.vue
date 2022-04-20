@@ -4,7 +4,7 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4">
         <div class="">
           <li class="dashboard_text_li d-flex align-items-center">
-            <div><creator-sidebar /></div>
+            <div><mm-toggle /></div>
             <div class="mt-3">
               <h1>{{ name }}</h1>
             </div>

@@ -123,7 +123,7 @@
                   />
                 </div>
                 <div v-if="newUser">
-                  <p>{{ newUser.usdt_amount_bought }}</p>
+                  <p>{{ newUser.usdt_amount_available }}</p>
                 </div>
                 <div v-else>
                   <p>0</p>
@@ -167,7 +167,7 @@
                 </div>
                 <div>
                   <div v-if="newUser">
-                    <p>{{ newUser.coin1_amount_bought }}</p>
+                    <p>{{ newUser.btc_quantity_available }}</p>
                   </div>
                   <div v-else>
                     <p>0</p>
@@ -264,9 +264,9 @@ export default {
           },
         });
 
-        this.newUser = res.data.data[0];
+        this.newUser = res.data[0];
 
-        console.log(res);
+        console.log(this.newUser);
       } catch (error) {
         console.log(error.response);
       }

@@ -1,14 +1,14 @@
 <template>
   <div class="update__profile w-100">
     <div class="update__profile__wrap">
-      <user-nav name="Profile" />
+      <mm-nav name="Profile" />
       <div class="update__profile__content">
         <div class="header_section text-center">
           <h1>Update Profile</h1>
         </div>
         <div class="form_section mt-5">
           <ValidationObserver v-slot="{ handleSubmit }">
-            <form action="" @submit.prevent="handleSubmit(onSubmit)">
+            <form action="" @submit.prevent="handleSubmit(updateMMProfile)">
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group mx-2">
@@ -163,9 +163,9 @@ export default {
         this.mm_data = {};
       }
     },
-    onSubmit() {
-      this.updateMMProfile();
-    },
+    // onSubmit() {
+    //   this.updateMMProfile();
+    // },
   },
   components: {
     Toast,

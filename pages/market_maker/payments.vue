@@ -1,7 +1,7 @@
 <template>
   <div class="fund__wallet w-100">
     <div class="fund__wallet__wrap">
-      <user-nav name="Fund Wallet" />
+      <mm-nav name="Fund Wallet" />
       <div class="fund__wallet__content">
         <div class="txn__header py-3">
           <h5>Transaction History</h5>
@@ -61,13 +61,13 @@
                                       <!-- <p class="text-warning py-2">
                                         {{ sub.user_confirmation }}
                                       </p> -->
-                                      <button
+                                      <v-btn
                                         @click="confirmRequests(sub)"
                                         :loading="loading"
                                         class="confirm__button px-2 py-1"
                                       >
                                         Confirm
-                                      </button>
+                                      </v-btn>
                                     </td>
                                   </tr>
                                 </tbody>
@@ -252,7 +252,7 @@ export default {
   background-position-x: 5px;
   background-position-y: 7px;
   box-shadow: none;
-  height: 35px !important;
+  height: 35px;
   width: 30%;
   border-radius: 5px;
   padding: 5px 35px;
@@ -276,8 +276,12 @@ export default {
   font-size: 15px;
 }
 .confirm__button {
-  background-color: #00e8fe;
+  font-size: 13px !important;
+  background-color: #00e8fe !important;
   border-radius: 5px;
+  box-shadow: none;
+  text-transform: none;
+  padding: 0 20px !important;
 }
 
 @media (max-width: 768px) {

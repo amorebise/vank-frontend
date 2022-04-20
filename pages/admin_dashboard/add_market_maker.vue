@@ -1,10 +1,10 @@
 <template>
-  <div class="registeration_wrap">
-    <sign-up-header />
+  <div class="registeration_wrap px-5">
+    <admin-nav name="MM" />
+    <div class="back__button px-3">
+      <span @click="back()" class="back__link">back to dashboard</span>
+    </div>
     <div class="registeration_content">
-      <div class="back__button">
-        <span @click="back()" class="back__link">back to dashboard</span>
-      </div>
       <div class="header_section text-center">
         <h1>Add Market Maker</h1>
       </div>

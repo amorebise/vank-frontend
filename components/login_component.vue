@@ -189,7 +189,6 @@ export default {
 
 .form-control {
   color: grey;
-  min-height: 7vh;
   padding: 10px;
 }
 
@@ -244,8 +243,8 @@ export default {
   .login_button {
     font-size: 15px;
   }
-  .form-control {
+  /* .form-control {
     height: 5%;
-  }
+  } */
 }
 </style>

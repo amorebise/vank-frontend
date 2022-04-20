@@ -29,7 +29,7 @@
       </v-layout>
       <div class="list-group list-group-flush my-3" id="menu_items">
         <nuxt-link
-          to="/user_dashboard/dashboard"
+          to="/admin_dashboard/dashboard"
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="child_items ml-5 d-flex align-items-center">
@@ -38,26 +38,26 @@
           </div>
         </nuxt-link>
         <nuxt-link
-          to="/user_dashboard/basket"
+          to="/admin_dashboard/users"
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="ml-5 d-flex align-items-center">
-            <ion-icon name="bag-outline"></ion-icon>
-            <span class="ml-2">Basket</span>
+            <ion-icon name="people-outline"></ion-icon>
+            <span class="ml-2">Users</span>
           </div>
         </nuxt-link>
 
         <nuxt-link
-          to="/user_dashboard/transactions"
+          to="/admin_dashboard/withdrawals"
           class="list-group list-group-item active bg-transparent"
         >
           <div class="ml-5 d-flex align-items-center">
-            <ion-icon name="bar-chart-outline"></ion-icon>
-            <span class="ml-2">Transactions</span>
+            <ion-icon name="card-outline"></ion-icon>
+            <span class="ml-2">Withdrawals</span>
           </div>
         </nuxt-link>
         <nuxt-link
-          to="/user_dashboard/settings"
+          to="/admin_dashboard/settings"
           class="list-group list-group-item active bg-transparent"
         >
           <div class="ml-5 d-flex align-items-center">
@@ -151,7 +151,6 @@ export default {
 }
 .user-side-bar .navbar-brand {
   color: #455b6d !important;
-
   font-size: 50px;
 }
 .user-side-bar ul {
@@ -188,6 +187,16 @@ export default {
   }
   .user-side-bar .navbar {
     padding: 10px !important;
+  }
+  .user-side-bar .navbar-brand {
+    color: #455b6d !important;
+    font-size: 30px;
+  }
+  .list-group-flush > .list-group-item {
+    font-size: 15px !important;
+  }
+  .list-group-flush > .list-group-item ion-icon {
+    font-size: 18px;
   }
   .user-side-bar .bell {
     width: 85%;

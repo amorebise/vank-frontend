@@ -1,13 +1,16 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="users">
-      <user-nav name="Users" />
-      <div class="users_wrap">
+      <admin-nav name="Users" />
+      <div class="back__button">
+        <span @click="back()" class="back__link">back to dashboard</span>
+      </div>
+      <div class="create__assets__wrap">
         <template>
           <v-tabs v-model="tab" align-with-title>
-            <v-tab>All Users</v-tab>
-            <v-tab>Subscribers</v-tab>
-            <v-tab>Market Makers</v-tab>
+            <v-tab>Subscription Requests</v-tab>
+            <!-- <v-tab>Subscribers</v-tab>
+            <v-tab>Market Makers</v-tab> -->
           </v-tabs>
         </template>
         <v-tabs-items v-model="tab" class="tab_bg">
@@ -19,30 +22,34 @@
                     <template v-slot:default>
                       <thead>
                         <tr class="">
-                          <th class="text-left th_color">Action</th>
-                          <th class="text-left th_color">First Name</th>
-                          <th class="text-left th_color">Last Name</th>
+                          <th class="text-left th_color">Name</th>
                           <th class="text-left th_color">Email Address</th>
                           <th class="text-left th_color">Phone Number</th>
-                          <th class="text-left th_color">House Address</th>
-                          <th class="text-left th_color">Country</th>
-                          <th class="text-left th_color">State</th>
+                          <th class="text-left th_color">Asset</th>
+                          <th class="text-left th_color">Amount</th>
+
+                          <th class="text-left th_color">Action</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr
                           class="mt-2"
-                          v-for="user in users"
-                          :key="user.index"
+                          v-for="subscription in subscriptions"
+                          :key="subscription.id"
                         >
-                          <td><button class="buy__button">Buy</button></td>
-                          <td>{{ user.first_name }}</td>
-                          <td>{{ user.last_name }}</td>
-                          <td>{{ user.email }}</td>
-                          <td>{{ user.phone_number }}</td>
-                          <td>{{ user.address }}</td>
-                          <td>{{ user.country }}</td>
-                          <td>{{ user.state }}</td>
+                          <td>{{ subscription.name }}</td>
+
+                          <td>{{ subscription.email }}</td>
+                          <td>{{ subscription.phone_number }}</td>
+                          <td class="text-center">{{ subscription.usdt }}</td>
+                          <td>{{ subscription.amount }}</td>
+                          <td>
+                            <nuxt-link
+                              :to="'/admin_dashboard/' + subscription.id"
+                              class="buy__button"
+                              >Create Asset</nuxt-link
+                            >
+                          </td>
                         </tr>
                       </tbody>
                     </template>
@@ -52,7 +59,7 @@
             </v-card>
           </v-tab-item>
 
-          <v-tab-item>
+          <!-- <v-tab-item>
             <v-card flat>
               <v-card-text class="">
                 <div class="transactions_data">
@@ -129,7 +136,7 @@
                 </div>
               </v-card-text>
             </v-card>
-          </v-tab-item>
+          </v-tab-item> -->
         </v-tabs-items>
       </div>
     </div>
@@ -143,22 +150,25 @@ export default {
   data() {
     return {
       tab: null,
-      users: {},
+      subscriptions: {},
     };
   },
   methods: {
-    async getUsers() {
+    async getSubscriptionRequests() {
       try {
-        const response = await this.$axios.get("/admin/getAllUser");
-        this.users = response.data;
-        console.log(this.users);
+        const response = await this.$axios.get("/admin/getSubscriptionRequest");
+        this.subscriptions = response.data.data;
+        console.log(this.subscriptions);
       } catch (error) {
         console.log(error);
       }
     },
+    back() {
+      this.$router.go(-1);
+    },
   },
   mounted() {
-    this.getUsers();
+    this.getSubscriptionRequests();
   },
 };
 </script>
@@ -180,36 +190,52 @@ export default {
 .buy__button {
   color: #00e8fe;
 }
-.users_wrap {
+.back__link {
+  font-size: 12px;
+  color: blue;
+  cursor: pointer;
+  font-style: italic;
+}
+.create__assets__wrap {
   margin-top: 50px;
 }
-/* .settings_wrap .v-slide-group__content {
-  background-color: #f4ede4;
-}
-.settings_wrap .theme--light.v-tabs > .v-tabs-bar,
-.settings_wrap .v-card > *:last-child:not(.v-btn):not(.v-chip):not(.v-avatar) {
-  background-color: #f4ede4;
-} */
-.users_wrap .v-slide-group {
+.create__assets__wrap .v-slide-group {
   flex-wrap: wrap;
 }
-.users_wrap .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active),
-.users_wrap
+.create__assets__wrap
+  .theme--light.v-tabs
+  > .v-tabs-bar
+  .v-tab:not(.v-tab--active),
+.create__assets__wrap
   .theme--light.v-tabs
   > .v-tabs-bar
   .v-tab:not(.v-tab--active)
   > .v-icon,
-.users_wrap
+.create__assets__wrap
   .theme--light.v-tabs
   > .v-tabs-bar
   .v-tab:not(.v-tab--active)
   > .v-btn,
-.users_wrap .theme--light.v-tabs > .v-tabs-bar .v-tab--disabled {
+.create__assets__wrap .theme--light.v-tabs > .v-tabs-bar .v-tab--disabled {
   color: #55174f;
   font-variant: normal;
 }
-.users_wrap .v-tab {
+.create__assets__wrap .v-tab {
   text-transform: unset;
+}
+.theme--light.v-data-table
+  > .v-data-table__wrapper
+  > table
+  > tbody
+  > tr:not(:last-child)
+  > td:not(.v-data-table__mobile-row),
+.theme--light.v-data-table
+  > .v-data-table__wrapper
+  > table
+  > tbody
+  > tr:not(:last-child)
+  > th:not(.v-data-table__mobile-row) {
+  font-size: 13px;
 }
 
 @media (max-width: 768px) {

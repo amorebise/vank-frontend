@@ -1,7 +1,7 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="settings">
-      <user-nav name="Settings" />
+      <mm-nav name="Settings" />
 
       <div class="settings_wrap">
         <div class="update__password__wrap py-2">
@@ -38,13 +38,24 @@
                 />
               </div>
 
-              <v-btn
-                class="login_button"
-                :loading="loading"
-                value="Update"
-                type="submit"
-                >Update</v-btn
-              >
+              <div class="d-flex justify-content-center">
+                <div class="mx-2">
+                  <v-btn
+                    class="cancel_button"
+                    @click="profile_modal = !profile_modal"
+                    >Cancel</v-btn
+                  >
+                </div>
+                <div class="mx-2">
+                  <v-btn
+                    class="login_button"
+                    :loading="loading"
+                    value="Update"
+                    type="submit"
+                    >Update</v-btn
+                  >
+                </div>
+              </div>
             </form>
           </div>
         </div>
@@ -102,13 +113,22 @@
                   placeholder="Confirm Password"
                 />
               </div>
-              <v-btn
-                class="login_button"
-                :loading="loading"
-                value="Update"
-                type="submit"
-                >Update</v-btn
-              >
+              <div class="d-flex justify-content-center">
+                <div class="mx-2">
+                  <v-btn class="cancel_button" @click="show_modal = !show_modal"
+                    >Cancel</v-btn
+                  >
+                </div>
+                <div class="mx-2">
+                  <v-btn
+                    class="login_button"
+                    :loading="loading"
+                    value="Update"
+                    type="submit"
+                    >Update</v-btn
+                  >
+                </div>
+              </div>
             </form>
           </div>
         </div>
@@ -276,6 +296,14 @@ export default {
   width: 100%;
   z-index: 999;
 }
+.change__password__form .cancel_button {
+  border: 1px solid #00e8fe;
+  color: #00e8fe;
+  font-size: 14px;
+  padding: 5px 10px !important;
+  box-shadow: none !important;
+  text-transform: none;
+}
 .change__password__form .form-control {
   color: grey;
   min-height: 7vh;
@@ -288,11 +316,10 @@ export default {
   font-weight: 700;
 }
 .password__modal {
-  width: 35%;
+  width: 20%;
   margin: 100px auto;
   background-color: #fff;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 30px 10px;
 }
 .change__password__form p {
   cursor: pointer;
