@@ -375,6 +375,10 @@ export default {
 }
 
 @media (max-width: 768px) {
+  .registeration_wrap {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
   .register_wrap {
     margin: 0 !important;
   }
