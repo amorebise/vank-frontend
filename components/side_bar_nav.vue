@@ -98,6 +98,9 @@ export default {
   padding: 2.7rem 1.25rem !important;
   font-size: 1.2rem;
 }
+#sidebar-wrapper .sidebar-heading img {
+  width: 150px;
+}
 #sidebar-wrapper .list-group {
   width: 15rem;
 }
