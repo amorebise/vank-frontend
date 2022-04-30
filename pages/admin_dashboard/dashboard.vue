@@ -124,9 +124,9 @@
                                       <th class="text-center th_color">
                                         Fiat amount
                                       </th>
-                                      <th class="text-center th_color">
+                                      <!-- <th class="text-center th_color">
                                         Crypto amount
-                                      </th>
+                                      </th> -->
                                       <th class="text-center th_color">
                                         Status(User)
                                       </th>
@@ -147,7 +147,7 @@
                                       <td>{{ sub.name }}</td>
                                       <td>{{ sub.subscription_date }}</td>
                                       <td>{{ sub.amount }}USDT</td>
-                                      <td>{{ sub.usdt }}</td>
+                                      <!-- <td>{{ sub.usdt }}</td> -->
                                       <td>
                                         <div
                                           v-if="

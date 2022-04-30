@@ -4,11 +4,19 @@
       <mm-nav name="Dashboard" />
       <div class="admin__wrap">
         <div class="mm__profile__wrap px-3">
-          <div v-if="market_maker">
-            <h5>Welcome, {{ market_maker.first_name }}</h5>
-          </div>
-          <div>
-            <h5>Welcome</h5>
+          <div v-if="market_maker" class="d-flex align-items-center px-3 mb-2">
+            <h5 class="user_font">
+              Welcome,
+              <span class="user_name">{{ market_maker.first_name }}</span>
+            </h5>
+            <div class="ml-1">
+              <nuxt-img
+                format="webp"
+                quality="90"
+                fit="cover"
+                src="/emoji.png"
+              />
+            </div>
           </div>
           <p>
             IMPORTANT!!! In order to perform transactions, Kindly update your

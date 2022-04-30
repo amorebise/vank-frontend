@@ -87,7 +87,7 @@ export default {
         this.subscriptions = response.data.data;
         console.log(this.subscriptions);
       } catch (error) {
-        console.log(error);
+        console.log(error.response);
       }
     },
     back() {
