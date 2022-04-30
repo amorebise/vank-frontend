@@ -71,7 +71,6 @@
                                       </p> -->
                                       <v-btn
                                         @click="confirmRequests(sub)"
-                                        :loading="loading"
                                         class="confirm__button px-2 py-1"
                                       >
                                         Confirm
@@ -222,7 +221,6 @@ export default {
     },
     async confirmRequests(sub) {
       try {
-        this.loading = true;
         let user_id = sub.id;
         const response = await this.$axios.post(
           `/confirmUserPayment/${user_id}`,
@@ -231,9 +229,7 @@ export default {
         this.$toast.success("Subscription Confirmed", { timeout: 5000 });
         console.log(response);
         console.log(this.usdt_data);
-        this.loading = false;
       } catch (error) {
-        this.loading = false;
         console.log(error);
       }
     },
@@ -245,7 +241,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk&family=Titillium+Web&display=swap");
 * {
   margin: 0;

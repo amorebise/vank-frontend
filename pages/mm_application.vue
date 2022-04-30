@@ -131,7 +131,7 @@
                 <div class="form-group mx-2 mt-2">
                   <ValidationProvider
                     name="password"
-                    rules="required|max:12|min:6"
+                    rules="required|max:30|min:6"
                     v-slot="{ errors }"
                   >
                     <label for="" class="py-2">Password</label>
@@ -155,7 +155,7 @@
                 <div class="form-group mx-2 mt-2">
                   <ValidationProvider
                     name="confirm password"
-                    rules="required|max:12|min:8"
+                    rules="required|max:30|min:8"
                     v-slot="{ errors }"
                   >
                     <label for="" class="py-2">Confirm Password</label>

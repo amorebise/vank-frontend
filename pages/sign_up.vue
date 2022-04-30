@@ -248,7 +248,6 @@
                         id="checkbox-1"
                         v-model="signUp_data.agreement"
                         name="checkbox-1"
-                        value="accepted"
                       >
                         I have read, understood and accepted the
                         <popup />

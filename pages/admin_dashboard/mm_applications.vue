@@ -50,7 +50,6 @@
                           <td>
                             <v-btn
                               @click="approveMarketMaker(market_maker)"
-                              :loading="loading"
                               class="confirm__button px-3 py-1"
                             >
                               Approve
@@ -96,16 +95,13 @@ export default {
     },
     async approveMarketMaker(market_maker) {
       try {
-        this.loading = true;
         let mm_id = market_maker.id;
         const response = await this.$axios.post(
           `/admin/approveMarketMakerApplication/${mm_id}`
         );
         console.log(response);
-        this.loading = false;
         this.$toast.success("Market Maker Approved", { timeout: 5000 });
       } catch (error) {
-        this.loading = false;
         console.log(error.response);
       }
     },

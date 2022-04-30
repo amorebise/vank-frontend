@@ -4,7 +4,12 @@
       <mm-nav name="Dashboard" />
       <div class="admin__wrap">
         <div class="mm__profile__wrap px-3">
-          <h5>Welcome, {{ market_maker.first_name }}</h5>
+          <div v-if="market_maker">
+            <h5>Welcome, {{ market_maker.first_name }}</h5>
+          </div>
+          <div>
+            <h5>Welcome</h5>
+          </div>
           <p>
             IMPORTANT!!! In order to perform transactions, Kindly update your
             profile by clicking on the update button below.
