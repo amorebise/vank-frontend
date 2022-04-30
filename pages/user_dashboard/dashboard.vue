@@ -115,15 +115,15 @@
               </div>
               <div class="d-flex align-items-center pt-3">
                 <div class="naira_wrap">
-                  <nuxt-img
+                  <!-- <nuxt-img
                     format="webp"
                     quality="90"
                     fit="cover"
                     src="/nicon.png"
-                  />
+                  /> -->
                 </div>
                 <div v-if="newUser">
-                  <p>{{ newUser.usdt_amount_available }}</p>
+                  <p>${{ newUser.usdt_amount_available }}</p>
                 </div>
                 <div v-else>
                   <p>0</p>
@@ -158,12 +158,12 @@
               </div>
               <div class="d-flex align-items-center pt-3">
                 <div class="naira_wrap">
-                  <nuxt-img
+                  <!-- <nuxt-img
                     format="webp"
                     quality="90"
                     fit="cover"
                     src="/nicon.png"
-                  />
+                  /> -->
                 </div>
                 <div>
                   <div v-if="newUser">
@@ -213,7 +213,7 @@
               </div>
               <div>
                 <div v-if="newUser">
-                  <p>{{ newUser.asset_amount_bought }}</p>
+                  <p>{{ newUser.asset }}</p>
                 </div>
                 <div v-else>
                   <p>0</p>
@@ -230,7 +230,7 @@
 
 <script>
 export default {
-  // middleware: "auth",
+  middleware: "auth",
 
   data() {
     return {

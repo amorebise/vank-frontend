@@ -28,7 +28,6 @@
                 id="password"
                 class=""
                 v-model="forgot_password.password"
-                required
                 placeholder="Enter Password"
               />
               <span class="d-flex" @click="displayPassword()">
@@ -61,7 +60,6 @@
                 id="second_password"
                 class=""
                 v-model="forgot_password.password_confirmation"
-                required
                 placeholder="Enter Password"
               />
               <span class="d-flex" @click="displaySecondPassword()">
@@ -116,6 +114,7 @@ export default {
         password: "",
         password_confirmation: "",
       },
+      message: {},
       loading: false,
     };
   },
@@ -133,12 +132,13 @@ export default {
         this.$toast.success("Password Changed Successfully", {
           timeout: 5000,
         });
-      } catch (err) {
+      } catch (error) {
         this.loading = false;
-        this.$toast.warning("Password Does Not Match With Password Confirm.", {
+        this.message = error.response.data.message;
+        this.$toast.warning(this.message, {
           timeout: 5000,
         });
-        console.log(err);
+        console.log(error.response.data.message);
       }
     },
 

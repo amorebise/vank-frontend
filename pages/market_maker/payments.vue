@@ -42,8 +42,9 @@
                                       Fiat amount
                                     </th>
                                     <th class="text-left th_color">
-                                      Crypto amount
+                                      USDT Rate
                                     </th>
+
                                     <th class="text-left th_color">Action</th>
                                   </tr>
                                 </thead>
@@ -56,7 +57,14 @@
                                     <td>{{ sub.name }}</td>
                                     <td>{{ sub.subscription_date }}</td>
                                     <td>{{ sub.amount }}NGN</td>
-                                    <td>{{ sub.usdt }}</td>
+                                    <td>
+                                      <input
+                                        type="number"
+                                        class="form-control"
+                                        placeholder="Input USDT Rate"
+                                        v-model="usdt_data.usdt_rate"
+                                      />
+                                    </td>
                                     <td>
                                       <!-- <p class="text-warning py-2">
                                         {{ sub.user_confirmation }}
@@ -197,6 +205,9 @@ export default {
       tab: null,
       subscriberRequest: {},
       subscriptions: {},
+      usdt_data: {
+        usdt_rate: "",
+      },
     };
   },
   methods: {
@@ -214,10 +225,12 @@ export default {
         this.loading = true;
         let user_id = sub.id;
         const response = await this.$axios.post(
-          `/confirmUserPayment/${user_id}`
+          `/confirmUserPayment/${user_id}`,
+          this.usdt_data
         );
         this.$toast.success("Subscription Confirmed", { timeout: 5000 });
         console.log(response);
+        console.log(this.usdt_data);
         this.loading = false;
       } catch (error) {
         this.loading = false;
@@ -246,7 +259,13 @@ export default {
   min-height: 100vh;
   padding: 0 50px;
 }
-
+.fund__wallet__wrap .form-control {
+  box-shadow: none;
+  width: 60%;
+}
+.fund__wallet__wrap .form-control:focus {
+  border: 1px solid #3030302b;
+}
 .fund__wallet__wrap .search__bar__wrap .form-control {
   background-image: url("/search.png");
   background-position-x: 5px;

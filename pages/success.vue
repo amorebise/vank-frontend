@@ -12,7 +12,7 @@
         <h1>Withdrawal Successful</h1>
         <p>
           Your withdrawal request has been submitted for processing. <br />
-          It could take up to 24 hours to show in your wallet.
+          It could take up to 24 hours to complete.
         </p>
         <nuxt-link class="home_link" to="/user_dashboard/dashboard"
           >back to dashboard</nuxt-link

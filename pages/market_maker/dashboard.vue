@@ -84,13 +84,13 @@
               </button>
             </div>
 
-            <div class="add__market__maker__route">
+            <!-- <div class="add__market__maker__route">
               <nuxt-link
                 to="/admin_dashboard/add_market_maker"
                 class="link__buttons"
                 >Withdraw</nuxt-link
               >
-            </div>
+            </div> -->
           </div>
           <div class="change__password__form" v-show="fund_wallet_modal">
             <div class="password__modal slideInDown py-4">
@@ -112,6 +112,7 @@
                   <input
                     required
                     type="number"
+                    :loading="loading"
                     class="form-control mt-2"
                     v-model="wallet_balance_update.wallet_balance"
                     placeholder="200,000USDT"
@@ -143,6 +144,7 @@
                 />
               </div>
             </div>
+
             <div class="txn__table">
               <div class="admin__transactions">
                 <div class="admin__transactions_wrap mt-3">
@@ -412,6 +414,7 @@ export default {
       wallet_balance_update: {
         wallet_balance: "",
       },
+      message: {},
     };
   },
 
@@ -438,7 +441,6 @@ export default {
         }
       }
       console.log(token);
-      // console.log(this.$auth.$storage._state._token);
       try {
         let res = await this.$axios.get("/getMarketMakerDetail", {
           headers: {
@@ -453,15 +455,22 @@ export default {
     },
     async updateWalletBalance() {
       try {
+        this.loading = true;
         const response = await this.$axios.post(
           "/updateWalletBalance",
           this.wallet_balance_update
         );
-        this.$toast.success("Wallet been updated", { timeout: 5000 });
+        this.loading = false;
+        this.$toast.success("Thank You, Wallet will be Updated Shortly", {
+          timeout: 5000,
+        });
         this.fund_wallet_modal = !this.fund_wallet_modal;
         console.log(response);
       } catch (error) {
-        console.log(error);
+        this.loading = false;
+        this.message = error.response.data.message;
+        this.$toast.warning(this.message, { timeout: 5000 });
+        console.log(error.response.data.message);
       }
     },
   },
@@ -1001,6 +1010,10 @@ tr {
   }
   .mm__profile__wrap p {
     font-size: 10px;
+  }
+  .password__modal {
+    margin: 40px auto;
+    width: 100%;
   }
 }
 </style>

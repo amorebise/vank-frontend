@@ -67,7 +67,7 @@
                       />
                     </div>
                   </div>
-                  <div class="col-md-3">
+                  <!-- <div class="col-md-3">
                     <div class="form-group mx-2 mt-2">
                       <label for="" class="py-2">USDT Price</label>
                       <input
@@ -77,7 +77,7 @@
                         placeholder="Enter Average Purchase Price"
                       />
                     </div>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="row">
                   <div class="col-md-3">
@@ -297,7 +297,6 @@ export default {
       subcribers: {},
       id: this.$route.params.id,
       asset_data: {
-        usdt_price: "",
         coin1: "",
         coin1_amount: "",
         coin1_price: "",
@@ -336,7 +335,7 @@ export default {
       try {
         this.loading = true;
         const response = await this.$axios.post(
-          `/admin/createAsset/${this.id}`,
+          `/admin/updateAsset/${this.id}`,
           this.asset_data
         );
         this.loading = false;
@@ -345,8 +344,8 @@ export default {
         console.log(response);
       } catch (error) {
         this.loading = false;
-        console.log(error.response.data);
-        this.message = error.response.data.message;
+        console.log(error.response);
+        this.message = error.response;
         this.$toast.warning(this.message, { timeout: 5000 });
       } finally {
         this.asset_data = {};

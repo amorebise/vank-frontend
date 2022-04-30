@@ -85,6 +85,7 @@ export default {
         password: "",
       },
       loading: false,
+      message: {},
     };
   },
 
@@ -112,7 +113,7 @@ export default {
           this.$toast.success("You Are Logged In", {
             timeout: 5000,
           });
-        } else if (response.data.user.role == "MarketMaker") {
+        } else if (response.data.user.role == "Market Maker") {
           this.$auth.setUserToken(response.data.token);
           this.$router.push("/market_maker/dashboard");
           console.log(this.$auth.loggedIn);
@@ -128,12 +129,11 @@ export default {
       } catch (error) {
         this.loading = false;
         console.log(error);
-        this.$toast.warning(
-          "There was a problem logging into your account. Password or email may be incorrect.",
-          {
-            timeout: 5000,
-          }
-        );
+        console.log(error.response.data.error);
+        this.message = error.response.data.error;
+        this.$toast.warning(this.message, {
+          timeout: 5000,
+        });
       }
     },
 
@@ -190,6 +190,7 @@ export default {
 .form-control {
   color: grey;
   padding: 10px;
+  height: calc(2em + 0.75rem + 2px);
 }
 
 .password_wrap {

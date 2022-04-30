@@ -13,14 +13,14 @@
       </h5>
       <div class="verify_wrap">
         <div class="send_code_wrap mt-5">
-          <form action="" @submit.prevent="onSubmit()">
+          <form action="" @submit.prevent="withdraw_asset()">
             <div class="form-group py-2">
               <label for="">Email</label>
               <div class="d-flex input_wrap">
                 <input
                   type="text"
                   class="form-control"
-                  v-model="withdrawal_info.email_code"
+                  v-model="withdrawal_info.two_factor_code_email"
                   placeholder="enter code"
                   required
                 />
@@ -41,7 +41,7 @@
                   type="text"
                   class="form-control"
                   placeholder="enter code"
-                  v-model="withdrawal_info.phone_code"
+                  v-model="withdrawal_info.two_factor_code_sms"
                   required
                 />
                 <v-btn @click="sendSms()" class="send_code_button"
@@ -55,6 +55,7 @@
                 class="withdraw_button w-100"
                 :loading="loading"
                 value="Withdraw"
+                type="submit"
                 >Withdraw</v-btn
               >
             </div>
@@ -73,9 +74,10 @@ export default {
     return {
       loading: false,
       withdrawal_info: {
-        email_code: "",
-        phone_code: "",
+        two_factor_code_email: "",
+        two_factor_code_sms: "",
       },
+      newUser: {},
     };
   },
   methods: {
@@ -116,9 +118,10 @@ export default {
         this.loading = true;
         const response = await this.$axios.post(
           `/withdraw/${user_id}`,
-          this.withdrawal_request
+          this.withdrawal_info
         );
         console.log(response);
+        console.log(this.newUser.id);
         this.$router.push("/success");
       } catch (error) {
         this.loading = false;
@@ -129,30 +132,29 @@ export default {
     },
     async sendSms() {
       try {
-        const response = await this.$axios.post(
-          "/sendSmsCode",
-          this.withdrawal_info.phone_code
-        );
+        var user_id = this.newUser.id;
+        const response = await this.$axios.post("/sendSmsCode/");
         console.log(response);
         this.$toast.success("Email Has been Sent", {
           timeout: 5000,
         });
+        consoloe.log(user_id);
       } catch (error) {
-        console.log(error);
+        console.log(error.response);
       }
     },
     async sendEmail() {
       try {
         const response = await this.$axios.post(
-          "/sendEmailCode",
-          this.withdrawal_info.email_code
+          "/sendEmailCode"
+          // this.withdrawal_info.two_factor_code_email
         );
         console.log(response);
         this.$toast.success("Email Has been Sent", {
           timeout: 5000,
         });
       } catch (error) {
-        console.log(error);
+        console.log(error.response);
       }
     },
     // onSubmit() {
@@ -164,6 +166,9 @@ export default {
     back() {
       this.$router.go(-1);
     },
+  },
+  mounted() {
+    this.getUser();
   },
 };
 </script>

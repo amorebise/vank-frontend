@@ -57,6 +57,15 @@
           </div>
         </nuxt-link>
         <nuxt-link
+          to="/admin_dashboard/mm_applications"
+          class="list-group list-group-item active bg-transparent active"
+        >
+          <div class="ml-3 user__icon d-flex align-items-center">
+            <ion-icon name="settings-outline"></ion-icon>
+            <span class="ml-2">MM Applications</span>
+          </div>
+        </nuxt-link>
+        <nuxt-link
           to="/admin_dashboard/settings"
           class="list-group list-group-item active bg-transparent"
         >

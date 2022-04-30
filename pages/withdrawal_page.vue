@@ -29,9 +29,9 @@
                 v-model="withdrawal_request.asset"
                 id="exampleFormControlSelect1"
               >
-                <option value="first_asset">BTC</option>
-                <option value="second_asset">SOL</option>
-                <option value="third_asset">ETH</option>
+                <option value="dent">dent</option>
+                <option value="second_asset">BTC</option>
+                <option value="third_asset">PHYGITAL</option>
               </select>
             </div>
             <div class="form-group mt-3">

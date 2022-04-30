@@ -207,16 +207,13 @@ export default {
     },
     async approveWithdrawalsRequest(withdrawal) {
       try {
-        this.loading = true;
         let user_id = withdrawal.id;
         const response = await this.$axios.post(
           `/admin/approveWithdrawalRequest/${user_id}`
         );
         this.$toast.success("Approved", { timeout: 5000 });
-        this.loading = false;
         console.log(response);
       } catch (error) {
-        this.loading = false;
         console.log(error);
       }
     },

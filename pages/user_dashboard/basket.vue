@@ -6,7 +6,7 @@
         <template v-slot:default>
           <thead>
             <tr class="">
-              <th class="text-left th_color">SN</th>
+              <!-- <th class="text-left th_color">SN</th> -->
               <th class="text-left th_color">Token</th>
               <th class="text-left th_color">Current Price</th>
               <th class="text-left th_color">Average Purchase Price</th>
@@ -17,31 +17,23 @@
           </thead>
           <tbody>
             <tr class="mt-2">
-              <td>1</td>
-              <td>HIGH</td>
-              <td>6.25USD</td>
-              <td>8.92</td>
-              <td>100</td>
+              <!-- <td>1</td> -->
+              <td>{{ newUser.coin1 }}</td>
+              <td>{{ newUser.coin1_price }}</td>
+              <td>{{ newUser.coin1_avg_purchase_price }}</td>
+              <td>{{ newUser.coin1_quantity_available }}</td>
               <td>625USD</td>
               <td class="text-danger">-9%</td>
             </tr>
-            <tr class="py-2">
-              <td>2</td>
-              <td>DOT</td>
-              <td>22.41USD</td>
-              <td>18.40</td>
-              <td>50</td>
-              <td>1,120USD</td>
-              <td class="text-success">+21%</td>
-            </tr>
-            <tr class="py-2">
-              <td>3</td>
-              <td>CORN</td>
-              <td>500NGN</td>
-              <td>350</td>
-              <td>2000</td>
-              <td>1,000,000NGN</td>
-              <td class="text-success">+42%</td>
+
+            <tr class="mt-2">
+              <!-- <td>1</td> -->
+              <td>{{ newUser.coin2 }}</td>
+              <td>{{ newUser.coin1_price }}</td>
+              <td>{{ newUser.coin1_avg_purchase_price }}</td>
+              <td>{{ newUser.coin1_quantity_available }}</td>
+              <td>625USD</td>
+              <td class="text-danger">-9%</td>
             </tr>
           </tbody>
         </template>
@@ -52,8 +44,50 @@
 
 <script>
 export default {
+  middleware: "auth",
+
   data() {
-    return {};
+    return {
+      user: {},
+      newUser: {},
+    };
+  },
+
+  methods: {
+    async getUser() {
+      let auth = this.$auth.$storage._state;
+      let token = null;
+
+      for (const key in auth) {
+        console.log(key);
+
+        if (key == "_token.local") {
+          token = auth[key];
+        } else {
+          console.log("No");
+        }
+      }
+
+      console.log(token);
+
+      // console.log(this.$auth.$storage._state._token);
+      try {
+        let res = await this.$axios.get("/getAsset", {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        });
+
+        this.newUser = res.data[0];
+
+        console.log(this.newUser);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+  },
+  created() {
+    this.getUser();
   },
 };
 </script>

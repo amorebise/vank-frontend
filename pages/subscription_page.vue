@@ -30,38 +30,41 @@
             <div class="plan_wrap">
               <div class="mt-2">
                 <form action="" @submit.prevent="request_asset()">
-                  <div class="form-check ml-5 py-2">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      value=""
-                      id="defaultCheck1"
-                      v-model="subscription_plan.usdt"
-                    />
-                    <label class="form-check-label" for="defaultCheck1">
-                      Basic Plan (USD)
-                    </label>
-                    <br />
-                    <span>US Dollar Equivalent</span>
-                  </div>
-                  <div class="form-check ml-5 py-2">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      value=""
-                      id="defaultCheck2"
+                  <b-form-group v-slot="{ ariaDescribedby }">
+                    <b-form-radio
                       v-model="subscription_plan.btc"
-                    />
-                    <label class="form-check-label" for="defaultCheck2">
-                      BTC Plan
-                    </label>
-                    <br />
+                      :aria-describedby="ariaDescribedby"
+                      name="some-radios"
+                      value="A"
+                      class="label"
+                      >Basic Plan (USD)</b-form-radio
+                    >
+                    <span>US Dollar Equivalent</span>
+                    <b-form-radio
+                      v-model="subscription_plan.btc"
+                      :aria-describedby="ariaDescribedby"
+                      name="some-radios"
+                      value="B"
+                      class="label"
+                      >BTC Plan</b-form-radio
+                    >
                     <span>Bitcoin to your Wallet</span>
-                  </div>
-                  <div class="form-check ml-5 py-2">
+
+                    <b-form-radio
+                      v-model="subscription_plan.vank_basket"
+                      :aria-describedby="ariaDescribedby"
+                      name="some-radios"
+                      value="B"
+                      class="label"
+                      >VANK Basket Plan (5,000 + 5%)</b-form-radio
+                    >
+                    <span>Curated Crypto</span>
+                  </b-form-group>
+
+                  <!-- <div class="form-check ml-5 py-2">
                     <input
                       class="form-check-input"
-                      type="checkbox"
+                      type="radio"
                       value=""
                       id="defaultCheck2"
                       v-model="subscription_plan.vank_basket"
@@ -71,7 +74,7 @@
                     </label>
                     <br />
                     <span>Curated Crypto</span>
-                  </div>
+                  </div> -->
                   <div class="form-group mt-2">
                     <label class="" for="">Amount </label>
                     <input
@@ -110,7 +113,7 @@
 
 <script>
 export default {
-  middleware: "auth",
+  // middleware: "auth",
   data() {
     return {
       loading: false,
@@ -191,7 +194,7 @@ export default {
 .subscription_wrap .subscription_content .plan_wrap .form-check-label {
   font-size: 14px !important;
 }
-.subscription_wrap .subscription_content .plan_wrap label {
+.subscription_wrap .subscription_content .plan_wrap .label {
   font-size: 15px;
   font-weight: 600;
 }

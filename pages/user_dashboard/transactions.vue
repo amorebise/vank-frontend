@@ -22,47 +22,47 @@
                           <th class="text-left th_color">Date</th>
                           <th class="text-left th_color">Fiat amount</th>
                           <th class="text-left th_color">Price</th>
-                          <th class="text-left th_color">Crypto amount</th>
-                          <th class="text-left th_color">Status</th>
+                          <!-- <th class="text-left th_color">Crypto amount</th> -->
+                          <!-- <th class="text-left th_color">Status</th> -->
                         </tr>
                       </thead>
                       <tbody>
                         <tr class="mt-2">
-                          <td>1</td>
-                          <td>2022-02-10 10:30:11</td>
-                          <td>107,144.40NGN</td>
-                          <td>571.30NGN</td>
-                          <td>1.87.54USDT</td>
-                          <td>
+                          <td>{{ newUser.coin1 }}</td>
+                          <td>{{ newUser.date_created }}</td>
+                          <td>{{ newUser.amount_after_charges }}</td>
+                          <td>{{ newUser.coin1_price }}</td>
+                          <!-- <td>{{ newUser.coin1_amount }}</td> -->
+                          <!-- <td>
                             <div class="success mt-2 text-center">
                               <p class="text-success py-2">Completed</p>
                             </div>
-                          </td>
+                          </td> -->
                         </tr>
                         <tr class="py-2">
-                          <td>2</td>
-                          <td>2022-02-10 10:30:11</td>
-                          <td>920,000.00NGN</td>
-                          <td>574.10NGN</td>
-                          <td>1.602.50USDT</td>
-                          <td>
+                          <td>{{ newUser.coin2 }}</td>
+                          <td>{{ newUser.date_created }}</td>
+                          <td>{{ newUser.amount_after_charges }}</td>
+                          <td>{{ newUser.coin1_price }}</td>
+                          <!-- <td>{{ newUser.coin1_amount }}</td> -->
+                          <!-- <td>
                             <div class="warning mt-2 text-center">
                               <p class="text-warning py-2">Pending</p>
                             </div>
-                          </td>
+                          </td> -->
                         </tr>
-                        <tr class="py-2">
-                          <td>3</td>
-                          <td>2022-02-10 10:30:11</td>
-                          <td>200,000.00NGN</td>
-                          <td>572.00NGN</td>
-                          <td>349.65USDT</td>
+                        <!-- <tr class="py-2">
+                          <td>{{ newUser.coin3 }}</td>
+                          <td>{{ newUser.date_created }}</td>
+                          <td>{{ newUser.amount_after_charges }}</td>
+                          <td>{{ newUser.coin3_price }}</td>
+                          <td>{{ newUser.coin3_amount }}</td>
                           <td>
                             <div class="success mt-2 text-center">
                               <p class="text-success py-2">Completed</p>
                             </div>
                           </td>
-                        </tr>
+                        </tr> -->
                       </tbody>
                     </template>
                   </v-simple-table>
@@ -88,18 +88,18 @@
                       </thead>
                       <tbody>
                         <tr class="mt-2">
-                          <td>03/02/2022</td>
-                          <td>XRP</td>
-                          <td>0.80USD</td>
-                          <td>100</td>
-                          <td>80USD</td>
+                          <td>{{ newUser.date_created }}</td>
+                          <td>{{ newUser.coin1 }}</td>
+                          <td>{{ newUser.coin1_avg_purchase_price }}</td>
+                          <td>{{ newUser.coin1_amount }}</td>
+                          <td>{{ newUser.amount_after_charges }}</td>
                         </tr>
                         <tr class="py-2">
-                          <td>04/02/2022</td>
-                          <td>CORN</td>
-                          <td>500NGN</td>
-                          <td>10</td>
-                          <td>5,000NGN</td>
+                          <td>{{ newUser.date_created }}</td>
+                          <td>{{ newUser.coin2 }}</td>
+                          <td>{{ newUser.coin2_avg_purchase_price }}</td>
+                          <td>{{ newUser.coin2_amount }}</td>
+                          <td>{{ newUser.amount_after_charges }}</td>
                         </tr>
                       </tbody>
                     </template>
@@ -121,7 +121,46 @@ export default {
   data() {
     return {
       tab: null,
+      user: {},
+      newUser: {},
     };
+  },
+
+  methods: {
+    async getUser() {
+      let auth = this.$auth.$storage._state;
+      let token = null;
+
+      for (const key in auth) {
+        console.log(key);
+
+        if (key == "_token.local") {
+          token = auth[key];
+        } else {
+          console.log("No");
+        }
+      }
+
+      console.log(token);
+
+      // console.log(this.$auth.$storage._state._token);
+      try {
+        let res = await this.$axios.get("/getAsset", {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        });
+
+        this.newUser = res.data[0];
+
+        console.log(this.newUser);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+  },
+  created() {
+    this.getUser();
   },
 };
 </script>

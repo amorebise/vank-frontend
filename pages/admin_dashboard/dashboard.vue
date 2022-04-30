@@ -146,7 +146,7 @@
                                     >
                                       <td>{{ sub.name }}</td>
                                       <td>{{ sub.subscription_date }}</td>
-                                      <td>{{ sub.amount }}NGN</td>
+                                      <td>{{ sub.amount }}USDT</td>
                                       <td>{{ sub.usdt }}</td>
                                       <td>
                                         <div
@@ -259,7 +259,7 @@
                                           sub.admin_confirmation == 'Pending'
                                         "
                                       >
-                                        {{ sub.amount }}NGN
+                                        {{ sub.amount }}USDT
                                       </td>
                                       <td
                                         v-if="
@@ -279,6 +279,12 @@
                                           </p>
                                         </div>
                                       </td>
+                                    </tr>
+                                    <tr
+                                      class="mt-2"
+                                      v-if="subscriptions.length == 0"
+                                    >
+                                      <p>No Pending Requests</p>
                                     </tr>
                                   </tbody>
                                 </template>
@@ -405,7 +411,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk&family=Titillium+Web&display=swap");
 * {
   margin: 0;

@@ -7,84 +7,44 @@
           <h1>Update Profile</h1>
         </div>
         <div class="form_section mt-5">
-          <ValidationObserver v-slot="{ handleSubmit }">
-            <form action="" @submit.prevent="handleSubmit(updateMMProfile)">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group mx-2">
-                    <ValidationProvider
-                      name="wallet address"
-                      rules="required"
-                      v-slot="{ errors }"
-                    >
-                      <label for="" class="py-1">Wallet Address</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="mm_data.wallet_id"
-                        placeholder="Enter your Wallet Address"
-                      />
-                      <span class="errors">{{ errors[0] }}</span>
-                    </ValidationProvider>
-                  </div>
+          <form action="" @submit.prevent="updateMMProfile()">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group mx-2">
+                  <label for="" class="py-1">Wallet Address</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    v-model="mm_data.wallet_id"
+                    placeholder="Enter your Wallet Address"
+                  />
                 </div>
-                <!-- <div class="col-md-6">
-                  <div class="form-group mx-2">
-                    <ValidationProvider
-                      name="wallet balance"
-                      rules="required"
-                      v-slot="{ errors }"
-                    >
-                      <label for="" class="py-1">Wallet Balance</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="mm_data.wallet_balance"
-                        placeholder="Enter your Wallet Balance"
-                      />
-                      <span class="errors">{{ errors[0] }}</span>
-                    </ValidationProvider>
-                  </div>
-                </div> -->
-                <div class="col-md-6">
-                  <div class="form-group mx-2">
-                    <ValidationProvider
-                      name="bank name"
-                      rules="required"
-                      v-slot="{ errors }"
-                    >
-                      <label for="" class="py-1">Bank Name</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="mm_data.bank_name"
-                        placeholder="Enter your Bank Name"
-                      />
-                      <span class="errors">{{ errors[0] }}</span>
-                    </ValidationProvider>
-                  </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mx-2">
+                  <label for="" class="py-1">Bank Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    v-model="mm_data.bank_name"
+                    placeholder="Enter your Bank Name"
+                  />
                 </div>
-                <div class="col-md-6">
-                  <div class="form-group mx-2 py-3">
-                    <ValidationProvider
-                      name="account number"
-                      rules="required"
-                      v-slot="{ errors }"
-                    >
-                      <label for="" class="py-1">Account Number</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="mm_data.account_no"
-                        placeholder="Enter your Account Number"
-                      />
-                      <span class="errors">{{ errors[0] }}</span>
-                    </ValidationProvider>
-                  </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mx-2 py-3">
+                  <label for="" class="py-1">Account Number</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    v-model="mm_data.account_no"
+                    placeholder="Enter your Account Number"
+                  />
                 </div>
+              </div>
 
-                <!-- <div class="col-md-6"> -->
-                <div class="form-group mx-4">
+              <!-- <div class="col-md-6"> -->
+              <!-- <div class="form-group mx-4">
                   <ValidationProvider
                     name="accept_terms"
                     rules="required"
@@ -103,25 +63,22 @@
                             conditions</span
                           >
                         </div>
-                        <!-- <popup /> -->
                       </b-form-checkbox>
                     </div>
                     <span class="errors">{{ errors[0] }}</span>
                   </ValidationProvider>
-                  <!-- </div> -->
-                </div>
-              </div>
-              <div class="text-center register_wrap mt-4">
-                <v-btn
-                  class="register_button"
-                  value=""
-                  :loading="loading"
-                  type="submit"
-                  >Update Profile</v-btn
-                >
-              </div>
-            </form>
-          </ValidationObserver>
+                </div> -->
+            </div>
+            <div class="text-center register_wrap mt-4">
+              <v-btn
+                class="register_button"
+                value=""
+                :loading="loading"
+                type="submit"
+                >Update Profile</v-btn
+              >
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -141,7 +98,6 @@ export default {
         wallet_id: "",
         account_no: "",
         bank_name: "",
-        agreement: null,
       },
     };
   },

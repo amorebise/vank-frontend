@@ -248,7 +248,6 @@
                         id="checkbox-1"
                         v-model="signUp_data.agreement"
                         name="checkbox-1"
-                        value="accepted"
                       >
                         I have read, understood and accepted the
                         <popup />
@@ -321,9 +320,12 @@ export default {
     async signUp() {
       try {
         this.loading = true;
-        const response = await this.$axios.post("/register", this.signUp_data);
+        const response = await this.$axios.post(
+          "/marketMakerAplication",
+          this.signUp_data
+        );
         this.$toast.success(
-          "Registration Successful, Check Your Mail For Verification",
+          "Application Successful, Check Your Mail For Verification",
           {
             timeout: 5000,
           }
@@ -332,11 +334,11 @@ export default {
         console.log(response);
         this.loading = false;
         this.$router.push("/");
-        // this.signUp_data = {};
       } catch (error) {
         console.log(error.response);
-
         this.loading = false;
+      } finally {
+        this.signUp_data = {};
       }
     },
     onSubmit() {

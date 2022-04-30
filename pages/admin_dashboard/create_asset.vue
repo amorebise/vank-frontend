@@ -51,46 +51,11 @@
                             >
                           </td>
                         </tr>
-                      </tbody>
-                    </template>
-                  </v-simple-table>
-                </div>
-              </v-card-text>
-            </v-card>
-          </v-tab-item>
-
-          <!-- <v-tab-item>
-            <v-card flat>
-              <v-card-text class="">
-                <div class="transactions_data">
-                  <v-simple-table fixed-header height="400px">
-                    <template v-slot:default>
-                      <thead>
-                        <tr class="">
-                          <th class="text-left th_color">Action</th>
-                          <th class="text-left th_color">First Name</th>
-                          <th class="text-left th_color">Last Name</th>
-                          <th class="text-left th_color">Email Address</th>
-                          <th class="text-left th_color">Phone Number</th>
-                          <th class="text-left th_color">House Address</th>
-                          <th class="text-left th_color">Country</th>
-                          <th class="text-left th_color">State</th>
-                        </tr>
-                      </thead>
-                      <tbody>
                         <tr
-                          class="mt-2"
-                          v-for="user in users"
-                          :key="user.index"
+                          class="mt-2 d-flex justify-content-center"
+                          v-if="subscriptions.length == 0"
                         >
-                          <td><button class="buy__button">Buy</button></td>
-                          <td>{{ user.first_name }}</td>
-                          <td>{{ user.last_name }}</td>
-                          <td>{{ user.email }}</td>
-                          <td>{{ user.phone_number }}</td>
-                          <td>{{ user.address }}</td>
-                          <td>{{ user.country }}</td>
-                          <td>{{ user.state }}</td>
+                          <p class="">No Subscription Requests</p>
                         </tr>
                       </tbody>
                     </template>
@@ -99,44 +64,6 @@
               </v-card-text>
             </v-card>
           </v-tab-item>
-          <v-tab-item>
-            <v-card flat>
-              <v-card-text class="">
-                <div class="transactions_data">
-                  <v-simple-table fixed-header height="400px">
-                    <template v-slot:default>
-                      <thead>
-                        <tr class="">
-                          <th class="text-left th_color">First Name</th>
-                          <th class="text-left th_color">Last Name</th>
-                          <th class="text-left th_color">Email Address</th>
-                          <th class="text-left th_color">Phone Number</th>
-                          <th class="text-left th_color">House Address</th>
-                          <th class="text-left th_color">Country</th>
-                          <th class="text-left th_color">State</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr
-                          class="mt-2"
-                          v-for="user in users"
-                          :key="user.index"
-                        >
-                          <td>{{ user.first_name }}</td>
-                          <td>{{ user.last_name }}</td>
-                          <td>{{ user.email }}</td>
-                          <td>{{ user.phone_number }}</td>
-                          <td>{{ user.address }}</td>
-                          <td>{{ user.country }}</td>
-                          <td>{{ user.state }}</td>
-                        </tr>
-                      </tbody>
-                    </template>
-                  </v-simple-table>
-                </div>
-              </v-card-text>
-            </v-card>
-          </v-tab-item> -->
         </v-tabs-items>
       </div>
     </div>
