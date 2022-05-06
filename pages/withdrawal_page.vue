@@ -34,6 +34,26 @@
                 <option value="third_asset">PHYGITAL</option>
               </select>
             </div>
+            <!-- <div class="form-group mx-2 mt-2">
+              <label for="exampleFormControlSelect1" class="py-2">State</label>
+              <select
+                class="form-control option-class select"
+                id="exampleFormControlSelect1"
+                v-model="withdrawal_request.asset"
+                required
+              >
+                <option>Please Select a Country</option>
+                <option
+                  class="colour"
+                  id="selectCountry"
+                  v-for="asset in assets"
+                  :key="asset.id"
+                  :value="asset.name"
+                >
+                  <p class="text-danger">{{ asset.name }}</p>
+                </option>
+              </select>
+            </div> -->
             <div class="form-group mt-3">
               <label class="" for="">Receiving Wallet </label>
               <p class="py-1">
@@ -105,6 +125,7 @@ export default {
         amount: "",
         confirm_wallet: null,
       },
+      assets: {},
     };
   },
 
@@ -125,6 +146,18 @@ export default {
         this.withdrawal_request = {};
       }
     },
+    async getAssetForWithdrawal() {
+      try {
+        const response = await this.$axios.get("/getAssetForWithdrawal");
+        this.assets = response.data;
+        console.log(this.assets);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+  },
+  mounted() {
+    this.getAssetForWithdrawal();
   },
 };
 </script>

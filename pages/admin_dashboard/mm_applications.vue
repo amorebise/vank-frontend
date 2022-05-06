@@ -14,9 +14,9 @@
         </div>
         <template>
           <v-tabs v-model="tab" align-with-title>
-            <v-tab>Market Maker Applications</v-tab>
-            <!-- <v-tab>Subscribers</v-tab>
-            <v-tab>Market Makers</v-tab> -->
+            <v-tab>Applications</v-tab>
+            <v-tab>Balance Update</v-tab>
+            <!-- <v-tab>Market Makers</v-tab> -->
           </v-tabs>
         </template>
         <v-tabs-items v-model="tab" class="tab_bg">
@@ -56,6 +56,56 @@
                             </v-btn>
                           </td>
                         </tr>
+                        <tr v-if="market_makers.length == 0">
+                          <td><p>No Pending Applications</p></td>
+                        </tr>
+                      </tbody>
+                    </template>
+                  </v-simple-table>
+                </div>
+              </v-card-text>
+            </v-card>
+          </v-tab-item>
+
+          <v-tab-item>
+            <v-card flat>
+              <v-card-text class="">
+                <div class="transactions_data">
+                  <v-simple-table fixed-header height="400px">
+                    <template v-slot:default>
+                      <thead>
+                        <tr class="">
+                          <th class="text-left th_color">ID</th>
+                          <th class="text-left th_color">Wallet Address</th>
+                          <th class="text-left th_color">Wallet Number</th>
+                          <th class="text-left th_color">Status</th>
+                          <!-- <th class="text-left th_color">Amin Approval</th> -->
+                          <th class="text-left th_color">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr
+                          class="mt-2"
+                          v-for="mm_request in mm_balance_requests"
+                          :key="mm_request.id"
+                        >
+                          <td>{{ mm_request.id }}</td>
+                          <td>{{ mm_request.wallet_address }}</td>
+                          <td>{{ mm_request.wallet_balance }}</td>
+                          <td>{{ mm_request.admin_approval }}</td>
+                          <!-- <td>{{ market_maker.admin_approval }}</td> -->
+                          <td>
+                            <v-btn
+                              @click="updateMarketMakerBalance(mm_request)"
+                              class="confirm__button px-3 py-1"
+                            >
+                              Approve
+                            </v-btn>
+                          </td>
+                        </tr>
+                        <tr v-if="mm_balance_requests.length == 0">
+                          <td><p>No Pending Requests</p></td>
+                        </tr>
                       </tbody>
                     </template>
                   </v-simple-table>
@@ -79,6 +129,7 @@ export default {
       tab: null,
       loading: false,
       market_makers: {},
+      mm_balance_requests: {},
     };
   },
   methods: {
@@ -105,9 +156,33 @@ export default {
         console.log(error.response);
       }
     },
+    async getMarketMakerBalanceUpdateRequest() {
+      try {
+        const response = await this.$axios.get(
+          "/admin/getMarketMakerBalanceUpdateRequest"
+        );
+        this.mm_balance_requests = response.data;
+        console.log(this.mm_balance_requests);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+    async updateMarketMakerBalance(mm_request) {
+      try {
+        let mm_request_id = mm_request.id;
+        const response = await this.$axios.post(
+          `/admin/updateMarketMakerBalance/${mm_request_id}`
+        );
+        console.log(response);
+        this.$toast.success("Balance Updated", { timeout: 5000 });
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
   },
   mounted() {
     this.getMarketMakerApplication();
+    this.getMarketMakerBalanceUpdateRequest();
   },
 };
 </script>

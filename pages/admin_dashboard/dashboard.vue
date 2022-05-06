@@ -29,7 +29,7 @@
                     alt="image"
                   />
 
-                  <p>335,000,000</p>
+                  <p>{{ total_asset }}</p>
                 </div>
                 <span>Total Investment</span>
               </div>
@@ -57,7 +57,7 @@
                     src="/people_icon.png"
                     alt="image"
                   />
-                  <p>200,000</p>
+                  <p>{{ total_subscribers }}</p>
                 </div>
                 <span>Subscribers</span>
               </div>
@@ -76,13 +76,13 @@
                 >Fund Wallet</nuxt-link
               >
             </div> -->
-            <div class="add__market__maker__route mx-1">
+            <!-- <div class="add__market__maker__route mx-1">
               <nuxt-link
                 to="/admin_dashboard/add_market_maker"
                 class="link__buttons"
                 >Add Market Maker</nuxt-link
               >
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="transaction__wrap">
@@ -119,34 +119,26 @@
                                 <template v-slot:default>
                                   <thead>
                                     <tr class="">
-                                      <th class="text-center th_color">Name</th>
-                                      <th class="text-center th_color">Date</th>
-                                      <th class="text-center th_color">
-                                        Fiat amount
-                                      </th>
-                                      <!-- <th class="text-center th_color">
+                                      <th class="th_color">Name</th>
+                                      <th class="th_color">Date</th>
+                                      <th class="th_color">Fiat amount</th>
+                                      <!-- <th class=" th_color">
                                         Crypto amount
                                       </th> -->
-                                      <th class="text-center th_color">
-                                        Status(User)
-                                      </th>
-                                      <th class="text-center th_color">
-                                        Status(MM)
-                                      </th>
-                                      <th class="text-center th_color">
-                                        Status(Admin)
-                                      </th>
+                                      <th class="th_color">Status(User)</th>
+                                      <th class="th_color">Status(MM)</th>
+                                      <th class="th_color">Status(Admin)</th>
                                     </tr>
                                   </thead>
                                   <tbody>
                                     <tr
-                                      class="mt-2 text-center"
+                                      class="mt-2"
                                       v-for="sub in subscriptions"
                                       :key="sub.id"
                                     >
                                       <td>{{ sub.name }}</td>
                                       <td>{{ sub.subscription_date }}</td>
-                                      <td>{{ sub.amount }}USDT</td>
+                                      <td>{{ sub.amount }}NGN</td>
                                       <!-- <td>{{ sub.usdt }}</td> -->
                                       <td>
                                         <div
@@ -154,13 +146,13 @@
                                             sub.user_confirmation ==
                                             'Payment made'
                                           "
-                                          class="pending mt-2 text-center"
+                                          class="pending mt-2"
                                         >
                                           <p class="text-success py-2">
                                             {{ sub.user_confirmation }}
                                           </p>
                                         </div>
-                                        <div v-else class="mt-2 text-center">
+                                        <div v-else class="mt-2">
                                           <p class="text-warning py-2">
                                             {{ sub.user_confirmation }}
                                           </p>
@@ -173,13 +165,13 @@
                                             sub.mm_confirmation ==
                                             'Payment Confirmed'
                                           "
-                                          class="pending mt-2 text-center"
+                                          class="pending mt-2"
                                         >
                                           <p class="text-success py-2">
                                             {{ sub.mm_confirmation }}
                                           </p>
                                         </div>
-                                        <div v-else class="mt-2 text-center">
+                                        <div v-else class="mt-2">
                                           <p class="text-warning py-2">
                                             {{ sub.mm_confirmation }}
                                           </p>
@@ -191,18 +183,24 @@
                                           v-if="
                                             sub.admin_confirmation == 'Approved'
                                           "
-                                          class="pending mt-2 text-center"
+                                          class="pending mt-2"
                                         >
                                           <p class="text-success py-2">
                                             {{ sub.admin_confirmation }}
                                           </p>
                                         </div>
-                                        <div v-else class="mt-2 text-center">
+                                        <div v-else class="mt-2">
                                           <p class="text-warning py-2">
                                             {{ sub.admin_confirmation }}
                                           </p>
                                         </div>
                                       </td>
+                                    </tr>
+                                    <tr
+                                      class="mt-2"
+                                      v-if="subscriptions.length == 0"
+                                    >
+                                      <td><p>No Transactions</p></td>
                                     </tr>
                                   </tbody>
                                 </template>
@@ -220,23 +218,17 @@
                                 <template v-slot:default>
                                   <thead>
                                     <tr class="">
-                                      <th class="text-center th_color">Name</th>
-                                      <th class="text-center th_color">Date</th>
-                                      <th class="text-center th_color">
-                                        Fiat amount
-                                      </th>
-                                      <th class="text-center th_color">
-                                        Crypto amount
-                                      </th>
+                                      <th class="th_color">Name</th>
+                                      <th class="th_color">Date</th>
+                                      <th class="th_color">Fiat amount</th>
+                                      <th class="th_color">Crypto amount</th>
 
-                                      <th class="text-center th_color">
-                                        Status
-                                      </th>
+                                      <th class="th_color">Status</th>
                                     </tr>
                                   </thead>
                                   <tbody>
                                     <tr
-                                      class="mt-2 text-center"
+                                      class="mt-2"
                                       v-for="sub in subscriptions"
                                       :key="sub.id"
                                     >
@@ -259,7 +251,7 @@
                                           sub.admin_confirmation == 'Pending'
                                         "
                                       >
-                                        {{ sub.amount }}USDT
+                                        {{ sub.amount }}NGN
                                       </td>
                                       <td
                                         v-if="
@@ -273,7 +265,7 @@
                                           sub.admin_confirmation == 'Pending'
                                         "
                                       >
-                                        <div class="pending mt-2 text-center">
+                                        <div class="pending mt-2">
                                           <p class="text-warning py-2">
                                             {{ sub.admin_confirmation }}
                                           </p>
@@ -284,7 +276,7 @@
                                       class="mt-2"
                                       v-if="subscriptions.length == 0"
                                     >
-                                      <p>No Pending Requests</p>
+                                      <td><p>No Pending Transaction</p></td>
                                     </tr>
                                   </tbody>
                                 </template>
@@ -302,23 +294,17 @@
                                 <template v-slot:default>
                                   <thead>
                                     <tr class="">
-                                      <th class="text-center th_color">Name</th>
-                                      <th class="text-center th_color">Date</th>
-                                      <th class="text-center th_color">
-                                        Fiat amount
-                                      </th>
-                                      <th class="text-center th_color">
-                                        Crypto amount
-                                      </th>
+                                      <th class="th_color">Name</th>
+                                      <th class="th_color">Date</th>
+                                      <th class="th_color">Fiat amount</th>
+                                      <th class="th_color">Crypto amount</th>
 
-                                      <th class="text-center th_color">
-                                        Status
-                                      </th>
+                                      <th class="th_color">Status</th>
                                     </tr>
                                   </thead>
                                   <tbody>
                                     <tr
-                                      class="mt-2 text-center"
+                                      class="mt-2"
                                       v-for="sub in subscriptions"
                                       :key="sub.id"
                                     >
@@ -355,7 +341,7 @@
                                           sub.admin_confirmation == 'Approved'
                                         "
                                       >
-                                        <div class="mt-2 text-center">
+                                        <div class="mt-2">
                                           <p
                                             id="confirmation"
                                             class="text-success py-2"
@@ -364,6 +350,12 @@
                                           </p>
                                         </div>
                                       </td>
+                                    </tr>
+                                    <tr
+                                      class="mt-2"
+                                      v-if="subscriptions.length == 0"
+                                    >
+                                      <td><p>No Completed Transactions</p></td>
                                     </tr>
                                   </tbody>
                                 </template>
@@ -391,6 +383,8 @@ export default {
       tab: null,
       user: {},
       subscriptions: {},
+      total_asset: {},
+      total_subscribers: {},
     };
   },
 
@@ -404,9 +398,29 @@ export default {
         console.log(error);
       }
     },
+    async getTotalUserNumber() {
+      try {
+        const response = await this.$axios.post("/admin/getTotalUserNumber");
+        this.total_subscribers = response.data;
+        console.log(response);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+    async sumAllAsset() {
+      try {
+        const response = await this.$axios.post("/admin/sumAllAsset");
+        console.log(response);
+        this.total_asset = response.data;
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
   },
   created() {
     this.getAllSubscription();
+    this.getTotalUserNumber();
+    this.sumAllAsset();
   },
 };
 </script>
@@ -479,6 +493,7 @@ export default {
 .wallet__amount__card img {
   width: 25px;
   height: 23px;
+  margin-top: -15px;
 }
 .wallet__amount__card p {
   color: #00e8fe;
@@ -665,6 +680,27 @@ export default {
 }
 .search__input ::placeholder {
   padding-left: 5px;
+}
+.dashboard_content
+  .theme--light.v-tabs
+  > .v-tabs-bar
+  .v-tab:not(.v-tab--active),
+.dashboard_content
+  .theme--light.v-tabs
+  > .v-tabs-bar
+  .v-tab:not(.v-tab--active)
+  > .v-icon,
+.dashboard_content
+  .theme--light.v-tabs
+  > .v-tabs-bar
+  .v-tab:not(.v-tab--active)
+  > .v-btn,
+.dashboard_content .theme--light.v-tabs > .v-tabs-bar .v-tab--disabled {
+  color: #55174f;
+  font-variant: normal;
+}
+.dashboard_content .v-tab {
+  text-transform: unset;
 }
 
 @media (max-width: 768px) {

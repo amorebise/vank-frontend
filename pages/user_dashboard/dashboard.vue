@@ -23,19 +23,10 @@
               <h5>Wallet Balance</h5>
 
               <div class="d-flex align-items-center pt-3">
-                <div class="">
-                  <nuxt-img
-                    format="webp"
-                    quality="90"
-                    fit="cover"
-                    src="/light_naira.png"
-                  />
-                </div>
                 <div v-if="newUser">
-                  <p>{{ newUser.amount }}</p>
+                  <p>${{ newUser.usdt_amount_available }}</p>
                 </div>
                 <div v-else><p>0</p></div>
-                <!-- {{ newUser.name }} -->
               </div>
               <div class="profit_wrap mt-4">
                 <span>Monthly PnL</span>

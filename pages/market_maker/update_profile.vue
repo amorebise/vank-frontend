@@ -4,22 +4,22 @@
       <mm-nav name="Profile" />
       <div class="update__profile__content">
         <div class="header_section text-center">
-          <h1>Update Profile</h1>
+          <h1>Update Bank Details</h1>
         </div>
         <div class="form_section mt-5">
           <form action="" @submit.prevent="updateMMProfile()">
             <div class="row">
-              <div class="col-md-6">
+              <!-- <div class="col-md-6">
                 <div class="form-group mx-2">
                   <label for="" class="py-1">Wallet Address</label>
                   <input
                     type="text"
                     class="form-control"
                     v-model="mm_data.wallet_id"
-                    placeholder="Enter your Wallet Address"
+                    placeholder="Enter your Crypto Wallet Address"
                   />
                 </div>
-              </div>
+              </div> -->
               <div class="col-md-6">
                 <div class="form-group mx-2">
                   <label for="" class="py-1">Bank Name</label>
@@ -32,7 +32,7 @@
                 </div>
               </div>
               <div class="col-md-6">
-                <div class="form-group mx-2 py-3">
+                <div class="form-group mx-2">
                   <label for="" class="py-1">Account Number</label>
                   <input
                     type="text"
@@ -109,7 +109,9 @@ export default {
           "/marketMakerUpdate",
           this.mm_data
         );
-        this.$toast.success("Profile Update Successful", { timeout: 5000 });
+        this.$toast.success("Bank Details Update Successful", {
+          timeout: 5000,
+        });
         console.log(response);
         this.loading = false;
       } catch (error) {

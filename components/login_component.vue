@@ -44,7 +44,7 @@
               </span>
             </div>
             <div class="text-right">
-              <nuxt-link to="/forgot_password" class="password_link"
+              <nuxt-link to="/forgot_password_email" class="password_link"
                 >forgot password?</nuxt-link
               >
             </div>
@@ -122,7 +122,7 @@ export default {
             timeout: 5000,
           });
         } else {
-          this.$toast.success("Incorrect password or email", {
+          this.$toast.warning("Incorrect password or email", {
             timeout: 5000,
           });
         }

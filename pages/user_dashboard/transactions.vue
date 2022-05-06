@@ -27,7 +27,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr class="mt-2">
+                        <tr v-if="newUser" class="mt-2">
                           <td>{{ newUser.coin1 }}</td>
                           <td>{{ newUser.date_created }}</td>
                           <td>{{ newUser.amount_after_charges }}</td>
@@ -39,7 +39,8 @@
                             </div>
                           </td> -->
                         </tr>
-                        <tr class="py-2">
+
+                        <tr v-if="newUser" class="py-2">
                           <td>{{ newUser.coin2 }}</td>
                           <td>{{ newUser.date_created }}</td>
                           <td>{{ newUser.amount_after_charges }}</td>
@@ -51,6 +52,12 @@
                             </div>
                           </td> -->
                         </tr>
+                        <tr v-else>
+                          <td>
+                            <p>You have no assets</p>
+                          </td>
+                        </tr>
+
                         <!-- <tr class="py-2">
                           <td>{{ newUser.coin3 }}</td>
                           <td>{{ newUser.date_created }}</td>
@@ -87,19 +94,23 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr class="mt-2">
+                        <tr v-if="newUser" class="mt-2">
                           <td>{{ newUser.date_created }}</td>
                           <td>{{ newUser.coin1 }}</td>
                           <td>{{ newUser.coin1_avg_purchase_price }}</td>
                           <td>{{ newUser.coin1_amount }}</td>
                           <td>{{ newUser.amount_after_charges }}</td>
                         </tr>
-                        <tr class="py-2">
+
+                        <tr v-if="newUser" class="py-2">
                           <td>{{ newUser.date_created }}</td>
                           <td>{{ newUser.coin2 }}</td>
                           <td>{{ newUser.coin2_avg_purchase_price }}</td>
                           <td>{{ newUser.coin2_amount }}</td>
                           <td>{{ newUser.amount_after_charges }}</td>
+                        </tr>
+                        <tr v-else>
+                          <td>You have no asset</td>
                         </tr>
                       </tbody>
                     </template>

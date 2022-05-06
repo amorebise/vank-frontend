@@ -34,6 +34,15 @@
           </div>
         </nuxt-link>
         <nuxt-link
+          to="/admin_dashboard/create_asset"
+          class="list-group list-group-item active bg-transparent active"
+        >
+          <div class="ml-3 user__icon d-flex align-items-center">
+            <ion-icon name="create-outline"></ion-icon>
+            <span class="ml-2">Requests</span>
+          </div>
+        </nuxt-link>
+        <nuxt-link
           to="/admin_dashboard/withdrawals"
           class="list-group list-group-item active bg-transparent active"
         >
@@ -42,13 +51,14 @@
             <span class="ml-2">Withdrawals</span>
           </div>
         </nuxt-link>
+
         <nuxt-link
           to="/admin_dashboard/mm_applications"
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="ml-3 user__icon d-flex align-items-center">
             <ion-icon name="settings-outline"></ion-icon>
-            <span class="ml-2">MM Applications</span>
+            <span class="ml-2">Market Makers</span>
           </div>
         </nuxt-link>
         <nuxt-link

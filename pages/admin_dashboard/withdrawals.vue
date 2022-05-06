@@ -59,6 +59,9 @@
                             </v-btn>
                           </td>
                         </tr>
+                        <tr v-if="withdrawals.length == 0">
+                          <td><p>No Pending Withdrawals</p></td>
+                        </tr>
                       </tbody>
                     </template>
                   </v-simple-table>

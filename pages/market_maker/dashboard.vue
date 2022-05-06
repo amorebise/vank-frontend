@@ -3,8 +3,8 @@
     <div class="dashboard_content">
       <mm-nav name="Dashboard" />
       <div class="admin__wrap">
-        <div class="mm__profile__wrap px-3">
-          <div v-if="market_maker" class="d-flex align-items-center px-3 mb-2">
+        <div class="mm__profile__wrap">
+          <div v-if="market_maker" class="d-flex align-items-center mb-2">
             <h5 class="user_font">
               Welcome,
               <span class="user_name">{{ market_maker.first_name }}</span>
@@ -43,8 +43,13 @@
                       alt="image"
                     />
                   </div>
-                  <div class="mm__wallet__balance mx-2">
-                    <p>{{ market_maker.wallet_balance }}</p>
+                  <div
+                    v-if="market_maker"
+                    class="d-flex align-items-center mb-2"
+                  >
+                    <div class="mm__wallet__balance mx-2">
+                      <p>{{ market_maker.wallet_balance }}</p>
+                    </div>
                   </div>
                 </div>
                 <span>Total Investment</span>
@@ -85,7 +90,7 @@
           >
             <div class="fund__wallet__route">
               <nuxt-link to="/market_maker/update_profile" class="link__buttons"
-                >Update Profile</nuxt-link
+                >Bank Details</nuxt-link
               >
             </div>
             <div class="fund__wallet__routes mx-3">
@@ -96,14 +101,6 @@
                 Fund Wallet
               </button>
             </div>
-
-            <!-- <div class="add__market__maker__route">
-              <nuxt-link
-                to="/admin_dashboard/add_market_maker"
-                class="link__buttons"
-                >Withdraw</nuxt-link
-              >
-            </div> -->
           </div>
           <div class="change__password__form" v-show="fund_wallet_modal">
             <div class="password__modal slideInDown py-4">
@@ -129,6 +126,16 @@
                     class="form-control mt-2"
                     v-model="wallet_balance_update.wallet_balance"
                     placeholder="200,000USDT"
+                  />
+
+                  <label class="mt-4" for="">Wallet</label>
+                  <input
+                    required
+                    type="text"
+                    :loading="loading"
+                    class="form-control mt-2"
+                    v-model="wallet_balance_update.wallet_address"
+                    placeholder="Enter Crypto Wallet Address"
                   />
                 </div>
 
@@ -163,13 +170,13 @@
                 <div class="admin__transactions_wrap mt-3">
                   <template>
                     <v-tabs class="px-3" v-model="tab" align-with-title>
-                      <v-tab>All transactions</v-tab>
+                      <!-- <v-tab>All transactions</v-tab> -->
                       <v-tab>Pending</v-tab>
                       <v-tab>Completed</v-tab>
                     </v-tabs>
                   </template>
                   <v-tabs-items v-model="tab" class="tab_bg">
-                    <v-tab-item>
+                    <!-- <v-tab-item>
                       <v-card flat>
                         <v-card-text class="">
                           <div class="admin__transactions_data">
@@ -267,7 +274,7 @@
                           </div>
                         </v-card-text>
                       </v-card>
-                    </v-tab-item>
+                    </v-tab-item> -->
 
                     <v-tab-item>
                       <v-card flat>
@@ -281,9 +288,6 @@
                                     <th class="text-left th_color">Date</th>
                                     <th class="text-left th_color">
                                       Fiat amount
-                                    </th>
-                                    <th class="text-left th_color">
-                                      Crypto amount
                                     </th>
 
                                     <th class="text-left th_color">Status</th>
@@ -304,15 +308,18 @@
                                     <td v-if="sub.mm_confirmation == 'Pending'">
                                       {{ sub.amount }}NGN
                                     </td>
-                                    <td v-if="sub.mm_confirmation == 'Pending'">
-                                      {{ sub.usdt }}
-                                    </td>
+
                                     <td v-if="sub.mm_confirmation == 'Pending'">
                                       <div class="pending mt-2 text-center">
                                         <p class="text-warning py-2">
                                           {{ sub.mm_confirmation }}
                                         </p>
                                       </div>
+                                    </td>
+                                  </tr>
+                                  <tr v-if="subscriber.length == 0">
+                                    <td>
+                                      <p>No Pending Transactions</p>
                                     </td>
                                   </tr>
                                 </tbody>
@@ -335,9 +342,6 @@
                                     <th class="text-left th_color">Date</th>
                                     <th class="text-left th_color">
                                       Fiat amount
-                                    </th>
-                                    <th class="text-left th_color">
-                                      Crypto amount
                                     </th>
 
                                     <th class="text-left th_color">Status</th>
@@ -373,14 +377,7 @@
                                     >
                                       {{ sub.amount }}
                                     </td>
-                                    <td
-                                      v-if="
-                                        sub.mm_confirmation ==
-                                        'Payment Confirmed'
-                                      "
-                                    >
-                                      {{ sub.btc }}
-                                    </td>
+
                                     <td
                                       v-if="
                                         sub.mm_confirmation ==
@@ -395,6 +392,11 @@
                                           {{ sub.mm_confirmation }}
                                         </p>
                                       </div>
+                                    </td>
+                                  </tr>
+                                  <tr v-if="subscriber.length == 0">
+                                    <td>
+                                      <p>No Transactions</p>
                                     </td>
                                   </tr>
                                 </tbody>
@@ -426,6 +428,7 @@ export default {
       market_maker: {},
       wallet_balance_update: {
         wallet_balance: "",
+        wallet_address: "",
       },
       message: {},
     };
@@ -481,9 +484,9 @@ export default {
         console.log(response);
       } catch (error) {
         this.loading = false;
-        this.message = error.response.data.message;
+        this.message = error.response;
         this.$toast.warning(this.message, { timeout: 5000 });
-        console.log(error.response.data.message);
+        console.log(error.response);
       }
     },
   },

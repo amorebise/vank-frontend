@@ -81,8 +81,14 @@
                       v-model="signUp_data.email"
                       placeholder="Enter your Email Address"
                     />
+
                     <span class="errors">{{ errors[0] }}</span>
                   </ValidationProvider>
+                  <div>
+                    <div v-show="error_message">
+                      <span class="errors">{{ mail_error }}</span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -101,6 +107,9 @@
                       v-model="signUp_data.phone_number"
                       placeholder="Enter your Phone Number"
                     />
+                    <div v-show="error_message">
+                      <span class="errors">{{ phone_number_error }}</span>
+                    </div>
                     <span class="errors">{{ errors[0] }}</span>
                   </ValidationProvider>
                 </div>
@@ -131,7 +140,7 @@
                 <div class="form-group mx-2 mt-2">
                   <ValidationProvider
                     name="password"
-                    rules="required|max:12|min:6"
+                    rules="required|max:30|min:6"
                     v-slot="{ errors }"
                   >
                     <label for="" class="py-2">Password</label>
@@ -155,7 +164,7 @@
                 <div class="form-group mx-2 mt-2">
                   <ValidationProvider
                     name="confirm password"
-                    rules="required|max:12|min:8"
+                    rules="required|max:30|min:8"
                     v-slot="{ errors }"
                   >
                     <label for="" class="py-2">Confirm Password</label>
@@ -165,6 +174,9 @@
                       v-model="signUp_data.password_confirmation"
                       placeholder="Re-enter Password again"
                     />
+                    <div v-show="error_message">
+                      <span class="errors">{{ password_error }}</span>
+                    </div>
                     <span class="errors">{{ errors[0] }}</span>
                   </ValidationProvider>
                 </div>
@@ -308,6 +320,10 @@ export default {
         state: "",
         agreement: null,
       },
+      error_message: false,
+      password_error: {},
+      mail_error: {},
+      phone_number_error: {},
       loading: false,
       // baseUrl: "https://api.vankwallet.com/api/auth/",
       countries: {},
@@ -318,25 +334,22 @@ export default {
   },
   methods: {
     async signUp() {
+      this.loading = true;
       try {
-        this.loading = true;
         const response = await this.$axios.post("/register", this.signUp_data);
-        this.$toast.success(
-          "Registration Successful, Check Your Mail For Verification",
-          {
-            timeout: 5000,
-          }
-        );
-
         console.log(response);
         this.loading = false;
-        this.$router.push("/");
-        // this.signUp_data = {};
+        this.$router.push("/signup_notification");
       } catch (error) {
-        console.log(error.response);
-
         this.loading = false;
+        console.log(error.response);
+        this.phone_number_error = error.response.data.errors.phone_number[0];
+        this.password_error = error.response.data.errors.password[0];
+        this.mail_error = error.response.data.errors.email[0];
+        this.error_message = true;
+        console.log(this.mail_error);
       }
+      this.loading = false;
     },
     onSubmit() {
       this.signUp();

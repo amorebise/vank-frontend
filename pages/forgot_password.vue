@@ -9,8 +9,19 @@
             <input
               type="text"
               class="form-control"
+              required
               v-model="forgot_password.email"
-              placeholder="Enter your Email Address"
+              placeholder="enter your email address"
+            />
+          </div>
+          <div class="form-group">
+            <label class="py-2" for="">Token</label>
+            <input
+              type="text"
+              required
+              class="form-control"
+              v-model="forgot_password.token"
+              placeholder="enter token sent to your email"
             />
           </div>
           <div class="form-group">
@@ -27,8 +38,9 @@
                 type="password"
                 id="password"
                 class=""
+                required
                 v-model="forgot_password.password"
-                placeholder="Enter Password"
+                placeholder="enter password"
               />
               <span class="d-flex" @click="displayPassword()">
                 <font-awesome-icon
@@ -59,8 +71,9 @@
                 type="password"
                 id="second_password"
                 class=""
+                required
                 v-model="forgot_password.password_confirmation"
-                placeholder="Enter Password"
+                placeholder="enter password"
               />
               <span class="d-flex" @click="displaySecondPassword()">
                 <font-awesome-icon
@@ -88,7 +101,7 @@
               >
             </div>
 
-            <div class="login_wrap mt-3">
+            <!-- <div class="login_wrap mt-3">
               <p>
                 Don’t have an account?
                 <nuxt-link
@@ -97,7 +110,7 @@
                   >Sign up here</nuxt-link
                 >
               </p>
-            </div>
+            </div> -->
           </div>
         </form>
       </div>
@@ -111,6 +124,7 @@ export default {
     return {
       forgot_password: {
         email: "",
+        token: "",
         password: "",
         password_confirmation: "",
       },

@@ -47,7 +47,7 @@ export default {
         const response = await this.$axios.post(`/updateSubsription/${mm_id}`);
         console.log(response);
         console.log(mm_id);
-        this.$router.push("/success");
+        this.$router.push("/subscription_notification");
       } catch (error) {
         console.log(error);
       }

@@ -81,6 +81,11 @@
                       v-model="signUp_data.email"
                       placeholder="Enter your Email Address"
                     />
+                    <div>
+                      <div v-show="error_message">
+                        <span class="errors">{{ mail_error }}</span>
+                      </div>
+                    </div>
                     <span class="errors">{{ errors[0] }}</span>
                   </ValidationProvider>
                 </div>
@@ -101,6 +106,9 @@
                       v-model="signUp_data.phone_number"
                       placeholder="Enter your Phone Number"
                     />
+                    <div v-show="error_message">
+                      <span class="errors">{{ phone_number_error }}</span>
+                    </div>
                     <span class="errors">{{ errors[0] }}</span>
                   </ValidationProvider>
                 </div>
@@ -165,6 +173,9 @@
                       v-model="signUp_data.password_confirmation"
                       placeholder="Re-enter Password again"
                     />
+                    <div v-show="error_message">
+                      <span class="errors">{{ password_error }}</span>
+                    </div>
                     <span class="errors">{{ errors[0] }}</span>
                   </ValidationProvider>
                 </div>
@@ -236,7 +247,7 @@
                 </div>
               </div>
 
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group mx-4 mt-2">
                   <ValidationProvider
                     name="accept_terms"
@@ -308,6 +319,10 @@ export default {
         state: "",
         agreement: null,
       },
+      error_message: false,
+      password_error: {},
+      mail_error: {},
+      phone_number_error: {},
       loading: false,
       // baseUrl: "https://api.vankwallet.com/api/auth/",
       countries: {},
@@ -324,17 +339,16 @@ export default {
           "/marketMakerAplication",
           this.signUp_data
         );
-        this.$toast.success(
-          "Application Successful, Check Your Mail For Verification",
-          {
-            timeout: 5000,
-          }
-        );
 
         console.log(response);
         this.loading = false;
-        this.$router.push("/");
+        this.$router.push("/mm_notification");
       } catch (error) {
+        this.phone_number_error = error.response.data.errors.phone_number[0];
+        this.password_error = error.response.data.errors.password[0];
+        this.mail_error = error.response.data.errors.email[0];
+        this.error_message = true;
+        console.log(this.mail_error);
         console.log(error.response);
         this.loading = false;
       } finally {
@@ -382,6 +396,11 @@ export default {
   padding: 0;
   font-family: "Space Grotesk", sans-serif;
   text-decoration: none !important;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 .registeration_content {
   margin: 40px auto;

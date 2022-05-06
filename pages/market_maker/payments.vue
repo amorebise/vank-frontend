@@ -41,11 +41,11 @@
                                     <th class="text-left th_color">
                                       Fiat amount
                                     </th>
-                                    <th class="text-left th_color">
+                                    <!-- <th class="text-left th_color">
                                       USDT Rate
-                                    </th>
+                                    </th> -->
 
-                                    <th class="text-left th_color">Action</th>
+                                    <!-- <th class="text-left th_color">Action</th> -->
                                   </tr>
                                 </thead>
                                 <tbody>
@@ -53,28 +53,31 @@
                                     class="mt-2"
                                     v-for="sub in subscriptions"
                                     :key="sub.id"
+                                    @click="getSingleAssignedSubscriber(sub)"
                                   >
                                     <td>{{ sub.name }}</td>
                                     <td>{{ sub.subscription_date }}</td>
                                     <td>{{ sub.amount }}NGN</td>
-                                    <td>
+                                    <!-- <td>
                                       <input
                                         type="number"
                                         class="form-control"
                                         placeholder="Input USDT Rate"
                                         v-model="usdt_data.usdt_rate"
                                       />
-                                    </td>
-                                    <td>
-                                      <!-- <p class="text-warning py-2">
-                                        {{ sub.user_confirmation }}
-                                      </p> -->
+                                    </td> -->
+                                    <!-- <td>
                                       <v-btn
                                         @click="confirmRequests(sub)"
                                         class="confirm__button px-2 py-1"
                                       >
                                         Confirm
                                       </v-btn>
+                                    </td> -->
+                                  </tr>
+                                  <tr v-if="subscriptions.length == 0">
+                                    <td>
+                                      <p>No Transactions</p>
                                     </td>
                                   </tr>
                                 </tbody>
@@ -129,6 +132,11 @@
                                       </p>
                                     </td>
                                   </tr>
+                                  <tr v-if="subscriptions.length == 0">
+                                    <td>
+                                      <p>No Pending Transactions</p>
+                                    </td>
+                                  </tr>
                                 </tbody>
                               </template>
                             </v-simple-table>
@@ -178,6 +186,11 @@
                                       </div>
                                     </td>
                                   </tr>
+                                  <tr v-if="subscriptions.length == 0">
+                                    <td>
+                                      <p>No Transactions</p>
+                                    </td>
+                                  </tr>
                                 </tbody>
                               </template>
                             </v-simple-table>
@@ -186,6 +199,49 @@
                       </v-card>
                     </v-tab-item>
                   </v-tabs-items>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Single User -->
+          <div class="change__password__form" v-show="subscriber_modal">
+            <div class="password__modal slideInDown">
+              <div class="info__wrap">
+                <h6 class="font-weight-bold text-center">
+                  PERSONAL INFORMATION
+                </h6>
+                <div class="info__content mt-4">
+                  <div class="d-flex justify-content-between">
+                    <h6 class="font-weight-bold font__size">Name:</h6>
+                    <p>{{ single_subscriber.name }}</p>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <h6 class="font-weight-bold font__size">
+                      Subscription Date:
+                    </h6>
+                    <p>{{ single_subscriber.subscription_date }}</p>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <h6 class="font-weight-bold font__size">Amount:</h6>
+                    <p>{{ single_subscriber.amount }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-center">
+                <input
+                  type="number"
+                  class="form-control"
+                  placeholder="Input USDT Rate"
+                  v-model="usdt_data.usdt_rate"
+                />
+                <div class="mx-2">
+                  <v-btn
+                    @click="confirmRequests(sub)"
+                    class="confirm__button px-2 py-1"
+                  >
+                    Confirm
+                  </v-btn>
                 </div>
               </div>
             </div>
@@ -204,6 +260,8 @@ export default {
       tab: null,
       subscriberRequest: {},
       subscriptions: {},
+      single_subscriber: {},
+      subscriber_modal: false,
       usdt_data: {
         usdt_rate: "",
       },
@@ -226,11 +284,26 @@ export default {
           `/confirmUserPayment/${user_id}`,
           this.usdt_data
         );
+        this.subscriber_modal = false;
         this.$toast.success("Subscription Confirmed", { timeout: 5000 });
         console.log(response);
         console.log(this.usdt_data);
       } catch (error) {
         console.log(error);
+      }
+    },
+    async getSingleAssignedSubscriber(sub) {
+      try {
+        let new_id = sub.id;
+        const response = await this.$axios.get(
+          `/getSingleAssignedSubscriber/${new_id}`
+        );
+
+        this.subscriber_modal = true;
+        this.single_subscriber = response.data;
+        console.log(this.single_subscriber);
+      } catch (error) {
+        console.log(error.response);
       }
     },
   },
@@ -297,6 +370,81 @@ export default {
   box-shadow: none;
   text-transform: none;
   padding: 0 20px !important;
+}
+.fund__wallet__wrap .change__password__form {
+  background-color: rgba(0, 0, 0, 0.445);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+}
+
+.password__header h6 {
+  font-weight: 700;
+}
+.fund__wallet__wrap .password__modal {
+  width: 40%;
+  margin: 100px auto;
+  background-color: #fff;
+  padding: 30px 20px;
+  border-radius: 10px;
+}
+.fund__wallet__wrap .change__password__form p {
+  font-size: 15px;
+  font-weight: 400;
+}
+.fund__wallet__wrap .change__password__form .v-btn {
+  background-color: #00e8fe !important;
+  font-size: 14px;
+  color: #000;
+  padding: 5px 10px !important;
+  box-shadow: none !important;
+  text-transform: none;
+  width: 100%;
+}
+.fund__wallet__wrap .change__password__form .cancel_button {
+  border: 1px solid #00e8fe;
+  color: #00e8fe;
+  background-color: #fff !important;
+  font-size: 14px;
+  padding: 5px 10px !important;
+  box-shadow: none !important;
+  text-transform: none;
+}
+.fund__wallet__wrap .cursor {
+  cursor: pointer;
+}
+.slideInDown {
+  -webkit-animation-name: slideInDown;
+  animation-name: slideInDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@-webkit-keyframes slideInDown {
+  0% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@keyframes slideInDown {
+  0% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 768px) {
