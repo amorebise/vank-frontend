@@ -44,7 +44,7 @@
                           <td>{{ newUser.coin2 }}</td>
                           <td>{{ newUser.date_created }}</td>
                           <td>{{ newUser.amount_after_charges }}</td>
-                          <td>{{ newUser.coin1_price }}</td>
+                          <td>{{ newUser.coin2_price }}</td>
                           <!-- <td>{{ newUser.coin1_amount }}</td> -->
                           <!-- <td>
                             <div class="warning mt-2 text-center">
@@ -52,6 +52,20 @@
                             </div>
                           </td> -->
                         </tr>
+
+                        <tr v-if="newUser" class="py-2">
+                          <td>{{ newUser.coin3 }}</td>
+                          <td>{{ newUser.date_created }}</td>
+                          <td>{{ newUser.amount_after_charges }}</td>
+                          <td>{{ newUser.coin3_price }}</td>
+                          <!-- <td>{{ newUser.coin1_amount }}</td> -->
+                          <!-- <td>
+                            <div class="warning mt-2 text-center">
+                              <p class="text-warning py-2">Pending</p>
+                            </div>
+                          </td> -->
+                        </tr>
+
                         <tr v-else>
                           <td>
                             <p>You have no assets</p>
@@ -88,7 +102,7 @@
                         <tr class="">
                           <th class="text-left th_color">Date</th>
                           <th class="text-left th_color">Token</th>
-                          <th class="text-left th_color">Average Price</th>
+                          <!-- <th class="text-left th_color">Average Price</th> -->
                           <th class="text-left th_color">Amount</th>
                           <th class="text-left th_color">Total</th>
                         </tr>
@@ -97,7 +111,7 @@
                         <tr v-if="newUser" class="mt-2">
                           <td>{{ newUser.date_created }}</td>
                           <td>{{ newUser.coin1 }}</td>
-                          <td>{{ newUser.coin1_avg_purchase_price }}</td>
+                          <!-- <td>{{ newUser.coin1_avg_purchase_price }}</td> -->
                           <td>{{ newUser.coin1_amount }}</td>
                           <td>{{ newUser.amount_after_charges }}</td>
                         </tr>
@@ -105,8 +119,16 @@
                         <tr v-if="newUser" class="py-2">
                           <td>{{ newUser.date_created }}</td>
                           <td>{{ newUser.coin2 }}</td>
-                          <td>{{ newUser.coin2_avg_purchase_price }}</td>
+                          <!-- <td>{{ newUser.coin2_avg_purchase_price }}</td> -->
                           <td>{{ newUser.coin2_amount }}</td>
+                          <td>{{ newUser.amount_after_charges }}</td>
+                        </tr>
+
+                        <tr v-if="newUser" class="py-2">
+                          <td>{{ newUser.date_created }}</td>
+                          <td>{{ newUser.coin3 }}</td>
+                          <!-- <td>{{ newUser.coin3_avg_purchase_price }}</td> -->
+                          <td>{{ newUser.coin3_amount }}</td>
                           <td>{{ newUser.amount_after_charges }}</td>
                         </tr>
                         <tr v-else>

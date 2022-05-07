@@ -96,7 +96,7 @@
                       <label for="" class="py-2">Usdt Amount</label>
                       <input
                         v-model="asset_data.coin1_amount"
-                        type="number"
+                        type="text"
                         class="form-control"
                         placeholder="Enter Amount"
                       />
@@ -107,7 +107,7 @@
                       <label for="" class="py-2">Price</label>
                       <input
                         v-model="asset_data.coin1_price"
-                        type="number"
+                        type="text"
                         class="form-control"
                         placeholder="Enter Price"
                       />
@@ -118,7 +118,7 @@
                       <label for="" class="py-2">Average Purchase Price</label>
                       <input
                         v-model="asset_data.coin1_avg_purchase_price"
-                        type="number"
+                        type="text"
                         class="form-control"
                         placeholder="Enter Average Purchase Price"
                       />
@@ -140,7 +140,7 @@
                       <label for="" class="py-2">Usdt Amount</label>
                       <input
                         v-model="asset_data.coin2_amount"
-                        type="number"
+                        type="text"
                         class="form-control"
                         placeholder="Enter Amount"
                       />
@@ -151,7 +151,7 @@
                       <label for="" class="py-2">Price</label>
                       <input
                         v-model="asset_data.coin2_price"
-                        type="number"
+                        type="text"
                         class="form-control"
                         placeholder="Enter Price"
                       />
@@ -162,7 +162,7 @@
                       <label for="" class="py-2">Average Purchase Price</label>
                       <input
                         v-model="asset_data.coin2_avg_purchase_price"
-                        type="number"
+                        type="text"
                         class="form-control"
                         placeholder="Enter Average Purchase Price"
                       />
@@ -184,7 +184,7 @@
                       <label for="" class="py-2">Usdt Amount</label>
                       <input
                         v-model="asset_data.coin3_amount"
-                        type="number"
+                        type="text"
                         class="form-control"
                         placeholder="Enter Amount"
                       />
@@ -195,7 +195,7 @@
                       <label for="" class="py-2">Price</label>
                       <input
                         v-model="asset_data.coin3_price"
-                        type="number"
+                        type="text"
                         class="form-control"
                         placeholder="Enter Price"
                       />
@@ -206,7 +206,7 @@
                       <label for="" class="py-2">Average Purchase Price</label>
                       <input
                         v-model="asset_data.coin3_avg_purchase_price"
-                        type="number"
+                        type="text"
                         class="form-control"
                         placeholder="Enter Average Purchase Price"
                       />
@@ -232,7 +232,7 @@
                         <label for="" class="py-2">Usdt Amount</label>
                         <input
                           v-model="asset_data.asset_amount"
-                          type="number"
+                          type="text"
                           class="form-control"
                           placeholder="Enter Amount"
                         />
@@ -243,7 +243,7 @@
                         <label for="" class="py-2">Price</label>
                         <input
                           v-model="asset_data.asset_price"
-                          type="number"
+                          type="text"
                           class="form-control"
                           placeholder="Enter Price"
                         />
@@ -256,7 +256,7 @@
                         >
                         <input
                           v-model="asset_data.asset_avg_purchase_price"
-                          type="number"
+                          type="text"
                           class="form-control"
                           placeholder="Enter Average Purchase Price"
                         />

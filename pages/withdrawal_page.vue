@@ -32,25 +32,34 @@
                 <option value="dent">dent</option>
                 <option value="second_asset">BTC</option>
                 <option value="third_asset">PHYGITAL</option>
+                <option value="third_asset">PHYGITAL</option>
+                <option value="third_asset">PHYGITAL</option>
               </select>
             </div>
             <!-- <div class="form-group mx-2 mt-2">
-              <label for="exampleFormControlSelect1" class="py-2">State</label>
+              <label for="exampleFormControlSelect1" class="py-2"
+                >Select Asset</label
+              >
               <select
                 class="form-control option-class select"
                 id="exampleFormControlSelect1"
                 v-model="withdrawal_request.asset"
                 required
               >
-                <option>Please Select a Country</option>
+                <option>...</option>
                 <option
                   class="colour"
                   id="selectCountry"
                   v-for="asset in assets"
                   :key="asset.id"
-                  :value="asset.name"
+                  :value="asset.coin2"
                 >
                   <p class="text-danger">{{ asset.name }}</p>
+                  <p v-for="asset in assets" :key="asset.id">
+                    <span v-for="item in asset" :key="item">
+                      {{ item.coin2 }}
+                    </span>
+                  </p>
                 </option>
               </select>
             </div> -->

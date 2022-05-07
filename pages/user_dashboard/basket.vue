@@ -11,8 +11,8 @@
               <th class="text-left th_color">Current Price</th>
               <th class="text-left th_color">Average Purchase Price</th>
               <th class="text-left th_color">Quantity</th>
-              <th class="text-left th_color">Current Value</th>
-              <th class="text-left th_color">Historic Profit/Loss</th>
+              <!-- <th class="text-left th_color">Current Value</th>
+              <th class="text-left th_color">Historic Profit/Loss</th> -->
             </tr>
           </thead>
           <tbody>
@@ -22,17 +22,17 @@
               <td>{{ newUser.coin1_price }}</td>
               <td>{{ newUser.coin1_avg_purchase_price }}</td>
               <td>{{ newUser.coin1_quantity_available }}</td>
-              <td>625USD</td>
-              <td class="text-danger">-9%</td>
+              <!-- <td>625USD</td>
+              <td class="text-danger">-9%</td> -->
             </tr>
 
             <tr v-if="newUser" class="mt-2">
-              <td>{{ newUser.coin3 }}</td>
+              <td>{{ newUser.coin2 }}</td>
               <td>{{ newUser.coin2_price }}</td>
               <td>{{ newUser.coin2_avg_purchase_price }}</td>
               <td>{{ newUser.coin2_quantity_available }}</td>
-              <td>625USD</td>
-              <td class="text-danger">-9%</td>
+              <!-- <td>625USD</td>
+              <td class="text-danger">-9%</td> -->
             </tr>
 
             <tr v-if="newUser" class="mt-2">
@@ -40,8 +40,8 @@
               <td>{{ newUser.coin3_price }}</td>
               <td>{{ newUser.coin3_avg_purchase_price }}</td>
               <td>{{ newUser.coin3_quantity_available }}</td>
-              <td>625USD</td>
-              <td class="text-danger">-9%</td>
+              <!-- <td>625USD</td>
+              <td class="text-danger">-9%</td> -->
             </tr>
             <tr v-else class="mt-2">
               <td>You have no asset</td>
