@@ -230,14 +230,14 @@
               </div>
               <div class="d-flex justify-content-center">
                 <input
-                  type="number"
+                  type="text"
                   class="form-control"
                   placeholder="Input USDT Rate"
                   v-model="usdt_data.usdt_rate"
                 />
                 <div class="mx-2">
                   <v-btn
-                    @click="confirmRequests(sub)"
+                    @click="confirmRequests(single_subscriber)"
                     class="confirm__button px-2 py-1"
                   >
                     Confirm
@@ -277,9 +277,9 @@ export default {
         console.log(error);
       }
     },
-    async confirmRequests(sub) {
+    async confirmRequests(single_subscriber) {
       try {
-        let user_id = sub.id;
+        let user_id = single_subscriber.id;
         const response = await this.$axios.post(
           `/confirmUserPayment/${user_id}`,
           this.usdt_data
@@ -380,6 +380,11 @@ export default {
   width: 100%;
   z-index: 999;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 .password__header h6 {
   font-weight: 700;
@@ -451,6 +456,16 @@ export default {
   .fund__wallet__wrap {
     margin: 0 !important;
     padding: 0;
+  }
+  .fund__wallet__wrap .password__modal {
+    width: 100%;
+  }
+  .fund__wallet__wrap .change__password__form p {
+    font-size: 13px;
+    font-weight: 400;
+  }
+  .font__size {
+    font-size: 13px;
   }
 }
 </style>
