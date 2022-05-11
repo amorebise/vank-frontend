@@ -9,7 +9,7 @@
               <!-- <th class="text-left th_color">SN</th> -->
               <th class="text-left th_color">Token</th>
               <th class="text-left th_color">Current Price</th>
-              <th class="text-left th_color">Average Purchase Price</th>
+              <!-- <th class="text-left th_color">Average Purchase Price</th> -->
               <th class="text-left th_color">Quantity</th>
               <!-- <th class="text-left th_color">Current Value</th>
               <th class="text-left th_color">Historic Profit/Loss</th> -->
@@ -20,7 +20,7 @@
               <!-- <td>1</td> -->
               <td>{{ newUser.coin1 }}</td>
               <td>{{ newUser.coin1_price }}</td>
-              <td>{{ newUser.coin1_avg_purchase_price }}</td>
+              <!-- <td>{{ newUser.coin1_avg_purchase_price }}</td> -->
               <td>{{ newUser.coin1_quantity_available }}</td>
               <!-- <td>625USD</td>
               <td class="text-danger">-9%</td> -->
@@ -29,7 +29,7 @@
             <tr v-if="newUser" class="mt-2">
               <td>{{ newUser.coin2 }}</td>
               <td>{{ newUser.coin2_price }}</td>
-              <td>{{ newUser.coin2_avg_purchase_price }}</td>
+              <!-- <td>{{ newUser.coin2_avg_purchase_price }}</td> -->
               <td>{{ newUser.coin2_quantity_available }}</td>
               <!-- <td>625USD</td>
               <td class="text-danger">-9%</td> -->
@@ -38,7 +38,7 @@
             <tr v-if="newUser" class="mt-2">
               <td>{{ newUser.coin3 }}</td>
               <td>{{ newUser.coin3_price }}</td>
-              <td>{{ newUser.coin3_avg_purchase_price }}</td>
+              <!-- <td>{{ newUser.coin3_avg_purchase_price }}</td> -->
               <td>{{ newUser.coin3_quantity_available }}</td>
               <!-- <td>625USD</td>
               <td class="text-danger">-9%</td> -->

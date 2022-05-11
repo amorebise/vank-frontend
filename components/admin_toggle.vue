@@ -50,7 +50,7 @@
           to="/admin_dashboard/create_asset"
           class="list-group list-group-item active bg-transparent active"
         >
-          <div class="ml-3 user__icon d-flex align-items-center">
+          <div class="ml-5 user__icon d-flex align-items-center">
             <ion-icon name="create-outline"></ion-icon>
             <span class="ml-2">Requests</span>
           </div>
@@ -68,7 +68,7 @@
           to="/admin_dashboard/mm_applications"
           class="list-group list-group-item active bg-transparent active"
         >
-          <div class="ml-3 user__icon d-flex align-items-center">
+          <div class="ml-5 user__icon d-flex align-items-center">
             <ion-icon name="settings-outline"></ion-icon>
             <span class="ml-2">Market Makers</span>
           </div>

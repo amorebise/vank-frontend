@@ -132,13 +132,13 @@ export default {
     },
     async sendSms() {
       try {
-        var user_id = this.newUser.id;
-        const response = await this.$axios.post("/sendSmsCode/");
+        // var user_id = this.newUser.id;
+        const response = await this.$axios.post("/sendSmsCode");
         console.log(response);
-        this.$toast.success("Email Has been Sent", {
+        this.$toast.success("Sms Has been Sent", {
           timeout: 5000,
         });
-        consoloe.log(user_id);
+        // consoloe.log(user_id);
       } catch (error) {
         console.log(error.response);
       }

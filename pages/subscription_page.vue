@@ -35,7 +35,7 @@
                       v-model="subscription_plan.btc"
                       :aria-describedby="ariaDescribedby"
                       name="some-radios"
-                      value="A"
+                      value="Usd"
                       class="label"
                       >Basic Plan (USD)</b-form-radio
                     >
@@ -44,7 +44,7 @@
                       v-model="subscription_plan.btc"
                       :aria-describedby="ariaDescribedby"
                       name="some-radios"
-                      value="B"
+                      value="Bitcoin"
                       class="label"
                       >BTC Plan</b-form-radio
                     >
@@ -54,7 +54,7 @@
                       v-model="subscription_plan.vank_basket"
                       :aria-describedby="ariaDescribedby"
                       name="some-radios"
-                      value="B"
+                      value="Basket"
                       class="label"
                       >VANK Basket Plan (5,000 + 5%)</b-form-radio
                     >

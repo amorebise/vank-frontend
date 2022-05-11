@@ -22,20 +22,66 @@
       <div class="select_wrap">
         <div class="mt-3">
           <form action="" @submit.prevent="withdraw_asset()">
-            <div class="form-group">
+            <div class="form-group mt-3">
+              <label class="" for="">Asset </label>
+
+              <input
+                required
+                type="text"
+                v-model="withdrawal_request.asset"
+                class="form-control"
+                placeholder="Enter Asset Name"
+              />
+            </div>
+            <!-- <div class="form-group">
               <label for="exampleFormControlSelect1">Select Asset</label>
               <select
                 class="form-control"
                 v-model="withdrawal_request.asset"
                 id="exampleFormControlSelect1"
               >
-                <option value="dent">dent</option>
-                <option value="second_asset">BTC</option>
-                <option value="third_asset">PHYGITAL</option>
-                <option value="third_asset">PHYGITAL</option>
-                <option value="third_asset">PHYGITAL</option>
+                <option value="asset">
+                  <div v-if="assets.asset">
+                    <p>{{ assets.asset }}</p>
+                  </div>
+                  <div v-else>
+                    <p>You do not have asset</p>
+                  </div>
+                </option>
+                <option value="btc">
+                  <div v-if="assets.btc">
+                    <p>{{ assets.btc }}</p>
+                  </div>
+                  <div v-else>
+                    <p>You do not have btc</p>
+                  </div>
+                </option>
+                <option value="dent">
+                  <div v-if="assets.coin1">
+                    <p>{{ assets.coin1 }}</p>
+                  </div>
+                  <div v-else>
+                    <p>You do not have this coin</p>
+                  </div>
+                </option>
+                <option value="axie">
+                  <div v-if="assets.coin2">
+                    <p>{{ assets.coin2 }}</p>
+                  </div>
+                  <div v-else>
+                    <p>You do not have this coin</p>
+                  </div>
+                </option>
+                <option value="gala">
+                  <div v-if="assets.coin3">
+                    <p>{{ assets.coin3 }}</p>
+                  </div>
+                  <div v-else>
+                    <p>You do not have this coin</p>
+                  </div>
+                </option>
               </select>
-            </div>
+            </div> -->
             <!-- <div class="form-group mx-2 mt-2">
               <label for="exampleFormControlSelect1" class="py-2"
                 >Select Asset</label
@@ -158,7 +204,7 @@ export default {
     async getAssetForWithdrawal() {
       try {
         const response = await this.$axios.get("/getAssetForWithdrawal");
-        this.assets = response.data;
+        this.assets = response.data[0];
         console.log(this.assets);
       } catch (error) {
         console.log(error.response);

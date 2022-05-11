@@ -105,8 +105,11 @@
                       type="text"
                       class="form-control"
                       v-model="signUp_data.phone_number"
-                      placeholder="Enter your Phone Number"
+                      placeholder="234**********"
                     />
+                    <span class="warning"
+                      >phone number should contain country code</span
+                    >
                     <div v-show="error_message">
                       <span class="errors">{{ phone_number_error }}</span>
                     </div>
@@ -358,6 +361,7 @@ export default {
       try {
         const response = await this.$axios.get(this.countryUrl);
         this.countries = response.data;
+        console.log(this.countries);
       } catch (error) {
         console.log(error.response);
       }
@@ -443,6 +447,10 @@ export default {
 
 .errors {
   color: red;
+  font-size: 10px;
+}
+.warning {
+  color: #000;
   font-size: 10px;
 }
 .custom-control-label::after {
