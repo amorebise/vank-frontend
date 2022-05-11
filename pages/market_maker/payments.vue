@@ -22,7 +22,7 @@
                 <div class="admin__transactions_wrap mt-3">
                   <template>
                     <v-tabs class="px-3" v-model="tab" align-with-title>
-                      <v-tab>All transactions</v-tab>
+                      <!-- <v-tab>All transactions</v-tab> -->
                       <v-tab>Pending</v-tab>
                       <v-tab>Completed</v-tab>
                     </v-tabs>
@@ -45,7 +45,7 @@
                                       USDT Rate
                                     </th> -->
 
-                                    <!-- <th class="text-left th_color">Action</th> -->
+                                    <th class="text-left th_color">Action</th>
                                   </tr>
                                 </thead>
                                 <tbody>
@@ -66,14 +66,14 @@
                                         v-model="usdt_data.usdt_rate"
                                       />
                                     </td> -->
-                                    <!-- <td>
+                                    <td>
                                       <v-btn
                                         @click="confirmRequests(sub)"
                                         class="confirm__button px-2 py-1"
                                       >
                                         Confirm
                                       </v-btn>
-                                    </td> -->
+                                    </td>
                                   </tr>
                                   <tr v-if="subscriptions.length == 0">
                                     <td>
@@ -105,15 +105,7 @@
                                       Crypto amount
                                     </th>
 
-                                    <th class="text-left th_color">
-                                      Status(User)
-                                    </th>
-                                    <th class="text-left th_color">
-                                      Status(MM)
-                                    </th>
-                                    <th class="text-left th_color">
-                                      Status(Admin)
-                                    </th>
+                                    <th class="text-left th_color">Status</th>
                                   </tr>
                                 </thead>
                                 <tbody>

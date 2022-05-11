@@ -75,9 +75,9 @@
                     <template v-slot:default>
                       <thead>
                         <tr class="">
-                          <th class="text-left th_color">ID</th>
+                          <th class="text-left th_color">Email</th>
                           <th class="text-left th_color">Wallet Address</th>
-                          <th class="text-left th_color">Wallet Number</th>
+                          <th class="text-left th_color">Balance Update</th>
                           <th class="text-left th_color">Status</th>
                           <!-- <th class="text-left th_color">Amin Approval</th> -->
                           <th class="text-left th_color">Action</th>
@@ -89,7 +89,7 @@
                           v-for="mm_request in mm_balance_requests"
                           :key="mm_request.id"
                         >
-                          <td>{{ mm_request.id }}</td>
+                          <td>{{ mm_request.email }}</td>
                           <td>{{ mm_request.wallet_address }}</td>
                           <td>{{ mm_request.wallet_balance }}</td>
                           <td>{{ mm_request.admin_approval }}</td>

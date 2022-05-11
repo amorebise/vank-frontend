@@ -73,9 +73,6 @@
                   <div class="password__header">
                     <h6>Edit New Password</h6>
                   </div>
-                  <!-- <div>
-                    <p class="" >x</p>
-                  </div> -->
                 </div>
 
                 <label class="" for="">Enter Old Password</label>
@@ -181,8 +178,17 @@ export default {
     };
   },
   methods: {
-    edit_profile() {
-      console.log(this.update_profile);
+    async edit_profile() {
+      try {
+        const response = await this.$axios.post(
+          "/updateUserDetail",
+          this.update_profile
+        );
+        console.log(response);
+        this.$toast.success("Profile Updated", { timeout: 5000 });
+      } catch (error) {
+        console.log(error.response);
+      }
     },
     async change_password() {
       try {

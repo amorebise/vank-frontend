@@ -128,7 +128,6 @@
                           class="mt-2"
                           v-for="market_maker in market_makers"
                           :key="market_maker.id"
-                          @click="viewMarketMaker(market_maker)"
                         >
                           <td>{{ market_maker.first_name }}</td>
                           <td>{{ market_maker.last_name }}</td>
@@ -219,7 +218,7 @@
           </div>
         </div>
 
-        <div class="change__password__form" v-show="market_maker_modal">
+        <!-- <div class="change__password__form" v-show="market_maker_modal">
           <div class="password__modal slideInDown">
             <div class="info__wrap">
               <h6 class="font-weight-bold text-center">PERSONAL INFORMATION</h6>
@@ -268,7 +267,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -326,7 +325,7 @@ export default {
         const response = await this.$axios.get(
           `/admin/getSingleUser/${new_id}`
         );
-        this.single_subscriber = response.data;
+        this.single_subscriber = response.data.user;
         this.subscriber_modal = !this.subscriber_modal;
         console.log(this.single_subscriber);
       } catch (error) {
@@ -334,19 +333,19 @@ export default {
       }
     },
 
-    async viewMarketMaker(market_maker) {
-      const new_id = market_maker.id;
-      try {
-        const response = await this.$axios.get(
-          `/admin/getSingleUser/${new_id}`
-        );
-        this.single_market_maker = response.data;
-        this.market_maker_modal = !this.market_maker_modal;
-        console.log(this.single_market_maker);
-      } catch (error) {
-        console.log(error.response);
-      }
-    },
+    // async viewMarketMaker(market_maker) {
+    //   const mm_id = market_maker.id;
+    //   try {
+    //     const response = await this.$axios.get(
+    //       `/admin/getSingleMarketMaker/${mm_id}`
+    //     );
+    //     this.single_market_maker = response.data;
+    //     this.market_maker_modal = !this.market_maker_modal;
+    //     console.log(this.single_market_maker);
+    //   } catch (error) {
+    //     console.log(error.response);
+    //   }
+    // },
     async makeNewMarketMaker(single_subscriber) {
       try {
         this.loading = true;
@@ -368,6 +367,8 @@ export default {
     this.getUsers();
     this.getMarketMakers();
     this.getAllSubscribers();
+    this.viewSubscriber();
+    // this.viewMarketMaker();
   },
 };
 </script>
