@@ -339,7 +339,7 @@ export default {
           this.asset_data
         );
         this.loading = false;
-        // this.$router.push('/admin_dashboard/dashboard')
+
         this.$toast.success("Asset Created", { timeout: 5000 });
         console.log(response);
       } catch (error) {

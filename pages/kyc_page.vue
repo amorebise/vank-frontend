@@ -1,8 +1,10 @@
 <template>
   <div>
     <div class="kyc__wrap">
-      <h1>KYC page</h1>
-      <button @click="back()">back to settings</button>
+      <h1>This feature is coming soon.....</h1>
+      <div class="text-right">
+        <button @click="back()">back to settings</button>
+      </div>
     </div>
   </div>
 </template>
@@ -18,4 +20,11 @@ export default {
 </script>
 
 <style scoped>
+.kyc__wrap {
+  width: 50%;
+  margin: 100px auto;
+}
+.kyc__wrap button {
+  color: blue;
+}
 </style>

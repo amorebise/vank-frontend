@@ -221,7 +221,7 @@
                                       <th class="th_color">Name</th>
                                       <th class="th_color">Date</th>
                                       <th class="th_color">Fiat amount</th>
-                                      <th class="th_color">Crypto amount</th>
+                                      <!-- <th class="th_color">Crypto amount</th> -->
 
                                       <th class="th_color">Status</th>
                                     </tr>
@@ -253,13 +253,13 @@
                                       >
                                         {{ sub.amount }}NGN
                                       </td>
-                                      <td
+                                      <!-- <td
                                         v-if="
                                           sub.admin_confirmation == 'Pending'
                                         "
                                       >
                                         {{ sub.usdt }}
-                                      </td>
+                                      </td> -->
                                       <td
                                         v-if="
                                           sub.admin_confirmation == 'Pending'
@@ -297,7 +297,7 @@
                                       <th class="th_color">Name</th>
                                       <th class="th_color">Date</th>
                                       <th class="th_color">Fiat amount</th>
-                                      <th class="th_color">Crypto amount</th>
+                                      <!-- <th class="th_color">Crypto amount</th> -->
 
                                       <th class="th_color">Status</th>
                                     </tr>
@@ -329,13 +329,13 @@
                                       >
                                         {{ sub.amount }}
                                       </td>
-                                      <td
+                                      <!-- <td
                                         v-if="
                                           sub.admin_confirmation == 'Approved'
                                         "
                                       >
                                         {{ sub.btc }}
-                                      </td>
+                                      </td> -->
                                       <td
                                         v-if="
                                           sub.admin_confirmation == 'Approved'

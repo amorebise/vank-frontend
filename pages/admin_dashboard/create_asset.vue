@@ -25,7 +25,7 @@
                           <th class="text-left th_color">Name</th>
                           <th class="text-left th_color">Email Address</th>
                           <th class="text-left th_color">Phone Number</th>
-                          <th class="text-left th_color">Asset</th>
+                          <th class="text-left th_color">Available USDT</th>
                           <th class="text-left th_color">Amount</th>
 
                           <th class="text-left th_color">Action</th>
@@ -41,7 +41,9 @@
 
                           <td>{{ subscription.email }}</td>
                           <td>{{ subscription.phone_number }}</td>
-                          <td class="text-center">{{ subscription.usdt }}</td>
+                          <td class="text-center">
+                            {{ subscription.usdt_amount_available }}
+                          </td>
                           <td>{{ subscription.amount }}</td>
                           <td>
                             <nuxt-link

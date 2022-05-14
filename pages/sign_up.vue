@@ -131,7 +131,7 @@
                       type="text"
                       class="form-control"
                       v-model="signUp_data.address"
-                      placeholder="Enter your Adrress, Street and city"
+                      placeholder="Enter your Address, Street and city"
                     />
                     <span class="errors">{{ errors[0] }}</span>
                   </ValidationProvider>

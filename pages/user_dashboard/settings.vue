@@ -124,7 +124,7 @@
           </div>
         </div>
 
-        <div class="update__password__wrap d-flex justify-content-between py-2">
+        <!-- <div class="update__password__wrap d-flex justify-content-between py-2">
           <div class="text-wrap">
             <h5>Next of Kin</h5>
             <p>Add your next of kin</p>
@@ -132,7 +132,7 @@
           <div class="edit__wrap">
             <button>Edit</button>
           </div>
-        </div>
+        </div> -->
         <div class="update__password__wrap d-flex justify-content-between py-2">
           <div class="text-wrap">
             <h5>Payments</h5>

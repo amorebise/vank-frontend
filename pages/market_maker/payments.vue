@@ -45,7 +45,7 @@
                                       USDT Rate
                                     </th> -->
 
-                                    <th class="text-left th_color">Action</th>
+                                    <!-- <th class="text-left th_color">Action</th> -->
                                   </tr>
                                 </thead>
                                 <tbody>
@@ -66,14 +66,14 @@
                                         v-model="usdt_data.usdt_rate"
                                       />
                                     </td> -->
-                                    <td>
+                                    <!-- <td>
                                       <v-btn
                                         @click="confirmRequests(sub)"
                                         class="confirm__button px-2 py-1"
                                       >
                                         Confirm
                                       </v-btn>
-                                    </td>
+                                    </td> -->
                                   </tr>
                                   <tr v-if="subscriptions.length == 0">
                                     <td>
