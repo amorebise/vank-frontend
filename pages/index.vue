@@ -251,7 +251,9 @@
     <div class="faqs__wrap">
       <div class="faqs__content py-3">
         <h1>Frequently Asked Questions</h1>
-        <h3 class="py-2">Most commonly asked questions about VANK</h3>
+        <h3 class="py-2 text-center">
+          Most commonly asked questions about VANK
+        </h3>
         <v-expansion-panels>
           <v-expansion-panel>
             <v-expansion-panel-header>
@@ -547,9 +549,9 @@ export default {
   height: 50px;
   padding: 10px;
 }
-.typed_text span {
-  /* margin-top: 10px; */
-}
+/* .typed_text span {
+  margin-top: 10px;
+} */
 .typed_text h1 {
   color: #00e8fe;
 }
@@ -758,6 +760,7 @@ hr {
   width: 70%;
 }
 .faqs__content h1 {
+  text-align: center;
   font-size: 52px;
   font-weight: bold;
   color: #0f1843;
