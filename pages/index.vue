@@ -99,7 +99,7 @@
         <h1>How VANK Works</h1>
         <h3>
           Simple and easy way to start your <br />
-          savings with <span class="vank_cap">VANK</span>
+          savings with <span class="vank_capp">VANK</span>
         </h3>
       </div>
 
@@ -308,6 +308,11 @@
           </v-expansion-panel>
         </v-expansion-panels>
         <!-- End of Fourth Question -->
+        <div class="register_button_wrap text-center mt-3 py-4">
+          <nuxt-link to="/faqs" class="assets__link">
+            <span class="px-3">View all FAQs</span>
+          </nuxt-link>
+        </div>
       </div>
     </div>
     <footer-section />
@@ -498,6 +503,7 @@ export default {
   z-index: 999;
   background-color: #00e8fe;
   width: 120px;
+  height: 50px;
   padding: 10px 20px;
 }
 .img__wrap .sale__notification p {
@@ -542,7 +548,7 @@ export default {
   padding: 10px;
 }
 .typed_text span {
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 .typed_text h1 {
   color: #00e8fe;
@@ -554,6 +560,9 @@ export default {
 }
 .vank_cap {
   color: #00e8fe;
+}
+.vank_capp {
+  color: #0f1843;
 }
 .card_shadow {
   height: 100%;
