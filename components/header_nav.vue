@@ -42,9 +42,14 @@
             >
           </li>
           <li class="nav-item sign_up_wrap mx-3" @click="navigate()">
-            <nuxt-link to="/login" class="sign_up_button navbar-brand">
+            <div class="register_button_wrap text-center mt-2">
+              <nuxt-link to="/login" class="assets__link">
+                <span class="px-3">Log In</span>
+              </nuxt-link>
+            </div>
+            <!-- <nuxt-link to="/login" class="sign_up_button navbar-brand">
               Log In
-            </nuxt-link>
+            </nuxt-link> -->
           </li>
         </ul>
 
@@ -104,7 +109,18 @@ export default {
   display: none;
   font-size: 30px;
 }
-
+.register_button_wrap .assets__link {
+  border: 1px solid #00e8fe;
+  padding: 12px 2px;
+}
+.register_button_wrap .assets__link span {
+  color: #001214;
+  font-weight: 600;
+  background-color: #fff;
+  border: 1px solid #00e8fe;
+  padding: 10px 5px;
+  font-size: 14px;
+}
 .sign_up_button {
   padding: 5px 10px;
   background-color: #00e8fe;
