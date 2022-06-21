@@ -1,4 +1,6 @@
-<div class="hero_section mt-5">
+<template>
+  <div>
+    <div class="hero_section mt-5">
       <div class="hero__content">
         <h1>Make Smarter Moves,</h1>
         <div
@@ -316,3 +318,12 @@
         </div>
       </div>
     </div>
+  </div>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style scoped>
+</style>
