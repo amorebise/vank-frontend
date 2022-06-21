@@ -146,17 +146,22 @@
             /></a>
           </div>
           <div class="b__radius">
-            <a href="" class="mx-1"
-              ><nuxt-img
-                format="webp"
-                quality="90"
-                fit="cover"
-                sizes="xs:45vw sm:30vw md:20vw lg:12vw"
-                src="/instagram.png"
+            <a
+              href="https://www.linkedin.com/company/vankwallet"
+              target="_blank"
+              class="mx-1"
+              ><font-awesome-icon
+                id="show_password"
+                class="bg-red eye_icon"
+                :icon="['fas', 'linkedin']"
             /></a>
           </div>
           <div class="b__radius">
-            <a href="" class="mx-1">
+            <a
+              href="https://tiktok.com/@vankwallet"
+              target="_blank"
+              class="mx-1"
+            >
               <nuxt-img
                 format="webp"
                 quality="90"

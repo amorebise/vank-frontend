@@ -220,7 +220,7 @@
       </div>
     </div>
 
-    <!-- <footer-section /> -->
+    <footer-section />
   </div>
 </template>
 

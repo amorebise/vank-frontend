@@ -1,12 +1,14 @@
 <template>
   <div>
     <div class="nav_content w-100">
-      <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4">
+      <nav
+        class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-3"
+      >
         <div class="">
           <li class="dashboard_text_li d-flex align-items-center">
             <div><creator-sidebar /></div>
             <div class="mt-3">
-              <h1>{{ name }}</h1>
+              <h3>{{ name }}</h3>
             </div>
           </li>
         </div>
@@ -14,7 +16,6 @@
         <div class="d-flex align-items-center">
           <div class="mx-2">
             <font-awesome-icon class="fa-2x" :icon="['fas', 'user-circle']" />
-            <!-- <ion-icon name="contact-outline"></ion-icon> -->
           </div>
           <div class="mx-2">
             <button @click="logout()" class="log_out_button">Logout</button>
@@ -62,19 +63,17 @@ export default {
 };
 </script>
 
-<style>
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk&family=Titillium+Web&display=swap");
-
+<style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Karla&family=Lato&family=Nunito&family=Plus+Jakarta+Sans&family=Space+Grotesk&family=Titillium+Web&display=swap");
 * {
   margin: 0;
   padding: 0;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  list-style-type: none !important;
+  text-decoration: none !important;
 }
-/* .nav_content .navbar {
-  padding: 0 100px;
-} */
 
-.dashboard_text_li h1 {
+.dashboard_text_li h3 {
   color: #1d83c5;
   font-weight: 600;
 }

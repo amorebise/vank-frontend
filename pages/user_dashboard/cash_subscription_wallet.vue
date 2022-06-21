@@ -1,0 +1,309 @@
+<template>
+  <div class="exam_token_wrap w-100">
+    <div class="cash__sub__wrap">
+      <user-nav name="Wallets" />
+      <div class="transactions_wrap mt-3">
+        <template>
+          <v-tabs class="px-3" v-model="tab" align-with-title>
+            <v-tab>Cash Wallet</v-tab>
+            <v-tab>Subscription Wallet</v-tab>
+          </v-tabs>
+        </template>
+        <v-tabs-items v-model="tab" class="tab_bg">
+          <v-tab-item>
+            <v-card flat>
+              <v-card-text class="">
+                <div class="transactions_data">
+                  <div
+                    class="
+                      wallet__balance__wrap
+                      d-flex
+                      justify-content-center
+                      align-items-center
+                      pt-3
+                    "
+                    style="gap: 10px"
+                  >
+                    <p
+                      style="
+                        color: #00e8fe;
+                        font-size: 30px;
+                        padding-top: 12px;
+                        font-weight: 600;
+                      "
+                    >
+                      <span class="text-dark">Wallet Balance</span>
+                      &#x20A6;375,000.00
+                    </p>
+                  </div>
+                </div>
+                <div class="text-center font-weight-bold">
+                  <h6>Choose what kind of transaction</h6>
+                </div>
+                <div class="choose__txn__wrap">
+                  <div class="token__wrap py-5">
+                    <div class="form-group mx-2 mt-2">
+                      <label
+                        for="exampleFormControlSelect1 font-weight-bolder"
+                        class=""
+                        >Choose Transaction</label
+                      >
+                      <select
+                        class="form-control option-class select"
+                        id="exampleFormControlSelect1"
+                        required
+                      >
+                        <option>Select</option>
+                        <option class="colour" id="selectCountry">
+                          <p class="text-danger">Fund wallet</p>
+                        </option>
+                        <option>Withdraw to bank</option>
+                        <option>Transfer to your subscription wallet</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group mx-2 mt-2">
+                      <label for="" class=""
+                        >What is your transaction amount?</label
+                      >
+                      <input
+                        type="password"
+                        class="form-control"
+                        placeholder="Enter Amount"
+                      />
+                    </div>
+                    <div class="view__assets__wrap text-center">
+                      <button
+                        @click="success__modal = !success__modal"
+                        class="assets__link"
+                      >
+                        <span class="px-3">Submit</span>
+                      </button>
+                    </div>
+                    <div v-show="success__modal" class="pop__up">
+                      <div class="pop__up__content zoomIn">
+                        <div class="text-center">
+                          <img src="/emoji.png" alt="" />
+                          <p>Transaction Successful!!</p>
+                          <button @click="success__modal = !success__modal">
+                            ok
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </v-card-text>
+            </v-card>
+          </v-tab-item>
+
+          <v-tab-item>
+            <v-card flat>
+              <v-card-text class="">
+                <div class="transactions_data">
+                  <div class="choose__txn__wrap">
+                    <div
+                      class="
+                        wallet__balance__wrap
+                        d-flex
+                        justify-content-center
+                        pt-3
+                        mt-5
+                      "
+                      style="gap: 10px"
+                    >
+                      <p
+                        style="
+                          color: #00e8fe;
+                          font-size: 20px;
+                          padding-top: 12px;
+                          font-weight: 600;
+                        "
+                      >
+                        <span class="text-dark">Wallet Balance</span>
+                        &#x20A6;75,000.00
+                      </p>
+                    </div>
+                    <div class="view__assets__wrap text-center">
+                      <nuxt-link to="/user_dashboard/cash_success/">
+                        <button class="assets__link">
+                          <span class="px-3">Transfer to Cash Wallet</span>
+                        </button>
+                      </nuxt-link>
+                    </div>
+                  </div>
+                </div>
+              </v-card-text>
+            </v-card>
+          </v-tab-item>
+        </v-tabs-items>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import creator_sidebar from "~/components/creator_sidebar.vue";
+export default {
+  components: { creator_sidebar },
+  data() {
+    return {
+      tab: null,
+      success__modal: false,
+    };
+  },
+
+  methods: {},
+};
+</script>
+
+<style >
+.cash__sub__wrap {
+  margin-left: 230px;
+  background-color: #fff;
+  min-height: 100vh;
+  padding: 0 50px;
+}
+.cash__sub__wrap .v-slide-group {
+  flex-wrap: wrap;
+  /* padding: 10px; */
+}
+.cash__sub__wrap .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active),
+.cash__sub__wrap
+  .theme--light.v-tabs
+  > .v-tabs-bar
+  .v-tab:not(.v-tab--active)
+  > .v-icon,
+.cash__sub__wrap
+  .theme--light.v-tabs
+  > .v-tabs-bar
+  .v-tab:not(.v-tab--active)
+  > .v-btn,
+.cash__sub__wrap .theme--light.v-tabs > .v-tabs-bar .v-tab--disabled {
+  color: #55174f;
+  font-variant: normal;
+}
+.cash__sub__wrap .v-tab {
+  text-transform: unset;
+}
+.cash__sub__wrap .transactions_data {
+  background-color: #fff;
+}
+.cash__sub__wrap
+  .transactions_data
+  .v-data-table--fixed-header
+  > .v-data-table__wrapper {
+  /* background-color: #f8f7ff; */
+}
+.cash__sub__wrap
+  .transactions_data
+  .v-data-table
+  > .v-data-table__wrapper
+  > table {
+  background-color: #fff;
+}
+.cash__sub__wrap .transactions_data .th_color {
+  background-color: #f8f7ff !important;
+  border-bottom: none !important;
+}
+.cash__sub__wrap .choose__txn__wrap {
+  border: 1px solid #00e8fe;
+  border-radius: 20px;
+  margin: 40px auto;
+  width: 50%;
+  height: 400px;
+  padding: 10px 40px;
+}
+.cash__sub__wrap .choose__txn__wrap .form-control {
+  font-size: 13px;
+  box-shadow: none;
+}
+.cash__sub__wrap .choose__txn__wrap .form-control:focus {
+  border-color: #30303044;
+}
+.cash__sub__wrap .pop__up {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: #30303044;
+  display: grid;
+  place-items: center;
+}
+.cash__sub__wrap .pop__up__content {
+  background-color: #fff;
+  padding: 15px 30px;
+  border-radius: 10px;
+}
+.cash__sub__wrap .pop__up__content button {
+  padding: 3px 10px;
+  background-color: #00e8fe;
+  border-radius: 5px;
+}
+.zoomIn {
+  -webkit-animation-name: zoomIn;
+  animation-name: zoomIn;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@-webkit-keyframes zoomIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* .transactions_data
+  .theme--light.v-data-table
+  > .v-data-table__wrapper
+  > table
+  > thead
+  > tr:last-child
+  > th {
+  border: none;
+  box-shadow: none;
+} */
+/* tr {
+  margin-top: 100px !important;
+}
+.warning {
+  background: rgba(231, 171, 54, 0.1);
+  border-radius: 4px;
+  font-weight: 600;
+}
+.warning p {
+  padding-top: 10px;
+}
+.success {
+  background: rgba(30, 151, 57, 0.1);
+  border-radius: 4px;
+  font-weight: 600;
+}
+.success p {
+  padding-top: 10px;
+} */
+@media (max-width: 768px) {
+  .transactions {
+    margin-left: 0 !important;
+    padding: 0;
+  }
+}
+</style>

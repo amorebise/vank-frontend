@@ -4,13 +4,13 @@
       <nuxt-link to="/" class="navbar-brand vank_logo_link"
         ><nuxt-img
           format="webp"
-          sizes="xs:35vw sm:30vw md:20vw lg:10vw"
+          sizes="xs:35vw sm:30vw md:20vw lg:12vw"
           quality="90"
           fit="cover"
           src="/vank_logo.png"
           alt="image"
       /></nuxt-link>
-      <div class="navbar-toggler p-0" @click="navigate()">
+      <!-- <div class="navbar-toggler p-0" @click="navigate()">
         <v-icon size="33" class="icon_color">mdi-menu</v-icon>
       </div>
 
@@ -47,16 +47,14 @@
                 <span class="px-3">Log In</span>
               </nuxt-link>
             </div>
-            <!-- <nuxt-link to="/login" class="sign_up_button navbar-brand">
-              Log In
-            </nuxt-link> -->
+            
           </li>
         </ul>
 
         <div class="times">
           <span @click="navigate()"> &times; </span>
         </div>
-      </div>
+      </div> -->
     </nav>
   </div>
 </template>
@@ -77,15 +75,17 @@ export default {
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk&family=Titillium+Web&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Karla&family=Lato&family=Nunito&family=Plus+Jakarta+Sans&family=Space+Grotesk&family=Titillium+Web&display=swap");
 * {
   margin: 0;
   padding: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  list-style-type: none !important;
   text-decoration: none !important;
 }
 .navbar {
   padding: 30px 100px !important;
-  font-family: "Space Grotesk", sans-serif;
+  /* font-family: "Space Grotesk", sans-serif; */
   background-color: #fff;
 }
 .navbar img {
@@ -97,7 +97,7 @@ export default {
 .navbar-brand {
   color: #000 !important;
   font-weight: 550;
-  font-size: 18px;
+  font-size: 14px;
 }
 .navbar-brand:hover {
   color: #18a0fb !important;

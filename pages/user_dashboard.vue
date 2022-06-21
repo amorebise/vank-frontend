@@ -8,7 +8,7 @@
 <script>
 import side_bar_nav from "~/components/side_bar_nav.vue";
 export default {
-  middleware: "auth",
+  // middleware: "auth",
   components: { side_bar_nav },
 };
 </script>
