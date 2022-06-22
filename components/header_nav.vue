@@ -10,7 +10,7 @@
           src="/vank_logo.png"
           alt="image"
       /></nuxt-link>
-      <!-- <div class="navbar-toggler p-0" @click="navigate()">
+      <div class="navbar-toggler p-0" @click="navigate()">
         <v-icon size="33" class="icon_color">mdi-menu</v-icon>
       </div>
 
@@ -47,14 +47,13 @@
                 <span class="px-3">Log In</span>
               </nuxt-link>
             </div>
-            
           </li>
         </ul>
 
         <div class="times">
           <span @click="navigate()"> &times; </span>
         </div>
-      </div> -->
+      </div>
     </nav>
   </div>
 </template>
