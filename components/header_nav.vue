@@ -2,13 +2,7 @@
   <div>
     <nav class="navbar navbar-expand-lg fixed-top">
       <nuxt-link to="/" class="navbar-brand vank_logo_link"
-        ><nuxt-img
-          format="webp"
-          sizes="xs:35vw sm:30vw md:20vw lg:12vw"
-          quality="90"
-          fit="cover"
-          src="/vank_logo.png"
-          alt="image"
+        ><img src="/vank_logo.png" alt="image"
       /></nuxt-link>
       <div class="navbar-toggler p-0" @click="navigate()">
         <v-icon size="33" class="icon_color">mdi-menu</v-icon>
@@ -88,6 +82,7 @@ export default {
   background-color: #fff;
 }
 .navbar img {
+  width: 50%;
   height: 100%;
 }
 .vank_logo_link {

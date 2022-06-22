@@ -123,7 +123,7 @@
               href="https://facebook.com/vankwallet"
               class="mx-1"
               target="_blank"
-              ><nuxt-img
+              ><img
                 format="webp"
                 quality="90"
                 fit="cover"
@@ -137,7 +137,7 @@
               href="https://twitter.com/vankwallet"
               class="mx-1"
               target="_blank"
-              ><nuxt-img
+              ><img
                 format="webp"
                 quality="90"
                 fit="cover"
@@ -162,7 +162,7 @@
               target="_blank"
               class="mx-1"
             >
-              <nuxt-img
+              <img
                 format="webp"
                 quality="90"
                 fit="cover"
@@ -273,8 +273,8 @@ hr {
   font-size: 15px;
 }
 .icons .b__radius {
-  width: 27px;
-  height: 27px;
+  width: 32px;
+  height: 32px;
   border-radius: 100%;
   border: 1px solid #00e8fe;
 }
