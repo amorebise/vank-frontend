@@ -12,7 +12,7 @@
           <div style="margin-top: -100px">
             <nuxt-link
               style="font-size: 11px; color: #00e8fe"
-              to="/user_dashboard/my_account"
+              to="/user_dashboard/staking_borrow"
               >Find and Buy more tokens</nuxt-link
             >
           </div>

@@ -112,7 +112,7 @@
                     </nuxt-link>
                   </div>
                   <div>
-                    <h6>Your Stakings</h6>
+                    <h6>Your Borrowings</h6>
                   </div>
                   <div>
                     <div class="row">

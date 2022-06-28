@@ -106,13 +106,13 @@
           </h3>
         </div>
 
-        <div class="row mt-5 align-items-center">
-          <div class="col-md-6">
+        <div class="d-md-flex mt-5 align-items-center">
+          <div class="">
             <div class="crypto_bucket_section mx-5 pt-5">
               <v-img src="/iv.png" lazy-src="/iv.png" alt="image" />
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="">
             <div
               class="how_it_works_child d-flex justify-content-center py-4 mb-2"
             >
@@ -236,7 +236,6 @@
             </div>
           </div>
         </div>
-        <!-- <cards /> -->
       </div>
       <div class="join_vank_section mt-5">
         <div class="d-flex justify-content-center">
@@ -455,21 +454,22 @@ export default {
 .demo__wrap {
   background-image: url("/bggg.jpeg");
   background-size: cover;
-  width: 70%;
-  border-radius: 20px;
+  width: 50%;
+  height: 520px;
+  /* border-radius: 20px; */
   margin: 100px auto;
   /* min-height: 100vh; */
-  padding: 100px;
+  padding: 10px;
   position: fixed;
   z-index: 1000;
-  top: 0;
-  left: 150px;
+  top: 10px;
+  left: 250px;
 }
 #demo_wrap {
   display: none;
 }
 .demo__wrap .demo__info__wrap {
-  width: 40%;
+  width: 50%;
   margin: 0 auto;
 }
 .demo__info__wrap h6 {
@@ -881,17 +881,17 @@ hr {
     padding: 60px 10px;
   } */
   .demo__wrap {
-    width: 100%;
+    width: 95%;
     height: 100%;
 
-    margin: 0;
+    margin: 30px auto;
 
-    padding: 100px;
+    /* padding: 100px; */
     position: fixed;
 
-    top: 0;
-    left: 0;
-    padding: 70px 10px;
+    top: 40px;
+    left: 7px;
+    padding: 10px;
   }
   .demo__wrap .demo__info__wrap {
     width: 100%;

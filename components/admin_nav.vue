@@ -6,7 +6,7 @@
           <li class="dashboard_text_li d-flex align-items-center">
             <div><admin-toggle /></div>
             <div class="mt-3">
-              <h1>{{ name }}</h1>
+              <h1 class="blue_text">{{ name }}</h1>
             </div>
           </li>
         </div>

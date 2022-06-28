@@ -1,7 +1,7 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="users">
-      <admin-nav name="Users" />
+      <admin-nav name="Property" />
       <div class="users_wrap">
         <div class="search__bar__wrap">
           <div class="form-group py-3">
@@ -27,13 +27,13 @@
                     <th class="text-left th_color">Phone number</th>
                     <th class="text-left th_color">Transaction</th>
                     <th class="text-left th_color">Amount</th>
-                    <!-- <th class="text-left th_color">Action</th> -->
+                    <th class="text-left th_color">Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr
-                    class="mt-2"
                     style="border-bottom: thin solid rgba(0, 0, 0, 0.12)"
+                    class="mt-2"
                     @click="viewDetail()"
                   >
                     <td>1</td>
@@ -41,11 +41,11 @@
                     <td>08123456789</td>
                     <td>Funded Wallet</td>
                     <td>50,000</td>
-                    <!-- <td>
-                    <nuxt-link to="/admin_dashboard/dashboard/">
-                      View Details</nuxt-link
-                    >
-                  </td> -->
+                    <td class="pt-3">
+                      <p role="button" style="color: #00e8fe; font-size: 12px">
+                        Make trending
+                      </p>
+                    </td>
                   </tr>
                   <!-- <tr v-if="subscribers.length == 0">
                   <td>
@@ -59,8 +59,8 @@
 
                 <tbody>
                   <tr
-                    class="mt-2"
                     style="border-bottom: thin solid rgba(0, 0, 0, 0.12)"
+                    class="mt-2"
                     @click="viewDetail()"
                   >
                     <td>2</td>
@@ -68,6 +68,11 @@
                     <td>08123456789</td>
                     <td>Subscription</td>
                     <td>75,000</td>
+                    <td class="pt-3">
+                      <p role="button" style="color: #00e8fe; font-size: 12px">
+                        Make trending
+                      </p>
+                    </td>
                     <!-- <td>
                     <nuxt-link to="/admin_dashboard/user_detail/id">
                       View Details</nuxt-link
@@ -86,15 +91,27 @@
               </template>
             </v-simple-table>
 
-            <div
-              class="view__assets__wrap text-center"
-              style="margin-top: -30px"
-            >
-              <nuxt-link to="/user_dashboard/cash_subscription_wallet">
-                <button class="assets__link">
-                  <span class="px-3">View database</span>
-                </button>
-              </nuxt-link>
+            <div class="d-flex justify-content-center" style="gap: 10px">
+              <div
+                class="view__assets__wrap text-center"
+                style="margin-top: -30px"
+              >
+                <nuxt-link to="/user_dashboard/cash_subscription_wallet">
+                  <button class="assets__link">
+                    <span class="px-3">View all </span>
+                  </button>
+                </nuxt-link>
+              </div>
+              <div
+                class="view__assets__wrap text-center"
+                style="margin-top: -30px"
+              >
+                <nuxt-link to="/user_dashboard/cash_subscription_wallet">
+                  <button class="assets__link">
+                    <span class="px-3">Add new Property</span>
+                  </button>
+                </nuxt-link>
+              </div>
             </div>
           </div>
         </div>
@@ -122,7 +139,7 @@ export default {
   },
   methods: {
     viewDetail() {
-      this.$router.push(`/admin_dashboard/user_detail/id`);
+      this.$router.push(`/admin_dashboard/property_detail/id`);
     },
   },
   mounted() {},
@@ -137,6 +154,11 @@ export default {
   font-family: "Plus Jakarta Sans";
   text-decoration: none !important;
 }
+.body__wrap {
+  border-radius: 10px;
+  border: 1px solid #3030304b;
+  padding: 10px;
+}
 .users {
   margin-left: 230px;
   background-color: #fff;
@@ -149,25 +171,6 @@ export default {
 .users_wrap .emoji {
   width: 40px;
   margin-top: 5px;
-}
-.users_wrap .search__bar__wrap .form-control {
-  background-image: url("/search.png");
-  background-position-x: 5px;
-  background-position-y: 7px;
-  box-shadow: none;
-  height: 35px !important;
-  width: 30%;
-  border-radius: 5px;
-  padding: 5px 35px;
-  font-size: 14px;
-  color: #3030305f;
-}
-.txn__data .search__bar__wrap .form-control:focus {
-  border-color: #000;
-}
-.txn__data .search__bar__wrap ::placeholder {
-  padding-left: 5px;
-  color: #3030305f;
 }
 .users_wrap .transactions_data td {
   cursor: pointer;
@@ -267,39 +270,6 @@ export default {
     -webkit-transform: translateY(0);
     transform: translateY(0);
   }
-}
-
-.theme--light.v-data-table
-  > .v-data-table__wrapper
-  > table
-  > tbody
-  > tr:not(:last-child)
-  > td:last-child,
-.theme--light.v-data-table
-  > .v-data-table__wrapper
-  > table
-  > tbody
-  > tr:not(:last-child)
-  > td:not(.v-data-table__mobile-row),
-.theme--light.v-data-table
-  > .v-data-table__wrapper
-  > table
-  > tbody
-  > tr:not(:last-child)
-  > th:last-child,
-.theme--light.v-data-table
-  > .v-data-table__wrapper
-  > table
-  > tbody
-  > tr:not(:last-child)
-  > th:not(.v-data-table__mobile-row),
-.theme--light.v-data-table
-  > .v-data-table__wrapper
-  > table
-  > thead
-  > tr:last-child
-  > th {
-  border-bottom: thin solid rgba(0, 0, 0, 0.12);
 }
 
 @media (max-width: 768px) {

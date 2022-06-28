@@ -1,11 +1,13 @@
 <template>
   <div>
     <nav class="navbar navbar-expand-lg fixed-top">
-      <nuxt-link to="/" class="navbar-brand vank_logo_link"
-        ><img src="/vank_logo.png" alt="image"
-      /></nuxt-link>
-      <div class="navbar-toggler p-0" @click="navigate()">
-        <v-icon size="33" class="icon_color">mdi-menu</v-icon>
+      <div class="d-flex">
+        <nuxt-link to="/" class="navbar-brand vank_logo_link"
+          ><img src="/vank_logo.png" alt="image"
+        /></nuxt-link>
+        <div class="navbar-toggler p-0" @click="navigate()">
+          <v-icon size="33" class="icon_color">mdi-menu</v-icon>
+        </div>
       </div>
 
       <div
@@ -84,6 +86,7 @@ export default {
 .navbar img {
   width: 50%;
   height: 100%;
+  object-fit: contain;
 }
 .vank_logo_link {
   outline: none !important;
@@ -133,6 +136,11 @@ export default {
   .navbar {
     padding: 15px !important;
   }
+
+  /* .navbar img {
+    width: 100%;
+    height: 100%;
+  } */
 
   .navbar-nav {
     margin: 30px auto !important;

@@ -5,6 +5,7 @@
         <nuxt-link to="/" class="navbar-brand vank_logo_link"
           ><nuxt-img
             format="webp"
+            sizes="xs:35vw sm:30vw md:20vw lg:13vw"
             quality="90"
             fit="cover"
             src="/vank_logo.png"
@@ -18,55 +19,58 @@
         >
           <div class="child_items">
             <div class="ml-3 d-flex align-items-center">
-              <ion-icon name="home-outline"></ion-icon>
+              <ion-icon style="color: #001214" name="home-outline"></ion-icon>
 
-              <span class="ml-2">Dashboard</span>
+              <span class="ml-2">My Account</span>
             </div>
           </div>
         </nuxt-link>
         <nuxt-link
           to="/admin_dashboard/users"
-          class="list-group list-group-item active bg-transparent active"
+          class="list-group list-group-item active bg-transparent"
         >
-          <div class="ml-3 user__icon d-flex align-items-center">
-            <ion-icon name="people-outline"></ion-icon>
+          <div class="ml-3 d-flex align-items-center">
+            <ion-icon
+              style="color: #001214"
+              name="bar-chart-outline"
+            ></ion-icon>
             <span class="ml-2">Users</span>
           </div>
         </nuxt-link>
         <nuxt-link
-          to="/admin_dashboard/create_asset"
+          to="/admin_dashboard/property"
           class="list-group list-group-item active bg-transparent active"
         >
-          <div class="ml-3 user__icon d-flex align-items-center">
-            <ion-icon name="create-outline"></ion-icon>
-            <span class="ml-2">Requests</span>
+          <div class="ml-3 d-flex align-items-center">
+            <img style="width: 18px" src="/wall.svg" alt="" />
+            <span class="ml-2">Property</span>
           </div>
         </nuxt-link>
         <nuxt-link
-          to="/admin_dashboard/withdrawals"
+          to="/admin_dashboard/staking_transactions"
           class="list-group list-group-item active bg-transparent active"
         >
-          <div class="ml-3 user__icon d-flex align-items-center">
-            <ion-icon name="card-outline"></ion-icon>
-            <span class="ml-2">Withdrawals</span>
+          <div class="ml-3 d-flex align-items-center">
+            <!-- <ion-icon name="bag-outline"></ion-icon> -->
+            <img style="width: 18px" src="/building.svg" alt="" />
+            <span class="ml-2">Transactions</span>
           </div>
         </nuxt-link>
-
         <nuxt-link
-          to="/admin_dashboard/mm_applications"
+          to="/admin_dashboard/user"
           class="list-group list-group-item active bg-transparent active"
         >
-          <div class="ml-3 user__icon d-flex align-items-center">
-            <ion-icon name="settings-outline"></ion-icon>
-            <span class="ml-2">Market Makers</span>
+          <div class="ml-3 d-flex align-items-center">
+            <ion-icon style="color: #001214" name="link"></ion-icon>
+            <span class="ml-2">Add new Property</span>
           </div>
         </nuxt-link>
         <nuxt-link
           to="/admin_dashboard/settings"
           class="list-group list-group-item active bg-transparent active"
         >
-          <div class="ml-3 user__icon d-flex align-items-center">
-            <ion-icon name="settings-outline"></ion-icon>
+          <div class="ml-3 d-flex align-items-center">
+            <ion-icon style="color: #001214" name="bookmark-outline"></ion-icon>
             <span class="ml-2">Settings</span>
           </div>
         </nuxt-link>
@@ -105,7 +109,6 @@ export default {
 
 #sidebar-wrapper {
   min-height: 100vh;
-  /* margin-left: -14rem !important; */
   transition: margin 0.25s ease-out;
   position: fixed;
   z-index: 3;
@@ -129,22 +132,16 @@ export default {
 }
 #menu-toggle {
   cursor: pointer;
-  /* display: none; */
 }
 .list-group-item {
   border: none;
-  padding: 17px 30px !important;
+  padding: 7px 30px !important;
   width: 100%;
-  /* color: #c9cdcf !important; */
-  color: #455b6d !important;
+  color: #001214 !important;
   cursor: pointer;
+  font-size: 14px;
 }
 .list-group-item:hover {
-  /* background: linear-gradient(
-    91.52deg,
-    #1d83c5 0%,
-    rgba(106, 188, 241, 0) 196.77%
-  ); */
   background-color: #fff;
   color: #455b6d !important;
   background-color: #ffffff !important;
@@ -154,17 +151,6 @@ export default {
 .img_wrap {
   width: 10%;
 }
-/* .child_items {
-  width: 30rem;
-}
-.child_items:hover {
-  background-color: #f4ede4 !important;
-  color: #000 !important;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  transition: all, 0.5s;
-  width: 100%;
-} */
 .list-group-item.active {
   border: none;
   background-color: transparent;
@@ -203,9 +189,6 @@ export default {
 .child_wrapper {
   margin-left: 220px;
   overflow-y: hidden;
-}
-.user__icon ion-icon {
-  font-size: 20px;
 }
 
 @media (max-width: 768px) {

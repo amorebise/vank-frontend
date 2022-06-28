@@ -20,13 +20,7 @@
             <h5>Contact</h5>
             <div class="d-flex align-items-center py-2">
               <div class="address_img">
-                <nuxt-img
-                  format="webp"
-                  quality="90"
-                  fit="cover"
-                  sizes="xs:45vw sm:30vw md:20vw lg:15vw"
-                  src="/location.png"
-                />
+                <img src="/location.png" />
               </div>
               <div class="address_content ml-3">
                 <p>
@@ -37,13 +31,7 @@
             </div>
             <div class="d-flex align-items-center py-2">
               <div class="address_img">
-                <nuxt-img
-                  format="webp"
-                  quality="90"
-                  fit="cover"
-                  sizes="xs:45vw sm:30vw md:20vw lg:15vw"
-                  src="/env.png"
-                />
+                <img src="/env.png" />
               </div>
               <div class="email_content ml-3">
                 <p>hello@vankwallet.com</p>
@@ -51,13 +39,7 @@
             </div>
             <div class="d-flex align-items-center py-2">
               <div class="address_img">
-                <nuxt-img
-                  format="webp"
-                  quality="90"
-                  fit="cover"
-                  sizes="xs:45vw sm:30vw md:20vw lg:15vw"
-                  src="/phone.png"
-                />
+                <img src="/phone.png" />
               </div>
               <div class="email_content ml-3">
                 <p>08135250418</p>
@@ -85,13 +67,7 @@
             <h5>Newsletter</h5>
             <p>Get to know of our latest updates.</p>
             <div class="subscribe_section d-flex align-items-center">
-              <nuxt-img
-                format="webp"
-                quality="90"
-                fit="cover"
-                sizes="xs:45vw sm:30vw md:20vw lg:15vw"
-                src="/envelope.png"
-              />
+              <img src="/envelope.png" />
               <input type="text" placeholder="Enter your email" />
               <button type="submit">Subscribe</button>
             </div>
@@ -150,10 +126,7 @@
               href="https://www.linkedin.com/company/vankwallet"
               target="_blank"
               class="mx-1"
-              ><font-awesome-icon
-                id="show_password"
-                class="bg-red eye_icon"
-                :icon="['fas', 'linkedin']"
+              ><img style="width: 20px; height: 20px" src="/linkedin.jpeg"
             /></a>
           </div>
           <div class="b__radius">

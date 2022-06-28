@@ -25,7 +25,7 @@
             </div>
           </div>
         </nuxt-link>
-        <nuxt-link
+        <!-- <nuxt-link
           to="/user_dashboard/transactions"
           class="list-group list-group-item active bg-transparent"
         >
@@ -36,7 +36,7 @@
             ></ion-icon>
             <span class="ml-2">Transactions</span>
           </div>
-        </nuxt-link>
+        </nuxt-link> -->
         <nuxt-link
           to="/user_dashboard/wallets"
           class="list-group list-group-item active bg-transparent active"

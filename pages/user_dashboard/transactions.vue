@@ -237,18 +237,21 @@ export default {
 .transactions_wrap .v-tab {
   text-transform: unset;
 }
-.transactions_data {
+.transactions_wrap .transactions_data {
   background-color: #f8f7ff;
   border-radius: 10px;
   padding: 20px;
 }
-.transactions_data .v-data-table--fixed-header > .v-data-table__wrapper {
+.transactions_wrap
+  .transactions_data
+  .v-data-table--fixed-header
+  > .v-data-table__wrapper {
   background-color: #f8f7ff;
 }
 .transactions_data .v-data-table > .v-data-table__wrapper > table {
   background-color: #fff;
 }
-.transactions_data .th_color {
+.transactions_wrap .transactions_data .th_color {
   background-color: #f8f7ff !important;
   border-bottom: none !important;
 }

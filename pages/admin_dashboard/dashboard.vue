@@ -1,372 +1,145 @@
 <template>
   <div class="dashboard w-100">
     <div class="dashboard_content">
-      <admin-nav name="Dashboard" />
+      <admin-nav name="My Account" />
       <div class="admin__wrap">
+        <h5>Welcome Enobong</h5>
+        <p>Here are your updates for today</p>
         <div class="wallet__balance__wrap">
           <div class="admin__card__wrap row align-items-center">
-            <div class="col-md-6 d-flex justify-content-center">
+            <div class="col-md-4 d-flex justify-content-center">
               <div class="admin__balance__wrap mb-2 px-3 py-2">
                 <div class="header__section d-flex align-items-center py-3">
                   <nuxt-img
                     format="webp"
-                    sizes="xs:35vw sm:30vw md:20vw lg:3vw"
+                    sizes="xs:35vw sm:30vw md:20vw lg:2vw"
                     quality="90"
                     fit="cover"
                     src="/light_vank.png"
                     alt="image"
                   />
-                  <h5>VANK Wallet Balance</h5>
+                  <h5 style="color: #00e8fe; padding-top: 5px">VANK</h5>
                 </div>
                 <div
-                  class="wallet__amount__card d-flex align-items-center mt-2"
+                  class="wallet__amount__cardmt-2 mt-5"
+                  style="line-height: 2px"
                 >
-                  <nuxt-img
-                    format="webp"
-                    quality="90"
-                    fit="cover"
-                    src="/admin_wallet.png"
-                    alt="image"
-                  />
-
-                  <p>{{ total_asset }}</p>
+                  <p>Subscription</p>
                 </div>
-                <span>Total Investment</span>
+                <span>&#8358;X, 123,000</span>
               </div>
             </div>
-            <div class="col-md-6 d-flex justify-content-center">
+            <div class="col-md-4 d-flex justify-content-center">
+              <div class="admin__balance__wrap mb-2 px-3 py-2">
+                <div class="header__section d-flex align-items-center py-3">
+                  <nuxt-img
+                    format="webp"
+                    sizes="xs:35vw sm:30vw md:20vw lg:2vw"
+                    quality="90"
+                    fit="cover"
+                    src="/light_vank.png"
+                    alt="image"
+                  />
+                  <h5 style="color: #00e8fe; padding-top: 5px">VANK</h5>
+                </div>
+                <div
+                  class="wallet__amount__cardmt-2 mt-5"
+                  style="line-height: 2px"
+                >
+                  <p>Withdrawal</p>
+                </div>
+                <span>&#8358;B, 123,000</span>
+              </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center">
+              <div class="admin__balance__wrap mb-2 px-3 py-2">
+                <div class="header__section d-flex align-items-center py-3">
+                  <nuxt-img
+                    format="webp"
+                    sizes="xs:35vw sm:30vw md:20vw lg:2vw"
+                    quality="90"
+                    fit="cover"
+                    src="/light_vank.png"
+                    alt="image"
+                  />
+                  <h5 style="color: #00e8fe; padding-top: 5px">VANK</h5>
+                </div>
+                <div
+                  class="wallet__amount__cardmt-2 mt-5"
+                  style="line-height: 2px"
+                >
+                  <p>Listed Property</p>
+                </div>
+                <span>47</span>
+              </div>
+            </div>
+
+            <div class="col-md-4 d-flex justify-content-center">
               <div class="admin__wallet__wrap mb-2 px-3 py-2">
                 <div class="header__section d-flex align-items-center py-3">
                   <nuxt-img
                     format="webp"
-                    sizes="xs:35vw sm:30vw md:20vw lg:3vw"
+                    sizes="xs:35vw sm:30vw md:20vw lg:2vw"
                     quality="90"
                     fit="cover"
                     src="/light_vank.png"
                     alt="image"
                   />
-                  <h5>VANK Subscribers</h5>
+                  <h5 style="color: #00e8fe; padding-top: 5px">VANK</h5>
                 </div>
                 <div
-                  class="wallet__amount__card d-flex align-items-center mt-2"
+                  class="wallet__amount__cardmt-2 mt-5"
+                  style="line-height: 2px"
                 >
+                  <p>Users</p>
+                </div>
+                <span>2,750</span>
+              </div>
+            </div>
+
+            <div class="col-md-4 d-flex justify-content-center">
+              <div class="admin__wallet__wrap mb-2 px-3 py-2">
+                <div class="header__section d-flex align-items-center py-3">
                   <nuxt-img
                     format="webp"
+                    sizes="xs:35vw sm:30vw md:20vw lg:2vw"
                     quality="90"
                     fit="cover"
-                    src="/people_icon.png"
+                    src="/light_vank.png"
                     alt="image"
                   />
-                  <p>{{ total_subscribers }}</p>
+                  <h5 style="color: #00e8fe; padding-top: 5px">VANK</h5>
                 </div>
-                <span>Subscribers</span>
+                <div
+                  class="wallet__amount__cardmt-2 mt-5"
+                  style="line-height: 2px"
+                >
+                  <p>Active Loans</p>
+                </div>
+                <span>&#8358;X,123,000</span>
               </div>
             </div>
-          </div>
-          <div class="buttons__wrap d-flex justify-content-center mt-4 mb-2">
-            <div class="buy__assets__route mx-1">
-              <nuxt-link
-                to="/admin_dashboard/create_asset"
-                class="link__buttons"
-                >Buy Assets</nuxt-link
-              >
-            </div>
-            <!-- <div class="fund__wallet__route mx-3">
-              <nuxt-link to="/admin_dashboard/fund_wallet" class="link__buttons"
-                >Fund Wallet</nuxt-link
-              >
-            </div> -->
-            <!-- <div class="add__market__maker__route mx-1">
-              <nuxt-link
-                to="/admin_dashboard/add_market_maker"
-                class="link__buttons"
-                >Add Market Maker</nuxt-link
-              >
-            </div> -->
-          </div>
-        </div>
-        <div class="transaction__wrap">
-          <div class="txn__header py-3">
-            <h5>Transaction History</h5>
-          </div>
-          <div class="txn__data px-3 py-2">
-            <div class="search__bar__wrap">
-              <div class="form-group py-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Search buyer"
-                />
-              </div>
-            </div>
-            <div class="txn__table">
-              <div class="txn__table">
-                <div class="admin__transactions">
-                  <div class="admin__transactions_wrap mt-3">
-                    <template>
-                      <v-tabs class="px-3" v-model="tab" align-with-title>
-                        <v-tab>All transactions</v-tab>
-                        <v-tab>Pending</v-tab>
-                        <v-tab>Completed</v-tab>
-                      </v-tabs>
-                    </template>
-                    <v-tabs-items v-model="tab" class="tab_bg">
-                      <v-tab-item>
-                        <v-card flat>
-                          <v-card-text class="">
-                            <div class="admin__transactions_data">
-                              <v-simple-table fixed-header height="400px">
-                                <template v-slot:default>
-                                  <thead>
-                                    <tr class="">
-                                      <th class="th_color">Name</th>
-                                      <th class="th_color">Date</th>
-                                      <th class="th_color">Fiat amount</th>
-                                      <!-- <th class=" th_color">
-                                        Crypto amount
-                                      </th> -->
-                                      <th class="th_color">Status(User)</th>
-                                      <th class="th_color">Status(MM)</th>
-                                      <th class="th_color">Status(Admin)</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr
-                                      class="mt-2"
-                                      v-for="sub in subscriptions"
-                                      :key="sub.id"
-                                    >
-                                      <td>{{ sub.name }}</td>
-                                      <td>{{ sub.subscription_date }}</td>
-                                      <td>{{ sub.amount }}NGN</td>
-                                      <!-- <td>{{ sub.usdt }}</td> -->
-                                      <td>
-                                        <div
-                                          v-if="
-                                            sub.user_confirmation ==
-                                            'Payment made'
-                                          "
-                                          class="pending mt-2"
-                                        >
-                                          <p class="text-success py-2">
-                                            {{ sub.user_confirmation }}
-                                          </p>
-                                        </div>
-                                        <div v-else class="mt-2">
-                                          <p class="text-warning py-2">
-                                            {{ sub.user_confirmation }}
-                                          </p>
-                                        </div>
-                                      </td>
 
-                                      <td>
-                                        <div
-                                          v-if="
-                                            sub.mm_confirmation ==
-                                            'Payment Confirmed'
-                                          "
-                                          class="pending mt-2"
-                                        >
-                                          <p class="text-success py-2">
-                                            {{ sub.mm_confirmation }}
-                                          </p>
-                                        </div>
-                                        <div v-else class="mt-2">
-                                          <p class="text-warning py-2">
-                                            {{ sub.mm_confirmation }}
-                                          </p>
-                                        </div>
-                                      </td>
-
-                                      <td>
-                                        <div
-                                          v-if="
-                                            sub.admin_confirmation == 'Approved'
-                                          "
-                                          class="pending mt-2"
-                                        >
-                                          <p class="text-success py-2">
-                                            {{ sub.admin_confirmation }}
-                                          </p>
-                                        </div>
-                                        <div v-else class="mt-2">
-                                          <p class="text-warning py-2">
-                                            {{ sub.admin_confirmation }}
-                                          </p>
-                                        </div>
-                                      </td>
-                                    </tr>
-                                    <tr
-                                      class="mt-2"
-                                      v-if="subscriptions.length == 0"
-                                    >
-                                      <td><p>No Transactions</p></td>
-                                    </tr>
-                                  </tbody>
-                                </template>
-                              </v-simple-table>
-                            </div>
-                          </v-card-text>
-                        </v-card>
-                      </v-tab-item>
-
-                      <v-tab-item>
-                        <v-card flat>
-                          <v-card-text class="">
-                            <div class="admin__transactions_data">
-                              <v-simple-table fixed-header height="400px">
-                                <template v-slot:default>
-                                  <thead>
-                                    <tr class="">
-                                      <th class="th_color">Name</th>
-                                      <th class="th_color">Date</th>
-                                      <th class="th_color">Fiat amount</th>
-                                      <!-- <th class="th_color">Crypto amount</th> -->
-
-                                      <th class="th_color">Status</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr
-                                      class="mt-2"
-                                      v-for="sub in subscriptions"
-                                      :key="sub.id"
-                                    >
-                                      <td
-                                        v-if="
-                                          sub.admin_confirmation == 'Pending'
-                                        "
-                                      >
-                                        {{ sub.name }}
-                                      </td>
-                                      <td
-                                        v-if="
-                                          sub.admin_confirmation == 'Pending'
-                                        "
-                                      >
-                                        {{ sub.subscription_date }}
-                                      </td>
-                                      <td
-                                        v-if="
-                                          sub.admin_confirmation == 'Pending'
-                                        "
-                                      >
-                                        {{ sub.amount }}NGN
-                                      </td>
-                                      <!-- <td
-                                        v-if="
-                                          sub.admin_confirmation == 'Pending'
-                                        "
-                                      >
-                                        {{ sub.usdt }}
-                                      </td> -->
-                                      <td
-                                        v-if="
-                                          sub.admin_confirmation == 'Pending'
-                                        "
-                                      >
-                                        <div class="pending mt-2">
-                                          <p class="text-warning py-2">
-                                            {{ sub.admin_confirmation }}
-                                          </p>
-                                        </div>
-                                      </td>
-                                    </tr>
-                                    <tr
-                                      class="mt-2"
-                                      v-if="subscriptions.length == 0"
-                                    >
-                                      <td><p>No Pending Transaction</p></td>
-                                    </tr>
-                                  </tbody>
-                                </template>
-                              </v-simple-table>
-                            </div>
-                          </v-card-text>
-                        </v-card>
-                      </v-tab-item>
-
-                      <v-tab-item>
-                        <v-card flat>
-                          <v-card-text class="">
-                            <div class="admin__transactions_data">
-                              <v-simple-table fixed-header height="400px">
-                                <template v-slot:default>
-                                  <thead>
-                                    <tr class="">
-                                      <th class="th_color">Name</th>
-                                      <th class="th_color">Date</th>
-                                      <th class="th_color">Fiat amount</th>
-                                      <!-- <th class="th_color">Crypto amount</th> -->
-
-                                      <th class="th_color">Status</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr
-                                      class="mt-2"
-                                      v-for="sub in subscriptions"
-                                      :key="sub.id"
-                                    >
-                                      <td
-                                        v-if="
-                                          sub.admin_confirmation == 'Approved'
-                                        "
-                                      >
-                                        {{ sub.name }}
-                                      </td>
-                                      <td
-                                        v-if="
-                                          sub.admin_confirmation == 'Approved'
-                                        "
-                                      >
-                                        {{ sub.subscription_date }}
-                                      </td>
-                                      <td
-                                        v-if="
-                                          sub.admin_confirmation == 'Approved'
-                                        "
-                                      >
-                                        {{ sub.amount }}
-                                      </td>
-                                      <!-- <td
-                                        v-if="
-                                          sub.admin_confirmation == 'Approved'
-                                        "
-                                      >
-                                        {{ sub.btc }}
-                                      </td> -->
-                                      <td
-                                        v-if="
-                                          sub.admin_confirmation == 'Approved'
-                                        "
-                                      >
-                                        <div class="mt-2">
-                                          <p
-                                            id="confirmation"
-                                            class="text-success py-2"
-                                          >
-                                            {{ sub.admin_confirmation }}
-                                          </p>
-                                        </div>
-                                      </td>
-                                    </tr>
-                                    <tr
-                                      class="mt-2"
-                                      v-if="subscriptions.length == 0"
-                                    >
-                                      <td><p>No Completed Transactions</p></td>
-                                    </tr>
-                                  </tbody>
-                                </template>
-                              </v-simple-table>
-                            </div>
-                          </v-card-text>
-                        </v-card>
-                      </v-tab-item>
-                    </v-tabs-items>
-                  </div>
+            <div class="col-md-4 d-flex justify-content-center">
+              <div class="admin__wallet__wrap mb-2 px-3 py-2">
+                <div class="header__section d-flex align-items-center py-3">
+                  <nuxt-img
+                    format="webp"
+                    sizes="xs:35vw sm:30vw md:20vw lg:2vw"
+                    quality="90"
+                    fit="cover"
+                    src="/light_vank.png"
+                    alt="image"
+                  />
+                  <h5 style="color: #00e8fe; padding-top: 5px">VANK</h5>
                 </div>
+                <div
+                  class="wallet__amount__cardmt-2 mt-5"
+                  style="line-height: 2px"
+                >
+                  <p>Active Staking</p>
+                </div>
+                <span>&#8358;X,123,000</span>
               </div>
             </div>
           </div>
@@ -426,11 +199,11 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk&family=Titillium+Web&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Josefin+Sans&family=Karla&family=Lato&family=Nunito&family=Plus+Jakarta+Sans&family=Space+Grotesk&family=Titillium+Web&display=swap");
 * {
   margin: 0;
   padding: 0;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Plus Jakarta Sans";
   text-decoration: none !important;
 }
 .dashboard_content {
@@ -445,23 +218,24 @@ export default {
   padding: 20px;
 }
 .admin__balance__wrap {
-  background-image: url("/fcard.png");
+  background-image: url("/card1.png");
   min-height: 30vh;
   background-size: cover;
   width: 400px;
   color: #fff;
   letter-spacing: 1px;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 .admin__wallet__wrap {
-  background-image: url("/scard.png");
+  background-image: url("/card2.png");
   min-height: 30vh;
   background-size: cover;
   width: 400px;
   color: #fff;
   letter-spacing: 1px;
-  border-radius: 20px;
+  border-radius: 10px;
 }
+
 .txn__data .search__bar__wrap .form-control {
   background-image: url("/search.png");
   background-position-x: 5px;

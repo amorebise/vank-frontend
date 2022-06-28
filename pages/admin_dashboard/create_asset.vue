@@ -107,7 +107,7 @@ export default {
 * {
   margin: 0;
   padding: 0;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Plus Jakarta Sans";
   text-decoration: none !important;
 }
 .users {

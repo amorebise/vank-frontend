@@ -20,6 +20,6 @@ export default {
   font-family: "Quicksand", sans-serif;
 }
 .blue_text {
-  color: #1d83c5;
+  color: #000 !important;
 }
 </style>

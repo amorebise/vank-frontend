@@ -6,6 +6,11 @@
         <h1>ABOUT US</h1>
         <h5>We Are VANK</h5>
         <p>
+          Vank Wallet is the easiest way to buy and own real estate. You can convert some of your savings into high price potential real estate and benefit from higher returns.  And you can sell for instant cash.
+
+Start saving now from as low as N500! 
+        </p>
+        <!-- <p>
           Your banking partner for digital assets. <br />
           VANK enables users to conveniently turn a fraction of <br />
           their savings into higher-yielding digital assets.
@@ -15,7 +20,7 @@
           and Phygital Assets on our App.
         </p>
         <p>You only need your phone to join!</p>
-        <p>How cool is that?</p>
+        <p>How cool is that?</p> -->
       </div>
       <div class="register_wrap text-center mt-4 py-4">
         <nuxt-link to="/sign_up" class="register_link">Join VANK</nuxt-link>
