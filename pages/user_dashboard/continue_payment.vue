@@ -3,7 +3,7 @@
     <div class="continue__payments">
       <user-nav name="Make Payments" />
       <div class="payments_wrap subscriber">
-        <div class="token__wrap py-5">
+        <div class="pay__wrap py-5">
           <h5>
             &#8358;1234 will be deducted from your <br />
             cash wallet for Pyanko1 tokens
@@ -33,21 +33,12 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Karla&family=Lato&family=Nunito&family=Plus+Jakarta+Sans&family=Space+Grotesk&family=Titillium+Web&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  text-decoration: none !important;
-}
 .continue__payments {
   margin-left: 270px;
   background-color: #fff;
   min-height: 100vh;
-
-  /* padding: 0 50px; */
 }
-.continue__payments .token__wrap {
+.continue__payments .pay__wrap {
   border: 1px solid #00e8fe;
   width: 50%;
   margin: 40px auto;
@@ -56,18 +47,35 @@ export default {
   border-radius: 20px;
   min-height: 300px;
 }
-
+a {
+  color: inherit;
+}
 .continue__payments h5 {
   font-size: 16px;
 }
+.continue__payments .assets__link {
+  border: 1px solid #00e8fe;
+  padding: 10px 2px;
+}
+.continue__payments .assets__link span {
+  border: 1px solid #00e8fe;
+  padding: 10px 2px;
+}
 
 @media (max-width: 768px) {
-  .settings {
+  .continue__payments {
     margin-left: 0 !important;
     padding: 0;
   }
   .payments_wrap {
     margin: 10px;
+  }
+  .continue__payments .pay__wrap {
+    width: 100%;
+    margin: 20px auto;
+    border-radius: 0;
+    border: none;
+    box-shadow: 2px 2px 2px 2px #3030302f;
   }
 }
 </style>

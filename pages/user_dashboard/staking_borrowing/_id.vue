@@ -171,49 +171,49 @@ export default {
   border-radius: 5px;
   width: 80%;
 }
-.cash__sub__wrap .v-slide-group {
+.new__staking .v-slide-group {
   flex-wrap: wrap;
   /* padding: 10px; */
 }
-.cash__sub__wrap .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active),
-.cash__sub__wrap
+.new__staking .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active),
+.new__staking
   .theme--light.v-tabs
   > .v-tabs-bar
   .v-tab:not(.v-tab--active)
   > .v-icon,
-.cash__sub__wrap
+.new__staking
   .theme--light.v-tabs
   > .v-tabs-bar
   .v-tab:not(.v-tab--active)
   > .v-btn,
-.cash__sub__wrap .theme--light.v-tabs > .v-tabs-bar .v-tab--disabled {
+.new__staking .theme--light.v-tabs > .v-tabs-bar .v-tab--disabled {
   color: #55174f;
   font-variant: normal;
 }
-.cash__sub__wrap .v-tab {
+.new__staking .v-tab {
   text-transform: unset;
 }
-.cash__sub__wrap .transactions_data {
+.new__staking .transactions_data {
   background-color: #fff;
 }
-.cash__sub__wrap
+.new__staking
   .transactions_data
   .v-data-table--fixed-header
   > .v-data-table__wrapper {
   /* background-color: #f8f7ff; */
 }
-.cash__sub__wrap
+.new__staking
   .transactions_data
   .v-data-table
   > .v-data-table__wrapper
   > table {
   background-color: #fff;
 }
-.cash__sub__wrap .transactions_data .th_color {
+.new__staking .transactions_data .th_color {
   background-color: #f8f7ff !important;
   border-bottom: none !important;
 }
-.cash__sub__wrap .choose__txn__wrap {
+.new__staking .choose__txn__wrap {
   border: 1px solid #00e8fe;
   border-radius: 20px;
   margin: 40px auto;
@@ -221,14 +221,14 @@ export default {
   height: 400px;
   padding: 10px 40px;
 }
-.cash__sub__wrap .choose__txn__wrap .form-control {
+.new__staking .choose__txn__wrap .form-control {
   font-size: 13px;
   box-shadow: none;
 }
-.cash__sub__wrap .choose__txn__wrap .form-control:focus {
+.new__staking .choose__txn__wrap .form-control:focus {
   border-color: #30303044;
 }
-.cash__sub__wrap .pop__up {
+.new__staking .pop__up {
   width: 100%;
   height: 100%;
   position: fixed;
@@ -239,12 +239,12 @@ export default {
   display: grid;
   place-items: center;
 }
-.cash__sub__wrap .pop__up__content {
+.new__staking .pop__up__content {
   background-color: #fff;
   padding: 15px 30px;
   border-radius: 10px;
 }
-.cash__sub__wrap .pop__up__content button {
+.new__staking .pop__up__content button {
   padding: 3px 10px;
   background-color: #00e8fe;
   border-radius: 5px;
@@ -277,7 +277,7 @@ export default {
     opacity: 1;
   }
 }
-.cash__sub__wrap .asset__content {
+.new__staking .asset__content {
   background-image: url("/asset.jpg");
   background-size: cover;
   border-radius: 10px;
@@ -293,23 +293,23 @@ export default {
   border: 5px solid #00e8fe;
   /* gap: 10px; */
 }
-.cash__sub__wrap .asset__content p {
+.new__staking .asset__content p {
   opacity: 0;
 }
-.cash__sub__wrap .asset__content h4 {
+.new__staking .asset__content h4 {
   opacity: 0;
   color: #00e8fe;
 }
-.cash__sub__wrap .asset__content:hover {
+.new__staking .asset__content:hover {
   background-color: rgba(0, 0, 0, 0.34);
   background-blend-mode: overlay;
   z-index: 999;
 }
-.cash__sub__wrap .asset__content:hover p {
+.new__staking .asset__content:hover p {
   opacity: 1;
   transition: ease-in-out 0.7s;
 }
-.cash__sub__wrap .asset__content:hover h4 {
+.new__staking .asset__content:hover h4 {
   opacity: 1;
   transition: ease-in-out 0.7s;
 }
@@ -344,9 +344,16 @@ export default {
   padding-top: 10px;
 } */
 @media (max-width: 768px) {
-  .transactions {
+  .new__staking {
     margin-left: 0 !important;
     padding: 0;
+  }
+  .new__staking .new__staking__wrap {
+    margin: 40px auto;
+    border: 1px solid #00e8fe;
+    padding: 30px 30px;
+    width: 100%;
+    border-radius: 10px;
   }
 }
 </style>

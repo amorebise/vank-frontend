@@ -14,7 +14,7 @@
         </div>
       </div>
       <div v-show="lagos_tab" class="location__table__lagos mt-2">
-        <p class="px-2">Find verified property in Lagos</p>
+        <p class="px-2 paragrphs">Find verified property in Lagos</p>
 
         <div class="card__wrap">
           <div
@@ -178,7 +178,7 @@
         </div>
       </div>
       <div v-show="abuja_tab" class="location__table__abuja mt-2">
-        <p>Find verified property in Abuja</p>
+        <p class="paragrphs">Find verified property in Abuja</p>
         <div class="card__wrap">
           <div
             class="img__wrap d-md-flex justify-content-between px-2"
@@ -340,7 +340,7 @@
         </div>
       </div>
       <div v-show="uyo_tab" class="location__table__uyo mt-2">
-        <p>Find verified property in Uyo</p>
+        <p class="paragrphs">Find verified property in Uyo</p>
         <div class="card__wrap">
           <div
             class="img__wrap d-md-flex justify-content-between px-2"
@@ -538,13 +538,6 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Karla&family=Lato&family=Nunito&family=Plus+Jakarta+Sans&family=Space+Grotesk&family=Titillium+Web&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  text-decoration: none !important;
-}
 .fractional__ownership__wrap {
   margin-left: 270px;
   background-color: #fff;
@@ -704,6 +697,13 @@ export default {
   }
   .settings_wrap {
     margin: 10px;
+  }
+  .fractional__ownership__wrap .header_wrap {
+    display: flex;
+    justify-content: center;
+  }
+  .paragrphs {
+    text-align: center;
   }
 }
 </style>

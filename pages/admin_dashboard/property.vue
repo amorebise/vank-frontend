@@ -147,13 +147,6 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Josefin+Sans&family=Karla&family=Lato&family=Nunito&family=Plus+Jakarta+Sans&family=Space+Grotesk&family=Titillium+Web&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Plus Jakarta Sans";
-  text-decoration: none !important;
-}
 .body__wrap {
   border-radius: 10px;
   border: 1px solid #3030304b;

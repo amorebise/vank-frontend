@@ -3,7 +3,7 @@
     <div class="fund__wallet">
       <user-nav name="Fund my wallet" />
       <div class="payments_wrap subscriber">
-        <div class="token__wrap py-5">
+        <div class="fund__wrap py-5">
           <div class="form-group mx-2 mt-2">
             <label for="exampleFormControlSelect1" class=""
               >Choose funding method</label
@@ -54,23 +54,15 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Karla&family=Lato&family=Nunito&family=Plus+Jakarta+Sans&family=Space+Grotesk&family=Titillium+Web&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  text-decoration: none !important;
-}
 .fund__wallet {
   margin-left: 270px;
   background-color: #fff;
-  min-height: 100vh;
 
   /* padding: 0 50px; */
 }
-.fund__wallet .token__wrap {
+.fund__wallet .fund__wrap {
   border: 1px solid #00e8fe;
-  width: 70%;
+  width: 40%;
   margin: 40px auto;
   display: grid;
   place-items: center;
@@ -93,12 +85,16 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .settings {
+  .fund__wallet {
     margin-left: 0 !important;
     padding: 0;
   }
-  .payments_wrap {
+  .fund__wallet .payments_wrap {
     margin: 10px;
+  }
+  .fund__wallet .fund__wrap {
+    width: 100%;
+    margin: 40px auto;
   }
 }
 </style>

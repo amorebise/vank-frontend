@@ -150,13 +150,7 @@ export default {
 };
 </script>
 
-<style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk&family=Titillium+Web&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Space Grotesk", sans-serif;
-}
+<style >
 .subscription_wrap {
   background-color: #fff;
   margin-top: 100px;

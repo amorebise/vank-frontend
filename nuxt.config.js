@@ -1,6 +1,6 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  target: 'server',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -77,8 +77,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
+  css: ['./css/style.css'],
   ssr: false,
   loadingIndicator: {
     name: 'folding-cube',
@@ -105,7 +104,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    '@nuxt/image',
+
     '@nuxtjs/vuetify',
     '@nuxtjs/dotenv'
 
@@ -118,13 +117,10 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
-
+    '@nuxt/image',
     "vue-toastification/nuxt",
 
-    // ["vue-toastification/nuxt", {
-    //   timeout: 1000,
-    //   draggable: false
-    // }],
+
 
 
     [

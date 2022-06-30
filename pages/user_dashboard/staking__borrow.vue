@@ -100,7 +100,7 @@
           <v-tab-item>
             <v-card flat>
               <v-card-text class="">
-                <div class="transactions_data">
+                <div class="">
                   <div class="register_button_wrap text-center mt-3 py-4">
                     <nuxt-link
                       :to="`/user_dashboard/staking_borrowing/${id}`"
@@ -390,7 +390,7 @@ export default {
   padding-top: 10px;
 } */
 @media (max-width: 768px) {
-  .transactions {
+  .cash__sub__wrap {
     margin-left: 0 !important;
     padding: 0;
   }

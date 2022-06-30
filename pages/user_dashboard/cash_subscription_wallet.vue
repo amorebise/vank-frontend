@@ -25,6 +25,7 @@
                     style="gap: 10px"
                   >
                     <p
+                      class="txn__paragh"
                       style="
                         color: #00e8fe;
                         font-size: 30px;
@@ -32,7 +33,7 @@
                         font-weight: 600;
                       "
                     >
-                      <span class="text-dark">Wallet Balance</span>
+                      <span class="text-dark">Wallet Balance:</span>
                       &#x20A6;375,000.00
                     </p>
                   </div>
@@ -85,7 +86,9 @@
                         <div class="text-center">
                           <img src="/emoji.png" alt="" />
                           <p>Transaction Successful!!</p>
-                          <button @click="success__modal = !success__modal">
+                          <button
+                            @click="$router.push('/user_dashboard/my_account/')"
+                          >
                             ok
                           </button>
                         </div>
@@ -101,18 +104,18 @@
             <v-card flat>
               <v-card-text class="">
                 <div class="transactions_data">
-                  <div class="choose__txn__wrap">
+                  <div class="choose__txn__wrap py-5">
                     <div
                       class="
                         wallet__balance__wrap
                         d-flex
                         justify-content-center
                         pt-3
-                        mt-5
                       "
                       style="gap: 10px"
                     >
                       <p
+                        class="cash__paragh"
                         style="
                           color: #00e8fe;
                           font-size: 20px;
@@ -120,7 +123,7 @@
                           font-weight: 600;
                         "
                       >
-                        <span class="text-dark">Wallet Balance</span>
+                        <span class="text-dark">Wallet Balance:</span>
                         &#x20A6;75,000.00
                       </p>
                     </div>
@@ -164,6 +167,7 @@ export default {
   min-height: 100vh;
   padding: 0 50px;
 }
+
 .cash__sub__wrap .v-slide-group {
   flex-wrap: wrap;
   /* padding: 10px; */
@@ -211,7 +215,7 @@ export default {
   border-radius: 20px;
   margin: 40px auto;
   width: 50%;
-  height: 400px;
+
   padding: 10px 40px;
 }
 .cash__sub__wrap .choose__txn__wrap .form-control {
@@ -301,9 +305,27 @@ export default {
   padding-top: 10px;
 } */
 @media (max-width: 768px) {
-  .transactions {
+  .cash__sub__wrap {
     margin-left: 0 !important;
     padding: 0;
+  }
+  .cash__sub__wrap .wallet__balance__wrap {
+    margin-top: 0 !important;
+  }
+  .cash__sub__wrap .wallet__balance__wrap .txn__paragh {
+    font-size: 20px !important;
+    padding-top: 0 !important;
+  }
+  .cash__sub__wrap .choose__txn__wrap {
+    border: 1px solid #00e8fe;
+    border-radius: 20px;
+    margin: 40px auto;
+    width: 100%;
+
+    padding: 10px 40px;
+  }
+  .cash__paragh {
+    font-size: 16px !important;
   }
 }
 </style>

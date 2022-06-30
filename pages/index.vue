@@ -40,8 +40,8 @@
             </div>
             <v-img
               class="img"
-              lazy-src="/first_trend.svg"
-              src="/first_trend.svg"
+              lazy-src="/atrend.jpg"
+              src="/atrend.jpg"
               alt="image"
             />
             <div class="text__wrap bg-white px-3 py-2">
@@ -58,8 +58,8 @@
             </div>
             <v-img
               class="img"
-              lazy-src="/second_trend.svg"
-              src="/second_trend.svg"
+              lazy-src="/atrend2.jpg"
+              src="/atrend2.jpg"
               alt="image"
             />
             <div class="text__wrap bg-white px-3 py-2">
@@ -74,12 +74,7 @@
             <div class="sale__notification">
               <p>70% Sold</p>
             </div>
-            <v-img
-              class="img"
-              lazy-src="/third_trend.svg"
-              src="/third_trend.svg"
-              alt="image"
-            />
+            <v-img class="img" lazy-src="/att.jpg" src="/att.jpg" alt="image" />
             <div class="text__wrap bg-white px-3 py-1">
               <p>Land in Abuja - <span>650SQM</span></p>
               <div class="d-flex justify-content-between">
@@ -321,7 +316,7 @@
         </div>
       </div>
     </div>
-    <div id="demo_wrap" class="demo__wrap">
+    <div id="demo_wrap" class="demo__wrap zoomIn">
       <div class="text-right">
         <h4 role="button" id="close">&times;</h4>
       </div>
@@ -440,17 +435,9 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Josefin+Sans&family=Karla&family=Lato&family=Nunito&family=Plus+Jakarta+Sans&family=Space+Grotesk&family=Titillium+Web&display=swap");
-/* @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Karla&family=Lato&family=Nunito&family=Plus+Jakarta+Sans&family=Space+Grotesk&family=Titillium+Web&display=swap"); */
-* {
-  margin: 0;
-  padding: 0;
+.home_wrap {
   font-family: "Plus Jakarta Sans", sans-serif;
-  text-decoration: none !important;
 }
-/* .home_wrap {
-  background-color: #f8feff;
-} */
 .demo__wrap {
   background-image: url("/bggg.jpeg");
   background-size: cover;
@@ -601,6 +588,7 @@ export default {
 }
 .img__wrap .img {
   border-top-right-radius: 40px;
+  width: 350px;
 }
 .reg_link {
   border: 1px solid #ffff;
@@ -653,75 +641,12 @@ export default {
 .vank_capp {
   color: #0f1843;
 }
-.card_shadow {
-  height: 100%;
-  width: 90%;
-  box-shadow: 2px 15px 35px rgba(0, 0, 0, 0.25);
-}
-.bitcoin_card,
-.etherium_card,
-.bitcash_card {
-  border: 3px solid #00e8fe;
-  height: 90%;
-  border-radius: 15px;
-  padding: 20px 50px;
-}
+
 hr {
   background-color: #c5cbcc70 !important;
   margin-top: 20px;
 }
-.grey_bg {
-  height: 5%;
-  padding: 0 5px;
-  background-color: #c5cbcc;
-  font-size: 14px;
-  border-radius: 5px;
-  color: #000;
-}
-.wallet_icon {
-  background-color: #2a304c;
-  font-size: 50px;
-  width: 40px;
-  height: 40px;
-  border-radius: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: rotate(30deg);
-}
-.purple_text {
-  font-size: 25px;
-  align-self: center;
-}
-.btc_arrow {
-  width: 50px !important;
-  height: 2rem !important;
-}
-.convenience_wrap img {
-  height: 100px !important;
-}
-.experience_wrap {
-  height: 100%;
-}
-.token_v_wrap {
-  background-image: url("/token_v.png");
-  background-size: contain;
-  /* height: 150px; */
-}
-.managed_risk_wrap {
-  background-image: url("/managed_risk.png");
-  background-size: contain;
-  /* height: 150px; */
-}
-.card_section {
-  margin-top: 100px;
-}
-.card_section img {
-  width: 100%;
-}
-/* .charts {
-  height: 100%;
-} */
+
 .how_it_works {
   padding: 40px 100px;
   background-color: #fff;
@@ -736,11 +661,6 @@ hr {
   margin-top: 20px;
   font-size: 23px;
   font-weight: 500;
-}
-.cards_img {
-  height: 200px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
 }
 
 .register_button {
@@ -790,10 +710,7 @@ hr {
   display: grid;
   place-items: center;
 }
-/* .why_choose_us .third__card {
-  display: flex;
-  justify-content: center;
-} */
+
 .why_choose_us .fourth__card {
   margin-top: 150px;
 }

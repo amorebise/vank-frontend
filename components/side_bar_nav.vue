@@ -18,30 +18,18 @@
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="child_items">
-            <div class="ml-3 d-flex align-items-center">
+            <div class="ml-3 d-flex align-items-center py-1">
               <ion-icon style="color: #001214" name="home-outline"></ion-icon>
 
               <span class="ml-2">My Account</span>
             </div>
           </div>
         </nuxt-link>
-        <!-- <nuxt-link
-          to="/user_dashboard/transactions"
-          class="list-group list-group-item active bg-transparent"
-        >
-          <div class="ml-3 d-flex align-items-center">
-            <ion-icon
-              style="color: #001214"
-              name="bar-chart-outline"
-            ></ion-icon>
-            <span class="ml-2">Transactions</span>
-          </div>
-        </nuxt-link> -->
         <nuxt-link
           to="/user_dashboard/wallets"
           class="list-group list-group-item active bg-transparent active"
         >
-          <div class="ml-3 d-flex align-items-center">
+          <div class="ml-3 d-flex align-items-center py-1">
             <img style="width: 18px" src="/wall.svg" alt="" />
             <span class="ml-2">Wallet</span>
           </div>
@@ -50,7 +38,7 @@
           to="/user_dashboard/basket"
           class="list-group list-group-item active bg-transparent active"
         >
-          <div class="ml-3 d-flex align-items-center">
+          <div class="ml-3 d-flex align-items-center py-1">
             <!-- <ion-icon name="bag-outline"></ion-icon> -->
             <img style="width: 18px" src="/building.svg" alt="" />
             <span class="ml-2">Buy Real Estate</span>
@@ -60,7 +48,7 @@
           to="/user_dashboard/basket"
           class="list-group list-group-item active bg-transparent active"
         >
-          <div class="ml-3 d-flex align-items-center">
+          <div class="ml-3 d-flex align-items-center py-1">
             <ion-icon style="color: #001214" name="link"></ion-icon>
             <span class="ml-2">My Invite Link</span>
           </div>
@@ -69,7 +57,7 @@
           to="/user_dashboard/basket"
           class="list-group list-group-item active bg-transparent active"
         >
-          <div class="ml-3 d-flex align-items-center">
+          <div class="ml-3 d-flex align-items-center py-1">
             <ion-icon style="color: #001214" name="bookmark-outline"></ion-icon>
             <span class="ml-2">My Bookmarks</span>
           </div>

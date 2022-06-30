@@ -9,7 +9,7 @@
             received and will be processed <br />
             shortly
           </p>
-          <div style="margin-top: -100px">
+          <div class="return" style="margin-top: -100px">
             <nuxt-link
               style="font-size: 11px; color: #00e8fe"
               to="/user_dashboard/staking_borrow"
@@ -34,19 +34,10 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Karla&family=Lato&family=Nunito&family=Plus+Jakarta+Sans&family=Space+Grotesk&family=Titillium+Web&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  text-decoration: none !important;
-}
 .continue__payments {
   margin-left: 270px;
   background-color: #fff;
   min-height: 100vh;
-
-  /* padding: 0 50px; */
 }
 .continue__payments .token__wrap {
   border: 1px solid #00e8fe;
@@ -63,12 +54,24 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .settings {
+  .continue__payments {
     margin-left: 0 !important;
     padding: 0;
   }
   .payments_wrap {
     margin: 10px;
+  }
+  .continue__payments .token__wrap {
+    border: 1px solid #00e8fe;
+    width: 100%;
+    margin: 20px auto;
+    display: grid;
+    place-items: center;
+    border-radius: 20px;
+    min-height: 300px;
+  }
+  .return {
+    margin-top: 0 !important;
   }
 }
 </style>

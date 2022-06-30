@@ -50,7 +50,7 @@
           </div>
           <div class="col-md-6">
             <div class="location_content">
-              <div class="d-flex align-items-center py-3">
+              <div class="d-flex">
                 <div class="address_img">
                   <nuxt-img
                     format="webp"
@@ -68,7 +68,7 @@
                 </div>
               </div>
 
-              <div class="d-flex align-items-center py-3">
+              <div class="d-flex">
                 <div class="address_img">
                   <nuxt-img
                     format="webp"
@@ -142,13 +142,6 @@ export default {
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Space Grotesk", sans-serif;
-}
 .address_content p,
 .email_content p {
   font-size: 15px;

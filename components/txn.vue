@@ -202,13 +202,6 @@ export default {
 </script>
 
 <style >
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk&family=Titillium+Web&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Space Grotesk", sans-serif;
-  text-decoration: none !important;
-}
 .admin__transactions {
   background-color: #fff;
   min-height: 100vh;

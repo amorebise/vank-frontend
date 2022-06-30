@@ -23,7 +23,6 @@
                 width: 50px;
                 display: grid;
                 place-items: center;
-                height: 20%;
                 padding-top: 15px;
                 border: 1px solid #8692a6;
               "
@@ -56,13 +55,6 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Karla&family=Lato&family=Nunito&family=Plus+Jakarta+Sans&family=Space+Grotesk&family=Titillium+Web&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  text-decoration: none !important;
-}
 .usd {
   margin-left: 270px;
   background-color: #fff;
@@ -95,12 +87,17 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .settings {
+  .usd {
     margin-left: 0 !important;
     padding: 0;
   }
   .payments_wrap {
     margin: 10px;
+  }
+  .usd .token__wrap {
+    border: 1px solid #00e8fe;
+    width: 100%;
+    margin: 20px auto;
   }
 }
 </style>

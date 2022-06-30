@@ -103,13 +103,6 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk&family=Titillium+Web&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Plus Jakarta Sans";
-  text-decoration: none !important;
-}
 .users {
   margin-left: 230px;
   background-color: #fff;

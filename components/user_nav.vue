@@ -1,9 +1,7 @@
 <template>
   <div>
     <div class="nav_content w-100">
-      <nav
-        class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-3"
-      >
+      <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4">
         <div class="">
           <li class="dashboard_text_li d-flex align-items-center">
             <div><creator-sidebar /></div>
@@ -13,11 +11,11 @@
           </li>
         </div>
         <v-spacer></v-spacer>
-        <div class="d-flex align-items-center">
-          <div class="mx-2">
+        <div style="gap: 10px" class="d-flex align-items-center">
+          <div class="">
             <font-awesome-icon class="fa-2x" :icon="['fas', 'user-circle']" />
           </div>
-          <div class="mx-2">
+          <div class="">
             <button @click="logout()" class="log_out_button">Logout</button>
           </div>
         </div>
@@ -30,25 +28,9 @@
 export default {
   props: ["name"],
   data() {
-    return {
-      // user: {},
-      // newUser: {},
-    };
+    return {};
   },
   methods: {
-    // getUser() {
-    //   this.$axios
-    //     .get("/getAsset", {
-    //       headers: {
-    //         Authorization: `token ${localStorage.getItem("auth.jwt")}`,
-    //       },
-    //     })
-    //     .then((response) => {
-    //       this.user = response.data.data;
-    //       // console.log(this.user[0]);
-    //       this.newUser = this.user[0];
-    //     });
-    // },
     async logout() {
       await this.$auth.logout();
       this.$router.push("/");
@@ -57,9 +39,6 @@ export default {
       });
     },
   },
-  // mounted() {
-  //   this.getUser();
-  // },
 };
 </script>
 
@@ -72,7 +51,10 @@ export default {
   list-style-type: none !important;
   text-decoration: none !important;
 }
-
+/* .navbar {
+  padding-left: 15px;
+  padding-right: 15px;
+} */
 .dashboard_text_li h3 {
   color: #1d83c5;
   font-weight: 600;
@@ -93,14 +75,26 @@ export default {
   .dashboard_text_li h1 {
     font-size: 20px;
   }
+  .dashboard_text_li h3 {
+    font-size: 15px;
+    color: black;
+    margin-top: -10px;
+  }
   .navbar {
     padding: 0;
   }
   .nav_content .navbar {
     padding: 0;
   }
+  .navbar .px-3 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .navbar {
+    padding-right: 10px !important;
+  }
   .log_out_button {
-    font-size: 13px;
+    font-size: 12px;
   }
 }
 </style>

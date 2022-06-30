@@ -2,7 +2,7 @@
   <div class="w-100">
     <div class="property">
       <user-nav name="Property Details" />
-      <div class="mt-5">
+      <div class="mt-5 single__property">
         <div class="row">
           <div class="col-md-6">
             <div class="img_card">
@@ -32,7 +32,7 @@
             </div>
           </div>
         </div>
-        <div class="register_button_wrap text-center mt-3 py-4">
+        <div class="buy__token__wrap text-center mt-3 py-4">
           <nuxt-link
             :to="`/user_dashboard/buy_token/${id}`"
             class="assets__link"
@@ -57,17 +57,13 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Karla&family=Lato&family=Nunito&family=Plus+Jakarta+Sans&family=Space+Grotesk&family=Titillium+Web&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  text-decoration: none !important;
-}
 .property {
   margin-left: 270px;
   background-color: #fff;
   min-height: 100vh;
+}
+.single__property a {
+  color: inherit;
 }
 .property .asset__content {
   background-image: url("/asset.jpg");
@@ -83,7 +79,6 @@ export default {
   font-weight: 500;
   font-size: 15px;
   border: 5px solid #00e8fe;
-  /* gap: 10px; */
 }
 .property .asset__content p {
   opacity: 0;
@@ -113,6 +108,14 @@ export default {
 .property .description__wrap span {
   color: #00e8fe;
 }
+.single__property .buy__token__wrap .assets__link {
+  border: 1px solid #00e8fe;
+  padding: 10px 2px;
+}
+.single__property .buy__token__wrap .assets__link span {
+  border: 1px solid #00e8fe;
+  padding: 7px 2px;
+}
 
 @media (max-width: 768px) {
   .property {
@@ -121,6 +124,28 @@ export default {
   }
   .settings_wrap {
     margin: 10px;
+  }
+  .property .asset__content {
+    border: none;
+    border-radius: 0;
+    box-shadow: 2px 2px 2px #303030;
+  }
+  .property .description__wrap p {
+    font-size: 13px;
+  }
+  .property .description__wrap span {
+    font-size: 13px;
+  }
+  .single__property {
+    margin-top: 0 !important;
+    padding: 20px;
+  }
+  .description__wrap {
+    padding: 10px;
+    margin-top: -25px;
+  }
+  .single__property .buy__token__wrap {
+    margin-top: 0 !important;
   }
 }
 </style>

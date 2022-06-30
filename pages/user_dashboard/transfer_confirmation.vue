@@ -1,9 +1,9 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="continue__payments">
-      <user-nav name="FUND WALLET/Bank Transfer" />
+      <user-nav name="Bank Transfer" />
       <div class="payments_wrap subscriber">
-        <div class="token__wrap py-5">
+        <div class="confirm__wrap py-5">
           <h5 style="font-weight: 400; text-align: center; font-size: 13px">
             Thank you for your payment, <br />
             value will reflect in your wallet <br />
@@ -33,13 +33,6 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Karla&family=Lato&family=Nunito&family=Plus+Jakarta+Sans&family=Space+Grotesk&family=Titillium+Web&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  text-decoration: none !important;
-}
 .continue__payments {
   margin-left: 270px;
   background-color: #fff;
@@ -47,14 +40,13 @@ export default {
 
   /* padding: 0 50px; */
 }
-.continue__payments .token__wrap {
+.continue__payments .confirm__wrap {
   border: 1px solid #00e8fe;
   width: 50%;
   margin: 40px auto;
   display: grid;
   place-items: center;
   border-radius: 20px;
-  min-height: 300px;
 }
 
 .continue__payments h5 {
@@ -62,12 +54,11 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .settings {
-    margin-left: 0 !important;
-    padding: 0;
-  }
-  .payments_wrap {
-    margin: 10px;
+  .continue__payments .confirm__wrap {
+    border: 1px solid #00e8fe;
+    width: 95%;
+    margin: 40px auto;
+    box-shadow: none;
   }
 }
 </style>

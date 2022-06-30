@@ -32,22 +32,22 @@
           to="/user_dashboard/my_account"
           class="list-group list-group-item active bg-transparent active"
         >
-          <div class="child_items ml-5 d-flex align-items-center">
+          <div class="child_items ml-5 d-flex align-items-center py-1">
             <ion-icon style="color: #001214" name="home-outline"></ion-icon>
 
             <span class="ml-2">My Account</span>
           </div>
         </nuxt-link>
         <nuxt-link
-          to="/user_dashboard/basket"
+          to="/user_dashboard/wallets"
           class="list-group list-group-item active bg-transparent active"
         >
-          <div class="ml-5 d-flex align-items-center">
+          <div class="ml-5 d-flex align-items-center py-1">
             <ion-icon
               style="color: #001214"
               name="bar-chart-outline"
             ></ion-icon>
-            <span class="ml-2">Transactions</span>
+            <span class="ml-2">Wallet</span>
           </div>
         </nuxt-link>
 
@@ -55,17 +55,8 @@
           to="/user_dashboard/transactions"
           class="list-group list-group-item active bg-transparent"
         >
-          <div class="ml-5 d-flex align-items-center">
+          <div class="ml-5 d-flex align-items-center py-1">
             <img style="width: 18px" src="/wall.svg" alt="" />
-            <span class="ml-2">Wallet</span>
-          </div>
-        </nuxt-link>
-        <nuxt-link
-          to="/user_dashboard/transactions"
-          class="list-group list-group-item active bg-transparent"
-        >
-          <div class="ml-5 d-flex align-items-center">
-            <img style="width: 18px" src="/building.svg" alt="" />
             <span class="ml-2">Buy Real Estate</span>
           </div>
         </nuxt-link>
@@ -73,16 +64,17 @@
           to="/user_dashboard/transactions"
           class="list-group list-group-item active bg-transparent"
         >
-          <div class="ml-5 d-flex align-items-center">
-            <ion-icon style="color: #001214" name="link"></ion-icon>
+          <div class="ml-5 d-flex align-items-center py-1">
+            <img style="width: 18px" src="/building.svg" alt="" />
             <span class="ml-2">My Invite Link</span>
           </div>
         </nuxt-link>
+
         <nuxt-link
           to="/user_dashboard/transactions"
           class="list-group list-group-item active bg-transparent"
         >
-          <div class="ml-5 d-flex align-items-center">
+          <div class="ml-5 d-flex align-items-center py-1">
             <ion-icon style="color: #001214" name="bookmark-outline"></ion-icon>
             <span class="ml-2">My Bookmarks</span>
           </div>
@@ -91,7 +83,7 @@
           to="/user_dashboard/settings"
           class="list-group list-group-item active bg-transparent"
         >
-          <div class="ml-5 d-flex align-items-center">
+          <div class="ml-5 d-flex align-items-center py-1">
             <ion-icon name="settings-outline"></ion-icon>
             <span class="ml-2">Settings</span>
           </div>
@@ -141,7 +133,6 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Karla&family=Lato&family=Nunito&family=Plus+Jakarta+Sans&family=Space+Grotesk&family=Titillium+Web&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -160,7 +151,7 @@ export default {
   min-height: 100vh;
 }
 .user-side-bar .v-navigation-drawer__content {
-  background-color: #f8f7ff;
+  background-color: #fff;
   text-decoration: none;
 }
 .user-side-bar .v-btn__content {

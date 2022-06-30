@@ -1,7 +1,7 @@
 <template>
   <div class="w-100">
     <div class="real__estate_wallet">
-      <user-nav name="Your Wallet/Staking/Borrowing" />
+      <user-nav name="Your Wallet" />
       <div class="d-flex justify-content-center" style="gap: 20px">
         <div class="register_button_wrap text-center mt-3 py-4">
           <nuxt-link to="/user_dashboard/staking__borrow/" class="assets__link">
@@ -21,7 +21,37 @@
         </h5>
       </div>
       <div class="basket_data">
-        <v-simple-table fixed-header height="400px">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Handle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- <v-simple-table fixed-header height="400px">
           <template v-slot:default>
             <thead>
               <tr class="">
@@ -62,7 +92,7 @@
               </tr>
             </tbody>
           </template>
-        </v-simple-table>
+        </v-simple-table> -->
       </div>
     </div>
   </div>
@@ -80,13 +110,6 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Karla&family=Lato&family=Nunito&family=Plus+Jakarta+Sans&family=Space+Grotesk&family=Titillium+Web&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  text-decoration: none !important;
-}
 .real__estate_wallet {
   margin-left: 270px;
 }
@@ -144,6 +167,14 @@ export default {
   .real__estate {
     margin-left: 0 !important;
     padding: 0;
+  }
+  .real__estate_wallet {
+    margin-left: 0;
+    padding: 0;
+  }
+  .real__estate_wallet h5 {
+    font-size: 16px;
+    text-align: center;
   }
   .settings_wrap {
     margin: 10px;

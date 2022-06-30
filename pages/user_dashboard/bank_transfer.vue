@@ -1,9 +1,9 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="fund__wallet">
-      <user-nav name="Fund My Wallet/Bank Transfer" />
+      <user-nav name="Bank Transfer" />
       <div class="payments_wrap subscriber">
-        <div class="token__wrap py-5">
+        <div class="bank__wrap py-5">
           <div class="text-center" style="line-height: 13px">
             <p>
               Pay &#8358;1234 to: <br />
@@ -39,13 +39,6 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Karla&family=Lato&family=Nunito&family=Plus+Jakarta+Sans&family=Space+Grotesk&family=Titillium+Web&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  text-decoration: none !important;
-}
 .fund__wallet {
   margin-left: 270px;
   background-color: #fff;
@@ -53,7 +46,7 @@ export default {
 
   /* padding: 0 50px; */
 }
-.fund__wallet .token__wrap {
+.fund__wallet .bank__wrap {
   border: 1px solid #00e8fe;
   width: 70%;
   margin: 40px auto;
@@ -78,12 +71,13 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .settings {
-    margin-left: 0 !important;
-    padding: 0;
-  }
-  .payments_wrap {
-    margin: 10px;
+  .fund__wallet .bank__wrap {
+    border: 1px solid #00e8fe;
+    width: 100%;
+    margin: 40px auto;
+    display: grid;
+    place-items: center;
+    border-radius: 20px;
   }
 }
 </style>

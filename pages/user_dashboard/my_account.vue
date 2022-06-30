@@ -1,121 +1,123 @@
 <template>
   <div class="dashboard w-100">
     <div class="dashboard_content mb-3">
-      <user-nav name="Dashboard" />
-      <div v-if="newUser" class="d-flex align-items-center mb-2">
-        <h5 class="user_font">
-          Welcome, <span class="user_name">{{ newUser.name }}</span>
-        </h5>
-        <!-- <div class="ml-1">
+      <user-nav class="dashboard__nav" name="Dashboard" />
+      <div class="new__content">
+        <div v-if="newUser" class="d-flex align-items-center px-1 mb-2">
+          <h5 class="user_font">
+            Welcome, <span class="user_name">{{ newUser.name }}</span>
+          </h5>
+          <!-- <div class="ml-1">
           <nuxt-img format="webp" quality="90" fit="cover" src="/emoji.png" />
         </div> -->
-      </div>
-      <div v-else class="d-flex align-items-center px-3 mb-2">
-        <h5>Welcome</h5>
-        <!-- <div class="ml-1">
+        </div>
+        <div v-else class="d-flex align-items-center px-3 mb-2">
+          <h5>Welcome</h5>
+          <!-- <div class="ml-1">
           <nuxt-img format="webp" quality="90" fit="cover" src="/emoji.png" />
         </div> -->
-      </div>
+        </div>
 
-      <div class="estate__content">
-        <div class="view__all__wrap d-flex justify-content-between pt-4 px-1">
-          <div class="assets__wrap">
-            <p role="button">Your Assets</p>
+        <div class="estate__content">
+          <div class="view__all__wrap d-flex justify-content-between pt-4 px-1">
+            <div class="assets__wrap">
+              <p role="button">Your Assets</p>
+            </div>
+            <div class="view__wrap">
+              <nuxt-link to="/user_dashboard/assets">
+                <p role="button">View all</p>
+              </nuxt-link>
+            </div>
           </div>
-          <div class="view__wrap">
-            <nuxt-link to="/user_dashboard/assets">
-              <p role="button">View all</p>
-            </nuxt-link>
+          <!-- <div class="overflow"> -->
+        </div>
+        <div class="assets__card mt-2">
+          <div class="row">
+            <div class="col-md-4 px-1 mb-2">
+              <nuxt-link :to="`/user_dashboard/property_detail/${id}`">
+                <div class="asset__content">
+                  <div>
+                    <p>Pyanko 1</p>
+                    <p>Abuja</p>
+                    <p>Token 001</p>
+                  </div>
+                </div>
+              </nuxt-link>
+            </div>
+            <div class="col-md-4 px-1 mb-2">
+              <nuxt-link :to="`/user_dashboard/property_detail/${id}`">
+                <div class="asset__content2">
+                  <div>
+                    <p>Epe</p>
+                    <p>Lagos</p>
+                    <p>Token 002</p>
+                  </div>
+                </div>
+              </nuxt-link>
+            </div>
+            <div class="col-md-4 px-1 mb-2">
+              <nuxt-link :to="`/user_dashboard/property_detail/${id}`">
+                <div class="asset__content3">
+                  <div>
+                    <p>Enugu 2</p>
+                    <p>Enugu</p>
+                    <p>Token 003</p>
+                  </div>
+                </div>
+              </nuxt-link>
+            </div>
           </div>
         </div>
-        <!-- <div class="overflow"> -->
-      </div>
-      <div class="assets__card mt-2">
-        <div class="row">
-          <div class="col-md-4 px-1">
-            <nuxt-link :to="`/user_dashboard/property_detail/${id}`">
-              <div class="asset__content">
-                <div>
-                  <p>Pyanko 1</p>
-                  <p>Abuja</p>
-                  <p>Token 001</p>
-                </div>
-              </div>
-            </nuxt-link>
-          </div>
-          <div class="col-md-4 px-1">
-            <nuxt-link :to="`/user_dashboard/property_detail/${id}`">
-              <div class="asset__content2">
-                <div>
-                  <p>Epe</p>
-                  <p>Lagos</p>
-                  <p>Token 002</p>
-                </div>
-              </div>
-            </nuxt-link>
-          </div>
-          <div class="col-md-4 px-1">
-            <nuxt-link :to="`/user_dashboard/property_detail/${id}`">
-              <div class="asset__content3">
-                <div>
-                  <p>Enugu 2</p>
-                  <p>Enugu</p>
-                  <p>Token 003</p>
-                </div>
-              </div>
-            </nuxt-link>
-          </div>
-        </div>
-      </div>
 
-      <div class="estate__content mt-2">
-        <div class="view__all__wrap d-flex justify-content-between pt-4 px-1">
-          <div class="assets__wrap">
-            <p role="button">Trending Assets</p>
+        <div class="estate__content mt-2">
+          <div class="view__all__wrap d-flex justify-content-between pt-4 px-1">
+            <div class="assets__wrap">
+              <p role="button">Trending Assets</p>
+            </div>
+            <div class="view__wrap">
+              <nuxt-link to="/user_dashboard/trending_assets">
+                <p role="button">View all</p>
+              </nuxt-link>
+            </div>
           </div>
-          <div class="view__wrap">
-            <nuxt-link to="/user_dashboard/trending_assets">
-              <p role="button">View all</p>
-            </nuxt-link>
-          </div>
+          <!-- <div class="overflow"> -->
         </div>
-        <!-- <div class="overflow"> -->
-      </div>
-      <div class="assets__card mt-2">
-        <div class="row">
-          <div class="col-md-4 px-1">
-            <div class="general__trends">
-              <div class="trending__content">
-                <div>
-                  <p>Pyanko 1</p>
-                  <p>Abuja</p>
-                  <p>Token 001</p>
+        <div class="assets__card mt-2">
+          <div class="row">
+            <div class="col-md-4 px-1 mb-2">
+              <div class="general__trends">
+                <div class="trending__content">
+                  <div>
+                    <p>Pyanko 1</p>
+                    <p>Abuja</p>
+                    <p>Token 001</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-md-4 px-1">
-            <div class="general__trends">
-              <div class="trending__content">
-                <div>
-                  <p>Epe</p>
-                  <p>Lagos</p>
-                  <p>Token 002</p>
+            <div class="col-md-4 px-1 mb-2">
+              <div class="general__trends">
+                <div class="trending__content">
+                  <div>
+                    <p>Epe</p>
+                    <p>Lagos</p>
+                    <p>Token 002</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-md-4 px-1">
-            <div class="general__trends">
-              <div class="trending__content">
-                <div>
-                  <p>Enugu 2</p>
-                  <p>Enugu</p>
-                  <p>Token 003</p>
+            <div class="col-md-4 px-1 mb-2">
+              <div class="general__trends">
+                <div class="trending__content">
+                  <div>
+                    <p>Enugu 2</p>
+                    <p>Enugu</p>
+                    <p>Token 003</p>
+                  </div>
                 </div>
-              </div>
-              <div class="land__wrap">
-                <p>Land in Abuja</p>
+                <div class="land__wrap">
+                  <p>Land in Abuja</p>
+                </div>
               </div>
             </div>
           </div>
@@ -232,7 +234,6 @@ export default {
   /* gap: 10px; */
 }
 .general__trends {
-  box-shadow: 1px 2px 1px solid rgba(29, 131, 197, 0.22);
 }
 .asset__content2 {
   background-image: url("/asset2.jpg");
@@ -303,6 +304,9 @@ export default {
   .dashboard_content {
     margin: 0 !important;
     padding: 0;
+  }
+  .dashboard_content .new__content {
+    padding: 7px;
   }
   .asset_wrap {
     width: 100%;
@@ -387,6 +391,10 @@ export default {
     height: 150px;
     background-size: cover;
     background-position: center;
+  }
+  .dashboard__wrap .dashboard__nav {
+    padding-left: 0;
+    padding-right: 15px !important;
   }
 }
 </style>

@@ -19,7 +19,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .kyc__wrap {
   width: 50%;
   margin: 100px auto;

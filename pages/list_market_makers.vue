@@ -62,7 +62,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style >
 .confirm__button {
   background-color: #00e8fe;
   border-radius: 5px;

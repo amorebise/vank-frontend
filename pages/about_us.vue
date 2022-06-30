@@ -6,9 +6,10 @@
         <h1>ABOUT US</h1>
         <h5>We Are VANK</h5>
         <p>
-          Vank Wallet is the easiest way to buy and own real estate. You can convert some of your savings into high price potential real estate and benefit from higher returns.  And you can sell for instant cash.
-
-Start saving now from as low as N500! 
+          Vank Wallet is the easiest way to buy and own real estate. You can
+          convert some of your savings into high price potential real estate and
+          benefit from higher returns. And you can sell for instant cash. Start
+          saving now from as low as N500!
         </p>
         <!-- <p>
           Your banking partner for digital assets. <br />

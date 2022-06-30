@@ -1,9 +1,11 @@
 <template>
   <div class="w-100">
-    <div class="settings">
+    <div class="but__token__content">
       <user-nav name="Buy Tokens" />
       <div class="">
-        <p>LoT: Pyanko (Min ROI: 9.2% PA</p>
+        <div class="token__p">
+          <p>LoT: Pyanko (Min ROI: 9.2% PA</p>
+        </div>
         <div class="token__wrap">
           <div class="row">
             <div class="col-md-6">
@@ -33,7 +35,7 @@
               </div>
             </div>
           </div>
-          <div class="register_button_wrap text-center mt-3 py-4">
+          <div class="text-center mt-3 py-4">
             <nuxt-link to="/user_dashboard/payment" class="assets__link">
               <span class="px-3">Make Payment</span>
             </nuxt-link>
@@ -56,19 +58,15 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Karla&family=Lato&family=Nunito&family=Plus+Jakarta+Sans&family=Space+Grotesk&family=Titillium+Web&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  text-decoration: none !important;
-}
-.settings {
-  margin-left: 230px;
+.but__token__content {
+  margin-left: 270px;
   background-color: #fff;
   min-height: 100vh;
 }
-.settings .asset__content {
+a {
+  color: inherit;
+}
+.but__token__content .asset__content {
   background-image: url("/asset.jpg");
   background-size: cover;
   border-radius: 10px;
@@ -82,76 +80,113 @@ export default {
   font-weight: 500;
   font-size: 15px;
   border: 5px solid #00e8fe;
-  /* gap: 10px; */
 }
-.settings .asset__content p {
+.but__token__content .asset__content p {
   opacity: 0;
   font-size: 30px;
 }
-.settings .asset__content h4 {
+.but__token__content .asset__content h4 {
   opacity: 0;
   color: #00e8fe;
 }
-.settings .font__text {
+.but__token__content .font__text {
   font-size: 10px;
 }
-.settings .asset__content:hover {
+.but__token__content .asset__content:hover {
   background-color: rgba(0, 0, 0, 0.34);
   background-blend-mode: overlay;
   z-index: 999;
 }
-.settings .asset__content:hover p {
+.but__token__content .asset__content:hover p {
   opacity: 1;
   transition: ease-in-out 0.7s;
 }
-.settings .asset__content:hover h4 {
+.but__token__content .asset__content:hover h4 {
   opacity: 1;
   transition: ease-in-out 0.7s;
 }
-.settings .description__wrap {
+.but__token__content .description__wrap {
   padding-top: 100px;
 }
-.settings .description__wrap p {
+.but__token__content .description__wrap p {
   line-height: 25px;
   font-weight: 500;
   font-size: 16px;
 }
-.settings .description__wrap span {
+.but__token__content .description__wrap span {
   color: #00e8fe;
 }
-.settings .token__wrap {
+.but__token__content .token__wrap {
   border: 1px solid #00e8fe;
   padding: 50px 20px;
   border-radius: 5px;
 }
-.settings label {
+.but__token__content label {
   font-size: 14px;
   font-weight: 600;
 }
-.settings .form-control {
+.but__token__content .form-control {
   width: 50%;
   box-shadow: none;
 }
-.settings .form-control:focus {
+.but__token__content .form-control:focus {
   border-color: #0012144b;
 }
-.settings input[type="number"]::-webkit-outer-spin-button,
+.but__token__content input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-.settings .token__box {
+.but__token__content .token__box {
   border: 1px solid #0012142e;
   border-radius: 3px;
+  width: 100px;
+}
+.but__token__content .assets__link {
+  border: 1px solid #00e8fe;
+  padding: 10px 2px;
+}
+.but__token__content .assets__link span {
+  border: 1px solid #00e8fe;
+  padding: 7px 2px;
 }
 
 @media (max-width: 768px) {
-  .settings {
+  .but__token__content {
     margin-left: 0 !important;
     padding: 0;
   }
   .settings_wrap {
     margin: 10px;
+  }
+  .but__token__content .token__wrap {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 0;
+  }
+  .but__token__content .asset__content {
+    background-image: url("/asset.jpg");
+    background-size: cover;
+    border-radius: 0;
+    box-shadow: 2px 2px 2px #303030;
+    color: #001214;
+    position: relative;
+    height: 300px;
+    transition: ease-in-out 0.3s;
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-weight: 500;
+    font-size: 15px;
+    border: none;
+    /* gap: 10px; */
+  }
+  .but__token__content .description__wrap {
+    padding-top: 10px;
+  }
+  .token__p {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 </style>

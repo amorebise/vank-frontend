@@ -1,6 +1,6 @@
 <template>
   <div class="pay_bills_wrap w-100">
-    <div class="continue__payments">
+    <div class="cash__success">
       <user-nav name="Make Payments" />
       <div class="payments_wrap subscriber">
         <div class="token__wrap text-center py-5">
@@ -33,21 +33,12 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Karla&family=Lato&family=Nunito&family=Plus+Jakarta+Sans&family=Space+Grotesk&family=Titillium+Web&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  text-decoration: none !important;
-}
-.continue__payments {
+.cash__success {
   margin-left: 270px;
   background-color: #fff;
   min-height: 100vh;
-
-  /* padding: 0 50px; */
 }
-.continue__payments .token__wrap {
+.cash__success .token__wrap {
   border: 1px solid #00e8fe;
   width: 50%;
   margin: 40px auto;
@@ -57,17 +48,26 @@ export default {
   min-height: 300px;
 }
 
-.continue__payments h5 {
+.cash__success h5 {
   font-size: 16px;
 }
 
 @media (max-width: 768px) {
-  .settings {
+  .cash__success {
     margin-left: 0 !important;
     padding: 0;
   }
   .payments_wrap {
     margin: 10px;
+  }
+  .cash__success .token__wrap {
+    border: 1px solid #00e8fe;
+    width: 100%;
+    margin: 20px auto;
+    display: grid;
+    place-items: center;
+    border-radius: 20px;
+    min-height: 300px;
   }
 }
 </style>

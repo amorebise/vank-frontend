@@ -196,13 +196,6 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Space Grotesk", sans-serif;
-}
 .forgot_password_wrap {
   margin: 40px auto;
   width: 30%;

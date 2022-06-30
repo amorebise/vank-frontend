@@ -1,13 +1,13 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="continue__payments">
-      <user-nav name="Make Payments" />
+      <user-nav class="continue__nav" name="Make Payments" />
       <div class="payments_wrap subscriber px-3">
         <div>
           <h6>What kind of transaction do you want to make?</h6>
         </div>
-        <div class="walet__type">
-          <div class="d-md-flex justify-content-between">
+        <div class="wallet__type">
+          <div class="d-flex justify-content-between" style="gap: 10px">
             <div class="wallets">
               <button>Naira Wallet</button>
             </div>
@@ -80,7 +80,7 @@
                   background-color: #00e8fe;
                 "
               >
-                <span class="font-weight-bolder">Cash Wallet</span> <br />
+                <span class="text font-weight-bolder">Cash Wallet</span> <br />
                 Where your money goes when you fund. You can withdraw from your
                 cash wallet to your bank account
               </p>
@@ -113,7 +113,9 @@
                   background-color: #00e8fe;
                 "
               >
-                <span class="font-weight-bolder">Subscription Wallet </span>
+                <span class="text font-weight-bolder"
+                  >Subscription Wallet
+                </span>
                 <br />
                 Where your money goes when you sell. You can withdraw from your
                 subscription wallet to your cash wallet.
@@ -151,20 +153,14 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Karla&family=Lato&family=Nunito&family=Plus+Jakarta+Sans&family=Space+Grotesk&family=Titillium+Web&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  text-decoration: none !important;
-}
-
 .continue__payments {
   margin-left: 270px;
   background-color: #fff;
-  min-height: 100vh;
-
   /* padding: 0 50px; */
+}
+.continue__payments .continue__nav {
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .continue__payments a {
   color: inherit;
@@ -187,18 +183,63 @@ export default {
   border-radius: 20px;
   min-height: 300px;
 }
+.continue__payments .assets__link {
+  border: 1px solid #00e8fe;
+  padding: 10px 2px;
+  border-radius: 4px;
+  color: #000;
+  font-weight: 600;
+}
+.continue__payments .assets__link {
+  border: 1px solid #00e8fe;
+  padding: 12px 2px;
+}
+
+.continue__payments .assets__link span {
+  background-color: #fff;
+  border: 1px solid #00e8fe;
+  padding: 12px 1px;
+  font-size: 14px;
+}
 
 .continue__payments h5 {
   font-size: 16px;
 }
 
 @media (max-width: 768px) {
-  .settings {
+  .continue__payments {
     margin-left: 0 !important;
     padding: 0;
   }
   .payments_wrap {
-    margin: 10px;
+    padding: 5px !important;
+  }
+  .continue__payments .wallet__type {
+    gap: 10px;
+    margin-top: 15px;
+  }
+  .continue__payments .wallet__type button {
+    font-size: 11px;
+  }
+  .continue__payments .wallet__balance__wrap img {
+    width: 27px;
+  }
+  .continue__payments .wallet__balance__wrap p {
+    font-size: 27px !important;
+  }
+  .continue__payments .token__wrap {
+    width: 100%;
+    margin: 20px auto;
+    padding: 100px 40px !important;
+    border: none;
+    box-shadow: 1px 2px 2px 2px #313d3e20;
+  }
+  .continue__payments h6 {
+    font-size: 14px;
+  }
+  .continue__payments .continue__nav {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 </style>

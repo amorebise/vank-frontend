@@ -14,11 +14,6 @@ export default {
 </script>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Quicksand", sans-serif;
-}
 .blue_text {
   color: #000 !important;
 }
