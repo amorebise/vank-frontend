@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="nav_content w-100">
+    <div class="nav_content admin w-100">
       <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4">
         <div class="">
           <li class="dashboard_text_li d-flex align-items-center">
@@ -63,7 +63,6 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Karla&family=Lato&family=Nunito&family=Plus+Jakarta+Sans&family=Space+Grotesk&family=Titillium+Web&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -71,9 +70,12 @@ export default {
   list-style-type: none !important;
   text-decoration: none !important;
 }
-
+.admin .navbar {
+  padding-left: 0 !important;
+  /* padding-right: 0 !important; */
+}
 .dashboard_text_li h1 {
-  color: #1d83c5;
+  color: #000;
   font-weight: 600;
 }
 .log_out_button {

@@ -2,7 +2,15 @@
   <div class="w-100">
     <div class="real__estate_wallet">
       <user-nav name="Real Estate" />
-      <div class="estate__wrap px-3">
+      <div>
+        <font-awesome-icon
+          @click="back()"
+          role="button"
+          class="fa-1x text-dark pl-1"
+          :icon="['fas', 'arrow-left']"
+        />
+      </div>
+      <div class="estate__wrap px-1 mt-4">
         <h6>My Subscription ...</h6>
         <div class="row">
           <div class="col-md-6">
@@ -40,7 +48,11 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    back() {
+      this.$router.go(-1);
+    },
+  },
 };
 </script>
 

@@ -3,7 +3,14 @@
     <div class="but__token__content">
       <user-nav name="Buy Tokens" />
       <div class="">
-        <div class="token__p">
+        <div @click="back()">
+          <font-awesome-icon
+            role="button"
+            class="fa-1x text-dark pl-1"
+            :icon="['fas', 'arrow-left']"
+          />
+        </div>
+        <div class="token__p mt-4">
           <p>LoT: Pyanko (Min ROI: 9.2% PA</p>
         </div>
         <div class="token__wrap">
@@ -53,7 +60,11 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    back() {
+      this.$router.go(-1);
+    },
+  },
 };
 </script>
 

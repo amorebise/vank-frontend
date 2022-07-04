@@ -2,7 +2,15 @@
   <div class="pay_bills_wrap w-100">
     <div class="fractional__ownership__wrap">
       <user-nav name="Fractional Ownership" />
-      <div class="header_wrap d-flex px-1">
+      <div>
+        <font-awesome-icon
+          @click="back()"
+          role="button"
+          class="fa-1x text-dark pl-1"
+          :icon="['fas', 'arrow-left']"
+        />
+      </div>
+      <div class="header_wrap d-flex px-1 mt-3">
         <div class="lagos__wrap">
           <button @click="show_lagos()">Lagos</button>
         </div>
@@ -518,6 +526,9 @@ export default {
     };
   },
   methods: {
+    back() {
+      this.$router.go(-1);
+    },
     show_lagos() {
       this.lagos_tab = true;
       this.abuja_tab = false;

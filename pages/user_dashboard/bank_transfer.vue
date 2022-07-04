@@ -2,7 +2,15 @@
   <div class="pay_bills_wrap w-100">
     <div class="fund__wallet">
       <user-nav name="Bank Transfer" />
-      <div class="payments_wrap subscriber">
+      <div>
+        <font-awesome-icon
+          @click="back()"
+          role="button"
+          class="fa-1x text-dark pl-1"
+          :icon="['fas', 'arrow-left']"
+        />
+      </div>
+      <div class="payments_wrap subscriber px-1">
         <div class="bank__wrap py-5">
           <div class="text-center" style="line-height: 13px">
             <p>
@@ -34,7 +42,11 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    back() {
+      this.$router.go(-1);
+    },
+  },
 };
 </script>
 
@@ -42,14 +54,11 @@ export default {
 .fund__wallet {
   margin-left: 270px;
   background-color: #fff;
-  min-height: 100vh;
-
-  /* padding: 0 50px; */
 }
 .fund__wallet .bank__wrap {
   border: 1px solid #00e8fe;
-  width: 70%;
-  margin: 40px auto;
+  width: 50%;
+  margin: 100px auto;
   display: grid;
   place-items: center;
   border-radius: 20px;
@@ -71,10 +80,14 @@ export default {
 }
 
 @media (max-width: 768px) {
+  .fund__wallet {
+    margin-left: 0;
+  }
+
   .fund__wallet .bank__wrap {
     border: 1px solid #00e8fe;
     width: 100%;
-    margin: 40px auto;
+    margin: 20px auto;
     display: grid;
     place-items: center;
     border-radius: 20px;

@@ -2,6 +2,14 @@
   <div class="w-100">
     <div class="single__user__wrap">
       <user-nav name="User Details" />
+      <div>
+        <font-awesome-icon
+          @click="$router.go(-1)"
+          role="button"
+          class="fa-1x text-dark pl-1"
+          :icon="['fas', 'arrow-left']"
+        />
+      </div>
       <div class="mt-5">
         <div class="row">
           <div class="col-md-6">

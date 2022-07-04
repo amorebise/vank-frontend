@@ -3,7 +3,14 @@
     <div class="property">
       <user-nav name="Property Details" />
       <div class="mt-5 single__property">
-        <div class="row">
+        <div @click="back()">
+          <font-awesome-icon
+            role="button"
+            class="fa-1x text-dark pl-1"
+            :icon="['fas', 'arrow-left']"
+          />
+        </div>
+        <div class="row mt-3">
           <div class="col-md-6">
             <div class="img_card">
               <div class="asset__content text-center">
@@ -52,7 +59,11 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    back() {
+      this.$router.go(-1);
+    },
+  },
 };
 </script>
 

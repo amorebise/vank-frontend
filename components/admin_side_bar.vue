@@ -30,10 +30,7 @@
           class="list-group list-group-item active bg-transparent"
         >
           <div class="ml-3 d-flex align-items-center">
-            <ion-icon
-              style="color: #001214"
-              name="bar-chart-outline"
-            ></ion-icon>
+            <ion-icon style="color: #001214" name="person-outline"></ion-icon>
             <span class="ml-2">Users</span>
           </div>
         </nuxt-link>
@@ -42,26 +39,64 @@
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="ml-3 d-flex align-items-center">
-            <img style="width: 18px" src="/wall.svg" alt="" />
+            <img style="width: 18px" src="/building.svg" alt="" />
+
             <span class="ml-2">Property</span>
           </div>
         </nuxt-link>
-        <nuxt-link
+        <v-expansion-panels>
+          <v-expansion-panel>
+            <v-expansion-panel-header> Transactions </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <div class="py-1">
+                <nuxt-link to="/admin_dashboard/staking_transactions/"
+                  >Staking</nuxt-link
+                >
+              </div>
+
+              <div class="py-1">
+                <nuxt-link to="/admin_dashboard/withdrawal_request/"
+                  >Withdrawal</nuxt-link
+                >
+              </div>
+
+              <div class="py-1">
+                <nuxt-link to="/admin_dashboard/staking_transactions/"
+                  >Borrowing</nuxt-link
+                >
+              </div>
+
+              <div class="py-1">
+                <nuxt-link to="/admin_dashboard/staking_transactions/"
+                  >Subscription</nuxt-link
+                >
+              </div>
+
+              <div class="py-1">
+                <nuxt-link to="/admin_dashboard/staking_transactions/"
+                  >Funding</nuxt-link
+                >
+              </div>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
+
+        <!-- <nuxt-link
           to="/admin_dashboard/staking_transactions"
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="ml-3 d-flex align-items-center">
-            <!-- <ion-icon name="bag-outline"></ion-icon> -->
-            <img style="width: 18px" src="/building.svg" alt="" />
+            <ion-icon name="card-outline"></ion-icon>
+            <img style="width: 18px" src="/wall.svg" alt="" />
             <span class="ml-2">Transactions</span>
           </div>
-        </nuxt-link>
+        </nuxt-link> -->
         <nuxt-link
-          to="/admin_dashboard/user"
+          to="/admin_dashboard/property"
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="ml-3 d-flex align-items-center">
-            <ion-icon style="color: #001214" name="link"></ion-icon>
+            <img style="width: 18px" src="/building.svg" alt="" />
             <span class="ml-2">Add new Property</span>
           </div>
         </nuxt-link>
@@ -94,7 +129,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style >
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Karla&family=Lato&family=Nunito&family=Plus+Jakarta+Sans&family=Space+Grotesk&family=Titillium+Web&display=swap");
 * {
   margin: 0;
@@ -132,6 +167,42 @@ export default {
 }
 #menu-toggle {
   cursor: pointer;
+}
+.sidebar-wrap .theme--light.v-expansion-panels .v-expansion-panel {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+.sidebar-wrap .v-expansion-panel-header {
+  /* justify-content: space-between !important; */
+  background-color: #f8f7ff !important;
+  /* border-bottom: 1px solid #b6858530 !important; */
+  border-right: none !important;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+  padding-left: 50px;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  font-size: 14px;
+}
+.sidebar-wrap .v-expansion-panel-content__wrap {
+  background-color: #f8f7ff !important;
+  padding-left: 50px;
+  font-size: 13px;
+  /* border-bottom: 1px solid #30303030 !important; */
+  /* padding: 30px 20px !important; */
+}
+.sidebar-wrap .v-expansion-panel--active > .v-expansion-panel-header {
+  min-height: 30px;
+}
+.sidebar-wrap .v-expansion-panel-content__wrap {
+  padding: 10px;
+  padding-left: 70px;
+  flex: 1 1 auto;
+  max-width: 100%;
+}
+.sidebar-wrap .v-expansion-panel::before {
+  box-shadow: none !important;
 }
 .list-group-item {
   border: none;

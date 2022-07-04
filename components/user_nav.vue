@@ -56,7 +56,7 @@ export default {
   padding-right: 15px;
 } */
 .dashboard_text_li h3 {
-  color: #1d83c5;
+  color: black;
   font-weight: 600;
 }
 .log_out_button {

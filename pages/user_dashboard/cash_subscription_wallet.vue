@@ -2,6 +2,13 @@
   <div class="exam_token_wrap w-100">
     <div class="cash__sub__wrap">
       <user-nav name="Wallets" />
+      <div @click="back()">
+        <font-awesome-icon
+          role="button"
+          class="fa-1x text-dark pl-1"
+          :icon="['fas', 'arrow-left']"
+        />
+      </div>
       <div class="transactions_wrap mt-3">
         <template>
           <v-tabs class="px-3" v-model="tab" align-with-title>
@@ -68,7 +75,7 @@
                         >What is your transaction amount?</label
                       >
                       <input
-                        type="password"
+                        type="number"
                         class="form-control"
                         placeholder="Enter Amount"
                       />
@@ -156,7 +163,11 @@ export default {
     };
   },
 
-  methods: {},
+  methods: {
+    back() {
+      this.$router.go(-1);
+    },
+  },
 };
 </script>
 

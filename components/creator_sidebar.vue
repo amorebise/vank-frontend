@@ -43,35 +43,32 @@
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="ml-5 d-flex align-items-center py-1">
-            <ion-icon
-              style="color: #001214"
-              name="bar-chart-outline"
-            ></ion-icon>
+            <ion-icon name="card-outline"></ion-icon>
             <span class="ml-2">Wallet</span>
           </div>
         </nuxt-link>
 
         <nuxt-link
-          to="/user_dashboard/transactions"
-          class="list-group list-group-item active bg-transparent"
-        >
-          <div class="ml-5 d-flex align-items-center py-1">
-            <img style="width: 18px" src="/wall.svg" alt="" />
-            <span class="ml-2">Buy Real Estate</span>
-          </div>
-        </nuxt-link>
-        <nuxt-link
-          to="/user_dashboard/transactions"
+          to="/user_dashboard/my_account"
           class="list-group list-group-item active bg-transparent"
         >
           <div class="ml-5 d-flex align-items-center py-1">
             <img style="width: 18px" src="/building.svg" alt="" />
+            <span class="ml-2">Buy Real Estate</span>
+          </div>
+        </nuxt-link>
+        <nuxt-link
+          to="/user_dashboard/my_account"
+          class="list-group list-group-item active bg-transparent"
+        >
+          <div class="ml-5 d-flex align-items-center py-1">
+            <ion-icon style="color: #001214" name="link"></ion-icon>
             <span class="ml-2">My Invite Link</span>
           </div>
         </nuxt-link>
 
         <nuxt-link
-          to="/user_dashboard/transactions"
+          to="/user_dashboard/my_account"
           class="list-group list-group-item active bg-transparent"
         >
           <div class="ml-5 d-flex align-items-center py-1">
@@ -208,7 +205,7 @@ export default {
     display: block;
   }
   .user-side-bar .navbar {
-    padding: 10px !important;
+    padding: 0 !important;
   }
   .user-side-bar .bell {
     width: 85%;

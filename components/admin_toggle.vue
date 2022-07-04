@@ -42,35 +42,63 @@
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="ml-5 d-flex align-items-center">
-            <ion-icon name="people-outline"></ion-icon>
+            <ion-icon name="person-outline"></ion-icon>
             <span class="ml-2">Users</span>
           </div>
         </nuxt-link>
         <nuxt-link
-          to="/admin_dashboard/create_asset"
+          to="/admin_dashboard/property"
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="ml-5 user__icon d-flex align-items-center">
-            <ion-icon name="create-outline"></ion-icon>
-            <span class="ml-2">Requests</span>
+            <img style="width: 18px" src="/building.svg" alt="" />
+            <span class="ml-2">Property</span>
           </div>
         </nuxt-link>
+        <v-expansion-panels>
+          <v-expansion-panel>
+            <v-expansion-panel-header> Transactions </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <div class="py-1">
+                <nuxt-link to="/admin_dashboard/staking_transactions/"
+                  >Staking</nuxt-link
+                >
+              </div>
+
+              <div class="py-1">
+                <nuxt-link to="/admin_dashboard/withdrawal_request/"
+                  >Withdrawal</nuxt-link
+                >
+              </div>
+
+              <div class="py-1">
+                <nuxt-link to="/admin_dashboard/staking_transactions/"
+                  >Borrowing</nuxt-link
+                >
+              </div>
+
+              <div class="py-1">
+                <nuxt-link to="/admin_dashboard/staking_transactions/"
+                  >Subscription</nuxt-link
+                >
+              </div>
+
+              <div class="py-1">
+                <nuxt-link to="/admin_dashboard/staking_transactions/"
+                  >Funding</nuxt-link
+                >
+              </div>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
+
         <nuxt-link
-          to="/admin_dashboard/withdrawals"
-          class="list-group list-group-item active bg-transparent"
-        >
-          <div class="ml-5 d-flex align-items-center">
-            <ion-icon name="card-outline"></ion-icon>
-            <span class="ml-2">Withdrawals</span>
-          </div>
-        </nuxt-link>
-        <nuxt-link
-          to="/admin_dashboard/mm_applications"
+          to="/admin_dashboard/property"
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="ml-5 user__icon d-flex align-items-center">
-            <ion-icon name="settings-outline"></ion-icon>
-            <span class="ml-2">Market Makers</span>
+            <img style="width: 18px" src="/building.svg" alt="" />
+            <span class="ml-2">Add New Property</span>
           </div>
         </nuxt-link>
         <nuxt-link

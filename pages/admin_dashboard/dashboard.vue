@@ -154,47 +154,47 @@ export default {
   data() {
     return {
       tab: null,
-      user: {},
-      subscriptions: {},
-      total_asset: {},
-      total_subscribers: {},
+      // user: {},
+      // subscriptions: {},
+      // total_asset: {},
+      // total_subscribers: {},
     };
   },
 
   methods: {
-    async getAllSubscription() {
-      try {
-        const response = await this.$axios.get("/admin/getAllSubscription");
-        this.subscriptions = response.data;
-        console.log(this.subscriptions);
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    async getTotalUserNumber() {
-      try {
-        const response = await this.$axios.post("/admin/getTotalUserNumber");
-        this.total_subscribers = response.data;
-        console.log(response);
-      } catch (error) {
-        console.log(error.response);
-      }
-    },
-    async sumAllAsset() {
-      try {
-        const response = await this.$axios.post("/admin/sumAllAsset");
-        console.log(response);
-        this.total_asset = response.data;
-      } catch (error) {
-        console.log(error.response);
-      }
-    },
+    // async getAllSubscription() {
+    //   try {
+    //     const response = await this.$axios.get("/admin/getAllSubscription");
+    //     this.subscriptions = response.data;
+    //     console.log(this.subscriptions);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // },
+    // async getTotalUserNumber() {
+    //   try {
+    //     const response = await this.$axios.post("/admin/getTotalUserNumber");
+    //     this.total_subscribers = response.data;
+    //     console.log(response);
+    //   } catch (error) {
+    //     console.log(error.response);
+    //   }
+    // },
+    // async sumAllAsset() {
+    //   try {
+    //     const response = await this.$axios.post("/admin/sumAllAsset");
+    //     console.log(response);
+    //     this.total_asset = response.data;
+    //   } catch (error) {
+    //     console.log(error.response);
+    //   }
+    // },
   },
-  created() {
-    this.getAllSubscription();
-    this.getTotalUserNumber();
-    this.sumAllAsset();
-  },
+  // created() {
+  //   this.getAllSubscription();
+  //   this.getTotalUserNumber();
+  //   this.sumAllAsset();
+  // },
 };
 </script>
 

@@ -2,6 +2,14 @@
   <div class="pay_bills_wrap w-100">
     <div class="usd">
       <user-nav name="Make Payments" />
+      <div>
+        <font-awesome-icon
+          @click="back()"
+          role="button"
+          class="fa-1x text-dark pl-1"
+          :icon="['fas', 'arrow-left']"
+        />
+      </div>
       <div class="payments_wrap subscriber">
         <div class="token__wrap py-5">
           <h6 class="font-weight-bolder">How much Dollars do you want?</h6>
@@ -50,7 +58,11 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    back() {
+      this.$router.go(-1);
+    },
+  },
 };
 </script>
 

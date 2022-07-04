@@ -30,12 +30,12 @@
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="ml-3 d-flex align-items-center py-1">
-            <img style="width: 18px" src="/wall.svg" alt="" />
+            <ion-icon name="card-outline"></ion-icon>
             <span class="ml-2">Wallet</span>
           </div>
         </nuxt-link>
         <nuxt-link
-          to="/user_dashboard/basket"
+          to="/user_dashboard/my_account"
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="ml-3 d-flex align-items-center py-1">
@@ -45,7 +45,7 @@
           </div>
         </nuxt-link>
         <nuxt-link
-          to="/user_dashboard/basket"
+          to="/user_dashboard/my_account"
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="ml-3 d-flex align-items-center py-1">
@@ -54,7 +54,7 @@
           </div>
         </nuxt-link>
         <nuxt-link
-          to="/user_dashboard/basket"
+          to="/user_dashboard/my_account"
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="ml-3 d-flex align-items-center py-1">

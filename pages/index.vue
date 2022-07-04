@@ -8,7 +8,7 @@
           <div
             class="d-flex typed_text align-items-center justify-content-center"
           >
-            <h1 class="text-white">Save in #</h1>
+            <h1 class="text-white pt-2">Save in #</h1>
             <span class="type"></span>
           </div>
           <div class="registration_wrap text-center mt-4">
@@ -322,7 +322,7 @@
       </div>
       <div class="demo__info__wrap">
         <div>
-          <h6>Be the first to know when we launch</h6>
+          <h6 class="font-weight-bold">Be the first to know when we launch</h6>
         </div>
         <div class="mt-3 form__wrap">
           <form action="" @submit.prevent="sendRequest()">
@@ -844,7 +844,7 @@ hr {
   .hero_section h1,
   .typed_text span {
     font-size: 25px;
-    margin-top: 15px;
+    /* margin-top: 15px; */
   }
   .card_section {
     margin-top: 0;

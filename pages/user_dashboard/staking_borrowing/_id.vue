@@ -2,6 +2,14 @@
   <div class="exam_token_wrap w-100">
     <div class="new__staking">
       <user-nav name="Wallets" />
+      <div>
+        <font-awesome-icon
+          @click="back()"
+          role="button"
+          class="fa-1x text-dark pl-1"
+          :icon="['fas', 'arrow-left']"
+        />
+      </div>
       <div class="transactions_wrap mt-3">
         <template>
           <v-tabs class="px-3" v-model="tab" align-with-title>
@@ -143,7 +151,11 @@ export default {
     };
   },
 
-  methods: {},
+  methods: {
+    back() {
+      this.$router.go(-1);
+    },
+  },
 };
 </script>
 

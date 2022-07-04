@@ -2,6 +2,14 @@
   <div class="pay_bills_wrap w-100">
     <div class="continue__payments">
       <user-nav name="Make Payments" />
+      <div>
+        <font-awesome-icon
+          @click="back()"
+          role="button"
+          class="fa-1x text-dark pl-1"
+          :icon="['fas', 'arrow-left']"
+        />
+      </div>
       <div class="payments_wrap subscriber">
         <div class="pay__wrap py-5">
           <h5>
@@ -28,7 +36,11 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    back() {
+      this.$router.go(-1);
+    },
+  },
 };
 </script>
 
@@ -73,9 +85,6 @@ a {
   .continue__payments .pay__wrap {
     width: 100%;
     margin: 20px auto;
-    border-radius: 0;
-    border: none;
-    box-shadow: 2px 2px 2px 2px #3030302f;
   }
 }
 </style>

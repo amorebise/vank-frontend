@@ -2,6 +2,14 @@
   <div class="w-100">
     <div class="real__estate_wallet">
       <user-nav name="Your Wallet" />
+      <div>
+        <font-awesome-icon
+          @click="back()"
+          role="button"
+          class="fa-1x text-dark pl-1"
+          :icon="['fas', 'arrow-left']"
+        />
+      </div>
       <div class="d-flex justify-content-center" style="gap: 20px">
         <div class="register_button_wrap text-center mt-3 py-4">
           <nuxt-link to="/user_dashboard/staking__borrow/" class="assets__link">
@@ -21,37 +29,41 @@
         </h5>
       </div>
       <div class="basket_data">
-        <table class="table">
+        <!-- <table class="table">
           <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
+              <th scope="col">Token</th>
+              <th scope="col">Total</th>
+              <th scope="col">Value</th>
+              <th scope="col">Locked</th>
+              <th scope="col">Available</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
+              <th scope="row">Pyanko 1</th>
+              <td>70,000</td>
+              <td>70,000NGN</td>
+              <td>0.00</td>
+              <td>70,000</td>
             </tr>
             <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
+              <th scope="row">Epe 3</th>
+              <td>178,900</td>
+              <td>178,900NGN</td>
+              <td>100,000</td>
+              <td>78,900</td>
             </tr>
             <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
+              <th scope="row">Enugu 2</th>
+              <td>237,430</td>
+              <td>178,900NGN</td>
+              <td>237,430</td>
+              <td>0.00</td>
             </tr>
           </tbody>
-        </table>
-        <!-- <v-simple-table fixed-header height="400px">
+        </table> -->
+        <v-simple-table fixed-header height="400px">
           <template v-slot:default>
             <thead>
               <tr class="">
@@ -92,7 +104,7 @@
               </tr>
             </tbody>
           </template>
-        </v-simple-table> -->
+        </v-simple-table>
       </div>
     </div>
   </div>
@@ -105,7 +117,11 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    back() {
+      this.$router.go(-1);
+    },
+  },
 };
 </script>
 

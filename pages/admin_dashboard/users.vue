@@ -165,7 +165,7 @@ export default {
 .users_wrap .transactions_data td {
   cursor: pointer;
 }
-.users_wrap .v-slide-group {
+/* .users_wrap .v-slide-group {
   flex-wrap: wrap;
 }
 .users_wrap .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active),
@@ -185,7 +185,7 @@ export default {
 }
 .users_wrap .v-tab {
   text-transform: unset;
-}
+} */
 .users_wrap .change__password__form {
   background-color: rgba(0, 0, 0, 0.445);
   position: fixed;

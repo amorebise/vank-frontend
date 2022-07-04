@@ -1,7 +1,7 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="fractional__ownership__wrap">
-      <user-nav class="text-dark" name="Trending Assets" />
+      <user-nav class="text-dark" name="My Bookmarks" />
 
       <div class="location__table__lagos mt-2">
         <div class="card__wrap">
@@ -158,11 +158,11 @@
               </div>
             </div>
           </div>
-          <div class="register_button_wrap text-center mt-3 py-4">
+          <!-- <div class="register_button_wrap text-center mt-3 py-4">
             <nuxt-link to="/user_dashboard/lagos_property" class="assets__link">
               <span class="px-3">View all Property in this Location</span>
             </nuxt-link>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

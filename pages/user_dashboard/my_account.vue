@@ -93,6 +93,13 @@
                     <p>Token 001</p>
                   </div>
                 </div>
+                <div class="text__wrap bg-white px-3 py-3">
+                  <p>Land in Abuja - <span>650SQM</span></p>
+                  <div class="d-flex justify-content-between">
+                    <h6>FCDA Estate</h6>
+                    <ion-icon style="color: #00e8fe" name="bookmark-outline" />
+                  </div>
+                </div>
               </div>
             </div>
             <div class="col-md-4 px-1 mb-2">
@@ -102,6 +109,13 @@
                     <p>Epe</p>
                     <p>Lagos</p>
                     <p>Token 002</p>
+                  </div>
+                </div>
+                <div class="text__wrap bg-white px-3 py-3">
+                  <p>Land in Abuja - <span>650SQM</span></p>
+                  <div class="d-flex justify-content-between">
+                    <h6>FCDA Estate</h6>
+                    <ion-icon style="color: #00e8fe" name="bookmark-outline" />
                   </div>
                 </div>
               </div>
@@ -115,12 +129,24 @@
                     <p>Token 003</p>
                   </div>
                 </div>
-                <div class="land__wrap">
-                  <p>Land in Abuja</p>
+                <div class="text__wrap bg-white px-3 py-3">
+                  <p>Land in Abuja - <span>650SQM</span></p>
+                  <div class="d-flex justify-content-between">
+                    <h6>FCDA Estate</h6>
+                    <ion-icon style="color: #00e8fe" name="bookmark-outline" />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+        <div class="register_button_wrap text-center mt-3 py-4">
+          <nuxt-link
+            to="/user_dashboard/fractional_ownership"
+            class="assets__link"
+          >
+            <span class="px-3">Buy Token</span>
+          </nuxt-link>
         </div>
       </div>
     </div>
@@ -221,7 +247,8 @@ export default {
 .trending__content {
   background-image: url("/asset.jpg");
   background-size: cover;
-  /* border-radius: 10px; */
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
   color: #001214;
   position: relative;
   height: 200px;
@@ -233,7 +260,9 @@ export default {
   font-size: 15px;
   /* gap: 10px; */
 }
-.general__trends {
+.dashboard_content .general__trends {
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px rgba(29, 131, 197, 0.22);
 }
 .asset__content2 {
   background-image: url("/asset2.jpg");
@@ -294,11 +323,23 @@ export default {
   background-blend-mode: overlay;
   z-index: 999;
 }
-/* .asset__content img {
-  width: 100%;
-  height: 200px;
-  border-radius: 20px;
-} */
+.dashboard_content .text__wrap {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.dashboard_content .text__wrap p {
+  font-size: 14px;
+  font-weight: 500;
+  word-spacing: 1px;
+}
+.dashboard_content .text__wrap span {
+  font-size: 14px;
+  font-weight: 600;
+}
+.dashboard_content .text__wrap h6 {
+  font-weight: 600;
+  letter-spacing: 1px;
+}
 
 @media (max-width: 768px) {
   .dashboard_content {

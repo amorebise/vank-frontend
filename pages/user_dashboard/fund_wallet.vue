@@ -2,6 +2,14 @@
   <div class="pay_bills_wrap w-100">
     <div class="fund__wallet">
       <user-nav name="Fund my wallet" />
+      <div class="shift">
+        <font-awesome-icon
+          @click="$router.go(-1)"
+          role="button"
+          class="fa-1x text-dark pl-1"
+          :icon="['fas', 'arrow-left']"
+        />
+      </div>
       <div class="payments_wrap subscriber">
         <div class="fund__wrap py-5">
           <div class="form-group mx-2 mt-2">
@@ -11,30 +19,35 @@
             <select
               class="form-control option-class select"
               id="exampleFormControlSelect1"
+              v-model="txn.option"
               required
             >
               <option>Select</option>
-              <option class="colour" id="selectCountry">
-                <p class="text-danger">Card payment</p>
+              <option
+                v-for="(option, index) in funding_options"
+                :key="index"
+                :value="option"
+                class="colour"
+                id="selectCountry"
+              >
+                <p>{{ option }}</p>
               </option>
-              <option>Bank Transfer</option>
+              <!-- <option value="bank_transfer">Bank Transfer</option> -->
             </select>
           </div>
 
           <div class="form-group mx-2 mt-2">
             <label for="" class="">How much do you want to pay?</label>
             <input
-              type="password"
+              type="number"
               class="form-control"
               placeholder="Enter Amount"
             />
           </div>
           <div class="view__assets__wrap text-center">
-            <nuxt-link to="/user_dashboard/bank_transfer">
-              <button class="assets__link">
-                <span class="px-3">Next</span>
-              </button>
-            </nuxt-link>
+            <button @click="goToSelectedTxnType()" class="assets__link">
+              <span class="px-3">Next</span>
+            </button>
           </div>
         </div>
       </div>
@@ -47,9 +60,22 @@ import creator_sidebar from "~/components/creator_sidebar.vue";
 export default {
   components: { creator_sidebar },
   data() {
-    return {};
+    return {
+      txn: {
+        option: "",
+      },
+      funding_options: ["Card Payment", "Bank Transfer"],
+    };
   },
-  methods: {},
+  methods: {
+    goToSelectedTxnType() {
+      this.$router.push(
+        this.txn.option == "Card Payment"
+          ? "/user_dashboard/card_payment/"
+          : "/user_dashboard/bank_transfer/"
+      );
+    },
+  },
 };
 </script>
 
@@ -57,8 +83,6 @@ export default {
 .fund__wallet {
   margin-left: 270px;
   background-color: #fff;
-
-  /* padding: 0 50px; */
 }
 .fund__wallet .fund__wrap {
   border: 1px solid #00e8fe;
@@ -83,6 +107,11 @@ export default {
 .fund__wallet .select:focus {
   border-color: #3030303a;
 }
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 @media (max-width: 768px) {
   .fund__wallet {
@@ -95,6 +124,9 @@ export default {
   .fund__wallet .fund__wrap {
     width: 100%;
     margin: 40px auto;
+  }
+  .shift {
+    padding-left: 10px;
   }
 }
 </style>

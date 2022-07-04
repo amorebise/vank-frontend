@@ -2,6 +2,14 @@
   <div class="pay_bills_wrap w-100">
     <div class="payments">
       <user-nav name="Make Payments" />
+      <div>
+        <font-awesome-icon
+          @click="back()"
+          role="button"
+          class="fa-1x text-dark pl-1"
+          :icon="['fas', 'arrow-left']"
+        />
+      </div>
       <div class="payments_wrap subscriber">
         <div class="token__wrap py-5">
           <h5 class="font-weight-bolder">Payment for Pyanko1 Token</h5>
@@ -54,7 +62,11 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    back() {
+      this.$router.go(-1);
+    },
+  },
 };
 </script>
 
@@ -65,7 +77,7 @@ export default {
 }
 .payments .token__wrap {
   border: 1px solid #00e8fe;
-  width: 70%;
+  width: 50%;
   margin: 40px auto;
   display: grid;
   place-items: center;
@@ -97,9 +109,6 @@ export default {
   }
   .payments .token__wrap {
     width: 100%;
-    border-radius: 0;
-    border: none;
-    box-shadow: 2px 2px 2px 2px #3030302f;
   }
 }
 </style>

@@ -54,7 +54,9 @@
           <div class="view__assets__wrap text-center">
             <div class="d-flex justify-content-between">
               <nuxt-link to="/user_dashboard/cash_subscription_wallet">
-                <h6>Cash Wallet &#x20A6;300,000.00</h6>
+                <button style="background-color: #00e8fe" class="btn">
+                  Cash Wallet
+                </button>
               </nuxt-link>
               <div @mouseover="show__modal = !show__modal">
                 <font-awesome-icon
@@ -86,8 +88,12 @@
               </p>
             </div>
 
-            <div class="d-flex justify-content-between">
-              <h6>Subscription Wallet &#x20A6;75,000.00</h6>
+            <div class="d-flex justify-content-between mt-1">
+              <nuxt-link to="/user_dashboard/cash_subscription_wallet">
+                <button style="background-color: #00e8fe" class="btn">
+                  Subscription Wallet
+                </button>
+              </nuxt-link>
               <div @mouseover="show__second__modal = !show__second__modal">
                 <font-awesome-icon
                   id="show_password"
@@ -230,9 +236,6 @@ export default {
   .continue__payments .token__wrap {
     width: 100%;
     margin: 20px auto;
-    padding: 100px 40px !important;
-    border: none;
-    box-shadow: 1px 2px 2px 2px #313d3e20;
   }
   .continue__payments h6 {
     font-size: 14px;
@@ -240,6 +243,9 @@ export default {
   .continue__payments .continue__nav {
     padding-left: 0;
     padding-right: 0;
+  }
+  .continue__payments .view__assets__wrap .btn {
+    font-size: 12px;
   }
 }
 </style>

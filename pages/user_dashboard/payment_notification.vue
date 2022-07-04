@@ -42,7 +42,7 @@ export default {
   display: grid;
   place-items: center;
   border-radius: 20px;
-  min-height: 300px;
+  height: 300px;
 }
 
 .notification__for__payment h5 {
@@ -60,9 +60,6 @@ export default {
   .notification__for__payment .success__wrap {
     width: 100%;
     margin: 20px auto;
-    border-radius: 0;
-    border: none;
-    box-shadow: 2px 2px 2px 2px #3030302f;
   }
 }
 </style>

@@ -2,10 +2,15 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif !important;
   text-decoration: none !important;
 }
-
+.form-control {
+  box-shadow: none !important;
+}
+.form-control:focus {
+  border-color: #30303023;
+}
 .zoomIn {
     -webkit-animation-name: zoomIn;
     animation-name: zoomIn;

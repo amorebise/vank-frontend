@@ -8,7 +8,7 @@
             <input
               type="text"
               class="form-control"
-              placeholder="Search Users"
+              placeholder="Search property by token"
             />
           </div>
         </div>
@@ -96,7 +96,7 @@
                 class="view__assets__wrap text-center"
                 style="margin-top: -30px"
               >
-                <nuxt-link to="/user_dashboard/cash_subscription_wallet">
+                <nuxt-link to="/admin_dashboard/property">
                   <button class="assets__link">
                     <span class="px-3">View all </span>
                   </button>
@@ -106,7 +106,7 @@
                 class="view__assets__wrap text-center"
                 style="margin-top: -30px"
               >
-                <nuxt-link to="/user_dashboard/cash_subscription_wallet">
+                <nuxt-link to="/admin_dashboard/property">
                   <button class="assets__link">
                     <span class="px-3">Add new Property</span>
                   </button>
