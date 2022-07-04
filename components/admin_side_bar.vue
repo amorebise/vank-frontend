@@ -185,6 +185,9 @@ export default {
   padding-bottom: 0 !important;
   font-size: 14px;
 }
+.sidebar-wrap a {
+  color: inherit !important;
+}
 .sidebar-wrap .v-expansion-panel-content__wrap {
   background-color: #f8f7ff !important;
   padding-left: 50px;

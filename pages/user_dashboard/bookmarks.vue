@@ -3,6 +3,14 @@
     <div class="fractional__ownership__wrap">
       <user-nav class="text-dark" name="My Bookmarks" />
 
+      <div>
+        <font-awesome-icon
+          @click="$router.go(-1)"
+          role="button"
+          class="fa-1x text-dark pl-1"
+          :icon="['fas', 'arrow-left']"
+        />
+      </div>
       <div class="location__table__lagos mt-2">
         <div class="card__wrap">
           <div

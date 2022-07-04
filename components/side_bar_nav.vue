@@ -54,7 +54,7 @@
           </div>
         </nuxt-link>
         <nuxt-link
-          to="/user_dashboard/my_account"
+          to="/user_dashboard/bookmarks"
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="ml-3 d-flex align-items-center py-1">

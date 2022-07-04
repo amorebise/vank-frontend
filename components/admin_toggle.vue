@@ -163,7 +163,9 @@ export default {
   list-style-type: none !important;
   text-decoration: none !important;
 }
-
+.user-side-bar a {
+  color: inherit;
+}
 #wrapper .navbar {
   background-color: transparent !important;
   padding: 15px 10px !important;
@@ -223,6 +225,42 @@ export default {
 }
 .user-side-bar .admin {
   font-weight: 600;
+}
+.user-side-bar .theme--light.v-expansion-panels .v-expansion-panel {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+.user-side-bar .v-expansion-panel-header {
+  /* justify-content: space-between !important; */
+  background-color: #f8f7ff !important;
+  /* border-bottom: 1px solid #b6858530 !important; */
+  border-right: none !important;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+  padding-left: 50px;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  font-size: 14px;
+}
+.user-side-bar .v-expansion-panel-content__wrap {
+  background-color: #f8f7ff !important;
+  padding-left: 50px;
+  font-size: 13px;
+  /* border-bottom: 1px solid #30303030 !important; */
+  /* padding: 30px 20px !important; */
+}
+.user-side-bar .v-expansion-panel--active > .v-expansion-panel-header {
+  min-height: 30px;
+}
+.user-side-bar .v-expansion-panel-content__wrap {
+  padding: 10px;
+  padding-left: 70px;
+  flex: 1 1 auto;
+  max-width: 100%;
+}
+.user-side-bar .v-expansion-panel::before {
+  box-shadow: none !important;
 }
 
 @media (max-width: 768px) {

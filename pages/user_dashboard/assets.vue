@@ -3,6 +3,14 @@
     <div class="fractional__ownership__wrap">
       <user-nav name="Assets" />
 
+      <div>
+        <font-awesome-icon
+          @click="$router.go(-1)"
+          role="button"
+          class="fa-1x text-dark pl-1"
+          :icon="['fas', 'arrow-left']"
+        />
+      </div>
       <div class="location__table__lagos mt-2">
         <div class="card__wrap">
           <div
@@ -29,7 +37,7 @@
                   <p>Land in Abuja - <span>650SQM</span></p>
                   <div class="d-flex justify-content-between">
                     <h6>FCDA Estate</h6>
-                    <ion-icon style="color: #00e8fe" name="bookmark-outline" />
+                    <!-- <ion-icon style="color: #00e8fe" name="bookmark-outline" /> -->
                   </div>
                 </div>
               </div>
@@ -53,7 +61,7 @@
                 <p>Land in Abuja - <span>650SQM</span></p>
                 <div class="d-flex justify-content-between">
                   <h6>FCDA Estate</h6>
-                  <ion-icon style="color: #00e8fe" name="bookmark-outline" />
+                  <!-- <ion-icon style="color: #00e8fe" name="bookmark-outline" /> -->
                 </div>
               </div>
             </div>
@@ -76,7 +84,7 @@
                 <p>Land in Abuja - <span>650SQM</span></p>
                 <div class="d-flex justify-content-between">
                   <h6>FCDA Estate</h6>
-                  <ion-icon style="color: #00e8fe" name="bookmark-outline" />
+                  <!-- <ion-icon style="color: #00e8fe" name="bookmark-outline" /> -->
                 </div>
               </div>
             </div>
@@ -107,7 +115,7 @@
                 <p>Land in Abuja - <span>650SQM</span></p>
                 <div class="d-flex justify-content-between">
                   <h6>FCDA Estate</h6>
-                  <ion-icon style="color: #00e8fe" name="bookmark-outline" />
+                  <!-- <ion-icon style="color: #00e8fe" name="bookmark-outline" /> -->
                 </div>
               </div>
             </div>
@@ -130,7 +138,7 @@
                 <p>Land in Abuja - <span>650SQM</span></p>
                 <div class="d-flex justify-content-between">
                   <h6>FCDA Estate</h6>
-                  <ion-icon style="color: #00e8fe" name="bookmark-outline" />
+                  <!-- <ion-icon style="color: #00e8fe" name="bookmark-outline" /> -->
                 </div>
               </div>
             </div>
@@ -153,7 +161,7 @@
                 <p>Land in Abuja - <span>650SQM</span></p>
                 <div class="d-flex justify-content-between">
                   <h6>FCDA Estate</h6>
-                  <ion-icon style="color: #00e8fe" name="bookmark-outline" />
+                  <!-- <ion-icon style="color: #00e8fe" name="bookmark-outline" /> -->
                 </div>
               </div>
             </div>
