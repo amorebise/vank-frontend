@@ -1,7 +1,7 @@
 <template>
   <div class="exam_token_wrap w-100">
     <div class="cash__sub__wrap">
-      <admin-nav name="Staking Txns" />
+      <admin-nav name="Fundings" />
       <!-- <div>
         <font-awesome-icon
           @click="back()"

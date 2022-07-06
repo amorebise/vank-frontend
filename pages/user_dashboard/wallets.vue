@@ -9,21 +9,21 @@
         <div class="wallet__type">
           <div class="d-flex justify-content-between" style="gap: 10px">
             <div class="wallets">
-              <button>Naira Wallet</button>
+              <button id="nairaBtn">Naira Wallet</button>
             </div>
             <div class="wallets">
               <nuxt-link to="/user_dashboard/real_estate_wallet/">
-                <button>Real Estate Wallet</button>
+                <button id="estateBtn">Real Estate Wallet</button>
               </nuxt-link>
             </div>
             <div class="wallets">
               <nuxt-link to="/user_dashboard/buy__usd/">
-                <button>USD Wallet</button>
+                <button id="usdBtn">USD Wallet</button>
               </nuxt-link>
             </div>
             <div class="wallets">
               <nuxt-link to="/user_dashboard/stake_borrow_wallet/">
-                <button>Stake/Borrow Wallet</button>
+                <button id="stakeBtn">Stake/Borrow Wallet</button>
               </nuxt-link>
             </div>
           </div>
@@ -177,10 +177,13 @@ export default {
   padding: 4px 10px;
   font-size: 13px;
 }
-.continue__payments .wallets button:hover {
-  border: none;
+#nairaBtn {
   background-color: #00e8fe;
 }
+/* .continue__payments .wallets button:hover {
+  border: none;
+  
+} */
 .continue__payments .token__wrap {
   border: 1px solid #00e8fe;
   width: 50%;

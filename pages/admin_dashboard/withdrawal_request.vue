@@ -1,7 +1,7 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="users">
-      <admin-nav name="Withdrawal Request" />
+      <admin-nav name="Withdrawal Reqs" />
       <div class="users_wrap">
         <div class="search__bar__wrap">
           <div class="form-group py-3">

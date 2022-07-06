@@ -39,13 +39,34 @@
             </div>
           </div>
         </div>
-        <div class="buy__token__wrap text-center mt-3 py-4">
-          <nuxt-link
-            :to="`/user_dashboard/buy_token/${id}`"
-            class="assets__link"
-          >
-            <span class="px-3">Buy Token</span>
-          </nuxt-link>
+        <div
+          style="gap: 10px"
+          class="
+            buy__token__wrap
+            d-flex
+            justify-content-center
+            text-center
+            mt-3
+            py-4
+          "
+        >
+          <div>
+            <nuxt-link
+              :to="`/user_dashboard/buy_token/${id}`"
+              class="assets__link"
+            >
+              <span class="px-3">Buy Token</span>
+            </nuxt-link>
+          </div>
+
+          <div>
+            <nuxt-link
+              :to="`/user_dashboard/buy_token/${id}`"
+              class="assets__link"
+            >
+              <span class="px-3">Sell</span>
+            </nuxt-link>
+          </div>
         </div>
       </div>
     </div>

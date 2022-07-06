@@ -287,10 +287,10 @@ export default {
   padding: 7px;
   border-radius: 10px;
 }
-.fractional__ownership__wrap .header_wrap .lagos__wrap button:hover {
+/* .fractional__ownership__wrap .header_wrap .lagos__wrap button:hover {
   background-color: #00e8fe;
   border: none;
-}
+} */
 .fractional__ownership__wrap .property__cards {
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(29, 131, 197, 0.22);

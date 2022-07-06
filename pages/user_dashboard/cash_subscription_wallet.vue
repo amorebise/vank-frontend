@@ -135,11 +135,37 @@
                       </p>
                     </div>
                     <div class="view__assets__wrap text-center">
-                      <nuxt-link to="/user_dashboard/cash_success/">
-                        <button class="assets__link">
-                          <span class="px-3">Transfer to Cash Wallet</span>
-                        </button>
-                      </nuxt-link>
+                      <!-- <nuxt-link to="/user_dashboard/cash_success/"> -->
+                      <button
+                        @click="amount__modal = !amount__modal"
+                        class="assets__link"
+                      >
+                        <span class="px-3">Transfer to Cash Wallet</span>
+                      </button>
+                      <!-- </nuxt-link> -->
+                      <div v-show="amount__modal" class="pop__up">
+                        <div class="pop__up__content zoomIn">
+                          <div class="text-center">
+                            <div class="form-group mx-2 mt-2">
+                              <label for="" class=""
+                                >What is your transaction amount?</label
+                              >
+                              <input
+                                type="number"
+                                class="form-control"
+                                placeholder="Enter Amount"
+                              />
+                            </div>
+                            <button
+                              @click="
+                                $router.push('/user_dashboard/my_account/')
+                              "
+                            >
+                              Transfer
+                            </button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -160,6 +186,7 @@ export default {
     return {
       tab: null,
       success__modal: false,
+      amount__modal: false,
     };
   },
 

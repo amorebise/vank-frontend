@@ -34,7 +34,7 @@
         >
           <div class="child_items ml-5 d-flex align-items-center">
             <ion-icon name="home-outline"></ion-icon>
-            <span class="ml-2">Dashboard</span>
+            <span class="ml-2">Overview</span>
           </div>
         </nuxt-link>
         <nuxt-link
@@ -60,8 +60,12 @@
             <v-expansion-panel-header> Transactions </v-expansion-panel-header>
             <v-expansion-panel-content>
               <div class="py-1">
-                <nuxt-link to="/admin_dashboard/staking_transactions/"
-                  >Staking</nuxt-link
+                <nuxt-link to="/admin_dashboard/funding/">Funding</nuxt-link>
+              </div>
+
+              <div class="py-1">
+                <nuxt-link to="/admin_dashboard/subscriptions/"
+                  >Subscription</nuxt-link
                 >
               </div>
 
@@ -72,20 +76,12 @@
               </div>
 
               <div class="py-1">
-                <nuxt-link to="/admin_dashboard/staking_transactions/"
-                  >Borrowing</nuxt-link
-                >
+                <nuxt-link to="/admin_dashboard/borrow/">Borrow</nuxt-link>
               </div>
 
               <div class="py-1">
                 <nuxt-link to="/admin_dashboard/staking_transactions/"
-                  >Subscription</nuxt-link
-                >
-              </div>
-
-              <div class="py-1">
-                <nuxt-link to="/admin_dashboard/staking_transactions/"
-                  >Funding</nuxt-link
+                  >Staking</nuxt-link
                 >
               </div>
             </v-expansion-panel-content>
@@ -233,7 +229,7 @@ export default {
 }
 .user-side-bar .v-expansion-panel-header {
   /* justify-content: space-between !important; */
-  background-color: #f8f7ff !important;
+  /* background-color: #f8f7ff !important; */
   /* border-bottom: 1px solid #b6858530 !important; */
   border-right: none !important;
   border-radius: 0px !important;
@@ -275,16 +271,25 @@ export default {
     font-size: 30px;
   }
   .list-group-flush > .list-group-item {
-    font-size: 15px !important;
+    font-size: 14px !important;
+  }
+  .user-side-bar .v-expansion-panel-content__wrap {
+    background-color: #fff !important;
+    padding-left: 100px;
+    font-size: 13px;
   }
   .list-group-flush > .list-group-item ion-icon {
     font-size: 18px;
   }
+
   .user-side-bar .bell {
     width: 85%;
   }
   .user-side-bar .v-btn__content {
     display: block;
+  }
+  .user-side-bar .v-expansion-panel-header {
+    padding-left: 100px;
   }
 }
 </style>

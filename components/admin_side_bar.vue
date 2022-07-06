@@ -21,7 +21,7 @@
             <div class="ml-3 d-flex align-items-center">
               <ion-icon style="color: #001214" name="home-outline"></ion-icon>
 
-              <span class="ml-2">My Account</span>
+              <span class="ml-2">Overview</span>
             </div>
           </div>
         </nuxt-link>
@@ -34,8 +34,8 @@
             <span class="ml-2">Users</span>
           </div>
         </nuxt-link>
-        <nuxt-link
-          to="/admin_dashboard/property"
+        <div
+          @click="$router.push('/admin_dashboard/property')"
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="ml-3 d-flex align-items-center">
@@ -43,38 +43,30 @@
 
             <span class="ml-2">Property</span>
           </div>
-        </nuxt-link>
+        </div>
         <v-expansion-panels>
           <v-expansion-panel>
             <v-expansion-panel-header> Transactions </v-expansion-panel-header>
             <v-expansion-panel-content>
+              <div class="">
+                <nuxt-link to="/admin_dashboard/funding/">Funding</nuxt-link>
+              </div>
               <div class="py-1">
-                <nuxt-link to="/admin_dashboard/staking_transactions/"
-                  >Staking</nuxt-link
+                <nuxt-link to="/admin_dashboard/subscriptions/"
+                  >Subscription</nuxt-link
                 >
               </div>
-
               <div class="py-1">
                 <nuxt-link to="/admin_dashboard/withdrawal_request/"
                   >Withdrawal</nuxt-link
                 >
               </div>
-
               <div class="py-1">
-                <nuxt-link to="/admin_dashboard/staking_transactions/"
-                  >Borrowing</nuxt-link
-                >
+                <nuxt-link to="/admin_dashboard/borrow/">Borrowing</nuxt-link>
               </div>
-
               <div class="py-1">
                 <nuxt-link to="/admin_dashboard/staking_transactions/"
-                  >Subscription</nuxt-link
-                >
-              </div>
-
-              <div class="py-1">
-                <nuxt-link to="/admin_dashboard/staking_transactions/"
-                  >Funding</nuxt-link
+                  >Staking</nuxt-link
                 >
               </div>
             </v-expansion-panel-content>
@@ -180,7 +172,7 @@ export default {
   border-right: none !important;
   border-radius: 0px !important;
   box-shadow: none !important;
-  padding-left: 50px;
+  padding-left: 70px;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
   font-size: 14px;

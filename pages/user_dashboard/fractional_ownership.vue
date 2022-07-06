@@ -12,13 +12,13 @@
       </div>
       <div class="header_wrap d-flex px-1 mt-3">
         <div class="lagos__wrap">
-          <button @click="show_lagos()">Lagos</button>
+          <button @click="show_lagos()" id="lagosBtn">Lagos</button>
         </div>
         <div class="lagos__wrap px-3">
-          <button @click="show_abuja()">Abuja</button>
+          <button id="abujaBtn" @click="show_abuja()">Abuja</button>
         </div>
         <div class="lagos__wrap">
-          <button @click="show_uyo()">Uyo</button>
+          <button id="uyoBtn" @click="show_uyo()">Uyo</button>
         </div>
       </div>
       <div v-show="lagos_tab" class="location__table__lagos mt-2">
@@ -530,16 +530,25 @@ export default {
       this.$router.go(-1);
     },
     show_lagos() {
+      document.getElementById("lagosBtn").style.backgroundColor = "#00e8fe";
+      document.getElementById("abujaBtn").style.backgroundColor = "#fff";
+      document.getElementById("uyoBtn").style.backgroundColor = "#fff";
       this.lagos_tab = true;
       this.abuja_tab = false;
       this.uyo_tab = false;
     },
     show_abuja() {
+      document.getElementById("abujaBtn").style.backgroundColor = "#00e8fe";
+      document.getElementById("lagosBtn").style.backgroundColor = "#fff";
+      document.getElementById("uyoBtn").style.backgroundColor = "#fff";
       this.lagos_tab = false;
       this.abuja_tab = true;
       this.uyo_tab = false;
     },
     show_uyo() {
+      document.getElementById("uyoBtn").style.backgroundColor = "#00e8fe";
+      document.getElementById("abujaBtn").style.backgroundColor = "fff";
+      document.getElementById("lagosBtn").style.backgroundColor = "#fff";
       this.lagos_tab = false;
       this.abuja_tab = false;
       this.uyo_tab = true;
@@ -563,10 +572,13 @@ export default {
   padding: 7px;
   border-radius: 10px;
 }
-.fractional__ownership__wrap .header_wrap .lagos__wrap button:hover {
+.fractional__ownership__wrap #lagosBtn {
+  background-color: #00e8fe;
+}
+/* .fractional__ownership__wrap .header_wrap .lagos__wrap button::active {
   background-color: #00e8fe;
   border: none;
-}
+} */
 .fractional__ownership__wrap .property__cards {
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(29, 131, 197, 0.22);

@@ -15,7 +15,7 @@
 
         <div class="transactions_data">
           <div class="body__wrap">
-            <v-simple-table fixed-header height="200px">
+            <v-simple-table fixed-header height="300px">
               <template v-slot:default>
                 <thead>
                   <tr
@@ -269,6 +269,10 @@ export default {
   .users {
     margin-left: 0 !important;
     padding: 0;
+  }
+  .users_wrap {
+    margin-top: 50px;
+    padding: 10px;
   }
   .users_wrap .password__modal {
     width: 100%;

@@ -476,7 +476,7 @@ export default {
     padding: 0;
   }
   .admin__wrap {
-    margin: 5px;
+    margin: 10px;
   }
   .asset_wrap {
     width: 100%;
