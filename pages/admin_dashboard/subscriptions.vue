@@ -14,153 +14,60 @@
             </div>
           </div>
         </div>
-        <template>
-          <v-tabs class="px-3" v-model="tab" align-with-title>
-            <v-tab name="stake">Active</v-tab>
-            <v-tab name="borrow">Pending</v-tab>
-          </v-tabs>
-        </template>
-        <v-tabs-items v-model="tab" class="tab_bg">
-          <v-tab-item>
-            <v-card flat>
-              <v-card-text class="">
-                <div class="transactions_data">
-                  <div class="body__wrap">
-                    <v-simple-table fixed-header height="200px">
-                      <template v-slot:default>
-                        <thead>
-                          <tr class="">
-                            <th class="text-left th_color">SN</th>
-                            <th class="text-left th_color">Name</th>
-                            <th class="text-left th_color">Phone Number</th>
-                            <th class="text-left th_color">Amount(N)</th>
-                            <th class="text-left th_color">Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr
-                            style="
-                              border-bottom: thin solid rgba(0, 0, 0, 0.12);
-                            "
-                            class="mt-2"
-                          >
-                            <td>1</td>
-                            <td>Abba Biola</td>
-                            <td>08123456789</td>
-                            <td>38,000</td>
-                            <td class="pt-3">
-                              <div
-                                class="d-flex"
-                                style="gap: 10px; font-size: 12px"
-                              >
-                                <p class="text-success">Approve</p>
-                                <p class="text-danger">Disapprove</p>
-                                <p class="text-warning">Pend</p>
-                              </div>
-                            </td>
-                          </tr>
-                        </tbody>
-                        <tbody>
-                          <tr
-                            style="
-                              border-bottom: thin solid rgba(0, 0, 0, 0.12);
-                            "
-                            class="mt-2"
-                          >
-                            <td>2</td>
-                            <td>Biola George</td>
-                            <td>08123456789</td>
-                            <td>58,000</td>
-                            <td class="pt-3">
-                              <div
-                                class="d-flex"
-                                style="gap: 10px; font-size: 12px"
-                              >
-                                <p class="text-success">Approve</p>
-                                <p class="text-danger">Disapprove</p>
-                                <p class="text-warning">Pend</p>
-                              </div>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </template>
-                    </v-simple-table>
-                  </div>
-                </div>
-              </v-card-text>
-            </v-card>
-          </v-tab-item>
 
-          <v-tab-item>
-            <v-card flat>
-              <v-card-text class="">
-                <div class="transactions_data">
-                  <div class="body__wrap">
-                    <v-simple-table fixed-header height="200px">
-                      <template v-slot:default>
-                        <thead>
-                          <tr class="">
-                            <th class="text-left th_color">SN</th>
-                            <th class="text-left th_color">Name</th>
-                            <th class="text-left th_color">Phone Number</th>
-                            <th class="text-left th_color">Amount(N)</th>
-                            <th class="text-left th_color">Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr
-                            style="
-                              border-bottom: thin solid rgba(0, 0, 0, 0.12);
-                            "
-                            class="mt-2"
-                          >
-                            <td>1</td>
-                            <td>Abba Biola</td>
-                            <td>08123456789</td>
-                            <td>38,000</td>
-                            <td class="pt-3">
-                              <div
-                                class="d-flex"
-                                style="gap: 10px; font-size: 12px"
-                              >
-                                <p class="text-success">Approve</p>
-                                <p class="text-danger">Disapprove</p>
-                                <p class="text-warning">Pend</p>
-                              </div>
-                            </td>
-                          </tr>
-                        </tbody>
-                        <tbody>
-                          <tr
-                            style="
-                              border-bottom: thin solid rgba(0, 0, 0, 0.12);
-                            "
-                            class="mt-2"
-                          >
-                            <td>2</td>
-                            <td>Biola George</td>
-                            <td>08123456789</td>
-                            <td>58,000</td>
-                            <td class="pt-3">
-                              <div
-                                class="d-flex"
-                                style="gap: 10px; font-size: 12px"
-                              >
-                                <p class="text-success">Approve</p>
-                                <p class="text-danger">Disapprove</p>
-                                <p class="text-warning">Pend</p>
-                              </div>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </template>
-                    </v-simple-table>
-                  </div>
-                </div>
-              </v-card-text>
-            </v-card>
-          </v-tab-item>
-        </v-tabs-items>
+        <div class="transactions_data">
+          <div class="body__wrap">
+            <v-simple-table fixed-header height="200px">
+              <template v-slot:default>
+                <thead>
+                  <tr class="">
+                    <th class="text-left th_color">SN</th>
+                    <th class="text-left th_color">Name</th>
+                    <th class="text-left th_color">Phone Number</th>
+                    <th class="text-left th_color">Amount(N)</th>
+                    <th class="text-left th_color">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    style="border-bottom: thin solid rgba(0, 0, 0, 0.12)"
+                    class="mt-2"
+                  >
+                    <td>1</td>
+                    <td>Abba Biola</td>
+                    <td>08123456789</td>
+                    <td>38,000</td>
+                    <td class="pt-3">
+                      <div class="d-flex" style="gap: 10px; font-size: 12px">
+                        <button class="text-success">Approve</button>
+                        <button class="text-danger">Disapprove</button>
+                        <button class="text-warning">Pend</button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr
+                    style="border-bottom: thin solid rgba(0, 0, 0, 0.12)"
+                    class="mt-2"
+                  >
+                    <td>2</td>
+                    <td>Biola George</td>
+                    <td>08123456789</td>
+                    <td>58,000</td>
+                    <td class="pt-3">
+                      <div class="d-flex" style="gap: 10px; font-size: 12px">
+                        <button class="text-success">Approve</button>
+                        <button class="text-danger">Disapprove</button>
+                        <button class="text-warning">Pend</button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </template>
+            </v-simple-table>
+          </div>
+        </div>
       </div>
     </div>
   </div>

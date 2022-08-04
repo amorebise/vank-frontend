@@ -70,9 +70,7 @@
               </div>
 
               <div class="py-1">
-                <nuxt-link to="/admin_dashboard/withdrawal_request/"
-                  >Withdrawal</nuxt-link
-                >
+                <nuxt-link to="/admin_dashboard/sales/">Sales</nuxt-link>
               </div>
 
               <div class="py-1">

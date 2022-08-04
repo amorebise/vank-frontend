@@ -1,7 +1,7 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="users">
-      <admin-nav name="Withdrawal Reqs" />
+      <admin-nav name="Sale Reqs" />
       <div class="users_wrap">
         <div class="search__bar__wrap">
           <div class="form-group py-3">
@@ -79,42 +79,15 @@ export default {
     return {
       tab: null,
       loading: false,
-      withdrawals: {},
+      saleRequests: {},
     };
   },
   methods: {
-    async getUsers() {
+    async getSaleRequests() {
       try {
-        const response = await this.$axios.get("/admin/getAllUser");
-        this.users = response.data;
-        console.log(this.users);
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    async getMarketMakers() {
-      try {
-        const response = await this.$axios.get("/admin/getAllMarketMaker");
-        this.market_makers = response.data;
-        console.log(this.market_makers);
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    async getAllSubscribers() {
-      try {
-        const response = await this.$axios.get("/admin/getAllSubsriberUsers");
-        this.subscribers = response.data.data;
-        console.log(this.subscribers);
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    async getWithdrawalRequests() {
-      try {
-        const response = await this.$axios.get("/admin/getWithrawalRequest");
-        this.withdrawals = response.data;
-        console.log(this.withdrawals);
+        const response = await this.$axios.get("/admin/getSaleRequest");
+        this.saleRequests = response.data;
+        console.log(this.saleRequests);
       } catch (error) {
         console.log(error);
       }
@@ -133,10 +106,7 @@ export default {
     },
   },
   mounted() {
-    this.getUsers();
-    this.getMarketMakers();
-    this.getAllSubscribers();
-    this.getWithdrawalRequests();
+    this.getSaleRequests();
   },
 };
 </script>
