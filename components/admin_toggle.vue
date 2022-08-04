@@ -169,6 +169,7 @@ export default {
   text-decoration: none;
 }
 .user-side-bar .v-overlay__scrim {
+  z-index: 10000 !important;
   min-height: 100vh;
 }
 .user-side-bar .v-navigation-drawer__content {

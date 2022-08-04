@@ -53,29 +53,34 @@
               :key="trending.index"
               class="col-md-4 px-1 mb-2"
             >
-              <!-- <img :src="trending.image" alt="" /> -->
               <div class="general__trends">
                 <div
+                  @click="
+                    $router.push(`/user_dashboard/asset_detail/${trending.id}`)
+                  "
                   class="trending__content"
                   :style="{ backgroundImage: 'url(' + trending.image + ')' }"
                 >
                   <div>
-                    <p>Epe</p>
-                    <p>Lagos</p>
-                    <p>Token 002</p>
+                    <p>{{ trending.layout_name }}</p>
+                    <p>{{ trending.location }}</p>
+                    <p>{{ trending.token_name }} Token</p>
                   </div>
                 </div>
                 <div class="text__wrap bg-white px-3 py-3">
-                  <p>Land in Abuja - <span>650SQM</span></p>
+                  <p>
+                    Land in {{ trending.layout_name }} - <span>650SQM</span>
+                  </p>
                   <div class="d-flex justify-content-between">
-                    <h6>FCDA Estate</h6>
-                    <!-- <ion-icon
-                      v-if="trending.bookmarkStatus == 'true'"
+                    <h6>{{ trending.location }}</h6>
+                    <ion-icon
+                      v-if="trending.bookmarkStatus == ''"
                       @click="bookmark(trending)"
                       style="color: #00e8fe"
                       name="bookmark-outline"
-                    /> -->
+                    />
                     <ion-icon
+                      v-else
                       @click="removeBookmark(trending)"
                       style="color: #00e8fe"
                       name="bookmark"
@@ -172,7 +177,9 @@ export default {
         );
         this.getTrendingAssets();
         console.log(response);
-        this.$toast.success("Property has been bookmarked", { timeout: 5000 });
+        this.$toast.success("Property has been removed from bookmarks", {
+          timeout: 5000,
+        });
       } catch (error) {
         console.log(error.response);
         this.$toast.warning("There's an error somewhere", {

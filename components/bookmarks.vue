@@ -35,7 +35,7 @@
             <div class="text_wrap bg-white px-3 py-2">
               <p>Land in {{ bookmark.layout_name }} - <span>650SQM</span></p>
               <div class="d-flex justify-content-between">
-                <h6>{{ bookmark.location }} Estate</h6>
+                <h6>{{ bookmark.location }}</h6>
                 <ion-icon style="color: #00e8fe" name="bookmark" />
               </div>
             </div>
