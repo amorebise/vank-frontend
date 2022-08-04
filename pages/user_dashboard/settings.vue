@@ -148,7 +148,7 @@
             <p>KYC Documents</p>
           </div>
           <div class="edit__wrap">
-            <nuxt-link class="kyc_link" to="/kyc_page">Next</nuxt-link>
+            <nuxt-link class="kyc_link" to="/kyc/kyc">Next</nuxt-link>
           </div>
         </div>
       </div>

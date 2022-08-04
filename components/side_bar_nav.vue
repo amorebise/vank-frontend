@@ -13,6 +13,15 @@
         /></nuxt-link>
       </div>
       <div class="list-group list-group-flush my-3" id="menu_items">
+        <!-- <li class="list-group list-group-item active bg-transparent active">
+          <div class="child_items">
+            <div class="ml-3 d-flex align-items-center py-1">
+              <ion-icon style="color: #001214" name="home-outline"></ion-icon>
+
+              <span class="ml-2">My Account</span>
+            </div>
+          </div>
+        </li> -->
         <nuxt-link
           to="/user_dashboard/my_account"
           class="list-group list-group-item active bg-transparent active"
@@ -45,12 +54,12 @@
           </div>
         </nuxt-link>
         <nuxt-link
-          to="/user_dashboard/my_account"
+          to="/user_dashboard/referals/"
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="ml-3 d-flex align-items-center py-1">
             <ion-icon style="color: #001214" name="link"></ion-icon>
-            <span class="ml-2">My Invite Link</span>
+            <span class="ml-2">Referrals</span>
           </div>
         </nuxt-link>
         <nuxt-link
@@ -140,9 +149,8 @@ export default {
   font-size: 14px;
 }
 .list-group-item:hover {
-  background-color: #fff;
   color: #455b6d !important;
-  background-color: #ffffff !important;
+  background-color: #00e8fe !important;
   transition: all, 0.5s;
   border-radius: 0;
 }
@@ -151,7 +159,7 @@ export default {
 }
 .list-group-item.active {
   border: none;
-  background-color: transparent;
+  /* background-color: #00e8fe !important; */
   color: #fff;
 }
 #wrapper .navbar {

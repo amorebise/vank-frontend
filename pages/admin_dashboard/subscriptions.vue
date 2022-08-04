@@ -2,14 +2,6 @@
   <div class="exam_token_wrap w-100">
     <div class="cash__sub__wrap">
       <admin-nav name="Subscriptions" />
-      <!-- <div>
-        <font-awesome-icon
-          @click="back()"
-          role="button"
-          class="fa-1x text-dark pl-1"
-          :icon="['fas', 'arrow-left']"
-        />
-      </div> -->
       <div class="transactions_wrap mt-5">
         <div class="shift">
           <div class="search__bar__wrap">
@@ -181,14 +173,27 @@ export default {
   data() {
     return {
       tab: null,
+      subscriptions: {},
       success__modal: false,
     };
   },
 
   methods: {
+    async getSubscriptions() {
+      try {
+        let response = await this.$axios.get("/admin/getAllSubscription");
+        this.subscriptions = response.data;
+        consoloe.log(this.subscriptions);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
     back() {
       this.$router.go(-1);
     },
+  },
+  created() {
+    this.getSubscriptions();
   },
 };
 </script>

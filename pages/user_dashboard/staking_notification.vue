@@ -1,13 +1,13 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="continue__payments">
-      <user-nav name="Staking/Borrowing" />
+      <user-nav name="Fund Wallet" />
       <div class="payments_wrap subscriber">
         <div class="token__wrap">
           <p style="font-size: 16px; text-align: center">
-            Your staking request has been <br />
-            received and will be processed <br />
-            shortly
+            Thank you for your payment <br />
+            value will reflect in your wallet <br />
+            shortly!
           </p>
           <div class="return" style="margin-top: -100px">
             <nuxt-link

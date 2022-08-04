@@ -2,8 +2,9 @@
   <div class="exam_token_wrap w-100">
     <div class="cash__sub__wrap">
       <user-nav name="Wallets" />
-      <div @click="back()">
+      <div>
         <font-awesome-icon
+          @click="back()"
           role="button"
           class="fa-1x text-dark pl-1"
           :icon="['fas', 'arrow-left']"
@@ -41,7 +42,7 @@
                       "
                     >
                       <span class="text-dark">Wallet Balance:</span>
-                      &#x20A6;375,000.00
+                      &#x20A6;{{ cash_wallet_ballance }}
                     </p>
                   </div>
                 </div>
@@ -59,14 +60,19 @@
                       <select
                         class="form-control option-class select"
                         id="exampleFormControlSelect1"
+                        v-model="txn.option"
                         required
                       >
                         <option>Select</option>
-                        <option class="colour" id="selectCountry">
-                          <p class="text-danger">Fund wallet</p>
+                        <option
+                          v-for="(option, index) in funding_options"
+                          :key="index"
+                          :value="option"
+                          class="colour"
+                          id="selectCountry"
+                        >
+                          <p>{{ option }}</p>
                         </option>
-                        <option>Withdraw to bank</option>
-                        <option>Transfer to your subscription wallet</option>
                       </select>
                     </div>
 
@@ -78,11 +84,12 @@
                         type="number"
                         class="form-control"
                         placeholder="Enter Amount"
+                        v-model="txn.amount"
                       />
                     </div>
                     <div class="view__assets__wrap text-center">
                       <button
-                        @click="success__modal = !success__modal"
+                        @click="goToSelectedTxnType()"
                         class="assets__link"
                       >
                         <span class="px-3">Submit</span>
@@ -94,7 +101,7 @@
                           <img src="/emoji.png" alt="" />
                           <p>Transaction Successful!!</p>
                           <button
-                            @click="$router.push('/user_dashboard/my_account/')"
+                            @click="$router.push('/user_dashboard/wallets/')"
                           >
                             ok
                           </button>
@@ -145,6 +152,15 @@
                       <!-- </nuxt-link> -->
                       <div v-show="amount__modal" class="pop__up">
                         <div class="pop__up__content zoomIn">
+                          <div class="text-right">
+                            <p
+                              role="button"
+                              @click="amount__modal = !amount__modal"
+                              style="font-size: 20px"
+                            >
+                              &times;
+                            </p>
+                          </div>
                           <div class="text-center">
                             <div class="form-group mx-2 mt-2">
                               <label for="" class=""
@@ -157,9 +173,7 @@
                               />
                             </div>
                             <button
-                              @click="
-                                $router.push('/user_dashboard/my_account/')
-                              "
+                              @click="$router.push('/user_dashboard/wallets/')"
                             >
                               Transfer
                             </button>
@@ -185,15 +199,54 @@ export default {
   data() {
     return {
       tab: null,
+      cash_wallet_ballance: {},
+      txn: {
+        option: "",
+        amount: "",
+      },
+      funding_options: [
+        "Fund wallet",
+        "Withdraw to bank",
+        "Transfer to your subscription wallet",
+      ],
       success__modal: false,
       amount__modal: false,
     };
   },
 
   methods: {
+    async getCashWalletBallance() {
+      let response = await this.$axios.get("/getCashWalletBalance");
+      this.cash_wallet_ballance = response.data;
+      console.log(this.cash_wallet_ballance);
+    },
+    goToSelectedTxnType() {
+      if (this.txn.option == "Fund wallet") {
+        this.$router.push("/user_dashboard/fund_wallet/");
+      } else if (this.txn.option == "Withdraw to bank") {
+        this.$router.push("/kyc/kyc_page/");
+      } else if (this.txn.option == "Transfer to your subscription wallet") {
+        this.fundSubscriptionWallet();
+        this.success__modal = !this.success__modal;
+      }
+    },
+    async fundSubscriptionWallet() {
+      try {
+        let response = await this.$axios.post(
+          "/fundSubscriptionWallet",
+          this.txn.amount
+        );
+        console.log(response);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
     back() {
       this.$router.go(-1);
     },
+  },
+  created() {
+    this.getCashWalletBallance();
   },
 };
 </script>

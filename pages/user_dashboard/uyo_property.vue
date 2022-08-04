@@ -5,8 +5,9 @@
 
       <div class="location__table__lagos mt-2">
         <div class="d-flex">
-          <div @click="back()">
+          <div>
             <font-awesome-icon
+              @click="back()"
               role="button"
               class="fa-1x text-dark pl-1"
               :icon="['fas', 'arrow-left']"

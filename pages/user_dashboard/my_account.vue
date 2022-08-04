@@ -3,9 +3,9 @@
     <div class="dashboard_content mb-3">
       <user-nav class="dashboard__nav" name="Dashboard" />
       <div class="new__content">
-        <div v-if="newUser" class="d-flex align-items-center px-1 mb-2">
+        <div v-if="user" class="d-flex align-items-center px-1 mb-2">
           <h5 class="user_font">
-            Welcome, <span class="user_name">{{ newUser.name }}</span>
+            Welcome, <span class="user_name">{{ user.name }}</span>
           </h5>
           <!-- <div class="ml-1">
           <nuxt-img format="webp" quality="90" fit="cover" src="/emoji.png" />
@@ -29,44 +29,9 @@
               </nuxt-link>
             </div>
           </div>
-          <!-- <div class="overflow"> -->
         </div>
         <div class="assets__card mt-2">
-          <div class="row">
-            <div class="col-md-4 px-1 mb-2">
-              <nuxt-link :to="`/user_dashboard/property_detail/${id}`">
-                <div class="asset__content">
-                  <div>
-                    <p>Pyanko 1</p>
-                    <p>Abuja</p>
-                    <p>Token 001</p>
-                  </div>
-                </div>
-              </nuxt-link>
-            </div>
-            <div class="col-md-4 px-1 mb-2">
-              <nuxt-link :to="`/user_dashboard/property_detail/${id}`">
-                <div class="asset__content2">
-                  <div>
-                    <p>Epe</p>
-                    <p>Lagos</p>
-                    <p>Token 002</p>
-                  </div>
-                </div>
-              </nuxt-link>
-            </div>
-            <div class="col-md-4 px-1 mb-2">
-              <nuxt-link :to="`/user_dashboard/property_detail/${id}`">
-                <div class="asset__content3">
-                  <div>
-                    <p>Enugu 2</p>
-                    <p>Enugu</p>
-                    <p>Token 003</p>
-                  </div>
-                </div>
-              </nuxt-link>
-            </div>
-          </div>
+          <available-assets />
         </div>
 
         <div class="estate__content mt-2">
@@ -80,31 +45,20 @@
               </nuxt-link>
             </div>
           </div>
-          <!-- <div class="overflow"> -->
         </div>
         <div class="assets__card mt-2">
           <div class="row">
-            <div class="col-md-4 px-1 mb-2">
+            <div
+              v-for="trending in trendingAssets"
+              :key="trending.index"
+              class="col-md-4 px-1 mb-2"
+            >
+              <!-- <img :src="trending.image" alt="" /> -->
               <div class="general__trends">
-                <div class="trending__content">
-                  <div>
-                    <p>Pyanko 1</p>
-                    <p>Abuja</p>
-                    <p>Token 001</p>
-                  </div>
-                </div>
-                <div class="text__wrap bg-white px-3 py-3">
-                  <p>Land in Abuja - <span>650SQM</span></p>
-                  <div class="d-flex justify-content-between">
-                    <h6>FCDA Estate</h6>
-                    <ion-icon style="color: #00e8fe" name="bookmark-outline" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 px-1 mb-2">
-              <div class="general__trends">
-                <div class="trending__content">
+                <div
+                  class="trending__content"
+                  :style="{ backgroundImage: 'url(' + trending.image + ')' }"
+                >
                   <div>
                     <p>Epe</p>
                     <p>Lagos</p>
@@ -115,29 +69,25 @@
                   <p>Land in Abuja - <span>650SQM</span></p>
                   <div class="d-flex justify-content-between">
                     <h6>FCDA Estate</h6>
-                    <ion-icon style="color: #00e8fe" name="bookmark-outline" />
+                    <!-- <ion-icon
+                      v-if="trending.bookmarkStatus == 'true'"
+                      @click="bookmark(trending)"
+                      style="color: #00e8fe"
+                      name="bookmark-outline"
+                    /> -->
+                    <ion-icon
+                      @click="removeBookmark(trending)"
+                      style="color: #00e8fe"
+                      name="bookmark"
+                    />
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-4 px-1 mb-2">
-              <div class="general__trends">
-                <div class="trending__content">
-                  <div>
-                    <p>Enugu 2</p>
-                    <p>Enugu</p>
-                    <p>Token 003</p>
-                  </div>
-                </div>
-                <div class="text__wrap bg-white px-3 py-3">
-                  <p>Land in Abuja - <span>650SQM</span></p>
-                  <div class="d-flex justify-content-between">
-                    <h6>FCDA Estate</h6>
-                    <ion-icon style="color: #00e8fe" name="bookmark-outline" />
-                  </div>
-                </div>
-              </div>
-            </div>
+          </div>
+          <div class="text-center" v-if="trendingAssets.length == 0">
+            <img style="width: 50px" src="/assets.webp" alt="asset image" />
+            <p>No trending assets</p>
           </div>
         </div>
         <div class="register_button_wrap text-center mt-3 py-4">
@@ -160,7 +110,9 @@ export default {
   data() {
     return {
       user: {},
-      newUser: {},
+      trendingAssets: {},
+      show_bookmark: true,
+      hide_bookmark: false,
     };
   },
 
@@ -183,15 +135,56 @@ export default {
 
       // console.log(this.$auth.$storage._state._token);
       try {
-        let res = await this.$axios.get("/getAsset", {
+        let res = await this.$axios.get("/getUser", {
           headers: {
             Authorization: `bearer ${token}`,
           },
         });
 
-        this.newUser = res.data[0];
+        this.user = res.data[0];
 
-        console.log(this.newUser);
+        console.log(this.user);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+    async bookmark(trending) {
+      try {
+        let response = await this.$axios.post(`/bookmarkAsset/${trending.id}`);
+        this.getTrendingAssets();
+        console.log(response);
+        this.$toast.success("Property has been bookmarked", { timeout: 5000 });
+      } catch (error) {
+        console.log(error.response);
+        this.$toast.warning(
+          "Ooops!!! You have to register inorder to bookmark",
+          {
+            timeout: 5000,
+          }
+        );
+        this.$router.push("/sign_up");
+      }
+    },
+    async removeBookmark(trending) {
+      try {
+        let response = await this.$axios.post(
+          `/removeFromBookmarks/${trending.id}`
+        );
+        this.getTrendingAssets();
+        console.log(response);
+        this.$toast.success("Property has been bookmarked", { timeout: 5000 });
+      } catch (error) {
+        console.log(error.response);
+        this.$toast.warning("There's an error somewhere", {
+          timeout: 5000,
+        });
+      }
+    },
+    async getTrendingAssets() {
+      try {
+        let response = await this.$axios.get("/getTrendingAsset");
+        this.trendingAssets = response.data;
+        console.log(this.trendingAssets);
       } catch (error) {
         console.log(error.response);
       }
@@ -199,6 +192,7 @@ export default {
   },
   created() {
     this.getUser();
+    this.getTrendingAssets();
   },
 };
 </script>
@@ -245,7 +239,7 @@ export default {
   /* gap: 10px; */
 }
 .trending__content {
-  background-image: url("/asset.jpg");
+  /* background-image: url("/asset.jpg"); */
   background-size: cover;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
@@ -265,7 +259,7 @@ export default {
   box-shadow: 0px 4px 4px rgba(29, 131, 197, 0.22);
 }
 .asset__content2 {
-  background-image: url("/asset2.jpg");
+  /* background-image: url("/asset2.jpg"); */
   background-size: cover;
   border-radius: 10px;
   color: #001214;

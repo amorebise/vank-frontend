@@ -167,6 +167,7 @@ export default {};
 .footer_wrap {
   background-color: #f8f7ff;
   padding: 100px;
+  /* margin-top: 200px; */
 }
 .footer_wrap .address_content,
 .footer_wrap .email_content {

@@ -44,7 +44,7 @@
               </span>
             </div>
             <div class="text-right">
-              <nuxt-link to="/forgot_password_email" class="password_link"
+              <nuxt-link to="/auth/email" class="password_link"
                 >forgot password?</nuxt-link
               >
             </div>
@@ -62,7 +62,7 @@
               <p>
                 Don’t have an account?
                 <nuxt-link
-                  to="/sign_up"
+                  to="/auth/sign_up"
                   class="sign_up_link text-decoration-none"
                   >Sign up here</nuxt-link
                 >
@@ -107,20 +107,20 @@ export default {
           });
         } else if (response.data.user.role == "Subscriber") {
           this.$auth.setUserToken(response.data.token);
-          this.$router.push("/user_dashboard/dashboard");
+          this.$router.push("/user_dashboard/my_account");
           console.log(this.$auth.loggedIn);
           console.log(response.data.token);
           this.$toast.success("You Are Logged In", {
             timeout: 5000,
           });
-        } else if (response.data.user.role == "Market Maker") {
-          this.$auth.setUserToken(response.data.token);
-          this.$router.push("/market_maker/dashboard");
-          console.log(this.$auth.loggedIn);
-          console.log(response.data.token);
-          this.$toast.success("You Are Logged In", {
-            timeout: 5000,
-          });
+          // } else if (response.data.user.role == "Market Maker") {
+          //   this.$auth.setUserToken(response.data.token);
+          //   this.$router.push("/market_maker/dashboard");
+          //   console.log(this.$auth.loggedIn);
+          //   console.log(response.data.token);
+          //   this.$toast.success("You Are Logged In", {
+          //     timeout: 5000,
+          //   });
         } else {
           this.$toast.warning("Incorrect password or email", {
             timeout: 5000,
@@ -129,7 +129,7 @@ export default {
       } catch (error) {
         this.loading = false;
         console.log(error);
-        console.log(error.response.data.error);
+        // console.log(error.response.data.error);
         this.message = error.response.data.error;
         this.$toast.warning(this.message, {
           timeout: 5000,

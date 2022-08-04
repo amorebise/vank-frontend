@@ -15,7 +15,7 @@
 
         <div class="transactions_data">
           <div class="body__wrap">
-            <v-simple-table fixed-header height="200px">
+            <v-simple-table fixed-header height="350px">
               <template v-slot:default>
                 <thead>
                   <tr
@@ -32,44 +32,19 @@
                 </thead>
                 <tbody>
                   <tr
+                    v-for="user in users"
+                    :key="user.index"
                     class="mt-2"
                     style="border-bottom: thin solid rgba(0, 0, 0, 0.12)"
-                    @click="viewDetail()"
+                    @click="viewDetail(user)"
                   >
-                    <td>1</td>
-                    <td>Abba Biola</td>
-                    <td>08123456789</td>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.first_name }} {{ user.last_name }}</td>
+                    <td>{{ user.phone_number }}</td>
                     <td>Funded Wallet</td>
                     <td>50,000</td>
                     <!-- <td>
                     <nuxt-link to="/admin_dashboard/dashboard/">
-                      View Details</nuxt-link
-                    >
-                  </td> -->
-                  </tr>
-                  <!-- <tr v-if="subscribers.length == 0">
-                  <td>
-                    <p>
-                      You do not have any Subscribers.
-                      <img class="emoji" src="/sad.png" alt="sad emoji" />
-                    </p>
-                  </td>
-                </tr> -->
-                </tbody>
-
-                <tbody>
-                  <tr
-                    class="mt-2"
-                    style="border-bottom: thin solid rgba(0, 0, 0, 0.12)"
-                    @click="viewDetail()"
-                  >
-                    <td>2</td>
-                    <td>Biola George</td>
-                    <td>08123456789</td>
-                    <td>Subscription</td>
-                    <td>75,000</td>
-                    <!-- <td>
-                    <nuxt-link to="/admin_dashboard/user_detail/id">
                       View Details</nuxt-link
                     >
                   </td> -->
@@ -110,22 +85,28 @@ export default {
   data() {
     return {
       tab: null,
-      user: {},
+      users: {},
       loading: false,
-      single_subscriber: {},
-      single_market_maker: {},
-      subscribers: {},
-      market_makers: {},
-      subscriber_modal: false,
-      market_maker_modal: false,
     };
   },
   methods: {
-    viewDetail() {
-      this.$router.push(`/admin_dashboard/user_detail/id`);
+    async getUsers() {
+      try {
+        let response = await this.$axios.get("/admin/getAllUser");
+        this.users = response.data;
+        console.log(this.users);
+      } catch (error) {
+        console.log(response.error);
+      }
+    },
+    viewDetail(user) {
+      this.$router.push(`/admin_dashboard/user_detail/${user.id}`);
+      console.log(user.id);
     },
   },
-  mounted() {},
+  created() {
+    this.getUsers();
+  },
 };
 </script>
 

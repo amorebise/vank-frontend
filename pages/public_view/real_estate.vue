@@ -52,9 +52,7 @@
 </template>
 
 <script>
-import creator_sidebar from "~/components/creator_sidebar.vue";
 export default {
-  components: { creator_sidebar },
   data() {
     return {};
   },

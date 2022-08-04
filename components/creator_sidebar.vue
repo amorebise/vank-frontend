@@ -58,12 +58,12 @@
           </div>
         </nuxt-link>
         <nuxt-link
-          to="/user_dashboard/my_account"
+          to="/user_dashboard/referals"
           class="list-group list-group-item active bg-transparent"
         >
           <div class="ml-5 d-flex align-items-center py-1">
             <ion-icon style="color: #001214" name="link"></ion-icon>
-            <span class="ml-2">My Invite Link</span>
+            <span class="ml-2">Referrals</span>
           </div>
         </nuxt-link>
 

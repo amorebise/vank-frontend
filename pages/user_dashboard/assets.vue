@@ -13,164 +13,12 @@
       </div>
       <div class="location__table__lagos mt-2">
         <div class="card__wrap">
-          <div
-            class="img__wrap d-md-flex justify-content-between px-2"
-            style="gap: 10px"
-          >
-            <nuxt-link :to="`/user_dashboard/property_detail/${id}`">
-              <div class="mb-2 property__cards">
-                <div class="general__trends">
-                  <div class="trending__content">
-                    <div class="sale__notification">
-                      <span class="text-dark">90% Sold</span>
-                    </div>
-                    <div>
-                      <p>
-                        Coordinates: <br />
-                        4724”12.2N 384231.7E
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="text__wrap bg-white px-3 py-2">
-                  <p>Land in Abuja - <span>650SQM</span></p>
-                  <div class="d-flex justify-content-between">
-                    <h6>FCDA Estate</h6>
-                    <!-- <ion-icon style="color: #00e8fe" name="bookmark-outline" /> -->
-                  </div>
-                </div>
-              </div>
-            </nuxt-link>
-            <div class="property__cards mb-2">
-              <div class="general__trends">
-                <div class="trending__content2">
-                  <!-- <div class="sale__notification">
-                    <span class="text-dark">50% Sold</span>
-                  </div> -->
-                  <div>
-                    <p>
-                      Coordinates: <br />
-                      4724”12.2N 384231.7E
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="text__wrap bg-white px-3 py-2">
-                <p>Land in Abuja - <span>650SQM</span></p>
-                <div class="d-flex justify-content-between">
-                  <h6>FCDA Estate</h6>
-                  <!-- <ion-icon style="color: #00e8fe" name="bookmark-outline" /> -->
-                </div>
-              </div>
-            </div>
-            <div class="property__cards mb-2">
-              <div class="general__trends">
-                <div class="trending__content3">
-                  <!-- <div class="sale__notification">
-                    <span class="text-dark">90% Sold</span>
-                  </div> -->
-                  <div>
-                    <p>
-                      Coordinates: <br />
-                      4724”12.2N 384231.7E
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="text__wrap bg-white px-3 py-1">
-                <p>Land in Abuja - <span>650SQM</span></p>
-                <div class="d-flex justify-content-between">
-                  <h6>FCDA Estate</h6>
-                  <!-- <ion-icon style="color: #00e8fe" name="bookmark-outline" /> -->
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card__wrap">
-          <div
-            class="img__wrap d-md-flex justify-content-between px-2"
-            style="gap: 10px"
-          >
-            <div class="mb-2 property__cards">
-              <div class="general__trends">
-                <div class="trending__content">
-                  <!-- <div class="sale__notification">
-                    <span class="text-dark">90% Sold</span>
-                  </div> -->
-                  <div>
-                    <p>
-                      Coordinates: <br />
-                      4724”12.2N 384231.7E
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="text__wrap bg-white px-3 py-2">
-                <p>Land in Abuja - <span>650SQM</span></p>
-                <div class="d-flex justify-content-between">
-                  <h6>FCDA Estate</h6>
-                  <!-- <ion-icon style="color: #00e8fe" name="bookmark-outline" /> -->
-                </div>
-              </div>
-            </div>
-            <div class="property__cards mb-2">
-              <div class="general__trends">
-                <div class="trending__content2">
-                  <div class="sale__notification">
-                    <span class="text-dark">50% Sold</span>
-                  </div>
-                  <div>
-                    <p>
-                      Coordinates: <br />
-                      4724”12.2N 384231.7E
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="text__wrap bg-white px-3 py-2">
-                <p>Land in Abuja - <span>650SQM</span></p>
-                <div class="d-flex justify-content-between">
-                  <h6>FCDA Estate</h6>
-                  <!-- <ion-icon style="color: #00e8fe" name="bookmark-outline" /> -->
-                </div>
-              </div>
-            </div>
-            <div class="property__cards mb-2">
-              <div class="general__trends">
-                <div class="trending__content3">
-                  <div class="sale__notification">
-                    <span class="text-dark">90% Sold</span>
-                  </div>
-                  <div>
-                    <p>
-                      Coordinates: <br />
-                      4724”12.2N 384231.7E
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="text__wrap bg-white px-3 py-1">
-                <p>Land in Abuja - <span>650SQM</span></p>
-                <div class="d-flex justify-content-between">
-                  <h6>FCDA Estate</h6>
-                  <!-- <ion-icon style="color: #00e8fe" name="bookmark-outline" /> -->
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="register_button_wrap text-center mt-3 py-4">
+          <all-assets />
+          <!-- <div class="register_button_wrap text-center mt-3 py-4">
             <nuxt-link to="/user_dashboard/lagos_property" class="assets__link">
               <span class="px-3">View all Property in this Location</span>
             </nuxt-link>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -193,6 +41,7 @@ export default {
   margin-left: 270px;
   background-color: #fff;
   min-height: 100vh;
+  padding-right: 10px;
   /* padding: 0 50px; */
 }
 .fractional__ownership__wrap a {
