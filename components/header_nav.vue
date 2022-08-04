@@ -25,15 +25,17 @@
             <nuxt-link to="/" class="navbar-brand pt-2">Home</nuxt-link>
           </li>
           <li class="nav-item mx-3" @click="navigate()">
-            <nuxt-link to="/about_us" class="navbar-brand pt-2"
+            <nuxt-link to="/home/about_us" class="navbar-brand pt-2"
               >About Us</nuxt-link
             >
           </li>
           <li class="nav-item mx-3" @click="navigate()">
-            <nuxt-link to="/faqs" class="navbar-brand pt-2">FAQs</nuxt-link>
+            <nuxt-link to="/home/faqs" class="navbar-brand pt-2"
+              >FAQs</nuxt-link
+            >
           </li>
           <li class="nav-item mx-3" @click="navigate()">
-            <nuxt-link to="/contact_us" class="navbar-brand pt-2"
+            <nuxt-link to="/home/contact_us" class="navbar-brand pt-2"
               >Contact Us</nuxt-link
             >
           </li>

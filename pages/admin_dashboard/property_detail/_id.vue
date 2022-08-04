@@ -2,57 +2,72 @@
   <div class="w-100">
     <div class="property">
       <user-nav name="Property Details" />
-      <div>
-        <font-awesome-icon
-          @click="$router.go(-1)"
-          role="button"
-          class="fa-1x text-dark pl-1"
-          :icon="['fas', 'arrow-left']"
-        />
-      </div>
-      <div class="mt-5">
-        <div class="row">
+      <div class="mt-5 single__property">
+        <div @click="back()">
+          <font-awesome-icon
+            role="button"
+            class="fa-1x text-dark pl-1"
+            :icon="['fas', 'arrow-left']"
+          />
+        </div>
+        <div class="row mt-3">
           <div class="col-md-6">
             <div class="img_card">
               <div class="asset__content text-center">
-                <!-- <div>
-                  <p>&#x20A6;1.19K per unit</p>
-                  <p>Min ROI: 9.2%PA</p>
-                  <h4>Whole Price: &#x20A6;950,000</h4>
-                  <p>Pyanko 1 Token</p>
-                </div> -->
+                <div>
+                  <!-- <p>&#x20A6;1.19K per unit</p> -->
+                  <p>Min ROI: {{ asset_detail.min_roi }}</p>
+                  <h4>Whole Price: &#x20A6;{{ asset_detail.whole_price }}</h4>
+                  <p>{{ asset_detail.token_name }} Token</p>
+                </div>
               </div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="description__wrap">
-              <p>Location: Karshi(Abuja/Nassarawa)</p>
-              <p>Layout Name: Pyanko</p>
+              <p>Location: {{ asset_detail.location }}</p>
+              <p>Layout Name: {{ asset_detail.layout_name }}</p>
               <p>
                 Distance to closest built up areas: <br />
-                -2KM to Navy Estate- <br />
-                about 4KM to Karshi <br />
-                about 3.5KM to Orozo <br />
-                about 3KM to Apo
+                -{{ asset_detail.distance1 }}- <br />
+                {{ asset_detail.distance2 }} <br />
+                about {{ asset_detail.distance3 }} <br />
+                about {{ asset_detail.distance1 }}
               </p>
               <p>Population within 20KM radius: Over 200,000</p>
-              <div class="d-flex" style="gap: 5px">
-                <span>Click to view Coordinates</span>
-                <div style="padding-top: 1px">
-                  <img src="/caret.svg" alt="caret icon" />
-                </div>
-              </div>
+              <span>Est. minimum return 9.2%PA</span>
             </div>
           </div>
         </div>
-        <div class="register_button_wrap text-center mt-3 py-4">
-          <nuxt-link
-            :to="`/user_dashboard/buy_token/${id}`"
-            class="assets__link"
-          >
-            <span class="px-3">Edit Property</span>
-          </nuxt-link>
-        </div>
+        <!-- <div
+          style="gap: 10px"
+          class="
+            buy__token__wrap
+            d-flex
+            justify-content-center
+            text-center
+            mt-3
+            py-4
+          "
+        >
+          <div>
+            <nuxt-link
+              :to="`/user_dashboard/buy_token/${id}`"
+              class="assets__link"
+            >
+              <span class="px-3">Buy Token</span>
+            </nuxt-link>
+          </div>
+
+          <div>
+            <nuxt-link
+              :to="`/user_dashboard/buy_token/${id}`"
+              class="assets__link"
+            >
+              <span class="px-3">Sell</span>
+            </nuxt-link>
+          </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -61,11 +76,27 @@
 <script>
 import creator_sidebar from "~/components/creator_sidebar.vue";
 export default {
+  middleware: "auth",
   components: { creator_sidebar },
   data() {
-    return {};
+    return {
+      asset_detail: {},
+      id: this.$route.params.id,
+    };
   },
-  methods: {},
+  methods: {
+    async getSingleAssetDetail() {
+      let response = await this.$axios.get(`/getSingleAsset/${this.id}`);
+      this.asset_detail = response.data;
+      console.log(this.asset_detail);
+    },
+    back() {
+      this.$router.go(-1);
+    },
+  },
+  created() {
+    this.getSingleAssetDetail();
+  },
 };
 </script>
 
@@ -74,6 +105,9 @@ export default {
   margin-left: 270px;
   background-color: #fff;
   min-height: 100vh;
+}
+.single__property a {
+  color: inherit;
 }
 .property .asset__content {
   background-image: url("/asset.jpg");
@@ -89,7 +123,6 @@ export default {
   font-weight: 500;
   font-size: 15px;
   border: 5px solid #00e8fe;
-  /* gap: 10px; */
 }
 .property .asset__content p {
   opacity: 0;
@@ -98,7 +131,7 @@ export default {
   opacity: 0;
   color: #00e8fe;
 }
-/* .property .asset__content:hover {
+.property .asset__content:hover {
   background-color: rgba(0, 0, 0, 0.34);
   background-blend-mode: overlay;
   z-index: 999;
@@ -110,7 +143,7 @@ export default {
 .property .asset__content:hover h4 {
   opacity: 1;
   transition: ease-in-out 0.7s;
-} */
+}
 .property .description__wrap p {
   line-height: 25px;
   font-weight: 500;
@@ -118,6 +151,14 @@ export default {
 }
 .property .description__wrap span {
   color: #00e8fe;
+}
+.single__property .buy__token__wrap .assets__link {
+  border: 1px solid #00e8fe;
+  padding: 10px 2px;
+}
+.single__property .buy__token__wrap .assets__link span {
+  border: 1px solid #00e8fe;
+  padding: 7px 2px;
 }
 
 @media (max-width: 768px) {
@@ -127,6 +168,28 @@ export default {
   }
   .settings_wrap {
     margin: 10px;
+  }
+  .property .asset__content {
+    border: none;
+    border-radius: 0;
+    box-shadow: 2px 2px 2px #303030;
+  }
+  .property .description__wrap p {
+    font-size: 13px;
+  }
+  .property .description__wrap span {
+    font-size: 13px;
+  }
+  .single__property {
+    margin-top: 0 !important;
+    padding: 20px;
+  }
+  .description__wrap {
+    padding: 10px;
+    margin-top: -25px;
+  }
+  .single__property .buy__token__wrap {
+    margin-top: 0 !important;
   }
 }
 </style>

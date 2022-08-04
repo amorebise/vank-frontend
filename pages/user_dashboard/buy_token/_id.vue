@@ -17,10 +17,17 @@
           <div class="row">
             <div class="col-md-6">
               <div class="img_card">
-                <div class="asset__content text-center">
+                <div
+                  class="asset__content text-center"
+                  :style="{
+                    backgroundImage: 'url(' + asset_detail.image + ')',
+                  }"
+                >
                   <div>
-                    <p>&#x20A6;1.19K per token</p>
-                    <p>75% sold</p>
+                    <p>&#x20A6;{{ asset_detail.token_price }}K per token</p>
+                    <p>
+                      {{ asset_detail.token_quantity_subscribed }}% tokens sold
+                    </p>
                     <h4>483m <sup class="font__text">2</sup></h4>
                   </div>
                 </div>
@@ -31,7 +38,7 @@
                 <form action="">
                   <div class="form-group">
                     <label>Enter Amount (NGN)</label>
-                    <input type="number" class="form-control" />
+                    <input type="number" class="form-control buy__input" />
                   </div>
                 </form>
                 <div class="d-flex">
@@ -58,12 +65,23 @@ import creator_sidebar from "~/components/creator_sidebar.vue";
 export default {
   components: { creator_sidebar },
   data() {
-    return {};
+    return {
+      id: this.$route.params.id,
+      asset_detail: {},
+    };
   },
   methods: {
+    async getSingleAssetDetail() {
+      let response = await this.$axios.get(`/getSingleAsset/${this.id}`);
+      this.asset_detail = response.data;
+      console.log(this.asset_detail);
+    },
     back() {
       this.$router.go(-1);
     },
+  },
+  created() {
+    this.getSingleAssetDetail();
   },
 };
 </script>
@@ -77,8 +95,11 @@ export default {
 a {
   color: inherit;
 }
+.buy__input {
+  border: 1px solid #30303058 !important;
+}
 .but__token__content .asset__content {
-  background-image: url("/asset.jpg");
+  /* background-image: url("/asset.jpg"); */
   background-size: cover;
   border-radius: 10px;
   color: #001214;

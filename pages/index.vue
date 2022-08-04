@@ -12,12 +12,12 @@
             <span class="type"></span>
           </div>
           <div class="registration_wrap text-center mt-4">
-            <nuxt-link to="/sign_up" class="reg_link"
+            <nuxt-link to="/auth/sign_up" class="reg_link"
               ><span class="text-dark new_signup mx-1"
                 >Sign up for free</span
               ></nuxt-link
             >
-            <nuxt-link to="/real_estate" class="explore_wrap"
+            <nuxt-link to="/public_view/real_estate" class="explore_wrap"
               ><span class="text-dark explore_link mx-1"
                 >Explore Assets</span
               ></nuxt-link
@@ -34,7 +34,11 @@
           class="img__wrap d-md-flex justify-content-center px-2"
           style="gap: 10px"
         >
-          <div class="mb-2 cardz">
+          <div
+            v-for="trending in trendingAssets"
+            :key="trending.index"
+            class="mb-2 cardz"
+          >
             <div class="sale__notification">
               <p>90% Sold</p>
             </div>
@@ -45,43 +49,29 @@
               alt="image"
             />
             <div class="text__wrap bg-white px-3 py-2">
-              <p>Land in Abuja - <span>650SQM</span></p>
+              <p>Land in {{ trending.location }} - <span>650SQM</span></p>
               <div class="d-flex justify-content-between">
-                <h6>FCDA Estate</h6>
-                <ion-icon style="color: #00e8fe" name="bookmark-outline" />
+                <h6 class="tranform_text">
+                  {{ trending.layout_name.toUpperCase() }}
+                </h6>
+                <ion-icon
+                  v-if="trending.bookmarkStatus === 'true'"
+                  @click="removeBookmark()"
+                  style="color: #00e8fe"
+                  name="bookmark"
+                />
+                <ion-icon
+                  v-else
+                  @click="bookmark()"
+                  style="color: #00e8fe"
+                  name="bookmark-outline"
+                />
               </div>
             </div>
           </div>
-          <div class="cardz mb-2">
-            <div class="sale__notification">
-              <p>50% Sold</p>
-            </div>
-            <v-img
-              class="img"
-              lazy-src="/atrend2.jpg"
-              src="/atrend2.jpg"
-              alt="image"
-            />
-            <div class="text__wrap bg-white px-3 py-2">
-              <p>Land in Abuja - <span>650SQM</span></p>
-              <div class="d-flex justify-content-between">
-                <h6>FCDA Estate</h6>
-                <ion-icon style="color: #00e8fe" name="bookmark-outline" />
-              </div>
-            </div>
-          </div>
-          <div class="cardz mb-2">
-            <div class="sale__notification">
-              <p>70% Sold</p>
-            </div>
-            <v-img class="img" lazy-src="/att.jpg" src="/att.jpg" alt="image" />
-            <div class="text__wrap bg-white px-3 py-1">
-              <p>Land in Abuja - <span>650SQM</span></p>
-              <div class="d-flex justify-content-between">
-                <h6>FCDA Estate</h6>
-                <ion-icon style="color: #00e8fe" name="bookmark-outline" />
-              </div>
-            </div>
+          <div class="text-center" v-if="trendingAssets.length == 0">
+            <img style="width: 50px" src="/assets.webp" alt="asset image" />
+            <p>No trending assets.</p>
           </div>
         </div>
         <div class="view__assets__wrap text-center">
@@ -203,7 +193,7 @@
             </div>
             <div class="col">
               <div class="img__section">
-                <img src="/iv2.png" alt="" />
+                <img src="/ivv.png" alt="" />
               </div>
             </div>
             <div class="col">
@@ -384,7 +374,9 @@ export default {
   name: "IndexPage",
   data() {
     return {
+      trendingAssets: {},
       loading: false,
+      user: {},
       wait_list: {
         first_name: "",
         last_name: "",
@@ -393,10 +385,50 @@ export default {
     };
   },
   methods: {
+    async getUser() {
+      let auth = this.$auth.$storage._state;
+      let token = null;
+
+      for (const key in auth) {
+        console.log(key);
+
+        if (key == "_token.local") {
+          token = auth[key];
+        } else {
+          console.log("No");
+        }
+      }
+
+      console.log(token);
+
+      // console.log(this.$auth.$storage._state._token);
+      try {
+        let res = await this.$axios.get("/getUser", {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        });
+
+        this.user = res.data[0];
+
+        console.log(this.user);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+    async getTrendingAssets() {
+      try {
+        let response = await this.$axios.get("/getTrendingAsset");
+        this.trendingAssets = response.data;
+        console.log(this.trendingAssets);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
     async sendRequest() {
       try {
         this.loading = true;
-        let response = await this.$axios.post("/waitList", this.wait_list);
+        let response = await this.$axios.post("/waitList/", this.wait_list);
         console.log(response);
         this.wait_list = {};
         this.loading = false;
@@ -407,6 +439,44 @@ export default {
       } catch (error) {
         this.loading = false;
         console.log(error.response);
+      }
+    },
+    async bookmark() {
+      try {
+        let response = await this.$axios.post(`/bookmarkAsset/${this.user.id}`);
+        console.log(response);
+        this.getTrendingAssets();
+        this.$toast.success("Property has been bookmarked", { timeout: 5000 });
+      } catch (error) {
+        console.log(error.response);
+        console.log(this.user.id);
+        this.$toast.warning(
+          "Ooops!!! You have to register inorder to bookmark this asset",
+          {
+            timeout: 5000,
+          }
+        );
+      }
+    },
+    async removeBookmark() {
+      try {
+        let response = await this.$axios.post(
+          `/removeFromBookmarks/${this.user.id}`
+        );
+        console.log(response);
+        this.getTrendingAssets();
+        this.$toast.success("Property has been removed from bookmarks", {
+          timeout: 5000,
+        });
+      } catch (error) {
+        console.log(error.response);
+        console.log(this.user.id);
+        this.$toast.warning(
+          "Ooops!!! You have to register inorder to bookmark this asset",
+          {
+            timeout: 5000,
+          }
+        );
       }
     },
     typed_text() {
@@ -420,7 +490,11 @@ export default {
     },
   },
   mounted() {
+    this.getTrendingAssets();
     this.typed_text();
+    this.getUser();
+
+    // form modal
     window.addEventListener("load", function () {
       this.setTimeout(function open(event) {
         document.getElementById("demo_wrap").style.display = "block";
@@ -460,7 +534,7 @@ export default {
   margin: 0 auto;
 }
 .demo__info__wrap h6 {
-  font-family: "Dancing Script", cursive;
+  font-family: "Dancing Script", cursive !important;
   font-size: 26px;
   color: #00e8fe;
   text-align: center;
@@ -536,6 +610,7 @@ export default {
 .trending__wrap .text__wrap h6 {
   font-weight: 600;
   letter-spacing: 1px;
+  text-transform: capitalize;
 }
 .view__assets__wrap {
   margin-top: 20px;

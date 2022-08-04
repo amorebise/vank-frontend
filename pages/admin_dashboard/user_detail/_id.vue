@@ -14,29 +14,31 @@
         <div class="row">
           <div class="col-md-6">
             <div class="img_card">
-              <div class="asset__content text-center">
-                <!-- <div>
-                  <p>&#x20A6;1.19K per unit</p>
-                  <p>Min ROI: 9.2%PA</p>
-                  <h4>Whole Price: &#x20A6;950,000</h4>
-                  <p>Pyanko 1 Token</p>
-                </div> -->
-              </div>
+              <div class="asset__content text-center"></div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="description__wrap">
-              <p>Name: <span>Abba Bola</span></p>
-              <p>Phone: <span>08123456789</span></p>
-              <p>Email: <span>abba@gmail.com</span></p>
               <p>
-                House Address: <span>No 1 Hamza Zayyad Close Ikeja Lagos</span>
+                Name:
+                <span
+                  >{{ singleUser.first_name }} {{ singleUser.last_name }}</span
+                >
+              </p>
+              <p>
+                Phone: <span>{{ singleUser.phone_number }}</span>
+              </p>
+              <p>
+                Email: <span>{{ singleUser.email }}</span>
+              </p>
+              <p>
+                House Address: <span>{{ singleUser.address }}</span>
               </p>
             </div>
-            <div class="d-flex" style="gap: 10px">
+            <div class="d-flex radio_b" style="gap: 10px">
               <div class="register_button_wrap text-center mt-3 py-4">
                 <nuxt-link
-                  :to="`/user_dashboard/buy_token/${id}`"
+                  to="/admin_dashboard/transactions"
                   class="assets__link"
                 >
                   <span class="px-3">Transactions</span>
@@ -44,19 +46,72 @@
               </div>
               <div class="register_button_wrap text-center mt-3 py-4">
                 <nuxt-link
-                  :to="`/user_dashboard/buy_token/${id}`"
+                  :to="`/admin_dashboard/wallets`"
                   class="assets__link"
                 >
                   <span class="px-3">View Wallets</span>
                 </nuxt-link>
               </div>
-              <div class="register_button_wrap text-center mt-3 py-4">
-                <nuxt-link
-                  :to="`/user_dashboard/buy_token/${id}`"
+              <div class="register_button_wrap text-center mt-1 py-4">
+                <div
+                  @click="show_limit_tab = !show_limit_tab"
                   class="assets__link"
                 >
                   <span class="px-3">Limit Account</span>
-                </nuxt-link>
+                </div>
+              </div>
+              <div v-show="show_limit_tab" class="radio__btn">
+                <div @click="run_stake()" class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="exampleRadios"
+                    id="exampleRadios1"
+                    value="option1"
+                    checked
+                  />
+                  <label class="form-check-label" for="exampleRadios1">
+                    Can't Withdraw
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    @click="run_stake()"
+                    class="form-check-input"
+                    type="radio"
+                    name="exampleRadios"
+                    id="exampleRadios2"
+                    value="option2"
+                  />
+                  <label class="form-check-label" for="exampleRadios2">
+                    Can't Sell
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="exampleRadios"
+                    id="exampleRadios3"
+                    value="option3"
+                  />
+                  <label class="form-check-label" for="exampleRadios3">
+                    Can't Subscribe
+                  </label>
+                </div>
+                <div @click="run_stake()" class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="exampleRadios"
+                    id="exampleRadios1"
+                    value="option1"
+                    checked
+                  />
+                  <label class="form-check-label" for="exampleRadios1">
+                    Can't Stake
+                  </label>
+                </div>
               </div>
             </div>
           </div>
@@ -71,9 +126,29 @@ import creator_sidebar from "~/components/creator_sidebar.vue";
 export default {
   components: { creator_sidebar },
   data() {
-    return {};
+    return {
+      show_limit_tab: false,
+      id: this.$route.params.id,
+      singleUser: {},
+    };
   },
-  methods: {},
+  methods: {
+    async getSingleUser() {
+      try {
+        let response = await this.$axios.get(`/admin/getSingleUser/${this.id}`);
+        this.singleUser = response.data?.user;
+        console.log(this.singleUser);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+    run_stake() {
+      this.show_limit_tab = false;
+    },
+  },
+  created() {
+    this.getSingleUser();
+  },
 };
 </script>
 
@@ -82,6 +157,19 @@ export default {
   margin-left: 270px;
   background-color: #fff;
   min-height: 100vh;
+}
+.radio_b {
+  position: relative;
+}
+.radio__btn {
+  position: absolute;
+  right: 100px;
+  background-color: #fff;
+  border: 1px solid #00e8fe;
+  padding: 20px;
+}
+.radio__btn .form-check-label {
+  font-size: 14px;
 }
 .single__user__wrap .asset__content {
   background-image: url("/beaut.avif");

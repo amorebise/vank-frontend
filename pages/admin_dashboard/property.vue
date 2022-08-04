@@ -15,7 +15,7 @@
 
         <div class="transactions_data">
           <div class="body__wrap">
-            <v-simple-table fixed-header height="300px">
+            <v-simple-table fixed-header height="100%">
               <template v-slot:default>
                 <thead>
                   <tr
@@ -23,80 +23,66 @@
                     class=""
                   >
                     <th class="text-left th_color">SN</th>
-                    <th class="text-left th_color">Name</th>
-                    <th class="text-left th_color">Phone number</th>
-                    <th class="text-left th_color">Transaction</th>
-                    <th class="text-left th_color">Amount</th>
+                    <th class="text-left th_color">Property Name</th>
+                    <th class="text-left th_color">Location</th>
+                    <!-- <th class="text-left th_color">Size</th> -->
+                    <th class="text-left th_color">No of tokens</th>
+                    <th class="text-left th_color">Subscribed</th>
+                    <th class="text-left th_color">Available</th>
                     <th class="text-left th_color">Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr
+                    v-for="asset in available_assets"
+                    :key="asset.index"
                     style="border-bottom: thin solid rgba(0, 0, 0, 0.12)"
                     class="mt-2"
-                    @click="viewDetail()"
                   >
-                    <td>1</td>
-                    <td>Abba Biola</td>
-                    <td>08123456789</td>
-                    <td>Funded Wallet</td>
-                    <td>50,000</td>
+                    <td>{{ asset.id }}</td>
+                    <td>{{ asset.token_name }}</td>
+                    <td>{{ asset.location }}</td>
+                    <td>{{ asset.total_token_quantity }}</td>
+                    <td>{{ asset.token_quantity_subscribed }}</td>
+                    <td>{{ asset.token_quantity_available }}</td>
+                    <!-- <td>50,000</td> -->
                     <td class="pt-3">
-                      <p role="button" style="color: #00e8fe; font-size: 12px">
+                      <p
+                        v-if="asset.status === 'Trending'"
+                        @click="removeFromTrending(asset)"
+                        role="button"
+                        style="color: #00e8fe; font-size: 12px"
+                      >
+                        Remove from trending
+                      </p>
+                      <p
+                        v-else
+                        @click="markAsTrending(asset)"
+                        role="button"
+                        style="color: #00e8fe; font-size: 12px"
+                      >
                         Make trending
                       </p>
                     </td>
                   </tr>
-                  <!-- <tr v-if="subscribers.length == 0">
-                  <td>
-                    <p>
-                      You do not have any Subscribers.
-                      <img class="emoji" src="/sad.png" alt="sad emoji" />
-                    </p>
-                  </td>
-                </tr> -->
-                </tbody>
-
-                <tbody>
-                  <tr
-                    style="border-bottom: thin solid rgba(0, 0, 0, 0.12)"
-                    class="mt-2"
-                    @click="viewDetail()"
-                  >
-                    <td>2</td>
-                    <td>Biola George</td>
-                    <td>08123456789</td>
-                    <td>Subscription</td>
-                    <td>75,000</td>
-                    <td class="pt-3">
-                      <p role="button" style="color: #00e8fe; font-size: 12px">
-                        Make trending
+                  <tr v-if="available_assets.length == 0">
+                    <td>
+                      <p class="text-center">
+                        You have not added any assets.
+                        <!-- <img class="emoji" src="/sad.png" alt="sad emoji" /> -->
                       </p>
                     </td>
-                    <!-- <td>
-                    <nuxt-link to="/admin_dashboard/user_detail/id">
-                      View Details</nuxt-link
-                    >
-                  </td> -->
                   </tr>
-                  <!-- <tr v-if="subscribers.length == 0">
-                  <td>
-                    <p>
-                      You do not have any Subscribers.
-                      <img class="emoji" src="/sad.png" alt="sad emoji" />
-                    </p>
-                  </td>
-                </tr> -->
                 </tbody>
               </template>
             </v-simple-table>
 
-            <div class="d-flex justify-content-center" style="gap: 10px">
+            <div class="d-flex justify-content-center mt-5" style="gap: 10px">
               <div
                 class="view__assets__wrap text-center"
                 style="margin-top: -30px"
               >
-                <nuxt-link to="/admin_dashboard/property">
+                <nuxt-link to="/admin_dashboard/all_assets">
                   <button class="assets__link">
                     <span class="px-3">View all </span>
                   </button>
@@ -106,7 +92,7 @@
                 class="view__assets__wrap text-center"
                 style="margin-top: -30px"
               >
-                <nuxt-link to="/admin_dashboard/property">
+                <nuxt-link to="/admin_dashboard/add_asset">
                   <button class="assets__link">
                     <span class="px-3">Add new Property</span>
                   </button>
@@ -127,22 +113,51 @@ export default {
   data() {
     return {
       tab: null,
-      user: {},
+      available_assets: {},
       loading: false,
-      single_subscriber: {},
-      single_market_maker: {},
-      subscribers: {},
-      market_makers: {},
       subscriber_modal: false,
       market_maker_modal: false,
     };
   },
   methods: {
+    async showAvailableAssets() {
+      try {
+        let response = await this.$axios.get("/showAvailableAsset/");
+        this.available_assets = response.data;
+        console.log(this.available_assets);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+    async markAsTrending(asset) {
+      try {
+        let response = await this.$axios.post(
+          `/admin/markAsTrending/${asset.id}`
+        );
+        this.showAvailableAssets();
+        console.log(response);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+    async removeFromTrending(asset) {
+      try {
+        let response = await this.$axios.post(
+          `/admin/removeFromTrending/${asset.id}`
+        );
+        this.showAvailableAssets();
+        console.log(response);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
     viewDetail() {
       this.$router.push(`/admin_dashboard/property_detail/id`);
     },
   },
-  mounted() {},
+  created() {
+    this.showAvailableAssets();
+  },
 };
 </script>
 

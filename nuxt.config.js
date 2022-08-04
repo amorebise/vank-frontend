@@ -119,6 +119,7 @@ export default {
     '@nuxtjs/auth-next',
     '@nuxt/image',
     "vue-toastification/nuxt",
+    '@nuxtjs/axios',
 
 
 
@@ -143,6 +144,7 @@ export default {
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: "https://api.vankwallet.com/api",
+    // proxy: true,
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': 'Content-Type',
@@ -150,6 +152,15 @@ export default {
       'Access-Control-Allow-Credentials': 'true'
     }
   },
+  // proxy: {
+  //   // '/api/': 'https://api.vankwallet.com',
+  //   '/api/': {
+  //     target: 'api.vankwallet.com/', pathRewrite: { '^/api/': '' }, changeOrigin: false,
+  //     prependPath: false
+  //   }
+
+  //   // '/api2/': 'http://api.another-website.com'
+  // },
   auth: {
     strategies: {
       local: {
@@ -167,7 +178,7 @@ export default {
         endpoints: {
           login: { url: '/login', method: 'post' },
           logout: { url: '/logout', method: 'post' },
-          user: { url: '/getAsset', method: 'get' }
+          user: { url: '/getUser', method: 'get' }
         }
       }
     }

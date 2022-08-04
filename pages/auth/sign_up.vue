@@ -20,7 +20,7 @@
                     rules="required"
                     v-slot="{ errors }"
                   >
-                    <label for="" class="py-2">First Name</label>
+                    <label for="" class="">First Name</label>
                     <input
                       type="text"
                       class="form-control"
@@ -35,7 +35,7 @@
               <!-- Middle Name -->
               <div class="col-md-6">
                 <div class="form-group mx-2 mt-2">
-                  <label for="" class="py-2">Middle Name</label>
+                  <label for="" class="">Middle Name</label>
                   <input
                     type="text"
                     class="form-control"
@@ -53,7 +53,7 @@
                     rules="required"
                     v-slot="{ errors }"
                   >
-                    <label for="" class="py-2">Last Name</label>
+                    <label for="" class="">Last Name</label>
                     <input
                       type="text"
                       class="form-control"
@@ -74,7 +74,7 @@
                     rules="required|email"
                     v-slot="{ errors }"
                   >
-                    <label for="" class="py-2">Email Address</label>
+                    <label for="" class="">Email Address</label>
                     <input
                       type="email"
                       class="form-control"
@@ -100,7 +100,7 @@
                     rules="required|integer|max:14"
                     v-slot="{ errors }"
                   >
-                    <label for="" class="py-2">Phone Number</label>
+                    <label for="" class="">Phone Number</label>
                     <input
                       type="text"
                       class="form-control"
@@ -126,7 +126,7 @@
                     rules="required"
                     v-slot="{ errors }"
                   >
-                    <label for="" class="py-2">Full Address</label>
+                    <label for="" class="">Full Address</label>
                     <input
                       type="text"
                       class="form-control"
@@ -146,7 +146,7 @@
                     rules="required|max:30|min:6"
                     v-slot="{ errors }"
                   >
-                    <label for="" class="py-2">Password</label>
+                    <label for="" class="">Password</label>
                     <input
                       type="password"
                       class="form-control"
@@ -170,7 +170,7 @@
                     rules="required|max:30|min:8"
                     v-slot="{ errors }"
                   >
-                    <label for="" class="py-2">Confirm Password</label>
+                    <label for="" class="">Confirm Password</label>
                     <input
                       type="password"
                       class="form-control"
@@ -193,7 +193,7 @@
                     rules="required"
                     v-slot="{ errors }"
                   >
-                    <label for="exampleFormControlSelect1" class="py-2"
+                    <label for="exampleFormControlSelect1" class=""
                       >Country</label
                     >
                     <select
@@ -226,7 +226,7 @@
                     rules="required"
                     v-slot="{ errors }"
                   >
-                    <label for="exampleFormControlSelect1" class="py-2"
+                    <label for="exampleFormControlSelect1" class=""
                       >State</label
                     >
                     <select
@@ -342,7 +342,7 @@ export default {
         const response = await this.$axios.post("/register", this.signUp_data);
         console.log(response);
         this.loading = false;
-        this.$router.push("/signup_notification");
+        this.$router.push("/notifications/signup_notification");
       } catch (error) {
         this.loading = false;
         console.log(error.response);
@@ -390,7 +390,10 @@ export default {
 </script>
 
 <style scoped>
-
+* {
+  margin: 0;
+  padding: 0;
+}
 .registeration_content {
   margin: 40px auto;
   width: 70%;
@@ -465,6 +468,13 @@ export default {
   .registeration_content {
     /* margin: 10px; */
     width: 100%;
+  }
+  .registeration_content .form-group {
+    margin-top: 10px !important;
+  }
+  .col-md-6 {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
   }
   .registeration_content h1 {
     font-size: 30px;

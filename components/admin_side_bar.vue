@@ -73,16 +73,15 @@
           </v-expansion-panel>
         </v-expansion-panels>
 
-        <!-- <nuxt-link
-          to="/admin_dashboard/staking_transactions"
+        <nuxt-link
+          to="/admin_dashboard/list/wait_list"
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="ml-3 d-flex align-items-center">
             <ion-icon name="card-outline"></ion-icon>
-            <img style="width: 18px" src="/wall.svg" alt="" />
-            <span class="ml-2">Transactions</span>
+            <span class="ml-2">Waitlist</span>
           </div>
-        </nuxt-link> -->
+        </nuxt-link>
         <nuxt-link
           to="/admin_dashboard/property"
           class="list-group list-group-item active bg-transparent active"
@@ -97,7 +96,7 @@
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="ml-3 d-flex align-items-center">
-            <ion-icon style="color: #001214" name="bookmark-outline"></ion-icon>
+            <ion-icon style="color: #001214" name="settings-outline"></ion-icon>
             <span class="ml-2">Settings</span>
           </div>
         </nuxt-link>

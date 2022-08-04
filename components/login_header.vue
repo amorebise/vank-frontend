@@ -13,7 +13,7 @@
 
       <ul class="navbar-nav ml-auto pl-5 mb-2 mb-lg-0">
         <li class="nav-item sign_up_wrap mx-3">
-          <nuxt-link to="/sign_up" class="sign_up_button navbar-brand">
+          <nuxt-link to="/auth/sign_up" class="sign_up_button navbar-brand">
             Sign Up
           </nuxt-link>
         </li>
