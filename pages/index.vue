@@ -38,6 +38,7 @@
             v-for="trending in trendingAssets"
             :key="trending.index"
             class="mb-2 cardz"
+            @click="$router.push(`/user_dashboard/asset_detail/${trending.id}`)"
           >
             <div class="sale__notification">
               <p>90% Sold</p>
@@ -45,7 +46,7 @@
             <v-img
               class="img"
               lazy-src="/atrend.jpg"
-              src="/atrend.jpg"
+              :src="trending.image"
               alt="image"
             />
             <div class="text__wrap bg-white px-3 py-2">
@@ -54,14 +55,13 @@
                 <h6 class="tranform_text">
                   {{ trending.layout_name.toUpperCase() }}
                 </h6>
-                <ion-icon
+                <!-- <ion-icon
                   v-if="trending.bookmarkStatus === 'true'"
                   @click="removeBookmark()"
                   style="color: #00e8fe"
                   name="bookmark"
-                />
+                /> -->
                 <ion-icon
-                  v-else
                   @click="bookmark()"
                   style="color: #00e8fe"
                   name="bookmark-outline"
@@ -664,6 +664,7 @@ export default {
 .img__wrap .img {
   border-top-right-radius: 40px;
   width: 350px;
+  height: 250px;
 }
 .reg_link {
   border: 1px solid #ffff;
