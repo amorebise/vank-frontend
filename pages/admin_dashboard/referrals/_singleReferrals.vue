@@ -1,13 +1,13 @@
 <template>
   <div class="w-100">
-    <overview />
+    <referrals />
   </div>
 </template>
 
 <script>
-import overview from "~/components/overview.vue";
+import referrals from "~/components/referrals.vue";
 export default {
-  components: { overview },
+  components: { referrals },
 };
 </script>
 

@@ -39,7 +39,7 @@
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="Enter layout_name Name"
+                  placeholder="Enter layout name Name"
                   v-model="assets.layout_name"
                 />
                 <!-- <small
@@ -56,7 +56,7 @@
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="Enter token_name Name"
+                  placeholder="Enter token name Name"
                   v-model="assets.token_name"
                 />
                 <!-- <small
@@ -91,7 +91,7 @@
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="Enter total_token_quantity"
+                  placeholder="Enter total token quantity"
                   v-model="assets.total_token_quantity"
                 />
                 <!-- <small
@@ -108,7 +108,7 @@
                 <input
                   type="number"
                   class="form-control"
-                  placeholder="Enter token_price"
+                  placeholder="Enter token price"
                   v-model="assets.token_price"
                 />
                 <!-- <small
@@ -241,11 +241,17 @@
             <div class="col-md-6">
               <div class="form-group mx-2">
                 <!-- <label for="" class="">DDR</label> -->
-                <v-file-input
+                <!-- <v-file-input
                   placeholder="Pick a Valid Document"
-                  prepend-icon="mdi-camera"
+                  prepend-icon="mdi-attachment"
                   label="Due Deligence Report"
                   @change="upload_due_deligence_report()"
+                /> -->
+                <v-file-input
+                  placeholder="Pick a Valid Document"
+                  label="Due Deligence Report"
+                  @change="upload_due_deligence_report()"
+                  multiple
                 />
                 <!-- <small
                   class="text-danger"
@@ -264,9 +270,15 @@
             <div class="col-md-6">
               <div class="form-group mx-2">
                 <!-- <label for="" class="">TAR</label> -->
+                <!-- <v-file-input
+                  placeholder="Pick a Valid Document"
+                  prepend-icon="mdi-attachment"
+                  label="Token Audit Report"
+                  @change="upload_token_audit_report()"
+                /> -->
                 <v-file-input
                   placeholder="Pick a Valid Document"
-                  prepend-icon="mdi-camera"
+                  multiple
                   label="Token Audit Report"
                   @change="upload_token_audit_report()"
                 />

@@ -28,26 +28,11 @@
                     <th class="text-left th_color">Action</th>
                   </tr>
                 </thead>
+
                 <tbody>
                   <tr
-                    style="border-bottom: thin solid rgba(0, 0, 0, 0.12)"
-                    class="mt-2"
-                  >
-                    <td>1</td>
-                    <td>Abba Biola</td>
-                    <td>08123456789</td>
-                    <td>38,000</td>
-                    <td class="pt-3">
-                      <div class="d-flex" style="gap: 10px; font-size: 12px">
-                        <button class="text-success">Approve</button>
-                        <button class="text-danger">Disapprove</button>
-                        <button class="text-warning">Pend</button>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-                <tbody>
-                  <tr
+                    v-for="subscription in subscriptions"
+                    :key="subscription.index"
                     style="border-bottom: thin solid rgba(0, 0, 0, 0.12)"
                     class="mt-2"
                   >
@@ -63,6 +48,9 @@
                       </div>
                     </td>
                   </tr>
+                  <div class="text-center" v-if="subscriptions.length === 0">
+                    <p>No Pending Subscriptions.</p>
+                  </div>
                 </tbody>
               </template>
             </v-simple-table>

@@ -20,47 +20,34 @@
                 <thead>
                   <tr class="">
                     <th class="text-left th_color">SN</th>
+                    <th class="text-left th_color">Date</th>
                     <th class="text-left th_color">Name</th>
-                    <th class="text-left th_color">Phone Number</th>
+                    <th class="text-left th_color">Token</th>
+                    <th class="text-left th_color">Quantity</th>
                     <th class="text-left th_color">Amount(N)</th>
                     <th class="text-left th_color">Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr
+                    v-for="saleRequest in saleRequests"
+                    :key="saleRequest.index"
                     style="border-bottom: thin solid rgba(0, 0, 0, 0.12)"
                     class="mt-2"
                   >
                     <td>1</td>
+                    <td>22.10.2022 10:29</td>
                     <td>Abba Biola</td>
-                    <td>08123456789</td>
-                    <td>38,000</td>
+                    <td>Pyanko 1</td>
+                    <td>200</td>
+                    <td>150,000</td>
                     <td class="pt-3">
-                      <div class="d-flex" style="gap: 10px; font-size: 12px">
-                        <p class="text-success">Approve</p>
-                        <p class="text-danger">Disapprove</p>
-                        <p class="text-warning">Pend</p>
-                      </div>
+                      <button class="text-success">Confirm</button>
                     </td>
                   </tr>
-                </tbody>
-                <tbody>
-                  <tr
-                    style="border-bottom: thin solid rgba(0, 0, 0, 0.12)"
-                    class="mt-2"
-                  >
-                    <td>2</td>
-                    <td>Biola George</td>
-                    <td>08123456789</td>
-                    <td>58,000</td>
-                    <td class="pt-3">
-                      <div class="d-flex" style="gap: 10px; font-size: 12px">
-                        <p class="text-success">Approve</p>
-                        <p class="text-danger">Disapprove</p>
-                        <p class="text-warning">Pend</p>
-                      </div>
-                    </td>
-                  </tr>
+                  <div class="text-center" v-if="saleRequests.length === 0">
+                    <p>You currently do not have any sell requests.</p>
+                  </div>
                 </tbody>
               </template>
             </v-simple-table>

@@ -96,6 +96,15 @@
           </div>
         </nuxt-link>
         <nuxt-link
+          to="/admin_dashboard/referrals/"
+          class="list-group list-group-item active bg-transparent active"
+        >
+          <div class="ml-3 d-flex align-items-center">
+            <ion-icon name="link-outline"></ion-icon>
+            <span class="ml-2">Referrals</span>
+          </div>
+        </nuxt-link>
+        <nuxt-link
           to="/admin_dashboard/settings"
           class="list-group list-group-item active bg-transparent"
         >

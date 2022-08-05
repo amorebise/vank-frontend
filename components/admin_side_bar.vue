@@ -72,12 +72,12 @@
         </v-expansion-panels>
 
         <nuxt-link
-          to="/admin_dashboard/list/wait_list"
+          to="/admin_dashboard/referrals/"
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="ml-3 d-flex align-items-center">
-            <ion-icon name="card-outline"></ion-icon>
-            <span class="ml-2">Waitlist</span>
+            <ion-icon name="link-outline"></ion-icon>
+            <span class="ml-2">Referrals</span>
           </div>
         </nuxt-link>
         <nuxt-link
@@ -207,7 +207,7 @@ export default {
 .list-group-item:hover {
   background-color: #fff;
   color: #455b6d !important;
-  background-color: #ffffff !important;
+  background-color: #00e8fe !important;
   transition: all, 0.5s;
   border-radius: 0;
 }
