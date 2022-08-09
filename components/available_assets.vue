@@ -12,12 +12,22 @@
               :style="{ backgroundImage: 'url(' + property.image + ')' }"
             >
               <div class="sale_notification">
-                <span style="font-size: 12px" class="text-dark"
+                <span
+                  v-if="property.token_quantity_subscribed.length > 0"
+                  style="font-size: 12px"
+                  class="text-dark"
                   >{{ property.token_quantity_subscribed }} tokens Sold</span
+                >
+                <span v-else style="font-size: 12px" class="text-dark"
+                  >{{ property.token_quantity_subscribed }}% tokens Sold</span
                 >
               </div>
               <div class="opaque_text">
-                <p>
+                <p v-if="property.coordinates">
+                  Coordinates: <br />
+                  {{ property.coordinates }}
+                </p>
+                <p v-else>
                   Coordinates: <br />
                   4724”12.2N 384231.7E
                 </p>

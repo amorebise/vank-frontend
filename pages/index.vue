@@ -38,29 +38,29 @@
             v-for="trending in trendingAssets"
             :key="trending.index"
             class="mb-2 cardz"
-            @click="$router.push(`/user_dashboard/asset_detail/${trending.id}`)"
           >
             <div class="sale__notification">
               <p>90% Sold</p>
             </div>
             <v-img
+              @click="
+                $router.push(`/user_dashboard/asset_detail/${trending.id}`)
+              "
               class="img"
-              lazy-src="/atrend.jpg"
+              :lazy-src="trending.image"
               :src="trending.image"
               alt="image"
             />
             <div class="text__wrap bg-white px-3 py-2">
-              <p>Land in {{ trending.location }} - <span>650SQM</span></p>
+              <p>
+                Land in {{ trending.location }} -
+                <span v-if="trending.size">{{ trending.size }}SQM</span>
+                <span v-else>697SQM</span>
+              </p>
               <div class="d-flex justify-content-between">
                 <h6 class="tranform_text">
                   {{ trending.layout_name.toUpperCase() }}
                 </h6>
-                <!-- <ion-icon
-                  v-if="trending.bookmarkStatus === 'true'"
-                  @click="removeBookmark()"
-                  style="color: #00e8fe"
-                  name="bookmark"
-                /> -->
                 <ion-icon
                   @click="bookmark()"
                   style="color: #00e8fe"

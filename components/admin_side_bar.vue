@@ -15,7 +15,7 @@
       <div class="list-group list-group-flush my-3" id="menu_items">
         <nuxt-link
           to="/admin_dashboard/dashboard"
-          class="list-group list-group-item active bg-transparent active"
+          class="list-group list-group-item bg-transparent"
         >
           <div class="child_items">
             <div class="ml-3 d-flex align-items-center">
@@ -27,16 +27,16 @@
         </nuxt-link>
         <nuxt-link
           to="/admin_dashboard/users"
-          class="list-group list-group-item active bg-transparent"
+          class="list-group list-group-item bg-transparent"
         >
-          <div class="ml-3 d-flex align-items-center">
+          <div class="ml-3 line__wrp d-flex align-items-center">
             <ion-icon style="color: #001214" name="person-outline"></ion-icon>
             <span class="ml-2">Users</span>
           </div>
         </nuxt-link>
         <div
-          @click="$router.push('/admin_dashboard/property')"
-          class="list-group list-group-item active bg-transparent active"
+          @click="$router.push('/admin_dashboard/property_detail')"
+          class="list-group list-group-item bg-transparent"
         >
           <div class="ml-3 d-flex align-items-center">
             <img style="width: 18px" src="/building.svg" alt="" />
@@ -44,6 +44,10 @@
             <span class="ml-2">Property</span>
           </div>
         </div>
+        <!-- <div style="gap: 5px" class="d-flex align-items-center px-5"> -->
+        <!-- <div>
+            <ion-icon name="link-outline"></ion-icon>
+          </div> -->
         <v-expansion-panels>
           <v-expansion-panel>
             <v-expansion-panel-header> Transactions </v-expansion-panel-header>
@@ -70,34 +74,42 @@
             </v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>
+        <!-- </div> -->
 
         <nuxt-link
           to="/admin_dashboard/referrals/"
-          class="list-group list-group-item active bg-transparent active"
+          class="list-group list-group-item bg-transparent"
         >
           <div class="ml-3 d-flex align-items-center">
             <ion-icon name="link-outline"></ion-icon>
             <span class="ml-2">Referrals</span>
           </div>
         </nuxt-link>
-        <nuxt-link
-          to="/admin_dashboard/property"
-          class="list-group list-group-item active bg-transparent active"
-        >
-          <div class="ml-3 d-flex align-items-center">
-            <img style="width: 18px" src="/building.svg" alt="" />
-            <span class="ml-2">Add new Property</span>
-          </div>
-        </nuxt-link>
-        <nuxt-link
-          to="/admin_dashboard/settings"
-          class="list-group list-group-item active bg-transparent active"
-        >
-          <div class="ml-3 d-flex align-items-center">
-            <ion-icon style="color: #001214" name="settings-outline"></ion-icon>
-            <span class="ml-2">Settings</span>
-          </div>
-        </nuxt-link>
+        <div @click="toggleClass()" class="toggle__btn" id="show_active">
+          <nuxt-link
+            to="/admin_dashboard/property_detail"
+            class="list-group list-group-item bg-transparent"
+          >
+            <div class="ml-3 d-flex align-items-center">
+              <img style="width: 18px" src="/building.svg" alt="" />
+              <span class="ml-2">Add new Property</span>
+            </div>
+          </nuxt-link>
+        </div>
+        <div @click="toggleClass()" class="toggle__btn" id="show_aactive">
+          <nuxt-link
+            to="/admin_dashboard/settings"
+            class="list-group list-group-item bg-transparent"
+          >
+            <div class="ml-3 d-flex align-items-center">
+              <ion-icon
+                style="color: #001214"
+                name="settings-outline"
+              ></ion-icon>
+              <span class="ml-2">Settings</span>
+            </div>
+          </nuxt-link>
+        </div>
       </div>
     </div>
   </div>
@@ -115,6 +127,34 @@ export default {
       },
     };
   },
+  methods: {
+    toggleClass() {
+      // let sideBar = document.getElementById("show_active");
+      // if (sideBar) {
+      //   sideBar.classList.add("active");
+      //   alert("Hello");
+      // }
+      // alert("HI");
+      const callToActionBtns = document.querySelectorAll(".toggle__btn");
+
+      callToActionBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          callToActionBtns.forEach((f) => f.classList.remove("active"));
+          e.target.classList.toggle("active");
+        });
+      });
+    },
+    // removeClass() {
+    //   let sideBar = document.getElementById("show_aactive");
+    //   if (sideBar) {
+    //     sideBar.classList.add("active");
+    //     alert("Hello");
+    //   }
+    // },
+  },
+  // created() {
+  //   this.toggleClass();
+  // },
 };
 </script>
 
@@ -137,6 +177,7 @@ export default {
   position: fixed;
   z-index: 3;
 }
+
 #sidebar-wrapper .sidebar-heading {
   padding: 2.7rem 1.25rem !important;
   font-size: 1.2rem;
@@ -172,6 +213,7 @@ export default {
   padding-left: 70px;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
+  /* padding: 0 !important; */
   font-size: 14px;
 }
 .sidebar-wrap a {
@@ -179,7 +221,7 @@ export default {
 }
 .sidebar-wrap .v-expansion-panel-content__wrap {
   background-color: #f8f7ff !important;
-  padding-left: 50px;
+  padding-left: 70px !important;
   font-size: 13px;
   /* border-bottom: 1px solid #30303030 !important; */
   /* padding: 30px 20px !important; */
@@ -214,11 +256,11 @@ export default {
 .img_wrap {
   width: 10%;
 }
-.list-group-item.active {
+/* .list-group-item.active {
   border: none;
   background-color: transparent;
   color: #fff;
-}
+} */
 #wrapper .navbar {
   background-color: #fafafa;
   padding: 15px 10px !important;
@@ -252,6 +294,11 @@ export default {
 .child_wrapper {
   margin-left: 220px;
   overflow-y: hidden;
+}
+.active {
+  border: none;
+  background-color: #00e8fe;
+  /* color: #fff; */
 }
 
 @media (max-width: 768px) {

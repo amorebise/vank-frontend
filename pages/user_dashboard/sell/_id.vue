@@ -13,7 +13,9 @@
 
         <div class="token__wrap py-2">
           <div class="token__p text-center py-3">
-            <h4 class="font-weight-bold">Pyanko 1 Token</h4>
+            <h4 class="font-weight-bold">
+              {{ asset_detail.token_name }} Token
+            </h4>
           </div>
           <div class="row">
             <div class="col-md-6">

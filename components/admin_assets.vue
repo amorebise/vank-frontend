@@ -1,5 +1,5 @@
 <template>
-  <div class="pay_bills_wrap w-100">
+  <div class="pay_bills_wrap">
     <div class="props__wrapp">
       <admin-nav name="All Property" />
       <div class="users_wrap">
@@ -14,7 +14,7 @@
         </div>
 
         <div class="transactions_data">
-          <div class="body__wrap">
+          <div class="body__wrap mr-3">
             <v-simple-table fixed-header height="100%">
               <template v-slot:default>
                 <thead>
@@ -40,7 +40,15 @@
                     class="mt-2"
                   >
                     <td>{{ asset.id }}</td>
-                    <td>{{ asset.token_name }}</td>
+                    <td
+                      @click="
+                        $router.push(
+                          `/admin_dashboard/property_detail/${asset.id}`
+                        )
+                      "
+                    >
+                      {{ asset.token_name }}
+                    </td>
                     <td>{{ asset.location }}</td>
                     <td>{{ asset.total_token_quantity }}</td>
                     <td>{{ asset.token_quantity_subscribed }}</td>

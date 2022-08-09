@@ -17,21 +17,42 @@
         <form action="" @submit.prevent="addAsset()">
           <div class="row pt-2">
             <div class="col-md-6">
-              <div class="form-group mx-2">
-                <label for="" class="">Location</label>
+              <!-- <div class="form-group mx-2"> -->
+              <!-- <label for="" class="">Location</label>
                 <input
                   type="text"
                   class="form-control"
                   placeholder="Enter location Name"
                   v-model="assets.location"
-                />
-                <!-- <small
-                  class="text-danger"
-                  v-for="error in errors.location"
-                  :key="error.index"
-                  >{{ error }}
-                </small> -->
+                /> -->
+              <div class="form-group mx-2">
+                <label
+                  for="exampleFormControlSelect1 font-weight-bolder"
+                  class=""
+                  >Choose Location</label
+                >
+                <select
+                  class="form-control option-class select"
+                  id="exampleFormControlSelect1"
+                  v-model="assets.location"
+                  required
+                >
+                  <option>Select</option>
+                  <option
+                    v-for="(option, index) in locations"
+                    :key="index"
+                    :value="option"
+                    class="colour"
+                    id="selectCountry"
+                  >
+                    <p>{{ option }}</p>
+                  </option>
+                </select>
               </div>
+              <!-- <small v-if="location_error.length > 0" class="text-danger"
+                  >{{ location_error }}
+                </small> -->
+              <!-- </div> -->
             </div>
             <div class="col-md-6">
               <div class="form-group mx-2">
@@ -41,12 +62,10 @@
                   class="form-control"
                   placeholder="Enter layout name Name"
                   v-model="assets.layout_name"
+                  required
                 />
-                <!-- <small
-                  class="text-danger"
-                  v-for="error in errors.layout_name"
-                  :key="error.index"
-                  >{{ error }}
+                <!-- <small v-if="layout_name_error.length > 0" class="text-danger"
+                  >{{ layout_name_error }}
                 </small> -->
               </div>
             </div>
@@ -58,12 +77,10 @@
                   class="form-control"
                   placeholder="Enter token name Name"
                   v-model="assets.token_name"
+                  required
                 />
-                <!-- <small
-                  class="text-danger"
-                  v-for="error in errors.token_name"
-                  :key="error.index"
-                  >{{ error }}
+                <!-- <small v-if="token_name_error.length > 0" class="text-danger"
+                  >{{ token_name_error }}
                 </small> -->
               </div>
             </div>
@@ -75,12 +92,10 @@
                   class="form-control"
                   placeholder="Enter min roi"
                   v-model="assets.min_roi"
+                  required
                 />
-                <!-- <small
-                  class="text-danger"
-                  v-for="error in errors.min_roi"
-                  :key="error.index"
-                  >{{ error }}
+                <!-- <small v-if="min_roi_error.length > 0" class="text-danger"
+                  >{{ min_roi_error }}
                 </small> -->
               </div>
             </div>
@@ -93,12 +108,12 @@
                   class="form-control"
                   placeholder="Enter total token quantity"
                   v-model="assets.total_token_quantity"
+                  required
                 />
                 <!-- <small
+                  v-if="total_token_quantity_error.length > 0"
                   class="text-danger"
-                  v-for="error in errors.total_token_quantity"
-                  :key="error.index"
-                  >{{ error }}
+                  >{{ total_token_quantity_error }}
                 </small> -->
               </div>
             </div>
@@ -110,12 +125,10 @@
                   class="form-control"
                   placeholder="Enter token price"
                   v-model="assets.token_price"
+                  required
                 />
-                <!-- <small
-                  class="text-danger"
-                  v-for="error in errors.token_price"
-                  :key="error.index"
-                  >{{ error }}
+                <!-- <small v-if="token_price_error.length > 0" class="text-danger"
+                  >{{ token_price_error }}
                 </small> -->
               </div>
             </div>
@@ -127,46 +140,40 @@
                   class="form-control"
                   placeholder="Enter whole price"
                   v-model="assets.whole_price"
+                  required
                 />
-                <!-- <small
-                  class="text-danger"
-                  v-for="error in errors.whole_price"
-                  :key="error.index"
-                  >{{ error }}
+                <!-- <small v-if="whole_price_error.length > 0" class="text-danger"
+                  >{{ whole_price_error }}
                 </small> -->
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group mx-2">
-                <label for="" class="">Distance1</label>
+                <label for="" class="">Description1</label>
                 <input
                   type="text"
                   class="form-control"
                   placeholder="Enter distance"
                   v-model="assets.description1"
+                  required
                 />
-                <!-- <small
-                  class="text-danger"
-                  v-for="error in errors.description1"
-                  :key="error.index"
-                  >{{ error }}
+                <!-- <small v-if="description1_error.length > 0" class="text-danger"
+                  >{{ description1_error }}
                 </small> -->
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group mx-2">
-                <label for="" class="">Distance2</label>
+                <label for="" class="">Description2</label>
                 <input
                   type="text"
                   class="form-control"
                   placeholder="Enter distance"
                   v-model="assets.description2"
+                  required
                 />
-                <!-- <small
-                  class="text-danger"
-                  v-for="error in errors.description2"
-                  :key="error.index"
-                  >{{ error }}
+                <!-- <small v-if="description2_error.length > 0" class="text-danger"
+                  >{{ description2_error }}
                 </small> -->
               </div>
             </div>
@@ -178,12 +185,10 @@
                   class="form-control"
                   placeholder="Enter distance"
                   v-model="assets.description3"
+                  required
                 />
-                <!-- <small
-                  class="text-danger"
-                  v-for="error in errors.description3"
-                  :key="error.index"
-                  >{{ error }}
+                <!-- <small v-if="description3_error.lenght > 0" class="text-danger"
+                  >{{ description3_error }}
                 </small> -->
               </div>
             </div>
@@ -195,12 +200,10 @@
                   class="form-control"
                   placeholder="Enter distance"
                   v-model="assets.documentation"
+                  required
                 />
-                <!-- <small
-                  class="text-danger"
-                  v-for="error in errors.documentation"
-                  :key="error.index"
-                  >{{ error }}
+                <!-- <small v-if="documentation_error.length > 0" class="text-danger"
+                  >{{ documentation_error }}
                 </small> -->
               </div>
             </div>
@@ -212,12 +215,12 @@
                   class="form-control"
                   placeholder="Enter current market price"
                   v-model="assets.current_market_price"
+                  required
                 />
                 <!-- <small
+                  v-if="current_market_price_error.length > 0"
                   class="text-danger"
-                  v-for="error in errors.current_market_price"
-                  :key="error.index"
-                  >{{ error }}
+                  >{{ current_market_price_error }}
                 </small> -->
               </div>
             </div>
@@ -229,12 +232,25 @@
                   class="form-control"
                   placeholder="Enter coordinates"
                   v-model="assets.coordinates"
+                  required
                 />
-                <!-- <small
-                  class="text-danger"
-                  v-for="error in errors.coordinates"
-                  :key="error.index"
-                  >{{ error }}
+                <!-- <small v-if="cordinate_error.length > 0" class="text-danger"
+                  >{{ cordinate_error }}
+                </small> -->
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mx-2">
+                <label for="" class="">Size</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter size"
+                  v-model="assets.size"
+                  required
+                />
+                <!-- <small v-if="size_error.length > 0" class="text-danger"
+                  >{{ size_error }}
                 </small> -->
               </div>
             </div>
@@ -252,48 +268,29 @@
                   label="Due Deligence Report"
                   @change="upload_due_deligence_report()"
                   multiple
+                  required
                 />
                 <!-- <small
+                  v-if="due_deligence_report_error.lenght > 0"
                   class="text-danger"
-                  v-for="error in errors.due_deligence_report"
-                  :key="error.index"
-                  >{{ error }}
+                  >{{ due_deligence_report_error }}
                 </small> -->
-                <!-- <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter due deligence report"
-                  v-model="assets.due_deligence_report"
-                /> -->
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group mx-2">
-                <!-- <label for="" class="">TAR</label> -->
-                <!-- <v-file-input
-                  placeholder="Pick a Valid Document"
-                  prepend-icon="mdi-attachment"
-                  label="Token Audit Report"
-                  @change="upload_token_audit_report()"
-                /> -->
                 <v-file-input
                   placeholder="Pick a Valid Document"
                   multiple
                   label="Token Audit Report"
+                  required
                   @change="upload_token_audit_report()"
                 />
                 <!-- <small
+                  v-if="token_audit_report_error.length > 0"
                   class="text-danger"
-                  v-for="error in errors.token_audit_report"
-                  :key="error.index"
-                  >{{ error }}
+                  >{{ token_audit_report_error }}
                 </small> -->
-                <!-- <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter token audit report"
-                  v-model="assets.token_audit_report"
-                /> -->
               </div>
             </div>
             <div class="col-md-12">
@@ -319,11 +316,8 @@
                       class="file"
                       hidden
                     />
-                    <!-- <small
-                      class="text-danger"
-                      v-for="error in errors.image"
-                      :key="error.index"
-                      >{{ error }}
+                    <!-- <small v-if="image_error.length > 0" class="text-danger"
+                      >{{ image_error }}
                     </small> -->
                   </div>
                 </div>
@@ -375,11 +369,30 @@ export default {
         description3: "",
         documentation: "",
         coordinates: "",
+        size: "",
         current_market_price: "",
         due_deligence_report: "",
         token_audit_report: "",
       },
+      locations: ["Abuja", "Lagos", "Uyo"],
       errors: {},
+      // cordinate_error: {},
+      // description1_error: {},
+      // description2_error: {},
+      // description3_error: {},
+      // documentation_error: {},
+      // current_market_price_error: {},
+      // due_deligence_report_error: {},
+      // image_error: {},
+      // layout_name_error: {},
+      // location_error: {},
+      // min_roi_error: {},
+      // size_error: {},
+      // token_name_error: {},
+      // token_price_error: {},
+      // total_token_quantity_error: {},
+      // whole_price_error: {},
+      // token_audit_report_error: {},
       subscriptions: {},
     };
   },
@@ -403,6 +416,7 @@ export default {
       formData.append("current_market_price", this.assets.current_market_price);
       formData.append("due_deligence_report", this.assets.due_deligence_report);
       formData.append("token_audit_report", this.assets.token_audit_report);
+      formData.append("size", this.assets.size);
       formData.append("_method", "POST");
       this.$axios
         .post("/admin/addAsset", formData)
@@ -414,8 +428,32 @@ export default {
         })
         .catch((error) => {
           console.log(error.response.data);
+          // window.location.reload();
           this.loading = false;
           this.errors = error.response.data.errors;
+          // this.cordinate_error = error.response.data.errors.coordinates[0];
+          // console.log(this.cordinate_error);
+          // this.description1_error = error.response.data.errors.description1[0];
+          // this.description2_error = error.response.data.errors.description2[0];
+          // // this.description3_error = error.response.data.errors.description3[0];
+          // this.documentation_error =
+          //   error.response.data.errors.documentation[0];
+          // console.log(this.documentation_error);
+          // this.due_deligence_report_error =
+          //   error.response.data.errors.due_deligence_report[0];
+          // this.image_error = error.response.data.errors.image[0];
+          // this.layout_name_error = error.response.data.errors.layout_name[0];
+          // this.location_error = error.response.data.errors.location[0];
+          // console.log(this.location_error);
+          // this.min_roi_error = error.response.data.errors.min_roi[0];
+          // this.size_error = error.response.data.errors.size[0];
+          // this.token_audit_report_error =
+          //   error.response.data.errors.token_audit_report[0];
+          // this.token_name_error = error.response.data.errors.token_name[0];
+          // this.token_price_error = error.response.data.errors.token_price[0];
+          // this.whole_price_error = error.response.data.errors.whole_price[0];
+          // this.total_token_quantity_error =
+          //   error.response.data.errors.total_token_quantity[0];
         });
     },
     upload_due_deligence_report() {
@@ -529,6 +567,9 @@ export default {
 .create__assets__wrap h1 {
   font-weight: bold;
 }
+.create__assets__wrap select {
+  -webkit-appearance: auto;
+}
 .create__assets__wrap .v-slide-group {
   flex-wrap: wrap;
 }
@@ -604,6 +645,7 @@ export default {
 }
 .drag_area.active {
   border: 2px solid #fff;
+  background-color: #fff !important;
 }
 .drag_area .icon {
   font-size: 30px;

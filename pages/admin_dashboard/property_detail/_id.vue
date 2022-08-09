@@ -3,8 +3,9 @@
     <div class="property">
       <user-nav name="Property Details" />
       <div class="mt-5 single__property">
-        <div @click="back()">
+        <div>
           <font-awesome-icon
+            @click="back()"
             role="button"
             class="fa-1x text-dark pl-1"
             :icon="['fas', 'arrow-left']"
@@ -13,9 +14,11 @@
         <div class="row mt-3">
           <div class="col-md-6">
             <div class="img_card">
-              <div class="asset__content text-center">
+              <div
+                class="asset__content text-center"
+                :style="{ backgroundImage: 'url(' + asset_detail.image + ')' }"
+              >
                 <div>
-                  <!-- <p>&#x20A6;1.19K per unit</p> -->
                   <p>Min ROI: {{ asset_detail.min_roi }}</p>
                   <h4>Whole Price: &#x20A6;{{ asset_detail.whole_price }}</h4>
                   <p>{{ asset_detail.token_name }} Token</p>
@@ -24,15 +27,13 @@
             </div>
           </div>
           <div class="col-md-6">
-            <div class="description__wrap">
+            <div class="description__wrap pt-4">
               <p>Location: {{ asset_detail.location }}</p>
               <p>Layout Name: {{ asset_detail.layout_name }}</p>
               <p>
                 Distance to closest built up areas: <br />
-                -{{ asset_detail.distance1 }}- <br />
-                {{ asset_detail.distance2 }} <br />
-                about {{ asset_detail.distance3 }} <br />
-                about {{ asset_detail.distance1 }}
+                -{{ asset_detail.description1 }}- <br />
+                {{ asset_detail.description2 }}
               </p>
               <p>Population within 20KM radius: Over 200,000</p>
               <span>Est. minimum return 9.2%PA</span>
@@ -110,7 +111,7 @@ export default {
   color: inherit;
 }
 .property .asset__content {
-  background-image: url("/asset.jpg");
+  /* background-image: url("/asset.jpg"); */
   background-size: cover;
   border-radius: 10px;
   color: #001214;

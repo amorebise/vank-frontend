@@ -7,16 +7,28 @@
           :key="property.index"
           class="col-md-4"
         >
-          <div
-            class="card_wrap"
-            @click="$router.push(`/user_dashboard/asset_detail/${property.id}`)"
-          >
-            <div class="general_trends">
+          <div class="card_wrap">
+            <div
+              @click="
+                $router.push(`/user_dashboard/asset_detail/${property.id}`)
+              "
+              class="general_trends"
+              :style="{ backgroundImage: 'url(' + property.image + ')' }"
+            >
               <div class="sale_notification">
-                <span class="text-dark">90% Sold</span>
+                <span
+                  v-if="property.token_quantity_subscribed.length > 0"
+                  style="font-size: 12px"
+                  class="text-dark"
+                  >{{ property.token_quantity_subscribed }} tokens Sold</span
+                >
+                <span v-else style="font-size: 12px" class="text-dark"
+                  >{{ property.token_quantity_subscribed }}% tokens Sold</span
+                >
               </div>
               <div class="opaque_text">
-                <p>
+                <p v-if="property.coordinates">{{ property.coordinates }}</p>
+                <p v-else>
                   Coordinates: <br />
                   4724”12.2N 384231.7E
                 </p>
@@ -24,10 +36,18 @@
             </div>
 
             <div class="text_wrap bg-white px-3 py-2">
-              <p>Land in {{ property.layout_name }} - <span>650SQM</span></p>
+              <p>
+                Land in {{ property.layout_name }} -
+                <span v-if="property.size">{{ property.size }}SQM</span>
+                <span v-else>650SQM</span>
+              </p>
               <div class="d-flex justify-content-between">
-                <h6>FCDA Estate</h6>
-                <ion-icon style="color: #00e8fe" name="bookmark-outline" />
+                <h6>{{ property.location }}</h6>
+                <ion-icon
+                  @click="bookmark(property)"
+                  style="color: #00e8fe"
+                  name="bookmark-outline"
+                />
               </div>
             </div>
           </div>
@@ -61,6 +81,24 @@ export default {
         console.log(error.response);
       }
     },
+    async bookmark(property) {
+      try {
+        let response = await this.$axios.post(`/bookmarkAsset/${property.id}`);
+        console.log(response);
+        this.$toast.success("Asset has been added to your bookmarks", {
+          timeout: 5000,
+        });
+      } catch (error) {
+        console.log(error.response);
+        this.$toast.warning(
+          "Ooops!!! You have to register inorder to bookmark",
+          {
+            timeout: 5000,
+          }
+        );
+        // this.$router.push("/sign_up");
+      }
+    },
   },
   created() {
     this.getUyoAsset();
@@ -77,7 +115,7 @@ export default {
   transition: 1s;
 }
 .lagos_card .general_trends {
-  background-image: url("/asset2.jpg");
+  /* background-image: url("/asset2.jpg"); */
   background-size: cover;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;

@@ -69,22 +69,23 @@
                 </div>
                 <div class="text__wrap bg-white px-3 py-3">
                   <p>
-                    Land in {{ trending.layout_name }} - <span>650SQM</span>
+                    Land in {{ trending.layout_name }} -
+                    <span v-if="trending.size">{{ trending.size }}SQM</span>
+                    <span v-else>650SQM</span>
                   </p>
                   <div class="d-flex justify-content-between">
                     <h6>{{ trending.location }}</h6>
                     <ion-icon
-                      v-if="trending.bookmarkStatus == ''"
                       @click="bookmark(trending)"
                       style="color: #00e8fe"
                       name="bookmark-outline"
                     />
-                    <ion-icon
+                    <!-- <ion-icon
                       v-else
                       @click="removeBookmark(trending)"
                       style="color: #00e8fe"
                       name="bookmark"
-                    />
+                    /> -->
                   </div>
                 </div>
               </div>
@@ -158,7 +159,9 @@ export default {
         let response = await this.$axios.post(`/bookmarkAsset/${trending.id}`);
         this.getTrendingAssets();
         console.log(response);
-        this.$toast.success("Property has been bookmarked", { timeout: 5000 });
+        this.$toast.success("Asset has been added to your bookmarks", {
+          timeout: 5000,
+        });
       } catch (error) {
         console.log(error.response);
         this.$toast.warning(

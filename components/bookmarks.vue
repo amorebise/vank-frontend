@@ -7,15 +7,11 @@
           :key="bookmark.index"
           class="col-md-4"
         >
-          <div
-            class="card_wrap"
-            @click="
-              $router.push(
-                `/user_dashboard/lagos_property_detail/${bookmark.id}`
-              )
-            "
-          >
+          <div class="card_wrap">
             <div
+              @click="
+                $router.push(`/user_dashboard/asset_detail/${bookmark.id}`)
+              "
               class="general_trends"
               :style="{ backgroundImage: 'url(' + bookmark.image + ')' }"
             >
@@ -25,7 +21,11 @@
                 >
               </div>
               <div class="opaque_text">
-                <p>
+                <p v-if="bookmark.coordinates">
+                  Coordinates: <br />
+                  {{ bookmark.coordinates }}
+                </p>
+                <p v-else>
                   Coordinates: <br />
                   4724”12.2N 384231.7E
                 </p>
@@ -33,20 +33,32 @@
             </div>
 
             <div class="text_wrap bg-white px-3 py-2">
-              <p>Land in {{ bookmark.layout_name }} - <span>650SQM</span></p>
+              <p>
+                Land in {{ bookmark.layout_name }} -
+                <span v-if="bookmark.size">{{ bookmark.size }}SQM</span>
+                <span v-else>650SQM</span>
+              </p>
               <div class="d-flex justify-content-between">
                 <h6>{{ bookmark.location }}</h6>
-                <ion-icon style="color: #00e8fe" name="bookmark" />
+                <ion-icon
+                  @click="removeBookmark(bookmark)"
+                  style="color: #00e8fe"
+                  name="bookmark"
+                />
               </div>
             </div>
           </div>
-          <div
-            style="display: grid; place-items: center"
-            v-if="myBookmarks.length === 0"
-          >
-            <p>No asset to aquire for now</p>
-          </div>
         </div>
+      </div>
+      <div
+        style="display: grid; margin-top: 60px; place-items: center"
+        v-if="myBookmarks.length === 0"
+      >
+        <ion-icon
+          style="color: #00e8fe; font-size: 100px"
+          name="bookmark-outline"
+        />
+        <p>You have no bookmarked asset</p>
       </div>
     </div>
   </div>
@@ -58,6 +70,7 @@ export default {
   data() {
     return {
       myBookmarks: {},
+      payment_collection: {},
     };
   },
   methods: {
@@ -70,9 +83,36 @@ export default {
         console.log(error.response);
       }
     },
+    async removeBookmark(bookmark) {
+      try {
+        let response = await this.$axios.post(
+          `/removeFromBookmarks/${bookmark.id}`
+        );
+        this.getMyBookmarks();
+        console.log(response);
+        this.$toast.success("Property has been removed from bookmarks", {
+          timeout: 5000,
+        });
+      } catch (error) {
+        console.log(error.response);
+        this.$toast.warning("There's an error somewhere", {
+          timeout: 5000,
+        });
+      }
+    },
+    async getPaymentCollection() {
+      try {
+        let response = await this.$axios.post("/paymentCollection");
+        this.payment_collection = response.data;
+        console.log(this.payment_collection);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
   },
   created() {
     this.getMyBookmarks();
+    this.getPaymentCollection();
   },
 };
 </script>

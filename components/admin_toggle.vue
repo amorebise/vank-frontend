@@ -47,7 +47,7 @@
           </div>
         </nuxt-link>
         <nuxt-link
-          to="/admin_dashboard/property"
+          to="/admin_dashboard/property_detail"
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="ml-5 user__icon d-flex align-items-center">
@@ -87,7 +87,7 @@
         </v-expansion-panels>
 
         <nuxt-link
-          to="/admin_dashboard/property"
+          to="/admin_dashboard/property_detail"
           class="list-group list-group-item active bg-transparent active"
         >
           <div class="ml-5 user__icon d-flex align-items-center">

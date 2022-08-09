@@ -3,7 +3,7 @@
     <div class="dashboard_content">
       <admin-nav name="My Account" />
       <div class="admin__wrap">
-        <h5>Welcome Enobong</h5>
+        <h5>Welcome {{ user.first_name }}</h5>
         <p>Here are your updates for today</p>
         <div class="wallet__balance__wrap">
           <div class="admin__card__wrap row align-items-center">
@@ -155,7 +155,7 @@ export default {
   data() {
     return {
       tab: null,
-      // user: {},
+      user: {},
       subscriptions: {},
       total_asset: {},
       total_subscribers: {},
@@ -163,6 +163,37 @@ export default {
   },
 
   methods: {
+    async getUser() {
+      let auth = this.$auth.$storage._state;
+      let token = null;
+
+      for (const key in auth) {
+        console.log(key);
+
+        if (key == "_token.local") {
+          token = auth[key];
+        } else {
+          console.log("No");
+        }
+      }
+
+      console.log(token);
+
+      // console.log(this.$auth.$storage._state._token);
+      try {
+        let res = await this.$axios.get("/getUser", {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        });
+
+        this.user = res.data[0];
+
+        console.log(this.user);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
     async getAllSubscription() {
       try {
         const response = await this.$axios.get("/admin/getAllSubscription");
@@ -192,6 +223,7 @@ export default {
     },
   },
   created() {
+    this.getUser();
     this.getAllSubscription();
     this.getTotalUserNumber();
     this.sumAllAsset();

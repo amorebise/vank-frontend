@@ -2,7 +2,7 @@
   <div class="pay_bills_wrap w-100">
     <div class="continue__payments">
       <user-nav name="Make Payments" />
-      <div>
+      <div class="back__btn">
         <font-awesome-icon
           @click="back()"
           role="button"

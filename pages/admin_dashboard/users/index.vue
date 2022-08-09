@@ -15,7 +15,7 @@
 
         <div class="transactions_data">
           <div class="body__wrap">
-            <v-simple-table fixed-header height="350px">
+            <v-simple-table fixed-header height="100%">
               <template v-slot:default>
                 <thead>
                   <tr
@@ -25,9 +25,7 @@
                     <th class="text-left th_color">SN</th>
                     <th class="text-left th_color">Name</th>
                     <th class="text-left th_color">Phone number</th>
-                    <th class="text-left th_color">Transaction</th>
-                    <th class="text-left th_color">Amount</th>
-                    <!-- <th class="text-left th_color">Action</th> -->
+                    <th class="text-left th_color">Email</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -41,13 +39,15 @@
                     <td>{{ user.id }}</td>
                     <td>{{ user.first_name }} {{ user.last_name }}</td>
                     <td>{{ user.phone_number }}</td>
-                    <td>Funded Wallet</td>
-                    <td>50,000</td>
-                    <!-- <td>
-                    <nuxt-link to="/admin_dashboard/dashboard/">
-                      View Details</nuxt-link
-                    >
-                  </td> -->
+                    <td>{{ user.email }}</td>
+                  </tr>
+                  <tr v-if="users.length == 0">
+                    <td>
+                      <p class="text-center">
+                        You have no user.
+                        <!-- <img class="emoji" src="/sad.png" alt="sad emoji" /> -->
+                      </p>
+                    </td>
                   </tr>
                   <!-- <tr v-if="subscribers.length == 0">
                   <td>
@@ -62,7 +62,7 @@
             </v-simple-table>
 
             <div
-              class="view__assets__wrap text-center"
+              class="view__assets__wrap mt-5 text-center"
               style="margin-top: -30px"
             >
               <nuxt-link to="/admin_dashboard/users">
@@ -100,7 +100,7 @@ export default {
       }
     },
     viewDetail(user) {
-      this.$router.push(`/admin_dashboard/user_detail/${user.id}`);
+      this.$router.push(`/admin_dashboard/users/${user.id}`);
       console.log(user.id);
     },
   },

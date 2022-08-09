@@ -2,7 +2,7 @@
   <div class="pay_bills_wrap w-100">
     <div class="payments">
       <user-nav name="Make Payments" />
-      <div>
+      <div class="back__btn">
         <font-awesome-icon
           @click="back()"
           role="button"
@@ -109,6 +109,7 @@ export default {
   }
   .payments .token__wrap {
     width: 100%;
+    margin-top: 5px;
   }
 }
 </style>

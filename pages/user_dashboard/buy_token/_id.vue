@@ -1,17 +1,21 @@
 <template>
   <div class="w-100">
-    <div class="but__token__content">
+    <div class="but__token__content pr-3 py-3">
       <user-nav name="Buy Tokens" />
       <div class="">
-        <div @click="back()">
+        <div class="back__btn">
           <font-awesome-icon
+            @click="back()"
             role="button"
             class="fa-1x text-dark pl-1"
             :icon="['fas', 'arrow-left']"
           />
         </div>
         <div class="token__p mt-4">
-          <p>LoT: Pyanko (Min ROI: 9.2% PA</p>
+          <p>
+            LoT: {{ asset_detail.token_name }} (Min ROI:
+            {{ asset_detail.min_roi }})
+          </p>
         </div>
         <div class="token__wrap">
           <div class="row">
@@ -187,7 +191,7 @@ input[type="number"]::-webkit-inner-spin-button {
 @media (max-width: 768px) {
   .but__token__content {
     margin-left: 0 !important;
-    padding: 0;
+    padding: 0 !important;
   }
   .settings_wrap {
     margin: 10px;
@@ -220,6 +224,9 @@ input[type="number"]::-webkit-inner-spin-button {
   .token__p {
     padding-left: 20px;
     padding-right: 20px;
+  }
+  .back__btn {
+    padding-left: 15px;
   }
 }
 </style>
