@@ -376,23 +376,6 @@ export default {
       },
       locations: ["Abuja", "Lagos", "Uyo"],
       errors: {},
-      // cordinate_error: {},
-      // description1_error: {},
-      // description2_error: {},
-      // description3_error: {},
-      // documentation_error: {},
-      // current_market_price_error: {},
-      // due_deligence_report_error: {},
-      // image_error: {},
-      // layout_name_error: {},
-      // location_error: {},
-      // min_roi_error: {},
-      // size_error: {},
-      // token_name_error: {},
-      // token_price_error: {},
-      // total_token_quantity_error: {},
-      // whole_price_error: {},
-      // token_audit_report_error: {},
       subscriptions: {},
     };
   },
@@ -431,29 +414,6 @@ export default {
           // window.location.reload();
           this.loading = false;
           this.errors = error.response.data.errors;
-          // this.cordinate_error = error.response.data.errors.coordinates[0];
-          // console.log(this.cordinate_error);
-          // this.description1_error = error.response.data.errors.description1[0];
-          // this.description2_error = error.response.data.errors.description2[0];
-          // // this.description3_error = error.response.data.errors.description3[0];
-          // this.documentation_error =
-          //   error.response.data.errors.documentation[0];
-          // console.log(this.documentation_error);
-          // this.due_deligence_report_error =
-          //   error.response.data.errors.due_deligence_report[0];
-          // this.image_error = error.response.data.errors.image[0];
-          // this.layout_name_error = error.response.data.errors.layout_name[0];
-          // this.location_error = error.response.data.errors.location[0];
-          // console.log(this.location_error);
-          // this.min_roi_error = error.response.data.errors.min_roi[0];
-          // this.size_error = error.response.data.errors.size[0];
-          // this.token_audit_report_error =
-          //   error.response.data.errors.token_audit_report[0];
-          // this.token_name_error = error.response.data.errors.token_name[0];
-          // this.token_price_error = error.response.data.errors.token_price[0];
-          // this.whole_price_error = error.response.data.errors.whole_price[0];
-          // this.total_token_quantity_error =
-          //   error.response.data.errors.total_token_quantity[0];
         });
     },
     upload_due_deligence_report() {
