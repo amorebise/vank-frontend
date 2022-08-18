@@ -11,7 +11,7 @@
               class="general_trends"
               :style="{ backgroundImage: 'url(' + property.image + ')' }"
             >
-              <div class="sale_notification">
+              <!-- <div class="sale_notification">
                 <span
                   v-if="property.token_quantity_subscribed.length > 0"
                   style="font-size: 12px"
@@ -21,16 +21,24 @@
                 <span v-else style="font-size: 12px" class="text-dark"
                   >{{ property.token_quantity_subscribed }}% tokens Sold</span
                 >
-              </div>
+              </div> -->
               <div class="opaque_text">
-                <p v-if="property.coordinates">
-                  Coordinates: <br />
-                  {{ property.coordinates }}
+                <p v-if="property.layout_name">
+                  {{ property.layout_name }}
                 </p>
-                <p v-else>
-                  Coordinates: <br />
-                  4724”12.2N 384231.7E
-                </p>
+                <p v-else>Epe</p>
+                <div>
+                  <p v-if="property.location">
+                    {{ property.location }}
+                  </p>
+                  <p v-else>Lagos</p>
+                </div>
+                <div>
+                  <p v-if="property.token_name">
+                    {{ property.token_name }}
+                  </p>
+                  <p v-else>token 001</p>
+                </div>
               </div>
             </div>
           </div>

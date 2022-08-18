@@ -1,33 +1,43 @@
 <template>
   <div class="pay_bills_wrap w-100">
-    <div class="fund__wallet">
+    <div class="fund__wallet pr-3">
       <user-nav name="Bank Transfer" />
-      <div>
-        <font-awesome-icon
-          @click="back()"
-          role="button"
-          class="fa-1x text-dark pl-1"
-          :icon="['fas', 'arrow-left']"
-        />
-      </div>
-      <div class="payments_wrap subscriber px-1">
-        <div class="bank__wrap py-5">
-          <div class="text-center" style="line-height: 13px">
-            <p>
-              Pay &#8358;1234 to: <br />
-              Vank Digital Services
-            </p>
-            <p>Bank: Access Bank</p>
-            <p>Acc No: 1234567890</p>
-          </div>
-          <div class="view__assets__wrap text-center">
-            <nuxt-link to="/user_dashboard/transfer_confirmation">
-              <button class="assets__link">
-                <span class="px-3" style="font-weight: 400"
-                  >I have made full payment</span
+      <div class="fundz__wrap">
+        <div>
+          <font-awesome-icon
+            @click="back()"
+            role="button"
+            class="fa-1x text-dark pl-1"
+            :icon="['fas', 'arrow-left']"
+          />
+        </div>
+        <div class="payments_wrap subscriber px-1">
+          <div class="bank__wrap py-5">
+            <div class="text-center" style="line-height: 13px">
+              <p>
+                Pay &#8358;1234 to: <br />
+                Vank Digital Services
+              </p>
+              <p>Bank: Access Bank</p>
+              <p>Acc No: 1234567890</p>
+            </div>
+            <div class="view__assets__wrap text-center">
+              <div>
+                <span style="font-size: 8px; color: red"
+                  >Disclaimer: Be sure to make payment before clicking on the
+                  button below</span
                 >
-              </button>
-            </nuxt-link>
+              </div>
+              <div>
+                <nuxt-link to="/user_dashboard/transfer_confirmation">
+                  <button class="assets__link">
+                    <span class="px-3" style="font-weight: 400"
+                      >I have made full payment</span
+                    >
+                  </button>
+                </nuxt-link>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -83,7 +93,9 @@ export default {
   .fund__wallet {
     margin-left: 0;
   }
-
+  .fund__wallet .fundz__wrap {
+    padding-left: 20px;
+  }
   .fund__wallet .bank__wrap {
     border: 1px solid #00e8fe;
     width: 100%;

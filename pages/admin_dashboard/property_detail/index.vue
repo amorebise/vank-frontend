@@ -91,11 +91,11 @@
                 class="view__assets__wrap text-center"
                 style="margin-top: -30px"
               >
-                <nuxt-link to="/admin_dashboard/all_assets">
+                <!-- <nuxt-link to="/admin_dashboard/all_assets">
                   <button class="assets__link">
                     <span class="px-3">View all </span>
                   </button>
-                </nuxt-link>
+                </nuxt-link> -->
               </div>
               <div
                 class="view__assets__wrap text-center"

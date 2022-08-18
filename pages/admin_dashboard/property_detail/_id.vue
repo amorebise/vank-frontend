@@ -1,7 +1,7 @@
 <template>
   <div class="w-100">
     <div class="property">
-      <user-nav name="Property Details" />
+      <user-nav class="pr-2" name="Property Details" />
       <div class="mt-5 single__property">
         <div>
           <font-awesome-icon
@@ -27,16 +27,147 @@
             </div>
           </div>
           <div class="col-md-6">
-            <div class="description__wrap pt-4">
+            <div class="description__wrap pt-3">
+              <p>Name: {{ asset_detail.layout_name }}</p>
               <p>Location: {{ asset_detail.location }}</p>
-              <p>Layout Name: {{ asset_detail.layout_name }}</p>
+              <p>Size: {{ asset_detail.size }}</p>
+              <p>Title: {{ asset_detail.documentation }}</p>
               <p>
                 Distance to closest built up areas: <br />
                 -{{ asset_detail.description1 }}- <br />
                 {{ asset_detail.description2 }}
               </p>
               <p>Population within 20KM radius: Over 200,000</p>
-              <span>Est. minimum return 9.2%PA</span>
+              <div class="d-flex align-items-center">
+                <div>
+                  <button
+                    class="view__report"
+                    style="color: #00e8fe; font-size: 12px"
+                  >
+                    Click to view Coordinates
+                  </button>
+                </div>
+                <!-- <span
+                  >
+                  <font-awesome-icon
+                    role="button"
+                    style="color: #00e8fe; font-size: 16px"
+                    class="fa-1x pl-1 pt-1"
+                    :icon="['fas', 'chevron-right']"
+                /></span> -->
+              </div>
+              <div>
+                <button
+                  @click="due__deligence__modal = !due__deligence__modal"
+                  class="view__report"
+                  style="color: #00e8fe; font-size: 12px"
+                >
+                  Click to view due diligence report
+                </button>
+              </div>
+              <div>
+                <button
+                  @click="audit_report = !audit_report"
+                  class="view__report"
+                  style="color: #00e8fe; font-size: 12px"
+                >
+                  Click to view audit report
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <div class="register_button_wrap text-center mt-1 py-4">
+            <span
+              @click="edit_asset = !edit_asset"
+              role="button"
+              class="assets__link"
+            >
+              <span class="px-3">Edit Property</span>
+            </span>
+          </div>
+        </div>
+        <div class="due__deligence__modal">
+          <div class="change__password__form" v-show="due__deligence__modal">
+            <div class="password__modal slideInDown">
+              <div class="text-right">
+                <button
+                  style="font-size: 16px; font-weight: 600; color: #00e8fe"
+                  @click="due__deligence__modal = !due__deligence__modal"
+                >
+                  x
+                </button>
+              </div>
+              <div>
+                <embed
+                  :src="asset_detail.due_deligence_report"
+                  frameBorder="0"
+                  scrolling="auto"
+                  height="100%"
+                  width="100%"
+                />
+                <!-- <img :src="asset_detail.due_deligence_report" alt="image" /> -->
+              </div>
+            </div>
+          </div>
+
+          <div class="change__password__form" v-show="edit_asset">
+            <div class="password__modal slideInDown">
+              <div class="text-right">
+                <button
+                  style="font-size: 16px; font-weight: 600; color: #00e8fe"
+                  @click="edit_asset = !edit_asset"
+                >
+                  x
+                </button>
+              </div>
+              <div>
+                <div class="form-group mx-2 mt-2">
+                  <label for="" class="">Currren Market Price</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    v-model="asset.current_market_price"
+                    placeholder="Enter Price"
+                  />
+
+                  <div class="register_button_wrap text-center mt-1 py-4">
+                    <span
+                      @click="updateAsset()"
+                      role="button"
+                      class="assets__link"
+                    >
+                      <span class="px-3">Update</span>
+                    </span>
+                  </div>
+                </div>
+                <!-- <img :src="asset_detail.due_deligence_report" alt="image" /> -->
+              </div>
+            </div>
+          </div>
+
+          <div class="change__password__form" v-show="audit_report">
+            <div class="password__modal slideInDown">
+              <div class="text-right">
+                <button
+                  style="font-size: 16px; font-weight: 600; color: #00e8fe"
+                  @click="audit_report = !audit_report"
+                >
+                  x
+                </button>
+              </div>
+              <div>
+                <embed
+                  :src="asset_detail.token_audit_report"
+                  frameBorder="0"
+                  scrolling="auto"
+                  height="100%"
+                  width="100%"
+                />
+                <!-- <img :src="asset_detail.token_audit_report" alt="image" /> -->
+              </div>
             </div>
           </div>
         </div>
@@ -82,7 +213,13 @@ export default {
   data() {
     return {
       asset_detail: {},
+      asset: {
+        current_market_price: "",
+      },
       id: this.$route.params.id,
+      due__deligence__modal: false,
+      audit_report: false,
+      edit_asset: false,
     };
   },
   methods: {
@@ -90,6 +227,19 @@ export default {
       let response = await this.$axios.get(`/getSingleAsset/${this.id}`);
       this.asset_detail = response.data;
       console.log(this.asset_detail);
+    },
+    async updateAsset() {
+      try {
+        let response = await this.$axios.post(
+          `/admin/updateAsset/${this.id}`,
+          this.asset
+        );
+        this.edit_asset = !this.edit_asset;
+        this.$toast.success("asset updated successfully", { timeout: 5000 });
+        console.log(response);
+      } catch (error) {
+        console.log(error.response);
+      }
     },
     back() {
       this.$router.go(-1);
@@ -109,6 +259,25 @@ export default {
 }
 .single__property a {
   color: inherit;
+}
+.view__report {
+  text-decoration: underline !important;
+}
+.change__password__form {
+  background-color: rgba(0, 0, 0, 0.445);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+}
+.password__modal {
+  width: 20%;
+  margin: 100px auto;
+  background-color: #fff;
+  padding: 10px !important;
+  border-radius: 5px;
 }
 .property .asset__content {
   /* background-image: url("/asset.jpg"); */
@@ -146,12 +315,13 @@ export default {
   transition: ease-in-out 0.7s;
 }
 .property .description__wrap p {
-  line-height: 25px;
+  line-height: 15px;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
 }
 .property .description__wrap span {
   color: #00e8fe;
+  font-size: 12px;
 }
 .single__property .buy__token__wrap .assets__link {
   border: 1px solid #00e8fe;

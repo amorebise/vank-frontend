@@ -1,7 +1,7 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="usd">
-      <user-nav name="Make Payments" />
+      <user-nav name="Buy more USD" />
       <div>
         <font-awesome-icon
           @click="back()"
@@ -39,11 +39,11 @@
             </div>
           </div>
           <div class="view__assets__wrap text-center">
-            <nuxt-link to="/user_dashboard/cash_subscription_wallet">
-              <button class="assets__link">
-                <span class="px-3">Pay with Cash Wallet</span>
-              </button>
-            </nuxt-link>
+            <!-- <nuxt-link to="/user_dashboard/cash_subscription_wallet"> -->
+            <button class="assets__link">
+              <span class="px-3">Pay with Cash Wallet</span>
+            </button>
+            <!-- </nuxt-link> -->
           </div>
         </div>
       </div>

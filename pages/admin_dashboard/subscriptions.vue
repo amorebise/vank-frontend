@@ -49,7 +49,7 @@
                     </td>
                   </tr>
                   <div class="text-center" v-if="subscriptions.length === 0">
-                    <p>No Pending Subscriptions.</p>
+                    <p>No Active Subscriptions.</p>
                   </div>
                 </tbody>
               </template>

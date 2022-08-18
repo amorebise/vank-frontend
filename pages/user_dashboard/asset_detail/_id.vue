@@ -28,7 +28,7 @@
             </div>
           </div>
           <div class="col-md-6">
-            <div class="description__wrap">
+            <div class="description__wrap pt-3">
               <p>Location: {{ asset_detail.location }}</p>
               <p>Layout Name: {{ asset_detail.layout_name }}</p>
               <p>
@@ -39,10 +39,86 @@
                 about {{ asset_detail.documentation }}
               </p>
               <p>Population within 20KM radius: Over 200,000</p>
-              <span>Est. minimum return 9.2%PA</span>
+              <!-- <span>Est. minimum return 9.2%PA</span> -->
+
+              <!-- <div>
+                <button
+                  class="view__report"
+                  style="color: #00e8fe; font-size: 12px"
+                >
+                  Click to view Coordinates
+                </button>
+              </div> -->
+              <div>
+                <button
+                  @click="due__deligence__modal = !due__deligence__modal"
+                  class="view__report"
+                  style="color: #00e8fe; font-size: 12px"
+                >
+                  Click to view due diligence report
+                </button>
+              </div>
+              <div>
+                <button
+                  @click="audit_report = !audit_report"
+                  class="view__report"
+                  style="color: #00e8fe; font-size: 12px"
+                >
+                  Click to view audit report
+                </button>
+              </div>
             </div>
           </div>
         </div>
+
+        <div class="due__deligence__modal">
+          <div class="change__password__form" v-show="due__deligence__modal">
+            <div class="password__modal slideInDown">
+              <div class="text-right">
+                <button
+                  style="font-size: 16px; font-weight: 600; color: #00e8fe"
+                  @click="due__deligence__modal = !due__deligence__modal"
+                >
+                  x
+                </button>
+              </div>
+              <div>
+                <embed
+                  :src="asset_detail.token_audit_report"
+                  frameBorder="0"
+                  scrolling="auto"
+                  height="100%"
+                  width="100%"
+                />
+                <!-- <img :src="asset_detail.due_deligence_report" alt="image" /> -->
+              </div>
+            </div>
+          </div>
+
+          <div class="change__password__form" v-show="audit_report">
+            <div class="password__modal slideInDown">
+              <div class="text-right">
+                <button
+                  style="font-size: 16px; font-weight: 600; color: #00e8fe"
+                  @click="audit_report = !audit_report"
+                >
+                  x
+                </button>
+              </div>
+              <div>
+                <embed
+                  :src="asset_detail.token_audit_report"
+                  frameBorder="0"
+                  scrolling="auto"
+                  height="100%"
+                  width="100%"
+                />
+                <!-- <img :src="asset_detail.token_audit_report" alt="image" /> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div
           style="gap: 10px"
           class="
@@ -64,9 +140,17 @@
           </div>
 
           <div>
-            <nuxt-link :to="`/user_dashboard/sell/${id}`" class="assets__link">
-              <span class="px-3">Sell</span>
-            </nuxt-link>
+            <div v-if="user">
+              <nuxt-link
+                :to="`/user_dashboard/sell/${id}`"
+                class="assets__link"
+              >
+                <span class="px-3">Sell</span>
+              </nuxt-link>
+            </div>
+            <!-- <div v-else>
+              <p>p</p>
+            </div> -->
           </div>
         </div>
       </div>
@@ -81,21 +165,58 @@ export default {
   components: { creator_sidebar },
   data() {
     return {
+      user: {},
       asset_detail: {},
       id: this.$route.params.id,
+      audit_report: false,
+      due__deligence__modal: false,
     };
   },
   methods: {
+    async getUser() {
+      let auth = this.$auth.$storage._state;
+      let token = null;
+
+      for (const key in auth) {
+        console.log(key);
+
+        if (key == "_token.local") {
+          token = auth[key];
+        } else {
+          console.log("No");
+        }
+      }
+
+      console.log(token);
+
+      // console.log(this.$auth.$storage._state._token);
+      try {
+        let res = await this.$axios.get("/getUser", {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        });
+
+        this.user = res.data[0];
+
+        console.log(this.user);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+
     async getSingleAssetDetail() {
       let response = await this.$axios.get(`/getSingleAsset/${this.id}`);
       this.asset_detail = response.data;
       console.log(this.asset_detail);
     },
+
     back() {
       this.$router.go(-1);
     },
   },
   created() {
+    this.getUser();
     this.getSingleAssetDetail();
   },
 };
@@ -146,7 +267,7 @@ export default {
   transition: ease-in-out 0.7s;
 }
 .property .description__wrap p {
-  line-height: 25px;
+  line-height: 15px;
   font-weight: 500;
   font-size: 16px;
 }

@@ -13,7 +13,7 @@
           </p>
           <nuxt-link
             style="font-size: 11px; color: #00e8fe"
-            to="/user_dashboard/wallets/"
+            to="/user_dashboard/my_account/"
             >Return to Dashboard</nuxt-link
           >
         </div>

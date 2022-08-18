@@ -42,21 +42,27 @@
                 <form action="">
                   <div class="form-group">
                     <label>Enter Amount (NGN)</label>
-                    <input type="number" class="form-control buy__input" />
+                    <input
+                      v-model="buy_amount"
+                      type="number"
+                      class="form-control buy__input"
+                    />
                   </div>
                 </form>
                 <div class="d-flex">
                   <p>You get</p>
-                  <p class="token__box px-3 mx-1"></p>
+                  <p v-if="buy_amount.length > 0" class="token__box px-3 mx-1">
+                    {{ buy_amount }}
+                  </p>
                   <p>tokens</p>
                 </div>
               </div>
             </div>
           </div>
           <div class="text-center mt-3 py-4">
-            <nuxt-link to="/user_dashboard/payment" class="assets__link">
+            <button @click="makePayment()" class="assets__link">
               <span class="px-3">Make Payment</span>
-            </nuxt-link>
+            </button>
           </div>
         </div>
       </div>
@@ -73,13 +79,46 @@ export default {
     return {
       id: this.$route.params.id,
       asset_detail: {},
+      token_quantity: "",
+      amount: {},
+      buy_amount: {},
     };
   },
   methods: {
+    async requestSubscription() {
+      try {
+        let response = await this.post(
+          `/requestSubscription/${this.id}`,
+          this.buy_amount
+        );
+        console.log(response);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
     async getSingleAssetDetail() {
       let response = await this.$axios.get(`/getSingleAsset/${this.id}`);
       this.asset_detail = response.data;
       console.log(this.asset_detail);
+    },
+    async getTokenQuantity() {
+      try {
+        let response = await this.$axios.post(
+          `/getTokenQuantity/`,
+          this.buy_amount
+        );
+        this.token_quantity = response.data;
+        console.log(this.token_quantity);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+    makePayment() {
+      this.amount = this.buy_amount;
+      localStorage.setItem("marketMakerKey", JSON.stringify(this.amount));
+      console.log(this.amount);
+      this.loading = false;
+      this.$router.push("/user_dashboard/payment");
     },
     back() {
       this.$router.go(-1);
@@ -87,6 +126,7 @@ export default {
   },
   created() {
     this.getSingleAssetDetail();
+    this.getTokenQuantity();
   },
 };
 </script>

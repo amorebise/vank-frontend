@@ -35,7 +35,6 @@
                   class="form-control option-class select"
                   id="exampleFormControlSelect1"
                   v-model="assets.location"
-                  required
                 >
                   <option>Select</option>
                   <option
@@ -49,9 +48,9 @@
                   </option>
                 </select>
               </div>
-              <!-- <small v-if="location_error.length > 0" class="text-danger"
-                  >{{ location_error }}
-                </small> -->
+              <small v-if="location_error.length > 0" class="text-danger"
+                >{{ location_error }}
+              </small>
               <!-- </div> -->
             </div>
             <div class="col-md-6">
@@ -62,11 +61,10 @@
                   class="form-control"
                   placeholder="Enter layout name Name"
                   v-model="assets.layout_name"
-                  required
                 />
-                <!-- <small v-if="layout_name_error.length > 0" class="text-danger"
+                <small v-if="layout_name_error.length > 0" class="text-danger"
                   >{{ layout_name_error }}
-                </small> -->
+                </small>
               </div>
             </div>
             <div class="col-md-6">
@@ -77,11 +75,10 @@
                   class="form-control"
                   placeholder="Enter token name Name"
                   v-model="assets.token_name"
-                  required
                 />
-                <!-- <small v-if="token_name_error.length > 0" class="text-danger"
+                <small v-if="token_name_error.length > 0" class="text-danger"
                   >{{ token_name_error }}
-                </small> -->
+                </small>
               </div>
             </div>
             <div class="col-md-6">
@@ -92,11 +89,25 @@
                   class="form-control"
                   placeholder="Enter min roi"
                   v-model="assets.min_roi"
-                  required
                 />
-                <!-- <small v-if="min_roi_error.length > 0" class="text-danger"
+                <small v-if="min_roi_error.length > 0" class="text-danger"
                   >{{ min_roi_error }}
-                </small> -->
+                </small>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group mx-2">
+                <label for="" class="">Size</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter size"
+                  v-model="assets.size"
+                />
+                <small v-if="size_error.length > 0" class="text-danger"
+                  >{{ size_error }}
+                </small>
               </div>
             </div>
 
@@ -108,13 +119,12 @@
                   class="form-control"
                   placeholder="Enter total token quantity"
                   v-model="assets.total_token_quantity"
-                  required
                 />
-                <!-- <small
+                <small
                   v-if="total_token_quantity_error.length > 0"
                   class="text-danger"
                   >{{ total_token_quantity_error }}
-                </small> -->
+                </small>
               </div>
             </div>
             <div class="col-md-6">
@@ -125,11 +135,10 @@
                   class="form-control"
                   placeholder="Enter token price"
                   v-model="assets.token_price"
-                  required
                 />
-                <!-- <small v-if="token_price_error.length > 0" class="text-danger"
+                <small v-if="token_price_error.length > 0" class="text-danger"
                   >{{ token_price_error }}
-                </small> -->
+                </small>
               </div>
             </div>
             <div class="col-md-6">
@@ -140,11 +149,10 @@
                   class="form-control"
                   placeholder="Enter whole price"
                   v-model="assets.whole_price"
-                  required
                 />
-                <!-- <small v-if="whole_price_error.length > 0" class="text-danger"
+                <small v-if="whole_price_error.length > 0" class="text-danger"
                   >{{ whole_price_error }}
-                </small> -->
+                </small>
               </div>
             </div>
             <div class="col-md-6">
@@ -155,11 +163,10 @@
                   class="form-control"
                   placeholder="Enter distance"
                   v-model="assets.description1"
-                  required
                 />
-                <!-- <small v-if="description1_error.length > 0" class="text-danger"
+                <small v-if="description1_error.length > 0" class="text-danger"
                   >{{ description1_error }}
-                </small> -->
+                </small>
               </div>
             </div>
             <div class="col-md-6">
@@ -170,14 +177,13 @@
                   class="form-control"
                   placeholder="Enter distance"
                   v-model="assets.description2"
-                  required
                 />
-                <!-- <small v-if="description2_error.length > 0" class="text-danger"
+                <small v-if="description2_error.length > 0" class="text-danger"
                   >{{ description2_error }}
-                </small> -->
+                </small>
               </div>
             </div>
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
               <div class="form-group mx-2">
                 <label for="" class="">Distance3</label>
                 <input
@@ -185,13 +191,11 @@
                   class="form-control"
                   placeholder="Enter distance"
                   v-model="assets.description3"
-                  required
+                  
                 />
-                <!-- <small v-if="description3_error.lenght > 0" class="text-danger"
-                  >{{ description3_error }}
-                </small> -->
+                
               </div>
-            </div>
+            </div> -->
             <div class="col-md-6">
               <div class="form-group mx-2">
                 <label for="" class="">Documentation</label>
@@ -200,11 +204,10 @@
                   class="form-control"
                   placeholder="Enter distance"
                   v-model="assets.documentation"
-                  required
                 />
-                <!-- <small v-if="documentation_error.length > 0" class="text-danger"
+                <small v-if="documentation_error.length > 0" class="text-danger"
                   >{{ documentation_error }}
-                </small> -->
+                </small>
               </div>
             </div>
             <div class="col-md-6">
@@ -215,7 +218,6 @@
                   class="form-control"
                   placeholder="Enter current market price"
                   v-model="assets.current_market_price"
-                  required
                 />
                 <!-- <small
                   v-if="current_market_price_error.length > 0"
@@ -232,28 +234,13 @@
                   class="form-control"
                   placeholder="Enter coordinates"
                   v-model="assets.coordinates"
-                  required
                 />
-                <!-- <small v-if="cordinate_error.length > 0" class="text-danger"
-                  >{{ cordinate_error }}
-                </small> -->
+                <small v-if="coordinates_error.length > 0" class="text-danger"
+                  >{{ coordinates_error }}
+                </small>
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="form-group mx-2">
-                <label for="" class="">Size</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter size"
-                  v-model="assets.size"
-                  required
-                />
-                <!-- <small v-if="size_error.length > 0" class="text-danger"
-                  >{{ size_error }}
-                </small> -->
-              </div>
-            </div>
+
             <div class="col-md-6">
               <div class="form-group mx-2">
                 <!-- <label for="" class="">DDR</label> -->
@@ -268,13 +255,12 @@
                   label="Due Deligence Report"
                   @change="upload_due_deligence_report()"
                   multiple
-                  required
                 />
-                <!-- <small
+                <small
                   v-if="due_deligence_report_error.lenght > 0"
                   class="text-danger"
                   >{{ due_deligence_report_error }}
-                </small> -->
+                </small>
               </div>
             </div>
             <div class="col-md-6">
@@ -283,14 +269,13 @@
                   placeholder="Pick a Valid Document"
                   multiple
                   label="Token Audit Report"
-                  required
                   @change="upload_token_audit_report()"
                 />
-                <!-- <small
+                <small
                   v-if="token_audit_report_error.length > 0"
                   class="text-danger"
                   >{{ token_audit_report_error }}
-                </small> -->
+                </small>
               </div>
             </div>
             <div class="col-md-12">
@@ -316,15 +301,15 @@
                       class="file"
                       hidden
                     />
-                    <!-- <small v-if="image_error.length > 0" class="text-danger"
+                    <small v-if="image_error.length > 0" class="text-danger"
                       >{{ image_error }}
-                    </small> -->
+                    </small>
                   </div>
                 </div>
               </div>
               <!-- <upload /> -->
               <!-- <v-file-input
-                required
+                
                 placeholder="Pick an Image of You and Your Shop"
                 prepend-icon="mdi-camera"
                 label="Image of You and Your Shop"
@@ -366,7 +351,7 @@ export default {
         whole_price: "",
         description1: "",
         description2: "",
-        description3: "",
+        // description3: "",
         documentation: "",
         coordinates: "",
         size: "",
@@ -374,8 +359,23 @@ export default {
         due_deligence_report: "",
         token_audit_report: "",
       },
-      locations: ["Abuja", "Lagos", "Uyo"],
+      locations: ["abuja", "lagos", "uyo"],
       errors: {},
+      coordinates_error: {},
+      description1_error: {},
+      description2_error: {},
+      documentation_error: {},
+      due_deligence_report_error: {},
+      image_error: {},
+      layout_name_error: {},
+      location_error: {},
+      min_roi_error: {},
+      size_error: {},
+      token_audit_report_error: {},
+      token_name_error: {},
+      token_price_error: {},
+      total_token_quantity_error: {},
+      whole_price_error: {},
       subscriptions: {},
     };
   },
@@ -393,7 +393,7 @@ export default {
       formData.append("whole_price", this.assets.whole_price);
       formData.append("description1", this.assets.description1);
       formData.append("description2", this.assets.description2);
-      formData.append("description3", this.assets.description3);
+      // formData.append("description3", this.assets.description3);
       formData.append("documentation", this.assets.documentation);
       formData.append("coordinates", this.assets.coordinates);
       formData.append("current_market_price", this.assets.current_market_price);
@@ -414,6 +414,25 @@ export default {
           // window.location.reload();
           this.loading = false;
           this.errors = error.response.data.errors;
+          this.coordinates_error = error.response.data.errors.coordinates[0];
+          this.description2_error = error.response.data.errors.description1[0];
+          this.description1_error = error.response.data.errors.description2[0];
+          this.documentation_error =
+            error.response.data.errors.documentation[0];
+          this.due_deligence_report_error =
+            error.response.data.errors.due_deligence_report[0];
+          this.image_error = error.response.data.errors.image[0];
+          this.layout_name_error = error.response.data.errors.layout_name[0];
+          this.location_error = error.response.data.errors.location[0];
+          this.min_roi_error = error.response.data.errors.min_roi[0];
+          this.size_error = error.response.data.errors.size[0];
+          this.token_audit_report_error =
+            error.response.data.errors.token_audit_report[0];
+          this.token_name_error = error.response.data.errors.token_name[0];
+          this.token_price_error = error.response.data.errors.token_price[0];
+          this.total_token_quantity_error =
+            error.response.data.errors.total_token_quantity[0];
+          this.whole_price_error = error.response.data.errors.whole_price[0];
         });
     },
     upload_due_deligence_report() {

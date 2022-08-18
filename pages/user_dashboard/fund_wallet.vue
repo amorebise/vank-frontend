@@ -42,6 +42,7 @@
               type="number"
               class="form-control"
               placeholder="Enter Amount"
+              v-model="wallet.amount"
             />
           </div>
           <div class="view__assets__wrap text-center">
@@ -64,16 +65,34 @@ export default {
       txn: {
         option: "",
       },
+      wallet: {
+        amount: "",
+      },
       funding_options: ["Card Payment", "Bank Transfer"],
     };
   },
   methods: {
     goToSelectedTxnType() {
-      this.$router.push(
-        this.txn.option == "Card Payment"
-          ? "/user_dashboard/card_payment/"
-          : "/user_dashboard/bank_transfer/"
-      );
+      if (this.txn.option == "Card Payment") {
+        this.$router.push("/user_dashboard/card_payment/");
+      } else {
+        this.topUpCashWallet();
+      }
+
+      // this.$router.push(
+      //   this.txn.option == "Card Payment"
+      //     ? "/user_dashboard/card_payment/"
+      //     : "/user_dashboard/bank_transfer/"
+      // );
+    },
+    async topUpCashWallet() {
+      try {
+        let response = await this.$axios.post("/topUpCashWallet", this.wallet);
+        console.log(response);
+        this.$router.push("/user_dashboard/bank_transfer/");
+      } catch (error) {
+        console.log(error.response);
+      }
     },
   },
 };

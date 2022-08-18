@@ -1,7 +1,7 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="continue__payments">
-      <user-nav name="Make Payments" />
+      <user-nav name="Make Payments/Cash Wallet" />
       <div class="back__btn">
         <font-awesome-icon
           @click="back()"
@@ -13,7 +13,7 @@
       <div class="payments_wrap subscriber">
         <div class="pay__wrap py-5">
           <h5>
-            &#8358;1234 will be deducted from your <br />
+            &#8358;{{ selected_amount }} will be deducted from your <br />
             cash wallet for Pyanko1 tokens
           </h5>
           <div class="view__assets__wrap text-center">
@@ -34,12 +34,20 @@ import creator_sidebar from "~/components/creator_sidebar.vue";
 export default {
   components: { creator_sidebar },
   data() {
-    return {};
+    return {
+      selected_amount: {},
+    };
   },
   methods: {
     back() {
       this.$router.go(-1);
     },
+  },
+  created() {
+    let markmm = localStorage.getItem("marketMakerKey");
+    this.selected_amount = JSON.parse(markmm);
+    console.log(this.selected_amount);
+    // console.log(this.selected_amount.id);
   },
 };
 </script>

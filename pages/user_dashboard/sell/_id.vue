@@ -71,17 +71,50 @@ export default {
   components: { creator_sidebar },
   data() {
     return {
+      user: {},
       id: this.$route.params.id,
       max_value: "",
       asset_detail: {},
     };
   },
   methods: {
+    // async getUser() {
+    //   let auth = this.$auth.$storage._state;
+    //   let token = null;
+
+    //   for (const key in auth) {
+    //     console.log(key);
+
+    //     if (key == "_token.local") {
+    //       token = auth[key];
+    //     } else {
+    //       console.log("No");
+    //     }
+    //   }
+
+    //   console.log(token);
+
+    //   // console.log(this.$auth.$storage._state._token);
+    //   try {
+    //     let res = await this.$axios.get("/getUser", {
+    //       headers: {
+    //         Authorization: `bearer ${token}`,
+    //       },
+    //     });
+
+    //     this.user = res.data[0];
+
+    //     console.log(this.user);
+    //   } catch (error) {
+    //     console.log(error.response);
+    //   }
+    // },
     async getSingleAssetDetail() {
       let response = await this.$axios.get(`/getSingleAsset/${this.id}`);
       this.asset_detail = response.data;
       console.log(this.asset_detail);
     },
+
     async getMaxValue() {
       try {
         let response = await this.$axios.get(`/getMaxValue/${this.id}`);
@@ -96,6 +129,7 @@ export default {
     },
   },
   created() {
+    // this.getUser()
     this.getSingleAssetDetail();
     this.getMaxValue();
   },

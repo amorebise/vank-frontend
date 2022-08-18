@@ -1,12 +1,11 @@
 <template>
   <div class="pay_bills_wrap w-100">
-    <div class="continue__payments">
-      <user-nav name="Staking" />
+    <div class="continue__payments pt-1">
+      <user-nav name="Txn Wallet" />
       <div class="payments_wrap subscriber">
         <div class="token__wrap">
           <p style="font-size: 16px; text-align: center">
-            Your staking request has been <br />
-            received and will be processed shortly
+            Transaction Successful!!
           </p>
           <div class="return" style="margin-top: -100px">
             <nuxt-link

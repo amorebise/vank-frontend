@@ -4,8 +4,8 @@
       <user-nav class="dashboard__nav" name="Dashboard" />
       <div class="new__content">
         <div v-if="user" class="d-flex align-items-center px-1 mb-2">
-          <h5 class="user_font">
-            Welcome, <span class="user_name">{{ user.name }}</span>
+          <h5 class="">
+            Welcome, <span class="user_name">{{ user.first_name }}</span>
           </h5>
           <!-- <div class="ml-1">
           <nuxt-img format="webp" quality="90" fit="cover" src="/emoji.png" />
@@ -61,16 +61,53 @@
                   class="trending__content"
                   :style="{ backgroundImage: 'url(' + trending.image + ')' }"
                 >
-                  <div>
-                    <p>{{ trending.layout_name }}</p>
-                    <p>{{ trending.location }}</p>
-                    <p>{{ trending.token_name }} Token</p>
+                  <!-- <div class="sale_notification">
+                    <span
+                      v-if="trending.token_quantity_subscribed.length > 0"
+                      style="font-size: 12px; color: red"
+                      class="text-dark"
+                      >{{ trending.token_quantity_subscribed }} tokens
+                      Sold</span
+                    >
+                    <span v-else style="font-size: 12px" class="text-dark"
+                      >{{ trending.token_quantity_subscribed }}% tokens
+                      Sold</span
+                    >
+                  </div> -->
+                  <div class="tq_notification">
+                    <span
+                      v-if="trending.token_quantity_subscribed.length > 0"
+                      style="font-size: 12px"
+                      class="text-dark"
+                      >{{ trending.token_quantity_subscribed }} tokens
+                      Sold</span
+                    >
+                    <span v-else style="font-size: 12px" class="text-dark"
+                      >{{ trending.token_quantity_subscribed }}% tokens
+                      Sold</span
+                    >
+                  </div>
+                  <div
+                    style="
+                      display: grid;
+                      place-items: center;
+                      align-items: center;
+                      padding-top: 70px;
+                    "
+                  >
+                    <p v-if="trending.coordinates">
+                      {{ trending.coordinates }}
+                    </p>
+                    <p v-else>
+                      Coordinates: <br />
+                      4724’12.2N 384231.7E
+                    </p>
                   </div>
                 </div>
                 <div class="text__wrap bg-white px-3 py-3">
                   <p>
                     Land in {{ trending.layout_name }} -
-                    <span v-if="trending.size">{{ trending.size }}SQM</span>
+                    <span v-if="trending.size">{{ trending.size }}</span>
                     <span v-else>650SQM</span>
                   </p>
                   <div class="d-flex justify-content-between">
@@ -199,8 +236,16 @@ export default {
         console.log(error.response);
       }
     },
+    // makePayment() {
+    //   this.my_id = this.user.id;
+    //   localStorage.setItem("myId", JSON.stringify(this.my_id));
+    //   console.log(this.my_id);
+    //   // this.loading = false;
+    //   // this.$router.push("/user_dashboard/payment");
+    // },
   },
-  created() {
+  mounted() {
+    // this.makePayment();
     this.getUser();
     this.getTrendingAssets();
   },
@@ -232,7 +277,12 @@ export default {
   font-size: 13px;
   /* cursor: pointer; */
 }
-
+.tq_notification {
+  background-color: #00e8fe;
+  border-top-left-radius: 7px;
+  padding: 10px;
+  width: 35%;
+}
 .asset__content {
   background-image: url("/asset.jpg");
   background-size: cover;
@@ -258,8 +308,8 @@ export default {
   height: 200px;
   transition: ease-in-out 0.3s;
   color: #fff;
-  display: grid;
-  place-items: center;
+  /* display: grid; */
+  /* place-items: center; */
   font-weight: 500;
   font-size: 15px;
   /* gap: 10px; */

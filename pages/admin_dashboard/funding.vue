@@ -56,37 +56,16 @@
                             <td>Abba Biola</td>
                             <td>08123456789</td>
                             <td>38,000</td>
-                            <td class="pt-3">
+                            <td class="pt-1">
                               <div
                                 class="d-flex"
                                 style="gap: 10px; font-size: 12px"
                               >
-                                <p class="text-success">Approve</p>
-                                <p class="text-danger">Disapprove</p>
-                                <p class="text-warning">Pend</p>
-                              </div>
-                            </td>
-                          </tr>
-                        </tbody>
-                        <tbody>
-                          <tr
-                            style="
-                              border-bottom: thin solid rgba(0, 0, 0, 0.12);
-                            "
-                            class="mt-2"
-                          >
-                            <td>2</td>
-                            <td>Biola George</td>
-                            <td>08123456789</td>
-                            <td>58,000</td>
-                            <td class="pt-3">
-                              <div
-                                class="d-flex"
-                                style="gap: 10px; font-size: 12px"
-                              >
-                                <p class="text-success">Approve</p>
-                                <p class="text-danger">Disapprove</p>
-                                <p class="text-warning">Pend</p>
+                                <button style="color: green" class="">
+                                  Approve
+                                </button>
+                                <button class="text-danger">Disapprove</button>
+                                <button class="text-warning">Pend</button>
                               </div>
                             </td>
                           </tr>
@@ -126,43 +105,66 @@
                             <td>Abba Biola</td>
                             <td>08123456789</td>
                             <td>38,000</td>
-                            <td class="pt-3">
+                            <td class="pt-1">
                               <div
                                 class="d-flex"
                                 style="gap: 10px; font-size: 12px"
                               >
-                                <p class="text-success">Approve</p>
-                                <p class="text-danger">Disapprove</p>
-                                <p class="text-warning">Pend</p>
-                              </div>
-                            </td>
-                          </tr>
-                        </tbody>
-                        <tbody>
-                          <tr
-                            style="
-                              border-bottom: thin solid rgba(0, 0, 0, 0.12);
-                            "
-                            class="mt-2"
-                          >
-                            <td>2</td>
-                            <td>Biola George</td>
-                            <td>08123456789</td>
-                            <td>58,000</td>
-                            <td class="pt-3">
-                              <div
-                                class="d-flex"
-                                style="gap: 10px; font-size: 12px"
-                              >
-                                <p class="text-success">Approve</p>
-                                <p class="text-danger">Disapprove</p>
-                                <p class="text-warning">Pend</p>
+                                <button
+                                  @click="
+                                    fund_wallet_modal = !fund_wallet_modal
+                                  "
+                                  style="color: green"
+                                  class=""
+                                >
+                                  Approve
+                                </button>
+                                <!-- <button class="text-danger">Disapprove</button> -->
+                                <!-- <button class="text-warning">Pend</button> -->
                               </div>
                             </td>
                           </tr>
                         </tbody>
                       </template>
                     </v-simple-table>
+
+                    <div>
+                      <div v-show="fund_wallet_modal" class="pop__up">
+                        <div class="pop__up__content zoomIn">
+                          <div class="text-right">
+                            <p
+                              role="button"
+                              @click="fund_wallet_modal = !fund_wallet_modal"
+                              style="font-size: 20px"
+                            >
+                              &times;
+                            </p>
+                          </div>
+                          <div class="text-center">
+                            <div class="form-group mx-2 mt-2">
+                              <label for="" class=""
+                                >What is your transaction amount?</label
+                              >
+                              <input
+                                type="number"
+                                class="form-control"
+                                placeholder="Enter Amount"
+                              />
+                            </div>
+                            <div
+                              class="register_button_wrap text-center mt-3 py-4"
+                            >
+                              <span
+                                @click="fund_wallet_modal = !fund_wallet_modal"
+                                class="assets__link"
+                              >
+                                <span class="px-3">Fund Wallet</span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </v-card-text>
@@ -182,13 +184,27 @@ export default {
     return {
       tab: null,
       success__modal: false,
+      fundings: {},
+      fund_wallet_modal: false,
     };
   },
 
   methods: {
+    async getTopRequest() {
+      try {
+        let response = await this.$axios.get("/admin/getTopUpRequest");
+        this.fundings = response.data;
+        console.log(this.fundings);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
     back() {
       this.$router.go(-1);
     },
+  },
+  created() {
+    this.getTopRequest();
   },
 };
 </script>

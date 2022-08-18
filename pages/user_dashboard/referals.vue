@@ -44,7 +44,7 @@
                   "
                 >
                   <div>
-                    <p>{{ referrals }}..hdgf</p>
+                    <p>{{ referrals }}</p>
                   </div>
                   <div>
                     <p>
@@ -61,7 +61,7 @@
         </div>
         <div class="wallet__content mt-3">
           <div class="d-flex justify-content-center">
-            <h5>You have earned 20,000 free Tokens</h5>
+            <h5>You have earned &#8358;20,000 cash</h5>
             <div class="pt-1 pl-1">
               <ion-icon
                 style="color: #00e8fe; font-size: 20px"

@@ -92,7 +92,7 @@
                         @click="goToSelectedTxnType()"
                         class="assets__link"
                       >
-                        <span class="px-3">Submit</span>
+                        <span class="px-3">Next</span>
                       </button>
                     </div>
                     <div v-show="success__modal" class="pop__up">
@@ -224,10 +224,11 @@ export default {
       if (this.txn.option == "Fund wallet") {
         this.$router.push("/user_dashboard/fund_wallet/");
       } else if (this.txn.option == "Withdraw to bank") {
-        this.$router.push("/kyc/kyc_page/");
+        this.$router.push("/user_dashboard/bank_transfer/");
       } else if (this.txn.option == "Transfer to your subscription wallet") {
         this.fundSubscriptionWallet();
-        this.success__modal = !this.success__modal;
+        // this.success__modal = !this.success__modal;
+        this.$router.push("/user_dashboard/transfer_to_sub_wallet/");
       }
     },
     async fundSubscriptionWallet() {

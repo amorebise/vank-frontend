@@ -26,6 +26,7 @@
                     <th class="text-left th_color">Name</th>
                     <th class="text-left th_color">Phone number</th>
                     <th class="text-left th_color">Email</th>
+                    <th class="text-left th_color">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -34,29 +35,24 @@
                     :key="user.index"
                     class="mt-2"
                     style="border-bottom: thin solid rgba(0, 0, 0, 0.12)"
-                    @click="viewDetail(user)"
                   >
                     <td>{{ user.id }}</td>
-                    <td>{{ user.first_name }} {{ user.last_name }}</td>
+                    <td @click="viewDetail(user)">
+                      {{ user.first_name }} {{ user.last_name }}
+                    </td>
                     <td>{{ user.phone_number }}</td>
                     <td>{{ user.email }}</td>
+                    <td @click="fund_wallet_modal = !fund_wallet_modal">
+                      <button style="color: #00e8fe; font-size: 12px">
+                        Add Comment
+                      </button>
+                    </td>
                   </tr>
                   <tr v-if="users.length == 0">
                     <td>
-                      <p class="text-center">
-                        You have no user.
-                        <!-- <img class="emoji" src="/sad.png" alt="sad emoji" /> -->
-                      </p>
+                      <p class="text-center">You have no user.</p>
                     </td>
                   </tr>
-                  <!-- <tr v-if="subscribers.length == 0">
-                  <td>
-                    <p>
-                      You do not have any Subscribers.
-                      <img class="emoji" src="/sad.png" alt="sad emoji" />
-                    </p>
-                  </td>
-                </tr> -->
                 </tbody>
               </template>
             </v-simple-table>
@@ -75,6 +71,47 @@
         </div>
       </div>
     </div>
+    <div>
+      <div class="pop__up"></div>
+    </div>
+    <div v-show="fund_wallet_modal" class="show__pop__up">
+      <div class="show__pop__box zoomIn">
+        <div class="">
+          <div class="text-right">
+            <p
+              role="button"
+              @click="fund_wallet_modal = !fund_wallet_modal"
+              style="font-size: 20px"
+            >
+              &times;
+            </p>
+          </div>
+          <div class="">
+            <div class="form-group mx-2 mt-2">
+              <label style="font-size: 12px" for="" class=""
+                >Enter Comment for User</label
+              >
+
+              <textarea
+                class="form-control"
+                id="exampleFormControlTextarea1"
+                rows="7"
+                required
+              >
+              </textarea>
+            </div>
+            <div class="register_button_wrap text-center mt-3 py-4">
+              <span
+                @click="fund_wallet_modal = !fund_wallet_modal"
+                class="assets__link"
+              >
+                <span role="button" class="px-3">Send</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -87,6 +124,7 @@ export default {
       tab: null,
       users: {},
       loading: false,
+      fund_wallet_modal: false,
     };
   },
   methods: {
@@ -123,6 +161,25 @@ export default {
 .users_wrap .emoji {
   width: 40px;
   margin-top: 5px;
+}
+.show__pop__up {
+  background-color: rgba(0, 0, 0, 0.265);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  /* padding: 40px; */
+}
+.show__pop__box {
+  margin: 40px auto;
+  background-color: #fff;
+  width: 30%;
+  padding: 10px;
+  border-radius: 5px;
 }
 .users_wrap .search__bar__wrap .form-control {
   background-image: url("/search.png");

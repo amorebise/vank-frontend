@@ -200,7 +200,6 @@
                       class="form-control option-class select"
                       id="exampleFormControlSelect1"
                       v-model="signUp_data.country"
-                      required
                     >
                       <option>Please Select a Country</option>
                       <option
@@ -233,7 +232,6 @@
                       class="form-control option-class select"
                       id="exampleFormControlSelect1"
                       v-model="signUp_data.state"
-                      required
                     >
                       <option>Please Select a Country</option>
                       <option

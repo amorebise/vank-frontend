@@ -1,7 +1,7 @@
 <template>
   <div class="w-100">
     <div class="real__estate_wallet">
-      <user-nav name="Real Estate" />
+      <user-nav class="pr-2" name="Real Estate" />
       <div>
         <font-awesome-icon
           @click="back()"
@@ -28,13 +28,28 @@
             </div>
           </div>
         </div>
-        <div class="register_button_wrap text-center mt-3 py-4">
+        <div
+          style="gap: 10px"
+          class="
+            register_button_wrap
+            d-flex
+            justify-content-center
+            align-items-center
+            mt-3
+            py-4
+          "
+        >
           <nuxt-link
             to="/user_dashboard/fractional_ownership"
             class="assets__link"
           >
             <span class="px-3">Go to my Real Estate Wallet</span>
           </nuxt-link>
+          <div v-if="user">
+            <nuxt-link :to="`/user_dashboard/sell/${id}`" class="assets__link">
+              <span class="px-3">Sell</span>
+            </nuxt-link>
+          </div>
         </div>
       </div>
     </div>
@@ -46,12 +61,48 @@ import creator_sidebar from "~/components/creator_sidebar.vue";
 export default {
   components: { creator_sidebar },
   data() {
-    return {};
+    return {
+      user: {},
+    };
   },
   methods: {
+    async getUser() {
+      let auth = this.$auth.$storage._state;
+      let token = null;
+
+      for (const key in auth) {
+        console.log(key);
+
+        if (key == "_token.local") {
+          token = auth[key];
+        } else {
+          console.log("No");
+        }
+      }
+
+      console.log(token);
+
+      // console.log(this.$auth.$storage._state._token);
+      try {
+        let res = await this.$axios.get("/getUser", {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        });
+
+        this.user = res.data[0];
+
+        console.log(this.user);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
     back() {
       this.$router.go(-1);
     },
+  },
+  created() {
+    this.getUser();
   },
 };
 </script>

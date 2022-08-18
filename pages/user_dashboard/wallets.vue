@@ -35,6 +35,7 @@
             justify-content-center
             align-items-center
             pt-3
+            mt-2
           "
           style="gap: 10px"
         >
