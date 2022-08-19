@@ -38,7 +38,7 @@
             <div class="text_wrap bg-white px-3 py-2">
               <p>
                 Land in {{ property.layout_name }} -
-                <span v-if="property.size">{{ property.size }}SQM</span>
+                <span v-if="property.size">{{ property.size }}</span>
                 <span v-else>650SQM</span>
               </p>
               <div class="d-flex justify-content-between">

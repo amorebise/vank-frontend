@@ -2,7 +2,7 @@
   <div class="pay_bills_wrap w-100">
     <div class="fractional__ownership__wrap">
       <user-nav name="Fractional Ownership" />
-      <div>
+      <div class="arrow__back">
         <font-awesome-icon
           @click="back()"
           role="button"
@@ -275,6 +275,9 @@ export default {
   }
   .paragrphs {
     text-align: center;
+  }
+  .arrow__back {
+    padding-left: 15px;
   }
 }
 </style>

@@ -51,6 +51,8 @@
                               border-bottom: thin solid rgba(0, 0, 0, 0.12);
                             "
                             class="mt-2"
+                            v-for="funding in fundings"
+                            :key="funding.index"
                           >
                             <td>1</td>
                             <td>Abba Biola</td>
@@ -69,6 +71,11 @@
                               </div>
                             </td>
                           </tr>
+                          <div class="text-center" v-if="fundings.length === 0">
+                            <p>
+                              You currently do not have any Funding requests.
+                            </p>
+                          </div>
                         </tbody>
                       </template>
                     </v-simple-table>
@@ -100,6 +107,8 @@
                               border-bottom: thin solid rgba(0, 0, 0, 0.12);
                             "
                             class="mt-2"
+                            v-for="funding in fundings"
+                            :key="funding.index"
                           >
                             <td>1</td>
                             <td>Abba Biola</td>
@@ -124,6 +133,11 @@
                               </div>
                             </td>
                           </tr>
+                          <div class="text-center" v-if="fundings.length === 0">
+                            <p>
+                              You currently do not have any Funding requests.
+                            </p>
+                          </div>
                         </tbody>
                       </template>
                     </v-simple-table>

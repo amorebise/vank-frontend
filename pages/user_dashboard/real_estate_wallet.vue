@@ -2,53 +2,58 @@
   <div class="w-100">
     <div class="real__estate_wallet">
       <user-nav class="pr-2" name="Real Estate" />
-      <div>
-        <font-awesome-icon
-          @click="back()"
-          role="button"
-          class="fa-1x text-dark pl-1"
-          :icon="['fas', 'arrow-left']"
-        />
-      </div>
-      <div class="estate__wrap px-1 mt-4">
-        <h6>My Subscription ...</h6>
-        <div class="row">
-          <div class="col-md-6">
-            <img src="/real.svg" alt="" />
-            <div class="token__box">
-              <p class="full__text px-2 py-1">KARSHI 02 Tokens</p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div>
-              <img src="/real.png" alt="" />
+      <div class="real__wallet">
+        <div>
+          <font-awesome-icon
+            @click="back()"
+            role="button"
+            class="fa-1x text-dark pl-1"
+            :icon="['fas', 'arrow-left']"
+          />
+        </div>
+        <div class="estate__wrap px-1 mt-4">
+          <h6>My Subscription ...</h6>
+          <div class="row">
+            <div class="col-md-6">
+              <img src="/real.svg" alt="" />
               <div class="token__box">
-                <p class="full__text px-2 py-1">EPE 3 Tokens</p>
+                <p class="full__text px-2 py-1">KARSHI 02 Tokens</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div>
+                <img src="/real.png" alt="" />
+                <div class="token__box">
+                  <p class="full__text px-2 py-1">EPE 3 Tokens</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          style="gap: 10px"
-          class="
-            register_button_wrap
-            d-flex
-            justify-content-center
-            align-items-center
-            mt-3
-            py-4
-          "
-        >
-          <nuxt-link
-            to="/user_dashboard/fractional_ownership"
-            class="assets__link"
+          <div
+            style="gap: 10px"
+            class="
+              register_button_wrap
+              d-flex
+              justify-content-center
+              align-items-center
+              mt-3
+              py-4
+            "
           >
-            <span class="px-3">Go to my Real Estate Wallet</span>
-          </nuxt-link>
-          <div v-if="user">
-            <nuxt-link :to="`/user_dashboard/sell/${id}`" class="assets__link">
-              <span class="px-3">Sell</span>
+            <nuxt-link
+              to="/user_dashboard/fractional_ownership"
+              class="assets__link"
+            >
+              <span class="px-3">Go to my Real Estate Wallet</span>
             </nuxt-link>
+            <div v-if="user">
+              <nuxt-link
+                :to="`/user_dashboard/sell/${id}`"
+                class="assets__link"
+              >
+                <span class="px-3">Sell</span>
+              </nuxt-link>
+            </div>
           </div>
         </div>
       </div>
@@ -165,6 +170,12 @@ export default {
   .real__estate {
     margin-left: 0 !important;
     padding: 0;
+  }
+  .real__estate_wallet {
+    margin-left: 0 !important;
+  }
+  .real__wallet {
+    padding: 10px;
   }
   .settings_wrap {
     margin: 10px;

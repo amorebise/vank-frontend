@@ -84,7 +84,7 @@
                         type="number"
                         class="form-control"
                         placeholder="Enter Amount"
-                        v-model="txn.amount"
+                        v-model="fund_wallet.amount"
                       />
                     </div>
                     <div class="view__assets__wrap text-center">
@@ -204,6 +204,9 @@ export default {
         option: "",
         amount: "",
       },
+      fund_wallet: {
+        amount: "",
+      },
       funding_options: [
         "Fund wallet",
         "Withdraw to bank",
@@ -222,6 +225,7 @@ export default {
     },
     goToSelectedTxnType() {
       if (this.txn.option == "Fund wallet") {
+        this.fundWallet();
         this.$router.push("/user_dashboard/fund_wallet/");
       } else if (this.txn.option == "Withdraw to bank") {
         this.$router.push("/user_dashboard/bank_transfer/");
@@ -231,11 +235,22 @@ export default {
         this.$router.push("/user_dashboard/transfer_to_sub_wallet/");
       }
     },
+    async fundWallet() {
+      try {
+        let response = await this.$axios.post(
+          "/topUpCashWallet",
+          this.fund_wallet
+        );
+        console.log(response);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
     async fundSubscriptionWallet() {
       try {
         let response = await this.$axios.post(
           "/fundSubscriptionWallet",
-          this.txn.amount
+          this.fund_wallet
         );
         console.log(response);
       } catch (error) {

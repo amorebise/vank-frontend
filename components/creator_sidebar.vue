@@ -49,7 +49,7 @@
         </nuxt-link>
 
         <nuxt-link
-          to="/user_dashboard/my_account"
+          to="/user_dashboard/fractional_ownership"
           class="list-group list-group-item active bg-transparent"
         >
           <div class="ml-5 d-flex align-items-center py-1">

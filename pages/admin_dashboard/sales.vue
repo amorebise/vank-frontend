@@ -42,7 +42,12 @@
                     <td>200</td>
                     <td>150,000</td>
                     <td class="pt-3">
-                      <button class="text-success">Confirm</button>
+                      <button
+                        @click="approveSaleRequest(saleRequest)"
+                        class="text-success"
+                      >
+                        Confirm
+                      </button>
                     </td>
                   </tr>
                   <div class="text-center" v-if="saleRequests.length === 0">
@@ -79,13 +84,13 @@ export default {
         console.log(error);
       }
     },
-    async approveWithdrawalsRequest(withdrawal) {
+    async approveSaleRequest(saleRequest) {
       try {
-        let user_id = withdrawal.id;
+        let token_id = saleRequest.id;
         const response = await this.$axios.post(
-          `/admin/approveWithdrawalRequest/${user_id}`
+          `/admin/approveSaleRequest/${token_id}`
         );
-        this.$toast.success("Approved", { timeout: 5000 });
+        this.$toast.success("Token Sale Confirmed", { timeout: 5000 });
         console.log(response);
       } catch (error) {
         console.log(error);

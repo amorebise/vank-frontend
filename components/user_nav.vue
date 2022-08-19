@@ -12,9 +12,9 @@
         </div>
         <v-spacer></v-spacer>
         <div style="gap: 10px" class="d-flex align-items-center">
-          <div class="">
+          <!-- <div class="">
             <font-awesome-icon class="fa-2x" :icon="['fas', 'user-circle']" />
-          </div>
+          </div> -->
           <div class="">
             <button @click="logout()" class="log_out_button">Logout</button>
           </div>

@@ -43,7 +43,11 @@
                   <div class="form-group">
                     <label>Enter quantity of tokens</label>
                     <div class="d-flex value__bar justify-content-between pr-2">
-                      <input type="number" class="form-control" />
+                      <input
+                        type="number"
+                        v-model="sell_quantity.quantity"
+                        class="form-control"
+                      />
                       <button @click="getMaxValue()" style="color: #00e8fe">
                         MAX
                       </button>
@@ -51,9 +55,13 @@
                   </div>
                 </form>
                 <div class="mt-3 py-4">
-                  <nuxt-link to="/user_dashboard/payment" class="assets__link">
+                  <button
+                    @click="sellToken()"
+                    type="submit"
+                    class="assets__link"
+                  >
                     <span class="px-3">Continue</span>
-                  </nuxt-link>
+                  </button>
                 </div>
               </div>
             </div>
@@ -74,41 +82,56 @@ export default {
       user: {},
       id: this.$route.params.id,
       max_value: "",
+      sell_quantity: {
+        quantity: "",
+      },
       asset_detail: {},
     };
   },
   methods: {
-    // async getUser() {
-    //   let auth = this.$auth.$storage._state;
-    //   let token = null;
+    async getUser() {
+      let auth = this.$auth.$storage._state;
+      let token = null;
 
-    //   for (const key in auth) {
-    //     console.log(key);
+      for (const key in auth) {
+        console.log(key);
 
-    //     if (key == "_token.local") {
-    //       token = auth[key];
-    //     } else {
-    //       console.log("No");
-    //     }
-    //   }
+        if (key == "_token.local") {
+          token = auth[key];
+        } else {
+          console.log("No");
+        }
+      }
 
-    //   console.log(token);
+      console.log(token);
 
-    //   // console.log(this.$auth.$storage._state._token);
-    //   try {
-    //     let res = await this.$axios.get("/getUser", {
-    //       headers: {
-    //         Authorization: `bearer ${token}`,
-    //       },
-    //     });
+      // console.log(this.$auth.$storage._state._token);
+      try {
+        let res = await this.$axios.get("/getUser", {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        });
 
-    //     this.user = res.data[0];
+        this.user = res.data[0];
 
-    //     console.log(this.user);
-    //   } catch (error) {
-    //     console.log(error.response);
-    //   }
-    // },
+        console.log(this.user);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+    async sellToken() {
+      try {
+        // let response = await this.$axios.post(
+        //   `/api/sale/${this.user.id}`,
+        //   this.sell_quantity
+        // );
+        this.$router.push("/user_dashboard/sell/");
+        // console.log(response);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
     async getSingleAssetDetail() {
       let response = await this.$axios.get(`/getSingleAsset/${this.id}`);
       this.asset_detail = response.data;
@@ -129,9 +152,9 @@ export default {
     },
   },
   created() {
-    // this.getUser()
+    this.getUser();
     this.getSingleAssetDetail();
-    this.getMaxValue();
+    // this.getMaxValue();
   },
 };
 </script>
