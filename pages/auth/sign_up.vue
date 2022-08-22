@@ -203,13 +203,13 @@
                     >
                       <option>Please Select a Country</option>
                       <option
-                        class="colour"
+                        class="text-danger"
                         id="selectCountry"
                         v-for="country in countries"
                         :key="country.id"
                         :value="country.name"
                       >
-                        <p class="text-danger">{{ country.name }}</p>
+                        {{ country.name }}
                       </option>
                     </select>
                     <span class="errors">{{ errors[0] }}</span>
@@ -235,13 +235,13 @@
                     >
                       <option>Please Select a Country</option>
                       <option
-                        class="colour"
+                        class="text-danger"
                         id="selectCountry"
                         v-for="state in states"
                         :key="state.id"
                         :value="state.name"
                       >
-                        <p class="text-danger">{{ state.name }}</p>
+                        {{ state.name }}
                       </option>
                     </select>
                     <span class="errors">{{ errors[0] }}</span>

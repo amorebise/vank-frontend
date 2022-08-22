@@ -25,12 +25,14 @@
                   placeholder="Enter location Name"
                   v-model="assets.location"
                 /> -->
+              <!-- <div>
+                <b-form-select
+                  v-model="assets.location"
+                  :options="options"
+                ></b-form-select>
+              </div> -->
               <div class="form-group mx-2">
-                <label
-                  for="exampleFormControlSelect1 font-weight-bolder"
-                  class=""
-                  >Choose Location</label
-                >
+                <label class="font-weight-bolder">Choose Location</label>
                 <select
                   class="form-control option-class select"
                   id="exampleFormControlSelect1"
@@ -44,13 +46,13 @@
                     class="colour"
                     id="selectCountry"
                   >
-                    <p>{{ option }}</p>
+                    {{ option }}
                   </option>
                 </select>
               </div>
-              <small v-if="location_error.length > 0" class="text-danger"
+              <!-- <small v-if="location_error.length > 0" class="text-danger"
                 >{{ location_error }}
-              </small>
+              </small> -->
               <!-- </div> -->
             </div>
             <div class="col-md-6">
@@ -340,6 +342,12 @@ export default {
     return {
       tab: null,
       loading: false,
+      // selected: null,
+      // options: [
+      //   { value: "a", text: "lagos" },
+      //   { value: "b", text: "abuja" },
+      //   { value: "c", text: "uyo" },
+      // ],
       assets: {
         location: "",
         layout_name: "",

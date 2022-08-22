@@ -71,7 +71,7 @@
                           class="colour"
                           id="selectCountry"
                         >
-                          <p>{{ option }}</p>
+                          {{ option }}
                         </option>
                       </select>
                     </div>

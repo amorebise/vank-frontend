@@ -51,6 +51,10 @@ export default {
         type: "text/javascript"
       },
       {
+        src: "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js",
+        type: "text/javascript"
+      },
+      {
         src: "https://cdn.jsdelivr.net/npm/typed.js@2.0.12",
         type: "text/javascript"
       },

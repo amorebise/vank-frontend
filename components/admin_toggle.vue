@@ -55,36 +55,33 @@
             <span class="ml-2">Property</span>
           </div>
         </nuxt-link>
-        <v-expansion-panels>
-          <v-expansion-panel>
-            <v-expansion-panel-header> Transactions </v-expansion-panel-header>
-            <v-expansion-panel-content>
-              <div class="py-1">
-                <nuxt-link to="/admin_dashboard/funding/">Funding</nuxt-link>
-              </div>
-
-              <div class="py-1">
-                <nuxt-link to="/admin_dashboard/subscriptions/"
-                  >Subscription</nuxt-link
-                >
-              </div>
-
-              <div class="py-1">
-                <nuxt-link to="/admin_dashboard/sales/">Sales</nuxt-link>
-              </div>
-
-              <div class="py-1">
-                <nuxt-link to="/admin_dashboard/borrow/">Borrow</nuxt-link>
-              </div>
-
-              <div class="py-1">
-                <nuxt-link to="/admin_dashboard/staking_transactions/"
-                  >Staking</nuxt-link
-                >
-              </div>
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-        </v-expansion-panels>
+        <div class="d-flex align-items-center dropdown__flex">
+          <div>
+            <ion-icon name="card-outline"></ion-icon>
+          </div>
+          <div>
+            <b-nav-item-dropdown text="Transactions">
+              <b-dropdown-item
+                @click="$router.push('/admin_dashboard/funding/')"
+                >Funding</b-dropdown-item
+              >
+              <b-dropdown-item
+                @click="$router.push('/admin_dashboard/subscriptions/')"
+                >Subscription</b-dropdown-item
+              >
+              <b-dropdown-item @click="$router.push('/admin_dashboard/sales/')"
+                >Sales</b-dropdown-item
+              >
+              <b-dropdown-item @click="$router.push('/admin_dashboard/borrow/')"
+                >Borrowing</b-dropdown-item
+              >
+              <b-dropdown-item
+                @click="$router.push('/admin_dashboard/staking_transactions/')"
+                >Staking</b-dropdown-item
+              >
+            </b-nav-item-dropdown>
+          </div>
+        </div>
 
         <nuxt-link
           to="/admin_dashboard/property_detail"

@@ -48,10 +48,8 @@
                       </button>
                     </td>
                   </tr>
-                  <tr v-if="users.length == 0">
-                    <td>
-                      <p class="text-center">You have no user.</p>
-                    </td>
+                  <tr class="text-center" v-if="users.length == 0">
+                    <td>You have no user.</td>
                   </tr>
                 </tbody>
               </template>

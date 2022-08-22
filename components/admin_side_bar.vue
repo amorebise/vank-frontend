@@ -48,7 +48,34 @@
         <!-- <div>
             <ion-icon name="link-outline"></ion-icon>
           </div> -->
-        <v-expansion-panels>
+        <div class="d-flex align-items-center dropdown__flex">
+          <div>
+            <ion-icon name="card-outline"></ion-icon>
+          </div>
+          <div>
+            <b-nav-item-dropdown text="Transactions">
+              <b-dropdown-item
+                @click="$router.push('/admin_dashboard/funding/')"
+                >Funding</b-dropdown-item
+              >
+              <b-dropdown-item
+                @click="$router.push('/admin_dashboard/subscriptions/')"
+                >Subscription</b-dropdown-item
+              >
+              <b-dropdown-item @click="$router.push('/admin_dashboard/sales/')"
+                >Sales</b-dropdown-item
+              >
+              <b-dropdown-item @click="$router.push('/admin_dashboard/borrow/')"
+                >Borrowing</b-dropdown-item
+              >
+              <b-dropdown-item
+                @click="$router.push('/admin_dashboard/staking_transactions/')"
+                >Staking</b-dropdown-item
+              >
+            </b-nav-item-dropdown>
+          </div>
+        </div>
+        <!-- <v-expansion-panels>
           <v-expansion-panel>
             <v-expansion-panel-header> Transactions </v-expansion-panel-header>
             <v-expansion-panel-content>
@@ -73,7 +100,7 @@
               </div>
             </v-expansion-panel-content>
           </v-expansion-panel>
-        </v-expansion-panels>
+        </v-expansion-panels> -->
         <!-- </div> -->
 
         <nuxt-link
@@ -238,7 +265,8 @@ export default {
 .sidebar-wrap .v-expansion-panel::before {
   box-shadow: none !important;
 }
-.list-group-item {
+.list-group-item,
+.dropdown__flex {
   border: none;
   padding: 7px 30px !important;
   width: 100%;
@@ -246,8 +274,27 @@ export default {
   cursor: pointer;
   font-size: 14px;
 }
-.list-group-item:hover {
+.dropdown__flex {
+  border: none;
+  padding: 3px 50px !important;
+  width: 100%;
+  color: #001214 !important;
+  cursor: pointer;
+  font-size: 14px;
+}
+.dropdown-menu {
   background-color: #fff;
+  border: none;
+  width: 100%;
+  font-size: 14px;
+}
+.nav-link {
+  display: block;
+  padding: 0.5rem 0.4rem;
+}
+.list-group-item:hover,
+.dropdown__flex:hover {
+  /* background-color: #fff; */
   color: #455b6d !important;
   background-color: #00e8fe !important;
   transition: all, 0.5s;

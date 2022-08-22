@@ -75,11 +75,9 @@
                     </td>
                   </tr>
                   <tr v-if="available_assets.length == 0">
-                    <td>
-                      <p class="text-center">
-                        You have not added any assets.
-                        <!-- <img class="emoji" src="/sad.png" alt="sad emoji" /> -->
-                      </p>
+                    <td class="text-center">
+                      You have not added any assets.
+                      <!-- <img class="emoji" src="/sad.png" alt="sad emoji" /> -->
                     </td>
                   </tr>
                 </tbody>

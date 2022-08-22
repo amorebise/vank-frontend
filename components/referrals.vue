@@ -44,9 +44,7 @@
                     <td>{{ referral }}</td>
                   </tr>
                   <tr v-if="referrals.length == 0">
-                    <td>
-                      <p class="text-center">You have no referrals.</p>
-                    </td>
+                    <td class="text-center">You have no referrals.</td>
                   </tr>
                 </tbody>
               </template>
