@@ -1,6 +1,6 @@
 <template>
   <div class="w-100">
-    <div class="property">
+    <div class="property pr-3">
       <user-nav name="Property Details" />
       <div class="mt-5 single__property">
         <div>
@@ -50,70 +50,28 @@
                 </button>
               </div> -->
               <div>
-                <button
-                  @click="due__deligence__modal = !due__deligence__modal"
+                <a
                   class="view__report"
                   style="color: #00e8fe; font-size: 12px"
+                  :href="asset_detail.due_deligence_report"
+                  target="_blank"
+                  attributes-list
+                  download
                 >
                   Click to view due diligence report
-                </button>
+                </a>
               </div>
               <div>
-                <button
-                  @click="audit_report = !audit_report"
+                <a
                   class="view__report"
                   style="color: #00e8fe; font-size: 12px"
+                  :href="asset_detail.token_audit_report"
+                  target="_blank"
+                  attributes-list
+                  download
                 >
-                  Click to view audit report
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="due__deligence__modal">
-          <div class="change__password__form" v-show="due__deligence__modal">
-            <div class="password__modal slideInDown">
-              <div class="text-right">
-                <button
-                  style="font-size: 16px; font-weight: 600; color: #00e8fe"
-                  @click="due__deligence__modal = !due__deligence__modal"
-                >
-                  x
-                </button>
-              </div>
-              <div>
-                <embed
-                  :src="asset_detail.token_audit_report"
-                  frameBorder="0"
-                  scrolling="auto"
-                  height="100%"
-                  width="100%"
-                />
-                <!-- <img :src="asset_detail.due_deligence_report" alt="image" /> -->
-              </div>
-            </div>
-          </div>
-
-          <div class="change__password__form" v-show="audit_report">
-            <div class="password__modal slideInDown">
-              <div class="text-right">
-                <button
-                  style="font-size: 16px; font-weight: 600; color: #00e8fe"
-                  @click="audit_report = !audit_report"
-                >
-                  x
-                </button>
-              </div>
-              <div>
-                <embed
-                  :src="asset_detail.token_audit_report"
-                  frameBorder="0"
-                  scrolling="auto"
-                  height="100%"
-                  width="100%"
-                />
-                <!-- <img :src="asset_detail.token_audit_report" alt="image" /> -->
+                  Click to view due diligence report
+                </a>
               </div>
             </div>
           </div>
@@ -286,7 +244,7 @@ export default {
 @media (max-width: 768px) {
   .property {
     margin-left: 0 !important;
-    padding: 0;
+    padding: 0 !important;
   }
   .settings_wrap {
     margin: 10px;

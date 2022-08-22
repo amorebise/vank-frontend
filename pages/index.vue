@@ -40,7 +40,15 @@
             class="mb-2 cardz"
           >
             <div class="sale__notification">
-              <p>90% Sold</p>
+              <span
+                v-if="trending.token_quantity_subscribed.length > 0"
+                style="font-size: 12px"
+                class="text-dark"
+                >{{ trending.token_quantity_subscribed }} tokens Sold</span
+              >
+              <span v-else style="font-size: 12px" class="text-dark"
+                >{{ trending.token_quantity_subscribed }}% tokens Sold</span
+              >
             </div>
             <v-img
               @click="

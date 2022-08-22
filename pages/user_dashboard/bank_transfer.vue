@@ -18,8 +18,8 @@
                 Pay &#8358;1234 to: <br />
                 Vank Digital Services
               </p>
-              <p>Bank: Access Bank</p>
-              <p>Acc No: 1234567890</p>
+              <p>Bank: GTBank</p>
+              <p>Acc No: 0719352237</p>
             </div>
             <div class="view__assets__wrap text-center">
               <div>
@@ -92,6 +92,7 @@ export default {
 @media (max-width: 768px) {
   .fund__wallet {
     margin-left: 0;
+    /* padding: 0 !important; */
   }
   .fund__wallet .fundz__wrap {
     padding-left: 20px;

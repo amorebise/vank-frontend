@@ -1,6 +1,6 @@
 <template>
   <div class="pay_bills_wrap w-100">
-    <div class="payments">
+    <div class="payments pr-3">
       <user-nav name="Make Payments" />
       <div class="back__btn">
         <font-awesome-icon
@@ -21,9 +21,7 @@
               id="exampleFormControlSelect1"
               required
             >
-              <option class="colour" id="selectCountry">
-                <p class="text-danger">Cash Wallet</p>
-              </option>
+              <option class="colour" id="selectCountry">Cash Wallet</option>
               <option>Take Loan</option>
             </select>
           </div>
@@ -102,7 +100,7 @@ export default {
 @media (max-width: 768px) {
   .payments {
     margin-left: 0 !important;
-    padding: 0;
+    padding: 0 !important;
   }
   .payments_wrap {
     margin: 10px;

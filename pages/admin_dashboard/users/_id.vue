@@ -160,17 +160,23 @@ export default {
     },
     async limitStake() {
       try {
-        let response = await this.$axios.post("/admin/limitSubscribeStatus/");
+        let response = await this.$axios.post(
+          `/admin/limitSubscribeStatus/${this.id}`
+        );
         console.log(response);
         this.run_stake();
+        this.$toast.success("user has been limited from staking");
       } catch (error) {
         console.log(error.response);
       }
     },
     async limitWithdrawal() {
       try {
-        let response = await this.$axios.post("/admin/limitWithdrawStatus/");
+        let response = await this.$axios.post(
+          `/admin/limitWithdrawStatus/${this.id}`
+        );
         console.log(response);
+        this.$toast.success("user has been limited from withdrawal");
         this.run_stake();
       } catch (error) {
         console.log(error.response);
@@ -178,8 +184,11 @@ export default {
     },
     async limitSubscription() {
       try {
-        let response = await this.$axios.post("/admin/limitSubscribeStatus/");
+        let response = await this.$axios.post(
+          `/admin/limitSubscribeStatus/${this.id}`
+        );
         console.log(response);
+        this.$toast.success("user has been limited from subscribing");
         this.run_stake();
       } catch (error) {
         console.log(error.response);

@@ -107,7 +107,7 @@
                 <div class="text__wrap bg-white px-3 py-3">
                   <p>
                     Land in {{ trending.layout_name }} -
-                    <span v-if="trending.size">{{ trending.size }}</span>
+                    <span v-if="trending.size">{{ trending.size }}SQM</span>
                     <span v-else>650SQM</span>
                   </p>
                   <div class="d-flex justify-content-between">

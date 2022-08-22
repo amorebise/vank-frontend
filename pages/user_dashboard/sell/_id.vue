@@ -123,7 +123,7 @@ export default {
     async sellToken() {
       try {
         // let response = await this.$axios.post(
-        //   `/api/sale/${this.user.id}`,
+        //   `/api/sale/${this.asset_detail.id}`,
         //   this.sell_quantity
         // );
         this.$router.push("/user_dashboard/sell/");
@@ -268,7 +268,7 @@ input[type="number"]::-webkit-inner-spin-button {
 @media (max-width: 768px) {
   .but__token__content {
     margin-left: 0 !important;
-    padding: 0;
+    padding: 0 !important;
   }
   .settings_wrap {
     margin: 10px;

@@ -2,7 +2,7 @@
   <div class="exam_token_wrap w-100">
     <div class="cash__sub__wrap">
       <user-nav name="Wallets" />
-      <div>
+      <div class="back__btn">
         <font-awesome-icon
           @click="back()"
           role="button"
@@ -170,11 +170,10 @@
                                 type="number"
                                 class="form-control"
                                 placeholder="Enter Amount"
+                                v-model="fund_wallet.amount"
                               />
                             </div>
-                            <button
-                              @click="$router.push('/user_dashboard/wallets/')"
-                            >
+                            <button @click="transferToCashWallet()">
                               Transfer
                             </button>
                           </div>
@@ -246,6 +245,19 @@ export default {
         console.log(error.response);
       }
     },
+    async transferToCashWallet() {
+      try {
+        let response = await this.$axios.post(
+          "/topUpCashWallet",
+          this.fund_wallet
+        );
+        this.amount__modal = !this.amount__modal;
+        this.$toast.success("success!! wallet will be updated after approval");
+        console.log(response);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
     async fundSubscriptionWallet() {
       try {
         let response = await this.$axios.post(
@@ -300,12 +312,12 @@ export default {
 .cash__sub__wrap .transactions_data {
   background-color: #fff;
 }
-.cash__sub__wrap
+/* .cash__sub__wrap
   .transactions_data
   .v-data-table--fixed-header
   > .v-data-table__wrapper {
-  /* background-color: #f8f7ff; */
-}
+  background-color: #f8f7ff;
+} */
 .cash__sub__wrap
   .transactions_data
   .v-data-table
@@ -414,7 +426,10 @@ export default {
 @media (max-width: 768px) {
   .cash__sub__wrap {
     margin-left: 0 !important;
-    padding: 0;
+    padding: 0 !important;
+  }
+  .back__btn {
+    padding-left: 20px;
   }
   .cash__sub__wrap .wallet__balance__wrap {
     margin-top: 0 !important;

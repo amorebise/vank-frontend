@@ -135,7 +135,7 @@ input[type="number"]::-webkit-outer-spin-button {
 @media (max-width: 768px) {
   .fund__wallet {
     margin-left: 0 !important;
-    padding: 0;
+    padding: 0 !important;
   }
   .fund__wallet .payments_wrap {
     margin: 10px;
