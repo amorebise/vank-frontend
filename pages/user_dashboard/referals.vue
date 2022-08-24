@@ -61,7 +61,10 @@
         </div>
         <div class="wallet__content mt-3">
           <div class="d-flex justify-content-center">
-            <h5>You have earned &#8358;20,000 cash</h5>
+            <h5 v-if="referralBonus">
+              You have earned &#8358;{{ referralBonus }} cash
+            </h5>
+            <h5 v-else>You have no referral bonus</h5>
             <div class="pt-1 pl-1">
               <ion-icon
                 style="color: #00e8fe; font-size: 20px"
@@ -95,6 +98,7 @@ export default {
   data() {
     return {
       referrals: {},
+      referralBonus: {},
     };
   },
   methods: {
@@ -103,9 +107,19 @@ export default {
       this.referrals = response.data.slice(0, 40);
       console.log(this.referrals);
     },
+    async getReferralBonus() {
+      try {
+        let response = await this.$axios.get("/getReferralBonus");
+        this.referralBonus = response.data;
+        console.log(this.referralBonus);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
   },
   created() {
     this.getReferrals();
+    this.getReferralBonus();
   },
 };
 </script>

@@ -42,12 +42,15 @@ export default {
     back() {
       this.$router.go(-1);
     },
+    showAmount() {
+      let markmm = localStorage.getItem("marketMakerKey");
+      this.selected_amount = JSON.parse(markmm);
+      console.log(this.selected_amount);
+      // console.log(this.selected_amount.id);
+    },
   },
   created() {
-    let markmm = localStorage.getItem("marketMakerKey");
-    this.selected_amount = JSON.parse(markmm);
-    console.log(this.selected_amount);
-    // console.log(this.selected_amount.id);
+    this.showAmount();
   },
 };
 </script>

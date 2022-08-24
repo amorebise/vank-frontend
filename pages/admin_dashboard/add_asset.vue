@@ -293,9 +293,9 @@
                     <header class="text-dark" id="textDrag">
                       Drag and Upload File
                     </header>
-                    <span role="button" class="text-dark" id="button"
+                    <!-- <span role="button" class="text-dark" id="button"
                       >Upload File</span
-                    >
+                    > -->
                     <input
                       @change="upload_image()"
                       id="input"
@@ -465,18 +465,19 @@ export default {
       const dragText = document.getElementById("textDrag");
       const input = document.getElementById("input");
       const button = document.getElementById("button");
-
       let file;
 
-      button.onclick = () => {
-        input.click();
-      };
+      // button.onclick = () => {
+      //   // if user clicks the button then the input is also clicked
+      //   input.click();
+      // };
 
-      input.addEventListener("change", function () {
-        file = this.files[0];
-        showFile();
-        drop_area.classList.add("active");
-      });
+      // input.addEventListener("change", function () {
+      //   file = this.files[0];
+      //   console.log(file);
+      //   // showFile();
+      //   drop_area.classList.add("active");
+      // });
 
       // If user drags file over drag area
       drop_area.addEventListener("dragover", (event) => {

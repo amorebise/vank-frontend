@@ -129,7 +129,7 @@
               </p>
             </div>
             <div class="mt-4">
-              <nuxt-link to="/user_dashboard/fund_wallet">
+              <nuxt-link to="/user_dashboard/cash_subscription_wallet/">
                 <button class="assets__link">
                   <span class="px-3" style="font-weight: 400"
                     >Fund My Wallet</span

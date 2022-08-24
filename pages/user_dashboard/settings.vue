@@ -124,6 +124,68 @@
           </div>
         </div>
 
+        <div class="change__password__form" v-show="show_payment_modal">
+          <div class="password__modal slideInDown">
+            <form action="" method="post" @submit.prevent="change_password()">
+              <div class="form-group">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="password__header">
+                    <h6>Edit New Password</h6>
+                  </div>
+                </div>
+
+                <label class="" for="">Enter Bvn</label>
+                <input
+                  required
+                  type="number"
+                  class="form-control"
+                  v-model="verification.bvn_number"
+                  placeholder="Enter your BVN"
+                />
+              </div>
+              <div class="form-group">
+                <label class="" for="">Enter Bank Name</label>
+                <input
+                  required
+                  type="text"
+                  class="form-control"
+                  v-model="verification.bank"
+                  placeholder="Enter Bank Name"
+                />
+              </div>
+              <div class="form-group">
+                <label class="" for="">Enter Account Number</label>
+                <input
+                  required
+                  type="number"
+                  class="form-control"
+                  v-model="verification.account_number"
+                  placeholder="Enter Account Number"
+                />
+              </div>
+              <div class="d-flex justify-content-center">
+                <div class="mx-2">
+                  <v-btn
+                    class="cancel_button"
+                    @click="show_payment_modal = !show_payment_modal"
+                    >Cancel</v-btn
+                  >
+                </div>
+                <div class="mx-2">
+                  <v-btn
+                    @click="updateBankDetails()"
+                    class="login_button"
+                    :loading="loading"
+                    value="Update"
+                    type="submit"
+                    >Update</v-btn
+                  >
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
         <!-- <div class="update__password__wrap d-flex justify-content-between py-2">
           <div class="text-wrap">
             <h5>Next of Kin</h5>
@@ -139,7 +201,9 @@
             <p>Payments</p>
           </div>
           <div class="edit__wrap">
-            <button>Edit</button>
+            <button @click="show_payment_modal = !show_payment_modal">
+              Edit
+            </button>
           </div>
         </div>
         <div class="update__password__wrap d-flex justify-content-between">
@@ -167,9 +231,15 @@ export default {
       show_modal: false,
       tab: null,
       loading: false,
+      show_payment_modal: false,
       update_profile: {
         email: "",
         phone_number: "",
+      },
+      verification: {
+        account_number: "",
+        bank: "",
+        bvn_number: "",
       },
       password_change: {
         current_password: "",
@@ -187,6 +257,18 @@ export default {
         );
         console.log(response);
         this.$toast.success("Profile Updated", { timeout: 5000 });
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+    async updateBankDetails() {
+      try {
+        let response = await this.$axios.post(
+          "/verifyNationalIdentity",
+          this.verification
+        );
+        this.show_payment_modal = !this.show_payment_modal;
+        console.log(response);
       } catch (error) {
         console.log(error.response);
       }

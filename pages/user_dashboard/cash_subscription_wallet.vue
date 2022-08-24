@@ -55,7 +55,7 @@
                       <label
                         for="exampleFormControlSelect1 font-weight-bolder"
                         class=""
-                        >Choose Transaction</label
+                        >Choose Transaction (fund,withdraw etc)</label
                       >
                       <select
                         class="form-control option-class select"
@@ -213,6 +213,7 @@ export default {
       ],
       success__modal: false,
       amount__modal: false,
+      amount: {},
     };
   },
 
@@ -225,11 +226,15 @@ export default {
     goToSelectedTxnType() {
       if (this.txn.option == "Fund wallet") {
         this.fundWallet();
+        this.saveAmount();
         this.$router.push("/user_dashboard/fund_wallet/");
       } else if (this.txn.option == "Withdraw to bank") {
+        // this.fundWallet();
         this.$router.push("/user_dashboard/bank_transfer/");
+        this.saveAmount();
       } else if (this.txn.option == "Transfer to your subscription wallet") {
         this.fundSubscriptionWallet();
+        this.saveAmount();
         // this.success__modal = !this.success__modal;
         this.$router.push("/user_dashboard/transfer_to_sub_wallet/");
       }
@@ -240,6 +245,7 @@ export default {
           "/topUpCashWallet",
           this.fund_wallet
         );
+        this.saveAmount();
         console.log(response);
       } catch (error) {
         console.log(error.response);
@@ -268,6 +274,13 @@ export default {
       } catch (error) {
         console.log(error.response);
       }
+    },
+    saveAmount() {
+      this.amount = this.fund_wallet;
+      localStorage.setItem("marketMakerKey", JSON.stringify(this.amount));
+      console.log(this.amount);
+      this.loading = false;
+      // this.$router.push("/user_dashboard/payment");
     },
     back() {
       this.$router.go(-1);

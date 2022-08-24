@@ -17,7 +17,7 @@
                 >Sign up for free</span
               ></nuxt-link
             >
-            <nuxt-link to="/public_view/real_estate" class="explore_wrap"
+            <nuxt-link to="/public_view/" class="explore_wrap"
               ><span class="text-dark explore_link mx-1"
                 >Explore Assets</span
               ></nuxt-link
@@ -83,7 +83,7 @@
           </div>
         </div>
         <div class="view__assets__wrap text-center">
-          <nuxt-link to="/user_dashboard/my_account">
+          <nuxt-link to="/public_view/">
             <button class="assets__link">
               <span class="px-3">View all Assets</span>
             </button>

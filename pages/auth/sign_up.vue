@@ -185,6 +185,29 @@
                 </div>
               </div>
 
+              <!-- Referrals -->
+              <!-- <div class="col-md-6">
+                <div class="form-group mx-2 mt-2">
+                  <ValidationProvider
+                    name="confirm password"
+                    rules="required|max:30|min:8"
+                    v-slot="{ errors }"
+                  >
+                    <label for="" class="">Referral Code</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      v-model="signUp_data.referral_code"
+                      placeholder="Enter referral code"
+                    />
+                    <div v-show="error_message">
+                      <span class="errors">{{ password_error }}</span>
+                    </div>
+                    <span class="errors">{{ errors[0] }}</span>
+                  </ValidationProvider>
+                </div>
+              </div> -->
+
               <!-- Country -->
               <div class="col-md-6">
                 <div class="form-group mx-2 mt-2">
@@ -236,7 +259,7 @@
                       <option>Please Select a Country</option>
                       <option
                         class="text-danger"
-                        id="selectCountry"
+                        id="selectState"
                         v-for="state in states"
                         :key="state.id"
                         :value="state.name"

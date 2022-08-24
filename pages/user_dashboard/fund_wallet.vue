@@ -36,7 +36,7 @@
             </select>
           </div>
 
-          <div class="form-group mx-2 mt-2">
+          <!-- <div class="form-group mx-2 mt-2">
             <label for="" class="">How much do you want to pay?</label>
             <input
               type="number"
@@ -44,7 +44,7 @@
               placeholder="Enter Amount"
               v-model="wallet.amount"
             />
-          </div>
+          </div> -->
           <div class="view__assets__wrap text-center">
             <button @click="goToSelectedTxnType()" class="assets__link">
               <span class="px-3">Next</span>
@@ -73,11 +73,11 @@ export default {
   },
   methods: {
     goToSelectedTxnType() {
-      if (this.txn.option == "Card Payment") {
-        this.$router.push("/user_dashboard/card_payment/");
-      } else {
-        this.topUpCashWallet();
-      }
+      // if (this.txn.option == "Card Payment") {
+      this.$router.push("/user_dashboard/bank_transfer/");
+      // } else {
+      // this.topUpCashWallet();
+      // }
 
       // this.$router.push(
       //   this.txn.option == "Card Payment"
@@ -89,10 +89,18 @@ export default {
       try {
         let response = await this.$axios.post("/topUpCashWallet", this.wallet);
         console.log(response);
+        this.saveAmount();
         this.$router.push("/user_dashboard/bank_transfer/");
       } catch (error) {
         console.log(error.response);
       }
+    },
+    saveAmount() {
+      this.amount = this.fund_wallet;
+      localStorage.setItem("marketMakerKey", JSON.stringify(this.amount));
+      console.log(this.amount);
+      this.loading = false;
+      // this.$router.push("/user_dashboard/payment");
     },
   },
 };

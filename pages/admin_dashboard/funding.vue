@@ -38,11 +38,13 @@
                       <template v-slot:default>
                         <thead>
                           <tr class="">
-                            <th class="text-left th_color">SN</th>
+                            <th class="text-left th_color">Ref ID</th>
+                            <th class="text-left th_color">Date</th>
                             <th class="text-left th_color">Name</th>
                             <th class="text-left th_color">Phone Number</th>
+                            <th class="text-left th_color">Status</th>
+
                             <th class="text-left th_color">Amount(N)</th>
-                            <th class="text-left th_color">Action</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -54,11 +56,32 @@
                             v-for="funding in fundings"
                             :key="funding.index"
                           >
-                            <td>1</td>
-                            <td>Abba Biola</td>
-                            <td>08123456789</td>
-                            <td>38,000</td>
-                            <td class="pt-1">
+                            <td v-if="funding.admin_status === 'confirmed'">
+                              {{ funding.reference_id }}
+                            </td>
+                            <td v-if="funding.admin_status === 'confirmed'">
+                              {{ funding.date }}
+                            </td>
+                            <td v-if="funding.admin_status === 'confirmed'">
+                              {{ funding.name }}
+                            </td>
+                            <td v-if="funding.admin_status === 'confirmed'">
+                              {{ funding.phone_number }}
+                            </td>
+                            <td
+                              v-if="funding.admin_status === 'confirmed'"
+                              class="text-success"
+                            >
+                              {{ funding.status }}
+                            </td>
+
+                            <td v-if="funding.admin_status === 'confirmed'">
+                              {{ funding.amount }}
+                            </td>
+                            <td class="text-center" v-else>
+                              You currently do not have any Funding requests.
+                            </td>
+                            <!-- <td class="pt-1">
                               <div
                                 class="d-flex"
                                 style="gap: 10px; font-size: 12px"
@@ -69,13 +92,8 @@
                                 <button class="text-danger">Disapprove</button>
                                 <button class="text-warning">Pend</button>
                               </div>
-                            </td>
+                            </td> -->
                           </tr>
-                          <div class="text-center" v-if="fundings.length === 0">
-                            <p>
-                              You currently do not have any Funding requests.
-                            </p>
-                          </div>
                         </tbody>
                       </template>
                     </v-simple-table>
@@ -94,11 +112,14 @@
                       <template v-slot:default>
                         <thead>
                           <tr class="">
-                            <th class="text-left th_color">SN</th>
+                            <th class="text-left th_color">Ref ID</th>
+                            <th class="text-left th_color">Date</th>
                             <th class="text-left th_color">Name</th>
+                            <th class="text-left th_color">Status</th>
                             <th class="text-left th_color">Phone Number</th>
                             <th class="text-left th_color">Amount(N)</th>
                             <th class="text-left th_color">Action</th>
+                            <!-- <th class="text-left th_color">Comments</th> -->
                           </tr>
                         </thead>
                         <tbody>
@@ -110,11 +131,29 @@
                             v-for="funding in fundings"
                             :key="funding.index"
                           >
-                            <td>1</td>
-                            <td>Abba Biola</td>
-                            <td>08123456789</td>
-                            <td>38,000</td>
-                            <td class="pt-1">
+                            <td v-if="funding.admin_status === 'pending'">
+                              {{ funding.reference_id }}
+                            </td>
+                            <td v-if="funding.admin_status === 'pending'">
+                              {{ funding.date }}
+                            </td>
+                            <td v-if="funding.admin_status === 'pending'">
+                              {{ funding.name }}
+                            </td>
+                            <td v-if="funding.admin_status === 'pending'">
+                              {{ funding.phone_number }}
+                            </td>
+                            <td v-if="funding.admin_status === 'pending'">
+                              {{ funding.status }}
+                            </td>
+
+                            <td v-if="funding.admin_status === 'pending'">
+                              {{ funding.amount }}
+                            </td>
+                            <td
+                              v-if="funding.admin_status === 'pending'"
+                              class="pt-1"
+                            >
                               <div
                                 class="d-flex"
                                 style="gap: 10px; font-size: 12px"
@@ -132,18 +171,32 @@
                                 <!-- <button class="text-warning">Pend</button> -->
                               </div>
                             </td>
+
+                            <td class="text-center" v-else>
+                              You currently do not have any pending requests.
+                            </td>
+                            <!-- <td @click="fund_wallet_modal = !fund_wallet_modal">
+                              <button style="color: #00e8fe; font-size: 12px">
+                                Add Comment
+                              </button>
+                            </td> -->
                           </tr>
-                          <div class="text-center" v-if="fundings.length === 0">
+                          <!-- <div class="text-center" v-if="fundings.length === 0">
                             <p>
                               You currently do not have any Funding requests.
                             </p>
-                          </div>
+                          </div> -->
                         </tbody>
                       </template>
                     </v-simple-table>
 
                     <div>
-                      <div v-show="fund_wallet_modal" class="pop__up">
+                      <div
+                        v-for="funding in fundings"
+                        :key="funding.index"
+                        v-show="fund_wallet_modal"
+                        class="pop__up"
+                      >
                         <div class="pop__up__content zoomIn">
                           <div class="text-right">
                             <p
@@ -155,26 +208,58 @@
                             </p>
                           </div>
                           <div class="text-center">
-                            <div class="form-group mx-2 mt-2">
-                              <label for="" class=""
-                                >What is your transaction amount?</label
+                            <form action="">
+                              <div class="">
+                                <div class="form-group mx-2 mt-2">
+                                  <label
+                                    style="font-size: 12px"
+                                    for=""
+                                    class="text-left"
+                                    >Enter Comment for User</label
+                                  >
+
+                                  <textarea
+                                    class="form-control"
+                                    id="exampleFormControlTextarea1"
+                                    rows="2"
+                                    v-model="wallet.admin_comment"
+                                  >
+                                  </textarea>
+                                </div>
+                              </div>
+
+                              <div class="form-group mx-2 mt-2">
+                                <label
+                                  style="font-size: 12px; text-align: left"
+                                  for=""
+                                  class="text-left"
+                                  >What is your transaction amount?</label
+                                >
+                                <input
+                                  style="font-size: 12px"
+                                  type="number"
+                                  class="form-control"
+                                  placeholder="Enter Amount"
+                                  v-model="wallet.amount"
+                                />
+                              </div>
+                              <div
+                                class="
+                                  register_button_wrap
+                                  text-center
+                                  mt-3
+                                  py-4
+                                "
                               >
-                              <input
-                                type="number"
-                                class="form-control"
-                                placeholder="Enter Amount"
-                              />
-                            </div>
-                            <div
-                              class="register_button_wrap text-center mt-3 py-4"
-                            >
-                              <span
-                                @click="fund_wallet_modal = !fund_wallet_modal"
-                                class="assets__link"
-                              >
-                                <span class="px-3">Fund Wallet</span>
-                              </span>
-                            </div>
+                                <span
+                                  role="button"
+                                  @click="approveTopupRequest(funding)"
+                                  class="assets__link"
+                                >
+                                  <span class="px-3">Fund Wallet</span>
+                                </span>
+                              </div>
+                            </form>
                           </div>
                         </div>
                       </div>
@@ -199,6 +284,10 @@ export default {
       tab: null,
       success__modal: false,
       fundings: {},
+      wallet: {
+        amount: "",
+        admin_comment: "",
+      },
       fund_wallet_modal: false,
     };
   },
@@ -213,7 +302,20 @@ export default {
         console.log(error.response);
       }
     },
-
+    async approveTopupRequest(funding) {
+      try {
+        let response = await this.$axios.post(
+          `/admin/updateUserBalance/${funding.id}`,
+          this.wallet
+        );
+        this.getTopRequest();
+        this.$toast.success("fund request approved", { timeout: 5000 });
+        this.fund_wallet_modal = !this.fund_wallet_modal;
+        console.log(response);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
     back() {
       this.$router.go(-1);
     },
@@ -303,6 +405,7 @@ export default {
   background-color: #fff;
   padding: 15px 30px;
   border-radius: 10px;
+  width: 35%;
 }
 .cash__sub__wrap .pop__up__content button {
   padding: 3px 10px;
@@ -410,6 +513,9 @@ export default {
   }
   .cash__sub__wrap .shift {
     padding-left: 10px;
+  }
+  .cash__sub__wrap .pop__up__content {
+    width: 90%;
   }
 }
 </style>

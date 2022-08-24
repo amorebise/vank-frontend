@@ -109,10 +109,14 @@ export default {
 </script>
 
 <style>
-.trends .general__trends {
-  border-radius: 20px;
+.trends .general__trends .text__wrap {
+  border-radius: 7px;
   box-shadow: 0px 4px 4px rgba(29, 131, 197, 0.22);
 }
+/* .general__trends .text__wrap {
+  border-radius: 7px;
+  box-shadow: 0px 4px 4px rgba(29, 131, 197, 0.22);
+} */
 @media (max-width: 768px) {
 }
 </style>

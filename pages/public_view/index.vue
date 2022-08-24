@@ -1,7 +1,7 @@
 <template>
-  <div class="dashboard w-100">
-    <div class="dashboard_content mb-3">
-      <user-nav class="dashboard__nav" name="Dashboard" />
+  <div class="w-100">
+    <div class="real__estate">
+      <header-nav name="Real Estate" />
       <div class="new__content">
         <div v-if="user" class="d-flex align-items-center px-1 mb-2">
           <h5 class="">
@@ -20,33 +20,33 @@
 
         <div class="estate__content">
           <div class="view__all__wrap d-flex justify-content-between pt-4 px-1">
-            <div class="assets__wrap">
-              <p role="button">Your Assets</p>
+            <div class="assets__wrap pt-5">
+              <button>Assets</button>
             </div>
-            <div class="view__wrap">
-              <nuxt-link to="/user_dashboard/assets">
-                <p role="button">View all</p>
+            <div class="view__wrap pt-5">
+              <nuxt-link to="/public_view/available_assets/">
+                <button>View all</button>
               </nuxt-link>
             </div>
           </div>
         </div>
         <div class="assets__card mt-2">
-          <available-assets />
+          <public-assets />
         </div>
 
         <div class="estate__content mt-2">
           <div class="view__all__wrap d-flex justify-content-between pt-4 px-1">
             <div class="assets__wrap">
-              <p role="button">Trending Assets</p>
+              <button>Trending Assets</button>
             </div>
             <div class="view__wrap">
-              <nuxt-link to="/user_dashboard/trending_assets">
-                <p role="button">View all</p>
+              <nuxt-link to="/public_view/trending_assets/">
+                <button>View all</button>
               </nuxt-link>
             </div>
           </div>
         </div>
-        <div class="assets__card mt-2">
+        <div class="assets__card mt-2 mx-2">
           <div class="row">
             <div
               v-for="trending in trendingAssets"
@@ -107,7 +107,7 @@
                 <div class="text__wrap bg-white px-3 py-3">
                   <p>
                     Land in {{ trending.layout_name }} -
-                    <span v-if="trending.size">{{ trending.size }}SQM</span>
+                    <span v-if="trending.size">{{ trending.size }}</span>
                     <span v-else>650SQM</span>
                   </p>
                   <div class="d-flex justify-content-between">
@@ -133,23 +133,68 @@
             <p>No trending assets</p>
           </div>
         </div>
-        <div class="register_button_wrap text-center mt-3 py-4">
+        <!-- <div class="register_button_wrap text-center mt-3 py-4">
           <nuxt-link
             to="/user_dashboard/fractional_ownership"
             class="assets__link"
           >
             <span class="px-3">Buy Token</span>
           </nuxt-link>
-        </div>
+        </div> -->
       </div>
+      <!-- <div class="estate__wrap">
+        <div class="row">
+          <div class="col-md-6">
+            <nuxt-link to="/user_dashboard/fractional_ownership">
+              <div>
+                <h6>Fractional Ownership</h6>
+                <div class="fractional__wrap"></div>
+                <p class="full__text px-2 py-1">
+                  Group Ownership of Real Estate
+                </p>
+                <p class="full__text px-2 py-1">
+                  Join other people to co-own <br />
+                  property, benefit from price <br />
+                  appreciation, and use as collateral for <br />
+                  loan
+                </p>
+              </div>
+            </nuxt-link>
+          </div>
+          <div class="col-md-6">
+            <div>
+              <h6>Full Ownership</h6>
+              <div class="full__ownership">
+                <div class="coming__soon">
+                  <div class="button__wrap">
+                    <button class="mx-1 my-1 p-1">Coming Soon</button>
+                  </div>
+                </div>
+              </div>
+              <p class="full__text px-2 py-1">
+                Fully own real estate listed in this category
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="register_button_wrap text-center mt-3 py-4">
+          <nuxt-link
+            to="/user_dashboard/fractional_ownership"
+            class="assets__link"
+          >
+            <span class="px-3">View Fractional Property</span>
+          </nuxt-link>
+        </div>
+      </div> -->
+      <footer-section />
     </div>
   </div>
 </template>
 
 <script>
+import public_assets from "~/components/public_assets.vue";
 export default {
-  // middleware: "auth",
-
+  components: { public_assets },
   data() {
     return {
       user: {},
@@ -158,7 +203,6 @@ export default {
       hide_bookmark: false,
     };
   },
-
   methods: {
     async getUser() {
       let auth = this.$auth.$storage._state;
@@ -236,15 +280,8 @@ export default {
         console.log(error.response);
       }
     },
-    // makePayment() {
-    //   this.my_id = this.user.id;
-    //   localStorage.setItem("myId", JSON.stringify(this.my_id));
-    //   console.log(this.my_id);
-    //   // this.loading = false;
-    //   // this.$router.push("/user_dashboard/payment");
-    // },
   },
-  mounted() {
+  created() {
     // this.makePayment();
     this.getUser();
     this.getTrendingAssets();
@@ -252,244 +289,66 @@ export default {
 };
 </script>
 
-<style >
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Karla&family=Lato&family=Nunito&family=Plus+Jakarta+Sans&family=Space+Grotesk&family=Titillium+Web&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  text-decoration: none !important;
-}
-.dashboard_content {
-  margin-left: 230px;
+<style>
+.real__estate {
   background-color: #fff;
   min-height: 100vh;
-  padding: 0 50px;
 }
-.user_font {
-  font-weight: 550;
+.real__estate .new__content {
+  padding: 10px 100px;
 }
-.user_name {
-  color: #1d83c5;
-}
-.dashboard_content .view__all__wrap p {
-  color: #001214;
-  font-size: 13px;
-  /* cursor: pointer; */
-}
-.tq_notification {
-  background-color: #00e8fe;
-  border-top-left-radius: 7px;
-  padding: 10px;
-  width: 35%;
-}
-.asset__content {
-  background-image: url("/asset.jpg");
-  background-size: cover;
-  border-radius: 10px;
-  color: #001214;
-  position: relative;
-  height: 200px;
-  transition: ease-in-out 0.3s;
-  color: #fff;
-  display: grid;
-  place-items: center;
-  font-weight: 500;
-  font-size: 15px;
-  /* gap: 10px; */
-}
-.trending__content {
-  /* background-image: url("/asset.jpg"); */
-  background-size: cover;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-  color: #001214;
-  position: relative;
-  height: 200px;
-  transition: ease-in-out 0.3s;
-  color: #fff;
-  /* display: grid; */
-  /* place-items: center; */
-  font-weight: 500;
-  font-size: 15px;
-  /* gap: 10px; */
-}
-.dashboard_content .general__trends {
-  border-radius: 20px;
+.text__wrap {
+  border-radius: 7px;
   box-shadow: 0px 4px 4px rgba(29, 131, 197, 0.22);
 }
-.asset__content2 {
-  /* background-image: url("/asset2.jpg"); */
-  background-size: cover;
-  border-radius: 10px;
-  color: #001214;
-  position: relative;
-  height: 200px;
-  transition: ease-in-out 0.3s;
-  color: #fff;
-  display: grid;
-  place-items: center;
-  font-weight: 500;
-  font-size: 15px;
-  /* gap: 10px; */
+.real__estate a {
+  color: inherit;
 }
-.asset__content3 {
-  background-image: url("/asset3.webp");
-  background-size: cover;
-  border-radius: 10px;
-  color: #001214;
-  position: relative;
-  height: 200px;
-  transition: ease-in-out 0.3s;
-  color: #fff;
-  display: grid;
-  place-items: center;
-  font-weight: 500;
-  font-size: 15px;
-  /* gap: 10px; */
+.real__estate .estate__wrap {
+  padding: 200px 100px 10px 100px;
+  background-color: #f8feff;
 }
-.asset__content p,
-.asset__content2 p,
-.asset__content3 p,
-.trending__content p {
-  opacity: 0;
-}
-.asset__content:hover,
-.trending__content:hover {
-  background-color: rgba(0, 0, 0, 0.34);
-  background-blend-mode: overlay;
-  z-index: 999;
-}
-.asset__content:hover p,
-.asset__content2:hover p,
-.asset__content3:hover p,
-.trending__content:hover p {
-  opacity: 1;
-  transition: ease-in-out 0.7s;
-}
-.asset__content2:hover {
-  background-color: rgba(0, 0, 0, 0.34);
-  background-blend-mode: overlay;
-  z-index: 999;
-}
-.asset__content3:hover {
-  background-color: rgba(0, 0, 0, 0.34);
-  background-blend-mode: overlay;
-  z-index: 999;
-}
-.dashboard_content .text__wrap {
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-.dashboard_content .text__wrap p {
-  font-size: 14px;
-  font-weight: 500;
-  word-spacing: 1px;
-}
-.dashboard_content .text__wrap span {
-  font-size: 14px;
+.real__estate .estate__wrap h6 {
   font-weight: 600;
 }
-.dashboard_content .text__wrap h6 {
-  font-weight: 600;
-  letter-spacing: 1px;
+.real__estate .fractional__wrap {
+  background-image: url("/asset.jpg");
+  height: 250px;
+  background-size: cover;
+  border: 5px solid #00e8fe;
+}
+.real__estate .full__ownership {
+  background-image: url("/asset.jpg");
+  height: 250px;
+  background-size: cover;
+  border: 5px solid #00e8fe;
+  display: grid;
+  place-items: center;
+}
+.real__estate .full__text {
+  font-size: 14px;
+  font-weight: 500;
+}
+.real__estate .full__ownership .button__wrap {
+  border: 1px solid #fff;
+  color: #00e8fe;
+  font-size: 13px;
+  border-radius: 2px;
+}
+.real__estate .full__ownership .button__wrap button {
+  background-color: #ebfdff;
 }
 
 @media (max-width: 768px) {
-  .dashboard_content {
-    margin: 0 !important;
+  .real__estate {
+    margin-left: 0 !important;
     padding: 0;
   }
-  .dashboard_content .new__content {
-    padding: 7px;
+  .settings_wrap {
+    margin: 10px;
   }
-  .asset_wrap {
-    width: 100%;
-    height: 100%;
-  }
-  .m_top {
-    margin-top: 20px;
-  }
-  .glass_card_wrap {
-    background-image: url("/glassy.png");
-    min-height: 40vh;
-    background-size: 500px;
-    color: #fff;
-    letter-spacing: 1px;
-  }
-  .main_card_wrap {
-    background-image: url("/main.png");
-    min-height: 40vh;
-    background-size: 500px;
-    color: #fff;
-    letter-spacing: 1px;
-  }
-  .glass_card_wrap .write_up_section h5 {
-    font-size: 15px;
-  }
-  .glass_card_wrap .write_up_section p {
-    font-size: 35px;
-  }
-  .glass_card_wrap .write_up_section span {
-    padding-top: 10px;
-    font-size: 14px;
-  }
-  .glass_card_wrap .write_up_section img {
-    width: 80%;
-  }
-  .glass_card_wrap .profit_wrap {
-    margin-top: 0 !important;
-  }
-  .glass_card_wrap .precent_wrap {
-    margin-top: 5px;
-
-    padding: 2px 5px;
-    width: 20%;
-    border-radius: 15px;
-    background: rgba(255, 255, 255, 0.23);
-  }
-  .glass_card_wrap .precent_wrap p {
-    font-size: 14px;
-  }
-
-  .main_card_wrap .write_up_section .v-btn {
-    font-size: 15px;
-    padding: 5px 10px !important;
-  }
-  .main_asset_wrap {
-    margin-top: 10px;
+  .real__estate .new__content {
     padding: 10px !important;
-  }
-  .assets_wrap h5 {
-    font-size: 12px;
-  }
-  .buttons_wrap .mx-3 {
-    margin: 3px !important;
-  }
-  .buttons_wrap .withdrawal_button {
-    font-size: 10px;
-    padding: 7px 20px !important;
-  }
-  .buttons_wrap .buy_button {
-    font-size: 10px;
-    padding: 7px 20px !important;
-  }
-  .general_coin_wrap {
-    margin-top: 10px !important;
-  }
-  .general_coin_wrap h5 {
-    font-size: 15px;
-  }
-  .first_card_wrap,
-  .second_card_wrap,
-  .third_card_wrap {
-    height: 150px;
-    background-size: cover;
-    background-position: center;
-  }
-  .dashboard__wrap .dashboard__nav {
-    padding-left: 0;
-    padding-right: 15px !important;
   }
 }
 </style>

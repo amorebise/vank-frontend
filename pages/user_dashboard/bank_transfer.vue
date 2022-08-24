@@ -14,10 +14,9 @@
         <div class="payments_wrap subscriber px-1">
           <div class="bank__wrap py-5">
             <div class="text-center" style="line-height: 13px">
-              <p>
-                Pay &#8358;1234 to: <br />
-                Vank Digital Services
-              </p>
+              <p>Pay &#8358;{{ selected_amount.amount }} to:</p>
+              <p>Vank Digital Services</p>
+
               <p>Bank: GTBank</p>
               <p>Acc No: 0719352237</p>
             </div>
@@ -29,13 +28,13 @@
                 >
               </div>
               <div>
-                <nuxt-link to="/user_dashboard/transfer_confirmation">
-                  <button class="assets__link">
-                    <span class="px-3" style="font-weight: 400"
-                      >I have made full payment</span
-                    >
-                  </button>
-                </nuxt-link>
+                <!-- <nuxt-link to="/user_dashboard/transfer_confirmation"> -->
+                <button @click="confirmPayment()" class="assets__link">
+                  <span class="px-3" style="font-weight: 400"
+                    >I have made full payment</span
+                  >
+                </button>
+                <!-- </nuxt-link> -->
               </div>
             </div>
           </div>
@@ -50,12 +49,32 @@ import creator_sidebar from "~/components/creator_sidebar.vue";
 export default {
   components: { creator_sidebar },
   data() {
-    return {};
+    return {
+      selected_amount: {},
+    };
   },
   methods: {
+    async confirmPayment() {
+      try {
+        let response = await this.$axios.post("/confirmPayment");
+        console.log(response);
+        this.$router.push("/user_dashboard/transfer_confirmation");
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+    showAmount() {
+      let markmm = localStorage.getItem("marketMakerKey");
+      this.selected_amount = JSON.parse(markmm);
+      console.log(this.selected_amount);
+      // console.log(this.selected_amount.id);
+    },
     back() {
       this.$router.go(-1);
     },
+  },
+  created() {
+    this.showAmount();
   },
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="w-100">
-    <div class="single__user__wrap">
+    <div class="single__user__wrap pr-3">
       <user-nav name="User Details" />
       <div class="single__wrap">
         <div>
@@ -63,7 +63,11 @@
                   </div>
                 </div>
                 <div v-show="show_limit_tab" class="radio__btn">
-                  <div @click="limitWithdrawal()" class="form-check">
+                  <div
+                    v-if="singleUser.withdraw_status == 'true'"
+                    @click="limitWithdrawal()"
+                    class="form-check"
+                  >
                     <input
                       class="form-check-input"
                       type="radio"
@@ -75,6 +79,18 @@
                     <label class="form-check-label" for="exampleRadios1">
                       Can't Withdraw
                     </label>
+                  </div>
+
+                  <div v-else @click="allowWithdrawal()" class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="exampleRadios"
+                      id="exampleRadios1"
+                      value="option1"
+                      checked
+                    />
+
                     <label class="form-check-label" for="exampleRadios1">
                       Allow Withdraw
                     </label>
@@ -95,7 +111,10 @@
                       Allow Sell
                     </label>
                   </div> -->
-                  <div class="form-check">
+                  <div
+                    v-if="singleUser.subscribe_status == 'true'"
+                    class="form-check"
+                  >
                     <input
                       @click="limitSubscription()"
                       class="form-check-input"
@@ -107,11 +126,23 @@
                     <label class="form-check-label" for="exampleRadios3">
                       Can't Subscribe
                     </label>
+                  </div>
+
+                  <div v-else class="form-check">
+                    <input
+                      @click="allowSubscription()"
+                      class="form-check-input"
+                      type="radio"
+                      name="exampleRadios"
+                      id="exampleRadios3"
+                      value="option3"
+                    />
+
                     <label class="form-check-label" for="exampleRadios3">
                       Allow Subscribe
                     </label>
                   </div>
-                  <div @click="limitStake()" class="form-check">
+                  <!-- <div @click="limitStake()" class="form-check">
                     <input
                       class="form-check-input"
                       type="radio"
@@ -126,7 +157,7 @@
                     <label class="form-check-label" for="exampleRadios1">
                       Allow Stake
                     </label>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -164,6 +195,7 @@ export default {
           `/admin/limitSubscribeStatus/${this.id}`
         );
         console.log(response);
+        this.getSingleUser();
         this.run_stake();
         this.$toast.success("user has been limited from staking");
       } catch (error) {
@@ -176,7 +208,34 @@ export default {
           `/admin/limitWithdrawStatus/${this.id}`
         );
         console.log(response);
+        this.getSingleUser();
         this.$toast.success("user has been limited from withdrawal");
+        this.run_stake();
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+    async allowWithdrawal() {
+      try {
+        let response = await this.$axios.post(
+          `/admin/removeWithdrawStatusLimit/${this.id}`
+        );
+        console.log(response);
+        this.getSingleUser();
+        this.$toast.success("user can now withdraw");
+        this.run_stake();
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+    async allowSubscription() {
+      try {
+        let response = await this.$axios.post(
+          `/admin/removeSubscribeStatusLimit/${this.id}`
+        );
+        console.log(response);
+        this.getSingleUser();
+        this.$toast.success("user can now subscribe");
         this.run_stake();
       } catch (error) {
         console.log(error.response);
@@ -188,6 +247,7 @@ export default {
           `/admin/limitSubscribeStatus/${this.id}`
         );
         console.log(response);
+        this.getSingleUser();
         this.$toast.success("user has been limited from subscribing");
         this.run_stake();
       } catch (error) {
@@ -275,7 +335,7 @@ export default {
 @media (max-width: 768px) {
   .single__user__wrap {
     margin-left: 0 !important;
-    padding: 0;
+    padding: 0 !important;
   }
   .single__user__wrap .single__wrap {
     padding: 15px;

@@ -26,7 +26,7 @@
                     <th class="text-left th_color">Name</th>
                     <th class="text-left th_color">Phone number</th>
                     <th class="text-left th_color">Email</th>
-                    <th class="text-left th_color">Action</th>
+                    <!-- <th class="text-left th_color">Action</th> -->
                   </tr>
                 </thead>
                 <tbody>
@@ -42,11 +42,11 @@
                     </td>
                     <td>{{ user.phone_number }}</td>
                     <td>{{ user.email }}</td>
-                    <td @click="fund_wallet_modal = !fund_wallet_modal">
+                    <!-- <td @click="fund_wallet_modal = !fund_wallet_modal">
                       <button style="color: #00e8fe; font-size: 12px">
                         Add Comment
                       </button>
-                    </td>
+                    </td> -->
                   </tr>
                   <tr class="text-center" v-if="users.length == 0">
                     <td>You have no user.</td>
@@ -72,7 +72,7 @@
     <div>
       <div class="pop__up"></div>
     </div>
-    <div v-show="fund_wallet_modal" class="show__pop__up">
+    <!-- <div v-show="fund_wallet_modal" class="show__pop__up">
       <div class="show__pop__box zoomIn">
         <div class="">
           <div class="text-right">
@@ -109,7 +109,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
