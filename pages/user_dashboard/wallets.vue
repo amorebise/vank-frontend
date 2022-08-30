@@ -48,7 +48,7 @@
               font-weight: 600;
             "
           >
-            &#x20A6;{{ cash_wallet_ballance }}
+            &#x20A6;{{ cash_wallet_ballance.cash_wallet_balance }}
           </p>
         </div>
         <div class="token__wrap py-5">
@@ -159,7 +159,7 @@ export default {
   },
   methods: {
     async getCashWalletBallance() {
-      let response = await this.$axios.get("/getCashWalletBalance");
+      let response = await this.$axios.get("/getWalletBalance");
       this.cash_wallet_ballance = response.data;
       console.log(this.cash_wallet_ballance);
     },

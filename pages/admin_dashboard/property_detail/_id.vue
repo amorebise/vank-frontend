@@ -32,11 +32,10 @@
               <p>Location: {{ asset_detail.location }}</p>
               <p>Size: {{ asset_detail.size }}</p>
               <p>Title: {{ asset_detail.documentation }}</p>
-              <p>
-                Distance to closest built up areas: <br />
-                -{{ asset_detail.description1 }}- <br />
-                {{ asset_detail.description2 }}
-              </p>
+              <p>Distance to closest built up areas:</p>
+              <p>-{{ asset_detail.description1 }}-</p>
+              <p>{{ asset_detail.description2 }}</p>
+
               <p>Population within 20KM radius: Over 200,000</p>
               <div class="d-flex align-items-center">
                 <div>
@@ -69,7 +68,7 @@
                   attributes-list
                   download
                 >
-                  Click to view due diligence report
+                  Click to view due token audit report
                 </a>
               </div>
             </div>
@@ -238,7 +237,7 @@ export default {
   transition: ease-in-out 0.7s;
 }
 .property .description__wrap p {
-  line-height: 15px;
+  line-height: 10px;
   font-weight: 500;
   font-size: 14px;
 }

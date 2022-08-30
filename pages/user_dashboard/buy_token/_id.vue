@@ -43,7 +43,8 @@
                   <div class="form-group">
                     <label>Enter Amount (NGN)</label>
                     <input
-                      v-model="buy_amount"
+                      @keypress="converter"
+                      v-model="buy_amount.amount"
                       type="number"
                       class="form-control buy__input"
                     />
@@ -51,8 +52,8 @@
                 </form>
                 <div class="d-flex">
                   <p>You get</p>
-                  <p v-if="buy_amount.length > 0" class="token__box px-3 mx-1">
-                    {{ buy_amount }}
+                  <p class="token__box px-3 mx-1">
+                    {{ token_quantity }}
                   </p>
                   <p>tokens</p>
                 </div>
@@ -60,7 +61,7 @@
             </div>
           </div>
           <div class="text-center mt-3 py-4">
-            <button @click="makePayment()" class="assets__link">
+            <button @click="requestSubscription()" class="assets__link">
               <span class="px-3">Make Payment</span>
             </button>
           </div>
@@ -80,17 +81,23 @@ export default {
       id: this.$route.params.id,
       asset_detail: {},
       token_quantity: "",
-      amount: {},
-      buy_amount: {},
+      // amount: {},
+      buy_amount: {
+        amount: "",
+      },
     };
   },
   methods: {
+    converter() {
+      this.token_quantity = this.buy_amount.amount / 500;
+    },
     async requestSubscription() {
       try {
-        let response = await this.post(
-          `/requestSubscription/${this.id}`,
+        let response = await this.$axios.post(
+          `/requestSubscription/${this.asset_detail.id}`,
           this.buy_amount
         );
+        this.$router.push("/user_dashboard/payment");
         console.log(response);
       } catch (error) {
         console.log(error.response);
@@ -101,22 +108,27 @@ export default {
       this.asset_detail = response.data;
       console.log(this.asset_detail);
     },
-    async getTokenQuantity() {
-      try {
-        let response = await this.$axios.post(
-          `/getTokenQuantity/`,
-          this.buy_amount
-        );
-        this.token_quantity = response.data;
-        console.log(this.token_quantity);
-      } catch (error) {
-        console.log(error.response);
-      }
-    },
+    // async getTokenQuantity() {
+    //   try {
+    //     let response = await this.$axios.post(
+    //       `/getTokenQuantity/`,
+    //       this.buy_amount
+    //     );
+    //     this.buy_amount = this.token_quantity;
+    //     this.token_quantity = response.data;
+    //     console.log(this.token_quantity);
+    //   } catch (error) {
+    //     console.log(error.response);
+    //   }
+    // },
     makePayment() {
+      this.requestSubscription();
       this.amount = this.buy_amount;
+      this.token_name = this.asset_detail.token_name;
       localStorage.setItem("marketMakerKey", JSON.stringify(this.amount));
-      console.log(this.amount);
+      localStorage.setItem("tokenName", JSON.stringify(this.token_name));
+      // console.log(this.amount);
+      // console.log(this.token_name);
       this.loading = false;
       this.$router.push("/user_dashboard/payment");
     },
@@ -126,7 +138,7 @@ export default {
   },
   created() {
     this.getSingleAssetDetail();
-    this.getTokenQuantity();
+    // this.getTokenQuantity();
   },
 };
 </script>
@@ -183,7 +195,7 @@ a {
   transition: ease-in-out 0.7s;
 }
 .but__token__content .description__wrap {
-  padding-top: 100px;
+  padding-top: 30px !important;
 }
 .but__token__content .description__wrap p {
   line-height: 25px;

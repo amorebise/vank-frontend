@@ -19,8 +19,8 @@
               <template v-slot:default>
                 <thead>
                   <tr class="">
-                    <th class="text-left th_color">SN</th>
-                    <th class="text-left th_color">Date</th>
+                    <!-- <th class="text-left th_color">SN</th>
+                    <th class="text-left th_color">Date</th> -->
                     <th class="text-left th_color">Name</th>
                     <th class="text-left th_color">Token</th>
                     <th class="text-left th_color">Quantity</th>
@@ -35,13 +35,13 @@
                     style="border-bottom: thin solid rgba(0, 0, 0, 0.12)"
                     class="mt-2"
                   >
-                    <td>1</td>
-                    <td>22.10.2022 10:29</td>
-                    <td>Abba Biola</td>
-                    <td>Pyanko 1</td>
-                    <td>200</td>
-                    <td>150,000</td>
-                    <td class="pt-3">
+                    <!-- <td>1</td>
+                    <td>22.10.2022 10:29</td> -->
+                    <td>{{ saleRequest.name }}</td>
+                    <td>{{ saleRequest.token_name }}</td>
+                    <td>{{ saleRequest.quantity }}</td>
+                    <td>{{ saleRequest.token_value }}</td>
+                    <td class="pt-1">
                       <button
                         @click="approveSaleRequest(saleRequest)"
                         class="text-success"

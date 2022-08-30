@@ -130,7 +130,7 @@
               <div class="form-group">
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="password__header">
-                    <h6>Edit New Password</h6>
+                    <h6>Enter Bank Details</h6>
                   </div>
                 </div>
 
@@ -198,7 +198,7 @@
         <div class="update__password__wrap d-flex justify-content-between py-2">
           <div class="text-wrap">
             <h5>Payments</h5>
-            <p>Payments</p>
+            <p>Update Bank Details</p>
           </div>
           <div class="edit__wrap">
             <button @click="show_payment_modal = !show_payment_modal">

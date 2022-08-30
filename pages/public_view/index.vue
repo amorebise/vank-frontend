@@ -2,190 +2,46 @@
   <div class="w-100">
     <div class="real__estate">
       <header-nav name="Real Estate" />
-      <div class="new__content">
-        <div v-if="user" class="d-flex align-items-center px-1 mb-2">
-          <h5 class="">
-            Welcome, <span class="user_name">{{ user.first_name }}</span>
-          </h5>
-          <!-- <div class="ml-1">
-          <nuxt-img format="webp" quality="90" fit="cover" src="/emoji.png" />
-        </div> -->
+      <!-- <user-nav name="Fractional Ownership" /> -->
+      <div class="real__estate__fraction">
+        <div class="arrow__back">
+          <font-awesome-icon
+            @click="$router.go(-1)"
+            role="button"
+            class="fa-1x text-dark pl-1"
+            :icon="['fas', 'arrow-left']"
+          />
         </div>
-        <div v-else class="d-flex align-items-center px-3 mb-2">
-          <h5>Welcome</h5>
-          <!-- <div class="ml-1">
-          <nuxt-img format="webp" quality="90" fit="cover" src="/emoji.png" />
-        </div> -->
-        </div>
-
-        <div class="estate__content">
-          <div class="view__all__wrap d-flex justify-content-between pt-4 px-1">
-            <div class="assets__wrap pt-5">
-              <button>Assets</button>
-            </div>
-            <div class="view__wrap pt-5">
-              <nuxt-link to="/public_view/available_assets/">
-                <button>View all</button>
-              </nuxt-link>
-            </div>
+        <div class="header_wrap d-flex px-1 mt-3">
+          <div class="lagos__wrap">
+            <button @click="show_lagos()" class="toggle__btn" id="lagosBtn">
+              Lagos
+            </button>
+          </div>
+          <div class="lagos__wrap px-3">
+            <button id="abujaBtn" class="toggle__btn" @click="show_abuja()">
+              Abuja
+            </button>
+          </div>
+          <div class="lagos__wrap">
+            <button id="uyoBtn" class="toggle__btn" @click="show_uyo()">
+              Uyo
+            </button>
           </div>
         </div>
-        <div class="assets__card mt-2">
-          <public-assets />
+        <div v-show="lagos_tab" class="location__table__lagos mt-2">
+          <p class="px-2 paragrphs">Find verified property in Lagos</p>
+          <lagos-card />
         </div>
-
-        <div class="estate__content mt-2">
-          <div class="view__all__wrap d-flex justify-content-between pt-4 px-1">
-            <div class="assets__wrap">
-              <button>Trending Assets</button>
-            </div>
-            <div class="view__wrap">
-              <nuxt-link to="/public_view/trending_assets/">
-                <button>View all</button>
-              </nuxt-link>
-            </div>
-          </div>
+        <div v-show="abuja_tab" class="location__table__abuja mt-2">
+          <p class="paragrphs">Find verified property in Abuja</p>
+          <abuja-card />
         </div>
-        <div class="assets__card mt-2 mx-2">
-          <div class="row">
-            <div
-              v-for="trending in trendingAssets"
-              :key="trending.index"
-              class="col-md-4 px-1 mb-2"
-            >
-              <div class="general__trends">
-                <div
-                  @click="
-                    $router.push(`/user_dashboard/asset_detail/${trending.id}`)
-                  "
-                  class="trending__content"
-                  :style="{ backgroundImage: 'url(' + trending.image + ')' }"
-                >
-                  <!-- <div class="sale_notification">
-                    <span
-                      v-if="trending.token_quantity_subscribed.length > 0"
-                      style="font-size: 12px; color: red"
-                      class="text-dark"
-                      >{{ trending.token_quantity_subscribed }} tokens
-                      Sold</span
-                    >
-                    <span v-else style="font-size: 12px" class="text-dark"
-                      >{{ trending.token_quantity_subscribed }}% tokens
-                      Sold</span
-                    >
-                  </div> -->
-                  <div class="tq_notification">
-                    <span
-                      v-if="trending.token_quantity_subscribed.length > 0"
-                      style="font-size: 12px"
-                      class="text-dark"
-                      >{{ trending.token_quantity_subscribed }} tokens
-                      Sold</span
-                    >
-                    <span v-else style="font-size: 12px" class="text-dark"
-                      >{{ trending.token_quantity_subscribed }}% tokens
-                      Sold</span
-                    >
-                  </div>
-                  <div
-                    style="
-                      display: grid;
-                      place-items: center;
-                      align-items: center;
-                      padding-top: 70px;
-                    "
-                  >
-                    <p v-if="trending.coordinates">
-                      {{ trending.coordinates }}
-                    </p>
-                    <p v-else>
-                      Coordinates: <br />
-                      4724’12.2N 384231.7E
-                    </p>
-                  </div>
-                </div>
-                <div class="text__wrap bg-white px-3 py-3">
-                  <p>
-                    Land in {{ trending.layout_name }} -
-                    <span v-if="trending.size">{{ trending.size }}</span>
-                    <span v-else>650SQM</span>
-                  </p>
-                  <div class="d-flex justify-content-between">
-                    <h6>{{ trending.location }}</h6>
-                    <ion-icon
-                      @click="bookmark(trending)"
-                      style="color: #00e8fe"
-                      name="bookmark-outline"
-                    />
-                    <!-- <ion-icon
-                      v-else
-                      @click="removeBookmark(trending)"
-                      style="color: #00e8fe"
-                      name="bookmark"
-                    /> -->
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="text-center" v-if="trendingAssets.length == 0">
-            <img style="width: 50px" src="/assets.webp" alt="asset image" />
-            <p>No trending assets</p>
-          </div>
+        <div v-show="uyo_tab" class="location__table__uyo mt-2">
+          <p class="paragrphs">Find verified property in Uyo</p>
+          <uyo-card />
         </div>
-        <!-- <div class="register_button_wrap text-center mt-3 py-4">
-          <nuxt-link
-            to="/user_dashboard/fractional_ownership"
-            class="assets__link"
-          >
-            <span class="px-3">Buy Token</span>
-          </nuxt-link>
-        </div> -->
       </div>
-      <!-- <div class="estate__wrap">
-        <div class="row">
-          <div class="col-md-6">
-            <nuxt-link to="/user_dashboard/fractional_ownership">
-              <div>
-                <h6>Fractional Ownership</h6>
-                <div class="fractional__wrap"></div>
-                <p class="full__text px-2 py-1">
-                  Group Ownership of Real Estate
-                </p>
-                <p class="full__text px-2 py-1">
-                  Join other people to co-own <br />
-                  property, benefit from price <br />
-                  appreciation, and use as collateral for <br />
-                  loan
-                </p>
-              </div>
-            </nuxt-link>
-          </div>
-          <div class="col-md-6">
-            <div>
-              <h6>Full Ownership</h6>
-              <div class="full__ownership">
-                <div class="coming__soon">
-                  <div class="button__wrap">
-                    <button class="mx-1 my-1 p-1">Coming Soon</button>
-                  </div>
-                </div>
-              </div>
-              <p class="full__text px-2 py-1">
-                Fully own real estate listed in this category
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="register_button_wrap text-center mt-3 py-4">
-          <nuxt-link
-            to="/user_dashboard/fractional_ownership"
-            class="assets__link"
-          >
-            <span class="px-3">View Fractional Property</span>
-          </nuxt-link>
-        </div>
-      </div> -->
       <footer-section />
     </div>
   </div>
@@ -198,6 +54,9 @@ export default {
   data() {
     return {
       user: {},
+      lagos_tab: true,
+      abuja_tab: false,
+      uyo_tab: false,
       trendingAssets: {},
       show_bookmark: true,
       hide_bookmark: false,
@@ -235,6 +94,46 @@ export default {
         console.log(error.response);
       }
     },
+    show_lagos() {
+      const callToActionBtns = document.querySelectorAll(".toggle__btn");
+
+      callToActionBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          callToActionBtns.forEach((f) => f.classList.remove("active"));
+          e.target.classList.toggle("active");
+        });
+      });
+      this.lagos_tab = true;
+      this.abuja_tab = false;
+      this.uyo_tab = false;
+    },
+    show_abuja() {
+      const callToActionBtns = document.querySelectorAll(".toggle__btn");
+
+      callToActionBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          callToActionBtns.forEach((f) => f.classList.remove("active"));
+          e.target.classList.toggle("active");
+        });
+      });
+      this.lagos_tab = false;
+      this.abuja_tab = true;
+      this.uyo_tab = false;
+    },
+    show_uyo() {
+      const callToActionBtns = document.querySelectorAll(".toggle__btn");
+
+      callToActionBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          callToActionBtns.forEach((f) => f.classList.remove("active"));
+          e.target.classList.toggle("active");
+        });
+      });
+      this.lagos_tab = false;
+      this.abuja_tab = false;
+      this.uyo_tab = true;
+    },
+
     async bookmark(trending) {
       try {
         let response = await this.$axios.post(`/bookmarkAsset/${trending.id}`);
@@ -290,6 +189,156 @@ export default {
 </script>
 
 <style>
+.active {
+  background-color: #00e8fe;
+}
+.real__estate__fraction {
+  padding: 120px 100px;
+}
+.real__estate__fraction a {
+  color: inherit;
+}
+.real__estate__fraction .header_wrap .lagos__wrap button {
+  border: 1px solid #00e8fe;
+  padding: 7px;
+  border-radius: 10px;
+}
+/* .real__estate__fraction #lagosBtn {
+  background-color: #00e8fe;
+} */
+/* .real__estate__fraction .header_wrap .lagos__wrap button::active {
+  background-color: #00e8fe;
+  border: none;
+} */
+.real__estate__fraction .property__cards {
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(29, 131, 197, 0.22);
+  border-radius: 10px;
+  position: relative;
+  transition: 1s;
+}
+.real__estate__fraction .property__cards:hover {
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+}
+.real__estate__fraction .general__trends {
+  box-shadow: 0px 4px 4px rgba(29, 131, 197, 0.22);
+  border-radius: 10px;
+}
+.real__estate__fraction .trending__content {
+  background-image: url("/asset2.jpg");
+  background-size: cover;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  color: #001214;
+  position: relative;
+  width: 350px;
+  height: 200px;
+  transition: ease-in-out 0.3s;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 500;
+  font-size: 15px;
+}
+.real__estate__fraction .trending__content:hover {
+  background-color: rgba(0, 0, 0, 0.34);
+  background-blend-mode: overlay;
+}
+.real__estate__fraction .trending__content p {
+  opacity: 0;
+}
+.real__estate__fraction .trending__content:hover p {
+  opacity: 1;
+  transition: ease-in-out 0.7s;
+}
+.real__estate__fraction .trending__content2 {
+  background-image: url("/asset.jpg");
+  background-size: cover;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  color: #001214;
+  position: relative;
+  width: 350px;
+  height: 200px;
+  transition: ease-in-out 0.3s;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 500;
+  font-size: 15px;
+}
+.real__estate__fraction .trending__content2:hover {
+  background-color: rgba(0, 0, 0, 0.34);
+  background-blend-mode: overlay;
+}
+.real__estate__fraction .trending__content2 p {
+  opacity: 0;
+}
+.real__estate__fraction .trending__content2:hover p {
+  opacity: 1;
+  transition: ease-in-out 0.7s;
+}
+.real__estate__fraction .trending__content3 {
+  background-image: url("/asset3.webp");
+  background-size: cover;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  color: #001214;
+  position: relative;
+  width: 350px;
+  height: 200px;
+  transition: ease-in-out 0.3s;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 500;
+  font-size: 15px;
+}
+.real__estate__fraction .trending__content3:hover {
+  background-color: rgba(0, 0, 0, 0.34);
+  background-blend-mode: overlay;
+}
+.real__estate__fraction .trending__content3 p {
+  opacity: 0;
+}
+.real__estate__fraction .trending__content3:hover p {
+  opacity: 1;
+  transition: ease-in-out 0.7s;
+}
+/* .real__estate__fraction .text__wrap {
+  border-bottom-left-radius: 50px;
+} */
+.real__estate__fraction .text__wrap p {
+  font-size: 14px;
+  font-weight: 500;
+  word-spacing: 1px;
+}
+.real__estate__fraction .text__wrap span {
+  font-size: 14px;
+  font-weight: 600;
+}
+.real__estate__fraction .text__wrap h6 {
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.real__estate__fraction .sale__notification {
+  position: absolute;
+  z-index: 999;
+  background-color: #00e8fe;
+  width: 120px;
+  height: 50px;
+  padding: 10px 20px;
+  top: 0;
+  left: 0;
+  border-top-left-radius: 10px;
+  opacity: 0;
+}
+.real__estate__fraction .trending__content:hover .sale__notification,
+.real__estate__fraction .trending__content2:hover .sale__notification,
+.real__estate__fraction .trending__content3:hover .sale__notification {
+  opacity: 1;
+  transition: ease-in-out 0.7s;
+}
 .real__estate {
   background-color: #fff;
   min-height: 100vh;
@@ -344,11 +393,32 @@ export default {
     margin-left: 0 !important;
     padding: 0;
   }
+  .real__estate__fraction {
+    padding: 80px 10px;
+  }
   .settings_wrap {
     margin: 10px;
   }
   .real__estate .new__content {
     padding: 10px !important;
+  }
+  .real__estate__fraction .trending__content,
+  .real__estate__fraction .trending__content2,
+  .real__estate__fraction .trending__content3 {
+    width: 100%;
+  }
+  .settings_wrap {
+    margin: 10px;
+  }
+  .real__estate__fraction .header_wrap {
+    display: flex;
+    justify-content: center;
+  }
+  .paragrphs {
+    text-align: center;
+  }
+  .arrow__back {
+    padding-left: 15px;
   }
 }
 </style>

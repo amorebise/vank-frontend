@@ -11,7 +11,7 @@
             :icon="['fas', 'arrow-left']"
           />
         </div>
-        <div class="row mt-3">
+        <div class="row mt-3 single__asset__tab">
           <div class="col-md-6">
             <div class="img_card">
               <div
@@ -31,24 +31,25 @@
             <div class="description__wrap pt-3">
               <p>Location: {{ asset_detail.location }}</p>
               <p>Layout Name: {{ asset_detail.layout_name }}</p>
+              <p>Distance to closest built up areas:</p>
+              <p>-{{ asset_detail.description1 }}-</p>
               <p>
-                Distance to closest built up areas: <br />
-                -{{ asset_detail.description1 }}- <br />
-                {{ asset_detail.description2 }} <br />
-                about {{ asset_detail.description3 }} <br />
-                about {{ asset_detail.documentation }}
+                {{ asset_detail.description2 }}
               </p>
+              <p>about {{ asset_detail.description3 }}</p>
+              <p>about {{ asset_detail.documentation }}</p>
+
               <p>Population within 20KM radius: Over 200,000</p>
               <!-- <span>Est. minimum return 9.2%PA</span> -->
 
-              <!-- <div>
+              <div>
                 <button
                   class="view__report"
                   style="color: #00e8fe; font-size: 12px"
                 >
                   Click to view Coordinates
                 </button>
-              </div> -->
+              </div>
               <div>
                 <a
                   class="view__report"
@@ -70,7 +71,7 @@
                   attributes-list
                   download
                 >
-                  Click to view due diligence report
+                  Click to view due token audit report
                 </a>
               </div>
             </div>
@@ -225,7 +226,7 @@ export default {
   transition: ease-in-out 0.7s;
 }
 .property .description__wrap p {
-  line-height: 15px;
+  line-height: 10px;
   font-weight: 500;
   font-size: 16px;
 }
@@ -246,6 +247,9 @@ export default {
     margin-left: 0 !important;
     padding: 0 !important;
   }
+  .single__asset__tab {
+    margin-top: 5px !important;
+  }
   .settings_wrap {
     margin: 10px;
   }
@@ -253,6 +257,9 @@ export default {
     border: none;
     border-radius: 0;
     box-shadow: 2px 2px 2px #303030;
+  }
+  .property .description__wrap {
+    padding-top: 30px !important;
   }
   .property .description__wrap p {
     font-size: 13px;
@@ -262,7 +269,8 @@ export default {
   }
   .single__property {
     margin-top: 0 !important;
-    padding: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
   .description__wrap {
     padding: 10px;

@@ -29,7 +29,7 @@
                   <div>
                     <p>&#x20A6;{{ asset_detail.whole_price }}</p>
                     <p>
-                      {{ asset_detail.token_quantity_subscribed }}% tokens sold
+                      {{ asset_detail.token_quantity_subscribed }} tokens sold
                     </p>
                     <h4>483m <sup class="font__text">2</sup></h4>
                   </div>
@@ -39,28 +39,31 @@
             <div class="col-md-6">
               <div class="description__wrap">
                 <i>You can only sell to VANK for now</i>
-                <form action="">
-                  <div class="form-group">
-                    <label>Enter quantity of tokens</label>
-                    <div class="d-flex value__bar justify-content-between pr-2">
-                      <input
-                        type="number"
-                        v-model="sell_quantity.quantity"
-                        class="form-control"
-                      />
-                      <button @click="getMaxValue()" style="color: #00e8fe">
-                        MAX
-                      </button>
+                <h6 class="font-weight-bold">Enter quantity of tokens</h6>
+                <div class="d-flex value__bar justify-content-between px-1">
+                  <form action="">
+                    <div class="form-group">
+                      <!-- <label>Enter quantity of tokens</label> -->
+                      <div class="">
+                        <input
+                          type="number"
+                          v-model="sell_quantity.quantity"
+                          class="form-control mt-2"
+                        />
+                      </div>
                     </div>
-                  </div>
-                </form>
+                  </form>
+                  <button @click="getMaxValue()" style="color: #00e8fe">
+                    MAX
+                  </button>
+                </div>
                 <div class="mt-3 py-4">
                   <button
                     @click="sellToken()"
                     type="submit"
                     class="assets__link"
                   >
-                    <span class="px-3">Continue</span>
+                    <span class="px-3">Sell</span>
                   </button>
                 </div>
               </div>
@@ -122,12 +125,12 @@ export default {
     },
     async sellToken() {
       try {
-        // let response = await this.$axios.post(
-        //   `/api/sale/${this.asset_detail.id}`,
-        //   this.sell_quantity
-        // );
+        let response = await this.$axios.post(
+          `/sale/${this.asset_detail.id}`,
+          this.sell_quantity
+        );
         this.$router.push("/user_dashboard/sell/");
-        // console.log(response);
+        console.log(response);
       } catch (error) {
         console.log(error.response);
       }
@@ -140,7 +143,9 @@ export default {
 
     async getMaxValue() {
       try {
-        let response = await this.$axios.get(`/getMaxValue/${this.id}`);
+        let response = await this.$axios.get(
+          `/getMaxValue/${this.asset_detail.id}`
+        );
         this.max_value = response.data;
         console.log(this.max_value);
       } catch (error) {
@@ -154,7 +159,7 @@ export default {
   created() {
     this.getUser();
     this.getSingleAssetDetail();
-    // this.getMaxValue();
+    this.getMaxValue();
   },
 };
 </script>

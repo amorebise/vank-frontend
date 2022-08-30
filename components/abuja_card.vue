@@ -7,7 +7,7 @@
           :key="property.index"
           class="col-md-4"
         >
-          <div class="card_wrap">
+          <div class="card_wrap mb-2">
             <div
               @click="
                 $router.push(`/user_dashboard/asset_detail/${property.id}`)

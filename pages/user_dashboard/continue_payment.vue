@@ -13,15 +13,17 @@
       <div class="payments_wrap subscriber">
         <div class="pay__wrap py-5">
           <h5>
-            &#8358;{{ selected_amount }} will be deducted from your <br />
-            cash wallet for Pyanko1 tokens
+            &#8358;{{ selected_amount.amount }} will be deducted from your
+            <br />
+            cash wallet for {{ token_name }} tokens
           </h5>
           <div class="view__assets__wrap text-center">
-            <nuxt-link to="/user_dashboard/payment_notification">
-              <button class="assets__link">
-                <span class="px-3" style="font-weight: 400">Make Payment</span>
-              </button>
-            </nuxt-link>
+            <button
+              @click="$router.push('/user_dashboard/payment_notification/')"
+              class="assets__link"
+            >
+              <span class="px-3" style="font-weight: 400">Make Payment</span>
+            </button>
           </div>
         </div>
       </div>
@@ -36,15 +38,19 @@ export default {
   data() {
     return {
       selected_amount: {},
+      token_name: "",
     };
   },
   methods: {
     back() {
       this.$router.go(-1);
     },
+
     showAmount() {
       let markmm = localStorage.getItem("marketMakerKey");
+      let tkn = localStorage.getItem("tokenName");
       this.selected_amount = JSON.parse(markmm);
+      this.token_name = JSON.parse(tkn);
       console.log(this.selected_amount);
       // console.log(this.selected_amount.id);
     },

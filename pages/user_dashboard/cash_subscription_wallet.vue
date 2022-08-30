@@ -33,6 +33,22 @@
                     style="gap: 10px"
                   >
                     <p
+                      v-if="cash_wallet_ballance.cash_wallet_balance"
+                      class="txn__paragh"
+                      style="
+                        color: #00e8fe;
+                        font-size: 30px;
+                        padding-top: 12px;
+                        font-weight: 600;
+                      "
+                    >
+                      <span v-if="cash_wallet_ballance" class="text-dark"
+                        >Wallet Balance:</span
+                      >
+                      &#x20A6;{{ cash_wallet_ballance.cash_wallet_balance }}
+                    </p>
+                    <p
+                      v-else
                       class="txn__paragh"
                       style="
                         color: #00e8fe;
@@ -42,7 +58,7 @@
                       "
                     >
                       <span class="text-dark">Wallet Balance:</span>
-                      &#x20A6;{{ cash_wallet_ballance }}
+                      &#x20A6;0
                     </p>
                   </div>
                 </div>
@@ -129,6 +145,7 @@
                       style="gap: 10px"
                     >
                       <p
+                        v-if="cash_wallet_ballance.subscription_wallet_balance"
                         class="cash__paragh"
                         style="
                           color: #00e8fe;
@@ -138,7 +155,22 @@
                         "
                       >
                         <span class="text-dark">Wallet Balance:</span>
-                        &#x20A6;75,000.00
+                        &#x20A6;{{
+                          cash_wallet_ballance.subscription_wallet_balance
+                        }}
+                      </p>
+                      <p
+                        v-else
+                        class="cash__paragh"
+                        style="
+                          color: #00e8fe;
+                          font-size: 20px;
+                          padding-top: 12px;
+                          font-weight: 600;
+                        "
+                      >
+                        <span class="text-dark">Wallet Balance:</span>
+                        &#x20A6;0
                       </p>
                     </div>
                     <div class="view__assets__wrap text-center">
@@ -218,11 +250,6 @@ export default {
   },
 
   methods: {
-    async getCashWalletBallance() {
-      let response = await this.$axios.get("/getCashWalletBalance");
-      this.cash_wallet_ballance = response.data;
-      console.log(this.cash_wallet_ballance);
-    },
     goToSelectedTxnType() {
       if (this.txn.option == "Fund wallet") {
         this.fundWallet();
@@ -230,7 +257,7 @@ export default {
         this.$router.push("/user_dashboard/fund_wallet/");
       } else if (this.txn.option == "Withdraw to bank") {
         // this.fundWallet();
-        this.$router.push("/user_dashboard/bank_transfer/");
+        this.$router.push("/verification/");
         this.saveAmount();
       } else if (this.txn.option == "Transfer to your subscription wallet") {
         this.fundSubscriptionWallet();
@@ -238,6 +265,11 @@ export default {
         // this.success__modal = !this.success__modal;
         this.$router.push("/user_dashboard/transfer_to_sub_wallet/");
       }
+    },
+    async getCashWalletBallance() {
+      let response = await this.$axios.get("/getWalletBalance");
+      this.cash_wallet_ballance = response.data;
+      console.log(this.cash_wallet_ballance);
     },
     async fundWallet() {
       try {

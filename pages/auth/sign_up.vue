@@ -3,6 +3,9 @@
     <sign-up-header />
     <div class="registeration_content">
       <div class="header_section text-center">
+        <!-- <div v-for="state in states" :key="state.index">
+          <p>{{ states }}</p>
+        </div> -->
         <h1>Create your Account</h1>
         <h5 class="py-2">
           Let’s get you started on VANK, kindly fill in your details
@@ -185,29 +188,6 @@
                 </div>
               </div>
 
-              <!-- Referrals -->
-              <!-- <div class="col-md-6">
-                <div class="form-group mx-2 mt-2">
-                  <ValidationProvider
-                    name="confirm password"
-                    rules="required|max:30|min:8"
-                    v-slot="{ errors }"
-                  >
-                    <label for="" class="">Referral Code</label>
-                    <input
-                      type="password"
-                      class="form-control"
-                      v-model="signUp_data.referral_code"
-                      placeholder="Enter referral code"
-                    />
-                    <div v-show="error_message">
-                      <span class="errors">{{ password_error }}</span>
-                    </div>
-                    <span class="errors">{{ errors[0] }}</span>
-                  </ValidationProvider>
-                </div>
-              </div> -->
-
               <!-- Country -->
               <div class="col-md-6">
                 <div class="form-group mx-2 mt-2">
@@ -226,7 +206,7 @@
                     >
                       <option>Please Select a Country</option>
                       <option
-                        class="text-danger"
+                        class=""
                         id="selectCountry"
                         v-for="country in countries"
                         :key="country.id"
@@ -253,18 +233,18 @@
                     >
                     <select
                       class="form-control option-class select"
-                      id="exampleFormControlSelect1"
+                      id="stateId"
                       v-model="signUp_data.state"
                     >
                       <option>Please Select a Country</option>
                       <option
-                        class="text-danger"
+                        class=""
                         id="selectState"
                         v-for="state in states"
-                        :key="state.id"
-                        :value="state.name"
+                        :key="state.index"
+                        :value="state"
                       >
-                        {{ state.name }}
+                        {{ state }}
                       </option>
                     </select>
                     <span class="errors">{{ errors[0] }}</span>
@@ -272,7 +252,20 @@
                 </div>
               </div>
 
+              <!-- Referrals -->
               <div class="col-md-6">
+                <div class="form-group mx-2 mt-2">
+                  <label for="" class="">Referral Code</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    v-model="signUp_data.referred_by"
+                    placeholder="Enter referral code"
+                  />
+                </div>
+              </div>
+
+              <div class="col-md-12">
                 <div class="form-group mx-4 mt-2">
                   <ValidationProvider
                     name="accept_terms"
@@ -328,9 +321,49 @@ import "vue-toastification/dist/index.css";
 import footer_section from "~/components/footer_section.vue";
 import { ValidationObserver, ValidationProvider } from "vee-validate";
 import Login_header from "~/components/login_header.vue";
+// import { states } from "~/states/states.js";
 export default {
   data() {
     return {
+      states: [
+        "Abia",
+        "Adamawa",
+        "Akwa Ibom",
+        "Anambra",
+        "Bauchi",
+        "Bayelsa",
+        "Benue",
+        "Borno",
+        "Cross River",
+        "Delta",
+        "Ebonyi",
+        "Edo",
+        "Ekiti",
+        "Enugu",
+        "FCT - Abuja",
+        "Gombe",
+        "Imo",
+        "Jigawa",
+        "Kaduna",
+        "Kano",
+        "Katsina",
+        "Kebbi",
+        "Kogi",
+        "Kwara",
+        "Lagos",
+        "Nasarawa",
+        "Niger",
+        "Ogun",
+        "Ondo",
+        "Osun",
+        "Oyo",
+        "Plateau",
+        "Rivers",
+        "Sokoto",
+        "Taraba",
+        "Yobe",
+        "Zamfara",
+      ],
       signUp_data: {
         first_name: "",
         mid_name: "",
@@ -342,6 +375,7 @@ export default {
         country: "",
         address: "",
         state: "",
+        referred_by: "",
         agreement: null,
       },
       error_message: false,
@@ -352,7 +386,7 @@ export default {
       // baseUrl: "https://api.vankwallet.com/api/auth/",
       countries: {},
       countryUrl: "https://restcountries.com/v2/all",
-      states: {},
+      // states: {},
       stateUrl: "https://locus.fkkas.com/api/states",
     };
   },

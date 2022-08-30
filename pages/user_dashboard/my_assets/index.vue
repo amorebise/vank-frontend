@@ -13,13 +13,13 @@
         </div>
         <div class="location__table__lagos mt-2">
           <div class="card__wrap">
-            <all-assets />
-            <!-- <div class="register_button_wrap text-center mt-3 py-4">
+            <Subscribed_assets />
+          </div>
+          <!-- <div class="register_button_wrap text-center mt-3 py-4">
             <nuxt-link to="/user_dashboard/lagos_property" class="assets__link">
               <span class="px-3">View all Property in this Location</span>
             </nuxt-link>
           </div> -->
-          </div>
         </div>
       </div>
     </div>
@@ -28,8 +28,9 @@
 
 <script>
 import creator_sidebar from "~/components/creator_sidebar.vue";
+import Subscribed_assets from "~/components/subscribed_assets.vue";
 export default {
-  components: { creator_sidebar },
+  components: { creator_sidebar, Subscribed_assets },
   data() {
     return {};
   },
@@ -205,6 +206,12 @@ export default {
   }
   .paragrphs {
     text-align: center;
+  }
+  .sub__wrap {
+    padding: 10px;
+  }
+  .sub__wrap .back__btn {
+    padding-left: 10px;
   }
 }
 </style>

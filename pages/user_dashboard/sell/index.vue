@@ -12,20 +12,26 @@
           />
         </div>
         <div class="payments_wrap subscriber px-1">
-          <div class="bank__wrap py-5">
+          <div style="width: 40%" class="bank__wrap py-5">
             <div class="text-center" style="line-height: 13px">
-              <h6>VANK Wallet</h6>
-              <p>Guaranty Trust Bank</p>
-              <p>00234765376</p>
+              <p>
+                Your transaction is processing. We will be in touch shortly
+                <br />
+                with details of payment. Please be aware that <br />
+                a 7% transaction fee applies.
+              </p>
             </div>
             <div class="view__assets__wrap text-center">
               <div>
                 <button @click="returnToDashboard()">
-                  <button class="assets__link">
+                  <i style="font-size: 12px; color: #00e8fe"
+                    >return to dashboard</i
+                  >
+                  <!-- <button class="assets__link">
                     <span class="px-3" style="font-weight: 400"
                       >Sell Token</span
                     >
-                  </button>
+                  </button> -->
                 </button>
               </div>
             </div>
@@ -46,7 +52,7 @@ export default {
   methods: {
     returnToDashboard() {
       this.$router.push("/user_dashboard/my_account/");
-      this.$toast.success("Token has been sold", { timeout: 5000 });
+      // this.$toast.success("Token has been sold", { timeout: 5000 });
     },
     back() {
       this.$router.go(-1);

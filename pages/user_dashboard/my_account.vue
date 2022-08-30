@@ -3,7 +3,7 @@
     <div class="dashboard_content mb-3">
       <user-nav class="dashboard__nav" name="Dashboard" />
       <div class="new__content">
-        <div v-if="user" class="d-flex align-items-center px-1 mb-2">
+        <div v-if="user" class="d-flex align-items-center mb-2">
           <h5 class="">
             Welcome, <span class="user_name">{{ user.first_name }}</span>
           </h5>
@@ -21,7 +21,7 @@
         <div class="estate__content">
           <div class="view__all__wrap d-flex justify-content-between pt-4 px-1">
             <div class="assets__wrap">
-              <p role="button">Your Assets</p>
+              <p role="button">Available Assets</p>
             </div>
             <div class="view__wrap">
               <nuxt-link to="/user_dashboard/assets">
@@ -32,6 +32,23 @@
         </div>
         <div class="assets__card mt-2">
           <available-assets />
+        </div>
+
+        <!-- Subscribed Assets -->
+        <div class="estate__content">
+          <div class="view__all__wrap d-flex justify-content-between pt-4 px-1">
+            <div class="assets__wrap">
+              <p role="button">Your Assets</p>
+            </div>
+            <div class="view__wrap">
+              <nuxt-link to="/user_dashboard/my_assets">
+                <p role="button">View all</p>
+              </nuxt-link>
+            </div>
+          </div>
+        </div>
+        <div class="assets__card mt-2">
+          <Subscribed_assets />
         </div>
 
         <div class="estate__content mt-2">
@@ -46,22 +63,25 @@
             </div>
           </div>
         </div>
-        <div class="assets__card mt-2">
-          <div class="row">
-            <div
-              v-for="trending in trendingAssets"
-              :key="trending.index"
-              class="col-md-4 px-1 mb-2"
-            >
-              <div class="general__trends">
-                <div
-                  @click="
-                    $router.push(`/user_dashboard/asset_detail/${trending.id}`)
-                  "
-                  class="trending__content"
-                  :style="{ backgroundImage: 'url(' + trending.image + ')' }"
-                >
-                  <!-- <div class="sale_notification">
+        <div class="trend__wrap">
+          <div class="assets__card mt-2">
+            <div class="row">
+              <div
+                v-for="trending in trendingAssets"
+                :key="trending.index"
+                class="col-md-4 px-1 mb-2"
+              >
+                <div class="general__trends">
+                  <div
+                    @click="
+                      $router.push(
+                        `/user_dashboard/asset_detail/${trending.id}`
+                      )
+                    "
+                    class="trending__content"
+                    :style="{ backgroundImage: 'url(' + trending.image + ')' }"
+                  >
+                    <!-- <div class="sale_notification">
                     <span
                       v-if="trending.token_quantity_subscribed.length > 0"
                       style="font-size: 12px; color: red"
@@ -74,72 +94,73 @@
                       Sold</span
                     >
                   </div> -->
-                  <div class="tq_notification">
-                    <span
-                      v-if="trending.token_quantity_subscribed.length > 0"
-                      style="font-size: 12px"
-                      class="text-dark"
-                      >{{ trending.token_quantity_subscribed }} tokens
-                      Sold</span
+                    <div class="tq_notification">
+                      <span
+                        v-if="trending.token_quantity_subscribed.length > 0"
+                        style="font-size: 12px"
+                        class="text-dark"
+                        >{{ trending.token_quantity_subscribed }} tokens
+                        Sold</span
+                      >
+                      <span v-else style="font-size: 12px" class="text-dark"
+                        >{{ trending.token_quantity_subscribed }}% tokens
+                        Sold</span
+                      >
+                    </div>
+                    <div
+                      style="
+                        display: grid;
+                        place-items: center;
+                        align-items: center;
+                        padding-top: 70px;
+                      "
                     >
-                    <span v-else style="font-size: 12px" class="text-dark"
-                      >{{ trending.token_quantity_subscribed }}% tokens
-                      Sold</span
-                    >
+                      <p v-if="trending.coordinates">
+                        {{ trending.coordinates }}
+                      </p>
+                      <p v-else>
+                        Coordinates: <br />
+                        4724’12.2N 384231.7E
+                      </p>
+                    </div>
                   </div>
-                  <div
-                    style="
-                      display: grid;
-                      place-items: center;
-                      align-items: center;
-                      padding-top: 70px;
-                    "
-                  >
-                    <p v-if="trending.coordinates">
-                      {{ trending.coordinates }}
+                  <div class="text__wrap bg-white px-3 py-3">
+                    <p>
+                      Land in {{ trending.layout_name }} -
+                      <span v-if="trending.size">{{ trending.size }}SQM</span>
+                      <span v-else>650SQM</span>
                     </p>
-                    <p v-else>
-                      Coordinates: <br />
-                      4724’12.2N 384231.7E
-                    </p>
-                  </div>
-                </div>
-                <div class="text__wrap bg-white px-3 py-3">
-                  <p>
-                    Land in {{ trending.layout_name }} -
-                    <span v-if="trending.size">{{ trending.size }}SQM</span>
-                    <span v-else>650SQM</span>
-                  </p>
-                  <div class="d-flex justify-content-between">
-                    <h6>{{ trending.location }}</h6>
-                    <ion-icon
-                      @click="bookmark(trending)"
-                      style="color: #00e8fe"
-                      name="bookmark-outline"
-                    />
-                    <!-- <ion-icon
+                    <div class="d-flex justify-content-between">
+                      <h6>{{ trending.location }}</h6>
+                      <ion-icon
+                        @click="bookmark(trending)"
+                        style="color: #00e8fe"
+                        name="bookmark-outline"
+                      />
+                      <!-- <ion-icon
                       v-else
                       @click="removeBookmark(trending)"
                       style="color: #00e8fe"
                       name="bookmark"
                     /> -->
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+            <div class="text-center" v-if="trendingAssets.length == 0">
+              <img style="width: 50px" src="/assets.webp" alt="asset image" />
+              <p>No trending assets</p>
+            </div>
           </div>
-          <div class="text-center" v-if="trendingAssets.length == 0">
-            <img style="width: 50px" src="/assets.webp" alt="asset image" />
-            <p>No trending assets</p>
+          <div class="register_button_wrap text-center mt-3 py-4">
+            <nuxt-link
+              to="/user_dashboard/fractional_ownership"
+              class="assets__link"
+            >
+              <span class="px-3">Buy Token</span>
+            </nuxt-link>
           </div>
-        </div>
-        <div class="register_button_wrap text-center mt-3 py-4">
-          <nuxt-link
-            to="/user_dashboard/fractional_ownership"
-            class="assets__link"
-          >
-            <span class="px-3">Buy Token</span>
-          </nuxt-link>
         </div>
       </div>
     </div>
@@ -147,9 +168,9 @@
 </template>
 
 <script>
+import Subscribed_assets from "~/components/subscribed_assets.vue";
 export default {
   // middleware: "auth",
-
   data() {
     return {
       user: {},
@@ -158,24 +179,19 @@ export default {
       hide_bookmark: false,
     };
   },
-
   methods: {
     async getUser() {
       let auth = this.$auth.$storage._state;
       let token = null;
-
       for (const key in auth) {
         console.log(key);
-
         if (key == "_token.local") {
           token = auth[key];
         } else {
           console.log("No");
         }
       }
-
       console.log(token);
-
       // console.log(this.$auth.$storage._state._token);
       try {
         let res = await this.$axios.get("/getUser", {
@@ -183,9 +199,7 @@ export default {
             Authorization: `bearer ${token}`,
           },
         });
-
         this.user = res.data[0];
-
         console.log(this.user);
       } catch (error) {
         console.log(error.response);
@@ -249,6 +263,7 @@ export default {
     this.getUser();
     this.getTrendingAssets();
   },
+  components: { Subscribed_assets },
 };
 </script>
 
@@ -398,10 +413,10 @@ export default {
 @media (max-width: 768px) {
   .dashboard_content {
     margin: 0 !important;
-    padding: 0;
+    padding: 0 !important;
   }
   .dashboard_content .new__content {
-    padding: 7px;
+    padding: 5px;
   }
   .asset_wrap {
     width: 100%;
@@ -488,8 +503,11 @@ export default {
     background-position: center;
   }
   .dashboard__wrap .dashboard__nav {
-    padding-left: 0;
+    padding-left: 0 !important;
     padding-right: 15px !important;
+  }
+  .trend__wrap {
+    padding: 15px;
   }
 }
 </style>

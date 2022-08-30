@@ -1,6 +1,6 @@
 <template>
   <div class="pay_bills_wrap w-100">
-    <div class="continue__payments">
+    <div class="continue__payments pr-3">
       <user-nav name="Bank Transfer" />
       <div class="payments_wrap subscriber">
         <div class="confirm__wrap py-5">
@@ -54,6 +54,9 @@ export default {
 }
 
 @media (max-width: 768px) {
+  .continue__payments {
+    padding: 0 !important;
+  }
   .continue__payments .confirm__wrap {
     border: 1px solid #00e8fe;
     width: 95%;

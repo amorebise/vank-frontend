@@ -137,11 +137,11 @@ export default {
       try {
         this.loading = true;
         let response = await this.$axios.post(
-          "/forgotPassword",
+          "/auth/forgotPassword/",
           this.forgot_password
         );
         console.log(response);
-
+        this.$router.push("/auth/notification/");
         this.$router.push("/login");
         this.$toast.success("Password Changed Successfully", {
           timeout: 5000,

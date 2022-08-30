@@ -604,7 +604,7 @@ export default {
   font-size: 20px;
 }
 .trending__wrap .text__wrap {
-  border-bottom-left-radius: 50px;
+  border-bottom-left-radius: 30px;
 }
 .trending__wrap .text__wrap p {
   font-size: 14px;

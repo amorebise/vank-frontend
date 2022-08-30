@@ -2,7 +2,11 @@
   <div>
     <div class="asset_cards">
       <div class="row">
-        <div v-for="property in assets" :key="property.index" class="col-md-4">
+        <div
+          v-for="property in assets.subscriptions"
+          :key="property.index"
+          class="col-md-4"
+        >
           <div
             class="card_wrap mb-2"
             @click="$router.push(`/user_dashboard/asset_detail/${property.id}`)"
@@ -46,10 +50,10 @@
       </div>
       <div
         style="display: grid; place-items: center"
-        v-if="assets.length === 0"
+        v-if="assets.subscriptions == 0"
       >
         <img style="width: 50px" src="/assets.webp" alt="asset image" />
-        <p>You do not have any assets.</p>
+        <p>You have not bought any assets yet.</p>
       </div>
     </div>
   </div>
@@ -65,9 +69,9 @@ export default {
   methods: {
     async getAssets() {
       try {
-        let response = await this.$axios.get("/showAvailableAsset");
+        let response = await this.$axios.get("/getSubscribedAsset");
         // getSubscribedAsset
-        this.assets = response.data.slice(0, 3);
+        this.assets = response.data.slice(0, 3)[0];
         console.log(this.assets);
       } catch (error) {
         console.log(error.response);

@@ -58,7 +58,7 @@
           </div>
         </nuxt-link>
         <nuxt-link
-          to="/user_dashboard/referals"
+          to="/user_dashboard/referrals"
           class="list-group list-group-item active bg-transparent"
         >
           <div class="ml-5 d-flex align-items-center py-1">

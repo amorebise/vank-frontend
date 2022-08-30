@@ -1,6 +1,8 @@
 <template>
   <div>
-    <user-nav-component />
+    <div class="px-5">
+      <user-nav-component />
+    </div>
     <div class="verification_page">
       <h5>
         <font-awesome-icon
@@ -63,7 +65,7 @@
         </div>
       </div>
     </div>
-    <!-- <footer-section /> -->
+    <footer-section />
   </div>
 </template>
 
@@ -181,9 +183,8 @@ export default {
   font-family: "Space Grotesk", sans-serif;
 }
 .verification_page {
-  /* padding: 0 100px 100px 100px; */
+  padding: 0 100px 100px 100px;
   margin-top: 100px;
-  margin-left: 273px;
 }
 .verification_page span {
   font-weight: 600;
