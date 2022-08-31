@@ -125,12 +125,12 @@ export default {
 .cash__sub__wrap .transactions_data {
   background-color: #fff;
 }
-.cash__sub__wrap
+/* .cash__sub__wrap
   .transactions_data
   .v-data-table--fixed-header
   > .v-data-table__wrapper {
-  /* background-color: #f8f7ff; */
-}
+  background-color: #f8f7ff;
+} */
 .cash__sub__wrap
   .transactions_data
   .v-data-table

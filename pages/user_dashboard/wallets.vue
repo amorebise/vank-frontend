@@ -137,6 +137,12 @@
                 </button>
               </nuxt-link>
             </div>
+            <div class="payment__body pt-2">
+              <p style="font-size: 12px" class="text-danger">
+                Update your bank details in settings page before performing any
+                transaction!!
+              </p>
+            </div>
           </div>
         </div>
       </div>
