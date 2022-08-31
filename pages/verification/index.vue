@@ -62,6 +62,12 @@
               >
             </div>
           </form>
+
+          <!-- <v-btn @click="sendEmail()" class="send_code_button" type="submit"
+            >Send Code</v-btn
+          >
+
+          <v-btn @click="sendSms()" class="send_code_button">Send Code</v-btn> -->
         </div>
       </div>
     </div>
@@ -75,9 +81,11 @@ export default {
   data() {
     return {
       loading: false,
+      amount: {},
       withdrawal_info: {
         two_factor_code_email: "",
         two_factor_code_sms: "",
+        amount: "",
       },
       newUser: {},
     };
@@ -101,7 +109,7 @@ export default {
 
       // console.log(this.$auth.$storage._state._token);
       try {
-        let res = await this.$axios.get("/getAsset", {
+        let res = await this.$axios.get("/getUser", {
           headers: {
             Authorization: `bearer ${token}`,
           },
@@ -124,33 +132,28 @@ export default {
         );
         console.log(response);
         console.log(this.newUser.id);
-        this.$router.push("/success");
+        this.$router.push("/notifications/withdrawal_notification/");
       } catch (error) {
         this.loading = false;
         console.log(error.response);
       } finally {
-        this.withdrawal_request = {};
+        this.withdrawal_info = {};
       }
     },
     async sendSms() {
       try {
-        // var user_id = this.newUser.id;
         const response = await this.$axios.post("/sendSmsCode");
         console.log(response);
         this.$toast.success("Sms Has been Sent", {
           timeout: 5000,
         });
-        // consoloe.log(user_id);
       } catch (error) {
         console.log(error.response);
       }
     },
     async sendEmail() {
       try {
-        const response = await this.$axios.post(
-          "/sendEmailCode"
-          // this.withdrawal_info.two_factor_code_email
-        );
+        const response = await this.$axios.post("/sendEmailCode");
         console.log(response);
         this.$toast.success("Email Has been Sent", {
           timeout: 5000,
@@ -159,18 +162,18 @@ export default {
         console.log(error.response);
       }
     },
-    // onSubmit() {
-    //   this.loading = true;
-
-    //   console.log(this.withdrawal_info);
-    //
+    // showAmount() {
+    //   let myAmount = localStorage.getItem("marketMakerKey");
+    //   this.withdrawal_info.amount = JSON.parse(myAmount);
+    //   console.log(this.withdrawal_info.amount);
     // },
     back() {
       this.$router.go(-1);
     },
   },
-  mounted() {
+  created() {
     this.getUser();
+    // this.showAmount();
   },
 };
 </script>

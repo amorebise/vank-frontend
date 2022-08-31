@@ -22,10 +22,7 @@
             </div>
           </div>
         </li> -->
-        <nuxt-link
-          to="/user_dashboard/my_account"
-          class="list-group list-group-item active bg-transparent active"
-        >
+        <div @click="toggleAccount()" class="list-group my_account">
           <div class="child_items">
             <div class="ml-3 d-flex align-items-center py-1">
               <ion-icon style="color: #001214" name="home-outline"></ion-icon>
@@ -33,54 +30,47 @@
               <span class="ml-2">My Account</span>
             </div>
           </div>
-        </nuxt-link>
-        <nuxt-link
-          to="/user_dashboard/wallets"
-          class="list-group list-group-item active bg-transparent active"
-        >
+        </div>
+        <div @click="toggleWallet()" class="list-group wallet">
           <div class="ml-3 d-flex align-items-center py-1">
             <ion-icon name="card-outline"></ion-icon>
             <span class="ml-2">Wallet</span>
           </div>
-        </nuxt-link>
-        <nuxt-link
-          to="/user_dashboard/fractional_ownership"
-          class="list-group list-group-item active bg-transparent active"
-        >
+        </div>
+        <div @click="toggleRealEstate()" class="list-group real_estate">
           <div class="ml-3 d-flex align-items-center py-1">
             <!-- <ion-icon name="bag-outline"></ion-icon> -->
             <img style="width: 18px" src="/building.svg" alt="" />
             <span class="ml-2">Buy Real Estate</span>
           </div>
-        </nuxt-link>
-        <nuxt-link
-          to="/user_dashboard/referrals/"
-          class="list-group list-group-item active bg-transparent active"
-        >
+        </div>
+        <div @click="toggleRef()" class="list-group my_referrals">
           <div class="ml-3 d-flex align-items-center py-1">
             <ion-icon style="color: #001214" name="link"></ion-icon>
             <span class="ml-2">Referrals</span>
           </div>
-        </nuxt-link>
-        <nuxt-link
-          to="/user_dashboard/bookmarks"
-          class="list-group list-group-item active bg-transparent active"
+        </div>
+        <div
+          @click="toggleClass()"
+          id="bookmark"
+          class="my_bookmarks list-group"
         >
           <div class="ml-3 d-flex align-items-center py-1">
             <ion-icon style="color: #001214" name="bookmark-outline"></ion-icon>
             <span class="ml-2">My Bookmarks</span>
           </div>
-        </nuxt-link>
+        </div>
 
-        <nuxt-link
-          to="/user_dashboard/settings"
-          class="list-group list-group-item active bg-transparent"
+        <div
+          @click="toggleSettings()"
+          id="settings"
+          class="my_settings list-group"
         >
           <div class="ml-3 d-flex align-items-center">
             <ion-icon style="color: #001214" name="settings-outline"></ion-icon>
             <span class="ml-2">Settings</span>
           </div>
-        </nuxt-link>
+        </div>
       </div>
     </div>
   </div>
@@ -97,6 +87,103 @@ export default {
         mdiAccount,
       },
     };
+  },
+  methods: {
+    toggleClass() {
+      let referrals = document.querySelector(".my_referrals");
+      let estate = document.querySelector(".real_estate");
+      let wallet = document.querySelector(".wallet");
+      let settings = document.querySelector(".my_settings");
+      let bookmark = document.querySelector(".my_bookmarks");
+      let account = document.querySelector(".my_account");
+      bookmark.classList.add("active");
+      account.classList.remove("active");
+      wallet.classList.remove("active");
+      estate.classList.remove("active");
+      referrals.classList.remove("active");
+      settings.classList.remove("active");
+      this.$router.push("/user_dashboard/bookmarks");
+    },
+    toggleSettings() {
+      let referrals = document.querySelector(".my_referrals");
+      let estate = document.querySelector(".real_estate");
+      let wallet = document.querySelector(".wallet");
+      let settings = document.querySelector(".my_settings");
+      let bookmark = document.querySelector(".my_bookmarks");
+      let account = document.querySelector(".my_account");
+      settings.classList.add("active");
+      account.classList.remove("active");
+      wallet.classList.remove("active");
+      estate.classList.remove("active");
+      referrals.classList.remove("active");
+      bookmark.classList.remove("active");
+      this.$router.push("/user_dashboard/settings/");
+      console.log("active");
+    },
+    toggleRef() {
+      let referrals = document.querySelector(".my_referrals");
+      let estate = document.querySelector(".real_estate");
+      let wallet = document.querySelector(".wallet");
+      let settings = document.querySelector(".my_settings");
+      let bookmark = document.querySelector(".my_bookmarks");
+      let account = document.querySelector(".my_account");
+      referrals.classList.add("active");
+      account.classList.remove("active");
+      wallet.classList.remove("active");
+      estate.classList.remove("active");
+      settings.classList.remove("active");
+      bookmark.classList.remove("active");
+      this.$router.push("/user_dashboard/referrals/");
+      console.log("active");
+    },
+    toggleRealEstate() {
+      let referrals = document.querySelector(".my_referrals");
+      let estate = document.querySelector(".real_estate");
+      let wallet = document.querySelector(".wallet");
+      let settings = document.querySelector(".my_settings");
+      let bookmark = document.querySelector(".my_bookmarks");
+      let account = document.querySelector(".my_account");
+      estate.classList.add("active");
+      account.classList.remove("active");
+      wallet.classList.remove("active");
+      referrals.classList.remove("active");
+      settings.classList.remove("active");
+      bookmark.classList.remove("active");
+      this.$router.push("/user_dashboard/fractional_ownership/");
+      console.log("active");
+    },
+    toggleWallet() {
+      let referrals = document.querySelector(".my_referrals");
+      let estate = document.querySelector(".real_estate");
+      let wallet = document.querySelector(".wallet");
+      let settings = document.querySelector(".my_settings");
+      let bookmark = document.querySelector(".my_bookmarks");
+      let account = document.querySelector(".my_account");
+      wallet.classList.add("active");
+      account.classList.remove("active");
+      estate.classList.remove("active");
+      referrals.classList.remove("active");
+      settings.classList.remove("active");
+      bookmark.classList.remove("active");
+      this.$router.push("/user_dashboard/wallets/");
+      console.log("active");
+    },
+    toggleAccount() {
+      let referrals = document.querySelector(".my_referrals");
+      let estate = document.querySelector(".real_estate");
+      let wallet = document.querySelector(".wallet");
+      let settings = document.querySelector(".my_settings");
+      let bookmark = document.querySelector(".my_bookmarks");
+      let account = document.querySelector(".my_account");
+      account.classList.add("active");
+      wallet.classList.remove("active");
+      estate.classList.remove("active");
+      referrals.classList.remove("active");
+      settings.classList.remove("active");
+      bookmark.classList.remove("active");
+      this.$router.push("/user_dashboard/my_account/");
+      console.log("active");
+    },
   },
 };
 </script>
@@ -140,7 +227,13 @@ export default {
 #menu-toggle {
   cursor: pointer;
 }
-.list-group-item {
+.list-group-item,
+.my_settings,
+.my_bookmarks,
+.my_referrals,
+.real_estate,
+.wallet,
+.my_account {
   border: none;
   padding: 7px 30px !important;
   width: 100%;
@@ -148,7 +241,13 @@ export default {
   cursor: pointer;
   font-size: 14px;
 }
-.list-group-item:hover {
+.list-group-item:hover,
+.my_settings:hover,
+.my_bookmarks:hover,
+.my_referrals:hover,
+.real_estate:hover,
+.wallet:hover,
+.my_account:hover {
   color: #455b6d !important;
   background-color: #00e8fe !important;
   transition: all, 0.5s;
@@ -157,11 +256,7 @@ export default {
 .img_wrap {
   width: 10%;
 }
-.list-group-item.active {
-  border: none;
-  /* background-color: #00e8fe !important; */
-  color: #fff;
-}
+
 #wrapper .navbar {
   background-color: #fafafa;
   padding: 15px 10px !important;
@@ -192,9 +287,15 @@ export default {
   object-fit: cover;
   margin-top: 10px !important;
 }
-.child_wrapper {
+/* .child_wrapper {
   margin-left: 220px;
   overflow-y: hidden;
+} */
+.my_settings.active,
+.my_bookmarks.active {
+  border: none;
+  background-color: #00e8fe;
+  /* color: #fff; */
 }
 
 @media (max-width: 768px) {

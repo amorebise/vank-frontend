@@ -65,6 +65,10 @@
               <b-dropdown-item @click="$router.push('/admin_dashboard/sales/')"
                 >Sales</b-dropdown-item
               >
+              <b-dropdown-item
+                @click="$router.push('/admin_dashboard/withdrawals/')"
+                >Withdrawals</b-dropdown-item
+              >
               <b-dropdown-item @click="$router.push('/admin_dashboard/borrow/')"
                 >Borrowing</b-dropdown-item
               >

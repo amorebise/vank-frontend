@@ -1,84 +1,100 @@
 <template>
   <div class="exam_token_wrap w-100">
     <div class="cash__sub__wrap">
-      <admin-nav name="Subscriptions" />
-      <div class="transactions_wrap mt-5">
-        <div class="shift">
-          <div class="search__bar__wrap">
-            <div class="form-group py-3">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Search request by name"
-              />
+      <admin-nav name="Withdrawals" />
+      <div class="withdrawal__wrap">
+        <div class="transactions_wrap mt-5">
+          <div class="shift">
+            <div class="search__bar__wrap">
+              <div class="form-group py-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Search request by name"
+                />
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="transactions_data">
-          <div class="body__wrap">
-            <v-simple-table fixed-header height="200px">
-              <template v-slot:default>
-                <thead>
-                  <tr class="">
-                    <th class="text-left th_color">SN</th>
-                    <th class="text-left th_color">Name</th>
-                    <th class="text-left th_color">Phone Number</th>
-                    <th class="text-left th_color">Amount(N)</th>
-                    <th class="text-left th_color">Action</th>
-                  </tr>
-                </thead>
+          <div class="transactions_data">
+            <div class="body__wrap">
+              <v-simple-table fixed-header height="200px">
+                <template v-slot:default>
+                  <thead>
+                    <tr class="">
+                      <th class="text-left th_color">SN</th>
+                      <th class="text-left th_color">Name</th>
+                      <th class="text-left th_color">Phone Number</th>
+                      <th class="text-left th_color">Amount(N)</th>
+                      <th class="text-left th_color">Action</th>
+                    </tr>
+                  </thead>
 
-                <tbody>
-                  <tr
-                    v-for="subscription in subscriptions"
-                    :key="subscription.index"
-                    style="border-bottom: thin solid rgba(0, 0, 0, 0.12)"
-                    class="mt-2"
-                  >
-                    <td>2</td>
-                    <td>Biola George</td>
-                    <td>08123456789</td>
-                    <td>58,000</td>
-                    <td class="">
-                      <div class="d-flex" style="gap: 10px; font-size: 12px">
-                        <button class="text-success">Approve</button>
-                        <button class="text-danger">Disapprove</button>
-                        <button class="text-warning">Pend</button>
-                      </div>
-                    </td>
-                  </tr>
-                  <div class="text-center" v-if="subscriptions.length === 0">
-                    <p>No Active Subscriptions.</p>
-                  </div>
-                </tbody>
-              </template>
-            </v-simple-table>
+                  <tbody>
+                    <tr
+                      v-for="withdrawal in withdrawals"
+                      :key="withdrawal.index"
+                      style="border-bottom: thin solid rgba(0, 0, 0, 0.12)"
+                      class="mt-2"
+                    >
+                      <td>2</td>
+                      <td>{{ withdrawal.name }}</td>
+                      <td>{{ withdrawal.phone_number }}</td>
+                      <td>{{ withdrawal.amount }}</td>
+                      <td>
+                        <div class="d-flex" style="gap: 10px; font-size: 12px">
+                          <button
+                            @click="approveWithdrawal(withdrawal)"
+                            class="text-success"
+                          >
+                            Approve
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <div class="text-center" v-if="withdrawals.length === 0">
+                      <p>No pending withdrawal request.</p>
+                    </div>
+                  </tbody>
+                </template>
+              </v-simple-table>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-
-<script>
+  
+  <script>
 import creator_sidebar from "~/components/creator_sidebar.vue";
 export default {
   components: { creator_sidebar },
   data() {
     return {
       tab: null,
-      subscriptions: {},
+      withdrawals: {},
       success__modal: false,
     };
   },
 
   methods: {
-    async getSubscriptions() {
+    async getWithdrawalRequest() {
       try {
-        let response = await this.$axios.get("/admin/getAllSubscription");
-        this.subscriptions = response.data;
-        consoloe.log(this.subscriptions);
+        let response = await this.$axios.get("/admin/getWithdrawalRequest");
+        this.withdrawals = response.data;
+        consoloe.log(this.withdrawals);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+    async approveWithdrawal(withdrawal) {
+      try {
+        let response = await this.$axios.post(
+          `/admin/approveWithdrawalRequest/${withdrawal.id}`
+        );
+        this.$toast.success("Withdrawal approved", { timeout: 5000 });
+        console.log(response);
       } catch (error) {
         console.log(error.response);
       }
@@ -88,12 +104,12 @@ export default {
     },
   },
   created() {
-    this.getSubscriptions();
+    this.getWithdrawalRequest();
   },
 };
 </script>
-
-<style >
+  
+  <style >
 .cash__sub__wrap {
   margin-left: 230px;
   background-color: #fff;
@@ -125,12 +141,12 @@ export default {
 .cash__sub__wrap .transactions_data {
   background-color: #fff;
 }
-.cash__sub__wrap
-  .transactions_data
-  .v-data-table--fixed-header
-  > .v-data-table__wrapper {
-  /* background-color: #f8f7ff; */
-}
+/* .cash__sub__wrap
+    .transactions_data
+    .v-data-table--fixed-header
+    > .v-data-table__wrapper {
+    background-color: #f8f7ff;
+  } */
 .cash__sub__wrap
   .transactions_data
   .v-data-table
@@ -244,34 +260,34 @@ export default {
 }
 
 /* .transactions_data
-  .theme--light.v-data-table
-  > .v-data-table__wrapper
-  > table
-  > thead
-  > tr:last-child
-  > th {
-  border: none;
-  box-shadow: none;
-} */
+    .theme--light.v-data-table
+    > .v-data-table__wrapper
+    > table
+    > thead
+    > tr:last-child
+    > th {
+    border: none;
+    box-shadow: none;
+  } */
 /* tr {
-  margin-top: 100px !important;
-}
-.warning {
-  background: rgba(231, 171, 54, 0.1);
-  border-radius: 4px;
-  font-weight: 600;
-}
-.warning p {
-  padding-top: 10px;
-}
-.success {
-  background: rgba(30, 151, 57, 0.1);
-  border-radius: 4px;
-  font-weight: 600;
-}
-.success p {
-  padding-top: 10px;
-} */
+    margin-top: 100px !important;
+  }
+  .warning {
+    background: rgba(231, 171, 54, 0.1);
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  .warning p {
+    padding-top: 10px;
+  }
+  .success {
+    background: rgba(30, 151, 57, 0.1);
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  .success p {
+    padding-top: 10px;
+  } */
 @media (max-width: 768px) {
   .cash__sub__wrap {
     margin-left: 0 !important;
@@ -279,6 +295,9 @@ export default {
   }
   .cash__sub__wrap .shift {
     padding-left: 10px;
+  }
+  .withdrawal__wrap {
+    padding: 15px;
   }
 }
 </style>

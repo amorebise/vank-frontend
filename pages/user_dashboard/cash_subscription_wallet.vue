@@ -256,9 +256,8 @@ export default {
         this.saveAmount();
         this.$router.push("/user_dashboard/fund_wallet/");
       } else if (this.txn.option == "Withdraw to bank") {
-        // this.fundWallet();
-        this.$router.push("/verification/");
         this.saveAmount();
+        this.withdrawFunds();
       } else if (this.txn.option == "Transfer to your subscription wallet") {
         this.fundSubscriptionWallet();
         this.saveAmount();
@@ -292,6 +291,24 @@ export default {
         this.amount__modal = !this.amount__modal;
         this.$toast.success("success!! wallet will be updated after approval");
         console.log(response);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+    // async withdraw() {
+    //   try {
+    //     let response = await this.$axios.post("/withdrawal", this.fund_wallet);
+    //     this.$router.push("/verification/");
+    //     console.log(response);
+    //   } catch (error) {
+    //     console.log(error.response);
+    //   }
+    // },
+    async withdrawFunds() {
+      try {
+        let response = await this.$axios.post("/withdrawal", this.fund_wallet);
+        console.log(response);
+        this.$router.push("/verification/");
       } catch (error) {
         console.log(error.response);
       }
