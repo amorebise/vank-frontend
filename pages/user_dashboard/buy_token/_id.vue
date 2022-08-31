@@ -43,7 +43,6 @@
                   <div class="form-group">
                     <label>Enter Amount (NGN)</label>
                     <input
-                      @keypress="converter"
                       v-model="buy_amount.amount"
                       type="number"
                       class="form-control buy__input"
@@ -53,7 +52,7 @@
                 <div class="d-flex">
                   <p>You get</p>
                   <p class="token__box px-3 mx-1">
-                    {{ token_quantity }}
+                    {{ buy_amount.amount }}
                   </p>
                   <p>tokens</p>
                 </div>
@@ -81,7 +80,7 @@ export default {
       id: this.$route.params.id,
       asset_detail: {},
       token_quantity: "",
-      // amount: {},
+      amount: {},
       buy_amount: {
         amount: "",
       },
@@ -89,7 +88,7 @@ export default {
   },
   methods: {
     converter() {
-      this.token_quantity = this.buy_amount.amount / 500;
+      this.token_quantity = this.buy_amount.amount;
     },
     async requestSubscription() {
       try {
@@ -123,7 +122,7 @@ export default {
     // },
     makePayment() {
       this.requestSubscription();
-      this.amount = this.buy_amount;
+      this.amount = this.buy_amount.amount;
       this.token_name = this.asset_detail.token_name;
       localStorage.setItem("marketMakerKey", JSON.stringify(this.amount));
       localStorage.setItem("tokenName", JSON.stringify(this.token_name));
@@ -138,7 +137,8 @@ export default {
   },
   created() {
     this.getSingleAssetDetail();
-    // this.getTokenQuantity();
+
+    // this.converter();
   },
 };
 </script>

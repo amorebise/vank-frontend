@@ -2,42 +2,44 @@
   <div class="pay_bills_wrap w-100">
     <div class="fractional__ownership__wrap">
       <user-nav name="Fractional Ownership" />
-      <div class="arrow__back">
-        <font-awesome-icon
-          @click="back()"
-          role="button"
-          class="fa-1x text-dark pl-1"
-          :icon="['fas', 'arrow-left']"
-        />
-      </div>
-      <div class="header_wrap d-flex px-1 mt-3">
-        <div class="lagos__wrap">
-          <button @click="show_lagos()" class="toggle__btn" id="lagosBtn">
-            Lagos
-          </button>
+      <div class="fractional__bd__wrap">
+        <div class="arrow__back">
+          <font-awesome-icon
+            @click="back()"
+            role="button"
+            class="fa-1x text-dark pl-1"
+            :icon="['fas', 'arrow-left']"
+          />
         </div>
-        <div class="lagos__wrap px-3">
-          <button id="abujaBtn" class="toggle__btn" @click="show_abuja()">
-            Abuja
-          </button>
+        <div class="header_wrap d-flex px-1 mt-3">
+          <div class="lagos__wrap">
+            <button @click="show_lagos()" class="toggle__btn" id="lagosBtn">
+              Lagos
+            </button>
+          </div>
+          <div class="lagos__wrap px-3">
+            <button id="abujaBtn" class="toggle__btn" @click="show_abuja()">
+              Abuja
+            </button>
+          </div>
+          <div class="lagos__wrap">
+            <button id="uyoBtn" class="toggle__btn" @click="show_uyo()">
+              Uyo
+            </button>
+          </div>
         </div>
-        <div class="lagos__wrap">
-          <button id="uyoBtn" class="toggle__btn" @click="show_uyo()">
-            Uyo
-          </button>
+        <div v-show="lagos_tab" class="location__table__lagos mt-2">
+          <p class="px-2 paragrphs">Find verified property in Lagos</p>
+          <lagos-card />
         </div>
-      </div>
-      <div v-show="lagos_tab" class="location__table__lagos mt-2">
-        <p class="px-2 paragrphs">Find verified property in Lagos</p>
-        <lagos-card />
-      </div>
-      <div v-show="abuja_tab" class="location__table__abuja mt-2">
-        <p class="paragrphs">Find verified property in Abuja</p>
-        <abuja-card />
-      </div>
-      <div v-show="uyo_tab" class="location__table__uyo mt-2">
-        <p class="paragrphs">Find verified property in Uyo</p>
-        <uyo-card />
+        <div v-show="abuja_tab" class="location__table__abuja mt-2">
+          <p class="paragrphs">Find verified property in Abuja</p>
+          <abuja-card />
+        </div>
+        <div v-show="uyo_tab" class="location__table__uyo mt-2">
+          <p class="paragrphs">Find verified property in Uyo</p>
+          <uyo-card />
+        </div>
       </div>
     </div>
   </div>
@@ -278,6 +280,9 @@ export default {
   }
   .arrow__back {
     padding-left: 15px;
+  }
+  .fractional__bd__wrap {
+    padding: 10px;
   }
 }
 </style>
