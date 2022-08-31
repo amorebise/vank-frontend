@@ -83,7 +83,7 @@ export default {
       try {
         let response = await this.$axios.get("/admin/getWithdrawalRequest");
         this.withdrawals = response.data;
-        consoloe.log(this.withdrawals);
+        console.log(this.withdrawals);
       } catch (error) {
         console.log(error.response);
       }

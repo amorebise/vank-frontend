@@ -24,8 +24,9 @@
                     <th class="text-left th_color">SN</th>
                     <th class="text-left th_color">Name</th>
                     <th class="text-left th_color">Phone Number</th>
+                    <th class="text-left th_color">Token Name</th>
                     <th class="text-left th_color">Amount(N)</th>
-                    <th class="text-left th_color">Action</th>
+                    <th class="text-left th_color">Quantity</th>
                   </tr>
                 </thead>
 
@@ -39,14 +40,16 @@
                     <td>2</td>
                     <td>Biola George</td>
                     <td>08123456789</td>
-                    <td>58,000</td>
-                    <td class="">
+                    <td>{{ subscription.token_name }}</td>
+                    <td>{{ subscription.amount }}</td>
+                    <td>{{ subscription.quantity }}</td>
+                    <!-- <td class="">
                       <div class="d-flex" style="gap: 10px; font-size: 12px">
                         <button class="text-success">Approve</button>
                         <button class="text-danger">Disapprove</button>
                         <button class="text-warning">Pend</button>
                       </div>
-                    </td>
+                    </td> -->
                   </tr>
                   <div class="text-center" v-if="subscriptions.length === 0">
                     <p>No Active Subscriptions.</p>
@@ -78,9 +81,9 @@ export default {
       try {
         let response = await this.$axios.get("/admin/getAllSubscription");
         this.subscriptions = response.data;
-        consoloe.log(this.subscriptions);
+        console.log(this.subscriptions);
       } catch (error) {
-        console.log(error.response);
+        console.log(error);
       }
     },
     back() {
