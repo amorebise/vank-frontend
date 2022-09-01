@@ -12,19 +12,19 @@
               <button id="nairaBtn">Naira Wallet</button>
             </div>
             <div class="wallets">
-              <nuxt-link to="/user_dashboard/real_estate_wallet/">
-                <button id="estateBtn">Real Estate Wallet</button>
-              </nuxt-link>
+              <!-- <nuxt-link to="/user_dashboard/real_estate_wallet/"> -->
+              <button id="estateBtn">Real Estate Wallet</button>
+              <!-- </nuxt-link> -->
             </div>
             <div class="wallets">
-              <nuxt-link to="/user_dashboard/buy__usd/">
-                <button id="usdBtn">USD Wallet</button>
-              </nuxt-link>
+              <!-- <nuxt-link to="/user_dashboard/buy__usd/"> -->
+              <button id="usdBtn">USD Wallet</button>
+              <!-- </nuxt-link> -->
             </div>
             <div class="wallets">
-              <nuxt-link to="/user_dashboard/stake_borrow_wallet/">
-                <button id="stakeBtn">Stake/Borrow Wallet</button>
-              </nuxt-link>
+              <!-- <nuxt-link to="/user_dashboard/stake_borrow_wallet/"> -->
+              <button id="stakeBtn">Stake/Borrow Wallet</button>
+              <!-- </nuxt-link> -->
             </div>
           </div>
         </div>
@@ -54,11 +54,15 @@
         <div class="token__wrap py-5">
           <div class="view__assets__wrap text-center">
             <div class="d-flex justify-content-between">
-              <nuxt-link to="/user_dashboard/cash_subscription_wallet">
-                <button style="background-color: #00e8fe" class="btn">
+              <div>
+                <button
+                  @click="executeFunding()"
+                  style="background-color: #00e8fe"
+                  class="btn"
+                >
                   Cash Wallet
                 </button>
-              </nuxt-link>
+              </div>
               <div @mouseover="show__modal = !show__modal">
                 <font-awesome-icon
                   id="show_password"
@@ -90,11 +94,15 @@
             </div>
 
             <div class="d-flex justify-content-between mt-1">
-              <nuxt-link to="/user_dashboard/cash_subscription_wallet">
-                <button style="background-color: #00e8fe" class="btn">
+              <div>
+                <button
+                  @click="executeFunding()"
+                  style="background-color: #00e8fe"
+                  class="btn"
+                >
                   Subscription Wallet
                 </button>
-              </nuxt-link>
+              </div>
               <div @mouseover="show__second__modal = !show__second__modal">
                 <font-awesome-icon
                   id="show_password"
@@ -129,18 +137,18 @@
               </p>
             </div>
             <div class="mt-4">
-              <nuxt-link to="/user_dashboard/cash_subscription_wallet/">
-                <button class="assets__link">
+              <div>
+                <button @click="executeFunding()" class="assets__link">
                   <span class="px-3" style="font-weight: 400"
                     >Fund My Wallet</span
                   >
                 </button>
-              </nuxt-link>
+              </div>
             </div>
             <div class="payment__body pt-2">
               <p style="font-size: 12px" class="text-danger">
-                Update your bank details in settings page before performing any
-                transaction!!
+                N/B: Update your bank details in settings page before performing
+                any transaction!!
               </p>
             </div>
           </div>
@@ -158,19 +166,55 @@ export default {
   components: { creator_sidebar },
   data() {
     return {
+      user: {},
       cash_wallet_ballance: {},
       show__modal: false,
       show__second__modal: false,
     };
   },
   methods: {
+    async getUser() {
+      let auth = this.$auth.$storage._state;
+      let token = null;
+      for (const key in auth) {
+        console.log(key);
+        if (key == "_token.local") {
+          token = auth[key];
+        } else {
+          console.log("No");
+        }
+      }
+      console.log(token);
+      // console.log(this.$auth.$storage._state._token);
+      try {
+        let res = await this.$axios.get("/getUser", {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        });
+        this.user = res.data[0];
+        console.log(this.user);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
     async getCashWalletBallance() {
       let response = await this.$axios.get("/getWalletBalance");
       this.cash_wallet_ballance = response.data;
       console.log(this.cash_wallet_ballance);
     },
+    executeFunding() {
+      let verify = this.user.bank;
+      if (verify) {
+        this.$router.push("/user_dashboard/cash_subscription_wallet/");
+        console.log(verify);
+      } else {
+        this.$toast.warning("update bank details", { timeout: 5000 });
+      }
+    },
   },
   created() {
+    this.getUser();
     this.getCashWalletBallance();
   },
 };

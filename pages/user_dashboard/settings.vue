@@ -267,6 +267,9 @@ export default {
           "/verifyNationalIdentity",
           this.verification
         );
+        this.$toast.success("Success, your details have been submitted", {
+          timeout: 5000,
+        });
         this.show_payment_modal = !this.show_payment_modal;
         console.log(response);
       } catch (error) {

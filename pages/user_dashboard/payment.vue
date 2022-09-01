@@ -12,7 +12,9 @@
       </div>
       <div class="payments_wrap subscriber">
         <div class="token__wrap py-5">
-          <h5 class="font-weight-bolder">Payment for Pyanko1 Token</h5>
+          <h5 class="font-weight-bolder">
+            Payment for {{ token_name.token_name }} Token
+          </h5>
 
           <div class="form-group mx-2 mt-2">
             <label for="exampleFormControlSelect1" class="">Pay with</label>
@@ -21,8 +23,9 @@
               id="exampleFormControlSelect1"
               required
             >
+              <option>select..</option>
               <option class="colour" id="selectCountry">Cash Wallet</option>
-              <option>Take Loan</option>
+              <!-- <option>Take Loan</option> -->
             </select>
           </div>
           <div class="view__assets__wrap text-center">
@@ -58,12 +61,25 @@ import creator_sidebar from "~/components/creator_sidebar.vue";
 export default {
   components: { creator_sidebar },
   data() {
-    return {};
+    return {
+      token_name: {},
+    };
   },
   methods: {
     back() {
       this.$router.go(-1);
     },
+    showAmount() {
+      let markmm = localStorage.getItem("marketMakerKey");
+      let tkn = localStorage.getItem("tokenName");
+      this.selected_amount = JSON.parse(markmm);
+      this.token_name = JSON.parse(tkn);
+      console.log(this.selected_amount);
+      // console.log(this.selected_amount.id);
+    },
+  },
+  created() {
+    this.showAmount();
   },
 };
 </script>

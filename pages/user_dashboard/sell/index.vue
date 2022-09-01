@@ -1,7 +1,7 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="fund__wallet pr-3">
-      <user-nav name="Bank Transfer" />
+      <user-nav name="Sell" />
       <div class="fundz__wrap">
         <div>
           <font-awesome-icon
@@ -99,7 +99,7 @@ export default {
   }
   .fund__wallet .bank__wrap {
     border: 1px solid #00e8fe;
-    width: 100%;
+    width: 100% !important;
     margin: 20px auto;
     display: grid;
     place-items: center;

@@ -38,21 +38,23 @@
                 </p>
               </div>
               <div class="d-flex radio_b" style="gap: 10px">
-                <div class="register_button_wrap text-center mt-3 py-4">
-                  <nuxt-link
-                    to="/admin_dashboard/transactions"
+                <div class="register_button_wrap text-center mt-1 py-4">
+                  <button
+                    @click="
+                      $router.push(`/admin_dashboard/user_transaction/${id}`)
+                    "
                     class="assets__link"
                   >
                     <span class="px-3 user__f">Transactions</span>
-                  </nuxt-link>
+                  </button>
                 </div>
-                <div class="register_button_wrap text-center mt-3 py-4">
-                  <nuxt-link
-                    :to="`/admin_dashboard/wallets`"
+                <div class="register_button_wrap text-center mt-1 py-4">
+                  <button
+                    @click="$router.push(`/admin_dashboard/user_wallet/${id}`)"
                     class="assets__link"
                   >
                     <span class="px-3 user__f">View Wallets</span>
-                  </nuxt-link>
+                  </button>
                 </div>
                 <div class="register_button_wrap text-center mt-1 py-4">
                   <div

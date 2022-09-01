@@ -2,61 +2,63 @@
   <div class="exam_token_wrap w-100">
     <div class="cash__sub__wrap">
       <admin-nav name="Subscriptions" />
-      <div class="transactions_wrap mt-5">
-        <div class="shift">
-          <div class="search__bar__wrap">
-            <div class="form-group py-3">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Search request by name"
-              />
+      <div class="sub__body">
+        <div class="transactions_wrap mt-5">
+          <div class="shift">
+            <div class="search__bar__wrap">
+              <div class="form-group py-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Search request by name"
+                />
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="transactions_data">
-          <div class="body__wrap">
-            <v-simple-table fixed-header height="200px">
-              <template v-slot:default>
-                <thead>
-                  <tr class="">
-                    <th class="text-left th_color">SN</th>
-                    <th class="text-left th_color">Name</th>
-                    <th class="text-left th_color">Phone Number</th>
-                    <th class="text-left th_color">Token Name</th>
-                    <th class="text-left th_color">Amount(N)</th>
-                    <th class="text-left th_color">Quantity</th>
-                  </tr>
-                </thead>
+          <div class="transactions_data">
+            <div class="body__wrap">
+              <v-simple-table fixed-header height="200px">
+                <template v-slot:default>
+                  <thead>
+                    <tr class="">
+                      <th class="text-left th_color">SN</th>
+                      <th class="text-left th_color">Name</th>
+                      <th class="text-left th_color">Phone Number</th>
+                      <th class="text-left th_color">Token Name</th>
+                      <th class="text-left th_color">Amount(N)</th>
+                      <th class="text-left th_color">Quantity</th>
+                    </tr>
+                  </thead>
 
-                <tbody>
-                  <tr
-                    v-for="subscription in subscriptions"
-                    :key="subscription.index"
-                    style="border-bottom: thin solid rgba(0, 0, 0, 0.12)"
-                    class="mt-2"
-                  >
-                    <td>2</td>
-                    <td>Biola George</td>
-                    <td>08123456789</td>
-                    <td>{{ subscription.token_name }}</td>
-                    <td>{{ subscription.amount }}</td>
-                    <td>{{ subscription.quantity }}</td>
-                    <!-- <td class="">
+                  <tbody>
+                    <tr
+                      v-for="subscription in subscriptions"
+                      :key="subscription.index"
+                      style="border-bottom: thin solid rgba(0, 0, 0, 0.12)"
+                      class="mt-2"
+                    >
+                      <td>2</td>
+                      <td>Biola George</td>
+                      <td>08123456789</td>
+                      <td>{{ subscription.token_name }}</td>
+                      <td>{{ subscription.amount }}</td>
+                      <td>{{ subscription.quantity }}</td>
+                      <!-- <td class="">
                       <div class="d-flex" style="gap: 10px; font-size: 12px">
                         <button class="text-success">Approve</button>
                         <button class="text-danger">Disapprove</button>
                         <button class="text-warning">Pend</button>
                       </div>
                     </td> -->
-                  </tr>
-                  <div class="text-center" v-if="subscriptions.length === 0">
-                    <p>No Active Subscriptions.</p>
-                  </div>
-                </tbody>
-              </template>
-            </v-simple-table>
+                    </tr>
+                    <div class="text-center" v-if="subscriptions.length === 0">
+                      <p>No Active Subscriptions.</p>
+                    </div>
+                  </tbody>
+                </template>
+              </v-simple-table>
+            </div>
           </div>
         </div>
       </div>
@@ -282,6 +284,9 @@ export default {
   }
   .cash__sub__wrap .shift {
     padding-left: 10px;
+  }
+  .sub__body {
+    padding: 15px;
   }
 }
 </style>

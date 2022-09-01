@@ -1,7 +1,7 @@
 <template>
   <div class="w-100">
     <div class="but__token__content pr-3 py-3">
-      <user-nav name="Buy Tokens" />
+      <user-nav name="Buy Token" />
       <div class="">
         <div class="back__btn">
           <font-awesome-icon
@@ -60,7 +60,7 @@
             </div>
           </div>
           <div class="text-center mt-3 py-4">
-            <button @click="requestSubscription()" class="assets__link">
+            <button @click="executeBuy()" class="assets__link">
               <span class="px-3">Make Payment</span>
             </button>
           </div>
@@ -81,6 +81,7 @@ export default {
       asset_detail: {},
       token_quantity: "",
       amount: {},
+      cash_wallet_ballance: {},
       buy_amount: {
         amount: "",
       },
@@ -89,6 +90,17 @@ export default {
   methods: {
     converter() {
       this.token_quantity = this.buy_amount.amount;
+    },
+    executeBuy() {
+      let buyBalance = this.cash_wallet_ballance.subscription_wallet_balance;
+      if (Number(buyBalance) == 0) {
+        this.$toast.warning(
+          "You have to fund subscription wallet to buy asset"
+        );
+      } else {
+        this.makePayment();
+        alert("Hi");
+      }
     },
     async requestSubscription() {
       try {
@@ -122,14 +134,19 @@ export default {
     // },
     makePayment() {
       this.requestSubscription();
-      this.amount = this.buy_amount.amount;
-      this.token_name = this.asset_detail.token_name;
+      this.amount = this.buy_amount;
+      this.token_name = this.asset_detail;
       localStorage.setItem("marketMakerKey", JSON.stringify(this.amount));
       localStorage.setItem("tokenName", JSON.stringify(this.token_name));
-      // console.log(this.amount);
-      // console.log(this.token_name);
+      console.log(this.amount);
+      console.log(this.token_name);
       this.loading = false;
       this.$router.push("/user_dashboard/payment");
+    },
+    async getCashWalletBallance() {
+      let response = await this.$axios.get("/getWalletBalance");
+      this.cash_wallet_ballance = response.data;
+      console.log(this.cash_wallet_ballance);
     },
     back() {
       this.$router.go(-1);
@@ -138,7 +155,7 @@ export default {
   created() {
     this.getSingleAssetDetail();
 
-    // this.converter();
+    this.getCashWalletBallance();
   },
 };
 </script>

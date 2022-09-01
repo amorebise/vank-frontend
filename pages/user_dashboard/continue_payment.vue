@@ -15,7 +15,7 @@
           <h5>
             &#8358;{{ selected_amount.amount }} will be deducted from your
             <br />
-            cash wallet for {{ token_name }} tokens
+            cash wallet for {{ token_name.token_name }} tokens
           </h5>
           <div class="view__assets__wrap text-center">
             <button

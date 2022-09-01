@@ -3,8 +3,9 @@
     <div class="but__token__content pr-3">
       <user-nav name="Sell Tokens" />
       <div class="">
-        <div @click="back()">
+        <div>
           <font-awesome-icon
+            @click="$router.go(-1)"
             role="button"
             class="fa-1x text-dark pl-1"
             :icon="['fas', 'arrow-left']"
@@ -59,7 +60,7 @@
                 </div>
                 <div class="mt-3 py-4">
                   <button
-                    @click="sellToken()"
+                    @click="executeSell()"
                     type="submit"
                     class="assets__link"
                   >
@@ -140,14 +141,22 @@ export default {
       this.asset_detail = response.data;
       console.log(this.asset_detail);
     },
-
+    executeSell() {
+      let maxValue = this.max_value;
+      if (maxValue == 0) {
+        this.$toast.warning("You do not have any assets to sell");
+      } else {
+        this.sellToken();
+      }
+    },
     async getMaxValue() {
       try {
         let response = await this.$axios.get(
           `/getMaxValue/${this.asset_detail.id}`
         );
         this.max_value = response.data;
-        console.log(this.max_value);
+        this.sell_quantity.quantity = this.max_value;
+        // console.log(this.max_value);
       } catch (error) {
         console.log(error.response);
       }
@@ -282,6 +291,7 @@ input[type="number"]::-webkit-inner-spin-button {
     margin: 10px;
     padding: 10px;
     border-radius: 0;
+    /* width: 100% !important; */
   }
   .but__token__content .asset__content {
     background-image: url("/asset.jpg");
