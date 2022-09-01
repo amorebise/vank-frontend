@@ -99,7 +99,7 @@ export default {
         );
       } else {
         this.makePayment();
-        alert("Hi");
+        // alert("Hi");
       }
     },
     async requestSubscription() {
