@@ -185,6 +185,9 @@ export default {
       console.log("active");
     },
   },
+  mounted() {
+    this.toggleAccount();
+  },
 };
 </script>
 

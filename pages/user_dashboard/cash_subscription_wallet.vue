@@ -1,170 +1,59 @@
 <template>
   <div class="exam_token_wrap w-100">
     <div class="cash__sub__wrap">
-      <user-nav name="Wallets" />
-      <div class="back__btn">
-        <font-awesome-icon
-          @click="back()"
-          role="button"
-          class="fa-1x text-dark pl-1"
-          :icon="['fas', 'arrow-left']"
-        />
-      </div>
-      <div class="transactions_wrap mt-3">
-        <template>
-          <v-tabs class="px-3" v-model="tab" align-with-title>
-            <v-tab>Cash Wallet</v-tab>
-            <v-tab>Subscription Wallet</v-tab>
-          </v-tabs>
-        </template>
-        <v-tabs-items v-model="tab" class="tab_bg">
-          <v-tab-item>
-            <v-card flat>
-              <v-card-text class="">
-                <div class="transactions_data">
-                  <div
-                    class="
-                      wallet__balance__wrap
-                      d-flex
-                      justify-content-center
-                      align-items-center
-                      pt-3
-                    "
-                    style="gap: 10px"
-                  >
-                    <p
-                      v-if="cash_wallet_ballance.cash_wallet_balance"
-                      class="txn__paragh"
-                      style="
-                        color: #00e8fe;
-                        font-size: 30px;
-                        padding-top: 12px;
-                        font-weight: 600;
-                      "
-                    >
-                      <span v-if="cash_wallet_ballance" class="text-dark"
-                        >Wallet Balance:</span
-                      >
-                      &#x20A6;{{ cash_wallet_ballance.cash_wallet_balance }}
-                    </p>
-                    <p
-                      v-else
-                      class="txn__paragh"
-                      style="
-                        color: #00e8fe;
-                        font-size: 30px;
-                        padding-top: 12px;
-                        font-weight: 600;
-                      "
-                    >
-                      <span class="text-dark">Wallet Balance:</span>
-                      &#x20A6;0
-                    </p>
-                  </div>
-                </div>
-                <div class="text-center font-weight-bold">
-                  <h6>Choose what kind of transaction</h6>
-                </div>
-                <div class="choose__txn__wrap">
-                  <div class="token__wrap py-5">
-                    <div class="form-group mx-2 mt-2">
-                      <label
-                        for="exampleFormControlSelect1 font-weight-bolder"
-                        class=""
-                        >Choose Transaction (fund,withdraw etc)</label
-                      >
-                      <select
-                        class="form-control option-class select"
-                        id="exampleFormControlSelect1"
-                        v-model="txn.option"
-                        required
-                      >
-                        <option>Select</option>
-                        <option
-                          v-for="(option, index) in funding_options"
-                          :key="index"
-                          :value="option"
-                          class="colour"
-                          id="selectCountry"
-                        >
-                          {{ option }}
-                        </option>
-                      </select>
-                    </div>
-
-                    <div class="form-group mx-2 mt-2">
-                      <label for="" class=""
-                        >What is your transaction amount?</label
-                      >
-                      <input
-                        type="number"
-                        class="form-control"
-                        placeholder="Enter Amount"
-                        v-model="fund_wallet.amount"
-                      />
-                    </div>
-                    <div class="view__assets__wrap text-center">
-                      <button
-                        @click="goToSelectedTxnType()"
-                        class="assets__link"
-                      >
-                        <span class="px-3">Next</span>
-                      </button>
-                    </div>
-                    <div v-show="success__modal" class="pop__up">
-                      <div class="pop__up__content zoomIn">
-                        <div class="text-center">
-                          <img src="/emoji.png" alt="" />
-                          <p>Transaction Successful!!</p>
-                          <button
-                            @click="$router.push('/user_dashboard/wallets/')"
-                          >
-                            ok
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </v-card-text>
-            </v-card>
-          </v-tab-item>
-
-          <v-tab-item>
-            <v-card flat>
-              <v-card-text class="">
-                <div class="transactions_data">
-                  <div class="choose__txn__wrap py-5">
+      <user-nav class="estate__nav py-4" name="Wallets" />
+      <div class="cash__sub__body pt-3">
+        <div class="back__btn">
+          <font-awesome-icon
+            @click="back()"
+            role="button"
+            class="fa-1x text-dark pl-1"
+            :icon="['fas', 'arrow-left']"
+          />
+        </div>
+        <div class="transactions_wrap mt-3">
+          <template>
+            <v-tabs class="px-3" v-model="tab" align-with-title>
+              <v-tab>Cash Wallet</v-tab>
+              <v-tab>Subscription Wallet</v-tab>
+            </v-tabs>
+          </template>
+          <v-tabs-items v-model="tab" class="tab_bg">
+            <v-tab-item>
+              <v-card flat>
+                <v-card-text class="">
+                  <div class="transactions_data">
                     <div
                       class="
                         wallet__balance__wrap
                         d-flex
                         justify-content-center
+                        align-items-center
                         pt-3
                       "
                       style="gap: 10px"
                     >
                       <p
-                        v-if="cash_wallet_ballance.subscription_wallet_balance"
-                        class="cash__paragh"
+                        v-if="cash_wallet_ballance.cash_wallet_balance"
+                        class="txn__paragh"
                         style="
                           color: #00e8fe;
-                          font-size: 20px;
+                          font-size: 30px;
                           padding-top: 12px;
                           font-weight: 600;
                         "
                       >
-                        <span class="text-dark">Wallet Balance:</span>
-                        &#x20A6;{{
-                          cash_wallet_ballance.subscription_wallet_balance
-                        }}
+                        <span v-if="cash_wallet_ballance" class="text-dark"
+                          >Wallet Balance:</span
+                        >
+                        &#x20A6;{{ cash_wallet_ballance.cash_wallet_balance }}
                       </p>
                       <p
                         v-else
-                        class="cash__paragh"
+                        class="txn__paragh"
                         style="
                           color: #00e8fe;
-                          font-size: 20px;
+                          font-size: 30px;
                           padding-top: 12px;
                           font-weight: 600;
                         "
@@ -173,51 +62,166 @@
                         &#x20A6;0
                       </p>
                     </div>
-                    <div class="view__assets__wrap text-center">
-                      <!-- <nuxt-link to="/user_dashboard/cash_success/"> -->
-                      <button
-                        @click="amount__modal = !amount__modal"
-                        class="assets__link"
-                      >
-                        <span class="px-3">Transfer to Cash Wallet</span>
-                      </button>
-                      <!-- </nuxt-link> -->
-                      <div v-show="amount__modal" class="pop__up">
+                  </div>
+                  <div class="text-center font-weight-bold">
+                    <h6>Choose what kind of transaction</h6>
+                  </div>
+                  <div class="choose__txn__wrap">
+                    <div class="token__wrap py-5">
+                      <div class="form-group mx-2 mt-2">
+                        <label
+                          for="exampleFormControlSelect1 font-weight-bolder"
+                          class=""
+                          >Choose Transaction (fund,withdraw etc)</label
+                        >
+                        <select
+                          class="form-control option-class select"
+                          id="exampleFormControlSelect1"
+                          v-model="txn.option"
+                          required
+                        >
+                          <option>Select</option>
+                          <option
+                            v-for="(option, index) in funding_options"
+                            :key="index"
+                            :value="option"
+                            class="colour"
+                            id="selectCountry"
+                          >
+                            {{ option }}
+                          </option>
+                        </select>
+                      </div>
+
+                      <div class="form-group mx-2 mt-2">
+                        <label for="" class=""
+                          >What is your transaction amount?</label
+                        >
+                        <input
+                          type="number"
+                          class="form-control"
+                          placeholder="Enter Amount"
+                          v-model="fund_wallet.amount"
+                        />
+                      </div>
+                      <div class="view__assets__wrap text-center">
+                        <button
+                          @click="goToSelectedTxnType()"
+                          class="assets__link"
+                        >
+                          <span class="px-3">Next</span>
+                        </button>
+                      </div>
+                      <div v-show="success__modal" class="pop__up">
                         <div class="pop__up__content zoomIn">
-                          <div class="text-right">
-                            <p
-                              role="button"
-                              @click="amount__modal = !amount__modal"
-                              style="font-size: 20px"
-                            >
-                              &times;
-                            </p>
-                          </div>
                           <div class="text-center">
-                            <div class="form-group mx-2 mt-2">
-                              <label for="" class=""
-                                >What is your transaction amount?</label
-                              >
-                              <input
-                                type="number"
-                                class="form-control"
-                                placeholder="Enter Amount"
-                                v-model="fund_wallet.amount"
-                              />
-                            </div>
-                            <button @click="transferToCashWallet()">
-                              Transfer
+                            <img src="/emoji.png" alt="" />
+                            <p>Transaction Successful!!</p>
+                            <button
+                              @click="$router.push('/user_dashboard/wallets/')"
+                            >
+                              ok
                             </button>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </v-card-text>
-            </v-card>
-          </v-tab-item>
-        </v-tabs-items>
+                </v-card-text>
+              </v-card>
+            </v-tab-item>
+
+            <v-tab-item>
+              <v-card flat>
+                <v-card-text class="">
+                  <div class="transactions_data">
+                    <div class="choose__txn__wrap py-5">
+                      <div
+                        class="
+                          wallet__balance__wrap
+                          d-flex
+                          justify-content-center
+                          pt-3
+                        "
+                        style="gap: 10px"
+                      >
+                        <p
+                          v-if="
+                            cash_wallet_ballance.subscription_wallet_balance
+                          "
+                          class="cash__paragh"
+                          style="
+                            color: #00e8fe;
+                            font-size: 20px;
+                            padding-top: 12px;
+                            font-weight: 600;
+                          "
+                        >
+                          <span class="text-dark">Wallet Balance:</span>
+                          &#x20A6;{{
+                            cash_wallet_ballance.subscription_wallet_balance
+                          }}
+                        </p>
+                        <p
+                          v-else
+                          class="cash__paragh"
+                          style="
+                            color: #00e8fe;
+                            font-size: 20px;
+                            padding-top: 12px;
+                            font-weight: 600;
+                          "
+                        >
+                          <span class="text-dark">Wallet Balance:</span>
+                          &#x20A6;0
+                        </p>
+                      </div>
+                      <div class="view__assets__wrap text-center">
+                        <!-- <nuxt-link to="/user_dashboard/cash_success/"> -->
+                        <button
+                          @click="amount__modal = !amount__modal"
+                          class="assets__link"
+                        >
+                          <span class="px-3">Transfer to Cash Wallet</span>
+                        </button>
+                        <!-- </nuxt-link> -->
+                        <div v-show="amount__modal" class="pop__up">
+                          <div class="pop__up__content zoomIn">
+                            <div class="text-right">
+                              <p
+                                role="button"
+                                @click="amount__modal = !amount__modal"
+                                style="font-size: 20px"
+                              >
+                                &times;
+                              </p>
+                            </div>
+                            <div class="text-center">
+                              <div class="form-group mx-2 mt-2">
+                                <label for="" class=""
+                                  >What is your transaction amount?</label
+                                >
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  placeholder="Enter Amount"
+                                  v-model="fund_wallet.amount"
+                                />
+                              </div>
+                              <button @click="transferToCashWallet()">
+                                Transfer
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </v-card-text>
+              </v-card>
+            </v-tab-item>
+          </v-tabs-items>
+        </div>
       </div>
     </div>
   </div>
@@ -345,7 +349,7 @@ export default {
 .cash__sub__wrap {
   margin-left: 230px;
   background-color: #fff;
-  min-height: 100vh;
+  height: 100%;
   padding: 0 50px;
 }
 
@@ -504,7 +508,7 @@ export default {
     border: 1px solid #00e8fe;
     border-radius: 20px;
     margin: 40px auto;
-    width: 100%;
+    width: 100% !important;
 
     padding: 10px 40px;
   }

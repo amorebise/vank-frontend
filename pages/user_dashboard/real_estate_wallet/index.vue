@@ -1,7 +1,7 @@
 <template>
   <div class="w-100">
     <div class="real__estate_wallet">
-      <user-nav class="pr-2" name="Real Estate" />
+      <user-nav class="pr-2 estate__nav py-4" name="Real Estate" />
       <div class="real__wallet">
         <div>
           <font-awesome-icon
@@ -14,20 +14,54 @@
         <div class="estate__wrap px-1 mt-4">
           <h6>My Subscription ...</h6>
           <div class="row">
-            <div class="col-md-6">
-              <img src="/real.svg" alt="" />
-              <div class="token__box">
-                <p class="full__text px-2 py-1">KARSHI 02 Tokens</p>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div>
-                <img src="/real.png" alt="" />
+            <div
+              class="col-md-4"
+              v-for="property in assets.subscriptions"
+              :key="property.index"
+              @click="$router.push(`/user_dashboard/my_assets/${property.id}`)"
+            >
+              <div class="imgage__bg">
+                <div
+                  class="asset__bg"
+                  :style="{ backgroundImage: 'url(' + property.image + ')' }"
+                >
+                  <div>
+                    <div class="opaque_text">
+                      <p v-if="property.layout_name">
+                        {{ property.layout_name }}
+                      </p>
+                      <p v-else>Epe</p>
+                      <div>
+                        <p v-if="property.location">
+                          {{ property.location }}
+                        </p>
+                        <p v-else>Lagos</p>
+                      </div>
+                      <div>
+                        <p v-if="property.token_name">
+                          {{ property.token_name }}
+                        </p>
+                        <p v-else>token 001</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div class="token__box">
-                  <p class="full__text px-2 py-1">EPE 3 Tokens</p>
+                  <p class="full__text px-2 py-1" v-if="property.token_name">
+                    {{ property.token_name }} Token
+                  </p>
+                  <p class="full__text px-2 py-1" v-else>KARSHI 02 Token</p>
                 </div>
               </div>
             </div>
+          </div>
+          <div
+            style="display: grid; place-items: center"
+            class="pt-5"
+            v-if="assets.subscriptions == 0"
+          >
+            <img style="width: 50px" src="/assets.webp" alt="asset image" />
+            <p>You have not bought any assets yet.</p>
           </div>
           <div
             style="gap: 10px"
@@ -46,14 +80,14 @@
             >
               <span class="px-3">Go to my Real Estate Wallet</span>
             </nuxt-link>
-            <div v-if="user">
+            <!-- <div v-if="user">
               <nuxt-link
                 :to="`/user_dashboard/sell/${id}`"
                 class="assets__link"
               >
                 <span class="px-3">Sell</span>
               </nuxt-link>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -68,6 +102,7 @@ export default {
   data() {
     return {
       user: {},
+      assets: {},
     };
   },
   methods: {
@@ -105,9 +140,20 @@ export default {
     back() {
       this.$router.go(-1);
     },
+    async getAssets() {
+      try {
+        let response = await this.$axios.get("/getSubscribedAsset");
+        // getSubscribedAsset
+        this.assets = response.data.slice(0, 3)[0];
+        console.log(this.assets);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
   },
   created() {
     this.getUser();
+    this.getAssets();
   },
 };
 </script>
@@ -115,6 +161,29 @@ export default {
 <style>
 .real__estate_wallet {
   margin-left: 270px;
+}
+.asset__bg {
+  border: 2px solid #00e8fe;
+  height: 200px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  background-size: cover;
+}
+.asset__bg p {
+  opacity: 0;
+  color: #fff;
+  line-height: 2px;
+  font-size: 13px;
+  transition: 1s;
+}
+.asset__bg:hover {
+  background-color: rgba(0, 0, 0, 0.291);
+  background-blend-mode: overlay;
+  transition: 1s;
+}
+.asset__bg:hover p {
+  opacity: 1;
 }
 .real__estate_wallet .real__estate {
   background-color: #fff;
@@ -161,6 +230,7 @@ export default {
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 232, 254, 0.15);
   padding: 10px;
+  cursor: pointer;
 }
 .real__estate_wallet img {
   width: 100%;
@@ -176,9 +246,18 @@ export default {
   }
   .real__wallet {
     padding: 10px;
+    padding-top: 80px;
   }
   .settings_wrap {
     margin: 10px;
+  }
+  .estate__nav {
+    position: fixed;
+    background-color: #fff;
+    padding: 0 !important;
+    width: 100%;
+    box-shadow: 0px 4px 4px rgba(0, 232, 254, 0.1) !important;
+    z-index: 1000;
   }
 }
 </style>

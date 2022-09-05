@@ -1,7 +1,7 @@
 <template>
   <div class="w-100">
     <div class="property pr-3">
-      <user-nav class="estate__nav py-4" name="Property Details" />
+      <user-nav class="pr-2 prop__nav py-4" name="Property Details" />
       <div class="mt-5 single__property">
         <div>
           <font-awesome-icon
@@ -29,18 +29,20 @@
           </div>
           <div class="col-md-6">
             <div class="description__wrap pt-3">
-              <p>Location: {{ asset_detail.location }}</p>
-              <p>Layout Name: {{ asset_detail.layout_name }}</p>
-              <p>Distance to closest built up areas:</p>
-              <p>-{{ asset_detail.description1 }}-</p>
+              <p>Token Name: {{ findAsset ? findAsset.token_name : "" }}</p>
+              <p>Whole Price: {{ findAsset ? findAsset.whole_price : "" }}</p>
+              <p>Token Price: {{ findAsset ? findAsset.token_price : "" }}</p>
+              <p>Amount: {{ findAsset ? findAsset.amount : "" }}</p>
+              <p>Quantity: {{ findAsset ? findAsset.quantity : "" }}</p>
               <p>
-                {{ asset_detail.description2 }}
+                Current Market Price:
+                {{ findAsset ? findAsset.current_market_price : "" }}
               </p>
-              <p>{{ asset_detail.description3 }}</p>
-              <p>{{ asset_detail.documentation }}</p>
-
-              <p>Population within 20KM radius: Over 200,000</p>
-              <!-- <span>Est. minimum return 9.2%PA</span> -->
+              <p>
+                Current Market Price:
+                {{ findAsset ? findAsset.current_token_value : "" }}
+                <!-- {{ findAsset ? findAsset.asset_id : "" }} -->
+              </p>
 
               <div>
                 <button
@@ -94,28 +96,28 @@
               :to="`/user_dashboard/buy_token/${id}`"
               class="assets__link"
             >
-              <span class="px-3">Buy Token</span>
+              <span class="px-3">Buy More</span>
             </nuxt-link>
           </div>
 
-          <!-- <div>
+          <div>
             <div v-if="user">
               <nuxt-link
                 :to="`/user_dashboard/sell/${id}`"
                 class="assets__link"
               >
                 <span class="px-3">Sell</span>
+                <!-- {{ findAsset ? findAsset : "" }} -->
               </nuxt-link>
             </div>
-           
-          </div> -->
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-
-<script>
+  
+  <script>
 import creator_sidebar from "~/components/creator_sidebar.vue";
 export default {
   // middleware: "auth",
@@ -123,6 +125,7 @@ export default {
   data() {
     return {
       user: {},
+      assets: {},
       asset_detail: {},
       id: this.$route.params.id,
       audit_report: false,
@@ -130,60 +133,56 @@ export default {
     };
   },
   methods: {
-    async getUser() {
-      let auth = this.$auth.$storage._state;
-      let token = null;
-
-      for (const key in auth) {
-        console.log(key);
-
-        if (key == "_token.local") {
-          token = auth[key];
-        } else {
-          console.log("No");
-        }
-      }
-
-      console.log(token);
-
-      // console.log(this.$auth.$storage._state._token);
-      try {
-        let res = await this.$axios.get("/getUser", {
-          headers: {
-            Authorization: `bearer ${token}`,
-          },
-        });
-
-        this.user = res.data[0];
-
-        console.log(this.user);
-      } catch (error) {
-        console.log(error.response);
-      }
-    },
-
     async getSingleAssetDetail() {
       let response = await this.$axios.get(`/getSingleAsset/${this.id}`);
       this.asset_detail = response.data;
       console.log(this.asset_detail);
     },
-
+    async getAssets() {
+      try {
+        let response = await this.$axios.get("/getSubscribedAsset");
+        // getSubscribedAsset
+        this.assets = response.data.slice(0, 3)[0];
+        console.log(this.assets);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
     back() {
       this.$router.go(-1);
     },
   },
-  created() {
-    this.getUser();
+  computed: {
+    findAsset() {
+      let foundAsset = null;
+      if (this.assets.subscriptions) {
+        for (let index = 0; index < this.assets.subscriptions.length; index++) {
+          const element = this.assets.subscriptions[index];
+          console.log(element);
+          console.log(this.id);
+          console.log(this.id == element.id);
+          element.id == this.id ? (foundAsset = element) : "";
+        }
+        console.log(foundAsset);
+        return foundAsset;
+      } else {
+        return null;
+      }
+    },
+  },
+  async created() {
+    await this.getAssets();
     this.getSingleAssetDetail();
+    console.log(this.assets.subscriptions);
   },
 };
 </script>
-
-<style>
+  
+  <style>
 .property {
   margin-left: 270px;
   background-color: #fff;
-  height: 100%;
+  min-height: 100vh;
 }
 .single__property a {
   color: inherit;
@@ -269,7 +268,7 @@ export default {
     margin-top: 0 !important;
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 80px !important;
+    padding-top: 80px;
   }
   .description__wrap {
     padding: 10px;
@@ -277,6 +276,14 @@ export default {
   }
   .single__property .buy__token__wrap {
     margin-top: 0 !important;
+  }
+  .prop__nav {
+    position: fixed;
+    background-color: #fff;
+    padding: 0 !important;
+    width: 100%;
+    box-shadow: 0px 4px 4px rgba(0, 232, 254, 0.1) !important;
+    z-index: 1000;
   }
 }
 </style>

@@ -230,13 +230,12 @@ export default {
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   color: #001214;
-  position: relative;
+
   width: 350px;
   height: 200px;
   transition: ease-in-out 0.3s;
   color: #fff;
-  display: grid;
-  place-items: center;
+
   font-weight: 500;
   font-size: 15px;
 }

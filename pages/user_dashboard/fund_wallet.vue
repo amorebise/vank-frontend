@@ -1,42 +1,43 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="fund__wallet">
-      <user-nav name="Fund my wallet" />
-      <div class="shift">
-        <font-awesome-icon
-          @click="$router.go(-1)"
-          role="button"
-          class="fa-1x text-dark pl-1"
-          :icon="['fas', 'arrow-left']"
-        />
-      </div>
-      <div class="payments_wrap subscriber">
-        <div class="fund__wrap py-5">
-          <div class="form-group mx-2 mt-2">
-            <label for="exampleFormControlSelect1" class=""
-              >Choose funding method</label
-            >
-            <select
-              class="form-control option-class select"
-              id="exampleFormControlSelect1"
-              v-model="txn.option"
-              required
-            >
-              <option>Select</option>
-              <option
-                v-for="(option, index) in funding_options"
-                :key="index"
-                :value="option"
-                class="colour"
-                id="selectCountry"
+      <user-nav class="pr-2 fund__wallet__nav py-4" name="Fund my wallet" />
+      <div class="fund__wallet__body">
+        <div class="shift">
+          <font-awesome-icon
+            @click="$router.go(-1)"
+            role="button"
+            class="fa-1x text-dark pl-1"
+            :icon="['fas', 'arrow-left']"
+          />
+        </div>
+        <div class="payments_wrap subscriber">
+          <div class="fund__wrap py-5">
+            <div class="form-group mx-2 mt-2">
+              <label for="exampleFormControlSelect1" class=""
+                >Choose funding method</label
               >
-                {{ option }}
-              </option>
-              <!-- <option value="bank_transfer">Bank Transfer</option> -->
-            </select>
-          </div>
+              <select
+                class="form-control option-class select"
+                id="exampleFormControlSelect1"
+                v-model="txn.option"
+                required
+              >
+                <option>Select</option>
+                <option
+                  v-for="(option, index) in funding_options"
+                  :key="index"
+                  :value="option"
+                  class="colour"
+                  id="selectCountry"
+                >
+                  {{ option }}
+                </option>
+                <!-- <option value="bank_transfer">Bank Transfer</option> -->
+              </select>
+            </div>
 
-          <!-- <div class="form-group mx-2 mt-2">
+            <!-- <div class="form-group mx-2 mt-2">
             <label for="" class="">How much do you want to pay?</label>
             <input
               type="number"
@@ -45,10 +46,11 @@
               v-model="wallet.amount"
             />
           </div> -->
-          <div class="view__assets__wrap text-center">
-            <button @click="goToSelectedTxnType()" class="assets__link">
-              <span class="px-3">Next</span>
-            </button>
+            <div class="view__assets__wrap text-center">
+              <button @click="goToSelectedTxnType()" class="assets__link">
+                <span class="px-3">Next</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -150,7 +152,18 @@ input[type="number"]::-webkit-outer-spin-button {
   }
   .fund__wallet .fund__wrap {
     width: 100%;
-    margin: 40px auto;
+    margin: 20px auto;
+  }
+  .fund__wallet .fund__wallet__nav {
+    position: fixed;
+    background-color: #fff;
+    padding: 0 !important;
+    width: 100%;
+    box-shadow: 0px 4px 4px rgba(0, 232, 254, 0.1) !important;
+    z-index: 1000;
+  }
+  .fund__wallet__body {
+    padding-top: 70px;
   }
   .shift {
     padding-left: 10px;

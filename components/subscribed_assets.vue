@@ -9,23 +9,12 @@
         >
           <div
             class="card_wrap mb-2"
-            @click="$router.push(`/user_dashboard/asset_detail/${property.id}`)"
+            @click="$router.push(`/user_dashboard/my_assets/${property.id}`)"
           >
             <div
               class="general_trends"
               :style="{ backgroundImage: 'url(' + property.image + ')' }"
             >
-              <!-- <div class="sale_notification">
-                <span
-                  v-if="property.token_quantity_subscribed.length > 0"
-                  style="font-size: 12px"
-                  class="text-dark"
-                  >{{ property.token_quantity_subscribed }} tokens Sold</span
-                >
-                <span v-else style="font-size: 12px" class="text-dark"
-                  >{{ property.token_quantity_subscribed }}% tokens Sold</span
-                >
-              </div> -->
               <div class="opaque_text">
                 <p v-if="property.layout_name">
                   {{ property.layout_name }}

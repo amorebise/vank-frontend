@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="nav_content w-100">
-      <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4">
+      <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
         <div class="">
           <li class="dashboard_text_li d-flex align-items-center">
             <div><creator-sidebar /></div>
@@ -12,9 +12,6 @@
         </div>
         <v-spacer></v-spacer>
         <div style="gap: 10px" class="d-flex align-items-center">
-          <!-- <div class="">
-            <font-awesome-icon class="fa-2x" :icon="['fas', 'user-circle']" />
-          </div> -->
           <div class="">
             <button @click="logout()" class="log_out_button">Logout</button>
           </div>

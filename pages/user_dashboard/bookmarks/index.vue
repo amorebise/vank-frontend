@@ -1,19 +1,21 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="bookmarks__wrap">
-      <user-nav class="text-dark" name="My Bookmarks" />
+      <user-nav class="text-dark estate__nav py-4 pr-2" name="My Bookmarks" />
 
-      <div>
-        <font-awesome-icon
-          @click="$router.go(-1)"
-          role="button"
-          class="fa-1x text-dark pl-1"
-          :icon="['fas', 'arrow-left']"
-        />
-      </div>
-      <div class="location__table__lagos mt-2">
-        <div class="asset_cards">
-          <bookmarks />
+      <div class="bookmark__body">
+        <div class="bookmark__bk__btn">
+          <font-awesome-icon
+            @click="$router.go(-1)"
+            role="button"
+            class="fa-1x text-dark pl-1"
+            :icon="['fas', 'arrow-left']"
+          />
+        </div>
+        <div class="location__table__lagos mt-2">
+          <div class="asset_cards">
+            <bookmarks />
+          </div>
         </div>
       </div>
     </div>
@@ -51,7 +53,7 @@ export default {
 .bookmarks__wrap {
   margin-left: 270px;
   background-color: #fff;
-  min-height: 100vh;
+  height: 100%;
   /* padding: 0 50px; */
 }
 .bookmarks__wrap a {
@@ -86,13 +88,13 @@ export default {
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   color: #001214;
-  position: relative;
+  /* position: relative; */
   width: 350px;
   height: 200px;
   transition: ease-in-out 0.3s;
   color: #fff;
-  display: grid;
-  place-items: center;
+  /* display: grid;
+  place-items: center; */
   font-weight: 500;
   font-size: 15px;
 }
@@ -214,6 +216,13 @@ export default {
   }
   .paragrphs {
     text-align: center;
+  }
+  .bookmark__body {
+    padding: 5px;
+    padding-top: 70px;
+  }
+  .bookmark__bk__btn {
+    padding-left: 15px;
   }
 }
 </style>

@@ -36,8 +36,8 @@
               <p>
                 {{ asset_detail.description2 }}
               </p>
-              <p>{{ asset_detail.description3 }}</p>
-              <p>{{ asset_detail.documentation }}</p>
+              <p>about {{ asset_detail.description3 }}</p>
+              <p>about {{ asset_detail.documentation }}</p>
 
               <p>Population within 20KM radius: Over 200,000</p>
               <!-- <span>Est. minimum return 9.2%PA</span> -->
@@ -94,11 +94,11 @@
               :to="`/user_dashboard/buy_token/${id}`"
               class="assets__link"
             >
-              <span class="px-3">Buy Token</span>
+              <span class="px-3">Buy More</span>
             </nuxt-link>
           </div>
 
-          <!-- <div>
+          <div>
             <div v-if="user">
               <nuxt-link
                 :to="`/user_dashboard/sell/${id}`"
@@ -107,8 +107,10 @@
                 <span class="px-3">Sell</span>
               </nuxt-link>
             </div>
-           
-          </div> -->
+            <!-- <div v-else>
+              <p>p</p>
+            </div> -->
+          </div>
         </div>
       </div>
     </div>
@@ -183,7 +185,7 @@ export default {
 .property {
   margin-left: 270px;
   background-color: #fff;
-  height: 100%;
+  min-height: 100vh;
 }
 .single__property a {
   color: inherit;
@@ -269,7 +271,7 @@ export default {
     margin-top: 0 !important;
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 80px !important;
+    padding-top: 90px;
   }
   .description__wrap {
     padding: 10px;

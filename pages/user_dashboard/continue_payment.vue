@@ -1,29 +1,34 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="continue__payments">
-      <user-nav name="Make Payments/Cash Wallet" />
-      <div class="back__btn">
-        <font-awesome-icon
-          @click="back()"
-          role="button"
-          class="fa-1x text-dark pl-1"
-          :icon="['fas', 'arrow-left']"
-        />
-      </div>
-      <div class="payments_wrap subscriber">
-        <div class="pay__wrap py-5">
-          <h5>
-            &#8358;{{ selected_amount.amount }} will be deducted from your
-            <br />
-            cash wallet for {{ token_name.token_name }} tokens
-          </h5>
-          <div class="view__assets__wrap text-center">
-            <button
-              @click="$router.push('/user_dashboard/payment_notification/')"
-              class="assets__link"
-            >
-              <span class="px-3" style="font-weight: 400">Make Payment</span>
-            </button>
+      <user-nav
+        class="pr-2 notification__nav py-4"
+        name="Make Payments/Cash Wallet"
+      />
+      <div class="continue__body">
+        <div class="">
+          <font-awesome-icon
+            @click="back()"
+            role="button"
+            class="fa-1x text-dark pl-1"
+            :icon="['fas', 'arrow-left']"
+          />
+        </div>
+        <div class="">
+          <div class="pay__wrap py-5">
+            <h5>
+              &#8358;{{ selected_amount.amount }} will be deducted from your
+              <br />
+              cash wallet for {{ token_name.token_name }} tokens
+            </h5>
+            <div class="view__assets__wrap text-center">
+              <button
+                @click="$router.push('/user_dashboard/payment_notification/')"
+                class="assets__link"
+              >
+                <span class="px-3" style="font-weight: 400">Make Payment</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -101,7 +106,11 @@ a {
   }
   .continue__payments .pay__wrap {
     width: 100%;
-    margin: 20px auto;
+    margin: 0 !important;
+  }
+  .continue__body {
+    padding: 20px !important;
+    padding-top: 80px !important;
   }
 }
 </style>

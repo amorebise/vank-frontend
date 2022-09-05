@@ -253,7 +253,7 @@
               </div>
 
               <!-- Referrals -->
-              <div class="col-md-6">
+              <!-- <div class="col-md-6">
                 <div class="form-group mx-2 mt-2">
                   <label for="" class="">Referral Code</label>
                   <input
@@ -263,7 +263,7 @@
                     placeholder="Enter referral code"
                   />
                 </div>
-              </div>
+              </div> -->
 
               <div class="col-md-12">
                 <div class="form-group mx-4 mt-2">
@@ -375,7 +375,7 @@ export default {
         country: "",
         address: "",
         state: "",
-        referred_by: "",
+        // referred_by: "",
         agreement: null,
       },
       error_message: false,

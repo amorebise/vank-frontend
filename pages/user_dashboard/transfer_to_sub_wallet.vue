@@ -1,7 +1,7 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="continue__payments pt-1">
-      <user-nav name="Txn Wallet" />
+      <user-nav class="payment__nav py-4 pr-3" name="Txn Wallet" />
       <div class="payments_wrap subscriber">
         <div class="token__wrap">
           <p style="font-size: 16px; text-align: center">
@@ -70,6 +70,17 @@ export default {
   }
   .return {
     margin-top: 0 !important;
+  }
+  .payment__nav {
+    position: fixed;
+    background-color: #fff;
+    padding: 0 !important;
+    width: 100%;
+    box-shadow: 0px 4px 4px rgba(0, 232, 254, 0.1) !important;
+    z-index: 1000;
+  }
+  .subscriber {
+    padding-top: 70px;
   }
 }
 </style>

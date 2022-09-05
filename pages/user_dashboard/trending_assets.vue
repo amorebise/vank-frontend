@@ -1,10 +1,10 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="fractional__ownership__wrap">
-      <user-nav class="text-dark" name="Trending Assets" />
+      <user-nav class="text-dark estate__nav py-4" name="Trending Assets" />
 
       <div class="trends__wrap">
-        <div>
+        <div class="bk__btn">
           <font-awesome-icon
             @click="$router.go(-1)"
             role="button"
@@ -214,9 +214,13 @@ export default {
   }
   .trends__wrap {
     padding: 10px;
+    padding-top: 90px;
   }
   .paragrphs {
     text-align: center;
+  }
+  .bk__btn {
+    padding-left: 10px;
   }
 }
 </style>

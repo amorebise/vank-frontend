@@ -15,9 +15,22 @@
               class="general_trends"
               :style="{ backgroundImage: 'url(' + bookmark.image + ')' }"
             >
-              <div class="sale_notification">
-                <span style="font-size: 12px" class="text-dark"
-                  >{{ bookmark.token_quantity_subscribed }} tokens Sold</span
+              <div class="tq_notification">
+                <span
+                  v-if="bookmark.token_quantity_subscribed.length > 0"
+                  style="font-size: 12px"
+                  class="text-dark"
+                  >{{
+                    (
+                      (Number(bookmark.token_quantity_subscribed) /
+                        Number(bookmark.token_quantity_available)) *
+                      100
+                    ).toFixed(0)
+                  }}
+                  % tokens Sold</span
+                >
+                <span v-else style="font-size: 12px" class="text-dark"
+                  >0 token Sold</span
                 >
               </div>
               <div class="opaque_text">
@@ -131,13 +144,12 @@ export default {
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   color: #001214;
-  position: relative;
+
   /* width: 350px; */
   height: 200px;
   transition: ease-in-out 0.3s;
   color: #fff;
-  display: grid;
-  place-items: center;
+
   font-weight: 500;
   font-size: 15px;
 }

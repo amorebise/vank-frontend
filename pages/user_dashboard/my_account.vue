@@ -1,21 +1,15 @@
 <template>
   <div class="dashboard w-100">
     <div class="dashboard_content mb-3">
-      <user-nav class="dashboard__nav" name="Dashboard" />
+      <user-nav class="estate__nav py-4" name="Dashboard" />
       <div class="new__content">
         <div v-if="user" class="d-flex align-items-center mb-2">
           <h5 class="">
             Welcome, <span class="user_name">{{ user.first_name }}</span>
           </h5>
-          <!-- <div class="ml-1">
-          <nuxt-img format="webp" quality="90" fit="cover" src="/emoji.png" />
-        </div> -->
         </div>
         <div v-else class="d-flex align-items-center px-3 mb-2">
           <h5>Welcome</h5>
-          <!-- <div class="ml-1">
-          <nuxt-img format="webp" quality="90" fit="cover" src="/emoji.png" />
-        </div> -->
         </div>
 
         <div class="estate__content">
@@ -41,7 +35,7 @@
               <p role="button">Your Assets</p>
             </div>
             <div class="view__wrap">
-              <nuxt-link to="/user_dashboard/my_assets">
+              <nuxt-link to="/user_dashboard/real_estate_wallet">
                 <p role="button">View all</p>
               </nuxt-link>
             </div>
@@ -81,30 +75,23 @@
                     class="trending__content"
                     :style="{ backgroundImage: 'url(' + trending.image + ')' }"
                   >
-                    <!-- <div class="sale_notification">
-                    <span
-                      v-if="trending.token_quantity_subscribed.length > 0"
-                      style="font-size: 12px; color: red"
-                      class="text-dark"
-                      >{{ trending.token_quantity_subscribed }} tokens
-                      Sold</span
-                    >
-                    <span v-else style="font-size: 12px" class="text-dark"
-                      >{{ trending.token_quantity_subscribed }}% tokens
-                      Sold</span
-                    >
-                  </div> -->
                     <div class="tq_notification">
                       <span
                         v-if="trending.token_quantity_subscribed.length > 0"
                         style="font-size: 12px"
                         class="text-dark"
-                        >{{ trending.token_quantity_subscribed }} tokens
-                        Sold</span
+                      >
+                        <!-- {{ showPercentSold }}  -->
+                        {{
+                          (
+                            (Number(trending.token_quantity_subscribed) /
+                              Number(trending.token_quantity_available)) *
+                            100
+                          ).toFixed(0)
+                        }}% tokens Sold</span
                       >
                       <span v-else style="font-size: 12px" class="text-dark"
-                        >{{ trending.token_quantity_subscribed }}% tokens
-                        Sold</span
+                        >0 token Sold</span
                       >
                     </div>
                     <div
@@ -250,6 +237,7 @@ export default {
         console.log(error.response);
       }
     },
+
     // makePayment() {
     //   this.my_id = this.user.id;
     //   localStorage.setItem("myId", JSON.stringify(this.my_id));
@@ -258,17 +246,33 @@ export default {
     //   // this.$router.push("/user_dashboard/payment");
     // },
   },
-  mounted() {
+  computed: {
+    showPercentSold(trending) {
+      let tokenSold =
+        (Number(trending.token_quantity_available) /
+          Number(trending.token_quantity_subscribed)) *
+        100;
+      return tokenSold;
+    },
+    //   showPercentSold(trending) {
+    //     let availableQuantity = Number(trending.token_quantity_available);
+    //     let tokenSold = Number(trending.token_quantity_subscribed);
+    //     let percentSold = (tokenSold / availableQuantity) * 100;
+    //     return percentSold;
+    //   },
+  },
+  created() {
     // this.makePayment();
     this.getUser();
     this.getTrendingAssets();
+    // console.log(tokenSold);
   },
   components: { Subscribed_assets },
 };
 </script>
 
 <style >
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Karla&family=Lato&family=Nunito&family=Plus+Jakarta+Sans&family=Space+Grotesk&family=Titillium+Web&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Karla&family=Lato&family=Nunito&family=Plus+Jakarta+Sans&family=Space+Grotesk&family=Titillium+Web&display=swap"); */
 * {
   margin: 0;
   padding: 0;
@@ -278,7 +282,7 @@ export default {
 .dashboard_content {
   margin-left: 230px;
   background-color: #fff;
-  min-height: 100vh;
+  height: 100%;
   padding: 0 50px;
 }
 .user_font {
@@ -330,6 +334,7 @@ export default {
   /* gap: 10px; */
 }
 .dashboard_content .general__trends {
+  cursor: pointer;
   border-radius: 20px;
   box-shadow: 0px 4px 4px rgba(29, 131, 197, 0.22);
 }
@@ -416,7 +421,8 @@ export default {
     padding: 0 !important;
   }
   .dashboard_content .new__content {
-    padding: 5px;
+    padding: 20px;
+    padding-top: 80px;
   }
   .asset_wrap {
     width: 100%;

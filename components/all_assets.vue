@@ -11,7 +11,7 @@
               class="general_trends"
               :style="{ backgroundImage: 'url(' + property.image + ')' }"
             >
-              <div class="sale_notification">
+              <div class="tq_notification">
                 <span style="font-size: 12px" class="text-dark"
                   >{{ property.token_quantity_subscribed }} Sold</span
                 >
@@ -83,13 +83,10 @@ export default {
   background-size: cover;
   border-radius: 10px;
   color: #001214;
-  position: relative;
   /* width: 350px; */
   height: 200px;
   transition: ease-in-out 0.3s;
   color: #fff;
-  display: grid;
-  place-items: center;
   font-weight: 500;
   font-size: 15px;
 }

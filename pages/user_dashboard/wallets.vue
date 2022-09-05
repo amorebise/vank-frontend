@@ -1,7 +1,7 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="continue__payments">
-      <user-nav class="continue__nav" name="Make Payments" />
+      <user-nav class="continue__nav estate__nav py-4" name="Make Payments" />
       <div class="payments_wrap subscriber px-3">
         <div>
           <h6>What kind of transaction do you want to make?</h6>
@@ -12,9 +12,9 @@
               <button id="nairaBtn">Naira Wallet</button>
             </div>
             <div class="wallets">
-              <!-- <nuxt-link to="/user_dashboard/real_estate_wallet/"> -->
-              <button id="estateBtn">Real Estate Wallet</button>
-              <!-- </nuxt-link> -->
+              <nuxt-link to="/user_dashboard/real_estate_wallet/">
+                <button id="estateBtn">Real Estate Wallet</button>
+              </nuxt-link>
             </div>
             <div class="wallets">
               <!-- <nuxt-link to="/user_dashboard/buy__usd/"> -->
@@ -283,7 +283,8 @@ export default {
     padding: 0;
   }
   .payments_wrap {
-    padding: 5px !important;
+    padding: 20px !important;
+    padding-top: 80px !important;
   }
   .continue__payments .wallet__type {
     gap: 10px;

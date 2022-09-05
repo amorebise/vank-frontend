@@ -1,9 +1,9 @@
 <template>
   <div class="w-100">
     <div class="but__token__content pr-3">
-      <user-nav name="Sell Tokens" />
-      <div class="">
-        <div>
+      <user-nav class="pr-2 buy__nav py-4" name="Sell Tokens" />
+      <div class="buy__tokn__body">
+        <div class="buy__bk__btn">
           <font-awesome-icon
             @click="$router.go(-1)"
             role="button"
@@ -44,12 +44,13 @@
                 <div class="d-flex value__bar justify-content-between px-1">
                   <form action="">
                     <div class="form-group">
+                      <!-- {{ findAsset ? findAsset : "" }} -->
                       <!-- <label>Enter quantity of tokens</label> -->
                       <div class="">
                         <input
                           type="number"
                           v-model="sell_quantity.quantity"
-                          class="form-control mt-2"
+                          class="form-control mt-1"
                         />
                       </div>
                     </div>
@@ -84,6 +85,7 @@ export default {
   data() {
     return {
       user: {},
+      assets: {},
       id: this.$route.params.id,
       max_value: "",
       sell_quantity: {
@@ -143,8 +145,8 @@ export default {
     },
     executeSell() {
       let maxValue = this.max_value;
-      if (maxValue == 0) {
-        this.$toast.warning("You do not have any assets to sell");
+      if (this.sell_quantity.quantity > maxValue) {
+        this.$toast.warning("Sell quantity is more than available tokens");
       } else {
         this.sellToken();
       }
@@ -161,14 +163,43 @@ export default {
         console.log(error.response);
       }
     },
+    async getAssets() {
+      try {
+        let response = await this.$axios.get("/getSubscribedAsset");
+        // getSubscribedAsset
+        this.assets = response.data.slice(0, 3)[0];
+        console.log(this.assets);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
     back() {
       this.$router.go(-1);
     },
   },
-  created() {
+  computed: {
+    findAsset() {
+      let foundAsset = null;
+      if (this.assets.subscriptions) {
+        for (let index = 0; index < this.assets.subscriptions.length; index++) {
+          const element = this.assets.subscriptions[index];
+          console.log(element);
+          console.log(this.id);
+          console.log(this.id == element.id);
+          element.id == this.id ? (foundAsset = element) : "";
+        }
+        console.log(foundAsset);
+        return foundAsset;
+      } else {
+        return null;
+      }
+    },
+  },
+  async created() {
     this.getUser();
+    await this.getAssets();
     this.getSingleAssetDetail();
-    this.getMaxValue();
+    console.log(this.assets.subscriptions);
   },
 };
 </script>
@@ -183,6 +214,7 @@ export default {
   border: 1px solid rgba(0, 0, 0, 0.34);
   border-radius: 3px;
   width: 50%;
+  height: 30px;
 }
 a {
   color: inherit;
@@ -256,6 +288,7 @@ a {
   width: 50%;
   box-shadow: none;
   border: none;
+  height: 20px;
 }
 .but__token__content .form-control:focus {
   border-color: #0012144b;
@@ -316,6 +349,26 @@ input[type="number"]::-webkit-inner-spin-button {
   .token__p {
     padding-left: 20px;
     padding-right: 20px;
+  }
+  .buy__nav {
+    position: fixed;
+    background-color: #fff;
+    padding: 0 !important;
+    width: 100%;
+    box-shadow: 0px 4px 4px rgba(0, 232, 254, 0.1) !important;
+    z-index: 1000;
+  }
+  .buy__tokn__body {
+    padding-left: 10px;
+    /* padding-right: 10px; */
+    padding-top: 80px;
+  }
+  .buy__bk__btn {
+    padding-left: 10px;
+  }
+  .but__token__content .form-control {
+    width: 100%;
+    font-size: 14px;
   }
 }
 </style>

@@ -15,15 +15,22 @@
               class="general_trends"
               :style="{ backgroundImage: 'url(' + property.image + ')' }"
             >
-              <div class="sale_notification">
+              <div class="tq_notification">
                 <span
                   v-if="property.token_quantity_subscribed.length > 0"
                   style="font-size: 12px"
                   class="text-dark"
-                  >{{ property.token_quantity_subscribed }} tokens Sold</span
+                  >{{
+                    (
+                      (Number(property.token_quantity_subscribed) /
+                        Number(property.token_quantity_available)) *
+                      100
+                    ).toFixed(2)
+                  }}
+                  % tokens Sold</span
                 >
                 <span v-else style="font-size: 12px" class="text-dark"
-                  >{{ property.token_quantity_subscribed }}% tokens Sold</span
+                  >0 token Sold</span
                 >
               </div>
               <div class="opaque_text">
@@ -120,13 +127,13 @@ export default {
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   color: #001214;
-  position: relative;
+  /* position: relative; */
   /* width: 350px; */
   height: 200px;
   transition: ease-in-out 0.3s;
   color: #fff;
-  display: grid;
-  place-items: center;
+  /* display: grid;
+  place-items: center; */
   font-weight: 500;
   font-size: 15px;
 }

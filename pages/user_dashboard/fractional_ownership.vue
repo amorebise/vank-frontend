@@ -1,7 +1,7 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="fractional__ownership__wrap">
-      <user-nav name="Fractional Ownership" />
+      <user-nav class="estate__nav py-4" name="Fractional Ownership" />
       <div class="fractional__bd__wrap">
         <div class="arrow__back">
           <font-awesome-icon
@@ -108,7 +108,7 @@ export default {
 .fractional__ownership__wrap {
   margin-left: 270px;
   background-color: #fff;
-  min-height: 100vh;
+  height: 100%;
   /* padding: 0 50px; */
 }
 .active {
@@ -283,6 +283,7 @@ export default {
   }
   .fractional__bd__wrap {
     padding: 10px;
+    padding-top: 70px;
   }
 }
 </style>

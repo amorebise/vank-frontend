@@ -1,7 +1,7 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="fund__wallet pr-3">
-      <user-nav name="Sell" />
+      <user-nav class="pr-2 buy__nav py-4" name="Sell" />
       <div class="fundz__wrap">
         <div>
           <font-awesome-icon
@@ -15,10 +15,10 @@
           <div style="width: 40%" class="bank__wrap py-5">
             <div class="text-center" style="line-height: 13px">
               <p>
-                Your transaction is processing. We will be in touch shortly
-                <br />
-                with details of payment. Please be aware that <br />
-                a 7% transaction fee applies.
+                Your transaction is processing. We will be in touch <br />
+                shortly with details of payment. <br />
+                Please be aware that a 7% <br />
+                transaction fee applies.
               </p>
             </div>
             <div class="view__assets__wrap text-center">
@@ -96,6 +96,7 @@ export default {
   }
   .fund__wallet .fundz__wrap {
     padding-left: 20px;
+    padding-top: 70px;
   }
   .fund__wallet .bank__wrap {
     border: 1px solid #00e8fe;

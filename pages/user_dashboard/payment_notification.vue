@@ -1,7 +1,7 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="notification__for__payment">
-      <user-nav name="Make Payments" />
+      <user-nav class="pr-2 notification__nav py-4" name="Make Payment" />
       <div class="payments_wrap subscriber">
         <div class="success__wrap py-5">
           <img src="/success.svg" alt="success image" />
@@ -55,11 +55,20 @@ export default {
     padding: 0;
   }
   .payments_wrap {
-    margin: 10px;
+    margin: 15px;
+    padding-top: 70px !important;
   }
   .notification__for__payment .success__wrap {
     width: 100%;
     margin: 20px auto;
+  }
+  .notification__nav {
+    position: fixed;
+    background-color: #fff;
+    padding: 0 !important;
+    width: 100%;
+    box-shadow: 0px 4px 4px rgba(0, 232, 254, 0.1) !important;
+    z-index: 1000;
   }
 }
 </style>

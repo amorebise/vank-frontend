@@ -1,42 +1,43 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="payments pr-3">
-      <user-nav name="Make Payments" />
-      <div class="back__btn">
-        <font-awesome-icon
-          @click="back()"
-          role="button"
-          class="fa-1x text-dark pl-1"
-          :icon="['fas', 'arrow-left']"
-        />
-      </div>
-      <div class="payments_wrap subscriber">
-        <div class="token__wrap py-5">
-          <h5 class="font-weight-bolder">
-            Payment for {{ token_name.token_name }} Token
-          </h5>
+      <user-nav class="pr-2 notification__nav py-4" name="Make Payments" />
+      <div class="payments__body">
+        <div class="">
+          <font-awesome-icon
+            @click="back()"
+            role="button"
+            class="fa-1x text-dark pl-1"
+            :icon="['fas', 'arrow-left']"
+          />
+        </div>
+        <div class="">
+          <div class="token__wrap py-5">
+            <h5 class="font-weight-bolder">
+              Payment for {{ token_name.token_name }} Token
+            </h5>
 
-          <div class="form-group mx-2 mt-2">
-            <label for="exampleFormControlSelect1" class="">Pay with</label>
-            <select
-              class="form-control option-class select"
-              id="exampleFormControlSelect1"
-              required
-            >
-              <option>select..</option>
-              <option class="colour" id="selectCountry">Cash Wallet</option>
-              <!-- <option>Take Loan</option> -->
-            </select>
-          </div>
-          <div class="view__assets__wrap text-center">
-            <nuxt-link to="/user_dashboard/continue_payment">
-              <button class="assets__link">
-                <span class="px-3">Next</span>
-              </button>
-            </nuxt-link>
-          </div>
+            <div class="form-group mx-2 mt-2">
+              <label for="exampleFormControlSelect1" class="">Pay with</label>
+              <select
+                class="form-control option-class select"
+                id="exampleFormControlSelect1"
+                required
+              >
+                <option>select..</option>
+                <option class="colour" id="selectCountry">Cash Wallet</option>
+                <!-- <option>Take Loan</option> -->
+              </select>
+            </div>
+            <div class="view__assets__wrap text-center">
+              <nuxt-link to="/user_dashboard/continue_payment">
+                <button class="assets__link">
+                  <span class="px-3">Next</span>
+                </button>
+              </nuxt-link>
+            </div>
 
-          <!-- <div
+            <!-- <div
             class="take__loan__wrap d-flex align-items-center mt-3"
             style="gap: 10px"
           >
@@ -50,6 +51,7 @@
               </p>
             </div>
           </div> -->
+          </div>
         </div>
       </div>
     </div>
@@ -124,6 +126,10 @@ export default {
   .payments .token__wrap {
     width: 100%;
     margin-top: 5px;
+  }
+  .payments__body {
+    padding: 20px !important;
+    padding-top: 80px !important;
   }
 }
 </style>

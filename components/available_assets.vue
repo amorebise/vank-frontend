@@ -11,17 +11,6 @@
               class="general_trends"
               :style="{ backgroundImage: 'url(' + property.image + ')' }"
             >
-              <!-- <div class="sale_notification">
-                <span
-                  v-if="property.token_quantity_subscribed.length > 0"
-                  style="font-size: 12px"
-                  class="text-dark"
-                  >{{ property.token_quantity_subscribed }} tokens Sold</span
-                >
-                <span v-else style="font-size: 12px" class="text-dark"
-                  >{{ property.token_quantity_subscribed }}% tokens Sold</span
-                >
-              </div> -->
               <div class="opaque_text">
                 <p v-if="property.layout_name">
                   {{ property.layout_name }}
@@ -87,6 +76,7 @@ export default {
   border-radius: 10px;
   position: relative;
   transition: 1s;
+  cursor: pointer;
 }
 .asset_cards .general_trends {
   /* background-image: url("/asset2.jpg"); */
@@ -108,6 +98,8 @@ export default {
   background-blend-mode: overlay;
 }
 .asset_cards .general_trends .opaque_text {
+  font-size: 13px;
+  line-height: 3px;
   opacity: 0;
 }
 .asset_cards .general_trends:hover .opaque_text {

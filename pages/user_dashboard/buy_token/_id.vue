@@ -1,8 +1,8 @@
 <template>
   <div class="w-100">
     <div class="but__token__content pr-3 py-3">
-      <user-nav name="Buy Token" />
-      <div class="">
+      <user-nav class="estate__nav py-3" name="Buy Token" />
+      <div class="buy__tokkn__body">
         <div class="back__btn">
           <font-awesome-icon
             @click="back()"
@@ -14,7 +14,7 @@
         <div class="token__p mt-4">
           <p>
             LoT: {{ asset_detail.token_name }} (Min ROI:
-            {{ asset_detail.min_roi }})
+            {{ asset_detail.min_roi }}%)
           </p>
         </div>
         <div class="token__wrap">
@@ -30,7 +30,7 @@
                   <div>
                     <p>&#x20A6;{{ asset_detail.token_price }}K per token</p>
                     <p>
-                      {{ asset_detail.token_quantity_subscribed }}% tokens sold
+                      {{ asset_detail.token_quantity_subscribed }} tokens sold
                     </p>
                     <h4>483m <sup class="font__text">2</sup></h4>
                   </div>
@@ -43,6 +43,7 @@
                   <div class="form-group">
                     <label>Enter Amount (NGN)</label>
                     <input
+                      @keypress="converter()"
                       v-model="buy_amount.amount"
                       type="number"
                       class="form-control buy__input"
@@ -52,7 +53,7 @@
                 <div class="d-flex">
                   <p>You get</p>
                   <p class="token__box px-3 mx-1">
-                    {{ buy_amount.amount }}
+                    {{ token_quantity }}
                   </p>
                   <p>tokens</p>
                 </div>
@@ -89,7 +90,9 @@ export default {
   },
   methods: {
     converter() {
-      this.token_quantity = this.buy_amount.amount;
+      let assetSum = this.asset_detail.token_price;
+      let buyAmount = this.buy_amount.amount;
+      this.token_quantity = buyAmount / assetSum;
     },
     executeBuy() {
       let buyBalance = this.cash_wallet_ballance.subscription_wallet_balance;
@@ -164,7 +167,7 @@ export default {
 .but__token__content {
   margin-left: 270px;
   background-color: #fff;
-  min-height: 100vh;
+  height: 100%;
 }
 a {
   color: inherit;
@@ -296,6 +299,9 @@ input[type="number"]::-webkit-inner-spin-button {
   }
   .back__btn {
     padding-left: 15px;
+  }
+  .buy__tokkn__body {
+    padding-top: 70px;
   }
 }
 </style>

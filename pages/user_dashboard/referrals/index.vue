@@ -1,18 +1,9 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="referals__wrap">
-      <user-nav name="Referral" />
+      <user-nav class="estate__nav py-4" name="Referral" />
 
-      <div class="referal__body">
-        <!-- <div>
-          <font-awesome-icon
-            @click="$router.go(-1)"
-            role="button"
-            class="fa-1x text-dark pl-1"
-            :icon="['fas', 'arrow-left']"
-          />
-        </div> -->
-
+      <div class="referal__body pt-5">
         <div class="referal__content">
           <div class="text-center">
             <h4 class="font-weight-bold py-4">Refer a friend and earn cash</h4>
@@ -162,7 +153,7 @@ export default {
 .referals__wrap {
   margin-left: 270px;
   background-color: #fff;
-  min-height: 100vh;
+  height: 100%;
   padding-right: 10px;
   /* padding: 0 50px; */
 }
@@ -235,7 +226,8 @@ export default {
     padding: 0;
   }
   .referals__wrap .referal__body {
-    padding: 15px;
+    padding: 15px !important;
+    padding-top: 90px !important;
   }
   .referals__wrap .img__wrap img {
     width: 100px !important;

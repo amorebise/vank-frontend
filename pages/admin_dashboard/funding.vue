@@ -78,9 +78,9 @@
                             <td v-if="funding.admin_status === 'confirmed'">
                               {{ funding.amount }}
                             </td>
-                            <div class="text-center" v-else>
+                            <td class="text-center" v-else>
                               You currently do not have any Funding requests.
-                            </div>
+                            </td>
                             <!-- <td class="pt-1">
                               <div
                                 class="d-flex"
@@ -95,6 +95,13 @@
                             </td> -->
                           </tr>
                         </tbody>
+                        <!-- <tbody>
+                          <tr>
+                            <td class="text-center" v-else>
+                              You currently do not have any Funding requests.
+                            </td>
+                          </tr>
+                        </tbody> -->
                       </template>
                     </v-simple-table>
                   </div>

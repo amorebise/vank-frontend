@@ -42,13 +42,13 @@
             </div>
           </div>
         </div>
-        <div
-          style="display: grid; place-items: center"
-          v-if="trendingAssets.length == 0"
-        >
-          <img style="width: 50px" src="/assets.webp" alt="asset image" />
-          <p>You do not have any assets.</p>
-        </div>
+      </div>
+      <div
+        style="display: grid; place-items: center"
+        v-if="trendingAssets.length == 0"
+      >
+        <img style="width: 50px" src="/assets.webp" alt="asset image" />
+        <p>You do not have any assets.</p>
       </div>
     </div>
   </div>
