@@ -89,6 +89,8 @@ export default {
   }
   .navbar {
     padding-right: 10px !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
   }
   .log_out_button {
     font-size: 12px;

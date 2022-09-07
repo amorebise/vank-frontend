@@ -1,6 +1,6 @@
 <template>
   <div class="registeration_wrap">
-    <sign-up-header />
+    <sign-up-header class="signup__nav" />
     <div class="registeration_content">
       <div class="header_section text-center">
         <!-- <div v-for="state in states" :key="state.index">
@@ -253,7 +253,7 @@
               </div>
 
               <!-- Referrals -->
-              <!-- <div class="col-md-6">
+              <div class="col-md-6">
                 <div class="form-group mx-2 mt-2">
                   <label for="" class="">Referral Code</label>
                   <input
@@ -263,7 +263,7 @@
                     placeholder="Enter referral code"
                   />
                 </div>
-              </div> -->
+              </div>
 
               <div class="col-md-12">
                 <div class="form-group mx-4 mt-2">
@@ -325,6 +325,7 @@ import Login_header from "~/components/login_header.vue";
 export default {
   data() {
     return {
+      myReferral: {},
       states: [
         "Abia",
         "Adamawa",
@@ -375,7 +376,7 @@ export default {
         country: "",
         address: "",
         state: "",
-        // referred_by: "",
+        referred_by: "",
         agreement: null,
       },
       error_message: false,
@@ -429,10 +430,75 @@ export default {
         console.log(error.response);
       }
     },
+    // getParams() {
+    //   window.onload = function () {
+    //     try {
+    //       var url_string = window.location.href.toLowerCase();
+    //       var url = new URL(url_string);
+    //       var ref = url.searchParams.get("ref");
+    //       console.log(ref);
+    //     } catch (error) {
+    //       console.log("Issues with parsing URL parameter");
+    //     }
+    //   };
+    // },
+    getParameter(parameterName) {
+      window.onload = function () {
+        let parameters = new URLSearchParams(window.location.search);
+        let myRef = parameters.get(parameterName);
+        this.myReferral = myRef;
+        alert("hi");
+        console.log(this.myReferral);
+        // try {
+        //   var url_string = window.location.href.toLowerCase();
+        //   var url = new URL(url_string);
+        //   var ref = url.searchParams.get("ref");
+        //   console.log(ref);
+        // } catch (error) {
+        //   console.log("Issues with parsing URL parameter");
+        // }
+      };
+      // let parameters = new URLSearchParams(window.location.search);
+      // let myRef = parameters.get(ref);
+      // console.log(myRef);
+    },
   },
+  // computed: {
+  //   getParameter(parameterName) {
+  //     let parameters = new URLSearchParams(window.location.search);
+  //     return parameters.get(parameterName);
+  //   },
+  // },
   mounted() {
     this.getCountry();
-    this.get_states();
+    // this.getParameter();
+    // this.get_states();
+    // getParameter(parameterName) {
+    //   let parameters = new URLSearchParams(window.location.search);
+    //   return parameters.get(parameterName);
+    // },
+    window.onload = function () {
+      // const urlParams = new URLSearchParams(window.location.search);
+      // const myRef = urlParams.get("myRef");
+      // let parameters = new URLSearchParams(window.location.search);
+      // let myRef = parameters.get(ref);
+      // // console.log(myRef);
+      // // let parameters = new URLSearchParams(window.location.search);
+      // // let myRef = parameters.get(parameterName);
+      // // this.myReferral = myRef;
+      // // alert("hi");
+      // console.log(myRef);
+      try {
+        var url_string = window.location.href.toLowerCase();
+        var url = new URL(url_string);
+        var ref = url.searchParams.get("ref");
+        console.log(ref);
+      } catch (error) {
+        console.log("Issues with parsing URL parameter");
+      }
+    };
+    // console.log(this.$route.query);
+    // route.query.params
   },
   components: {
     Toast,
@@ -521,7 +587,6 @@ export default {
 
 @media (max-width: 768px) {
   .registeration_content {
-    /* margin: 10px; */
     width: 100%;
   }
   .registeration_content .form-group {
@@ -561,5 +626,13 @@ export default {
   .v-btn {
     font-size: 15px;
   }
+  /* .signup__nav {
+    position: fixed;
+    background-color: #fff;
+    padding: 0 !important;
+    width: 100%;
+    box-shadow: 0px 4px 4px rgba(0, 232, 254, 0.1) !important;
+    z-index: 1000;
+  } */
 }
 </style>
