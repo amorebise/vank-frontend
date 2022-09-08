@@ -1,7 +1,7 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="continue__payments pr-3">
-      <user-nav name="Bank Transfer" />
+      <user-nav class="py-4 confmn__nav" name="Bank Transfer" />
       <div class="payments_wrap subscriber">
         <div class="confirm__wrap py-5">
           <h5 style="font-weight: 400; text-align: center; font-size: 13px">
@@ -62,6 +62,14 @@ export default {
     width: 95%;
     margin: 40px auto;
     box-shadow: none;
+  }
+  .confmn__nav {
+    position: fixed;
+    background-color: #fff;
+    padding: 0 !important;
+    width: 100%;
+    box-shadow: 0px 4px 4px rgba(0, 232, 254, 0.1) !important;
+    z-index: 1000;
   }
 }
 </style>

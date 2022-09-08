@@ -32,8 +32,8 @@
               <p>Location: {{ asset_detail.location }}</p>
               <p>Layout Name: {{ asset_detail.layout_name }}</p>
               <p>Distance to closest built up areas:</p>
-              <p>-{{ asset_detail.description1 }}-</p>
-              <p>
+              <p style="line-height: 18px">-{{ asset_detail.description1 }}-</p>
+              <p style="line-height: 18px">
                 {{ asset_detail.description2 }}
               </p>
               <p>{{ asset_detail.description3 }}</p>
@@ -44,11 +44,16 @@
 
               <div>
                 <button
+                @click="coordinates = !coordinates"
                   class="view__report"
                   style="color: #00e8fe; font-size: 12px"
                 >
                   Click to view Coordinates
                 </button>
+
+                <div v-show="coordinates">
+                  <p>{{ asset_detail.coordinates }}</p>
+                </div>
               </div>
               <div>
                 <a
@@ -127,6 +132,7 @@ export default {
       id: this.$route.params.id,
       audit_report: false,
       due__deligence__modal: false,
+      coordinates: false
     };
   },
   methods: {

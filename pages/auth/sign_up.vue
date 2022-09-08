@@ -430,75 +430,18 @@ export default {
         console.log(error.response);
       }
     },
-    // getParams() {
-    //   window.onload = function () {
-    //     try {
-    //       var url_string = window.location.href.toLowerCase();
-    //       var url = new URL(url_string);
-    //       var ref = url.searchParams.get("ref");
-    //       console.log(ref);
-    //     } catch (error) {
-    //       console.log("Issues with parsing URL parameter");
-    //     }
-    //   };
-    // },
-    getParameter(parameterName) {
-      window.onload = function () {
-        let parameters = new URLSearchParams(window.location.search);
-        let myRef = parameters.get(parameterName);
-        this.myReferral = myRef;
-        alert("hi");
-        console.log(this.myReferral);
-        // try {
-        //   var url_string = window.location.href.toLowerCase();
-        //   var url = new URL(url_string);
-        //   var ref = url.searchParams.get("ref");
-        //   console.log(ref);
-        // } catch (error) {
-        //   console.log("Issues with parsing URL parameter");
-        // }
-      };
-      // let parameters = new URLSearchParams(window.location.search);
-      // let myRef = parameters.get(ref);
-      // console.log(myRef);
-    },
   },
-  // computed: {
-  //   getParameter(parameterName) {
-  //     let parameters = new URLSearchParams(window.location.search);
-  //     return parameters.get(parameterName);
-  //   },
-  // },
+  
   mounted() {
     this.getCountry();
-    // this.getParameter();
-    // this.get_states();
-    // getParameter(parameterName) {
-    //   let parameters = new URLSearchParams(window.location.search);
-    //   return parameters.get(parameterName);
-    // },
+    // this.showReferrer()
     window.onload = function () {
-      // const urlParams = new URLSearchParams(window.location.search);
-      // const myRef = urlParams.get("myRef");
-      // let parameters = new URLSearchParams(window.location.search);
-      // let myRef = parameters.get(ref);
-      // // console.log(myRef);
-      // // let parameters = new URLSearchParams(window.location.search);
-      // // let myRef = parameters.get(parameterName);
-      // // this.myReferral = myRef;
-      // // alert("hi");
-      // console.log(myRef);
-      try {
-        var url_string = window.location.href.toLowerCase();
-        var url = new URL(url_string);
-        var ref = url.searchParams.get("ref");
-        console.log(ref);
-      } catch (error) {
-        console.log("Issues with parsing URL parameter");
-      }
+      const urlParams = new URLSearchParams(window.location.search);
+      var myParam = urlParams.get('ref');
+      this.myReferral = myParam
+      console.log(this.myReferral)
     };
-    // console.log(this.$route.query);
-    // route.query.params
+    
   },
   components: {
     Toast,

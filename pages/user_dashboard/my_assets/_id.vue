@@ -44,13 +44,17 @@
                 <!-- {{ findAsset ? findAsset.asset_id : "" }} -->
               </p>
 
-              <div>
+              <div class="mt-2">
                 <button
+                @click="coordinates = !coordinates"
                   class="view__report"
                   style="color: #00e8fe; font-size: 12px"
                 >
                   Click to view Coordinates
                 </button>
+                <div v-show="coordinates">
+                  <p>{{ asset_detail.coordinates }}</p>
+                </div>
               </div>
               <div>
                 <a
@@ -130,6 +134,7 @@ export default {
       id: this.$route.params.id,
       audit_report: false,
       due__deligence__modal: false,
+      coordinates: false
     };
   },
   methods: {

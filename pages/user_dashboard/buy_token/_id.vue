@@ -43,7 +43,8 @@
                   <div class="form-group">
                     <label>Enter Amount (NGN)</label>
                     <input
-                      @keypress="converter()"
+                    style="height: 30px"
+                      @keyup="converter()"
                       v-model="buy_amount.amount"
                       type="number"
                       class="form-control buy__input"
@@ -90,19 +91,24 @@ export default {
   },
   methods: {
     converter() {
-      let assetSum = this.asset_detail.token_price;
-      let buyAmount = this.buy_amount.amount;
-      this.token_quantity = buyAmount / assetSum;
+      let assetSum = Number(this.asset_detail.token_price);
+      let buyAmount = Number(this.buy_amount.amount);
+      this.token_quantity = buyAmount  / assetSum;
     },
     executeBuy() {
-      let buyBalance = this.cash_wallet_ballance.subscription_wallet_balance;
-      if (Number(buyBalance) == 0) {
+      let buyBalance = Number(this.cash_wallet_ballance.subscription_wallet_balance) ;
+      let buyAmount = Number(this.buy_amount.amount);
+      if (buyBalance == 0) {
         this.$toast.warning(
           "You have to fund subscription wallet to buy asset"
         );
-      } else {
+      } else if(buyAmount > buyBalance) {
+        this.$toast.warning(
+          "buy amount exceeds cash available in your subscription wallet"
+        );
+      }
+      else {
         this.makePayment();
-        // alert("Hi");
       }
     },
     async requestSubscription() {
@@ -174,6 +180,8 @@ a {
 }
 .buy__input {
   border: 1px solid #30303058 !important;
+  /* padding-top: 5px !important;
+  padding-bottom: 5px !important; */
 }
 .but__token__content .asset__content {
   /* background-image: url("/asset.jpg"); */
