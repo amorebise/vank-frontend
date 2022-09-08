@@ -1,7 +1,7 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="fractional__ownership__wrap">
-      <user-nav name="Assets" />
+      <user-nav class="py-4 available__assets__nav" name="Assets" />
       <div class="sub__wrap">
         <div class="back__btn">
           <font-awesome-icon
@@ -186,6 +186,9 @@ export default {
   opacity: 1;
   transition: ease-in-out 0.7s;
 }
+.sub__wrap {
+  padding-top: 10px;
+}
 @media (max-width: 768px) {
   .fractional__ownership__wrap {
     margin-left: 0 !important;
@@ -205,6 +208,18 @@ export default {
   }
   .paragrphs {
     text-align: center;
+  }
+  .available__assets__nav {
+    position: fixed;
+    background-color: #fff;
+    padding: 0 !important;
+    width: 100%;
+    box-shadow: 0px 4px 4px rgba(0, 232, 254, 0.1) !important;
+    z-index: 1000;
+  }
+  .sub__wrap {
+    padding: 5px;
+    padding-top: 80px;
   }
 }
 </style>

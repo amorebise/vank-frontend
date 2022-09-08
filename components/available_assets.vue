@@ -83,13 +83,13 @@ export default {
   background-size: cover;
   border-radius: 10px;
   color: #001214;
-  position: relative;
+  /* position: relative; */
   /* width: 350px; */
   height: 200px;
   transition: ease-in-out 0.3s;
   color: #fff;
-  display: grid;
-  place-items: center;
+  /* display: grid;
+  place-items: center; */
   font-weight: 500;
   font-size: 15px;
 }
@@ -101,6 +101,9 @@ export default {
   font-size: 13px;
   line-height: 3px;
   opacity: 0;
+  display: grid;
+  place-items: center;
+  padding-top: 30px;
 }
 .asset_cards .general_trends:hover .opaque_text {
   opacity: 1;

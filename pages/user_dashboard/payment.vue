@@ -25,7 +25,7 @@
                 required
               >
                 <option>select..</option>
-                <option class="colour" id="selectCountry">Subscription Wallet</option>
+                <option class="colour" id="selectSubscription">Subscription Wallet</option>
                 <!-- <option>Take Loan</option> -->
               </select>
             </div>
