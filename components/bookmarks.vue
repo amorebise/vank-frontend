@@ -33,8 +33,8 @@
                   >0 token Sold</span
                 >
               </div>
-              <div class="opaque_text">
-                <p v-if="bookmark.coordinates">
+              <div style="line-height: 20px" class="opaque_text">
+                <p  v-if="bookmark.coordinates">
                   Coordinates: <br />
                   {{ bookmark.coordinates }}
                 </p>

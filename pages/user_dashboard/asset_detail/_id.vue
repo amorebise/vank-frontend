@@ -32,8 +32,8 @@
               <p>Location: {{ asset_detail.location }}</p>
               <p>Layout Name: {{ asset_detail.layout_name }}</p>
               <p>Distance to closest built up areas:</p>
-              <p style="line-height: 18px">-{{ asset_detail.description1 }}-</p>
-              <p style="line-height: 18px">
+              <p style="line-height: 20px">-{{ asset_detail.description1 }}-</p>
+              <p style="line-height: 20px">
                 {{ asset_detail.description2 }}
               </p>
               <p>{{ asset_detail.description3 }}</p>

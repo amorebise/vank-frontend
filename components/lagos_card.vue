@@ -130,8 +130,6 @@ export default {
   height: 200px;
   transition: ease-in-out 0.3s;
   color: #fff;
-  /* display: grid;
-  place-items: center; */
   font-weight: 500;
   font-size: 15px;
 }

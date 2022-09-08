@@ -127,13 +127,9 @@ export default {
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   color: #001214;
-  /* position: relative; */
-  /* width: 350px; */
   height: 200px;
   transition: ease-in-out 0.3s;
   color: #fff;
-  /* display: grid;
-  place-items: center; */
   font-weight: 500;
   font-size: 15px;
 }
@@ -148,18 +144,7 @@ export default {
   opacity: 1;
   transition: ease-in-out 0.7s;
 }
-.lagos_card .sale_notification {
-  position: absolute;
-  z-index: 999;
-  background-color: #00e8fe;
-  width: 120px;
-  height: 50px;
-  padding: 10px 20px;
-  top: 0;
-  left: 0;
-  border-top-left-radius: 10px;
-  /* opacity: 0; */
-}
+
 .lagos_card .text_wrap {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;

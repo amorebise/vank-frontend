@@ -4,12 +4,7 @@
       <user-nav class="estate__nav py-4" name="Wallets" />
       <div class="cash__sub__body pt-3">
         <div class="back__btn">
-          <font-awesome-icon
-            @click="back()"
-            role="button"
-            class="fa-1x text-dark pl-1"
-            :icon="['fas', 'arrow-left']"
-          />
+          <font-awesome-icon @click="back()" role="button" class="fa-1x text-dark pl-1" :icon="['fas', 'arrow-left']" />
         </div>
         <div class="transactions_wrap mt-3">
           <template>
@@ -23,41 +18,28 @@
               <v-card flat>
                 <v-card-text class="">
                   <div class="transactions_data">
-                    <div
-                      class="
+                    <div class="
                         wallet__balance__wrap
                         d-flex
                         justify-content-center
                         align-items-center
                         pt-3
-                      "
-                      style="gap: 10px"
-                    >
-                      <p
-                        v-if="cash_wallet_ballance.cash_wallet_balance"
-                        class="txn__paragh"
-                        style="
+                      " style="gap: 10px">
+                      <p v-if="cash_wallet_ballance.cash_wallet_balance" class="txn__paragh" style="
                           color: #00e8fe;
                           font-size: 30px;
                           padding-top: 12px;
                           font-weight: 600;
-                        "
-                      >
-                        <span v-if="cash_wallet_ballance" class="text-dark"
-                          >Wallet Balance:</span
-                        >
+                        ">
+                        <span v-if="cash_wallet_ballance" class="text-dark">Wallet Balance:</span>
                         &#x20A6;{{ cash_wallet_ballance.cash_wallet_balance }}
                       </p>
-                      <p
-                        v-else
-                        class="txn__paragh"
-                        style="
+                      <p v-else class="txn__paragh" style="
                           color: #00e8fe;
                           font-size: 30px;
                           padding-top: 12px;
                           font-weight: 600;
-                        "
-                      >
+                        ">
                         <span class="text-dark">Wallet Balance:</span>
                         &#x20A6;0
                       </p>
@@ -69,46 +51,25 @@
                   <div class="choose__txn__wrap">
                     <div class="token__wrap py-5">
                       <div class="form-group mx-2 mt-2">
-                        <label
-                          for="exampleFormControlSelect1 font-weight-bolder"
-                          class=""
-                          >Choose Transaction (fund,withdraw etc)</label
-                        >
-                        <select
-                          class="form-control option-class select"
-                          id="exampleFormControlSelect1"
-                          v-model="txn.option"
-                          required
-                        >
+                        <label for="exampleFormControlSelect1 font-weight-bolder" class="">Choose Transaction
+                          (fund,withdraw etc)</label>
+                        <select class="form-control option-class select" id="exampleFormControlSelect1"
+                          v-model="txn.option" required>
                           <option>Select</option>
-                          <option
-                            v-for="(option, index) in funding_options"
-                            :key="index"
-                            :value="option"
-                            class="colour"
-                            id="selectCountry"
-                          >
+                          <option v-for="(option, index) in funding_options" :key="index" :value="option" class="colour"
+                            id="selectCountry">
                             {{ option }}
                           </option>
                         </select>
                       </div>
 
                       <div class="form-group mx-2 mt-2">
-                        <label for="" class=""
-                          >What is your transaction amount?</label
-                        >
-                        <input
-                          type="number"
-                          class="form-control"
-                          placeholder="Enter Amount"
-                          v-model="fund_wallet.amount"
-                        />
+                        <label for="" class="">What is your transaction amount?</label>
+                        <input type="number" class="form-control" placeholder="Enter Amount"
+                          v-model="fund_wallet.amount" />
                       </div>
                       <div class="view__assets__wrap text-center">
-                        <button
-                          @click="goToSelectedTxnType()"
-                          class="assets__link"
-                        >
+                        <button @click="goToSelectedTxnType()" class="assets__link">
                           <span class="px-3">Next</span>
                         </button>
                       </div>
@@ -117,9 +78,7 @@
                           <div class="text-center">
                             <img src="/emoji.png" alt="" />
                             <p>Transaction Successful!!</p>
-                            <button
-                              @click="$router.push('/user_dashboard/wallets/')"
-                            >
+                            <button @click="$router.push('/user_dashboard/wallets/')">
                               ok
                             </button>
                           </div>
@@ -136,77 +95,53 @@
                 <v-card-text class="">
                   <div class="transactions_data">
                     <div class="choose__txn__wrap py-5">
-                      <div
-                        class="
+                      <div class="
                           wallet__balance__wrap
                           d-flex
                           justify-content-center
                           pt-3
-                        "
-                        style="gap: 10px"
-                      >
-                        <p
-                          v-if="
-                            cash_wallet_ballance.subscription_wallet_balance
-                          "
-                          class="cash__paragh"
-                          style="
+                        " style="gap: 10px">
+                        <p v-if="
+                          cash_wallet_ballance.subscription_wallet_balance
+                        " class="cash__paragh" style="
                             color: #00e8fe;
                             font-size: 20px;
                             padding-top: 12px;
                             font-weight: 600;
-                          "
-                        >
+                          ">
                           <span class="text-dark">Wallet Balance:</span>
                           &#x20A6;{{
-                            cash_wallet_ballance.subscription_wallet_balance
+                          cash_wallet_ballance.subscription_wallet_balance
                           }}
                         </p>
-                        <p
-                          v-else
-                          class="cash__paragh"
-                          style="
+                        <p v-else class="cash__paragh" style="
                             color: #00e8fe;
                             font-size: 20px;
                             padding-top: 12px;
                             font-weight: 600;
-                          "
-                        >
+                          ">
                           <span class="text-dark">Wallet Balance:</span>
                           &#x20A6;0
                         </p>
                       </div>
                       <div class="view__assets__wrap text-center">
                         <!-- <nuxt-link to="/user_dashboard/cash_success/"> -->
-                        <button
-                          @click="amount__modal = !amount__modal"
-                          class="assets__link"
-                        >
+                        <button @click="amount__modal = !amount__modal" class="assets__link">
                           <span class="px-3">Transfer to Cash Wallet</span>
                         </button>
                         <!-- </nuxt-link> -->
                         <div v-show="amount__modal" class="pop__up">
                           <div class="pop__up__content zoomIn">
                             <div class="text-right">
-                              <p
-                                role="button"
-                                @click="amount__modal = !amount__modal"
-                                style="font-size: 20px"
-                              >
+                              <p role="button" @click="amount__modal = !amount__modal" style="font-size: 20px">
                                 &times;
                               </p>
                             </div>
                             <div class="text-center">
                               <div class="form-group mx-2 mt-2">
-                                <label for="" class=""
-                                  >What is your transaction amount?</label
-                                >
-                                <input
-                                  type="number"
-                                  class="form-control"
-                                  placeholder="Enter Amount"
-                                  v-model="fund_wallet.amount"
-                                />
+                                <label for="" class="">What is your transaction amount?</label>
+                                <input type="number" class="form-control" placeholder="Enter Amount"
+                                  v-model="fund_wallet.amount" />
                               </div>
                               <button @click="transferToCashWallet()">
                                 Transfer
@@ -243,9 +178,9 @@ export default {
         amount: "",
       },
       funding_options: [
+        "Transfer to your subscription wallet",
         "Fund wallet",
         "Withdraw to bank",
-        "Transfer to your subscription wallet",
       ],
       success__modal: false,
       amount__modal: false,
@@ -262,11 +197,9 @@ export default {
       } else if (this.txn.option == "Withdraw to bank") {
         this.saveAmount();
         this.withdrawFunds();
-      } else if (this.txn.option == "Transfer to your subscription wallet") {
-        this.fundSubscriptionWallet();
+      } else if (this.txn.option == "Transfer to your subscription wallet") { 
+        this.executeFunding()
         this.saveAmount();
-        // this.success__modal = !this.success__modal;
-        this.$router.push("/user_dashboard/transfer_to_sub_wallet/");
       }
     },
     async getCashWalletBallance() {
@@ -275,6 +208,7 @@ export default {
       console.log(this.cash_wallet_ballance);
     },
     async fundWallet() {
+
       try {
         let response = await this.$axios.post(
           "/topUpCashWallet",
@@ -299,15 +233,7 @@ export default {
         console.log(error.response);
       }
     },
-    // async withdraw() {
-    //   try {
-    //     let response = await this.$axios.post("/withdrawal", this.fund_wallet);
-    //     this.$router.push("/verification/");
-    //     console.log(response);
-    //   } catch (error) {
-    //     console.log(error.response);
-    //   }
-    // },
+
     async withdrawFunds() {
       try {
         let response = await this.$axios.post("/withdrawal", this.fund_wallet);
@@ -317,15 +243,29 @@ export default {
         console.log(error.response);
       }
     },
+    executeFunding() {
+      let fundingAmount = Number(this.fund_wallet.amount)
+      let cashBalance = Number(this.cash_wallet_ballance.cash_wallet_balance)
+      if(fundingAmount > cashBalance ) {
+        this.$toast.warning('amount exceeds available funds in cashwallet')
+        console.log('Hi')
+      }
+      else {
+        this.fundSubscriptionWallet()
+      }
+    },
     async fundSubscriptionWallet() {
+      
       try {
         let response = await this.$axios.post(
           "/fundSubscriptionWallet",
           this.fund_wallet
         );
+        this.$router.push("/user_dashboard/transfer_to_sub_wallet/");
         console.log(response);
       } catch (error) {
         console.log(error.response);
+
       }
     },
     saveAmount() {
@@ -357,44 +297,38 @@ export default {
   flex-wrap: wrap;
   /* padding: 10px; */
 }
-.cash__sub__wrap .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active),
-.cash__sub__wrap
-  .theme--light.v-tabs
-  > .v-tabs-bar
-  .v-tab:not(.v-tab--active)
-  > .v-icon,
-.cash__sub__wrap
-  .theme--light.v-tabs
-  > .v-tabs-bar
-  .v-tab:not(.v-tab--active)
-  > .v-btn,
-.cash__sub__wrap .theme--light.v-tabs > .v-tabs-bar .v-tab--disabled {
+
+.cash__sub__wrap .theme--light.v-tabs>.v-tabs-bar .v-tab:not(.v-tab--active),
+.cash__sub__wrap .theme--light.v-tabs>.v-tabs-bar .v-tab:not(.v-tab--active)>.v-icon,
+.cash__sub__wrap .theme--light.v-tabs>.v-tabs-bar .v-tab:not(.v-tab--active)>.v-btn,
+.cash__sub__wrap .theme--light.v-tabs>.v-tabs-bar .v-tab--disabled {
   color: #55174f;
   font-variant: normal;
 }
+
 .cash__sub__wrap .v-tab {
   text-transform: unset;
 }
+
 .cash__sub__wrap .transactions_data {
   background-color: #fff;
 }
+
 /* .cash__sub__wrap
   .transactions_data
   .v-data-table--fixed-header
   > .v-data-table__wrapper {
   background-color: #f8f7ff;
 } */
-.cash__sub__wrap
-  .transactions_data
-  .v-data-table
-  > .v-data-table__wrapper
-  > table {
+.cash__sub__wrap .transactions_data .v-data-table>.v-data-table__wrapper>table {
   background-color: #fff;
 }
+
 .cash__sub__wrap .transactions_data .th_color {
   background-color: #f8f7ff !important;
   border-bottom: none !important;
 }
+
 .cash__sub__wrap .choose__txn__wrap {
   border: 1px solid #00e8fe;
   border-radius: 20px;
@@ -403,13 +337,16 @@ export default {
 
   padding: 10px 40px;
 }
+
 .cash__sub__wrap .choose__txn__wrap .form-control {
   font-size: 13px;
   box-shadow: none;
 }
+
 .cash__sub__wrap .choose__txn__wrap .form-control:focus {
   border-color: #30303044;
 }
+
 .cash__sub__wrap .pop__up {
   width: 100%;
   height: 100%;
@@ -421,16 +358,19 @@ export default {
   display: grid;
   place-items: center;
 }
+
 .cash__sub__wrap .pop__up__content {
   background-color: #fff;
   padding: 15px 30px;
   border-radius: 10px;
 }
+
 .cash__sub__wrap .pop__up__content button {
   padding: 3px 10px;
   background-color: #00e8fe;
   border-radius: 5px;
 }
+
 .zoomIn {
   -webkit-animation-name: zoomIn;
   animation-name: zoomIn;
@@ -439,22 +379,26 @@ export default {
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
+
 @-webkit-keyframes zoomIn {
   0% {
     opacity: 0;
     -webkit-transform: scale3d(0.3, 0.3, 0.3);
     transform: scale3d(0.3, 0.3, 0.3);
   }
+
   50% {
     opacity: 1;
   }
 }
+
 @keyframes zoomIn {
   0% {
     opacity: 0;
     -webkit-transform: scale3d(0.3, 0.3, 0.3);
     transform: scale3d(0.3, 0.3, 0.3);
   }
+
   50% {
     opacity: 1;
   }
@@ -494,16 +438,20 @@ export default {
     margin-left: 0 !important;
     padding: 0 !important;
   }
+
   .back__btn {
     padding-left: 20px;
   }
+
   .cash__sub__wrap .wallet__balance__wrap {
     margin-top: 0 !important;
   }
+
   .cash__sub__wrap .wallet__balance__wrap .txn__paragh {
     font-size: 20px !important;
     padding-top: 0 !important;
   }
+
   .cash__sub__wrap .choose__txn__wrap {
     border: 1px solid #00e8fe;
     border-radius: 20px;
@@ -512,6 +460,7 @@ export default {
 
     padding: 10px 40px;
   }
+
   .cash__paragh {
     font-size: 16px !important;
   }
