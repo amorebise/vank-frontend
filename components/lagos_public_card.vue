@@ -15,7 +15,7 @@
               class="general_trends"
               :style="{ backgroundImage: 'url(' + property.image + ')' }"
             >
-              <div class="tq_notification">
+              <div class="tq__notification">
                 <span
                   v-if="property.token_quantity_subscribed.length > 0"
                   style="font-size: 12px"
@@ -146,6 +146,11 @@ export default {
 .lagos_card .general_trends:hover .opaque_text {
   opacity: 1;
   transition: ease-in-out 0.7s;
+}
+.tq__notification {
+  background-color: #00e8fe;
+  padding: 10px;
+  width: 40%;
 }
 .lagos_card .sale_notification {
   position: absolute;

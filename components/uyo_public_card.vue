@@ -15,7 +15,7 @@
               class="general_trends"
               :style="{ backgroundImage: 'url(' + property.image + ')' }"
             >
-              <div class="tq_notification">
+              <div class="tq__notification">
                 <span
                   v-if="property.token_quantity_subscribed.length > 0"
                   style="font-size: 12px"
