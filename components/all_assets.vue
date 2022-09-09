@@ -16,7 +16,7 @@
                   >{{ property.token_quantity_subscribed }} Sold</span
                 >
               </div> -->
-              <div class="opaque_text">
+              <div class="asset_text">
                 <p v-if="property.layout_name">
                   {{ property.layout_name }}
                 </p>

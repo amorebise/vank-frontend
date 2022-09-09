@@ -5,23 +5,15 @@
       <div class="hero_section mt-5">
         <div class="hero__content">
           <h1>Make Smarter Moves,</h1>
-          <div
-            class="d-flex typed_text align-items-center justify-content-center"
-          >
+          <div class="d-flex typed_text align-items-center justify-content-center">
             <h1 class="text-white pt-2">Save in #</h1>
             <span class="type"></span>
           </div>
           <div class="registration_wrap text-center mt-4">
-            <nuxt-link to="/auth/sign_up" class="reg_link"
-              ><span class="text-dark new_signup mx-1"
-                >Sign up for free</span
-              ></nuxt-link
-            >
-            <nuxt-link to="/public_view/" class="explore_wrap"
-              ><span class="text-dark explore_link mx-1"
-                >Explore Assets</span
-              ></nuxt-link
-            >
+            <nuxt-link to="/auth/sign_up" class="reg_link"><span class="text-dark new_signup mx-1">Sign up for
+                free</span></nuxt-link>
+            <nuxt-link to="/public_view/" class="explore_wrap"><span class="text-dark explore_link mx-1">Explore
+                Assets</span></nuxt-link>
           </div>
         </div>
       </div>
@@ -30,7 +22,92 @@
           <h1>Trending Assets</h1>
           <p>You can get quality Real Estate from N500</p>
         </div>
-        <div
+        <div class="trending_asset_wrap">
+          <div class="d-flex flow_wrap">
+            <div class="trend_wrap pl-4" v-for="trending in trendingAssets" :key="trending.index">
+              <div class="trending__bg">
+                <div @click="
+                  $router.push(
+                    `/public_view/${trending.id}`
+                  )
+                " class="trending_content" :style="{ backgroundImage: 'url(' + trending.image + ')' }">
+                  <div class="tq__notification">
+                    <span v-if="trending.token_quantity_subscribed.length > 0" style="font-size: 12px; color: #000"
+                      class="">
+                      {{
+                      (
+                      (Number(trending.token_quantity_subscribed) /
+                      Number(trending.token_quantity_available)) *
+                      100
+                      ).toFixed(0)
+                      }}% tokens Sold</span>
+                    <span v-else style="font-size: 12px" class="text-dark">0 token Sold</span>
+                  </div>
+                  <div style="
+                        display: grid;
+                        place-items: center;
+                        align-items: center;
+                        padding-top: 70px;
+                      ">
+                    <p style="font-size: 12px; color: #fff" v-if="trending.coordinates">
+                      {{ trending.coordinates }}
+                    </p>
+                    <p v-else>
+                      Coordinates: <br />
+                      4724’12.2N 384231.7E
+                    </p>
+                  </div>
+                </div>
+                <div class="text_wrap px-3 py-1 mb-2">
+                    <p>
+                      Land in {{ trending.layout_name }} -
+                      <span v-if="trending.size">{{ trending.size }}SQM</span>
+                      <span v-else>650SQM</span>
+                    </p>
+                    <div class="d-flex justify-content-between">
+                      <h6>{{ trending.location }}</h6>
+                      <ion-icon
+                        @click="bookmark(trending)"
+                        style="color: #00e8fe"
+                        name="bookmark-outline"
+                      />           
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <!-- <div style="width: 100%; height: 350px;" class="trend_wrap pl-4" v-for="trending in trendingAssets" :key="trending.index">
+              <div class="trend__bg" :style="{ backgroundImage: 'url(' + trending.image + ')' }">        
+                  <span v-if="trending.token_quantity_subscribed.length > 0" style="font-size: 12px"
+                    class="text-dark">{{ (
+                    (Number(trending.token_quantity_subscribed) /
+                    Number(trending.token_quantity_available)) *
+                    100
+                    ).toFixed(0)
+                    }}% tokens Sold</span>
+                  <span v-else style="font-size: 12px" class="text-dark">{{ trending.token_quantity_subscribed }}%
+                    tokens Sold</span>   
+              </div>
+              <div class="distance_wrap">
+                <p>
+                  Land in {{ trending.location }} -
+                  <span v-if="trending.size">{{ trending.size }}SQM</span>
+                  <span v-else>697SQM</span>
+                </p>
+                <div class="d-flex justify-content-between">
+                  <h6 class="tranform_text">
+                    {{ trending.layout_name.toUpperCase() }}
+                  </h6>
+                  <ion-icon
+                    @click="bookmark()"
+                    style="color: #00e8fe"
+                    name="bookmark-outline"
+                  />
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+        <!-- <div
           class="img__wrap d-md-flex justify-content-center px-2"
           style="gap: 10px"
         >
@@ -38,13 +115,19 @@
             v-for="trending in trendingAssets"
             :key="trending.index"
             class="mb-2 cardz"
+            :style="{ backgroundImage: 'url(' + trending.image + ')' }"
           >
-            <div class="sale__notification">
+            <div class="sale_notification">
               <span
                 v-if="trending.token_quantity_subscribed.length > 0"
                 style="font-size: 12px"
                 class="text-dark"
-                >{{ trending.token_quantity_subscribed }} tokens Sold</span
+                >{{ (
+                            (Number(trending.token_quantity_subscribed) /
+                              Number(trending.token_quantity_available)) *
+                            100
+                          ).toFixed(0)
+                        }}% tokens Sold</span
               >
               <span v-else style="font-size: 12px" class="text-dark"
                 >{{ trending.token_quantity_subscribed }}% tokens Sold</span
@@ -59,7 +142,7 @@
               :src="trending.image"
               alt="image"
             />
-            <div class="text__wrap bg-white px-3 py-2">
+            <div class="text_wrap bg-white px-3 py-2">
               <p>
                 Land in {{ trending.location }} -
                 <span v-if="trending.size">{{ trending.size }}SQM</span>
@@ -81,7 +164,7 @@
             <img style="width: 50px" src="/assets.webp" alt="asset image" />
             <p>No trending assets.</p>
           </div>
-        </div>
+        </div> -->
         <div class="view__assets__wrap text-center">
           <nuxt-link to="/public_view/">
             <button class="assets__link">
@@ -106,9 +189,7 @@
             </div>
           </div>
           <div class="">
-            <div
-              class="how_it_works_child d-flex justify-content-center py-4 mb-2"
-            >
+            <div class="how_it_works_child d-flex justify-content-center py-4 mb-2">
               <div>
                 <div class="img_wrap mt-3">
                   <img class="img" src="/add.svg" alt="image" />
@@ -121,9 +202,7 @@
                 </div>
               </div>
             </div>
-            <div
-              class="how_it_works_child d-flex justify-content-center py-4 mb-2"
-            >
+            <div class="how_it_works_child d-flex justify-content-center py-4 mb-2">
               <div>
                 <div class="img_wrap d-flex justify-content-center mt-3">
                   <img class="img" src="/save.svg" alt="image" />
@@ -136,16 +215,14 @@
                 </div>
               </div>
             </div>
-            <div
-              class="
+            <div class="
                 how_it_works_child
                 d-flex
                 justify-content-center
                 align-items-center
                 py-4
                 mb-2
-              "
-            >
+              ">
               <div>
                 <div class="img_wrap d-flex justify-content-center">
                   <img class="img" src="/bag.svg" alt="image" />
@@ -326,46 +403,27 @@
           <form action="" @submit.prevent="sendRequest()">
             <div class="form-group mx-2 mt-2">
               <label for="" class="">First Name</label>
-              <input
-                type="text"
-                class="form-control"
-                v-model="wait_list.first_name"
-                placeholder="Enter your First Name"
-              />
+              <input type="text" class="form-control" v-model="wait_list.first_name"
+                placeholder="Enter your First Name" />
             </div>
 
             <div class="form-group mx-2 mt-2">
               <label for="" class="">Last Name</label>
-              <input
-                type="text"
-                class="form-control"
-                v-model="wait_list.last_name"
-                placeholder="Enter your Last Name"
-              />
+              <input type="text" class="form-control" v-model="wait_list.last_name"
+                placeholder="Enter your Last Name" />
             </div>
             <div class="form-group mx-2 mt-2">
               <label for="" class="">Email</label>
-              <input
-                type="email"
-                class="form-control"
-                v-model="wait_list.email"
-                placeholder="Enter Email Address"
-              />
+              <input type="email" class="form-control" v-model="wait_list.email" placeholder="Enter Email Address" />
             </div>
 
             <div class="text-center register_wrap mt-4">
-              <v-btn
-                :loading="loading"
-                type="submit"
-                class=""
-                style="
+              <v-btn :loading="loading" type="submit" class="" style="
                   background-color: #00e8fe;
                   text-transform: none;
                   width: 95%;
                   box-shadow: none;
-                "
-                >submit</v-btn
-              >
+                ">submit</v-btn>
             </div>
           </form>
         </div>
@@ -520,6 +578,7 @@ export default {
 .home_wrap {
   font-family: "Plus Jakarta Sans", sans-serif;
 }
+
 .demo__wrap {
   background-image: url("/bggg.jpeg");
   background-size: cover;
@@ -534,35 +593,65 @@ export default {
   top: 10px;
   left: 250px;
 }
+
 #demo_wrap {
   display: none;
 }
+
+.flow_wrap {
+  overflow: hidden;
+  overflow-x: auto;
+}
+
 .demo__wrap .demo__info__wrap {
   width: 50%;
   margin: 0 auto;
 }
+
+.trending_content {
+  background-size: cover;
+  border-top-right-radius: 10px;
+  color: #001214;
+  height: 200px;
+  transition: ease-in-out 0.3s;
+  color: #fff;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.tq__notification {
+  background-color: #00e8fe;
+  padding: 10px;
+  width: 40%;
+}
+
 .demo__info__wrap h6 {
   font-family: "Dancing Script", cursive !important;
   font-size: 26px;
   color: #00e8fe;
   text-align: center;
 }
+
 .demo__wrap .form-control {
   font-size: 12px;
   box-shadow: none;
 }
+
 .demo__wrap .form-control:focus {
   border-color: #30303030;
 }
+
 .demo__wrap label {
   font-size: 13px;
   font-weight: 600;
 }
+
 .demo__info__wrap .form__wrap {
   font-family: "Plus Jakarta Sans", sans-serif !important;
   width: 80%;
   margin: 40px auto;
 }
+
 .demo__wrap .wait_list_button {
   border: 10px solid #00e8fe;
   background-color: #00e8fe !important;
@@ -579,18 +668,22 @@ export default {
   min-height: 100vh;
   color: #fff;
 }
+
 .hero_section h1 {
   text-align: center;
   font-size: 56px;
   font-weight: 700;
   font-family: "Titillium Web", sans-serif;
 }
+
 .hero_section span {
   color: #00e8fe;
 }
+
 .hero_section .hero__content {
   padding-top: 200px;
 }
+
 /* .trending__wrap {
   text-align: center;
 } */
@@ -598,31 +691,40 @@ export default {
   color: #0f1843;
   font-weight: 600;
 }
+
 .trending__wrap p {
   color: #04363a;
   font-weight: 500;
   font-size: 20px;
 }
-.trending__wrap .text__wrap {
-  border-bottom-left-radius: 30px;
+
+.trending__wrap .text_wrap {
+  border-bottom-left-radius: 10px;
+  width: 100%;
+  box-shadow: 1px 2px 1px #c5cbcc;
 }
-.trending__wrap .text__wrap p {
+
+.trending__wrap .text_wrap p {
   font-size: 14px;
   font-weight: 500;
   word-spacing: 1px;
 }
-.trending__wrap .text__wrap span {
+
+.trending__wrap .text_wrap span {
   font-size: 14px;
   font-weight: 600;
 }
-.trending__wrap .text__wrap h6 {
+
+.trending__wrap .text_wrap h6 {
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: capitalize;
 }
+
 .view__assets__wrap {
   margin-top: 20px;
 }
+
 .view__assets__wrap .assets__link {
   border: 1px solid #00e8fe;
   padding: 10px 2px;
@@ -630,10 +732,12 @@ export default {
   color: #000;
   font-weight: 600;
 }
+
 .register_button_wrap .assets__link {
   border: 1px solid #00e8fe;
   padding: 12px 2px;
 }
+
 .register_button_wrap .assets__link span {
   color: #001214;
   font-weight: 600;
@@ -642,38 +746,46 @@ export default {
   padding: 10px 5px;
   font-size: 14px;
 }
+
 .view__assets__wrap .assets__link span {
   background-color: #fff;
   border: 1px solid #00e8fe;
   padding: 10px 2px;
   font-size: 14px;
 }
+
 .img__wrap {
   position: relative;
 }
-.img__wrap .cardz {
-  background-color: #ffff;
-  border-top-right-radius: 35px;
-  border-bottom-left-radius: 30px;
-  box-shadow: 1px 2px 1px #c5cbcc;
+
+.trend_wrap {
+  width: 350px;
 }
-.img__wrap .sale__notification {
-  position: absolute;
-  z-index: 999;
-  background-color: #00e8fe;
-  width: 120px;
-  height: 50px;
+
+.trending__bg {
+  cursor: pointer;
+}
+
+.flow__body {
+  border-top-right-radius: 35px;
+}
+
+.img__wrap .sale_notification {
+  background-color: #00e8fe !important;
   padding: 10px 20px;
 }
+
 .img__wrap .sale__notification p {
   color: #04363a;
   font-size: 16px;
 }
+
 .img__wrap .img {
   border-top-right-radius: 40px;
   width: 350px;
   height: 250px;
 }
+
 .reg_link {
   border: 1px solid #ffff;
   color: #000;
@@ -681,6 +793,7 @@ export default {
   padding: 10px 0;
   font-size: 18px;
 }
+
 .explore_wrap {
   border: 1px solid #00e8fe;
   color: #000;
@@ -688,40 +801,49 @@ export default {
   padding: 10px 0;
   font-size: 18px;
 }
+
 .new_signup {
   background-color: #00e8fe;
   padding: 7px 25px;
   border-radius: 4px;
 }
+
 .new_signup:hover {
   background-color: #00e9feb2;
 }
+
 .explore_link {
   background-color: #fff;
   padding: 7px 25px;
   border-radius: 4px;
 }
+
 .explore_link:hover {
   background-color: rgba(255, 255, 255, 0.508);
 }
+
 .typed_text {
   height: 50px;
   padding: 10px;
 }
+
 /* .typed_text span {
   margin-top: 10px;
 } */
 .typed_text h1 {
   color: #00e8fe;
 }
+
 .typed_text span {
   font-size: 50px;
   font-weight: bold;
   cursor: none !important;
 }
+
 .vank_cap {
   color: #00e8fe;
 }
+
 .vank_capp {
   color: #0f1843;
 }
@@ -735,11 +857,13 @@ hr {
   padding: 40px 100px;
   background-color: #fff;
 }
+
 .how_it_works h1 {
   color: #0f1843;
   font-weight: 600;
   font-size: 56px;
 }
+
 .how_it_works p,
 .how_it_works h3 {
   margin-top: 20px;
@@ -754,9 +878,11 @@ hr {
   border-radius: 5px;
   font-size: 20px;
 }
+
 .register_button:hover {
   background-color: #00e9fea8;
 }
+
 .join_vank_section {
   background-image: url("/commission.png");
   background-blend-mode: overlay;
@@ -764,10 +890,12 @@ hr {
   background-size: cover;
   padding: 150px 10px;
 }
+
 .join_vank_section h1 {
   text-align: center;
   color: #00e8fe;
 }
+
 .why_choose_us {
   background-image: url("/fmf.webp");
   background-size: cover;
@@ -779,17 +907,20 @@ hr {
   border-radius: 10px;
   padding: 30px 100px;
 }
+
 .why_choose_us h1 {
   color: #f2f5f6;
   font-weight: 700;
   font-size: 56px;
   /* padding-top: 40px; */
 }
+
 .why_choose_us h5 {
   font-weight: 500;
   margin-top: 20px;
   color: #fff;
 }
+
 .why_choose_us .first__card {
   display: grid;
   place-items: center;
@@ -798,6 +929,7 @@ hr {
 .why_choose_us .fourth__card {
   margin-top: 150px;
 }
+
 .why_choose_us .first__card h5,
 .why_choose_us .second__card h5,
 .why_choose_us .third__card h5,
@@ -805,6 +937,7 @@ hr {
   color: #00e8fe;
   font-size: 18px;
 }
+
 .why_choose_us .first__card p,
 .why_choose_us .second__card p,
 .third__card p,
@@ -812,14 +945,17 @@ hr {
   color: #f2f5f6;
   font-size: 16px;
 }
+
 .why_choose_us .second__card {
   margin-top: 100px;
   display: grid;
   place-items: center;
 }
+
 .why_choose_us .img__section img {
   width: 100%;
 }
+
 .how_it_works_child {
   border: 1px solid #00e8fe;
   border-radius: 10px;
@@ -827,13 +963,16 @@ hr {
   margin-bottom: 10px;
   text-align: center;
 }
+
 .how_it_works .head__wrap h4 {
   font-size: 16px;
   font-weight: 600;
 }
+
 .how_it_works .write_up_wrap p {
   font-size: 13px;
 }
+
 .how_it_works_child .img_wrap .img {
   width: 60px;
 }
@@ -842,22 +981,26 @@ hr {
   padding: 0 100px;
   background-color: #f8feff;
 }
+
 .faqs__content {
   margin: 0 auto;
   background-color: #f8feff !important;
   width: 70%;
 }
+
 .faqs__content h1 {
   text-align: center;
   font-size: 52px;
   font-weight: bold;
   color: #0f1843;
 }
+
 .faqs__wrap .theme--light.v-expansion-panels .v-expansion-panel {
   border-radius: 0 !important;
   box-shadow: none !important;
   border: none !important;
 }
+
 .faqs__wrap .v-expansion-panel-header {
   justify-content: space-between !important;
   background-color: #f8feff !important;
@@ -867,17 +1010,20 @@ hr {
   box-shadow: none !important;
   padding: 30px 20px !important;
 }
+
 .faqs__wrap .v-expansion-panel-content__wrap {
   background-color: #f2f5f7 !important;
 
   border-bottom: 1px solid #30303030 !important;
   padding: 30px 20px !important;
 }
+
 .faqs__wrap .v-expansion-panel::before {
   box-shadow: none !important;
 }
 
 @media (max-width: 767px) {
+
   /* .demo__wrap {
     padding: 60px 10px;
   } */
@@ -894,10 +1040,12 @@ hr {
     left: 7px;
     padding: 10px;
   }
+
   .demo__wrap .demo__info__wrap {
     width: 100%;
     margin: 40px auto;
   }
+
   .demo__info__wrap h6 {
     font-family: "Dancing Script", cursive;
     font-size: 26px;
@@ -912,12 +1060,15 @@ hr {
   .hero_section .hero__content {
     padding-top: 150px;
   }
+
   .trending__wrap {
     display: unset;
   }
+
   .trending__wrap h1 {
     font-size: 25px;
   }
+
   .trending__wrap p {
     font-size: 16px;
   }
@@ -925,35 +1076,43 @@ hr {
   .img__wrap .img {
     width: 100%;
   }
+
   .hero_section h1,
   .typed_text span {
     font-size: 25px;
     /* margin-top: 15px; */
   }
+
   .card_section {
     margin-top: 0;
   }
+
   .card_section img {
     width: 100%;
   }
+
   .reg_link,
   .new_signup,
   .explore_wrap {
     font-size: 13px;
   }
+
   .register_button {
     font-size: 15px;
   }
+
   .bitcoin_card,
   .etherium_card,
   .bitcash_card {
     border-radius: 15px;
     padding: 20px;
   }
+
   .crypto_bucket_section {
     margin: 0 !important;
     height: 100%;
   }
+
   /* .how_it_works_child {
     margin: 0 !important;
   } */
@@ -961,25 +1120,32 @@ hr {
     width: 40%;
     padding: 4px 8px;
   }
+
   .env_input::placeholder {
     font-size: 11px;
   }
+
   .how_it_works {
     padding: 10px;
   }
+
   .how_it_works h1 {
     font-size: 25px;
     padding-top: 10px;
   }
+
   .how_it_works h3 {
     font-size: 15px;
   }
+
   .how_it_works p {
     font-size: 15px;
   }
+
   .cards_img {
     max-width: 100% !important;
   }
+
   .how_it_works_child {
     width: 100%;
   }
@@ -987,13 +1153,16 @@ hr {
   .why_choose_us {
     padding: 10px;
   }
+
   .why_choose_us h1 {
     font-size: 20px;
   }
+
   .why_choose_us h5 {
     margin-top: 15px;
     font-size: 13px;
   }
+
   .why_choose_us {
     min-height: 50vh;
   }
@@ -1002,6 +1171,7 @@ hr {
     display: grid;
     place-items: center;
   }
+
   .why_choose_us .first__card h5,
   .why_choose_us .second__card h5,
   .why_choose_us .third__card h5,
@@ -1009,6 +1179,7 @@ hr {
     color: #00e8fe;
     font-size: 15px;
   }
+
   .why_choose_us .first__card p,
   .why_choose_us .second__card p,
   .why_choose_us .third__card p,
@@ -1016,6 +1187,7 @@ hr {
     color: #f2f5f6;
     font-size: 13px;
   }
+
   .why_choose_us .second__card,
   .why_choose_us .fourth__card {
     margin-top: 0;
@@ -1026,9 +1198,11 @@ hr {
   .why_choose_us .img__section {
     display: none;
   }
+
   .faqs__wrap {
     padding: 10px;
   }
+
   .faqs__wrap .v-expansion-panel-header,
   .faqs__wrap .v-expansion-panel-content__wrap {
     font-size: 13px;
@@ -1039,9 +1213,11 @@ hr {
     width: 100%;
     padding: 7px !important;
   }
+
   .faqs__content h1 {
     font-size: 27px;
   }
+
   .faqs__content h3 {
     font-size: 15px;
   }

@@ -30,9 +30,13 @@
                   <div>
                     <p>&#x20A6;{{ asset_detail.token_price }}K per token</p>
                     <p>
-                      {{ asset_detail.token_quantity_subscribed }} tokens sold
+                      {{ (
+                            (Number(asset_detail.token_quantity_subscribed) /
+                              Number(asset_detail.token_quantity_available)) *
+                            100
+                          ).toFixed(0) }}% tokens sold
                     </p>
-                    <h4>483m <sup class="font__text">2</sup></h4>
+                    <h4>{{asset_detail.size}}</h4>
                   </div>
                 </div>
               </div>
@@ -128,19 +132,6 @@ export default {
       this.asset_detail = response.data;
       console.log(this.asset_detail);
     },
-    // async getTokenQuantity() {
-    //   try {
-    //     let response = await this.$axios.post(
-    //       `/getTokenQuantity/`,
-    //       this.buy_amount
-    //     );
-    //     this.buy_amount = this.token_quantity;
-    //     this.token_quantity = response.data;
-    //     console.log(this.token_quantity);
-    //   } catch (error) {
-    //     console.log(error.response);
-    //   }
-    // },
     makePayment() {
       this.requestSubscription();
       this.amount = this.buy_amount;

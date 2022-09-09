@@ -15,7 +15,7 @@
               class="general_trends"
               :style="{ backgroundImage: 'url(' + property.image + ')' }"
             >
-              <div class="opaque_text">
+              <div class="asset_text">
                 <p v-if="property.layout_name">
                   {{ property.layout_name }}
                 </p>
