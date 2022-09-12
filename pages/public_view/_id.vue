@@ -28,7 +28,7 @@
               </div>
             </div>
             <div class="col-md-6">
-              <div class="description__wrap pt-3">
+              <div class="description__wrap pt-2">
                 <p>Location: {{ asset_detail.location }}</p>
                 <p>Layout Name: {{ asset_detail.layout_name }}</p>
                 <p>Distance to closest built up areas:</p>
@@ -39,7 +39,7 @@
                 <p>{{ asset_detail.description3 }}</p>
                 <p>{{ asset_detail.documentation }}</p>
   
-                <p>Population within 20KM radius: Over 200,000</p>
+                <!-- <p>Population within 20KM radius: Over 200,000</p> -->
                 <!-- <span>Est. minimum return 9.2%PA</span> -->
   
                 <div>

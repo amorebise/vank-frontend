@@ -136,7 +136,7 @@
 
           <div class="change__password__form" v-show="show_payment_modal">
             <div class="password__modal slideInDown">
-              <form action="" method="post" @submit.prevent="change_password()">
+              <form action="" method="post" @submit.prevent="updateBankDetails()">
                 <div class="form-group">
                   <div
                     class="d-flex justify-content-between align-items-center"
@@ -285,7 +285,8 @@ export default {
         this.$toast.success("Success, your details have been submitted", {
           timeout: 5000,
         });
-        this.show_payment_modal = !this.show_payment_modal;
+        // this.show_payment_modal = !this.show_payment_modal;
+        this.verification = {}
         console.log(response);
       } catch (error) {
         console.log(error.response);

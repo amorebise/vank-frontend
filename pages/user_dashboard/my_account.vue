@@ -241,21 +241,21 @@ export default {
     //   // this.$router.push("/user_dashboard/payment");
     // },
   },
-  computed: {
-    showPercentSold(trending) {
-      let tokenSold =
-        (Number(trending.token_quantity_available) /
-          Number(trending.token_quantity_subscribed)) *
-        100;
-      return tokenSold;
-    },
-    //   showPercentSold(trending) {
-    //     let availableQuantity = Number(trending.token_quantity_available);
-    //     let tokenSold = Number(trending.token_quantity_subscribed);
-    //     let percentSold = (tokenSold / availableQuantity) * 100;
-    //     return percentSold;
-    //   },
-  },
+  // computed: {
+  //   showPercentSold(trending) {
+  //     let tokenSold =
+  //       (Number(trending.token_quantity_available) /
+  //         Number(trending.token_quantity_subscribed)) *
+  //       100;
+  //     return tokenSold;
+  //   },
+  //   //   showPercentSold(trending) {
+  //   //     let availableQuantity = Number(trending.token_quantity_available);
+  //   //     let tokenSold = Number(trending.token_quantity_subscribed);
+  //   //     let percentSold = (tokenSold / availableQuantity) * 100;
+  //   //     return percentSold;
+  //   //   },
+  // },
   created() {
     // this.makePayment();
     this.getUser();

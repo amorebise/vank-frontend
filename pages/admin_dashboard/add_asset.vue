@@ -367,7 +367,7 @@ export default {
         due_deligence_report: "",
         token_audit_report: "",
       },
-      locations: ["abuja", "lagos", "uyo"],
+      locations: ["Abuja", "Lagos", "Uyo"],
       errors: {},
       coordinates_error: {},
       description1_error: {},

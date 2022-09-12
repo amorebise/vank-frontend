@@ -86,6 +86,7 @@ export default {
       id: this.$route.params.id,
       asset_detail: {},
       token_quantity: "",
+      newTokenQty: '',
       amount: {},
       cash_wallet_ballance: {},
       buy_amount: {
@@ -97,7 +98,9 @@ export default {
     converter() {
       let assetSum = Number(this.asset_detail.token_price);
       let buyAmount = Number(this.buy_amount.amount);
-      this.token_quantity = buyAmount  / assetSum;
+      let fullAmount
+      fullAmount = buyAmount  / assetSum;
+      this.token_quantity = (fullAmount).toFixed(1)
     },
     executeBuy() {
       let buyBalance = Number(this.cash_wallet_ballance.subscription_wallet_balance) ;

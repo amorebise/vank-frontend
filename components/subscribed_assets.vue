@@ -2,11 +2,7 @@
   <div>
     <div class="asset_cards">
       <div class="row">
-        <div
-          v-for="property in assets.subscriptions"
-          :key="property.index"
-          class="col-md-4"
-        >
+        <div v-for="property in assets" :key="property.index" class="col-md-4">
           <div
             class="card_wrap mb-2"
             @click="$router.push(`/user_dashboard/my_assets/${property.id}`)"
@@ -15,22 +11,22 @@
               class="general_trends"
               :style="{ backgroundImage: 'url(' + property.image + ')' }"
             >
-              <div class="asset_text">
-                <p v-if="property.layout_name">
+              <div class=" asset_text">
+                <p>
                   {{ property.layout_name }}
                 </p>
-                <p v-else>Epe</p>
+                
                 <div>
-                  <p v-if="property.location">
+                  <p >
                     {{ property.location }}
                   </p>
-                  <p v-else>Lagos</p>
+                  
                 </div>
                 <div>
-                  <p v-if="property.token_name">
+                  <p>
                     {{ property.token_name }}
                   </p>
-                  <p v-else>token 001</p>
+                  
                 </div>
               </div>
             </div>
@@ -39,7 +35,7 @@
       </div>
       <div
         style="display: grid; place-items: center"
-        v-if="assets.subscriptions == 0"
+        v-if="assets.length == 0"
       >
         <img style="width: 50px" src="/assets.webp" alt="asset image" />
         <p>You have not bought any assets yet.</p>
@@ -58,9 +54,9 @@ export default {
   methods: {
     async getAssets() {
       try {
-        let response = await this.$axios.get("/getSubscribedAsset");
+        let response = await this.$axios.get("/getAllSubscription");
         // getSubscribedAsset
-        this.assets = response.data.slice(0, 3)[0];
+        this.assets = response.data;
         console.log(this.assets);
       } catch (error) {
         console.log(error.response);
