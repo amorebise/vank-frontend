@@ -97,14 +97,14 @@
             py-4
           "
         >
-          <div>
+          <!-- <div>
             <nuxt-link
-              :to="`/user_dashboard/buy_token/${id}`"
+              :to="`/user_dashboard/buy_more/${id}`"
               class="assets__link"
             >
               <span class="px-3">Buy More</span>
             </nuxt-link>
-          </div>
+          </div> -->
 
           <div>
             <div>
@@ -140,7 +140,7 @@ export default {
   },
   methods: {
     async getSingleAssetDetail() {
-      let response = await this.$axios.get(`/getSubscribedAsset/${this.id}`);
+      let response = await this.$axios.get(`/getSingleSubsribedAsset/${this.id}`);
       this.asset_detail = response.data;
       console.log(this.asset_detail);
     },
