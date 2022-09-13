@@ -197,7 +197,7 @@ export default {
   },
    created() {
     this.getUser();
-     this.getAssets();
+    //  this.getAssets();
     this.getSingleAssetDetail();
     // console.log(this.assets.subscriptions);
   },
