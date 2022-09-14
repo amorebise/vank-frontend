@@ -193,9 +193,9 @@
                   class="form-control"
                   placeholder="Enter distance"
                   v-model="assets.description3"
-                  
+
                 />
-                
+
               </div>
             </div> -->
             <div class="col-md-6">
@@ -311,7 +311,7 @@
               </div>
               <!-- <upload /> -->
               <!-- <v-file-input
-                
+
                 placeholder="Pick an Image of You and Your Shop"
                 prepend-icon="mdi-camera"
                 label="Image of You and Your Shop"
@@ -367,11 +367,7 @@ export default {
         due_deligence_report: "",
         token_audit_report: "",
       },
-<<<<<<< HEAD
-      locations: ["abuja", "lagos", "uyo"],
-=======
       locations: ["Abuja", "Lagos", "Uyo"],
->>>>>>> 83e822a21a9440c5b29221fb481a67f858f38a61
       errors: {},
       coordinates_error: {},
       description1_error: {},

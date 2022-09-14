@@ -2,15 +2,7 @@
   <div>
     <div class="asset_cards">
       <div class="row">
-<<<<<<< HEAD
-        <div
-          v-for="property in assets.subscriptions"
-          :key="property.index"
-          class="col-md-4"
-        >
-=======
         <div v-for="property in assets" :key="property.index" class="col-md-4">
->>>>>>> 83e822a21a9440c5b29221fb481a67f858f38a61
           <div
             class="card_wrap mb-2"
             @click="$router.push(`/user_dashboard/my_assets/${property.id}`)"
@@ -19,41 +11,22 @@
               class="general_trends"
               :style="{ backgroundImage: 'url(' + property.image + ')' }"
             >
-<<<<<<< HEAD
-              <div class="opaque_text">
-                <p v-if="property.layout_name">
-                  {{ property.layout_name }}
-                </p>
-                <p v-else>Epe</p>
-                <div>
-                  <p v-if="property.location">
-                    {{ property.location }}
-                  </p>
-                  <p v-else>Lagos</p>
-                </div>
-                <div>
-                  <p v-if="property.token_name">
-                    {{ property.token_name }}
-                  </p>
-                  <p v-else>token 001</p>
-=======
               <div class=" asset_text">
                 <p>
                   {{ property.layout_name }}
                 </p>
-                
+
                 <div>
                   <p >
                     {{ property.location }}
                   </p>
-                  
+
                 </div>
                 <div>
                   <p>
                     {{ property.token_name }}
                   </p>
-                  
->>>>>>> 83e822a21a9440c5b29221fb481a67f858f38a61
+
                 </div>
               </div>
             </div>
@@ -62,11 +35,7 @@
       </div>
       <div
         style="display: grid; place-items: center"
-<<<<<<< HEAD
-        v-if="assets.subscriptions == 0"
-=======
         v-if="assets.length == 0"
->>>>>>> 83e822a21a9440c5b29221fb481a67f858f38a61
       >
         <img style="width: 50px" src="/assets.webp" alt="asset image" />
         <p>You have not bought any assets yet.</p>
@@ -85,15 +54,9 @@ export default {
   methods: {
     async getAssets() {
       try {
-<<<<<<< HEAD
-        let response = await this.$axios.get("/getSubscribedAsset");
-        // getSubscribedAsset
-        this.assets = response.data.slice(0, 3)[0];
-=======
         let response = await this.$axios.get("/getAllSubscription");
         // getSubscribedAsset
         this.assets = response.data;
->>>>>>> 83e822a21a9440c5b29221fb481a67f858f38a61
         console.log(this.assets);
       } catch (error) {
         console.log(error.response);

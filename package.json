@@ -24,11 +24,7 @@
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.19.3",
     "dotenv": "^16.0.0",
-<<<<<<< HEAD
-    "nuxt": "^2.12.2",
-=======
     "nuxt": "^2.15.8",
->>>>>>> 83e822a21a9440c5b29221fb481a67f858f38a61
     "nuxt-fontawesome": "^0.4.0",
     "vee-validate": "^3.4.14",
     "vue": "^2.6.14",
