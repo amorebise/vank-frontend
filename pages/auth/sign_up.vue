@@ -431,17 +431,16 @@ export default {
       }
     },
   },
-  
+
   mounted() {
     this.getCountry();
-    // this.showReferrer()
-    window.onload = function () {
-      const urlParams = new URLSearchParams(window.location.search);
-      var myParam = urlParams.get('ref');
-      this.myReferral = myParam
-      console.log(this.myReferral)
-    };
-    
+
+    const urlParams = new URLSearchParams(window.location.search);
+    var myParam = urlParams.get('ref');
+    this.myReferral = myParam
+    console.log(this.myReferral)
+    this.signUp_data.referred_by = this.myReferral
+
   },
   components: {
     Toast,

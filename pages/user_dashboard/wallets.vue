@@ -244,7 +244,6 @@ export default {
 }
 /* .continue__payments .wallets button:hover {
   border: none;
-
 } */
 .continue__payments .token__wrap {
   border: 1px solid #00e8fe;

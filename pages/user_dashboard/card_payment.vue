@@ -42,11 +42,11 @@
           </div> -->
 
           <div class="view__assets__wrap text-center">
-            <!-- <nuxt-link to="/user_dashboard/staking_notification"> -->
-              <button @click="makePayment()" class="assets__link">
+            <nuxt-link to="/user_dashboard/staking_notification">
+              <button class="assets__link">
                 <span class="px-3">Make Payment</span>
               </button>
-            <!-- </nuxt-link> -->
+            </nuxt-link>
           </div>
         </div>
       </div>

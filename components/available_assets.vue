@@ -11,7 +11,11 @@
               class="general_trends"
               :style="{ backgroundImage: 'url(' + property.image + ')' }"
             >
+<<<<<<< HEAD
               <div class="opaque_text">
+=======
+              <div class=" asset_text">
+>>>>>>> 83e822a21a9440c5b29221fb481a67f858f38a61
                 <p v-if="property.layout_name">
                   {{ property.layout_name }}
                 </p>
@@ -72,13 +76,17 @@ export default {
 <style>
 .asset_cards .card_wrap {
   background: #ffffff;
+<<<<<<< HEAD
   /* box-shadow: 0px 4px 4px rgba(29, 131, 197, 0.22); */
+=======
+>>>>>>> 83e822a21a9440c5b29221fb481a67f858f38a61
   border-radius: 10px;
   position: relative;
   transition: 1s;
   cursor: pointer;
 }
 .asset_cards .general_trends {
+<<<<<<< HEAD
   /* background-image: url("/asset2.jpg"); */
   background-size: cover;
   border-radius: 10px;
@@ -90,6 +98,14 @@ export default {
   color: #fff;
   /* display: grid;
   place-items: center; */
+=======
+  background-size: cover;
+  border-radius: 10px;
+  color: #001214;
+  height: 200px;
+  transition: ease-in-out 0.3s;
+  color: #fff;
+>>>>>>> 83e822a21a9440c5b29221fb481a67f858f38a61
   font-weight: 500;
   font-size: 15px;
 }
@@ -105,10 +121,28 @@ export default {
   place-items: center;
   padding-top: 30px;
 }
+<<<<<<< HEAD
+=======
+.asset_text {
+  font-size: 13px;
+  line-height: 3px;
+  opacity: 0;
+  display: grid;
+  place-items: center;
+  padding-top: 70px;
+}
+>>>>>>> 83e822a21a9440c5b29221fb481a67f858f38a61
 .asset_cards .general_trends:hover .opaque_text {
   opacity: 1;
   transition: ease-in-out 0.7s;
 }
+<<<<<<< HEAD
+=======
+.asset_cards .general_trends:hover .asset_text {
+  opacity: 1;
+  transition: ease-in-out 0.7s;
+}
+>>>>>>> 83e822a21a9440c5b29221fb481a67f858f38a61
 .asset_cards .sale_notification {
   position: absolute;
   z-index: 999;

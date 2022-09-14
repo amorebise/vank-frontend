@@ -29,18 +29,20 @@
           </div>
           <div class="col-md-6">
             <div class="description__wrap pt-3">
-              <p>Token Name: {{ findAsset ? findAsset.token_name : "" }}</p>
-              <p>Whole Price: {{ findAsset ? findAsset.whole_price : "" }}</p>
-              <p>Token Price: {{ findAsset ? findAsset.token_price : "" }}</p>
-              <p>Amount: {{ findAsset ? findAsset.amount : "" }}</p>
-              <p>Quantity: {{ findAsset ? findAsset.quantity : "" }}</p>
+              <p>Token Name: {{ asset_detail.token_name }}</p>
+              <p>Whole Price: &#x20A6;{{ asset_detail.whole_price }}</p>
+              <p>Token Price: {{ asset_detail.token_price }} </p>
+              <p>Amount: &#x20A6;{{ asset_detail.amount }}</p>
+              <p>Quantity: {{ asset_detail.quantity }}</p>
               <p>
                 Current Market Price:
-                {{ findAsset ? findAsset.current_market_price : "" }}
+                &#x20A6;{{ asset_detail.current_market_price }}
+                <!-- {{ findAsset ? findAsset.current_market_price : "" }} -->
               </p>
               <p>
-                Current Market Price:
-                {{ findAsset ? findAsset.current_token_value : "" }}
+                Current Token Value:
+                &#x20A6;{{ asset_detail.current_token_value }}
+                <!-- {{ findAsset ? findAsset.current_token_value : "" }} -->
                 <!-- {{ findAsset ? findAsset.asset_id : "" }} -->
               </p>
 
@@ -77,7 +79,7 @@
                   attributes-list
                   download
                 >
-                  Click to view due token audit report
+                  Click to view token audit report
                 </a>
               </div>
             </div>
@@ -95,17 +97,17 @@
             py-4
           "
         >
-          <div>
+          <!-- <div>
             <nuxt-link
-              :to="`/user_dashboard/buy_token/${id}`"
+              :to="`/user_dashboard/buy_more/${id}`"
               class="assets__link"
             >
               <span class="px-3">Buy More</span>
             </nuxt-link>
-          </div>
+          </div> -->
 
           <div>
-            <div v-if="user">
+            <div>
               <nuxt-link
                 :to="`/user_dashboard/sell/${id}`"
                 class="assets__link"
@@ -120,7 +122,7 @@
     </div>
   </div>
 </template>
-  
+
   <script>
 import creator_sidebar from "~/components/creator_sidebar.vue";
 export default {
@@ -128,7 +130,6 @@ export default {
   components: { creator_sidebar },
   data() {
     return {
-      user: {},
       assets: {},
       asset_detail: {},
       id: this.$route.params.id,
@@ -139,50 +140,49 @@ export default {
   },
   methods: {
     async getSingleAssetDetail() {
-      let response = await this.$axios.get(`/getSingleAsset/${this.id}`);
+      let response = await this.$axios.get(`/getSingleSubsribedAsset/${this.id}`);
       this.asset_detail = response.data;
       console.log(this.asset_detail);
     },
-    async getAssets() {
-      try {
-        let response = await this.$axios.get("/getSubscribedAsset");
-        // getSubscribedAsset
-        this.assets = response.data.slice(0, 3)[0];
-        console.log(this.assets);
-      } catch (error) {
-        console.log(error.response);
-      }
-    },
+    // async getAssets() {
+    //   try {
+    //     let response = await this.$axios.get("/getAllSubscription");
+    //     this.assets = response.data;
+    //     console.log(this.assets);
+    //   } catch (error) {
+    //     console.log(error.response);
+    //   }
+    // },
     back() {
       this.$router.go(-1);
     },
   },
-  computed: {
-    findAsset() {
-      let foundAsset = null;
-      if (this.assets.subscriptions) {
-        for (let index = 0; index < this.assets.subscriptions.length; index++) {
-          const element = this.assets.subscriptions[index];
-          console.log(element);
-          console.log(this.id);
-          console.log(this.id == element.id);
-          element.id == this.id ? (foundAsset = element) : "";
-        }
-        console.log(foundAsset);
-        return foundAsset;
-      } else {
-        return null;
-      }
-    },
-  },
-  async created() {
-    await this.getAssets();
+  // computed: {
+  //   findAsset() {
+  //     let foundAsset = null;
+  //     if (this.assets.subscriptions) {
+  //       for (let index = 0; index < this.assets.subscriptions.length; index++) {
+  //         const element = this.assets.subscriptions[index];
+  //         console.log(element);
+  //         console.log(this.id);
+  //         console.log(this.id == element.id);
+  //         element.id == this.id ? (foundAsset = element) : "";
+  //       }
+  //       console.log(foundAsset);
+  //       return foundAsset;
+  //     } else {
+  //       return null;
+  //     }
+  //   },
+  // },
+   created() {
+    //  this.getAssets();
     this.getSingleAssetDetail();
-    console.log(this.assets.subscriptions);
+    // console.log(this.assets.subscriptions);
   },
 };
 </script>
-  
+
   <style>
 .property {
   margin-left: 270px;

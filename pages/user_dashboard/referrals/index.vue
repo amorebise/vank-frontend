@@ -24,7 +24,7 @@
                   There is no limit to how much cash you can earn, copy <br />
                   your unique link below and invite all of your friends
                 </p>
-
+                <!-- <p>{{referrals}}</p> -->
                 <div class="copy__text">
                   <input
                     class="text"
@@ -97,7 +97,7 @@ export default {
   methods: {
     async getReferrals() {
       let response = await this.$axios.get("/getReferrerUrl");
-      this.referrals = response.data.slice(0, 40);
+      this.referrals = response.data;
       console.log(this.referrals);
     },
     async getReferralBonus() {

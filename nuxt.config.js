@@ -147,11 +147,15 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
+<<<<<<< HEAD
 
     baseURL:"http://localhost:80/vank-backend/public/api",
 
     // prefix: "/api/",
     // https: false,
+=======
+    baseURL: "https://api.vankwallet.com/api",
+>>>>>>> 83e822a21a9440c5b29221fb481a67f858f38a61
     // proxy: true,
     headers: {
       'Access-Control-Allow-Origin': '*',
@@ -163,6 +167,7 @@ export default {
   // proxy: {
   //   // '/api/': 'https://api.vankwallet.com',
   //   '/api/': {
+<<<<<<< HEAD
   //     target: 'http://localhost:80',
   //     pathRewrite: {
   //       '^/api' : '/'
@@ -172,6 +177,12 @@ export default {
 
   // },
 
+=======
+  //     target: 'api.vankwallet.com/', pathRewrite: { '^/api/': '' }, changeOrigin: false,
+  //     prependPath: false
+  //   }
+
+>>>>>>> 83e822a21a9440c5b29221fb481a67f858f38a61
   //   // '/api2/': 'http://api.another-website.com'
   // },
   auth: {

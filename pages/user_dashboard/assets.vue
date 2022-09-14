@@ -71,22 +71,6 @@ export default {
   box-shadow: 0px 4px 4px rgba(29, 131, 197, 0.22);
   border-radius: 10px;
 }
-.fractional__ownership__wrap .trending__content {
-  background-image: url("/asset2.jpg");
-  background-size: cover;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-  color: #001214;
-  position: relative;
-  width: 350px;
-  height: 200px;
-  transition: ease-in-out 0.3s;
-  color: #fff;
-  display: grid;
-  place-items: center;
-  font-weight: 500;
-  font-size: 15px;
-}
 .fractional__ownership__wrap .trending__content:hover {
   background-color: rgba(0, 0, 0, 0.34);
   background-blend-mode: overlay;
@@ -98,22 +82,6 @@ export default {
   opacity: 1;
   transition: ease-in-out 0.7s;
 }
-.fractional__ownership__wrap .trending__content2 {
-  background-image: url("/asset.jpg");
-  background-size: cover;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-  color: #001214;
-  position: relative;
-  width: 350px;
-  height: 200px;
-  transition: ease-in-out 0.3s;
-  color: #fff;
-  display: grid;
-  place-items: center;
-  font-weight: 500;
-  font-size: 15px;
-}
 .fractional__ownership__wrap .trending__content2:hover {
   background-color: rgba(0, 0, 0, 0.34);
   background-blend-mode: overlay;
@@ -124,22 +92,6 @@ export default {
 .fractional__ownership__wrap .trending__content2:hover p {
   opacity: 1;
   transition: ease-in-out 0.7s;
-}
-.fractional__ownership__wrap .trending__content3 {
-  background-image: url("/asset3.webp");
-  background-size: cover;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-  color: #001214;
-  position: relative;
-  width: 350px;
-  height: 200px;
-  transition: ease-in-out 0.3s;
-  color: #fff;
-  display: grid;
-  place-items: center;
-  font-weight: 500;
-  font-size: 15px;
 }
 .fractional__ownership__wrap .trending__content3:hover {
   background-color: rgba(0, 0, 0, 0.34);

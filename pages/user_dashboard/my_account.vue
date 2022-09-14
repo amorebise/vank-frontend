@@ -57,7 +57,7 @@
             </div>
           </div>
         </div>
-        <div class="trend__wrap">
+        <div class="trend__wrap px-2">
           <div class="assets__card mt-2">
             <div class="row">
               <div
@@ -124,12 +124,7 @@
                         style="color: #00e8fe"
                         name="bookmark-outline"
                       />
-                      <!-- <ion-icon
-                      v-else
-                      @click="removeBookmark(trending)"
-                      style="color: #00e8fe"
-                      name="bookmark"
-                    /> -->
+
                     </div>
                   </div>
                 </div>
@@ -246,21 +241,21 @@ export default {
     //   // this.$router.push("/user_dashboard/payment");
     // },
   },
-  computed: {
-    showPercentSold(trending) {
-      let tokenSold =
-        (Number(trending.token_quantity_available) /
-          Number(trending.token_quantity_subscribed)) *
-        100;
-      return tokenSold;
-    },
-    //   showPercentSold(trending) {
-    //     let availableQuantity = Number(trending.token_quantity_available);
-    //     let tokenSold = Number(trending.token_quantity_subscribed);
-    //     let percentSold = (tokenSold / availableQuantity) * 100;
-    //     return percentSold;
-    //   },
-  },
+  // computed: {
+  //   showPercentSold(trending) {
+  //     let tokenSold =
+  //       (Number(trending.token_quantity_available) /
+  //         Number(trending.token_quantity_subscribed)) *
+  //       100;
+  //     return tokenSold;
+  //   },
+  //   //   showPercentSold(trending) {
+  //   //     let availableQuantity = Number(trending.token_quantity_available);
+  //   //     let tokenSold = Number(trending.token_quantity_subscribed);
+  //   //     let percentSold = (tokenSold / availableQuantity) * 100;
+  //   //     return percentSold;
+  //   //   },
+  // },
   created() {
     // this.makePayment();
     this.getUser();
@@ -323,7 +318,7 @@ export default {
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   color: #001214;
-  position: relative;
+
   height: 200px;
   transition: ease-in-out 0.3s;
   color: #fff;

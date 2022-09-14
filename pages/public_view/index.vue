@@ -31,15 +31,15 @@
         </div>
         <div v-show="lagos_tab" class="location__table__lagos mt-2">
           <p class="px-2 paragrphs">Find verified property in Lagos</p>
-          <lagos-card />
+          <Lagos_public_card/>
         </div>
         <div v-show="abuja_tab" class="location__table__abuja mt-2">
           <p class="paragrphs">Find verified property in Abuja</p>
-          <abuja-card />
+          <Abuja_public_card/>
         </div>
         <div v-show="uyo_tab" class="location__table__uyo mt-2">
           <p class="paragrphs">Find verified property in Uyo</p>
-          <uyo-card />
+          <Uyo_public_card/>
         </div>
       </div>
       <footer-section />
@@ -49,8 +49,11 @@
 
 <script>
 import public_assets from "~/components/public_assets.vue";
+import Lagos_public_card from "~/components/lagos_public_card.vue";
+import Abuja_public_card from "~/components/abuja_public_card.vue";
+import Uyo_public_card from "~/components/uyo_public_card.vue";
 export default {
-  components: { public_assets },
+  components: { public_assets, Lagos_public_card, Abuja_public_card, Uyo_public_card },
   data() {
     return {
       user: {},

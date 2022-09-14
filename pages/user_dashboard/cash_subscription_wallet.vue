@@ -238,7 +238,6 @@ export default {
       try {
         let response = await this.$axios.post("/withdrawal", this.fund_wallet);
         console.log(response);
-
         this.$router.push("/verification/");
       } catch (error) {
         console.log(error.response);
@@ -256,7 +255,6 @@ export default {
       }
     },
     async fundSubscriptionWallet() {
-
       try {
         let response = await this.$axios.post(
           "/fundSubscriptionWallet",
@@ -272,7 +270,6 @@ export default {
     saveAmount() {
       this.amount = this.fund_wallet;
       localStorage.setItem("marketMakerKey", JSON.stringify(this.amount));
-
       console.log(this.amount);
       this.loading = false;
       // this.$router.push("/user_dashboard/payment");

@@ -139,7 +139,7 @@ export default {
       }
     },
     async getSingleAssetDetail() {
-      let response = await this.$axios.get(`/getSingleAsset/${this.id}`);
+      let response = await this.$axios.get(`/getSingleSubsribedAsset/${this.id}`);
       this.asset_detail = response.data;
       console.log(this.asset_detail);
     },
@@ -195,11 +195,11 @@ export default {
       }
     },
   },
-  async created() {
+   created() {
     this.getUser();
-    await this.getAssets();
+    //  this.getAssets();
     this.getSingleAssetDetail();
-    console.log(this.assets.subscriptions);
+    // console.log(this.assets.subscriptions);
   },
 };
 </script>
