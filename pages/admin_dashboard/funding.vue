@@ -122,8 +122,8 @@
                             <th class="text-left th_color">Ref ID</th>
                             <th class="text-left th_color">Date</th>
                             <th class="text-left th_color">Name</th>
-                            <th class="text-left th_color">Status</th>
                             <th class="text-left th_color">Phone Number</th>
+                            <th class="text-left th_color">Status</th>
                             <th class="text-left th_color">Amount(N)</th>
                             <th class="text-left th_color">Action</th>
                             <!-- <th class="text-left th_color">Comments</th> -->

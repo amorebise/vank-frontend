@@ -108,7 +108,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-
+    // '@nuxtjs/ngrok',
     '@nuxtjs/vuetify',
     '@nuxtjs/dotenv'
 
@@ -147,7 +147,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: "https://api.vankwallet.com/api",
+    baseURL: "http://localhost:80/vank-backend/public/api",
     // proxy: true,
     headers: {
       'Access-Control-Allow-Origin': '*',
@@ -187,6 +187,10 @@ export default {
       }
     }
   },
+  // ngrok: {
+  //   // module options
+  //   addr: 8080 // port or network address, defaults to 80
+  // },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

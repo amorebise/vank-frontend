@@ -133,15 +133,110 @@
             <button>Edit</button>
           </div>
         </div>
+
+         <div class="change__password__form" v-show="show_payment_modal">
+            <div class="password__modal slideInDown">
+              <form action="" method="post" @submit.prevent="updateBankDetails()">
+                <div class="form-group">
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="password__header">
+                      <h6>Enter Bank Details</h6>
+                    </div>
+                  </div>
+
+                  <label class="" for="">Enter Bvn</label>
+                  <input
+                    required
+                    type="number"
+                    class="form-control"
+                    v-model="verification.bvn_number"
+                    placeholder="Enter your BVN"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="" for="">Select Bank Name</label>
+
+                  <select class="form-control option-class select" id="exampleFormControlSelect1" v-model="verification.bank"
+                            required>
+                            <option>Select</option>
+                            <option v-for="(option, index) in banks" :key="index" :value="option.code" class="colour"
+                              id="selectCountry">
+                              {{ option.name }}
+                            </option>
+                          </select>
+                  <!-- <input
+                    required
+                    type="text"
+                    class="form-control"
+                    v-model="verification.bank"
+                    placeholder="Enter Bank Name"
+                  /> -->
+                </div>
+                <div class="form-group">
+                  <label class="" for="">Enter Account Number</label>
+                  <input
+                    required
+                    type="number"
+                    class="form-control"
+                    v-model="verification.account_number"
+                    placeholder="Enter Account Number"
+                  />
+                </div>
+                <div class="d-flex justify-content-center">
+                  <div class="mx-2">
+                    <v-btn
+                      class="cancel_button"
+                      @click="show_payment_modal = !show_payment_modal"
+                      >Cancel</v-btn
+                    >
+                  </div>
+                  <div class="mx-2">
+                    <v-btn
+                      @click="updateBankDetails()"
+                      class="login_button"
+                      :loading="loading"
+                      value="Update"
+                      type="submit"
+                      >Update</v-btn
+                    >
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
         <div class="update__password__wrap d-flex justify-content-between py-2">
           <div class="text-wrap">
             <h5>Payments</h5>
-            <p>Payments</p>
+            <p>Update bank details</p>
           </div>
           <div class="edit__wrap">
-            <button>Edit</button>
+            <button @click="show_payment_modal = !show_payment_modal">
+              Edit
+              </button>
           </div>
         </div>
+          <div
+            class="update__password__wrap d-flex justify-content-between py-2"
+          >
+            <div class="text-wrap">
+              <h5>Reserved Account</h5>
+              <p v-if="confirm_reserved_account == true">You already have a reserved account. You can now use it to fund your wallet</p>
+              <p v-if="confirm_reserved_account == false">Create your Reserved Account. You can only have one</p>
+            </div>
+             <div class="edit__wrap">
+
+              <button v-if="confirm_reserved_account == true" @click="manageReservedAccount()">
+                View
+              </button>
+              <button v-else-if="confirm_reserved_account == false" @click="createReservedAccount()">
+                Create
+              </button>
+            </div>
+          </div>
+
         <div class="update__password__wrap d-flex justify-content-between">
           <div class="text-wrap">
             <h5>Verification</h5>
@@ -166,9 +261,17 @@ export default {
       show_modal: false,
       tab: null,
       loading: false,
+      show_payment_modal: false,
+      banks: {},
+      confirm_reserved_account: "",
       update_profile: {
         email: "",
         phone_number: "",
+      },
+      verification: {
+        account_number: "",
+        bank: "",
+        bvn_number: "",
       },
       password_change: {
         current_password: "",
@@ -180,6 +283,54 @@ export default {
   methods: {
     edit_profile() {
       console.log(this.update_profile);
+    },
+    async manageReservedAccount(){
+        this.$router.push("/admin_dashboard/view_reserved_bank_account");
+    },
+    async confirmReservedAccount() {
+      try {
+        const response = await this.$axios.get(
+          "/confirmReservedAccount");
+        if(response.data.msg === "Reserved Account exists"){
+          this.confirm_reserved_account = true;
+        }else if(response.data.msg === "Reserved Account do not exist"){
+          this.confirm_reserved_account = false;
+        }
+        console.log(response);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+    async createNewReservedAccount() {
+      try{
+        this.loading = true;
+        let response = await this.$axios.post(
+          "/createNewReservedAccount");
+          this.$toast.success("Success, your details have been submitted", {
+            timeout: 5000,
+          });
+          console.log(response);
+          this.loading =false;
+        }
+      catch (error) {
+        this.$toast.warning(error.response.data.msg);
+        console.log(error.response);
+      }
+    },
+    async updateBankDetails() {
+      try {
+        let response = await this.$axios.post(
+          "/verifyNationalIdentity",
+          this.verification
+        );
+        this.$toast.success("Success, your details have been submitted", {
+          timeout: 5000,
+        });
+        this.show_payment_modal = !this.show_payment_modal;
+        console.log(response);
+      } catch (error) {
+        console.log(error.response);
+      }
     },
     async change_password() {
       try {
@@ -198,7 +349,23 @@ export default {
         console.log(error);
       }
     },
+    async getBanks(){
+      try {
+        let response = await this.$axios.get(
+          "/getBanks");
+        this.banks = response.data.data;
+
+      } catch (error) {
+        console.log(error.response);
+      }
+     }
   },
+  created(){
+    this.getBanks();
+  },
+  mounted(){
+    this.confirmReservedAccount();
+  }
 };
 </script>
 

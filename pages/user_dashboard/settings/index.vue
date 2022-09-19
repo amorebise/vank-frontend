@@ -234,10 +234,15 @@
           >
             <div class="text-wrap">
               <h5>Reserved Account</h5>
-              <p>Create Your Reserved Account. You can only have one</p>
+              <p v-if="confirm_reserved_account == true">You already have a reserved account. You can now use it to fund your wallet</p>
+              <p v-if="confirm_reserved_account == false">Create your Reserved Account. You can only have one</p>
             </div>
             <div class="edit__wrap">
-              <button @click="createNewReservedAccount()">
+
+              <button v-if="confirm_reserved_account == true" @click="manageReservedAccount()">
+                View
+              </button>
+              <button v-else-if="confirm_reserved_account == false" @click="createReservedAccount()">
                 Create
               </button>
             </div>
@@ -270,6 +275,7 @@ export default {
       loading: false,
       show_payment_modal: false,
       banks: {},
+      confirm_reserved_account: "",
       update_profile: {
         email: "",
         phone_number: "",
@@ -299,6 +305,23 @@ export default {
         console.log(error.response);
       }
     },
+    async manageReservedAccount(){
+      this.$router.push("/user_dashboard/view_reserved_bank_account");
+    },
+    async confirmReservedAccount() {
+      try {
+        const response = await this.$axios.get(
+          "/confirmReservedAccount");
+        if(response.data.msg === "Reserved Account exists"){
+          this.confirm_reserved_account = true;
+        }else if(response.data.msg === "Reserved Account do not exist"){
+          this.confirm_reserved_account = false;
+        }
+        console.log(response);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
     async updateBankDetails() {
       try {
         let response = await this.$axios.post(
@@ -315,15 +338,18 @@ export default {
       }
     },
     async createNewReservedAccount() {
-      try {
+      try{
+        this.loading = true;
         let response = await this.$axios.post(
           "/createNewReservedAccount");
-        this.$toast.success("Success, your details have been submitted", {
-          timeout: 5000,
-        });
-
-        console.log(response);
-      } catch (error) {
+          this.$toast.success("Success, your details have been submitted", {
+            timeout: 5000,
+          });
+          console.log(response);
+          this.loading =false;
+        }
+      catch (error) {
+        this.$toast.warning(error.response.data.msg);
         console.log(error.response);
       }
     },
@@ -357,6 +383,9 @@ export default {
   },
   created(){
     this.getBanks();
+  },
+  mounted(){
+    this.confirmReservedAccount();
   }
 };
 </script>

@@ -65,7 +65,7 @@
     </div>
   </div>
 </template>
-  
+
   <script>
 import creator_sidebar from "~/components/creator_sidebar.vue";
 export default {
@@ -73,6 +73,7 @@ export default {
   data() {
     return {
       tab: null,
+      loading: false,
       withdrawals: {},
       success__modal: false,
     };
@@ -90,10 +91,12 @@ export default {
     },
     async approveWithdrawal(withdrawal) {
       try {
+        this.loading = true;
         let response = await this.$axios.post(
           `/admin/approveWithdrawalRequest/${withdrawal.id}`
         );
         this.$toast.success("Withdrawal approved", { timeout: 5000 });
+        this.loading =false;
         console.log(response);
       } catch (error) {
         console.log(error.response);
@@ -108,7 +111,7 @@ export default {
   },
 };
 </script>
-  
+
   <style >
 .cash__sub__wrap {
   margin-left: 230px;

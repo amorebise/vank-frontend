@@ -14,31 +14,14 @@
         <div class="payments_wrap subscriber px-1">
           <div class="bank__wrap py-5">
             <div class="text-center" style="line-height: 13px">
-              <h3>Pay &#8358;{{ selected_amount.amount }} to</h3>
-              <p style="font-size: 15px; color: red">Your account details below</p>
-
+              <h3>Your Reserved Account Details</h3>
+              <p style="font-size: 15px; color: red">Details below</p>
 
               <p>Bank: {{ reserved_bank_name }}</p>
               <p>Acc No: {{reserved_account_number }}</p>
               <p>Acc Name: {{reserved_account_name }}</p>
             </div>
-            <div class="view__assets__wrap text-center">
-              <div>
-                <span style="font-size: 8px; color: red"
-                  >Disclaimer: Be sure to make payment before clicking on the
-                  button below</span
-                >
-              </div>
-              <div>
-                <!-- <nuxt-link to="/user_dashboard/transfer_confirmation"> -->
-                <button @click="confirmPayment()" class="assets__link">
-                  <span class="px-3" style="font-weight: 400"
-                    >I have made full payment</span
-                  >
-                </button>
-                <!-- </nuxt-link> -->
-              </div>
-            </div>
+
           </div>
         </div>
       </div>
@@ -59,15 +42,6 @@ export default {
     };
   },
   methods: {
-    async confirmPayment() {
-      try {
-        let response = await this.$axios.post("/confirmPayment");
-        console.log(response);
-        this.$router.push("/user_dashboard/transfer_confirmation");
-      } catch (error) {
-        console.log(error.response);
-      }
-    },
      async showAccountDetails() {
       try {
         let response = await this.$axios.get("/getReservedAccount");
@@ -81,18 +55,13 @@ export default {
         console.log(error.response);
       }
     },
-    showAmount() {
-      let markmm = localStorage.getItem("marketMakerKey");
-      this.selected_amount = JSON.parse(markmm);
-      console.log(this.selected_amount);
-      // console.log(this.selected_amount.id);
-    },
+
     back() {
       this.$router.go(-1);
     },
   },
   created() {
-    this.showAmount();
+
     this.showAccountDetails();
   },
 };
