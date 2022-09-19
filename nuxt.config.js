@@ -147,7 +147,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: "http://localhost:80/vank-backend/public/api",
+    baseURL: "https://api.vankwallet.com/api",
     // proxy: true,
     headers: {
       'Access-Control-Allow-Origin': '*',
