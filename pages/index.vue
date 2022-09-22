@@ -23,7 +23,7 @@
           <p>You can get quality Real Estate from N500</p>
         </div>
         <div class="trending_asset_wrap">
-          <div class="d-flex flow_wrap">
+          <div class="d-flex justify-content-center flow_wrap">
             <div class="trend_wrap pl-4" v-for="trending in trendingAssets" :key="trending.index">
               <div class="trending__bg">
                 <div @click="
@@ -488,7 +488,7 @@ export default {
     async getTrendingAssets() {
       try {
         let response = await this.$axios.get("/getTrendingAsset");
-        this.trendingAssets = response.data;
+        this.trendingAssets = response.data.slice(0, 4);
         console.log(this.trendingAssets);
       } catch (error) {
         console.log(error.response);
@@ -601,10 +601,7 @@ export default {
   display: none;
 }
 
-/* .trending_asset_wrap {
-
-} */
-.flow_wrap {
+.trending_asset_wrap {
   overflow: hidden;
   overflow-x: auto;
 }
@@ -766,6 +763,7 @@ export default {
 
 .trend_wrap {
   width: 350px;
+  height: 300px;
 }
 
 .trending__bg {
@@ -1033,6 +1031,10 @@ hr {
   /* .demo__wrap {
     padding: 60px 10px;
   } */
+  .flow_wrap {
+    width: max-content;
+  }
+
   .demo__wrap {
     width: 95%;
     height: 100%;
@@ -1106,6 +1108,10 @@ hr {
   .register_button {
     font-size: 15px;
   }
+
+  /* .trend_wrap {
+    margin-bottom: 30px;
+  } */
 
   .bitcoin_card,
   .etherium_card,
@@ -1202,7 +1208,14 @@ hr {
   }
 
   .why_choose_us .img__section {
-    display: none;
+    padding-top: 50px;
+    /* width: 100px; */
+  }
+
+  .why_choose_us .img__section img {
+    /* width: 100px; */
+    height: 250px;
+    /* object-fit: cover; */
   }
 
   .faqs__wrap {
