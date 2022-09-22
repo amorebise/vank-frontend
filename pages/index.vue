@@ -1207,15 +1207,13 @@ hr {
     place-items: center;
   }
 
-  .why_choose_us .img__section {
+  /* .why_choose_us .img__section {
     padding-top: 50px;
-    /* width: 100px; */
-  }
+    width: 100px;
+  } */
 
   .why_choose_us .img__section img {
-    /* width: 100px; */
-    height: 250px;
-    /* object-fit: cover; */
+    display: none;
   }
 
   .faqs__wrap {
