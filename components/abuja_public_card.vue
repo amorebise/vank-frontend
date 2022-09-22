@@ -2,36 +2,21 @@
   <div>
     <div class="lagos_card">
       <div class="row">
-        <div
-          v-for="property in abujaProperty"
-          :key="property.index"
-          class="col-md-4"
-        >
+        <div v-for="property in abujaProperty" :key="property.index" class="col-md-4">
           <div class="card_wrap mb-2">
-            <div
-              @click="
-                $router.push(`/public_view/${property.id}`)
-              "
-              class="general_trends"
-              :style="{ backgroundImage: 'url(' + property.image + ')' }"
-            >
+            <div @click="
+              $router.push(`/public_view/${property.id}`)
+            " class="general_trends" :style="{ backgroundImage: 'url(' + property.image + ')' }">
               <div class="tq__notification">
-                <span
-                  v-if="property.token_quantity_subscribed.length > 0"
-                  style="font-size: 12px"
-                  class="text-dark"
-                  >{{
-                    (
-                      (Number(property.token_quantity_subscribed) /
-                        Number(property.token_quantity_available)) *
-                      100
-                    ).toFixed(0)
-                  }}
-                  % tokens Sold</span
-                >
-                <span v-else style="font-size: 12px" class="text-dark"
-                  >0 token Sold</span
-                >
+                <span v-if="property.token_quantity_subscribed.length > 0" style="font-size: 12px" class="text-dark">{{
+                (
+                (Number(property.token_quantity_subscribed) /
+                Number(property.current_market_price)) *
+                100
+                ).toFixed(0)
+                }}
+                  % tokens Sold</span>
+                <span v-else style="font-size: 12px" class="text-dark">0 token Sold</span>
               </div>
               <div class="opaque_text">
                 <p v-if="property.coordinates">{{ property.coordinates }}</p>
@@ -50,21 +35,13 @@
               </p>
               <div class="d-flex justify-content-between">
                 <h6>{{ property.location }}</h6>
-                <ion-icon
-                  @click="bookmark(property)"
-                  style="color: #00e8fe"
-                  name="bookmark-outline"
-                />
+                <ion-icon @click="bookmark(property)" style="color: #00e8fe" name="bookmark-outline" />
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div
-        class="mt-5"
-        style="display: grid; place-items: center"
-        v-if="abujaProperty.length === 0"
-      >
+      <div class="mt-5" style="display: grid; place-items: center" v-if="abujaProperty.length === 0">
         <img style="width: 50px" src="/assets.webp" alt="asset image" />
         <p>No asset to aquire for now</p>
       </div>
@@ -122,6 +99,7 @@ export default {
   position: relative;
   transition: 1s;
 }
+
 .lagos_card .general_trends {
   /* background-image: url("/asset2.jpg"); */
   background-size: cover;
@@ -138,17 +116,21 @@ export default {
   font-weight: 500;
   font-size: 15px;
 }
+
 .lagos_card .general_trends:hover {
   background-color: rgba(0, 0, 0, 0.34);
   background-blend-mode: overlay;
 }
+
 .lagos_card .general_trends .opaque_text {
   opacity: 0;
 }
+
 .lagos_card .general_trends:hover .opaque_text {
   opacity: 1;
   transition: ease-in-out 0.7s;
 }
+
 .lagos_card .sale_notification {
   position: absolute;
   z-index: 999;
@@ -161,19 +143,23 @@ export default {
   border-top-left-radius: 10px;
   /* opacity: 0; */
 }
+
 .lagos_card .text_wrap {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
+
 .lagos_card .text_wrap p {
   font-size: 14px;
   font-weight: 500;
   word-spacing: 1px;
 }
+
 .lagos_card .text_wrap span {
   font-size: 14px;
   font-weight: 600;
 }
+
 .lagos_card .text_wrap h6 {
   font-weight: 600;
   letter-spacing: 1px;

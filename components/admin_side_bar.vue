@@ -79,34 +79,6 @@
             </b-nav-item-dropdown>
           </div>
         </div>
-        <!-- <v-expansion-panels>
-          <v-expansion-panel>
-            <v-expansion-panel-header> Transactions </v-expansion-panel-header>
-            <v-expansion-panel-content>
-              <div class="">
-                <nuxt-link to="/admin_dashboard/funding/">Funding</nuxt-link>
-              </div>
-              <div class="py-1">
-                <nuxt-link to="/admin_dashboard/subscriptions/"
-                  >Subscription</nuxt-link
-                >
-              </div>
-              <div class="py-1">
-                <nuxt-link to="/admin_dashboard/sales/">Sales</nuxt-link>
-              </div>
-              <div class="py-1">
-                <nuxt-link to="/admin_dashboard/borrow/">Borrowing</nuxt-link>
-              </div>
-              <div class="py-1">
-                <nuxt-link to="/admin_dashboard/staking_transactions/"
-                  >Staking</nuxt-link
-                >
-              </div>
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-        </v-expansion-panels> -->
-        <!-- </div> -->
-
         <nuxt-link
           to="/admin_dashboard/referrals/"
           class="list-group list-group-item bg-transparent"
@@ -116,7 +88,23 @@
             <span class="ml-2">Referrals</span>
           </div>
         </nuxt-link>
-        <div @click="toggleClass()" class="toggle__btn" id="show_active">
+        <div class="toggle__btn" id="show_active">
+          <nuxt-link
+            to="/admin_dashboard/bank_verifications/"
+            class="list-group list-group-item bg-transparent"
+          >
+            <div class="ml-3 d-flex align-items-center">
+              <!-- <img style="width: 18px" src="/building.svg" alt="" /> -->
+              <font-awesome-icon
+                  id="hide_password"
+                  class="text-muted eye_slash_icon"
+                  :icon="['fas', 'eye-slash']"
+                />
+              <span class="ml-2">Bank Verifications</span>
+            </div>
+          </nuxt-link>
+        </div>
+        <div class="toggle__btn" id="show_active">
           <nuxt-link
             to="/admin_dashboard/property_detail"
             class="list-group list-group-item bg-transparent"
@@ -127,7 +115,7 @@
             </div>
           </nuxt-link>
         </div>
-        <div @click="toggleClass()" class="toggle__btn" id="show_aactive">
+        <div class="toggle__btn" id="show_aactive">
           <nuxt-link
             to="/admin_dashboard/settings"
             class="list-group list-group-item bg-transparent"

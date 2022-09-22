@@ -80,7 +80,7 @@
               </div>
             </div>
 
-            <div class="col-md-4 d-flex justify-content-center">
+            <!-- <div class="col-md-4 d-flex justify-content-center">
               <div class="admin__wallet__wrap mb-2 px-3 py-2">
                 <div class="header__section d-flex align-items-center py-3">
                   <nuxt-img
@@ -101,9 +101,9 @@
                 </div>
                 <span>2,750</span>
               </div>
-            </div>
+            </div> -->
 
-            <div class="col-md-4 d-flex justify-content-center">
+            <!-- <div class="col-md-4 d-flex justify-content-center">
               <div class="admin__wallet__wrap mb-2 px-3 py-2">
                 <div class="header__section d-flex align-items-center py-3">
                   <nuxt-img
@@ -124,30 +124,7 @@
                 </div>
                 <span>&#8358;X,123,000</span>
               </div>
-            </div>
-
-            <!-- <div class="col-md-4 d-flex justify-content-center">
-                <div class="admin__wallet__wrap mb-2 px-3 py-2">
-                  <div class="header__section d-flex align-items-center py-3">
-                    <nuxt-img
-                      format="webp"
-                      sizes="xs:35vw sm:30vw md:20vw lg:2vw"
-                      quality="90"
-                      fit="cover"
-                      src="/light_vank.png"
-                      alt="image"
-                    />
-                    <h5 style="color: #00e8fe; padding-top: 5px">VANK</h5>
-                  </div>
-                  <div
-                    class="wallet__amount__cardmt-2 mt-5"
-                    style="line-height: 2px"
-                  >
-                    <p>Active Staking</p>
-                  </div>
-                  <span>&#8358;X,123,000</span>
-                </div>
-              </div> -->
+            </div> -->
           </div>
         </div>
       </div>
@@ -161,43 +138,24 @@ export default {
     return {
       tab: null,
       wallets: {},
+      id: this.$route.params.id,
     };
   },
 
   methods: {
-    // async getAllSubscription() {
-    //   try {
-    //     const response = await this.$axios.get("/admin/getAllSubscription");
-    //     this.subscriptions = response.data;
-    //     console.log(this.subscriptions);
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // },
-    // async getTotalUserNumber() {
-    //   try {
-    //     const response = await this.$axios.post("/admin/getTotalUserNumber");
-    //     this.total_subscribers = response.data;
-    //     console.log(response);
-    //   } catch (error) {
-    //     console.log(error.response);
-    //   }
-    // },
-    // async sumAllAsset() {
-    //   try {
-    //     const response = await this.$axios.post("/admin/sumAllAsset");
-    //     console.log(response);
-    //     this.total_asset = response.data;
-    //   } catch (error) {
-    //     console.log(error.response);
-    //   }
-    // },
+    async getWalletBalance() {
+      try {
+        const response = await this.$axios.get(`/admin/getUserWalletBalance/${this.id}`);
+        this.wallet_balance = response.data;
+        console.log(this.wallet_balance);
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
-  // created() {
-  //   this.getAllSubscription();
-  //   this.getTotalUserNumber();
-  //   this.sumAllAsset();
-  // },
+  created() {
+    this.getWalletBalance();
+  },
 };
 </script>
   

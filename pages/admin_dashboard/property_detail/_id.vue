@@ -28,24 +28,27 @@
           </div>
           <div class="col-md-6">
             <div class="description__wrap pt-3">
-              <p>Name: {{ asset_detail.layout_name }}</p>
               <p>Location: {{ asset_detail.location }}</p>
-              <p>Size: {{ asset_detail.size }}</p>
-              <p>Title: {{ asset_detail.documentation }}</p>
+              <p>Layout Name: {{ asset_detail.layout_name }}</p>
               <p>Distance to closest built up areas:</p>
-              <p>-{{ asset_detail.description1 }}-</p>
-              <p>{{ asset_detail.description2 }}</p>
-
-              <p>Population within 20KM radius: Over 200,000</p>
+              <p style="line-height: 20px">{{ asset_detail.documentation }}</p>
+              <p>Distance to closest built up areas:</p>
+              <p style="line-height: 20px">-{{ asset_detail.description1 }}-</p>
+              <p style="line-height: 20px">{{ asset_detail.description2 }}</p>
               <div class="d-flex align-items-center">
                 <div>
-                  <button
-                    class="view__report"
-                    style="color: #00e8fe; font-size: 12px"
-                  >
-                    Click to view Coordinates
-                  </button>
+                <button
+                @click="coordinates = !coordinates"
+                  class="view__report"
+                  style="color: #00e8fe; font-size: 12px"
+                >
+                  Click to view Coordinates
+                </button>
+
+                <div v-show="coordinates">
+                  <p>{{ asset_detail.coordinates }}</p>
                 </div>
+              </div>
               </div>
               <div>
                 <a
@@ -68,14 +71,14 @@
                   attributes-list
                   download
                 >
-                  Click to view due token audit report
+                  Click to view token audit report
                 </a>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="text-center">
+        <div style="gap: 10px" class="d-flex justify-content-center">
           <div class="register_button_wrap text-center mt-1 py-4">
             <span
               @click="edit_asset = !edit_asset"
@@ -83,6 +86,16 @@
               class="assets__link"
             >
               <span class="px-3">Edit Property</span>
+            </span>
+          </div>
+
+          <div class="register_button_wrap text-center mt-1 py-4">
+            <span
+              @click="$router.push(`/admin_dashboard/subscription_list/${id}`)"
+              role="button"
+              class="assets__link"
+            >
+              <span class="px-3">View Subscription List</span>
             </span>
           </div>
         </div>
@@ -99,7 +112,7 @@
               </div>
               <div>
                 <div class="form-group mx-2 mt-2">
-                  <label for="" class="">Currren Market Price</label>
+                  <label for="" class="">Currrent Market Price</label>
                   <input
                     type="text"
                     class="form-control"
@@ -135,6 +148,7 @@ export default {
   data() {
     return {
       asset_detail: {},
+      coordinates: false,
       asset: {
         current_market_price: "",
       },

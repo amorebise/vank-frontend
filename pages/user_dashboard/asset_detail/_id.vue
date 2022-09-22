@@ -21,7 +21,7 @@
                 <div>
                   <!-- <p>&#x20A6;1.19K per unit</p> -->
                   <p>Min ROI: {{ asset_detail.min_roi }}</p>
-                  <h4>Whole Price: &#x20A6;{{ asset_detail.whole_price }}</h4>
+                  <h4>Current Market Price: &#x20A6;{{ asset_detail.current_market_price }}</h4>
                   <p>{{ asset_detail.token_name }} Token</p>
                 </div>
               </div>
@@ -32,16 +32,10 @@
               <p>Location: {{ asset_detail.location }}</p>
               <p>Layout Name: {{ asset_detail.layout_name }}</p>
               <p>Distance to closest built up areas:</p>
+              <p style="line-height: 20px">Title: {{ asset_detail.documentation }}</p>
+              <p>Distance to closest built up areas:</p>
               <p style="line-height: 20px">-{{ asset_detail.description1 }}-</p>
-              <p style="line-height: 20px">
-                {{ asset_detail.description2 }}
-              </p>
-              <p>{{ asset_detail.description3 }}</p>
-              <p>{{ asset_detail.documentation }}</p>
-
-              <p>Population within 20KM radius: Over 200,000</p>
-              <!-- <span>Est. minimum return 9.2%PA</span> -->
-
+              <p style="line-height: 20px">{{ asset_detail.description2 }}</p>
               <div>
                 <button
                 @click="coordinates = !coordinates"
@@ -76,7 +70,7 @@
                   attributes-list
                   download
                 >
-                  Click to view due token audit report
+                  Click to view token audit report
                 </a>
               </div>
             </div>

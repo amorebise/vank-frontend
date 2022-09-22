@@ -83,6 +83,18 @@
           </div>
         </div>
 
+        <div class="toggle__btn" id="show_active">
+          <nuxt-link
+            to="/admin_dashboard/bank_verifications/"
+            class="list-group list-group-item bg-transparent"
+          >
+            <div class="ml-3 d-flex align-items-center">
+              <img style="width: 18px" src="/building.svg" alt="" />
+              <span class="ml-2">Bank Verifications</span>
+            </div>
+          </nuxt-link>
+        </div>
+
         <nuxt-link
           to="/admin_dashboard/property_detail"
           class="list-group list-group-item active bg-transparent active"

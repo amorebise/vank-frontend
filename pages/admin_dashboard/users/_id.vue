@@ -97,22 +97,6 @@
                       Allow Withdraw
                     </label>
                   </div>
-                  <!-- <div class="form-check">
-                    <input
-                      @click="limitSubscription()"
-                      class="form-check-input"
-                      type="radio"
-                      name="exampleRadios"
-                      id="exampleRadios2"
-                      value="option2"
-                    />
-                    <label class="form-check-label" for="exampleRadios2">
-                      Can't Sell
-                    </label>
-                    <label class="form-check-label" for="exampleRadios2">
-                      Allow Sell
-                    </label>
-                  </div> -->
                   <div
                     v-if="singleUser.subscribe_status == 'true'"
                     class="form-check"

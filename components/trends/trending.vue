@@ -8,12 +8,12 @@
               $router.push(`/user_dashboard/asset_detail/${trending.id}`)
             " role="button" class="trending__content" :style="{ backgroundImage: 'url(' + trending.image + ')' }">
               <div class="tq_notification">
-                <span v-if="trending.token_quantity_subscribed.length > 0" style="font-size: 12px" class="text-dark">
+                <span v-if="trending.current_market_price.length > 0" style="font-size: 12px" class="text-dark">
                   <!-- {{ showPercentSold }}  -->
                   {{
                   (
                   (Number(trending.token_quantity_subscribed) /
-                  Number(trending.token_quantity_available)) *
+                  Number(trending.current_market_price)) *
                   100
                   ).toFixed(0)
                   }}% tokens Sold

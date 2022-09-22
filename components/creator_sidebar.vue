@@ -77,6 +77,15 @@
           </div>
         </nuxt-link>
         <nuxt-link
+          to="/user_dashboard/txn_history"
+          class="list-group list-group-item active bg-transparent"
+        >
+          <div class="ml-5 d-flex align-items-center py-1">
+            <ion-icon style="color: #001214" name="archive-outline"></ion-icon>
+            <span class="ml-2">Txn History</span>
+          </div>
+        </nuxt-link>
+        <nuxt-link
           to="/user_dashboard/settings"
           class="list-group list-group-item active bg-transparent"
         >

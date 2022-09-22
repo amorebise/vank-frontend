@@ -59,22 +59,19 @@
                   </div>
                 </div>
                 <div class="text_wrap px-3 py-1 mb-2">
-                    <p>
-                      Land in {{ trending.layout_name }} -
-                      <span v-if="trending.size">{{ trending.size }}SQM</span>
-                      <span v-else>650SQM</span>
-                    </p>
-                    <div class="d-flex justify-content-between">
-                      <h6>{{ trending.location }}</h6>
-                      <ion-icon
-                        @click="bookmark(trending)"
-                        style="color: #00e8fe"
-                        name="bookmark-outline"
-                      />           
-                    </div>
+                  <p>
+                    Land in {{ trending.layout_name }} -
+                    <span v-if="trending.size">{{ trending.size }}SQM</span>
+                    <span v-else>650SQM</span>
+                  </p>
+                  <div class="d-flex justify-content-between">
+                    <h6>{{ trending.location }}</h6>
+                    <ion-icon @click="bookmark(trending)" style="color: #00e8fe" name="bookmark-outline" />
                   </div>
+                </div>
               </div>
             </div>
+
             <!-- <div style="width: 100%; height: 350px;" class="trend_wrap pl-4" v-for="trending in trendingAssets" :key="trending.index">
               <div class="trend__bg" :style="{ backgroundImage: 'url(' + trending.image + ')' }">        
                   <span v-if="trending.token_quantity_subscribed.length > 0" style="font-size: 12px"
@@ -105,6 +102,12 @@
                 </div>
               </div>
             </div> -->
+          </div>
+          <div class="text-center" v-if="trendingAssets.length == 0">
+            <div>
+              <img style="width: 50px" src="/assets.webp" alt="asset image" />
+              <p>No trending assets.</p>
+            </div>
           </div>
         </div>
         <!-- <div
@@ -598,6 +601,9 @@ export default {
   display: none;
 }
 
+/* .trending_asset_wrap {
+
+} */
 .flow_wrap {
   overflow: hidden;
   overflow-x: auto;

@@ -258,6 +258,12 @@
                   @change="upload_due_deligence_report()"
                   multiple
                 />
+                <!-- <div style="padding-top: 30px" class="input-group">
+                  <div class="custom-file">
+                    <input type="file" ref="file-input" @change="upload_due_deligence_report()" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                    <label class="custom-file-label" for="inputGroupFile04">Due Deligence Report</label>
+                  </div>
+                </div> -->
                 <small
                   v-if="due_deligence_report_error.lenght > 0"
                   class="text-danger"
@@ -273,6 +279,18 @@
                   label="Token Audit Report"
                   @change="upload_token_audit_report()"
                 />
+                <!-- <div class="input-group">
+                  <div class="custom-file">
+                    <input type="file" ref="file-input" @change="upload_token_audit_report()" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                    <label class="custom-file-label" for="inputGroupFile04">Token Audit Report</label>
+                  </div>
+                </div> -->
+                <!-- <v-file-input
+                  placeholder="Pick a Valid Document"
+                  multiple
+                  label="Token Audit Report"
+                  @change="upload_token_audit_report()"
+                ></v-file-input> -->
                 <small
                   v-if="token_audit_report_error.length > 0"
                   class="text-danger"
@@ -301,6 +319,7 @@
                       id="input"
                       type="file"
                       class="file"
+                      ref="file-input"
                       hidden
                     />
                     <small v-if="image_error.length > 0" class="text-danger"
@@ -416,6 +435,7 @@ export default {
           this.$toast.success("asset added successfully", { timeout: 5000 });
           this.assets = {};
           this.loading = false;
+          window.location.reload();
         })
         .catch((error) => {
           console.log(error.response.data);

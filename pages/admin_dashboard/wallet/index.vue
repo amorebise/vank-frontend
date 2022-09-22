@@ -160,44 +160,25 @@ export default {
   data() {
     return {
       tab: null,
-      wallets: {},
+      id: this.$route.params.id,
+      wallet_balance: {},
     };
   },
 
   methods: {
-    // async getAllSubscription() {
-    //   try {
-    //     const response = await this.$axios.get("/admin/getAllSubscription");
-    //     this.subscriptions = response.data;
-    //     console.log(this.subscriptions);
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // },
-    // async getTotalUserNumber() {
-    //   try {
-    //     const response = await this.$axios.post("/admin/getTotalUserNumber");
-    //     this.total_subscribers = response.data;
-    //     console.log(response);
-    //   } catch (error) {
-    //     console.log(error.response);
-    //   }
-    // },
-    // async sumAllAsset() {
-    //   try {
-    //     const response = await this.$axios.post("/admin/sumAllAsset");
-    //     console.log(response);
-    //     this.total_asset = response.data;
-    //   } catch (error) {
-    //     console.log(error.response);
-    //   }
-    // },
+    async getWalletBalance() {
+      try {
+        const response = await this.$axios.get(`/admin/getUserWalletBalance/${this.id}`);
+        this.wallet_balance = response.data;
+        console.log(this.wallet_balance);
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
-  // created() {
-  //   this.getAllSubscription();
-  //   this.getTotalUserNumber();
-  //   this.sumAllAsset();
-  // },
+  created() {
+    this.getWalletBalance();
+  },
 };
 </script>
 

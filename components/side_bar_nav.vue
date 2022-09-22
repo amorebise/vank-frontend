@@ -62,6 +62,17 @@
         </div>
 
         <div
+          @click="toggleTxxns()"
+          id="bookmark"
+          class="txxns list-group"
+        >
+          <div class="ml-3 d-flex align-items-center py-1">
+            <ion-icon style="color: #001214" name="archive-outline"></ion-icon>
+            <span class="ml-2">Txn History</span>
+          </div>
+        </div>
+
+        <div
           @click="toggleSettings()"
           id="settings"
           class="my_settings list-group"
@@ -96,6 +107,8 @@ export default {
       let settings = document.querySelector(".my_settings");
       let bookmark = document.querySelector(".my_bookmarks");
       let account = document.querySelector(".my_account");
+      let txxns = document.querySelector(".txxns");
+      txxns.classList.remove("active");
       bookmark.classList.add("active");
       account.classList.remove("active");
       wallet.classList.remove("active");
@@ -104,6 +117,23 @@ export default {
       settings.classList.remove("active");
       this.$router.push("/user_dashboard/bookmarks");
     },
+    toggleTxxns() {
+      let referrals = document.querySelector(".my_referrals");
+      let txxns = document.querySelector(".txxns");
+      let estate = document.querySelector(".real_estate");
+      let wallet = document.querySelector(".wallet");
+      let settings = document.querySelector(".my_settings");
+      let bookmark = document.querySelector(".my_bookmarks");
+      let account = document.querySelector(".my_account");
+      txxns.classList.add("active");
+      bookmark.classList.remove("active");
+      account.classList.remove("active");
+      wallet.classList.remove("active");
+      estate.classList.remove("active");
+      referrals.classList.remove("active");
+      settings.classList.remove("active");
+      this.$router.push("/user_dashboard/txn_history");
+    },
     toggleSettings() {
       let referrals = document.querySelector(".my_referrals");
       let estate = document.querySelector(".real_estate");
@@ -111,6 +141,8 @@ export default {
       let settings = document.querySelector(".my_settings");
       let bookmark = document.querySelector(".my_bookmarks");
       let account = document.querySelector(".my_account");
+      let txxns = document.querySelector(".txxns");
+      txxns.classList.remove("active");
       settings.classList.add("active");
       account.classList.remove("active");
       wallet.classList.remove("active");
@@ -127,6 +159,8 @@ export default {
       let settings = document.querySelector(".my_settings");
       let bookmark = document.querySelector(".my_bookmarks");
       let account = document.querySelector(".my_account");
+      let txxns = document.querySelector(".txxns");
+      txxns.classList.remove("active");
       referrals.classList.add("active");
       account.classList.remove("active");
       wallet.classList.remove("active");
@@ -143,6 +177,8 @@ export default {
       let settings = document.querySelector(".my_settings");
       let bookmark = document.querySelector(".my_bookmarks");
       let account = document.querySelector(".my_account");
+      let txxns = document.querySelector(".txxns");
+      txxns.classList.remove("active");
       estate.classList.add("active");
       account.classList.remove("active");
       wallet.classList.remove("active");
@@ -159,6 +195,8 @@ export default {
       let settings = document.querySelector(".my_settings");
       let bookmark = document.querySelector(".my_bookmarks");
       let account = document.querySelector(".my_account");
+      let txxns = document.querySelector(".txxns");
+      txxns.classList.remove("active");
       wallet.classList.add("active");
       account.classList.remove("active");
       estate.classList.remove("active");
@@ -175,6 +213,8 @@ export default {
       let settings = document.querySelector(".my_settings");
       let bookmark = document.querySelector(".my_bookmarks");
       let account = document.querySelector(".my_account");
+      let txxns = document.querySelector(".txxns");
+      txxns.classList.remove("active");
       account.classList.add("active");
       wallet.classList.remove("active");
       estate.classList.remove("active");
@@ -233,6 +273,7 @@ export default {
 .list-group-item,
 .my_settings,
 .my_bookmarks,
+.txxns,
 .my_referrals,
 .real_estate,
 .wallet,
@@ -246,6 +287,7 @@ export default {
 }
 .list-group-item:hover,
 .my_settings:hover,
+.txxns:hover,
 .my_bookmarks:hover,
 .my_referrals:hover,
 .real_estate:hover,

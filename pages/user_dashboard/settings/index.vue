@@ -185,7 +185,6 @@
                   </div>
                   <div class="mx-2">
                     <v-btn
-                      @click="updateBankDetails()"
                       class="login_button"
                       :loading="loading"
                       value="Update"
@@ -282,10 +281,10 @@ export default {
           "/verifyNationalIdentity",
           this.verification
         );
-        this.$toast.success("Success, your details have been submitted", {
+        this.$toast.success("BVN Verification Completed Successfully", {
           timeout: 5000,
         });
-        // this.show_payment_modal = !this.show_payment_modal;
+        this.show_payment_modal = false;
         this.verification = {}
         console.log(response);
       } catch (error) {

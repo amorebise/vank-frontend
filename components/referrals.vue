@@ -24,7 +24,7 @@
                   >
                     <th class="text-left th_color">SN</th>
                     <th class="text-left th_color">User</th>
-                    <th class="text-left th_color">Referral Amount (N)</th>
+                    <!-- <th class="text-left th_color">Referral Amount (N)</th> -->
 
                     <th class="text-left th_color">Payment Amount (N)</th>
                     <th class="text-left th_color">Time</th>
@@ -37,11 +37,11 @@
                     style="border-bottom: thin solid rgba(0, 0, 0, 0.12)"
                     class="mt-2"
                   >
-                    <td>{{ referral }}</td>
-                    <td>{{ referral }}</td>
-                    <td>{{ referral }}</td>
-                    <td>{{ referral }}</td>
-                    <td>{{ referral }}</td>
+                    <td>{{ referral.id }}</td>
+                    <td>{{ referral.referrer_id }}</td>
+                    <td>{{ referral.bonus }}</td>
+                    <!-- <td>{{ referral }}</td> -->
+                    <td>{{ referral.created_at }}</td>
                   </tr>
                   <tr v-if="referrals.length == 0">
                     <td class="text-center">You have no referrals.</td>

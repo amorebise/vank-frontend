@@ -26,8 +26,8 @@
                 >
                   <p>Subscription</p>
                 </div>
-                <span>&#8358;X, 123,000</span>
-                <!-- <span>{{ subscriptions }}</span> -->
+                <!-- <span>&#8358;X, 123,000</span> -->
+                <span>{{ asset_subscriptions }}</span>
               </div>
             </div>
             <div class="col-md-4 d-flex justify-content-center">
@@ -157,6 +157,7 @@ export default {
       tab: null,
       user: {},
       subscriptions: {},
+      asset_subscriptions: {},
       total_asset: {},
       total_subscribers: {},
     };
@@ -212,6 +213,15 @@ export default {
         console.log(error.response);
       }
     },
+    async getAssetSubscriptions() {
+      try {
+        const response = await this.$axios.get("/admin/getNumberOfSubscription");
+        this.asset_subscriptions = response.data;
+        console.log(this.asset_subscriptions);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
     async sumAllAsset() {
       try {
         const response = await this.$axios.post("/admin/getNumberOfAsset");
@@ -226,6 +236,7 @@ export default {
     this.getUser();
     this.getAllSubscription();
     this.getTotalUserNumber();
+    this.getAssetSubscriptions()
     this.sumAllAsset();
   },
 };
