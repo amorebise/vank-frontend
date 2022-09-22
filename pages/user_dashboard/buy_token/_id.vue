@@ -4,12 +4,7 @@
       <user-nav class="estate__nav py-3" name="Buy Token" />
       <div class="buy__tokkn__body">
         <div class="back__btn">
-          <font-awesome-icon
-            @click="back()"
-            role="button"
-            class="fa-1x text-dark pl-1"
-            :icon="['fas', 'arrow-left']"
-          />
+          <font-awesome-icon @click="back()" role="button" class="fa-1x text-dark pl-1" :icon="['fas', 'arrow-left']" />
         </div>
         <div class="token__p mt-4">
           <p>
@@ -21,20 +16,17 @@
           <div class="row">
             <div class="col-md-6">
               <div class="img_card">
-                <div
-                  class="asset__content text-center"
-                  :style="{
-                    backgroundImage: 'url(' + asset_detail.image + ')',
-                  }"
-                >
+                <div class="asset__content text-center" :style="{
+                  backgroundImage: 'url(' + asset_detail.image + ')',
+                }">
                   <div>
                     <p>&#x20A6;{{ asset_detail.token_price }}K per token</p>
                     <p>
                       {{ (
-                            (Number(asset_detail.token_quantity_subscribed) /
-                              Number(asset_detail.token_quantity_available)) *
-                            100
-                          ).toFixed(0) }}% tokens sold
+                      (Number(asset_detail.token_quantity_subscribed) /
+                      Number(asset_detail.token_quantity_available)) *
+                      100
+                      ).toFixed(0) }}% tokens sold
                     </p>
                     <h4>{{asset_detail.size}}</h4>
                   </div>
@@ -46,13 +38,8 @@
                 <form action="">
                   <div class="form-group">
                     <label>Enter Amount (NGN)</label>
-                    <input
-                    style="height: 30px"
-                      @keyup="converter()"
-                      v-model="buy_amount.amount"
-                      type="number"
-                      class="form-control buy__input"
-                    />
+                    <input style="height: 30px" @keyup="converter()" v-model="buy_amount.amount" type="number"
+                      class="form-control buy__input" />
                   </div>
                 </form>
                 <div class="d-flex">
@@ -99,17 +86,17 @@ export default {
       let assetSum = Number(this.asset_detail.token_price);
       let buyAmount = Number(this.buy_amount.amount);
       let fullAmount
-      fullAmount = buyAmount  / assetSum;
+      fullAmount = buyAmount / assetSum;
       this.token_quantity = (fullAmount).toFixed(1)
     },
     executeBuy() {
-      let buyBalance = Number(this.cash_wallet_ballance.subscription_wallet_balance) ;
+      let buyBalance = Number(this.cash_wallet_ballance.subscription_wallet_balance);
       let buyAmount = Number(this.buy_amount.amount);
       if (buyBalance == 0) {
         this.$toast.warning(
           "You have to fund subscription wallet to buy asset"
         );
-      } else if(buyAmount > buyBalance) {
+      } else if (buyAmount > buyBalance) {
         this.$toast.warning(
           "buy amount exceeds cash available in your subscription wallet"
         );
@@ -124,7 +111,7 @@ export default {
           `/requestSubscription/${this.asset_detail.id}`,
           this.buy_amount
         );
-        this.$router.push("/user_dashboard/payment");
+        this.$router.push("/user_dashboard/payment_notification");
         console.log(response);
       } catch (error) {
         console.log(error.response);
@@ -169,14 +156,17 @@ export default {
   background-color: #fff;
   height: 100%;
 }
+
 a {
   color: inherit;
 }
+
 .buy__input {
   border: 1px solid #30303058 !important;
   /* padding-top: 5px !important;
   padding-bottom: 5px !important; */
 }
+
 .but__token__content .asset__content {
   /* background-image: url("/asset.jpg"); */
   background-size: cover;
@@ -192,71 +182,88 @@ a {
   font-size: 15px;
   border: 5px solid #00e8fe;
 }
+
 .but__token__content .asset__content p {
   opacity: 0;
   font-size: 30px;
 }
+
 .but__token__content .asset__content h4 {
   opacity: 0;
   color: #00e8fe;
 }
+
 .but__token__content .font__text {
   font-size: 10px;
 }
+
 .but__token__content .asset__content:hover {
   background-color: rgba(0, 0, 0, 0.34);
   background-blend-mode: overlay;
   z-index: 999;
 }
+
 .but__token__content .asset__content:hover p {
   opacity: 1;
   transition: ease-in-out 0.7s;
 }
+
 .but__token__content .asset__content:hover h4 {
   opacity: 1;
   transition: ease-in-out 0.7s;
 }
+
 .but__token__content .description__wrap {
   padding-top: 30px !important;
 }
+
 .but__token__content .description__wrap p {
   line-height: 25px;
   font-weight: 500;
   font-size: 16px;
 }
+
 .but__token__content .description__wrap span {
   color: #00e8fe;
 }
+
 .but__token__content .token__wrap {
   border: 1px solid #00e8fe;
   padding: 50px 20px;
   border-radius: 5px;
 }
+
 .but__token__content label {
   font-size: 14px;
   font-weight: 600;
 }
+
 .but__token__content .form-control {
   width: 50%;
   box-shadow: none;
 }
+
 .but__token__content .form-control:focus {
   border-color: #0012144b;
 }
+
 .but__token__content input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 .but__token__content .token__box {
   border: 1px solid #0012142e;
   border-radius: 3px;
   width: 100px;
 }
+
 .but__token__content .assets__link {
   border: 1px solid #00e8fe;
   padding: 10px 2px;
 }
+
 .but__token__content .assets__link span {
   border: 1px solid #00e8fe;
   padding: 7px 2px;
@@ -267,14 +274,17 @@ input[type="number"]::-webkit-inner-spin-button {
     margin-left: 0 !important;
     padding: 0 !important;
   }
+
   .settings_wrap {
     margin: 10px;
   }
+
   .but__token__content .token__wrap {
     margin: 10px;
     padding: 10px;
     border-radius: 0;
   }
+
   .but__token__content .asset__content {
     background-image: url("/asset.jpg");
     background-size: cover;
@@ -292,16 +302,20 @@ input[type="number"]::-webkit-inner-spin-button {
     border: none;
     /* gap: 10px; */
   }
+
   .but__token__content .description__wrap {
     padding-top: 10px;
   }
+
   .token__p {
     padding-left: 20px;
     padding-right: 20px;
   }
+
   .back__btn {
     padding-left: 15px;
   }
+
   .buy__tokkn__body {
     padding-top: 70px;
   }

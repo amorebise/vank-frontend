@@ -5,12 +5,7 @@
       <div class="hero__section">
         <div class="text-center">
           <h1>ABOUT</h1>
-          <nuxt-img
-            format="webp"
-            style="width: 250px"
-            quality="90"
-            src="/v.svg"
-          />
+          <nuxt-img format="webp" style="width: 250px" quality="90" src="/v.svg" />
         </div>
       </div>
       <div class="we__are__vank">
@@ -18,29 +13,12 @@
           <div class="col-md-6">
             <div class="bg__img">
               <!-- <img src="/elipsis.svg" alt="" /> -->
-              <nuxt-img
-                class="elips"
-                format="webp"
-                style="width: 150px"
-                quality="90"
-                src="/elipsis.svg"
-              />
+              <nuxt-img class="elips" format="webp" style="width: 150px" quality="90" src="/elipsis.svg" />
               <div class="property__wrap">
-                <nuxt-img
-                  format="webp"
-                  style="width: 350px"
-                  quality="90"
-                  src="/propty.svg"
-                />
+                <nuxt-img format="webp" style="width: 350px" quality="90" src="/propty.svg" />
               </div>
               <div class="elips__wrap">
-                <nuxt-img
-                  class="elips"
-                  format="webp"
-                  style="width: 150px"
-                  quality="90"
-                  src="/elipsis.svg"
-                />
+                <nuxt-img class="elips" format="webp" style="width: 150px" quality="90" src="/elipsis.svg" />
               </div>
             </div>
           </div>
@@ -57,9 +35,7 @@
               </p>
               <p>How cool is that?</p>
               <div class="register_wrap mt-4 py-4">
-                <nuxt-link to="/auth/sign_up" class="register_link"
-                  >Join VANK</nuxt-link
-                >
+                <nuxt-link to="/auth/sign_up" class="register_link">Join VANK</nuxt-link>
               </div>
             </div>
           </div>
@@ -70,12 +46,7 @@
           <div class="col-md-4 d-flex mb-2 justify-content-center">
             <div style="text-align: center" class="value__cards">
               <div class="pt-2">
-                <nuxt-img
-                  format="webp"
-                  style="width: 150px"
-                  quality="90"
-                  src="/glass.svg"
-                />
+                <nuxt-img format="webp" style="width: 150px" quality="90" src="/glass.svg" />
                 <h6>Vision</h6>
                 <div class="mt-4">
                   <p>
@@ -90,12 +61,7 @@
           <div class="col-md-4 d-flex mb-2 justify-content-center">
             <div style="text-align: center" class="value__cards">
               <div class="pt-2">
-                <nuxt-img
-                  format="webp"
-                  style="width: 100px"
-                  quality="90"
-                  src="/share.svg"
-                />
+                <nuxt-img format="webp" style="width: 100px" quality="90" src="/share.svg" />
                 <div class="mt-3">
                   <h6>Mission</h6>
                   <div class="mt-4">
@@ -111,16 +77,11 @@
           <div class="col-md-4 d-flex mb-2 justify-content-center">
             <div style="text-align: center" class="value__cards">
               <div class="pt-2">
-                <nuxt-img
-                  format="webp"
-                  style="width: 100px"
-                  quality="90"
-                  src="/value.svg"
-                />
+                <nuxt-img format="webp" style="width: 100px" quality="90" src="/value.svg" />
                 <div class="mt-3">
                   <h6>Core Values</h6>
                   <div class="mt-4">
-                    <p>Tust</p>
+                    <p>Trust</p>
                     <p>Community</p>
                     <p>Innovation</p>
                   </div>
@@ -146,12 +107,14 @@ export default {};
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Karla&family=Lato&family=Nunito&family=Plus+Jakarta+Sans&family=Space+Grotesk&family=Titillium+Web&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   font-family: "Plus Jakarta Sans", sans-serif;
   text-decoration: none !important;
 }
+
 .about_us_wrap .hero__section {
   padding: 100px;
   background-image: url("/abt_us.png");
@@ -164,6 +127,7 @@ export default {};
   display: grid;
   place-items: center;
 }
+
 .about_us_wrap .value__section {
   position: relative;
   background-color: #0b1e51;
@@ -171,6 +135,7 @@ export default {};
   padding: 40px;
   /* height: 100%; */
 }
+
 /* .about_us_wrap .blue__elips {
   position: absolute;
 } */
@@ -181,9 +146,11 @@ export default {};
   z-index: 10;
   width: 150px;
 }
+
 .about_us_wrap .go__down {
   /* margin-top: 150px; */
 }
+
 .about_us_wrap .value__section .value__cards {
   position: relative;
   border-radius: 10px;
@@ -193,31 +160,38 @@ export default {};
   z-index: 1000;
   padding: 10px;
 }
+
 .about_us_wrap .bg__img {
   padding: 100px;
   position: relative;
 }
+
 .about_us_wrap .text__wrap {
   padding-top: 150px;
 }
+
 .about_us_wrap .text__wrap h1 {
   font-weight: 600;
 }
+
 .about_us_wrap .text__wrap p {
   letter-spacing: 2px;
   margin-top: 20px;
 }
+
 .about_us_wrap .bg__img .property__wrap {
   position: absolute;
   top: 165px;
   left: 140px;
   z-index: 1000;
 }
+
 .about_us_wrap .bg__img .elips__wrap {
   position: absolute;
   top: 410px;
   right: 145px;
 }
+
 .about_us_wrap .hero__section h1 {
   color: #00e8fe;
   font-weight: 700;
@@ -225,6 +199,7 @@ export default {};
   letter-spacing: 7px;
   font-family: "Titillium Web", sans-serif;
 }
+
 .write_up_wrap h5 {
   font-size: 30px;
   font-weight: 600;
@@ -232,12 +207,14 @@ export default {};
   word-spacing: 3px;
   letter-spacing: 5px;
 }
+
 .write_up_wrap p {
   font-size: 30px;
   margin-top: 10px;
   word-spacing: 2px;
   letter-spacing: 2px;
 }
+
 .register_link {
   background-color: #00e8fe;
   padding: 10px;
@@ -245,6 +222,7 @@ export default {};
   border-radius: 3px;
   font-weight: 600;
 }
+
 .register_link:hover {
   background-color: #00e9feb6;
 }
@@ -253,44 +231,55 @@ export default {};
   .about_us_wrap .hero__section {
     padding: 10px;
   }
+
   .write_up_wrap h1 {
     font-size: 30px;
   }
+
   .write_up_wrap h5 {
     font-size: 17px;
     margin-top: 7px;
   }
+
   .write_up_wrap p {
     font-size: 15px;
     margin-top: 20px;
   }
+
   .elips {
     display: none;
   }
+
   .about_us_wrap .bg__img {
     padding: 0;
     margin-top: 10px;
     position: unset;
   }
+
   .about_us_wrap .bg__img .property__wrap {
     position: unset;
     z-index: 1000;
   }
+
   .about_us_wrap .text__wrap {
     padding-top: 10px;
   }
+
   .about_us_wrap .text__wrap p {
     font-size: 15px;
     letter-spacing: 1px;
   }
+
   .about_us_wrap .we__are__vank {
     padding: 10px;
   }
+
   .about_us_wrap .value__section {
     margin-top: 10px;
     padding: 10px;
     /* height: 100%; */
   }
+
   .about_us_wrap .value__section .value__cards {
     width: 100%;
     height: 100%;
