@@ -13,7 +13,7 @@
                 (Number(property.token_quantity_subscribed) /
                 Number(property.current_market_price)) *
                 100
-                ).toFixed(2)
+                ).toFixed(0)
                 }}
                   % tokens Sold</span>
                 <span v-else style="font-size: 12px" class="text-dark">0 token Sold</span>

@@ -1,7 +1,7 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="continue__payments">
-      <user-nav class="continue__nav estate__nav py-4" name="Make Payments" />
+      <user-nav class="continue__nav estate__nav py-4" name="Wallet" />
       <div class="payments_wrap subscriber px-3">
         <div>
           <h6>What kind of transaction do you want to make?</h6>
@@ -28,26 +28,21 @@
             </div>
           </div>
         </div>
-        <div
-          class="
+        <div class="
             wallet__balance__wrap
             d-flex
             justify-content-center
             align-items-center
             pt-3
             mt-2
-          "
-          style="gap: 10px"
-        >
+          " style="gap: 10px">
           <img src="/swal.svg" alt="wallet image" />
-          <p
-            style="
+          <p style="
               color: #00e8fe;
               font-size: 36px;
               padding-top: 12px;
               font-weight: 600;
-            "
-          >
+            ">
             &#x20A6;{{ cash_wallet_ballance.cash_wallet_balance }}
           </p>
         </div>
@@ -55,29 +50,17 @@
           <div class="view__assets__wrap text-center">
             <div class="d-flex justify-content-between">
               <div>
-                <button
-                  @click="executeFunding()"
-                  style="background-color: #00e8fe"
-                  class="btn"
-                >
+                <button @click="executeFunding()" style="background-color: #00e8fe" class="btn">
                   Cash Wallet
                 </button>
               </div>
               <div @mouseover="show__modal = !show__modal">
-                <font-awesome-icon
-                  id="show_password"
-                  class="text-muted eye_icon"
-                  :icon="['fas', 'exclamation-circle']"
-                />
+                <font-awesome-icon id="show_password" class="text-muted eye_icon"
+                  :icon="['fas', 'exclamation-circle']" />
               </div>
             </div>
-            <div
-              @mouseleave="show__modal = !show__modal"
-              v-show="show__modal"
-              style="position: relative"
-            >
-              <p
-                style="
+            <div @mouseleave="show__modal = !show__modal" v-show="show__modal" style="position: relative">
+              <p style="
                   font-size: 11px;
                   position: absolute;
                   top: -40px;
@@ -85,8 +68,7 @@
                   width: 200px;
                   padding: 5px 10px;
                   background-color: #00e8fe;
-                "
-              >
+                ">
                 <span class="text font-weight-bolder">Cash Wallet</span> <br />
                 Where your money goes when you fund. You can withdraw from your
                 cash wallet to your bank account
@@ -95,30 +77,19 @@
 
             <div class="d-flex justify-content-between mt-1">
               <div>
-                <button
-                  @click="executeFunding()"
-                  style="background-color: #00e8fe"
-                  class="btn"
-                >
+                <button @click="executeFunding()" style="background-color: #00e8fe" class="btn">
                   Subscription Wallet
                 </button>
               </div>
               <div @mouseover="show__second__modal = !show__second__modal">
-                <font-awesome-icon
-                  id="show_password"
-                  class="text-muted eye_icon"
-                  :icon="['fas', 'exclamation-circle']"
-                />
+                <font-awesome-icon id="show_password" class="text-muted eye_icon"
+                  :icon="['fas', 'exclamation-circle']" />
               </div>
             </div>
 
-            <div
-              @mouseleave="show__second__modal = !show__second__modal"
-              v-show="show__second__modal"
-              style="position: relative"
-            >
-              <p
-                style="
+            <div @mouseleave="show__second__modal = !show__second__modal" v-show="show__second__modal"
+              style="position: relative">
+              <p style="
                   font-size: 11px;
                   position: absolute;
                   top: -40px;
@@ -126,10 +97,8 @@
                   width: 200px;
                   padding: 5px 10px;
                   background-color: #00e8fe;
-                "
-              >
-                <span class="text font-weight-bolder"
-                  >Subscription Wallet
+                ">
+                <span class="text font-weight-bolder">Subscription Wallet
                 </span>
                 <br />
                 Where your money goes when you sell. You can withdraw from your
@@ -139,9 +108,7 @@
             <div class="mt-4">
               <div>
                 <button @click="executeFunding()" class="assets__link">
-                  <span class="px-3" style="font-weight: 400"
-                    >Fund My Wallet</span
-                  >
+                  <span class="px-3" style="font-weight: 400">Fund My Wallet</span>
                 </button>
               </div>
             </div>
@@ -226,22 +193,27 @@ export default {
   background-color: #fff;
   /* padding: 0 50px; */
 }
+
 .continue__payments .continue__nav {
   padding-left: 15px;
   padding-right: 15px;
 }
+
 .continue__payments a {
   color: inherit;
 }
+
 .continue__payments .wallets button {
   border: 1px solid #00e8fe;
   border-radius: 5px;
   padding: 4px 10px;
   font-size: 13px;
 }
+
 #nairaBtn {
   background-color: #00e8fe;
 }
+
 /* .continue__payments .wallets button:hover {
   border: none;
   
@@ -254,6 +226,7 @@ export default {
   border-radius: 20px;
   min-height: 300px;
 }
+
 .continue__payments .assets__link {
   border: 1px solid #00e8fe;
   padding: 10px 2px;
@@ -261,6 +234,7 @@ export default {
   color: #000;
   font-weight: 600;
 }
+
 .continue__payments .assets__link {
   border: 1px solid #00e8fe;
   padding: 12px 2px;
@@ -282,34 +256,43 @@ export default {
     margin-left: 0 !important;
     padding: 0;
   }
+
   .payments_wrap {
     padding: 20px !important;
     padding-top: 80px !important;
   }
+
   .continue__payments .wallet__type {
     gap: 10px;
     margin-top: 15px;
   }
+
   .continue__payments .wallet__type button {
     font-size: 11px;
   }
+
   .continue__payments .wallet__balance__wrap img {
     width: 27px;
   }
+
   .continue__payments .wallet__balance__wrap p {
     font-size: 27px !important;
   }
+
   .continue__payments .token__wrap {
     width: 100%;
     margin: 20px auto;
   }
+
   .continue__payments h6 {
     font-size: 14px;
   }
+
   .continue__payments .continue__nav {
     padding-left: 0;
     padding-right: 0;
   }
+
   .continue__payments .view__assets__wrap .btn {
     font-size: 12px;
   }

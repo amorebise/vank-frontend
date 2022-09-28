@@ -2,15 +2,10 @@
   <div>
     <div class="text-left sidebar-wrap" id="sidebar-wrapper">
       <div class="sidebar-heading">
-        <nuxt-link to="/" class="navbar-brand vank_logo_link"
-          ><nuxt-img
-            format="webp"
-            sizes="xs:35vw sm:30vw md:20vw lg:13vw"
-            quality="90"
-            fit="cover"
-            src="/vank_logo.png"
-            alt="image"
-        /></nuxt-link>
+        <nuxt-link to="/" class="navbar-brand vank_logo_link">
+          <nuxt-img format="webp" sizes="xs:35vw sm:30vw md:20vw lg:13vw" quality="90" fit="cover" src="/vank_logo.png"
+            alt="image" />
+        </nuxt-link>
       </div>
       <div class="list-group list-group-flush my-3" id="menu_items">
         <!-- <li class="list-group list-group-item active bg-transparent active">
@@ -50,33 +45,21 @@
             <span class="ml-2">Referrals</span>
           </div>
         </div>
-        <div
-          @click="toggleClass()"
-          id="bookmark"
-          class="my_bookmarks list-group"
-        >
+        <div @click="toggleClass()" id="bookmark" class="my_bookmarks list-group">
           <div class="ml-3 d-flex align-items-center py-1">
             <ion-icon style="color: #001214" name="bookmark-outline"></ion-icon>
             <span class="ml-2">My Bookmarks</span>
           </div>
         </div>
 
-        <div
-          @click="toggleTxxns()"
-          id="bookmark"
-          class="txxns list-group"
-        >
+        <div @click="toggleTxxns()" id="bookmark" class="txxns list-group">
           <div class="ml-3 d-flex align-items-center py-1">
             <ion-icon style="color: #001214" name="archive-outline"></ion-icon>
-            <span class="ml-2">Txn History</span>
+            <span class="ml-2">Transactions</span>
           </div>
         </div>
 
-        <div
-          @click="toggleSettings()"
-          id="settings"
-          class="my_settings list-group"
-        >
+        <div @click="toggleSettings()" id="settings" class="my_settings list-group">
           <div class="ml-3 d-flex align-items-center">
             <ion-icon style="color: #001214" name="settings-outline"></ion-icon>
             <span class="ml-2">Settings</span>
@@ -233,6 +216,7 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Karla&family=Lato&family=Nunito&family=Plus+Jakarta+Sans&family=Space+Grotesk&family=Titillium+Web&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -240,6 +224,7 @@ export default {
   list-style-type: none !important;
   text-decoration: none !important;
 }
+
 .sidebar-wrap {
   background-color: #f8f7ff;
 }
@@ -250,13 +235,16 @@ export default {
   position: fixed;
   z-index: 3;
 }
+
 #sidebar-wrapper .sidebar-heading {
   padding: 2.7rem 1.25rem !important;
   font-size: 1.2rem;
 }
+
 #sidebar-wrapper .sidebar-heading img {
   width: 150px;
 }
+
 #sidebar-wrapper .list-group {
   width: 15rem;
 }
@@ -264,12 +252,15 @@ export default {
 #page-content-wrapper {
   min-width: 100vw;
 }
+
 #wrapper-toggled #sidebar-wrapper {
   margin-left: 0 !important;
 }
+
 #menu-toggle {
   cursor: pointer;
 }
+
 .list-group-item,
 .my_settings,
 .my_bookmarks,
@@ -285,6 +276,7 @@ export default {
   cursor: pointer;
   font-size: 14px;
 }
+
 .list-group-item:hover,
 .my_settings:hover,
 .txxns:hover,
@@ -298,6 +290,7 @@ export default {
   transition: all, 0.5s;
   border-radius: 0;
 }
+
 .img_wrap {
   width: 10%;
 }
@@ -308,23 +301,29 @@ export default {
   font-family: "Quicksand", sans-serif;
   text-decoration: none;
 }
+
 .status_toggle {
   cursor: pointer;
 }
+
 .custom-switch .custom-control-label::after {
   cursor: pointer;
 }
+
 .profile-wrapper,
 .glee_history_wrapper {
   background-color: #fff;
   border-radius: 5px;
 }
+
 .purple_text {
   color: #55174f;
 }
+
 .line_height {
   line-height: 10px;
 }
+
 .creator_profile_pic {
   width: 100%;
   height: 13rem;
@@ -332,6 +331,7 @@ export default {
   object-fit: cover;
   margin-top: 10px !important;
 }
+
 /* .child_wrapper {
   margin-left: 220px;
   overflow-y: hidden;

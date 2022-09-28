@@ -60,48 +60,33 @@
         <div class="trend__wrap px-2">
           <div class="assets__card mt-2">
             <div class="row">
-              <div
-                v-for="trending in trendingAssets"
-                :key="trending.index"
-                class="col-md-4 px-1 mb-2"
-              >
+              <div v-for="trending in trendingAssets" :key="trending.index" class="col-md-4 px-1 mb-2">
                 <div class="general__trends">
-                  <div
-                    @click="
-                      $router.push(
-                        `/user_dashboard/asset_detail/${trending.id}`
-                      )
-                    "
-                    class="trending__content"
-                    :style="{ backgroundImage: 'url(' + trending.image + ')' }"
-                  >
+                  <div @click="
+                    $router.push(
+                      `/user_dashboard/asset_detail/${trending.id}`
+                    )
+                  " class="trending__content" :style="{ backgroundImage: 'url(' + trending.image + ')' }">
                     <div class="tq_notification">
-                      <span
-                        v-if="trending.token_quantity_subscribed.length > 0"
-                        style="font-size: 12px"
-                        class="text-dark"
-                      >
+                      <span v-if="trending.token_quantity_subscribed.length > 0" style="font-size: 12px"
+                        class="text-dark">
                         <!-- {{ showPercentSold }}  -->
                         {{
-                          (
-                            (Number(trending.token_quantity_subscribed) /
-                              Number(trending.token_quantity_available)) *
-                            100
-                          ).toFixed(0)
-                        }}% tokens Sold</span
-                      >
-                      <span v-else style="font-size: 12px" class="text-dark"
-                        >0 token Sold</span
-                      >
+                        (
+                        (Number(trending.token_quantity_subscribed) /
+                        Number(trending.current_market_price)) *
+                        100
+                        ).toFixed(0)
+                        }}% tokens Sold
+                      </span>
+                      <span v-else style="font-size: 12px" class="text-dark">0 token Sold</span>
                     </div>
-                    <div
-                      style="
+                    <div style="
                         display: grid;
                         place-items: center;
                         align-items: center;
                         padding-top: 70px;
-                      "
-                    >
+                      ">
                       <p v-if="trending.coordinates">
                         {{ trending.coordinates }}
                       </p>
@@ -119,12 +104,8 @@
                     </p>
                     <div class="d-flex justify-content-between">
                       <h6>{{ trending.location }}</h6>
-                      <ion-icon
-                        @click="bookmark(trending)"
-                        style="color: #00e8fe"
-                        name="bookmark-outline"
-                      />
-                      
+                      <ion-icon @click="bookmark(trending)" style="color: #00e8fe" name="bookmark-outline" />
+
                     </div>
                   </div>
                 </div>
@@ -136,10 +117,7 @@
             </div>
           </div>
           <div class="register_button_wrap text-center mt-3 py-4">
-            <nuxt-link
-              to="/user_dashboard/fractional_ownership"
-              class="assets__link"
-            >
+            <nuxt-link to="/user_dashboard/fractional_ownership" class="assets__link">
               <span class="px-3">Buy Token</span>
             </nuxt-link>
           </div>
@@ -274,29 +252,35 @@ export default {
   font-family: "Plus Jakarta Sans", sans-serif;
   text-decoration: none !important;
 }
+
 .dashboard_content {
   margin-left: 230px;
   background-color: #fff;
   height: 100%;
   padding: 0 50px;
 }
+
 .user_font {
   font-weight: 550;
 }
+
 .user_name {
   color: #1d83c5;
 }
+
 .dashboard_content .view__all__wrap p {
   color: #001214;
   font-size: 13px;
   /* cursor: pointer; */
 }
+
 .tq_notification {
   background-color: #00e8fe;
   border-top-left-radius: 7px;
   padding: 10px;
   width: 35%;
 }
+
 .asset__content {
   background-image: url("/asset.jpg");
   background-size: cover;
@@ -312,13 +296,14 @@ export default {
   font-size: 15px;
   /* gap: 10px; */
 }
+
 .trending__content {
   /* background-image: url("/asset.jpg"); */
   background-size: cover;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   color: #001214;
-  
+
   height: 200px;
   transition: ease-in-out 0.3s;
   color: #fff;
@@ -328,11 +313,13 @@ export default {
   font-size: 15px;
   /* gap: 10px; */
 }
+
 .dashboard_content .general__trends {
   cursor: pointer;
   border-radius: 20px;
   box-shadow: 0px 4px 4px rgba(29, 131, 197, 0.22);
 }
+
 .asset__content2 {
   /* background-image: url("/asset2.jpg"); */
   background-size: cover;
@@ -348,6 +335,7 @@ export default {
   font-size: 15px;
   /* gap: 10px; */
 }
+
 .asset__content3 {
   background-image: url("/asset3.webp");
   background-size: cover;
@@ -363,18 +351,21 @@ export default {
   font-size: 15px;
   /* gap: 10px; */
 }
+
 .asset__content p,
 .asset__content2 p,
 .asset__content3 p,
 .trending__content p {
   opacity: 0;
 }
+
 .asset__content:hover,
 .trending__content:hover {
   background-color: rgba(0, 0, 0, 0.34);
   background-blend-mode: overlay;
   z-index: 999;
 }
+
 .asset__content:hover p,
 .asset__content2:hover p,
 .asset__content3:hover p,
@@ -382,29 +373,35 @@ export default {
   opacity: 1;
   transition: ease-in-out 0.7s;
 }
+
 .asset__content2:hover {
   background-color: rgba(0, 0, 0, 0.34);
   background-blend-mode: overlay;
   z-index: 999;
 }
+
 .asset__content3:hover {
   background-color: rgba(0, 0, 0, 0.34);
   background-blend-mode: overlay;
   z-index: 999;
 }
+
 .dashboard_content .text__wrap {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
+
 .dashboard_content .text__wrap p {
   font-size: 14px;
   font-weight: 500;
   word-spacing: 1px;
 }
+
 .dashboard_content .text__wrap span {
   font-size: 14px;
   font-weight: 600;
 }
+
 .dashboard_content .text__wrap h6 {
   font-weight: 600;
   letter-spacing: 1px;
@@ -415,17 +412,21 @@ export default {
     margin: 0 !important;
     padding: 0 !important;
   }
+
   .dashboard_content .new__content {
     padding: 20px;
     padding-top: 80px;
   }
+
   .asset_wrap {
     width: 100%;
     height: 100%;
   }
+
   .m_top {
     margin-top: 20px;
   }
+
   .glass_card_wrap {
     background-image: url("/glassy.png");
     min-height: 40vh;
@@ -433,6 +434,7 @@ export default {
     color: #fff;
     letter-spacing: 1px;
   }
+
   .main_card_wrap {
     background-image: url("/main.png");
     min-height: 40vh;
@@ -440,22 +442,28 @@ export default {
     color: #fff;
     letter-spacing: 1px;
   }
+
   .glass_card_wrap .write_up_section h5 {
     font-size: 15px;
   }
+
   .glass_card_wrap .write_up_section p {
     font-size: 35px;
   }
+
   .glass_card_wrap .write_up_section span {
     padding-top: 10px;
     font-size: 14px;
   }
+
   .glass_card_wrap .write_up_section img {
     width: 80%;
   }
+
   .glass_card_wrap .profit_wrap {
     margin-top: 0 !important;
   }
+
   .glass_card_wrap .precent_wrap {
     margin-top: 5px;
 
@@ -464,6 +472,7 @@ export default {
     border-radius: 15px;
     background: rgba(255, 255, 255, 0.23);
   }
+
   .glass_card_wrap .precent_wrap p {
     font-size: 14px;
   }
@@ -472,30 +481,38 @@ export default {
     font-size: 15px;
     padding: 5px 10px !important;
   }
+
   .main_asset_wrap {
     margin-top: 10px;
     padding: 10px !important;
   }
+
   .assets_wrap h5 {
     font-size: 12px;
   }
+
   .buttons_wrap .mx-3 {
     margin: 3px !important;
   }
+
   .buttons_wrap .withdrawal_button {
     font-size: 10px;
     padding: 7px 20px !important;
   }
+
   .buttons_wrap .buy_button {
     font-size: 10px;
     padding: 7px 20px !important;
   }
+
   .general_coin_wrap {
     margin-top: 10px !important;
   }
+
   .general_coin_wrap h5 {
     font-size: 15px;
   }
+
   .first_card_wrap,
   .second_card_wrap,
   .third_card_wrap {
@@ -503,10 +520,12 @@ export default {
     background-size: cover;
     background-position: center;
   }
+
   .dashboard__wrap .dashboard__nav {
     padding-left: 0 !important;
     padding-right: 15px !important;
   }
+
   .trend__wrap {
     padding: 15px;
   }

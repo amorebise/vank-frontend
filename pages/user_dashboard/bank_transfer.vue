@@ -1,15 +1,10 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="fund__wallet pr-3">
-      <user-nav name="Bank Transfer" />
+      <user-nav class="estate__nav py-4" name="Bank Transfer" />
       <div class="fundz__wrap">
         <div>
-          <font-awesome-icon
-            @click="back()"
-            role="button"
-            class="fa-1x text-dark pl-1"
-            :icon="['fas', 'arrow-left']"
-          />
+          <font-awesome-icon @click="back()" role="button" class="fa-1x text-dark pl-1" :icon="['fas', 'arrow-left']" />
         </div>
         <div class="payments_wrap subscriber px-1">
           <div class="bank__wrap py-5">
@@ -22,17 +17,13 @@
             </div>
             <div class="view__assets__wrap text-center">
               <div>
-                <span style="font-size: 8px; color: red"
-                  >Disclaimer: Be sure to make payment before clicking on the
-                  button below</span
-                >
+                <span style="font-size: 8px; color: red">Disclaimer: Be sure to make payment before clicking on the
+                  button below</span>
               </div>
               <div>
                 <!-- <nuxt-link to="/user_dashboard/transfer_confirmation"> -->
                 <button @click="confirmPayment()" class="assets__link">
-                  <span class="px-3" style="font-weight: 400"
-                    >I have made full payment</span
-                  >
+                  <span class="px-3" style="font-weight: 400">I have made full payment</span>
                 </button>
                 <!-- </nuxt-link> -->
               </div>
@@ -84,6 +75,7 @@ export default {
   margin-left: 270px;
   background-color: #fff;
 }
+
 .fund__wallet .bank__wrap {
   border: 1px solid #00e8fe;
   width: 50%;
@@ -93,17 +85,21 @@ export default {
   border-radius: 20px;
   min-height: 25vh;
 }
+
 .fund__wallet .form-control {
   width: 250px;
   box-shadow: none;
   font-size: 12px;
 }
+
 .fund__wallet label {
   font-size: 13px;
 }
+
 .fund__wallet p {
   font-size: 12px;
 }
+
 .fund__wallet .select:focus {
   border-color: #3030303a;
 }
@@ -113,9 +109,11 @@ export default {
     margin-left: 0;
     /* padding: 0 !important; */
   }
+
   .fund__wallet .fundz__wrap {
     padding-left: 20px;
   }
+
   .fund__wallet .bank__wrap {
     border: 1px solid #00e8fe;
     width: 100%;

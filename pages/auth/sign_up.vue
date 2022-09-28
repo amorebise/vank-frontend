@@ -18,18 +18,10 @@
               <!-- First Name -->
               <div class="col-md-6">
                 <div class="form-group mx-2 mt-2">
-                  <ValidationProvider
-                    name="first name"
-                    rules="required"
-                    v-slot="{ errors }"
-                  >
+                  <ValidationProvider name="first name" rules="required" v-slot="{ errors }">
                     <label for="" class="">First Name</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      v-model="signUp_data.first_name"
-                      placeholder="Enter your First Name"
-                    />
+                    <input type="text" class="form-control" v-model="signUp_data.first_name"
+                      placeholder="Enter your First Name" />
                     <span class="errors">{{ errors[0] }}</span>
                   </ValidationProvider>
                 </div>
@@ -39,30 +31,18 @@
               <div class="col-md-6">
                 <div class="form-group mx-2 mt-2">
                   <label for="" class="">Middle Name</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    v-model="signUp_data.mid_name"
-                    placeholder="Enter your Middle Name(optional)"
-                  />
+                  <input type="text" class="form-control" v-model="signUp_data.mid_name"
+                    placeholder="Enter your Middle Name(optional)" />
                 </div>
               </div>
 
               <!-- Last Name -->
               <div class="col-md-6">
                 <div class="form-group mx-2 mt-2">
-                  <ValidationProvider
-                    name="last name"
-                    rules="required"
-                    v-slot="{ errors }"
-                  >
+                  <ValidationProvider name="last name" rules="required" v-slot="{ errors }">
                     <label for="" class="">Last Name</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      v-model="signUp_data.last_name"
-                      placeholder="Enter your Last Name"
-                    />
+                    <input type="text" class="form-control" v-model="signUp_data.last_name"
+                      placeholder="Enter your Last Name" />
 
                     <span class="errors">{{ errors[0] }}</span>
                   </ValidationProvider>
@@ -72,18 +52,10 @@
               <!-- Email -->
               <div class="col-md-6">
                 <div class="form-group mx-2 mt-2">
-                  <ValidationProvider
-                    name="email"
-                    rules="required|email"
-                    v-slot="{ errors }"
-                  >
+                  <ValidationProvider name="email" rules="required|email" v-slot="{ errors }">
                     <label for="" class="">Email Address</label>
-                    <input
-                      type="email"
-                      class="form-control"
-                      v-model="signUp_data.email"
-                      placeholder="Enter your Email Address"
-                    />
+                    <input type="email" class="form-control" v-model="signUp_data.email"
+                      placeholder="Enter your Email Address" />
 
                     <span class="errors">{{ errors[0] }}</span>
                   </ValidationProvider>
@@ -98,21 +70,11 @@
               <!-- Phone Number -->
               <div class="col-md-6">
                 <div class="form-group mx-2 mt-2">
-                  <ValidationProvider
-                    name="phone number"
-                    rules="required|integer|max:14"
-                    v-slot="{ errors }"
-                  >
+                  <ValidationProvider name="phone number" rules="required|integer|max:14" v-slot="{ errors }">
                     <label for="" class="">Phone Number</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      v-model="signUp_data.phone_number"
-                      placeholder="234**********"
-                    />
-                    <span class="warning"
-                      >phone number should contain country code</span
-                    >
+                    <input type="text" class="form-control" v-model="signUp_data.phone_number"
+                      placeholder="234**********" />
+                    <span class="warning">phone number should contain country code</span>
                     <div v-show="error_message">
                       <span class="errors">{{ phone_number_error }}</span>
                     </div>
@@ -124,18 +86,10 @@
               <!-- Address -->
               <div class="col-md-6">
                 <div class="form-group mx-2 mt-2">
-                  <ValidationProvider
-                    name="address"
-                    rules="required"
-                    v-slot="{ errors }"
-                  >
+                  <ValidationProvider name="address" rules="required" v-slot="{ errors }">
                     <label for="" class="">Full Address</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      v-model="signUp_data.address"
-                      placeholder="Enter your Address, Street and city"
-                    />
+                    <input type="text" class="form-control" v-model="signUp_data.address"
+                      placeholder="Enter your Address, Street and city" />
                     <span class="errors">{{ errors[0] }}</span>
                   </ValidationProvider>
                 </div>
@@ -144,23 +98,13 @@
               <!-- Password -->
               <div class="col-md-6">
                 <div class="form-group mx-2 mt-2">
-                  <ValidationProvider
-                    name="password"
-                    rules="required|max:30|min:6"
-                    v-slot="{ errors }"
-                  >
+                  <ValidationProvider name="password" rules="required|max:30|min:6" v-slot="{ errors }">
                     <label for="" class="">Password</label>
-                    <input
-                      type="password"
-                      class="form-control"
-                      v-model="signUp_data.password"
-                      placeholder="Create Password"
-                    />
+                    <input type="password" class="form-control" v-model="signUp_data.password"
+                      placeholder="Create Password" />
                     <span class="errors">{{ errors[0] }}</span>
-                    <span class="errors"
-                      >password must contain atleast one uppercase letter, one
-                      special character, and one number</span
-                    >
+                    <span class="errors">password must contain atleast one uppercase letter, one
+                      special character, and one number</span>
                   </ValidationProvider>
                 </div>
               </div>
@@ -168,18 +112,10 @@
               <!-- Confirm Password -->
               <div class="col-md-6">
                 <div class="form-group mx-2 mt-2">
-                  <ValidationProvider
-                    name="confirm password"
-                    rules="required|max:30|min:8"
-                    v-slot="{ errors }"
-                  >
+                  <ValidationProvider name="confirm password" rules="required|max:30|min:8" v-slot="{ errors }">
                     <label for="" class="">Confirm Password</label>
-                    <input
-                      type="password"
-                      class="form-control"
-                      v-model="signUp_data.password_confirmation"
-                      placeholder="Re-enter Password again"
-                    />
+                    <input type="password" class="form-control" v-model="signUp_data.password_confirmation"
+                      placeholder="Re-enter Password again" />
                     <div v-show="error_message">
                       <span class="errors">{{ password_error }}</span>
                     </div>
@@ -191,27 +127,13 @@
               <!-- Country -->
               <div class="col-md-6">
                 <div class="form-group mx-2 mt-2">
-                  <ValidationProvider
-                    name="country"
-                    rules="required"
-                    v-slot="{ errors }"
-                  >
-                    <label for="exampleFormControlSelect1" class=""
-                      >Country</label
-                    >
-                    <select
-                      class="form-control option-class select"
-                      id="exampleFormControlSelect1"
-                      v-model="signUp_data.country"
-                    >
+                  <ValidationProvider name="country" rules="required" v-slot="{ errors }">
+                    <label for="exampleFormControlSelect1" class="">Country</label>
+                    <select class="form-control option-class select" id="exampleFormControlSelect1"
+                      v-model="signUp_data.country">
                       <option>Please Select a Country</option>
-                      <option
-                        class=""
-                        id="selectCountry"
-                        v-for="country in countries"
-                        :key="country.id"
-                        :value="country.name"
-                      >
+                      <option class="" id="selectCountry" v-for="country in countries" :key="country.id"
+                        :value="country.name">
                         {{ country.name }}
                       </option>
                     </select>
@@ -223,27 +145,11 @@
               <!-- State -->
               <div class="col-md-6">
                 <div class="form-group mx-2 mt-2">
-                  <ValidationProvider
-                    name="state"
-                    rules="required"
-                    v-slot="{ errors }"
-                  >
-                    <label for="exampleFormControlSelect1" class=""
-                      >State</label
-                    >
-                    <select
-                      class="form-control option-class select"
-                      id="stateId"
-                      v-model="signUp_data.state"
-                    >
+                  <ValidationProvider name="state" rules="required" v-slot="{ errors }">
+                    <label for="exampleFormControlSelect1" class="">State</label>
+                    <select class="form-control option-class select" id="stateId" v-model="signUp_data.state">
                       <option>Please Select a Country</option>
-                      <option
-                        class=""
-                        id="selectState"
-                        v-for="state in states"
-                        :key="state.index"
-                        :value="state"
-                      >
+                      <option class="" id="selectState" v-for="state in states" :key="state.index" :value="state">
                         {{ state }}
                       </option>
                     </select>
@@ -253,7 +159,7 @@
               </div>
 
               <!-- Referrals -->
-              <div class="col-md-6">
+              <!-- <div class="col-md-6">
                 <div class="form-group mx-2 mt-2">
                   <label for="" class="">Referral Code</label>
                   <input
@@ -263,21 +169,13 @@
                     placeholder="Enter referral code"
                   />
                 </div>
-              </div>
+              </div> -->
 
               <div class="col-md-12">
                 <div class="form-group mx-4 mt-2">
-                  <ValidationProvider
-                    name="accept_terms"
-                    rules="required"
-                    v-slot="{ errors }"
-                  >
+                  <ValidationProvider name="accept_terms" rules="required" v-slot="{ errors }">
                     <div class="pl-2 t_c_wrap d-flex align-items-center">
-                      <b-form-checkbox
-                        id="checkbox-1"
-                        v-model="signUp_data.agreement"
-                        name="checkbox-1"
-                      >
+                      <b-form-checkbox id="checkbox-1" v-model="signUp_data.agreement" name="checkbox-1">
                         I have read, understood and accepted the
                         <popup />
                       </b-form-checkbox>
@@ -288,22 +186,12 @@
               </div>
             </div>
             <div class="text-center register_wrap mt-4">
-              <v-btn
-                class="register_button"
-                value=""
-                :loading="loading"
-                type="submit"
-                >Sign up for free</v-btn
-              >
+              <v-btn class="register_button" value="" :loading="loading" type="submit">Sign up for free</v-btn>
 
               <div class="login_wrap">
                 <p>
                   Already have an account?
-                  <nuxt-link
-                    to="/login"
-                    class="text-primary text-decoration-none"
-                    >Log in</nuxt-link
-                  >
+                  <nuxt-link to="/login" class="text-primary text-decoration-none">Log in</nuxt-link>
                 </p>
               </div>
             </div>
@@ -431,16 +319,16 @@ export default {
       }
     },
   },
-  
+
   mounted() {
     this.getCountry();
-  
+
     const urlParams = new URLSearchParams(window.location.search);
     var myParam = urlParams.get('ref');
     this.myReferral = myParam
     console.log(this.myReferral)
     this.signUp_data.referred_by = this.myReferral
-    
+
   },
   components: {
     Toast,
@@ -457,16 +345,19 @@ export default {
   margin: 0;
   padding: 0;
 }
+
 .registeration_content {
   margin: 40px auto;
   width: 70%;
 }
+
 .registeration_content h1 {
   color: #0f1842;
   font-size: 76px;
   font-weight: bold;
   font-family: "Titillium Web", sans-serif;
 }
+
 .registeration_content h5 {
   font-size: 16px;
 }
@@ -478,24 +369,30 @@ export default {
   min-height: 7vh;
   padding: 10px;
 }
+
 .form_section .form-control:focus {
   border-color: #c5cbcc;
 }
+
 .account_color {
   color: #1d83c5;
   font-size: 11px;
 }
+
 .form_section select {
   -webkit-appearance: revert;
 }
+
 .form_section .form-control::placeholder {
   font-size: 14px;
 }
+
 .register_button {
   background-color: #1d83c5 !important;
   color: #fff;
   border-radius: 5px;
 }
+
 .v-btn {
   background-color: #00e8fe !important;
   color: #000;
@@ -509,20 +406,25 @@ export default {
   color: red;
   font-size: 10px;
 }
+
 .warning {
   color: #000;
   font-size: 10px;
 }
+
 .custom-control-label::after {
   cursor: pointer !important;
 }
+
 .t_c_wrap {
   font-size: 12px;
 }
+
 .t_c_wrap span {
   cursor: pointer !important;
   font-size: 12px;
 }
+
 .custom-control-label::after {
   cursor: pointer !important;
 }
@@ -531,43 +433,55 @@ export default {
   .registeration_content {
     width: 100%;
   }
+
   .registeration_content .form-group {
     margin-top: 10px !important;
   }
+
   .col-md-6 {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
   }
+
   .registeration_content h1 {
     font-size: 30px;
   }
+
   .registeration_content h5 {
     font-size: 13px;
   }
+
   label {
     font-size: 11px;
   }
+
   .form-control {
     font-size: 11px;
   }
+
   .v-btn {
     padding: 25px 30px !important;
     width: 100%;
     font-size: 20px;
   }
+
   .account_color {
     font-size: 10px;
   }
+
   .register_wrap {
     padding: 10px;
     font-size: 12px;
   }
+
   .t_c_wrap {
     font-size: 9px;
   }
+
   .v-btn {
     font-size: 15px;
   }
+
   /* .signup__nav {
     position: fixed;
     background-color: #fff;

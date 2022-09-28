@@ -2,44 +2,29 @@
   <div>
     <div class="lagos_card">
       <div class="row">
-        <div
-          v-for="bookmark in myBookmarks"
-          :key="bookmark.index"
-          class="col-md-4"
-        >
+        <div v-for="bookmark in myBookmarks" :key="bookmark.index" class="col-md-4">
           <div class="card_wrap">
-            <div
-              @click="
-                $router.push(`/user_dashboard/asset_detail/${bookmark.id}`)
-              "
-              class="general_trends"
-              :style="{ backgroundImage: 'url(' + bookmark.image + ')' }"
-            >
+            <div @click="
+              $router.push(`/user_dashboard/asset_detail/${bookmark.asset_id}`)
+            " class="general_trends" :style="{ backgroundImage: 'url(' + bookmark.image + ')' }">
               <div class="tq_notification">
-                <span
-                  v-if="bookmark.token_quantity_subscribed.length > 0"
-                  style="font-size: 12px"
-                  class="text-dark"
-                  >{{
-                    (
-                      (Number(bookmark.token_quantity_subscribed) /
-                        Number(bookmark.token_quantity_available)) *
-                      100
-                    ).toFixed(0)
-                  }}
-                  % tokens Sold</span
-                >
-                <span v-else style="font-size: 12px" class="text-dark"
-                  >0 token Sold</span
-                >
+                <span v-if="bookmark.token_quantity_subscribed.length > 0" style="font-size: 12px" class="text-dark">{{
+                (
+                (Number(bookmark.token_quantity_subscribed) /
+                Number(bookmark.token_quantity_available)) *
+                100
+                ).toFixed(0)
+                }}
+                  % tokens Sold</span>
+                <span v-else style="font-size: 12px" class="text-dark">0 token Sold</span>
               </div>
               <div style="line-height: 20px" class="opaque_text">
-                <p  v-if="bookmark.coordinates">
+                <p v-if="bookmark.coordinates">
                   Coordinates: <br />
                   {{ bookmark.coordinates }}
                 </p>
                 <p v-else>
-                  Coordinates: <br />
+
                   4724”12.2N 384231.7E
                 </p>
               </div>
@@ -48,29 +33,19 @@
             <div class="text_wrap bg-white px-3 py-2">
               <p>
                 Land in {{ bookmark.layout_name }} -
-                <span v-if="bookmark.size">{{ bookmark.size }}SQM</span>
-                <span v-else>650SQM</span>
+                <span>{{ bookmark.size }}SQM</span>
+                <!-- <span v-else>650SQM</span> -->
               </p>
               <div class="d-flex justify-content-between">
                 <h6>{{ bookmark.location }}</h6>
-                <ion-icon
-                  @click="removeBookmark(bookmark)"
-                  style="color: #00e8fe"
-                  name="bookmark"
-                />
+                <ion-icon @click="removeBookmark(bookmark)" style="color: #00e8fe" name="bookmark" />
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div
-        style="display: grid; margin-top: 60px; place-items: center"
-        v-if="myBookmarks.length === 0"
-      >
-        <ion-icon
-          style="color: #00e8fe; font-size: 100px"
-          name="bookmark-outline"
-        />
+      <div style="display: grid; margin-top: 60px; place-items: center" v-if="myBookmarks.length === 0">
+        <ion-icon style="color: #00e8fe; font-size: 100px" name="bookmark-outline" />
         <p>You have no bookmarked asset</p>
       </div>
     </div>
@@ -138,6 +113,7 @@ export default {
   position: relative;
   transition: 1s;
 }
+
 .lagos_card .general_trends {
   /* background-image: url("/asset2.jpg"); */
   background-size: cover;
@@ -153,17 +129,21 @@ export default {
   font-weight: 500;
   font-size: 15px;
 }
+
 .lagos_card .general_trends:hover {
   background-color: rgba(0, 0, 0, 0.34);
   background-blend-mode: overlay;
 }
+
 .lagos_card .general_trends .opaque_text {
   opacity: 0;
 }
+
 .lagos_card .general_trends:hover .opaque_text {
   opacity: 1;
   transition: ease-in-out 0.7s;
 }
+
 .lagos_card .sale_notification {
   position: absolute;
   z-index: 999;
@@ -176,19 +156,23 @@ export default {
   border-top-left-radius: 10px;
   /* opacity: 0; */
 }
+
 .lagos_card .text_wrap {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
+
 .lagos_card .text_wrap p {
   font-size: 14px;
   font-weight: 500;
   word-spacing: 1px;
 }
+
 .lagos_card .text_wrap span {
   font-size: 14px;
   font-weight: 600;
 }
+
 .lagos_card .text_wrap h6 {
   font-weight: 600;
   letter-spacing: 1px;

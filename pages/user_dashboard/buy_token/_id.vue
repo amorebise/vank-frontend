@@ -24,11 +24,11 @@
                     <p>
                       {{ (
                       (Number(asset_detail.token_quantity_subscribed) /
-                      Number(asset_detail.token_quantity_available)) *
+                      Number(asset_detail.current_market_price)) *
                       100
                       ).toFixed(0) }}% tokens sold
                     </p>
-                    <h4>{{asset_detail.size}}</h4>
+                    <h4>{{asset_detail.size}}SQM</h4>
                   </div>
                 </div>
               </div>

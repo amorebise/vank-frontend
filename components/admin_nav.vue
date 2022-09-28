@@ -4,7 +4,9 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4">
         <div class="">
           <li class="dashboard_text_li d-flex align-items-center">
-            <div><admin-toggle /></div>
+            <div>
+              <admin-toggle />
+            </div>
             <div class="mt-3">
               <h1 class="blue_text">{{ name }}</h1>
             </div>
@@ -70,33 +72,41 @@ export default {
   list-style-type: none !important;
   text-decoration: none !important;
 }
+
 .admin .navbar {
   padding-left: 0 !important;
   /* padding-right: 0 !important; */
 }
+
 .dashboard_text_li h1 {
   color: #000;
   font-weight: 600;
 }
+
 .log_out_button {
   border: 1px solid #00e8fe;
   padding: 5px 15px;
   border-radius: 5px;
 }
+
 @media (max-width: 768px) {
   .dashboard_text {
     font-size: 20px;
     margin-top: 0 !important;
   }
+
   .dashboard_text_li .mt-3 {
     margin-top: 10px !important;
   }
+
   .dashboard_text_li h1 {
     font-size: 20px;
   }
+
   .navbar {
     padding: 0;
   }
+
   .nav_content .navbar {
     padding: 0;
   }
