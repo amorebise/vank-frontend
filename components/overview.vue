@@ -31,7 +31,7 @@
                 <div class="wallet__amount__cardmt-2 mt-5" style="line-height: 2px">
                   <p>Withdrawals</p>
                 </div>
-                <span>&#8358;{{withdrawals}}</span>
+                <span>{{withdrawals}}</span>
               </div>
             </div>
             <div class="col-md-4 d-flex justify-content-center">
@@ -154,7 +154,7 @@ export default {
     async getSumWithdrawals() {
       try {
         const response = await this.$axios.post("/admin/sumAllWithdrawal");
-        this.withdrawals = response;
+        this.withdrawals = response.data;
         console.log(this.withdrawals);
       } catch (error) {
         console.log(error);
