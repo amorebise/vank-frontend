@@ -31,11 +31,11 @@
               </div>
               <div>
                 <!-- <nuxt-link to="/user_dashboard/transfer_confirmation"> -->
-                <button @click="confirmPayment()" class="assets__link">
+                <!-- <button @click="confirmPayment()" class="assets__link">
                   <span class="px-3" style="font-weight: 400"
                     >I have made full payment</span
                   >
-                </button>
+                </button> -->
                 <!-- </nuxt-link> -->
               </div>
             </div>
@@ -59,15 +59,15 @@ export default {
     };
   },
   methods: {
-    async confirmPayment() {
-      try {
-        let response = await this.$axios.post("/confirmPayment");
-        console.log(response);
-        this.$router.push("/user_dashboard/transfer_confirmation");
-      } catch (error) {
-        console.log(error.response);
-      }
-    },
+    // async confirmPayment() {
+    //   try {
+    //     let response = await this.$axios.post("/confirmPayment");
+    //     console.log(response);
+    //     this.$router.push("/user_dashboard/transfer_confirmation");
+    //   } catch (error) {
+    //     console.log(error.response);
+    //   }
+    // },
      async showAccountDetails() {
       try {
         let response = await this.$axios.get("/getReservedAccount");
