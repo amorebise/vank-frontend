@@ -6,99 +6,52 @@
         <form class="mt-3" method="post" @submit.prevent="submit()">
           <div class="form-group">
             <label class="py-2" for="">Email</label>
-            <input
-              type="text"
-              class="form-control"
-              required
-              v-model="forgot_password.email"
-              placeholder="enter your email address"
-            />
+            <input type="text" class="form-control" required v-model="forgot_password.email"
+              placeholder="enter your email address" />
           </div>
           <div class="form-group">
             <label class="py-2" for="">Token</label>
-            <input
-              type="text"
-              required
-              class="form-control"
-              v-model="forgot_password.token"
-              placeholder="enter token sent to your email"
-            />
+            <input type="text" required class="form-control" v-model="forgot_password.token"
+              placeholder="enter token sent to your email" />
           </div>
           <div class="form-group">
             <label class="py-2" for="">Password</label>
-            <div
-              class="
+            <div class="
                 d-flex
                 password_wrap
                 align-items-center
                 justify-content-between
-              "
-            >
-              <input
-                type="password"
-                id="password"
-                class=""
-                required
-                v-model="forgot_password.password"
-                placeholder="enter password"
-              />
+              ">
+              <input type="password" id="password" class="" required v-model="forgot_password.password"
+                placeholder="enter password" />
               <span class="d-flex" @click="displayPassword()">
-                <font-awesome-icon
-                  id="show_password"
-                  class="text-muted eye_icon"
-                  :icon="['fas', 'eye']"
-                />
-                <font-awesome-icon
-                  id="hide_password"
-                  class="text-muted eye_slash_icon"
-                  :icon="['fas', 'eye-slash']"
-                />
+                <font-awesome-icon id="show_password" class="text-muted eye_icon" :icon="['fas', 'eye']" />
+                <font-awesome-icon id="hide_password" class="text-muted eye_slash_icon" :icon="['fas', 'eye-slash']" />
               </span>
             </div>
           </div>
 
           <div class="form-group">
             <label class="py-2" for="">Password</label>
-            <div
-              class="
+            <div class="
                 d-flex
                 password_wrap
                 align-items-center
                 justify-content-between
-              "
-            >
-              <input
-                type="password"
-                id="second_password"
-                class=""
-                required
-                v-model="forgot_password.password_confirmation"
-                placeholder="enter password"
-              />
+              ">
+              <input type="password" id="second_password" class="" required
+                v-model="forgot_password.password_confirmation" placeholder="enter password" />
               <span class="d-flex" @click="displaySecondPassword()">
-                <font-awesome-icon
-                  id="show_second_passwordd"
-                  class="text-muted eye_icon"
-                  :icon="['fas', 'eye']"
-                />
-                <font-awesome-icon
-                  id="hide_second_passwordd"
-                  class="text-muted eye_slash_icon"
-                  :icon="['fas', 'eye-slash']"
-                />
+                <font-awesome-icon id="show_second_passwordd" class="text-muted eye_icon" :icon="['fas', 'eye']" />
+                <font-awesome-icon id="hide_second_passwordd" class="text-muted eye_slash_icon"
+                  :icon="['fas', 'eye-slash']" />
               </span>
             </div>
           </div>
 
           <div class="text-center">
             <div class="forgot_button">
-              <v-btn
-                class="login_button"
-                :loading="loading"
-                value="Login"
-                type="submit"
-                >Log In</v-btn
-              >
+              <v-btn class="login_button" :loading="loading" value="Login" type="submit">Log In</v-btn>
             </div>
 
             <!-- <div class="login_wrap mt-3">
@@ -141,7 +94,6 @@ export default {
           this.forgot_password
         );
         console.log(response);
-        this.$router.push("/auth/notification/");
         this.$router.push("/login");
         this.$toast.success("Password Changed Successfully", {
           timeout: 5000,
@@ -200,6 +152,7 @@ export default {
   margin: 40px auto;
   width: 30%;
 }
+
 /* .forgot_password_content {
   margin-top: 200px;
 } */
@@ -209,6 +162,7 @@ export default {
   display: none;
   cursor: pointer;
 }
+
 .eye_slash_icon {
   font-size: 15px;
   cursor: pointer;
@@ -234,6 +188,7 @@ export default {
   border: 1px solid #ced4da;
   border-radius: 0.35rem;
 }
+
 .password_wrap input {
   width: 100%;
   outline: none;
@@ -244,15 +199,18 @@ export default {
   box-shadow: none;
   border-color: #c5cbcc;
 }
+
 .forgot-password-wrap {
   cursor: pointer;
 }
+
 .password_link,
 .sign_up_link {
   cursor: pointer;
   color: #1d83c5;
   font-size: 13px;
 }
+
 .login_wrap {
   font-size: 14px;
 }
@@ -274,9 +232,11 @@ export default {
     margin: 0;
     width: 100%;
   }
+
   .password_wrap {
     font-size: 13px;
   }
+
   .form-control,
   label,
   .login_wrap,
@@ -284,9 +244,11 @@ export default {
   .sign_up_link {
     font-size: 13px;
   }
+
   .login_button {
     font-size: 15px;
   }
+
   .form-control {
     height: 5%;
   }

@@ -18,7 +18,7 @@
                   <p>Subscription</p>
                 </div>
                 <!-- <span>&#8358;X, 123,000</span> -->
-                <span>{{ asset_subscriptions }}</span>
+                <span>&#8358;{{ subscriptions }}</span>
               </div>
             </div>
             <div class="col-md-4 d-flex justify-content-center">
@@ -29,9 +29,9 @@
                   <h5 style="color: #00e8fe; padding-top: 5px">VANK</h5>
                 </div>
                 <div class="wallet__amount__cardmt-2 mt-5" style="line-height: 2px">
-                  <p>Withdrawal</p>
+                  <p>Withdrawals</p>
                 </div>
-                <span>&#8358;B, 123,000</span>
+                <span>&#8358;{{withdrawals}}</span>
               </div>
             </div>
             <div class="col-md-4 d-flex justify-content-center">
@@ -106,6 +106,7 @@ export default {
       asset_subscriptions: {},
       total_asset: {},
       total_subscribers: {},
+      withdrawals: {},
     };
   },
 
@@ -143,9 +144,18 @@ export default {
     },
     async getAllSubscription() {
       try {
-        const response = await this.$axios.get("/admin/getAllSubscription");
+        const response = await this.$axios.post("/admin/sumAllSubscription");
         this.subscriptions = response.data;
         console.log(this.subscriptions);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async getSumWithdrawals() {
+      try {
+        const response = await this.$axios.post("/admin/sumAllWithdrawal");
+        this.withdrawals = response;
+        console.log(this.withdrawals);
       } catch (error) {
         console.log(error);
       }
@@ -184,6 +194,7 @@ export default {
     this.getTotalUserNumber();
     this.getAssetSubscriptions()
     this.sumAllAsset();
+    this.getSumWithdrawals()
   },
 };
 </script>

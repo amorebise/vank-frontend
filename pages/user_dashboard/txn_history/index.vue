@@ -1,7 +1,7 @@
 <template>
   <div class="pay_bills_wrap w-100">
     <div class="users">
-      <user-nav name="Transactions" />
+      <user-nav class="py-4 available__assets__nav" name="Transactions" />
       <div class="users_wrap">
         <div class="search__bar__wrap">
           <div class="form-group py-3">
