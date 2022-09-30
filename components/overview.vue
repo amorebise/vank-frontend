@@ -62,7 +62,7 @@
               </div>
             </div>
 
-            <div class="col-md-4 d-flex justify-content-center">
+            <!-- <div class="col-md-4 d-flex justify-content-center">
               <div class="admin__wallet__wrap mb-2 px-3 py-2">
                 <div class="header__section d-flex align-items-center py-3">
                   <nuxt-img format="webp" sizes="xs:35vw sm:30vw md:20vw lg:2vw" quality="90" fit="cover"
@@ -74,9 +74,9 @@
                 </div>
                 <span>&#8358;X,123,000</span>
               </div>
-            </div>
+            </div> -->
 
-            <div class="col-md-4 d-flex justify-content-center">
+            <!-- <div class="col-md-4 d-flex justify-content-center">
               <div class="admin__wallet__wrap mb-2 px-3 py-2">
                 <div class="header__section d-flex align-items-center py-3">
                   <nuxt-img format="webp" sizes="xs:35vw sm:30vw md:20vw lg:2vw" quality="90" fit="cover"
@@ -88,7 +88,7 @@
                 </div>
                 <span>&#8358;X,123,000</span>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

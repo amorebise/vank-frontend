@@ -7,11 +7,7 @@
           <div class="shift">
             <div class="search__bar__wrap">
               <div class="form-group py-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Search request by name"
-                />
+                <input type="text" class="form-control" placeholder="Search request by name" />
               </div>
             </div>
           </div>
@@ -22,7 +18,7 @@
                 <template v-slot:default>
                   <thead>
                     <tr class="">
-                      <th class="text-left th_color">SN</th>
+                      <th class="text-left th_color">Ref ID</th>
                       <th class="text-left th_color">Name</th>
                       <th class="text-left th_color">Phone Number</th>
                       <th class="text-left th_color">Amount(N)</th>
@@ -31,22 +27,15 @@
                   </thead>
 
                   <tbody>
-                    <tr
-                      v-for="withdrawal in withdrawals"
-                      :key="withdrawal.index"
-                      style="border-bottom: thin solid rgba(0, 0, 0, 0.12)"
-                      class="mt-2"
-                    >
-                      <td>2</td>
+                    <tr v-for="withdrawal in withdrawals" :key="withdrawal.index"
+                      style="border-bottom: thin solid rgba(0, 0, 0, 0.12)" class="mt-2">
+                      <td>{{ withdrawal.reference_id }}</td>
                       <td>{{ withdrawal.name }}</td>
                       <td>{{ withdrawal.phone_number }}</td>
                       <td>{{ withdrawal.amount }}</td>
                       <td>
                         <div class="d-flex" style="gap: 10px; font-size: 12px">
-                          <button
-                            @click="approveWithdrawal(withdrawal)"
-                            class="text-success"
-                          >
+                          <button @click="approveWithdrawal(withdrawal)" class="text-success">
                             Approve
                           </button>
                         </div>
@@ -66,7 +55,7 @@
   </div>
 </template>
   
-  <script>
+<script>
 import creator_sidebar from "~/components/creator_sidebar.vue";
 export default {
   components: { creator_sidebar },
@@ -109,55 +98,50 @@ export default {
 };
 </script>
   
-  <style >
+<style >
 .cash__sub__wrap {
   margin-left: 230px;
   background-color: #fff;
   min-height: 100vh;
   padding: 0 50px;
 }
+
 .cash__sub__wrap .v-slide-group {
   flex-wrap: wrap;
   /* padding: 10px; */
 }
-.cash__sub__wrap .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active),
-.cash__sub__wrap
-  .theme--light.v-tabs
-  > .v-tabs-bar
-  .v-tab:not(.v-tab--active)
-  > .v-icon,
-.cash__sub__wrap
-  .theme--light.v-tabs
-  > .v-tabs-bar
-  .v-tab:not(.v-tab--active)
-  > .v-btn,
-.cash__sub__wrap .theme--light.v-tabs > .v-tabs-bar .v-tab--disabled {
+
+.cash__sub__wrap .theme--light.v-tabs>.v-tabs-bar .v-tab:not(.v-tab--active),
+.cash__sub__wrap .theme--light.v-tabs>.v-tabs-bar .v-tab:not(.v-tab--active)>.v-icon,
+.cash__sub__wrap .theme--light.v-tabs>.v-tabs-bar .v-tab:not(.v-tab--active)>.v-btn,
+.cash__sub__wrap .theme--light.v-tabs>.v-tabs-bar .v-tab--disabled {
   color: #55174f;
   font-variant: normal;
 }
+
 .cash__sub__wrap .v-tab {
   text-transform: unset;
 }
+
 .cash__sub__wrap .transactions_data {
   background-color: #fff;
 }
+
 /* .cash__sub__wrap
     .transactions_data
     .v-data-table--fixed-header
     > .v-data-table__wrapper {
     background-color: #f8f7ff;
   } */
-.cash__sub__wrap
-  .transactions_data
-  .v-data-table
-  > .v-data-table__wrapper
-  > table {
+.cash__sub__wrap .transactions_data .v-data-table>.v-data-table__wrapper>table {
   background-color: #fff;
 }
+
 .cash__sub__wrap .transactions_data .th_color {
   background-color: #f8f7ff !important;
   border-bottom: none !important;
 }
+
 .cash__sub__wrap .choose__txn__wrap {
   border: 1px solid #00e8fe;
   border-radius: 20px;
@@ -166,13 +150,16 @@ export default {
   height: 400px;
   padding: 10px 40px;
 }
+
 .cash__sub__wrap .choose__txn__wrap .form-control {
   font-size: 13px;
   box-shadow: none;
 }
+
 .cash__sub__wrap .choose__txn__wrap .form-control:focus {
   border-color: #30303044;
 }
+
 .cash__sub__wrap .pop__up {
   width: 100%;
   height: 100%;
@@ -184,16 +171,19 @@ export default {
   display: grid;
   place-items: center;
 }
+
 .cash__sub__wrap .pop__up__content {
   background-color: #fff;
   padding: 15px 30px;
   border-radius: 10px;
 }
+
 .cash__sub__wrap .pop__up__content button {
   padding: 3px 10px;
   background-color: #00e8fe;
   border-radius: 5px;
 }
+
 .zoomIn {
   -webkit-animation-name: zoomIn;
   animation-name: zoomIn;
@@ -202,26 +192,31 @@ export default {
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
+
 @-webkit-keyframes zoomIn {
   0% {
     opacity: 0;
     -webkit-transform: scale3d(0.3, 0.3, 0.3);
     transform: scale3d(0.3, 0.3, 0.3);
   }
+
   50% {
     opacity: 1;
   }
 }
+
 @keyframes zoomIn {
   0% {
     opacity: 0;
     -webkit-transform: scale3d(0.3, 0.3, 0.3);
     transform: scale3d(0.3, 0.3, 0.3);
   }
+
   50% {
     opacity: 1;
   }
 }
+
 .cash__sub__wrap .asset__content {
   background-image: url("/asset.jpg");
   background-size: cover;
@@ -238,22 +233,27 @@ export default {
   border: 5px solid #00e8fe;
   /* gap: 10px; */
 }
+
 .cash__sub__wrap .asset__content p {
   opacity: 0;
 }
+
 .cash__sub__wrap .asset__content h4 {
   opacity: 0;
   color: #00e8fe;
 }
+
 .cash__sub__wrap .asset__content:hover {
   background-color: rgba(0, 0, 0, 0.34);
   background-blend-mode: overlay;
   z-index: 999;
 }
+
 .cash__sub__wrap .asset__content:hover p {
   opacity: 1;
   transition: ease-in-out 0.7s;
 }
+
 .cash__sub__wrap .asset__content:hover h4 {
   opacity: 1;
   transition: ease-in-out 0.7s;
@@ -293,9 +293,11 @@ export default {
     margin-left: 0 !important;
     padding: 0;
   }
+
   .cash__sub__wrap .shift {
     padding-left: 10px;
   }
+
   .withdrawal__wrap {
     padding: 15px;
   }
