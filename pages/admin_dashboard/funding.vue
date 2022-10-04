@@ -46,29 +46,29 @@
                         <tbody>
                           <tr style="
                               border-bottom: thin solid rgba(0, 0, 0, 0.12);
-                            " class="mt-2" v-for="funding in fundings" :key="funding.index">
-                            <td v-if="funding.admin_status === 'confirmed'">
+                            " class="mt-2" v-for="funding in funding_history" :key="funding.index">
+                            <td>
                               {{ funding.reference_id }}
                             </td>
-                            <td v-if="funding.admin_status === 'confirmed'">
+                            <td>
                               {{ funding.date }}
                             </td>
-                            <td v-if="funding.admin_status === 'confirmed'">
+                            <td>
                               {{ funding.name }}
                             </td>
-                            <td v-if="funding.admin_status === 'confirmed'">
+                            <td>
                               {{ funding.phone_number }}
                             </td>
-                            <td v-if="funding.admin_status === 'confirmed'" class="text-success">
+                            <td class="text-success">
                               {{ funding.status }}
                             </td>
 
-                            <td v-if="funding.admin_status === 'confirmed'">
+                            <td>
                               {{ funding.amount }}
                             </td>
-                            <!-- <td class="text-center" v-else>
+                            <td class="text-center" v-if="funding_history.length === 0">
                               You currently do not have any Funding requests.
-                            </td> -->
+                            </td>
                             <!-- <td class="pt-1">
                               <div
                                 class="d-flex"
@@ -110,8 +110,8 @@
                             <th class="text-left th_color">Ref ID</th>
                             <th class="text-left th_color">Date</th>
                             <th class="text-left th_color">Name</th>
-                            <th class="text-left th_color">Status</th>
                             <th class="text-left th_color">Phone Number</th>
+                            <th class="text-left th_color">Status</th>
                             <th class="text-left th_color">Amount(N)</th>
                             <th class="text-left th_color">Action</th>
                             <!-- <th class="text-left th_color">Comments</th> -->
@@ -229,6 +229,7 @@ export default {
       tab: null,
       success__modal: false,
       fundings: {},
+      funding_history: {},
       wallet: {
         amount: "",
         admin_comment: "",
@@ -245,6 +246,15 @@ export default {
         console.log(this.fundings);
       } catch (error) {
         console.log(error.response);
+      }
+    },
+    async getPaymentHistory() {
+      try {
+        let response = await this.$axios.get('/admin/getAllPaymentHisory')
+        this.funding_history = response.data
+        console.log(this.funding_history)
+      } catch (error) {
+        console.log(error.response)
       }
     },
     async approveTopupRequest(funding) {
@@ -267,6 +277,7 @@ export default {
   },
   created() {
     this.getTopRequest();
+    this.getPaymentHistory()
   },
 };
 </script>
