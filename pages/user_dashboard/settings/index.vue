@@ -82,6 +82,7 @@
             </div>
           </div>
 
+
           <div class="change__password__form" v-show="show_payment_modal">
             <div class="password__modal slideInDown">
               <form action="" method="post" @submit.prevent="updateBankDetails()">
@@ -97,9 +98,16 @@
                     placeholder="Enter your BVN" />
                 </div>
                 <div class="form-group">
-                  <label class="" for="">Enter Bank Name</label>
-                  <input required type="text" class="form-control" v-model="verification.bank"
-                    placeholder="Enter Bank Name" />
+
+                  <label for="exampleFormControlSelect1" class="">Enter Bank Name</label>
+                  <select class="form-control option-class select" id="exampleFormControlSelect1"
+                    v-model="verification.bank">
+                    <option>Please Select a Country</option>
+                    <option class="" id="selectCountry" v-for="bank in banks" :key="bank.index" :value="bank.name">
+                      {{ bank.name }}
+                    </option>
+                  </select>
+
                 </div>
                 <div class="form-group">
                   <label class="" for="">Enter Account Number</label>
@@ -128,9 +136,15 @@
           </div>
         </div> -->
           <div class="update__password__wrap d-flex justify-content-between py-2">
-            <div class="text-wrap">
+            <div class="text-wrap payment__content">
               <h5>Payments</h5>
-              <p>Update Bank Details</p>
+              <div class="pt-2">
+                <p>Update Bank Details</p>
+                <span style="font-size: 13px" class="text-danger">N/B: create a reserved account after updating your
+                  bank
+                  details below
+                </span>
+              </div>
             </div>
             <div class="edit__wrap">
               <button @click="show_payment_modal = !show_payment_modal">
@@ -138,7 +152,70 @@
               </button>
             </div>
           </div>
-          <div class="update__password__wrap d-flex justify-content-between">
+
+          <div>
+            <div class="notify__user">
+
+            </div>
+          </div>
+
+          <div v-if="reserved_acct" class="update__password__wrap d-flex justify-content-between py-2">
+            <div class="text-wrap">
+              <h5>View Reserved Account</h5>
+            </div>
+            <div class="edit__wrap">
+              <button @click="show_bank_modal = !show_bank_modal">View</button>
+            </div>
+          </div>
+
+          <div v-else class="update__password__wrap d-flex justify-content-between py-2">
+            <div class="text-wrap">
+              <h5>Create Reserved Account</h5>
+            </div>
+            <div class="edit__wrap">
+              <button @click="createReservedAccount()">Create</button>
+            </div>
+          </div>
+
+
+          <div class="change__password__form" v-show="show_bank_modal">
+            <div class="slideInDown">
+              <div class="detailed__content">
+                <div class="cancel__wrap text-right">
+                  <h6 @click="show_bank_modal = !show_bank_modal">x</h6>
+                </div>
+                <div class="text-center pb-2">
+                  <h4>Bank Details</h4>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <h6>Account Name:</h6>
+                  </div>
+                  <div>
+                    <p>{{reserved_acct.account_name}}</p>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <h6>Account Number:</h6>
+                  </div>
+                  <div>
+                    <p>{{reserved_acct.account_number}}</p>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <h6>Bank Name:</h6>
+                  </div>
+                  <div>
+                    <p>{{reserved_acct.bank_name}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="update__password__wrap d-flex justify-content-between">
             <div class="text-wrap">
               <h5>Verification</h5>
               <p>KYC Documents</p>
@@ -146,7 +223,7 @@
             <div class="edit__wrap">
               <nuxt-link class="kyc_link" to="/kyc/kyc">Next</nuxt-link>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -162,9 +239,12 @@ export default {
     return {
       profile_modal: false,
       show_modal: false,
+      show_bank_modal: false,
       tab: null,
       loading: false,
       show_payment_modal: false,
+      reserved_acct: {},
+      banks: {},
       update_profile: {
         email: "",
         phone_number: "",
@@ -194,6 +274,26 @@ export default {
         console.log(error.response);
       }
     },
+    async createReservedAccount() {
+      try {
+        let response = await this.$axios.post('/createNewReservedAccount')
+        console.log(response)
+        this.$toast.success('Reserved Account Created!!', { timeout: 5000 })
+      }
+      catch (error) {
+        console.log(error.response);
+      }
+    },
+    async getBanks() {
+      try {
+        let response = await this.$axios.get('/getBanks')
+        this.banks = response.data.data
+        console.log(this.banks)
+      }
+      catch (error) {
+        console.log(error.response)
+      }
+    },
     async updateBankDetails() {
       try {
         let response = await this.$axios.post(
@@ -213,6 +313,16 @@ export default {
         console.log(error.response);
       }
     },
+    async getReseervedAcct() {
+      try {
+        let response = await this.$axios.get('/getReservedAccount')
+        this.reserved_acct = response.data
+        console.log(this.reserved_acct);
+      }
+      catch (error) {
+        console.log(error.response);
+      }
+    },
     async change_password() {
       try {
         this.loading = true;
@@ -220,6 +330,7 @@ export default {
           "/changePassword",
           this.password_change
         );
+        this.show_modal = !this.show_modal
         this.$toast.success("Password Changed Successfully", {
           timeout: 5000,
         });
@@ -231,6 +342,11 @@ export default {
       }
     },
   },
+
+  created() {
+    this.getBanks()
+    this.getReseervedAcct()
+  }
 };
 </script>
 
@@ -244,6 +360,32 @@ export default {
 
 .settings__gen__wrap {
   padding-top: 50px;
+}
+
+.payment__content {
+  line-height: 5px;
+}
+
+.detailed__content {
+  background-color: #f8f7ff;
+  border-radius: 5px;
+  width: 30%;
+  padding: 20px;
+  margin: 100px auto;
+}
+
+.detailed__content h4 {
+  font-weight: 600;
+}
+
+.detailed__content h6 {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.detailed__content p {
+  font-size: 13px !important;
+  font-weight: 400 !important;
 }
 
 .settings_wrap {
@@ -278,15 +420,6 @@ export default {
   color: #000;
 }
 
-/* .update__password__wrap {
-} */
-/* .settings_wrap .v-slide-group__content {
-  background-color: #f4ede4;
-}
-.settings_wrap .theme--light.v-tabs > .v-tabs-bar,
-.settings_wrap .v-card > *:last-child:not(.v-btn):not(.v-chip):not(.v-avatar) {
-  background-color: #f4ede4;
-} */
 .settings_wrap .v-slide-group {
   flex-wrap: wrap;
 }
@@ -329,7 +462,7 @@ export default {
 }
 
 .password__modal {
-  width: 20%;
+  width: 25%;
   margin: 100px auto;
   background-color: #fff;
   padding: 30px 10px;
@@ -405,6 +538,12 @@ export default {
   .settings_wrap {
     margin: 0;
   }
+
+  /* .detailed__content {
+    background-color: #f8f7ff;
+    width: 100%;
+    padding: 20px;
+  } */
 
   .change__password__form {
     padding: 10px;

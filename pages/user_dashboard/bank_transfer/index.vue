@@ -12,8 +12,8 @@
               <p>Pay &#8358;{{ selected_amount.amount }} to:</p>
               <p>Vank Digital Services</p>
 
-              <p>Bank: GTBank</p>
-              <p>Acc No: 0719352237</p>
+              <p>Bank: {{reserved_acct.bank_name}}</p>
+              <p>Acc No: {{reserved_acct.account_number}}</p>
             </div>
             <div class="view__assets__wrap text-center">
               <div>
@@ -41,6 +41,7 @@ export default {
   components: { creator_sidebar },
   data() {
     return {
+      reserved_acct: {},
       selected_amount: {},
     };
   },
@@ -51,6 +52,16 @@ export default {
         console.log(response);
         this.$router.push("/user_dashboard/transfer_confirmation");
       } catch (error) {
+        console.log(error.response);
+      }
+    },
+    async getReseervedAcct() {
+      try {
+        let response = await this.$axios.get('/getReservedAccount')
+        this.reserved_acct = response.data
+        console.log(this.reserved_acct);
+      }
+      catch (error) {
         console.log(error.response);
       }
     },
@@ -66,6 +77,7 @@ export default {
   },
   created() {
     this.showAmount();
+    this.getReseervedAcct()
   },
 };
 </script>
