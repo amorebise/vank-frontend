@@ -215,6 +215,43 @@
             </div>
           </div>
 
+          <!-- <div class="change__password__form" v-show="show_bank_modal">
+            <div class="slideInDown">
+              <div class="detailed__content">
+                <div class="cancel__wrap text-right">
+                  <h6 @click="show_bank_modal = !show_bank_modal">x</h6>
+                </div>
+                <div class="text-center pb-2">
+                  <h4>Bank Details</h4>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <h6>Account Name:</h6>
+                  </div>
+                  <div>
+                    <p>{{reserved_acct.account_name}}</p>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <h6>Account Number:</h6>
+                  </div>
+                  <div>
+                    <p>{{reserved_acct.account_number}}</p>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <h6>Bank Name:</h6>
+                  </div>
+                  <div>
+                    <p>{{reserved_acct.bank_name}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
           <!-- <div class="update__password__wrap d-flex justify-content-between">
             <div class="text-wrap">
               <h5>Verification</h5>
@@ -540,11 +577,11 @@ export default {
     margin: 0;
   }
 
-  /* .detailed__content {
+  .detailed__content {
     background-color: #f8f7ff;
     width: 100%;
     padding: 20px;
-  } */
+  }
 
   .change__password__form {
     padding: 10px;
@@ -574,6 +611,10 @@ export default {
 
   .settings__gen__wrap {
     padding: 90px 15px;
+  }
+
+  .payment__content {
+    line-height: 15px;
   }
 }
 </style>
