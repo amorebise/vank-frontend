@@ -1,257 +1,314 @@
 <template>
   <div>
     <div class="container">
-      <span class="toggle text-primary" data-target="myPopup"
-        >VANK Agreement</span
-      >
+      <span class="toggle text-primary" data-target="myPopup">VANK Agreement</span>
 
       <div id="myPopup" class="popup hide">
         <div class="popup-header">
           <span class="close toggle" data-target="myPopup">close</span>
         </div>
         <div class="popup-body">
-          SUBSCRIPTION CONTRACT BETWEEN VANK SERVICES AND SUBSCRIBER PARTIES TO
-          THE CONTRACT VANK SERVICES of Grand Hubb, 18 1st Avenue Gwarinpa,
-          Abuja (Hereinafter referred to as “the Broker”) which expression shall
-          where the context so admits include their heirs, successors-in-title,
-          assigns, legal representatives, and executors of the other part). And
-          Subscriber’ name (of subscriber’s address). (Hereinafter referred to
-          as “the Subscriber”) which expression shall where the context so
-          admits include their heirs, successors-in-title, assigns, legal
-          representatives, and executors of the other part). WHEREAS The Broker
-          is a hobbyist who collects cryptographic tokens as souvenirs for
-          entertainment and for experimentation. The Broker has over the years
-          collected certain cryptographic tokens which eventually proved to be
-          in good demand amongst enthusiasts. The Broker is making his
-          experience available to friends and associates and anyone with similar
-          interests in cryptographic tokens, by providing education about
-          cryptographic tokens and services associated with such tokens;
-          including buying and sending cryptographic tokens to subscribers for a
-          fee. The Subscriber is interested in experimenting with cryptographic
-          tokens for entertainment and for pecuniary interests that may arise
-          therefrom. The subscriber is now willing and ready to subscribe to the
-          subscription plans of the broker. The Broker and subscriber have
-          agreed to enter into a business relationship for the aforesaid
-          purposes. The broker and the subscriber shall collectively be referred
-          to as “Parties” and individually as “Party” NOW THEREFORE THIS
-          AGREEMENT WITNESSES AS FOLLOWS; That in consideration of the mutual
-          covenants, agreements and conditions herein contained, it is hereby
-          covenanted, agreed and declared by and between the Parties (as defined
-          herein) as follows: Part 1 - DEFINITION AND INTERPRETATION OF TERMS 
-          AGREEMENT: refer to this Agreement and not to any particular article,
-          section or other portion hereof. It also includes any and every
-          instrument attached, annexure, appendices, schedules either ancillary
-          or contributory.  APPLICABLE LAW(S): means the following, as amended
-          from time to time, to the extent it applies to a Party; a. Any
-          statute, regulation, notice, policy, directive, ruling or subordinate
-          legislation (including treaties, multinational conventions and the
-          like having the force of law); b. The common law; c. Any binding court
-          order, judgement or ruling; d. Any applicable industry code, policy or
-          standard enforceable by law; or e. Any applicable direction, policy or
-          order that is given by any regulator, competent authority or organ of
-          state or industry body.  CONFIDENTIAL INFORMATION: means any
-          information or data of any nature, tangible or intangible, oral or in
-          writing and in any format or medium, which by its nature is tangible
-          or intangible, oral or in writing an in any format or medium, which by
-          its nature or content is or ought reasonably to be identifiable as
-          confidential and/or proprietary to the Disclosing Party or which is
-          provided or disclosed in confidence, and which the Disclosing Party or
-          any person acting on behalf of the Disclosing Party may disclose or
-          provide to the Receiving Party or which may come to the knowledge of
-          the Receiving Party by whatsoever means. Without limitation,
-          Confidential Information shall include the following even if it is not
-          marked as being "confidential", "restricted" or "proprietary" (or any
-          similar designation):  information relating to the Disclosing Party’s
-          business activities, business relationships, products, services,
-          processes, data, including agreements to which the Disclosing Party is
-          a party;  information and data relating to the Disclosing Party’s
-          clients;  information contained in or constituting or relating to the
-          Disclosing Party’s systems, machinery, hardware or software, networks,
-          telecommunications services and facilities, including products which
-          are proprietary to a third party, and associated material, and
-          information or incidents concerning faults or defects therein;  the
-          Disclosing Party's technical, scientific, commercial, financial and
-          market information (including valuations and forecasts),
-          methodologies, formulae and trade secrets and its architectural
-          information, demonstrations, plans, designs, drawings, processes,
-          process maps, functional and technical requirements and specifications
-          and the data relating thereto;  Intellectual Property that is
-          proprietary to the Disclosing Party or that is proprietary to a third
-          party, including but not limited to data relating to the customers of
-          the Disclosing Party;  any information identified as confidential by
-          a stamp or other similar notice; and  All other records, data or
-          information collected, received, stored or transmitted in any manner
-          connected with the provision of Services under this Agreement.
-          Confidential Information excludes information or data which: a. is
-          lawfully in the public domain at the time of disclosure to the
-          Receiving Party; or b. subsequently becomes lawfully part of the
-          public domain by publication or otherwise; or is or becomes available
-          to the Receiving Party from a source other than the Disclosing Party
-          which is lawfully entitled c. Is disclosed pursuant to a requirement
-          or request by operation of law, regulation or court order but then
-          only to the extent so disclosed and then only in the specific instance
-          and under the specific circumstances in which it is obliged to be
-          disclosed.  Cryptographic tokens: digital lines of code that may
-          represent but not be limited to any ofthe following: utility
-          tokens,security tokens, NFTs, Fan tokens, Meterverseprojects, or
-          advance subscription to these via private sales.  Effective Date:
-          means the signature date  Seed Money: This is money sent by the
-          Subscriber to the Broker to build a portfolioof cryptographic tokens
-          for the Subscriber.  Subscriber: refers to the following: a. A
-          natural person b. A legal entity, including a corporation, a firm, an
-          association or a partnershipthat has been incorporated in Nigeria. c.
-          A legal entity that is a going concern and not subject to any
-          winding-upproceedings before a court of competent jurisdiction 
-          Subscription Month/Period: A subscription month is the month in which
-          a subscriber’s payment is confirmed. A subscription month will always
-          precede the trading month. It isseed money paid by the 31st of the
-          subscription month that wouldbe used up in the trading month. A
-          subscription period will be between 25th of subscription month and the
-          10th of the trading month.  Trading Month/Period: The month in which
-          the seed money paid in the subscription month is allocated. This can
-          also be called ‘The Buying Up Month’.  Trust Wallet: A digital wallet
-          for storing cryptographic tokens which will be opened by the
-          subscriber. Only the owner has the access credential of their Trust
-          Wallet. PART 2 – SUBSCRIPTION PLANS Standard Plan Premium Plan
-          Duration 1 Month 1 Month Seed Size N100,000 or less N101,000 and above
-          Subscription Fee N10,000 N20,000 Transaction Charge 5% of tokens
-          acquired 5% of tokens acquired  The duration of the above
-          subscription plans shall be for an initial period of One year, subject
-          to renewal by the parties. PART 3 - FINANCIAL MATTERS The Minimum
-          amount required for subscription in a month is the sum of Fifty
-          Thousand Naira (N50,000) and the maximum amount is One Million Naira
-          (N1,000,000) only. To this end, subscription shall be made as follows:
-          A. Subscription amount for the standard plan begins from the sum of
-          Fifty Thousand Naira (N 50,000) to the sum of One Hundred Thousand
-          Naira (N 100,000) only. B. Subscription amount for the premium plan
-          begins from the sum of One Hundred Thousand Naira (N 100,000) to the
-          sum of One million Naira only (N1,000,000) only. C. Subscribers of the
-          standard plan are required to pay a subscription fee of Ten Thousand
-          Naira (N 10,000) per monthly subscription. D. Subscribers of the
-          premium plan are required to pay a subscription fee of Twenty Thousand
-          Naira (N 20,000) per monthly subscription. E. Yearly subscription of
-          the standard plan shall cost the sum of One Hundred and Ten Thousand
-          Naira (110,000) only. F. Yearly subscription of the premium plan shall
-          cost the sum of Two Hundred and Twenty Thousand Naira (220,000) only.
-          G. The Subscriber declares that their seed and subscription money
-          constitute only a fraction of their monthly savings and therefore
-          money they can afford to put away for at least six months. H. The
-          subscriber accepts that by subscribing to any of the above plan, they
-          are joining a social club that trades on cryptographic tokens. I. The
-          subscriber accepts that the cryptographic tokens to be sent to their
-          account will be accurate to 3 decimal places. PART 4 – CRYPTOGRAPHIC
-          TOKEN WALLET a. Each subscriber shall create a Trust Wallet and
-          provide the wallet address to the broker. b. The Subscriber shall have
-          exclusive access to their wallet and shall be responsible for the
-          safety and safekeeping of their wallet and the cryptographic tokens
-          therein at all material times. c. It is hereby agreed that the broker
-          shall use his best experience to buy cryptographic tokens and disburse
-          same to the wallet of the subscribers accordingly. To this end,
-          subscribers shall accept all cryptographic tokens that are placed in
-          their wallet. The broker reserves the right to decide the type of
-          cryptographic tokens to be bought and sent to the subscriber. PART 5 –
-          CRYPTOGRAPHIC TOKENS a. Subscribers declare that they are fully aware
-          that cryptographic tokens are volatile in price and may result in
-          financial losses and that while the Broker will apply every reasonable
-          care to build a portfolio that will rise in value, there are no
-          guarantees that this will be the case in the short term. b. It is
-          further agreed that the broker shall carry out reasonable due
-          diligence on the cryptographic tokens to be purchased c. Cryptographic
-          tokens are to be sent to the Trust Wallet address provided by the
-          subscriber on or before the last day of the Trading Month. d. The
-          broker shall send a concise report to the subscriber showing the cost
-          of purchasing the cryptographic tokens. The report shall contain
-          information such as transaction hashes, website links and, wherever
-          possible, any other data which will aid transparency. PART 6 -
-          OBLIGATIONS OF PARTIES The Subscriber shall; a. Subscribe to any of
-          the plans made available by the broker by the subscription deadline
-          (by the 10th day of the trading month). b. Permit the broker to apply
-          his discretion to buy tokens with his seed money. c. Agree that the
-          broker shall be entitled to Five percent (5%) of the token bought on
-          their behalf to cover the transaction charges incurred by the broker.
-          The Broker shall; a. Educate the subscriber on the concept of
-          cryptographic tokens and Blockchains, how they work, and the tools
-          that will be used to access the broker’s services. Such tools include
-          but are not limited to Trust wallet, Google sheets and Blockchain
-          explorer. b. Send the purchased cryptographic tokens to the subscriber
-          on or before the last day of the trading month. c. Send a concise
-          report to the subscriber showing the cost of purchasing the
-          cryptographic tokens, transaction hashes, and other relevant
-          information for auditing purposes. d. Explore all reasonable
-          expertise, professionalism in the allocation of subscribers’ seed
-          money and shall act within the purview of the law at all times in the
-          purchase and allocation of the subscriber’s tokens. PART 7 -
-          INDEMNITIES a. The subscriber is fully aware and agrees that
-          cryptographic tokens are volatile in nature, thus the subscriber
-          hereby agrees to indemnify the broker and hold the broker harmless and
-          blameless for any loss, damages or liabilities arising out of this
-          agreement. b. The broker shall explore all reasonable and necessary
-          care and due diligence while purchasing cryptographic tokens on behalf
-          of the subscriber. However, there are no guarantees as to the safety
-          of the cryptographic tokens during purchase. To this end, the
-          subscriber agrees to hold the broker harmless and blameless for any
-          loss, damages or liabilities that may occur due to this agreement.
-          PART 8 - FORCE MAJEURE Neither party shall be considered in default or
-          breach of this agreement in the instance of any delay pertaining to an
-          act of God such as fire, explosion, Flood, or acts out of the control
-          of such party such as riot, war, pandemic, terrorism, government
-          regulations and policies. In the event of such acts occurring; the
-          party is expected to notify the remaining party of such actions as
-          well as a resolution date. Parties shall also not be considered in
-          default or breach of this agreement in the instance of a breach of the
-          Trust Wallet, Google sheets, exchanges and any other tools that may be
-          used in the course of transactions covered by this agreement. PART 9 -
-          DISPUTE RESOLUTION a. The parties agree that in the event of a dispute
-          arising out of this terms and conditions, they shall work together in
-          good faith to resolve the dispute internally. Where the dispute cannot
-          be settled within a period of fourteen (14) days from the date a
-          dispute is declared, the dispute shall be resolved by arbitration
-          which shall be sponsored by both parties and shall be held and
-          concluded within 21 business days after it has first been demanded or
-          such other period as is reasonably possible to resolve dispute of the
-          same nature. b. The venue of the Arbitration shall be in the Federal
-          Capital Territory, Abuja. c. There shall be a sole arbitrator agreed
-          by both parties to resolve the matter. Where parties cannot agree on
-          an arbitrator, parties shall apply to the Institute of Chartered
-          Arbitration of Nigeria, Abuja to appoint an arbitrator who shall hear
-          and resolve the dispute. d. The parties irrevocably agree that the
-          decision in these arbitration proceedings; a. Shall be binding on
-          them; b. Shall be carried into effect; c. May be made an order of any
-          Court of competent jurisdiction. Nothing in this part Nine (9) shall
-          preclude the parties from approaching a court of competent
-          jurisdiction for urgent or interim relief. PART 10 - NOTICES Any
-          notice, demand, request, consent, agreement or approval which may or
-          is required to be given, pursuant to this Agreement shall be in
-          writing and shall be sufficiently given or made if served personally
-          upon the party or a representative or officer of the party for whom it
-          is intended, or mailed by certified or registered mail, postage
-          prepaid, or telexed, telegraphed, or tele copied, addressed at such
-          address to such officers as a party may from time to time advise to
-          the other parties by notice in writing. The date of receipt of any
-          such notice, demand, request, consent, agreement or approval if served
-          personally shall be deemed to be the date of delivery thereof, or if
-          mailed as aforesaid, the second business day, following the date of
-          mailing, or if delivered via telex, telegraph, or tele copier, the
-          business day following transmission. PART 11 - GOVERNING LAW The
-          validity and interpretation of this Agreement shall be governed
-          exclusively by the Laws of the Federal Republic of Nigeria. PART 12 -
-          ENTIRE AGREEMENT This Agreement embodies the entire and final
-          agreement of the parties with regard to the Company and no
-          representations, warranties, agreements, understandings, verbal or
-          otherwise, exist between the parties except as herein expressly set
-          out PART 13 - SEVERABILITY If any Clause or Provision of this
-          agreement is held by a Court of Competent Jurisdiction or any Law to
-          be invalid, void or unenforceable, the remainder of the provisions
-          shall remain in full force and shall in no way be affected, impaired
-          or invalidated. PART 14 - TERMINATION a. Subscription to any of the
-          plans terminates automatically at the end of the plan and subscriber
-          shall receive their cryptographic tokens in their wallet before the
-          end of the next month after subscription. b. It is deemed that the
-          subscriber’s plan has been terminated if they do not pay their seed
-          money to enable trading. c. Without prejudice to the above stated,
-          each subscription terminates when the token has been disbursed to the
-          subscriber’s wallet. SIGNED AND DELIVERED by VANK representative
-          SIGNED AND DELIVERED by the within named Subscriber
+          1
+          Terms of Service
+          Introduction
+          VANK Wallet is a product of VANK DIGITAL SERVICES LIMITED, a company registered in Nigeria with RC
+          Number 1876455 with operational office at Grand Hubb, 18, 1st Avenue, Gwarinpa, Abuja. VANK Wallet
+          is the designated digital wallet service provider for members of the VANK COOP Cooperative Society
+          (VANK Coop).
+          These Terms of Use (these "Terms") are a legally binding agreement between you and VANK DIGITAL
+          SERVICES LIMITED, doing business as VANK Wallet (" VANK," " we," or " us"). We offer a software
+          platform and other services that help connect owners of real property with people seeking to co-own
+          and co-purchase that real property (the " Services") through our websites, including our website located
+          at vankwallet.com (collectively, our " Websites") and application program interfaces and other services
+          we make to interact with you through social networks (such social networks, " Social Networks"; our
+          services that interact with Social Networks, " Social Network Services"; our Websites, our Social Network
+          Services, and our other services are collectively our " Services").
+          Certain features of the Services may be subject to additional terms and conditions which will be posted
+          on the Services in connection with those features or provided to you in writing (including by email). All
+          such additional written terms and conditions are incorporated by reference into these Terms. If there is
+          a conflict between these Terms and such additional written terms and conditions, those additional
+          terms and conditions will control.
+          By using the Services (including interacting with VANK through Social Networks), you acknowledge that
+          you have read and understand these Terms and agree to be bound by these Terms (on behalf of yourself
+          or the entity that you represent). By using the Services, you acknowledge that you have the required
+          capacity to enter into these Terms and that you are at least 18 years old. If you do not agree with these
+          Terms, do not access or use the Services.
+          Changes to Terms of Use
+          We may, in our sole discretion and without prior notice, modify these Terms at any time. If we do so, we
+          will notify you by posting the modified Terms at vankwallet.com/terms and/or through other
+          communications to you. You should review these Terms and our other policies (including our Privacy
+          Policy available at vankwallet.com/privacy) periodically to be aware of any changes. By using the
+          Services after changes to these Terms, you are agreeing to be bound by the changes.
+          Eligibility
+          You may only use the Services if you (1) are 18 years or older, (2) are capable of forming a binding
+          contract, (3) have not been previously suspended from the Services, and (4) are not barred from using
+          the Services under applicable law.
+          2
+          Registration and Accounts
+          To access and use the Services, you will have to create an account with VANK (an " Account"). Currently,
+          you can create your Account by giving us certain information at vankwallet.com/signup. You must
+          provide us with accurate, complete, and up-to-date information for your Account. If you do not maintain
+          current information with us, we may have to suspend or terminate your Account.
+          You acknowledge that all information you submit to us is accurate and you will update that information
+          as appropriate. You may delete your Account at any time by emailing us at team@vankwallet.com or by
+          following other instructions posted on our Websites, if any. If you have purchased Services from VANK,
+          the deletion of your Account will have no effect on your obligations to pay VANK or other obligations in
+          connection with such purchase.
+          By creating an Account, you are agreeing to receive electronic communications from VANK, including
+          through Social Networks and by email, and that any notices or disclosures that are sent to you
+          electronically are sufficient written legal notice under this Agreement and as may be required by
+          applicable law. Our communications to you may include information about your Account, the Services,
+          and promotional information, such as contests, surveys, offers, and other relevant information. If you
+          wish to unsubscribe to all or certain electronic communications you receive from VANK, please follow
+          the instructions for how to unsubscribe in the electronic communications.
+          VANK Coop Cooperative and VANK Wallet
+          By signing up on the form available on the Vank Wallet website, you automatically become a member of
+          the VANK COOP Cooperative and are to abide by the rules associated with the operations of the
+          Cooperative and the wallet.
+          Every property listed on Vank Wallet will be represented in token units which signify ownership of such
+          property. Users can buy fractions of a property by paying with their wallet balance and their amount of
+          ownership of a property will also be represented in their wallets. Users should be aware that holding a
+          fraction of the total tokens in a property does not grant full ownership of the property and therefore
+          means that fractional token holders in a property may not take possession of or build on the property
+          until they have bought up 100% of such property. Users will however be able to hold, sell, or borrow
+          against the value of their property tokens within the VANK Wallet dashboard once sell and borrowing
+          functionality is enabled.
+          Co-owned property are allocated in the name of the VANK Coop and kept in trust for cooperative
+          members. The management team of VANK Coop may take key decisions that affect the listed property
+          relating to its maintenance, sale, and development. Proceeds of such decisions such as a sale will be
+          distributed to the wallets of token holders. Property bought outright by a user may be allocated in that
+          user’s name at the user’s request.
+          Token holders may take a loan from VANK Wallet using the tokens as security. Holders shall qualify for
+          loans which are a fraction of the current market value of their tokens. The loan amount available to a
+          user will be viewable on his dashboard. Every loan transaction will attract a monthly interest of 6%.
+          Default shall trigger an additional 2% penalty and a sale of the user’s tokens sufficient to cover the user’s
+          loan plus penalty. The rest of the user’s tokens will be available to the user.
+          3
+          For “Ongoing Development’ projects, tokens may be issued in a phased manner which may increase the
+          number of tokens linked to a property. The additional tokens will always represent real value addition in
+          the form of improvements to the documentation, building, branding, etc of the existing property. To
+          ensure strict adherence additional tokens will be released only under strict supervision by a reputable
+          audit firm.
+          By signing up and buying tokens of listed property on VANK Wallet, the user confirms their acceptance
+          of these terms and conditions.
+          Changes to Services
+          We reserve the right, in our sole and absolute discretion, to change, reformulate, suspend, discontinue,
+          or terminate any of the Services at any time, without prior notice.
+          Content on the Services; Social Network Terms
+          All materials provided on the Services, including but not limited to information, documents, products,
+          logos, graphics, sounds, images, compilations, content and services, are provided either by VANK or by
+          respective third party users, authors, developers or vendors and are the copyrighted works of VANK
+          and/or such third party providers (or is permitted/licensed to be used by such third party providers),
+          unless specifically provided otherwise. Except where expressly provided otherwise by VANK, nothing on
+          the Services shall be construed to confer any license or ownership right in or to the materials provided
+          through the Services, under any of VANK’s intellectual property rights, whether by estoppel, implication,
+          or otherwise. Subject to your compliance with these Terms, VANK grants you a limited, non-exclusive,
+          non-transferable, non-sublicensable license to access and view the Services solely in connection with
+          your permitted use of the Services. If you use a Social Network in connection with the Services, you shall
+          comply with all terms of use and privacy policies to such Social Network.
+          User Content
+          For purposes of these Terms: (a) " Content" means text, graphics, images, music, software, audio, video,
+          works of authorship of any kind, and information or other materials that are posted, generated,
+          provided or otherwise made available through the Services by VANK; and (b) " User Content" means any
+          Content that you or other users provide to be made available through the Services. Content includes
+          without limitation User Content.
+          VANK does not claim any ownership rights in any User Content that you make available through the
+          Services and nothing in these Terms will be deemed to restrict any rights that you may have to use and
+          exploit your User Content. Subject to the foregoing, VANK and its licensors exclusively own all right, title
+          and interest in and to the Services and Content, including all associated intellectual property rights. You
+          acknowledge that the Services and Content are protected by copyright, trademark, and other laws of
+          the Federal Republic of Nigeria and foreign countries. You agree not to remove, alter or obscure any
+          copyright, trademark, service mark or other proprietary rights notices incorporated in or accompanying
+          the Services.
+          By making any User Content available through the Services, you hereby grant to VANK and each of its
+          affiliates a non-exclusive, transferable, sublicensable, worldwide, royalty-free license to use, copy,
+          4
+          modify, create derivative works based upon, publicly display, publicly perform and distribute your User
+          Content in connection with operating and providing the Services and Content to you and to other users.
+          You are solely responsible for all your User Content. You represent and warrant that you own all your
+          User Content or you have all rights that are necessary to grant us the license rights in your User Content
+          under these Terms. You also represent and warrant that neither your User Content, nor your use and
+          provision of your User Content to be made available through the Services, nor any use of your User
+          Content by VANK or other users on or through the Services will infringe, misappropriate or violate a
+          third party's intellectual property rights, or rights of publicity or privacy, or result in the violation of
+          any
+          applicable law or regulation.
+          You can remove your User Content by specifically deleting it. However, in certain instances, some of
+          your User Content may not be completely removed and copies of your User Content may continue to
+          exist on the Services. Neither VANK nor its affiliates are responsible or liable for the removal or deletion
+          of (or the failure to remove or delete) any of your User Content.
+          Copyright Violations
+          If you believe that your copyright-protected work was posted to the Services without authorization,
+          please notify us immediately at team@vankwallet.com.
+          User Conduct
+          VANK imposes certain restrictions on your permissible use of the Services. You are prohibited from
+          violating or attempting to violate any security features of the Services, including, without limitation, (a)
+          accessing content or data not intended for you, or logging onto a server or account that you are not
+          authorized to access; (b) attempting to probe, scan, or test the vulnerability of the Services or any
+          associated system or network, or to breach security or authentication measures without proper
+          authorization; (c) interfering or attempting to interfere with service to any user, host, or network,
+          including, without limitation, by means of submitting a virus to the Services, overloading, "flooding,"
+          "spamming," "mail bombing," or "crashing;" (d) using the Services to send unsolicited e-mail, including,
+          without limitation, promotions, or advertisements for products or services; (e) forging any TCP/IP packet
+          header or any part of the header information in any email or in any posting using the Services; (f)
+          attempting to modify, reverse-engineer, decompile, disassemble, or otherwise reduce or attempt to
+          reduce to a human-perceivable form any of the source code used by VANK in providing the Services; or
+          (g) using the Services in connection with the violation of any third party's intellectual property or
+          proprietary rights, including copyrights, trademarks, or patents. Any violation of system or network
+          security may subject you to civil and/or criminal liability. You shall not post, upload, publish, submit or
+          transmit any Content, or otherwise conduct yourself in connection with the Services in a way, that: (a)
+          infringes, misappropriates or violates a third party's patent, copyright, trademark, trade secret, moral
+          rights or other intellectual property rights, or rights of publicity or privacy; (b) violates, or encourages
+          any conduct that would violate, any applicable law or regulation or would subject VANK or any of its
+          affiliates to civil liability; (c) is fraudulent, false, misleading or deceptive; (d) is defamatory, obscene,
+          pornographic, vulgar, or offensive; (e) promotes discrimination, bigotry, racism, hatred, harassment, or
+          harm against any individual or group; (f) is violent or threatening or promotes violence or actions that
+          are threatening to any person or entity; or (g) promotes illegal or harmful activities or substances. You
+          5
+          shall not use, display, mirror or frame the Services, or any individual element within the Services, the
+          names, trademarks, logos, or other proprietary information of VANK or any of its affiliates, or the layout
+          and design of any page or form contained on a page on the Services, without VANK's express written
+          consent. You shall not attempt to access or search the Services or Content or download Content from
+          the Services through the use of any engine, software, tool, agent, device or mechanism (including
+          spiders, robots, crawlers, data mining tools or the like) other than the software and/or search utilities
+          provided by VANK or other generally available third party web browsers. You shall not send any
+          unsolicited or unauthorized advertising, promotional materials, email, junk mail, spam, chain letters or
+          other form of solicitation with the Services. You shall not use any meta tags or other hidden text or
+          metadata utilizing a trademark, logo, URL or product name of VANK or any of its affiliates without
+          VANK's express written consent. You shall not use the Services or Content, other than User Content, for
+          any commercial purpose or in any manner not permitted by these Terms. You shall not collect or store
+          any personally identifiable information from the Services from other users without their express
+          permission. You shall not impersonate or misrepresent your affiliation with any person or entity. You
+          shall not violate any applicable law or regulation. You shall not encourage or enable any other individual
+          to do any of the foregoing actions prohibited in this section.
+          Although we're not obligated to monitor access to or use of the Services or Content or to review or edit
+          any Content, we have the right to do so for the purpose of operating the Services, to ensure compliance
+          with these Terms, or to comply with applicable law or other legal requirements. We reserve the right,
+          but are not obligated, to remove or disable access to any Content, at any time and without notice,
+          including, but not limited to, if we, at our sole discretion, consider any Content to be objectionable or in
+          violation of these Terms. We have the right to investigate violations of these Terms or conduct that
+          affects the Services. We may also consult and cooperate with law enforcement authorities to prosecute
+          users who violate the law.
+          Feedback
+          You may provide us feedback, comments, and suggestions for improvements to the Services ("
+          Feedback"), which are separate from User Content. You grant us a non-exclusive, worldwide, perpetual,
+          irrevocable, fully-paid, royalty-free, sublicensable, and transferable license under any and all intellectual
+          property rights that you own or control to use, copy, modify, create derivative works based upon, and
+          otherwise exploit the Feedback for any purpose.
+          Third Party Websites
+          You acknowledge that we have no control over, and no liability for any third party websites or materials,
+          including websites and materials that you may access from links on our Websites, including any Social
+          Networks and websites operated by third-party service providers that we engage to assist us in
+          providing the Services. VANK makes no guarantees about the accuracy, currency, content, or quality of
+          the information provided by such websites, and VANK assumes no responsibility for unintended,
+          objectionable, inaccurate, misleading, or unlawful content that may reside on those websites.
+          Term and Termination
+          These Terms will remain in full force and effect while you use the Services, unless terminated as
+          described in this section. We may terminate or suspend your access to and use of the Services (including
+          6
+          your Account), at our sole discretion, at any time and without notice to you. You acknowledge that any
+          termination of your Account may result in the deletion of your User Consent. You hereby waive any
+          claims that you may have against VANK in connection with the termination of your Account or the
+          deletion of your User Content. The following sections of these Terms survive termination of your
+          Account or these Terms: "User Content," "Indemnity," "Disclaimers," "Limitation of Liability," "Dispute
+          Resolution," and "Entire Agreement; Severability; Waiver."
+          Indemnity
+          To the fullest extent permitted by applicable law, you agree to indemnify, defend, and hold harmless
+          VANK, its affiliates, officers, directors, employees, consultants, agents, representatives, predecessors,
+          successors, and assigns (" VANK Parties") from any and all third party claims, losses, liability, damages,
+          and/or costs (including reasonable legal fees and costs) (" Claims")arising from or related to (1) any
+          access to, use of, or misuse of the Services by you or any third party you authorize to access or use the
+          Services, (2) your violation of these Terms, (3) any User Content you create, post, share, or upload on or
+          through the Services or any Social Network, (4) any Feedback, (5) your violation of the legal rights of a
+          third party, and (6) your infringement, or infringement by any other user of your Account, of any
+          intellectual property or other right of any person or entity. VANK will notify you promptly of any such
+          claim, loss, liability, or demand, and will provide you with reasonable assistance, at your expense, in
+          defending any such claim, loss, liability, damage, or cost. You shall promptly notify VANK of any Claims
+          alleged by third parties, cooperate with the VANK Parties in defending such Claims and pay all fees, costs
+          and expenses associated with defending such Claims (including, without limitation, all legal fees and
+          costs). The VANK Parties shall have control of the defense or settlement of any third party Claims. This
+          indemnity is in addition to, and not in lieu of, any other indemnities set forth in a written agreement
+          between you and VANK.
+          Disclaimers
+          WE DO NOT WARRANT OR GUARANTEE THE ACCURACY OF THE INFORMATION AVAILABLE ON THE
+          SERVICES. IF THERE IS AN ERROR OR DISCREPANCY ON OUR SERVICES, IN ANY COMMUNICATIONS WITH
+          YOU, OR OTHERWISE, WE RESERVE THE RIGHT TO CORRECT THAT ERROR.
+          THE SERVICES ARE PROVIDED ON AN "AS IS" BASIS WITHOUT WARRANTIES OF ANY KIND, EITHER
+          EXPRESS OR IMPLIED. VANK DISCLAIMS ALL OTHER WARRANTIES, EXPRESS OR IMPLIED, INCLUDING,
+          WITHOUT LIMITATION, IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+          PURPOSE, NON-INFRINGEMENT AS TO THE SERVICES AND CONTENT, AND ANY WARRANTIES THAT
+          ARISE FROM TRADE USAGE OR CUSTOM. VANK DOES NOT WARRANT THAT THE SERVICES WILL MEET
+          YOUR REQUIREMENTS OR THAT THE OPERATION OF THE SERVICES WILL BE UNINTERRUPTED OR ERRORFREE.
+          Reference to any products, services, processes or other information by trade name, trademark,
+          manufacturer, supplier, vendor or otherwise does not constitute or imply endorsement, sponsorship or
+          recommendation thereof, or any affiliation therewith, by us.
+          7
+          Limitation of Liability
+          VANK’S LIABILITY TO YOU IS LIMITED. TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, IN NO
+          EVENT SHALL VANK BE LIABLE FOR ANY INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
+          OF ANY KIND (INCLUDING, BUT NOT LIMITED TO, LOSS OF REVENUE, INCOME OR PROFITS, LOSS OF USE
+          OR DATA, LOSS OR DIMINUTION IN VALUE OF ASSETS OR SECURITIES, OR DAMAGES FOR BUSINESS
+          INTERRUPTION) ARISING OUT OF OR IN ANY WAY RELATED TO THE ACCESS TO OR USE OF THE SERVICES
+          OR CONTENT (INCLUDING, BUT NOT LIMITED TO, USER CONTENT, THIRD PARTY CONTENT AND LINKS TO
+          THIRD PARTY SITES) OR OTHERWISE RELATED TO THESE TERMS (INCLUDING, BUT NOT LIMITED TO, ANY
+          DAMAGES CAUSED BY OR RESULTING FROM RELIANCE ON ANY INFORMATION OBTAINED FROM ANY
+          VANK PARTY, OR FROM EVENTS BEYOND THE VANK PARTIES' REASONABLE CONTROL, SUCH AS SITE
+          INTERRUPTIONS, DELETIONS OF FILES OR EMAILS, ERRORS OR OMISSIONS, DEFECTS, BUGS, VIRUSES,
+          TROJAN HORSES, DELAYS IN OPERATION OR TRANSMISSION OR ANY FAILURE OF PERFORMANCE,
+          WHETHER OR NOT RESULTING FROM ACTS OF GOD, COMMUNICATIONS FAILURE, THEFT, DESTRUCTION
+          OR UNAUTHORIZED ACCESS TO THE VANK PARTIES' RECORDS, PROGRAMS OR SYSTEMS), REGARDLESS
+          OF THE FORM OF ACTION, WHETHER BASED IN CONTRACT, TORT (INCLUDING, BUT NOT LIMITED TO,
+          SIMPLE NEGLIGENCE, WHETHER ACTIVE, PASSIVE OR IMPUTED) OR ANY OTHER LEGAL OR EQUITABLE
+          THEORY (EVEN IF THE PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES AND
+          REGARDLESS OF WHETHER SUCH DAMAGES WERE FORESEEABLE).
+          TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL THE MAXIMUM
+          AGGREGATE LIABILITY OF THE VANK PARTIES (JOINTLY) ARISING OUT OF OR IN ANY WAY RELATED TO
+          (A) THE ORDER, RECEIPT OR USE OF SERVICES PURCHASED FROM VANK EXCEED THE AMOUNT PAID FOR
+          SUCH SERVICES; AND (B) THE ORDER, RECEIPT OR USE OF THE SERVICES OR CONTENT, EXCEED THE
+          GREATER OF $250 OR THE AMOUNT YOU PAID TO US IN THE ONE (1) MONTH PERIOD IMMEDIATELY
+          PRECEDING THE DATE ON WHICH YOUR CLAIM AROSE. THE FOREGOING LIMITATIONS SHALL APPLY
+          EVEN IN THE EVENT YOUR REMEDIES HEREUNDER FAIL OF THEIR ESSENTIAL PURPOSE, AND THE
+          FOREGOING SHALL CONSTITUTE THE VANK PARTIES' SOLE LIABILITY AND OBLIGATION IN RESPECT
+          HEREOF, REGARDLESS OF THE FORM OF ACTION, WHETHER BASED IN CONTRACT, TORT (INCLUDING,
+          BUT NOT LIMITED TO, SIMPLE NEGLIGENCE, WHETHER ACTIVE, PASSIVE OR IMPUTED), OR ANY OTHER
+          LEGAL OR EQUITABLE THEORY.
+          TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, YOU, ON BEHALF OF YOUR HEIRS,
+          EXECUTORS, ADMINISTRATORS, LEGAL AND PERSONAL REPRESENTATIVES, HEREBY RELEASE, WAIVE,
+          ACQUIT AND FOREVER DISCHARGE THE VANK PARTIES FROM AND AGAINST, AND COVENANT NOT TO
+          SUE ANY SUCH VANK PARTY FOR, ALL CLAIMS YOU HAVE OR MAY HAVE ARISING OUT OF OR IN ANY
+          WAY RELATED TO THESE TERMS. IF YOU ARE A CALIFORNIA RESIDENT, YOU HEREBY WAIVE YOUR
+          RIGHTS UNDER CALIFORNIA CIVIL CODE 1542, WHICH STATES "A GENERAL RELEASE DOES NOT EXTEND
+          TO CLAIMS WHICH THE CREDITOR DOES NOT KNOW OR SUSPECT TO EXIST IN HIS OR HER FAVOR AT THE
+          TIME OF EXECUTING THE RELEASE, WHICH IF KNOWN BY HIM OR HER MUST HAVE MATERIALLY
+          AFFECTED HIS OR HER SETTLEMENT WITH THE DEBTOR."
+          THE LIMITATIONS SET FORTH IN THIS SECTION TITLED "LIMITATION OF LIABILITY" DO NOT LIMIT OR
+          EXCLUDE LIABILITY FOR OUR FRAUD, GROSS NEGLIGENCE, OR INTENTIONAL, WILLFUL, MALICIOUS OR
+          RECKLESS MISCONDUCT.
+          8
+          Privacy Policy
+          Please refer to our Privacy Policy located at vankwallet.com/privacy for information on how we collect,
+          use, and disclose information about our users.
+          Governing Law
+          These Terms and any action related to these Terms will be governed by the laws of the Federal Republic
+          of Nigeria without regard to their rules regarding conflicts of law.
+          Entire Agreement; Severability; Waiver
+          These Terms constitute the entire agreement between you and us regarding the use of our Services
+          through the Services. If for any reason a court of competent jurisdiction finds any provision of these
+          Terms invalid or unenforceable, that provision will be enforced to the maximum extent permissible and
+          the other provisions of these Terms will remain in full force and effect. No waiver of any breach of any
+          provision of these Terms will constitute a waiver of any prior, concurrent, or subsequent breach of the
+          same or any other provisions hereof, and no waiver shall be effective unless made in writing and signed
+          by an authorized representative of the waiving party. Neither party is an agent or partner of the other.
+          These Terms, and your rights and obligations herein, may not be assigned, subcontracted, delegated, or
+          otherwise transferred by you without VANK's prior written consent, and any attempted assignment,
+          subcontract, delegation, or transfer in violation of the foregoing will be null and void. VANK may freely
+          assign these Terms. The terms and conditions set forth in these Terms shall be binding upon assignees.
+          Copyright
+          All contents of the Websites and other Services are: Copyright © 2020 VANK, Inc. All rights reserved.
+          Nothing contained on the Websites should be understood as granting you a license to use any of the
+          trademarks, service marks, or logos owned by VANK or by any third party.
+          Contact
+          To contact us about these Terms, please email us at hello@vankwallet.com.
         </div>
         <div class="popup-footer">
           <button class="toggle button text-success" data-target="myPopup">
@@ -282,9 +339,11 @@ export default {
   padding: 0;
   overflow: auto;
 }
+
 .text-primary {
   cursor: pointer !important;
 }
+
 ::-webkit-scrollbar {
   display: none;
 }

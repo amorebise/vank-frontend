@@ -1,6 +1,9 @@
 <template>
     <div class="otp__wrap">
         <div class="otp__content">
+            <div>
+                <h3>Enter OTP</h3>
+            </div>
             <div class="ma-auto position-relative" style="max-width: 300px">
                 <v-otp-input v-model="login.login_code" :disabled="loading" @finish="onFinish"></v-otp-input>
                 <v-overlay absolute :value="loading">
@@ -103,5 +106,15 @@ export default {
     border-radius: 5px;
     box-shadow: 1px 1px 5px #30303073;
     padding: 20px;
+}
+
+.otp__wrap .otp__content h3 {
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .otp__wrap .otp__content h3 {
+        font-size: 25px;
+    }
 }
 </style>

@@ -4,20 +4,12 @@
       <user-nav class="estate__nav py-4" name="Property Details" />
       <div class="mt-5 single__property">
         <div>
-          <font-awesome-icon
-            @click="back()"
-            role="button"
-            class="fa-1x text-dark pl-1"
-            :icon="['fas', 'arrow-left']"
-          />
+          <font-awesome-icon @click="back()" role="button" class="fa-1x text-dark pl-1" :icon="['fas', 'arrow-left']" />
         </div>
         <div class="row mt-3 single__asset__tab">
           <div class="col-md-6">
             <div class="img_card">
-              <div
-                class="asset__content text-center"
-                :style="{ backgroundImage: 'url(' + asset_detail.image + ')' }"
-              >
+              <div class="asset__content text-center" :style="{ backgroundImage: 'url(' + asset_detail.image + ')' }">
                 <div>
                   <!-- <p>&#x20A6;1.19K per unit</p> -->
                   <p>Min ROI: {{ asset_detail.min_roi }}</p>
@@ -37,11 +29,8 @@
               <p style="line-height: 20px">-{{ asset_detail.description1 }}-</p>
               <p style="line-height: 20px">{{ asset_detail.description2 }}</p>
               <div>
-                <button
-                @click="coordinates = !coordinates"
-                  class="view__report"
-                  style="color: #00e8fe; font-size: 12px"
-                >
+                <button @click="coordinates = !coordinates" class="view__report"
+                  style="color: #00e8fe; font-size: 12px">
                   Click to view Coordinates
                 </button>
 
@@ -50,49 +39,31 @@
                 </div>
               </div>
               <div>
-                <a
-                  class="view__report"
-                  style="color: #00e8fe; font-size: 12px"
-                  :href="asset_detail.due_deligence_report"
-                  target="_blank"
-                  attributes-list
-                  download
-                >
+                <a class="view__report" style="color: #00e8fe; font-size: 12px"
+                  :href="asset_detail.due_deligence_report" target="_blank" attributes-list download>
                   Click to view due diligence report
                 </a>
               </div>
               <div>
-                <a
-                  class="view__report"
-                  style="color: #00e8fe; font-size: 12px"
-                  :href="asset_detail.token_audit_report"
-                  target="_blank"
-                  attributes-list
-                  download
-                >
-                  Click to view token audit report
+                <a class="view__report" style="color: #00e8fe; font-size: 12px" :href="asset_detail.token_audit_report"
+                  target="_blank" attributes-list download>
+                  Click to 'View Brochure
                 </a>
               </div>
             </div>
           </div>
         </div>
 
-        <div
-          style="gap: 10px"
-          class="
+        <div style="gap: 10px" class="
             buy__token__wrap
             d-flex
             justify-content-center
             text-center
             mt-3
             py-4
-          "
-        >
+          ">
           <div>
-            <nuxt-link
-              :to="`/user_dashboard/buy_token/${id}`"
-              class="assets__link"
-            >
+            <nuxt-link :to="`/user_dashboard/buy_token/${id}`" class="assets__link">
               <span class="px-3">Buy Token</span>
             </nuxt-link>
           </div>
@@ -185,9 +156,11 @@ export default {
   background-color: #fff;
   height: 100%;
 }
+
 .single__property a {
   color: inherit;
 }
+
 .property .asset__content {
   /* background-image: url("/asset.jpg"); */
   background-size: cover;
@@ -203,38 +176,47 @@ export default {
   font-size: 15px;
   border: 5px solid #00e8fe;
 }
+
 .property .asset__content p {
   opacity: 0;
 }
+
 .property .asset__content h4 {
   opacity: 0;
   color: #00e8fe;
 }
+
 .property .asset__content:hover {
   background-color: rgba(0, 0, 0, 0.34);
   background-blend-mode: overlay;
   z-index: 999;
 }
+
 .property .asset__content:hover p {
   opacity: 1;
   transition: ease-in-out 0.7s;
 }
+
 .property .asset__content:hover h4 {
   opacity: 1;
   transition: ease-in-out 0.7s;
 }
+
 .property .description__wrap p {
   line-height: 10px;
   font-weight: 500;
   font-size: 16px;
 }
+
 .property .description__wrap span {
   color: #00e8fe;
 }
+
 .single__property .buy__token__wrap .assets__link {
   border: 1px solid #00e8fe;
   padding: 10px 2px;
 }
+
 .single__property .buy__token__wrap .assets__link span {
   border: 1px solid #00e8fe;
   padding: 7px 2px;
@@ -245,36 +227,45 @@ export default {
     margin-left: 0 !important;
     padding: 0 !important;
   }
+
   .single__asset__tab {
     margin-top: 5px !important;
   }
+
   .settings_wrap {
     margin: 10px;
   }
+
   .property .asset__content {
     border: none;
     border-radius: 0;
     box-shadow: 2px 2px 2px #303030;
   }
+
   .property .description__wrap {
     padding-top: 30px !important;
   }
+
   .property .description__wrap p {
     font-size: 13px;
   }
+
   .property .description__wrap span {
     font-size: 13px;
   }
+
   .single__property {
     margin-top: 0 !important;
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 80px !important;
   }
+
   .description__wrap {
     padding: 10px;
     margin-top: -25px;
   }
+
   .single__property .buy__token__wrap {
     margin-top: 0 !important;
   }
