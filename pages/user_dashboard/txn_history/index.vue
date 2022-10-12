@@ -9,6 +9,7 @@
           </div>
         </div>
 
+
         <div class="transactions_data">
           <div class="body__wrap">
             <v-simple-table fixed-header height="100%">
@@ -39,9 +40,9 @@
                       <span v-else>no added comment</span>
                     </td>
                   </tr>
-                  <tr class="text-center" v-if="txn_history.length == 0">
+                  <!-- <tr class="text-center" >
                     <td>You have no txn_history.</td>
-                  </tr>
+                  </tr> -->
                 </tbody>
               </template>
             </v-simple-table>

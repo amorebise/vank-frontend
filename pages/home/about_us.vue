@@ -11,7 +11,7 @@
       <div class="we__are__vank">
         <div class="row">
           <div class="col-md-6">
-            <div class="bg__img">
+            <div class="bg__img  mb-2">
               <!-- <img src="/elipsis.svg" alt="" /> -->
               <nuxt-img class="elips" format="webp" style="width: 150px" quality="90" src="/elipsis.svg" />
               <div class="property__wrap">
@@ -23,7 +23,7 @@
             </div>
           </div>
           <div class="col-md-6">
-            <div class="text__wrap">
+            <div class="text__wrap  mb-2">
               <h1>We Are <span style="color: #00e8fe">VANK</span></h1>
               <p>
                 Your trusted wallet for digitized real estate. <br />
@@ -34,7 +34,7 @@
                 to join!
               </p>
               <p>How cool is that?</p>
-              <div class="register_wrap mt-4 py-4">
+              <div class="register_wrap mt-3 py-4">
                 <nuxt-link to="/auth/sign_up" class="register_link">Join VANK</nuxt-link>
               </div>
             </div>
@@ -265,8 +265,12 @@ export default {};
     padding-top: 10px;
   }
 
+  .about_us_wrap .text__wrap h1 {
+    font-size: 30px;
+  }
+
   .about_us_wrap .text__wrap p {
-    font-size: 15px;
+    font-size: 12px;
     letter-spacing: 1px;
   }
 

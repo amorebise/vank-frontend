@@ -5,67 +5,34 @@
         <form class="mt-3" method="post" @submit.prevent="submit()">
           <div class="form-group py-3">
             <label class="py-2" for="">Email</label>
-            <input
-              type="email"
-              class="form-control"
-              v-model="login.email"
-              placeholder="Enter your Email Address"
-            />
+            <input type="email" class="form-control" v-model="login.email" placeholder="Enter your Email Address" />
           </div>
           <div class="form-group py-3">
             <label class="py-2" for="">Password</label>
-            <div
-              class="
+            <div class="
                 d-flex
                 password_wrap
                 align-items-center
                 justify-content-between
-              "
-            >
-              <input
-                type="password"
-                id="password"
-                class=""
-                v-model="login.password"
-                required
-                placeholder="Enter Password"
-              />
+              ">
+              <input type="password" id="password" class="" v-model="login.password" required
+                placeholder="Enter Password" />
               <span class="d-flex" @click="displayPassword()">
-                <font-awesome-icon
-                  id="show_password"
-                  class="text-muted eye_icon"
-                  :icon="['fas', 'eye']"
-                />
-                <font-awesome-icon
-                  id="hide_password"
-                  class="text-muted eye_slash_icon"
-                  :icon="['fas', 'eye-slash']"
-                />
+                <font-awesome-icon id="show_password" class="text-muted eye_icon" :icon="['fas', 'eye']" />
+                <font-awesome-icon id="hide_password" class="text-muted eye_slash_icon" :icon="['fas', 'eye-slash']" />
               </span>
             </div>
             <div class="text-right">
-              <nuxt-link to="/auth/email" class="password_link"
-                >forgot password?</nuxt-link
-              >
+              <nuxt-link to="/auth/email" class="password_link">forgot password?</nuxt-link>
             </div>
           </div>
 
           <div class="text-center">
-            <v-btn
-              class="login_button"
-              :loading="loading"
-              value="Login"
-              type="submit"
-              >Log In</v-btn
-            >
+            <v-btn class="login_button" :loading="loading" value="Login" type="submit">Log In</v-btn>
             <div class="login_wrap mt-1">
               <p>
                 Don’t have an account?
-                <nuxt-link
-                  to="/auth/sign_up"
-                  class="sign_up_link text-decoration-none"
-                  >Sign up here</nuxt-link
-                >
+                <nuxt-link to="/auth/sign_up" class="sign_up_link text-decoration-none">Sign up here</nuxt-link>
               </p>
             </div>
           </div>
@@ -97,35 +64,39 @@ export default {
           data: this.login,
         });
         console.log(response.data.user);
-        if (response.data.user.role == "Admin") {
-          this.$auth.setUserToken(response.data.token);
-          this.$router.push("/admin_dashboard/dashboard");
-          console.log(this.$auth.loggedIn);
-          console.log(response.data.token);
-          this.$toast.success("You Are Logged In", {
-            timeout: 5000,
-          });
-        } else if (response.data.user.role == "Subscriber") {
-          this.$auth.setUserToken(response.data.token);
-          this.$router.push("/user_dashboard/my_account");
-          console.log(this.$auth.loggedIn);
-          console.log(response.data.token);
-          this.$toast.success("You Are Logged In", {
-            timeout: 5000,
-          });
-          // } else if (response.data.user.role == "Market Maker") {
-          //   this.$auth.setUserToken(response.data.token);
-          //   this.$router.push("/market_maker/dashboard");
-          //   console.log(this.$auth.loggedIn);
-          //   console.log(response.data.token);
-          //   this.$toast.success("You Are Logged In", {
-          //     timeout: 5000,
-          //   });
-        } else {
-          this.$toast.warning("Incorrect password or email", {
-            timeout: 5000,
-          });
-        }
+        this.$auth.setUserToken(response.data.token);
+        this.$router.push("/auth/otp");
+        // this.$auth.setUserToken(response.data.token);
+        // this.$router.push("/admin_dashboard/dashboard");
+        // if (response.data.user.role == "Admin") {
+        //   this.$auth.setUserToken(response.data.token);
+        //   this.$router.push("/admin_dashboard/dashboard");
+        //   console.log(this.$auth.loggedIn);
+        //   console.log(response.data.token);
+        //   this.$toast.success("You Are Logged In", {
+        //     timeout: 5000,
+        //   });
+        // } else if (response.data.user.role == "Subscriber") {
+        //   this.$auth.setUserToken(response.data.token);
+        //   this.$router.push("/auth/otp");
+        //   console.log(this.$auth.loggedIn);
+        //   console.log(response.data.token);
+        //   this.$toast.success("You Are Logged In", {
+        //     timeout: 5000,
+        //   });
+        // } else if (response.data.user.role == "Market Maker") {
+        //   this.$auth.setUserToken(response.data.token);
+        //   this.$router.push("/market_maker/dashboard");
+        //   console.log(this.$auth.loggedIn);
+        //   console.log(response.data.token);
+        //   this.$toast.success("You Are Logged In", {
+        //     timeout: 5000,
+        //   });
+        // } else {
+        //   this.$toast.warning("Incorrect password or email", {
+        //     timeout: 5000,
+        //   });
+        // }
       } catch (error) {
         this.loading = false;
         console.log(error);
@@ -160,12 +131,14 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   font-family: "Space Grotesk", sans-serif;
   text-decoration: none !important;
 }
+
 .v-btn {
   background-color: #00e8fe !important;
   color: #000 !important;
@@ -182,6 +155,7 @@ export default {
   display: none;
   cursor: pointer;
 }
+
 .eye_slash_icon {
   font-size: 15px;
   cursor: pointer;
@@ -207,6 +181,7 @@ export default {
   border: 1px solid #ced4da;
   border-radius: 0.35rem;
 }
+
 .password_wrap input {
   width: 100%;
   outline: none;
@@ -217,15 +192,18 @@ export default {
   box-shadow: none;
   border-color: #c5cbcc;
 }
+
 .forgot-password-wrap {
   cursor: pointer;
 }
+
 .password_link,
 .sign_up_link {
   cursor: pointer;
   color: #1d83c5;
   font-size: 13px;
 }
+
 .login_wrap {
   font-size: 14px;
 }
@@ -234,6 +212,7 @@ export default {
   .password_wrap {
     font-size: 13px;
   }
+
   .form-control,
   label,
   .login_wrap,
@@ -241,9 +220,11 @@ export default {
   .sign_up_link {
     font-size: 13px;
   }
+
   .login_button {
     font-size: 15px;
   }
+
   /* .form-control {
     height: 5%;
   } */
