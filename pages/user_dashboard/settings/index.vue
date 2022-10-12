@@ -278,6 +278,7 @@ export default {
       try {
         let response = await this.$axios.post('/createNewReservedAccount')
         console.log(response)
+        this.getReseervedAcct()
         this.$toast.success('Reserved Account Created!!', { timeout: 5000 })
       }
       catch (error) {
