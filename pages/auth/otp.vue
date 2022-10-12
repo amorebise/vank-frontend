@@ -10,7 +10,8 @@
             <!-- <div>
                 Expected value: <span class="font-weight-bold">{{ expectedOtp }}</span>
             </div> -->
-            <div class="text--caption"><button @click="resendOtp()" class="btn btn-primary">Resend OTP</button></div>
+            <div class="text--caption"><button @click="resendOtp()" style="background-color: #00e8fe" class="btn">Resend
+                    OTP</button></div>
 
             <!-- <v-snackbar v-model="snackbar" :color="snackbarColor" :timeout="2000">
                 {{ text }}
