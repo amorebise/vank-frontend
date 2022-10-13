@@ -56,7 +56,7 @@
               <div>
                 <a class="view__report" style="color: #00e8fe; font-size: 12px" :href="asset_detail.token_audit_report"
                   target="_blank" attributes-list download>
-                  Click to view token audit report
+                  Click to View Brochure
                 </a>
               </div>
             </div>

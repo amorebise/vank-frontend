@@ -171,7 +171,7 @@ export default {
       console.log(this.cash_wallet_ballance);
     },
     executeFunding() {
-      let verify = this.user.bank_code;
+      let verify = this.user.bank;
       if (verify) {
         this.$router.push("/user_dashboard/cash_subscription_wallet/");
         console.log(verify);

@@ -19,6 +19,7 @@ export default {
   padding: 0;
   font-family: "Quicksand", sans-serif;
 }
+
 .blue_text {
   color: #1d83c5;
 }

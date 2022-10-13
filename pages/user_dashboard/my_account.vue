@@ -130,7 +130,7 @@
 <script>
 import Subscribed_assets from "~/components/subscribed_assets.vue";
 export default {
-  // middleware: "auth",
+  middleware: "auth",
   data() {
     return {
       user: {},

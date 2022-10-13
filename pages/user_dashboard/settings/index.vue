@@ -215,11 +215,20 @@
             </div>
           </div>
 
-          <!-- <div class="change__password__form" v-show="show_bank_modal">
+          <div class="update__password__wrap d-flex justify-content-between mt-2">
+            <div class="text-wrap pt-2">
+              <h5>View Bank Details</h5>
+            </div>
+            <div class="edit__wrap">
+              <button @click="show_account_modal = !show_account_modal">View</button>
+            </div>
+          </div>
+
+          <div class="change__password__form" v-show="show_account_modal">
             <div class="slideInDown">
               <div class="detailed__content">
                 <div class="cancel__wrap text-right">
-                  <h6 @click="show_bank_modal = !show_bank_modal">x</h6>
+                  <h6 @click="show_account_modal = !show_account_modal">x</h6>
                 </div>
                 <div class="text-center pb-2">
                   <h4>Bank Details</h4>
@@ -229,7 +238,7 @@
                     <h6>Account Name:</h6>
                   </div>
                   <div>
-                    <p>{{reserved_acct.account_name}}</p>
+                    <p>{{user.first_name}} {{user.last_name}}</p>
                   </div>
                 </div>
                 <div class="d-flex justify-content-between">
@@ -237,7 +246,7 @@
                     <h6>Account Number:</h6>
                   </div>
                   <div>
-                    <p>{{reserved_acct.account_number}}</p>
+                    <p>{{user.account_number}}</p>
                   </div>
                 </div>
                 <div class="d-flex justify-content-between">
@@ -245,22 +254,13 @@
                     <h6>Bank Name:</h6>
                   </div>
                   <div>
-                    <p>{{reserved_acct.bank_name}}</p>
+                    <p>{{user.bank}}</p>
                   </div>
                 </div>
               </div>
             </div>
-          </div> -->
+          </div>
 
-          <!-- <div class="update__password__wrap d-flex justify-content-between">
-            <div class="text-wrap">
-              <h5>Verification</h5>
-              <p>KYC Documents</p>
-            </div>
-            <div class="edit__wrap">
-              <nuxt-link class="kyc_link" to="/kyc/kyc">Next</nuxt-link>
-            </div>
-          </div> -->
         </div>
       </div>
     </div>
@@ -277,9 +277,11 @@ export default {
       profile_modal: false,
       show_modal: false,
       show_bank_modal: false,
+      show_account_modal: false,
       tab: null,
       loading: false,
       show_payment_modal: false,
+      user: {},
       reserved_acct: {},
       banks: {},
       update_profile: {
@@ -299,6 +301,31 @@ export default {
     };
   },
   methods: {
+    async getUser() {
+      let auth = this.$auth.$storage._state;
+      let token = null;
+      for (const key in auth) {
+        console.log(key);
+        if (key == "_token.local") {
+          token = auth[key];
+        } else {
+          console.log("No");
+        }
+      }
+      console.log(token);
+      // console.log(this.$auth.$storage._state._token);
+      try {
+        let res = await this.$axios.get("/getUser", {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        });
+        this.user = res.data[0];
+        console.log(this.user);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
     async edit_profile() {
       try {
         const response = await this.$axios.post(
@@ -383,6 +410,7 @@ export default {
 
   created() {
     this.getBanks()
+    this.getUser()
     this.getReseervedAcct()
   }
 };

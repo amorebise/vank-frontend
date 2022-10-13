@@ -4,12 +4,8 @@
       <user-nav name="User Details" />
       <div class="single__wrap">
         <div>
-          <font-awesome-icon
-            @click="$router.go(-1)"
-            role="button"
-            class="fa-1x text-dark pl-1"
-            :icon="['fas', 'arrow-left']"
-          />
+          <font-awesome-icon @click="$router.go(-1)" role="button" class="fa-1x text-dark pl-1"
+            :icon="['fas', 'arrow-left']" />
         </div>
         <div class="mt-5">
           <div class="row">
@@ -22,10 +18,8 @@
               <div class="description__wrap">
                 <p>
                   Name:
-                  <span
-                    >{{ singleUser.first_name }}
-                    {{ singleUser.last_name }}</span
-                  >
+                  <span>{{ singleUser.first_name }}
+                    {{ singleUser.last_name }}</span>
                 </p>
                 <p>
                   Phone: <span>{{ singleUser.phone_number }}</span>
@@ -36,93 +30,59 @@
                 <p>
                   House Address: <span>{{ singleUser.address }}</span>
                 </p>
+                <p>
+                  House Address: <span>{{ singleUser.bank }}</span>
+                </p>
+                <p>
+                  House Address: <span>{{ singleUser.account_number }}</span>
+                </p>
               </div>
               <div class="d-flex radio_b" style="gap: 10px">
                 <div class="register_button_wrap text-center mt-1 py-4">
-                  <button
-                    @click="
-                      $router.push(`/admin_dashboard/user_transaction/${id}`)
-                    "
-                    class="assets__link"
-                  >
+                  <button @click="
+                    $router.push(`/admin_dashboard/user_transaction/${id}`)
+                  " class="assets__link">
                     <span class="px-3 user__f">Transactions</span>
                   </button>
                 </div>
                 <div class="register_button_wrap text-center mt-1 py-4">
-                  <button
-                    @click="$router.push(`/admin_dashboard/user_wallet/${id}`)"
-                    class="assets__link"
-                  >
+                  <button @click="$router.push(`/admin_dashboard/user_wallet/${id}`)" class="assets__link">
                     <span class="px-3 user__f">View Wallets</span>
                   </button>
                 </div>
                 <div class="register_button_wrap text-center mt-1 py-4">
-                  <div
-                    @click="show_limit_tab = !show_limit_tab"
-                    class="assets__link"
-                  >
+                  <div @click="show_limit_tab = !show_limit_tab" class="assets__link">
                     <span class="px-3 user__f">Limit Account</span>
                   </div>
                 </div>
                 <div v-show="show_limit_tab" class="radio__btn">
-                  <div
-                    v-if="singleUser.withdraw_status == 'true'"
-                    @click="limitWithdrawal()"
-                    class="form-check"
-                  >
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="exampleRadios"
-                      id="exampleRadios1"
-                      value="option1"
-                      checked
-                    />
+                  <div v-if="singleUser.withdraw_status == 'true'" @click="limitWithdrawal()" class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                      value="option1" checked />
                     <label class="form-check-label" for="exampleRadios1">
                       Can't Withdraw
                     </label>
                   </div>
 
                   <div v-else @click="allowWithdrawal()" class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="exampleRadios"
-                      id="exampleRadios1"
-                      value="option1"
-                      checked
-                    />
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                      value="option1" checked />
 
                     <label class="form-check-label" for="exampleRadios1">
                       Allow Withdraw
                     </label>
                   </div>
-                  <div
-                    v-if="singleUser.subscribe_status == 'true'"
-                    class="form-check"
-                  >
-                    <input
-                      @click="limitSubscription()"
-                      class="form-check-input"
-                      type="radio"
-                      name="exampleRadios"
-                      id="exampleRadios3"
-                      value="option3"
-                    />
+                  <div v-if="singleUser.subscribe_status == 'true'" class="form-check">
+                    <input @click="limitSubscription()" class="form-check-input" type="radio" name="exampleRadios"
+                      id="exampleRadios3" value="option3" />
                     <label class="form-check-label" for="exampleRadios3">
                       Can't Subscribe
                     </label>
                   </div>
 
                   <div v-else class="form-check">
-                    <input
-                      @click="allowSubscription()"
-                      class="form-check-input"
-                      type="radio"
-                      name="exampleRadios"
-                      id="exampleRadios3"
-                      value="option3"
-                    />
+                    <input @click="allowSubscription()" class="form-check-input" type="radio" name="exampleRadios"
+                      id="exampleRadios3" value="option3" />
 
                     <label class="form-check-label" for="exampleRadios3">
                       Allow Subscribe
@@ -256,9 +216,11 @@ export default {
   background-color: #fff;
   min-height: 100vh;
 }
+
 .radio_b {
   position: relative;
 }
+
 .radio__btn {
   position: absolute;
   right: 100px;
@@ -266,9 +228,11 @@ export default {
   border: 1px solid #00e8fe;
   padding: 20px;
 }
+
 .radio__btn .form-check-label {
   font-size: 14px;
 }
+
 .single__user__wrap .asset__content {
   background-image: url("/avatar.png");
   background-size: cover;
@@ -286,6 +250,7 @@ export default {
   border: 5px solid #00e8fe;
   /* gap: 10px; */
 }
+
 /* .single__user__wrap .asset__content p {
   opacity: 0;
 }
@@ -309,11 +274,13 @@ export default {
 .single__user__wrap .description__wrap {
   padding-top: 100px;
 }
+
 .single__user__wrap .description__wrap p {
   line-height: 25px;
   font-weight: 600;
   font-size: 16px;
 }
+
 .single__user__wrap .description__wrap span {
   font-weight: 500;
 }
@@ -323,26 +290,32 @@ export default {
     margin-left: 0 !important;
     padding: 0 !important;
   }
+
   .single__user__wrap .single__wrap {
     padding: 15px;
   }
+
   .single__user__wrap .description__wrap {
     padding-top: 10px;
   }
+
   .single__user__wrap .description__wrap p {
     line-height: 20px;
     font-weight: 600;
     font-size: 14px;
   }
+
   /* .single__user__wrap .row {
     padding: 0 !important;
   } */
   .single__user__wrap .col-md-6 {
     padding: 10px !important;
   }
+
   .settings_wrap {
     margin: 10px;
   }
+
   .single__user__wrap .user__f {
     font-size: 11px !important;
   }
