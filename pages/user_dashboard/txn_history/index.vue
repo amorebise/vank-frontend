@@ -10,44 +10,225 @@
         </div>
 
 
-        <div class="transactions_data">
-          <div class="body__wrap">
-            <v-simple-table fixed-header height="100%">
-              <template v-slot:default>
-                <thead>
-                  <tr style="border-bottom: thin solid rgba(0, 0, 0, 0.12)" class="">
-                    <th class="text-left th_color">SN</th>
-                    <th class="text-left th_color">Name</th>
-                    <th class="text-left th_color">Phone number</th>
-                    <th class="text-left th_color">Email</th>
-                    <th class="text-left th_color">Amount</th>
-                    <th class="text-left th_color">Admin Status</th>
-                    <th class="text-left th_color">Admin Comment</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="mt-2" style="border-bottom: thin solid rgba(0, 0, 0, 0.12)">
-                    <td>{{ txn_history.user_id }}</td>
-                    <td>
-                      {{ txn_history.name }}
-                    </td>
-                    <td>{{ txn_history.phone_number }}</td>
-                    <td>{{ txn_history.email }}</td>
-                    <td>{{ txn_history.amount }}</td>
-                    <td>{{ txn_history.admin_status }}</td>
-                    <td>
-                      <span v-if="txn_history.admin_comment">{{ txn_history.admin_comment }}</span>
-                      <span v-else>no added comment</span>
-                    </td>
-                  </tr>
-                  <!-- <tr class="text-center" >
-                    <td>You have no txn_history.</td>
-                  </tr> -->
-                </tbody>
-              </template>
-            </v-simple-table>
-          </div>
-        </div>
+        <template>
+          <v-tabs class="px-3" v-model="tab" align-with-title>
+            <v-tab name="stake">Fund Requests</v-tab>
+            <!-- <v-tab name="borrow">Subscriptions</v-tab> -->
+            <v-tab name="borrow">Sales</v-tab>
+            <v-tab name="borrow">Withdrawals</v-tab>
+          </v-tabs>
+        </template>
+
+        <v-tabs-items v-model="tab" class="tab_bg">
+          <v-tab-item>
+            <v-card flat>
+              <v-card-text class="">
+                <div class="transactions_data">
+                  <div class="body__wrap">
+                    <v-simple-table fixed-header height="100%">
+                      <template v-slot:default>
+                        <thead>
+                          <tr style="border-bottom: thin solid rgba(0, 0, 0, 0.12)" class="">
+                            <th class="text-left th_color">Ref ID</th>
+                            <th class="text-left th_color">Date</th>
+                            <th class="text-left th_color">Name</th>
+                            <th class="text-left th_color">Phone Number</th>
+                            <th class="text-left th_color">Status</th>
+                            <th class="text-left th_color">Amount(N)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="txns in txn_history.top_ups" :key="txns.index" class="mt-2"
+                            style="border-bottom: thin solid rgba(0, 0, 0, 0.12)">
+                            <td>{{ txns.reference_id }}</td>
+                            <td>
+                              {{ txns.date }}
+                            </td>
+                            <td>{{ txns.name }}</td>
+                            <td>{{ txns.phone_number }}</td>
+                            <td class="text-success">
+                              {{ txns.status }}
+                            </td>
+                            <td>{{ txns.amount }}</td>
+
+                          </tr>
+
+                        </tbody>
+
+
+                      </template>
+                    </v-simple-table>
+                  </div>
+                </div>
+              </v-card-text>
+            </v-card>
+          </v-tab-item>
+
+          <!-- <v-tab-item>
+            <v-card flat>
+              <v-card-text class="">
+                <div class="transactions_data">
+                  <div class="body__wrap">
+                    <v-simple-table fixed-header height="100%">
+                      <template v-slot:default>
+                        <thead>
+                          <tr style="border-bottom: thin solid rgba(0, 0, 0, 0.12)" class="">
+                            <th class="text-left th_color">Ref ID</th>
+                            <th class="text-left th_color">Subscription Date</th>
+                            <th class="text-left th_color">Name</th>
+                            <th class="text-left th_color">Layout Name</th>
+                            <th class="text-left th_color">Token Name</th>
+                            <th class="text-left th_color">Quantity</th>
+                            <th class="text-left th_color">Amount(N)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="mt-2" v-for="txns in txn_history.subscriptions" :key="txns.index"
+                            style="border-bottom: thin solid rgba(0, 0, 0, 0.12)">
+                            <td>
+                              {{ txns.reference_id }}
+                            </td>
+                            <td>
+                              {{ txns.subscription_date }}
+                            </td>
+                            <td>
+                              {{ txns.name }}
+                            </td>
+                            <td>
+                              {{ txns.layout_name }}
+                            </td>
+                            <td>
+                              {{ txns.token_name }}
+                            </td>
+                            <td>
+                              {{ txns.quantity }}
+                            </td>
+                            <td>
+                              {{ txns.amount }}
+                            </td>
+
+                          </tr>
+
+                        </tbody>
+                      </template>
+                    </v-simple-table>
+                  </div>
+                </div>
+              </v-card-text>
+            </v-card>
+          </v-tab-item> -->
+
+          <v-tab-item>
+            <v-card flat>
+              <v-card-text class="">
+                <div class="transactions_data">
+                  <div class="body__wrap">
+                    <v-simple-table fixed-header height="100%">
+                      <template v-slot:default>
+                        <thead>
+                          <tr style="border-bottom: thin solid rgba(0, 0, 0, 0.12)" class="">
+                            <th class="text-left th_color">Ref ID</th>
+                            <th class="text-left th_color">Subscription Date</th>
+                            <th class="text-left th_color">Name</th>
+                            <th class="text-left th_color">Layout Name</th>
+                            <th class="text-left th_color">Token Name</th>
+                            <th class="text-left th_color">Quantity</th>
+                            <th class="text-left th_color">Amount(N)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="mt-2" v-for="txns in txn_history.sales" :key="txns.index"
+                            style="border-bottom: thin solid rgba(0, 0, 0, 0.12)">
+                            <td>
+                              {{ txns.reference_id }}
+                            </td>
+                            <td>
+                              {{ txns.date }}
+                            </td>
+                            <td>
+                              {{ txns.name }}
+                            </td>
+                            <td>
+                              {{ txns.phone_number }}
+                            </td>
+                            <td>
+                              {{ txns.status }}
+                            </td>
+
+                            <td>
+                              {{ txns.amount }}
+                            </td>
+
+                          </tr>
+
+                          <tr v-if="txn_history.sales.length === 0">
+                            <td>No Sales History</td>
+                          </tr>
+                        </tbody>
+                      </template>
+                    </v-simple-table>
+                  </div>
+                </div>
+              </v-card-text>
+            </v-card>
+          </v-tab-item>
+
+          <v-tab-item>
+            <v-card flat>
+              <v-card-text class="">
+                <div class="transactions_data">
+                  <div class="body__wrap">
+                    <v-simple-table fixed-header height="100%">
+                      <template v-slot:default>
+                        <thead>
+                          <tr style="border-bottom: thin solid rgba(0, 0, 0, 0.12)" class="">
+                            <th class="text-left th_color">Ref ID</th>
+                            <th class="text-left th_color">Date</th>
+                            <th class="text-left th_color">Name</th>
+                            <th class="text-left th_color">Status</th>
+                            <th class="text-left th_color">Phone Number</th>
+                            <th class="text-left th_color">Amount(N)</th>
+                            <!-- <th class="text-left th_color">Action</th> -->
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="mt-2" v-for="txns in txn_history.withdrawals" :key="txns.index"
+                            style="border-bottom: thin solid rgba(0, 0, 0, 0.12)">
+                            <td>
+                              {{ txns.reference_id }}
+                            </td>
+                            <td>
+                              {{ txns.date }}
+                            </td>
+                            <td>
+                              {{ txns.name }}
+                            </td>
+                            <td>
+                              {{ txns.phone_number }}
+                            </td>
+                            <td>
+                              {{ txns.status }}
+                            </td>
+
+                            <td>
+                              {{ txns.amount }}
+                            </td>
+
+                          </tr>
+
+                          <tr v-if="txn_history.withdrawals.length === 0">
+                            <td>No Withdrawal History</td>
+                          </tr>
+                        </tbody>
+                      </template>
+                    </v-simple-table>
+                  </div>
+                </div>
+              </v-card-text>
+            </v-card>
+          </v-tab-item>
+        </v-tabs-items>
+
       </div>
     </div>
     <div>
@@ -64,17 +245,37 @@ export default {
     return {
       tab: null,
       txn_history: {},
+      subscriptionHistory: {},
+      withdrawalHistory: {},
       loading: false,
     };
   },
   methods: {
-    async getPaymentHistory() {
+    async getTransactionHistory() {
       try {
-        let response = await this.$axios.get("/getPaymentHisory");
+        let response = await this.$axios.get("/getHisory");
         this.txn_history = response.data;
         console.log(this.txn_history);
       } catch (error) {
         console.log(response.error);
+      }
+    },
+    async getSubscriptionSum() {
+      try {
+        let response = await this.$axios.post('/totalUserSubscriptionAmount')
+        this.subscriptionHistory = response.data
+        console.log(this.subscriptionHistory);
+      } catch (error) {
+        console.log(error.response);
+      }
+    },
+    async getWithdrawalSum() {
+      try {
+        let response = await this.$axios.post('/totalUserWithdrawalAmount')
+        this.withdrawalHistory = response.data
+        console.log(this.withdrawalHistory);
+      } catch (error) {
+        console.log(error.response);
       }
     },
     // viewDetail(txn_history) {
@@ -83,7 +284,9 @@ export default {
     // },
   },
   created() {
-    this.getPaymentHistory();
+    this.getTransactionHistory();
+    this.getSubscriptionSum();
+    this.getWithdrawalSum();
   },
 };
 </script>

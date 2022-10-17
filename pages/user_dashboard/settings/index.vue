@@ -102,7 +102,7 @@
                   <label for="exampleFormControlSelect1" class="">Enter Bank Name</label>
                   <select class="form-control option-class select" id="exampleFormControlSelect1"
                     v-model="verification.bank">
-                    <option>Please Select a Country</option>
+                    <option>Select Bank</option>
                     <option class="" id="selectCountry" v-for="bank in banks" :key="bank.index" :value="bank.name">
                       {{ bank.name }}
                     </option>
@@ -140,10 +140,10 @@
               <h5>Payments</h5>
               <div class="pt-2">
                 <p>Update Bank Details</p>
-                <span style="font-size: 13px" class="text-danger">N/B: create a reserved account after updating your
+                <!-- <span style="font-size: 13px" class="text-danger">N/B: create a reserved account after updating your
                   bank
                   details below
-                </span>
+                </span> -->
               </div>
             </div>
             <div class="edit__wrap">
@@ -161,21 +161,21 @@
 
           <div v-if="reserved_acct" class="update__password__wrap d-flex justify-content-between py-2">
             <div class="text-wrap">
-              <h5>View Reserved Account</h5>
+              <h5>View Reserve Account</h5>
             </div>
             <div class="edit__wrap">
               <button @click="show_bank_modal = !show_bank_modal">View</button>
             </div>
           </div>
 
-          <div v-else class="update__password__wrap d-flex justify-content-between py-2">
+          <!-- <div v-else class="update__password__wrap d-flex justify-content-between py-2">
             <div class="text-wrap">
-              <h5>Create Reserved Account</h5>
+              <h5>Create Reserve Account</h5>
             </div>
             <div class="edit__wrap">
               <button @click="createReservedAccount()">Create</button>
             </div>
-          </div>
+          </div> -->
 
 
           <div class="change__password__form" v-show="show_bank_modal">
@@ -185,7 +185,7 @@
                   <h6 @click="show_bank_modal = !show_bank_modal">x</h6>
                 </div>
                 <div class="text-center pb-2">
-                  <h4>Bank Details</h4>
+                  <h4>Reserve Account Details</h4>
                 </div>
                 <div class="d-flex justify-content-between">
                   <div>
@@ -282,6 +282,7 @@ export default {
       loading: false,
       show_payment_modal: false,
       user: {},
+      bank_error_message: '',
       reserved_acct: {},
       banks: {},
       update_profile: {
@@ -338,17 +339,7 @@ export default {
         console.log(error.response);
       }
     },
-    async createReservedAccount() {
-      try {
-        let response = await this.$axios.post('/createNewReservedAccount')
-        console.log(response)
-        this.getReseervedAcct()
-        this.$toast.success('Reserved Account Created!!', { timeout: 5000 })
-      }
-      catch (error) {
-        console.log(error.response);
-      }
-    },
+
     async getBanks() {
       try {
         let response = await this.$axios.get('/getBanks')
@@ -372,7 +363,7 @@ export default {
         this.verification = {}
         console.log(response);
       } catch (error) {
-        this.$toast.warning("Bvn or Bank Details may be incorrect", {
+        this.$toast.warning("Your personal Information does not match your BVN information", {
           timeout: 5000,
         });
         console.log(error.response);

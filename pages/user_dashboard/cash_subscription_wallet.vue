@@ -170,6 +170,7 @@ export default {
     return {
       tab: null,
       cash_wallet_ballance: {},
+      default_amount: '50000',
       txn: {
         option: "",
         amount: "",
@@ -192,12 +193,13 @@ export default {
     goToSelectedTxnType() {
       if (this.txn.option == "Fund wallet") {
         this.fundWallet();
+        this.createReservedAccount()
         this.saveAmount();
-        this.$router.push("/user_dashboard/fund_wallet/");
+        this.$router.push("/user_dashboard/bank_transfer/");
       } else if (this.txn.option == "Withdraw to bank") {
         this.saveAmount();
         this.withdrawFunds();
-      } else if (this.txn.option == "Transfer to your subscription wallet") { 
+      } else if (this.txn.option == "Transfer to your subscription wallet") {
         this.executeFunding()
         this.saveAmount();
       }
@@ -223,13 +225,24 @@ export default {
     async transferToCashWallet() {
       try {
         let response = await this.$axios.post(
-          "/topUpCashWallet",
+          "/fundCashWallet",
           this.fund_wallet
         );
         this.amount__modal = !this.amount__modal;
         this.$toast.success("success!! wallet will be updated after approval");
         console.log(response);
       } catch (error) {
+        console.log(error.response);
+      }
+    },
+
+    async createReservedAccount() {
+      try {
+        let response = await this.$axios.post('/createNewReservedAccount')
+        console.log(response)
+        this.$toast.success('Reserved Account Created!!', { timeout: 5000 })
+      }
+      catch (error) {
         console.log(error.response);
       }
     },
@@ -246,7 +259,7 @@ export default {
     executeFunding() {
       let fundingAmount = Number(this.fund_wallet.amount)
       let cashBalance = Number(this.cash_wallet_ballance.cash_wallet_balance)
-      if(fundingAmount > cashBalance ) {
+      if (fundingAmount > cashBalance) {
         this.$toast.warning('amount exceeds available funds in cashwallet')
         console.log('Hi')
       }
@@ -255,7 +268,7 @@ export default {
       }
     },
     async fundSubscriptionWallet() {
-      
+
       try {
         let response = await this.$axios.post(
           "/fundSubscriptionWallet",
@@ -281,6 +294,7 @@ export default {
   },
   created() {
     this.getCashWalletBallance();
+    this.fund_wallet.amount = this.default_amount
   },
 };
 </script>

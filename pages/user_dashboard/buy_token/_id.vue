@@ -20,7 +20,7 @@
                   backgroundImage: 'url(' + asset_detail.image + ')',
                 }">
                   <div>
-                    <p>&#x20A6;{{ asset_detail.token_price }}K per token</p>
+                    <p>&#x20A6;{{ asset_detail.token_price }} per token</p>
                     <p>
                       {{ (
                       (Number(asset_detail.token_quantity_subscribed) /
@@ -101,6 +101,11 @@ export default {
           "buy amount exceeds cash available in your subscription wallet"
         );
       }
+      // else if (buyAmount < 500) {
+      //   this.$toast.warning(
+      //     "buy amount shouldn't be lower than 500"
+      //   );
+      // }
       else {
         this.makePayment();
       }

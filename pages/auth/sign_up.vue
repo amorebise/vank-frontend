@@ -73,7 +73,7 @@
                   <ValidationProvider name="phone number" rules="required|integer|max:14" v-slot="{ errors }">
                     <label for="" class="">Phone Number</label>
                     <input type="text" class="form-control" v-model="signUp_data.phone_number"
-                      placeholder="234**********" />
+                      placeholder="090**********" />
                     <span class="warning">phone number should contain country code</span>
                     <div v-show="error_message">
                       <span class="errors">{{ phone_number_error }}</span>

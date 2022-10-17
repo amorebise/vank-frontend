@@ -18,8 +18,8 @@
                   % tokens Sold</span>
                 <span v-else style="font-size: 12px" class="text-dark">0 token Sold</span>
               </div>
-              <div class="opaque_text">
-                <p v-if="property.coordinates">{{ property.coordinates }}</p>
+              <div class="opaque_text text-center">
+                <p v-if="property.coordinates">Coordinates: <br /> {{ property.coordinates }}</p>
                 <p v-else>
                   Coordinates: <br />
                   4724”12.2N 384231.7E

@@ -241,7 +241,7 @@
           </div>
         </div>
         <div class="register_button_wrap text-center mt-3 py-4">
-          <nuxt-link to="/sign_up" class="assets__link">
+          <nuxt-link to="/auth/sign_up/" class="assets__link">
             <span class="px-3">Register with VANK</span>
           </nuxt-link>
         </div>
@@ -262,7 +262,7 @@
                     mobile phone, you <br />
                     can co-own prime <br />
                     real estate from as <br />
-                    low as N500
+                    low as N1000
                   </p>
                 </div>
               </div>
@@ -387,7 +387,7 @@
           </v-expansion-panels>
           <!-- End of Fourth Question -->
           <div class="register_button_wrap text-center mt-3 py-4">
-            <nuxt-link to="/faqs" class="assets__link">
+            <nuxt-link to="/home/faqs/" class="assets__link">
               <span class="px-3">View all FAQs</span>
             </nuxt-link>
           </div>

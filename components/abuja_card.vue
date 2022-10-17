@@ -22,7 +22,7 @@
               </div>
               <div class="opaque_text">
 
-                <p>{{ property.coordinates }}</p>
+                <p>Coordinates: <br /> {{ property.coordinates }}</p>
                 <!-- <p >
                   Coordinates: <br />
                   4724”12.2N 384231.7E
