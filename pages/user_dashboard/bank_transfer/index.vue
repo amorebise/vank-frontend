@@ -10,7 +10,7 @@
           <div class="bank__wrap py-5">
             <div class="text-center" style="line-height: 13px">
               <p>Pay &#8358;{{ selected_amount.amount }} to:</p>
-              <p>Vank Digital Services</p>
+              <!-- <p>Vank Digital Services</p> -->
 
               <p>Bank: {{reserved_acct.bank_name}}</p>
               <p>Acc No: {{reserved_acct.account_number}}</p>

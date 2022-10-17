@@ -31,8 +31,8 @@
                           <tr style="border-bottom: thin solid rgba(0, 0, 0, 0.12)" class="">
                             <th class="text-left th_color">Ref ID</th>
                             <th class="text-left th_color">Date</th>
-                            <th class="text-left th_color">Name</th>
-                            <th class="text-left th_color">Phone Number</th>
+                            <!-- <th class="text-left th_color">Name</th> -->
+                            <!-- <th class="text-left th_color">Phone Number</th> -->
                             <th class="text-left th_color">Status</th>
                             <th class="text-left th_color">Amount(N)</th>
                           </tr>
@@ -44,10 +44,11 @@
                             <td>
                               {{ txns.date }}
                             </td>
-                            <td>{{ txns.name }}</td>
-                            <td>{{ txns.phone_number }}</td>
-                            <td class="text-success">
-                              {{ txns.status }}
+                            <!-- <td>{{ txns.name }}</td> -->
+                            <!-- <td>{{ txns.phone_number }}</td> -->
+                            <td>
+                              <span v-if="txns.status === 'Paid'" class="text-success">{{ txns.status }}</span>
+                              <span v-else class="text-warning">{{ txns.status }}</span>
                             </td>
                             <td>{{ txns.amount }}</td>
 
