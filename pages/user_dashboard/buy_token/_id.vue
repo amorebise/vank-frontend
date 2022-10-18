@@ -136,7 +136,7 @@ export default {
       console.log(this.amount);
       console.log(this.token_name);
       this.loading = false;
-      this.$router.push("/user_dashboard/payment");
+      this.$router.push("/user_dashboard/continue_payment");
     },
     async getCashWalletBallance() {
       let response = await this.$axios.get("/getWalletBalance");

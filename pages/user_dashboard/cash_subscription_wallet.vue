@@ -170,7 +170,7 @@ export default {
     return {
       tab: null,
       cash_wallet_ballance: {},
-      default_amount: '50000',
+      // default_amount: '50000',
       txn: {
         option: "",
         amount: "",
@@ -294,7 +294,7 @@ export default {
   },
   created() {
     this.getCashWalletBallance();
-    this.fund_wallet.amount = this.default_amount
+    // this.fund_wallet.amount = this.default_amount
   },
 };
 </script>

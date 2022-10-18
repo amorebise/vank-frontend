@@ -309,6 +309,10 @@ export default {
   margin-top: 5px;
 }
 
+.v-tab {
+  text-transform: lowercase !important;
+}
+
 .show__pop__up {
   background-color: rgba(0, 0, 0, 0.265);
   position: fixed;
