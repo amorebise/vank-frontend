@@ -292,6 +292,7 @@ export default {
       verification: {
         account_number: "",
         bank: "",
+        bank_code: "",
         bvn_number: "",
       },
       password_change: {
@@ -344,6 +345,9 @@ export default {
       try {
         let response = await this.$axios.get('/getBanks')
         this.banks = response.data.data
+
+        this.verification.bank_code = response.data.data.bank_code;
+        console.log(this.verification.bank_code);
         console.log(this.banks)
       }
       catch (error) {
@@ -352,6 +356,7 @@ export default {
     },
     async updateBankDetails() {
       try {
+
         let response = await this.$axios.post(
           "/verifyNationalIdentity",
           this.verification
