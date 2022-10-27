@@ -103,7 +103,7 @@
                   <select class="form-control option-class select" id="exampleFormControlSelect1"
                     v-model="verification.bank">
                     <option>Select Bank</option>
-                    <option class="" id="selectCountry" v-for="bank in banks" :key="bank.index" :value="bank.name">
+                    <option class="" id="selectCountry" v-for="bank in banks" :key="bank.index" :value="bank.name+'/'+bank.code">
                       {{ bank.name }}
                     </option>
                   </select>
@@ -292,8 +292,8 @@ export default {
       verification: {
         account_number: "",
         bank: "",
-        bank_code: "",
         bvn_number: "",
+        // bvn_code: "",
       },
       password_change: {
         current_password: "",
